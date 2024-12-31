@@ -1,0 +1,578 @@
+{
+  "sleep": "500",
+  "name": "MeatyAnglers_Public",
+  "version": 1.0,
+  "metadata": {
+    "network-id": "76",
+    "network-downloaded-at": "1721665240634"
+  },
+  "actions": [
+    {
+      "id": "COMMENT",
+      "properties": {
+        "Comment": "World Hop Timer Start"
+      },
+      "children": [
+        {
+          "id": "IF_TIMER_DOES_NOT_EXIST",
+          "properties": {
+            "Timer name": "hop_timer"
+          },
+          "children": [
+            {
+              "id": "LOG",
+              "properties": {
+                "Message": "Starting world hop timer"
+              }
+            },
+            {
+              "id": "START_TIMER",
+              "properties": {
+                "Timer name": "hop_timer",
+                "Time": "mul(randGaussian(60,45), 60)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "IF_FIRST_RUN",
+      "children": [
+        {
+          "id": "COMMENT",
+          "properties": {
+            "Comment": "Wait until logged in to start setting variables"
+          },
+          "children": [
+            {
+              "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+              "properties": {
+                "Max time (seconds)": "60"
+              },
+              "children": [
+                {
+                  "id": "LOG",
+                  "properties": {
+                    "Message": "Sleeping until we\u0027re logged in"
+                  }
+                },
+                {
+                  "id": "IF_LOGGED_IN"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "COMMENT",
+          "properties": {
+            "Comment": "Areas"
+          },
+          "children": [
+            {
+              "id": "SET_VARIABLE",
+              "properties": {
+                "Value": "1838,3779,1826,3779,1814,3770,1829,3764,1844,3777",
+                "Variable name": "fishing_area"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "IF_INVENTORY_DOES_NOT_CONTAIN_ANY",
+      "properties": {
+        "Filter Item By": {
+          "class": "Item",
+          "logic": "NONE",
+          "type": "ID",
+          "operator": "EQUALS",
+          "value": "13431"
+        }
+      },
+      "children": [
+        {
+          "id": "LOG",
+          "properties": {
+            "Message": "Inventory doesn\u0027t have words, stopping the script"
+          }
+        },
+        {
+          "id": "STOP_SCRIPT",
+          "customDisplayName": "Out of Worms"
+        }
+      ]
+    },
+    {
+      "id": "IF_INVENTORY_IS_NOT_FULL",
+      "children": [
+        {
+          "id": "IF_LOCAL_PLAYER_MATCHES",
+          "properties": {
+            "Filter By": {
+              "class": "Player",
+              "logic": "NONE",
+              "type": "IN_AREA",
+              "operator": "EQUALS",
+              "value": "v(fishing_area)"
+            }
+          },
+          "children": [
+            {
+              "id": "IF_SPECIAL_ATTACK_ENERGY_IS",
+              "properties": {
+                "energy": {
+                  "class": "Number",
+                  "operator": "EQUALS",
+                  "value": "100"
+                }
+              }
+            },
+            {
+              "id": "AND_BRANCH"
+            },
+            {
+              "id": "IF_EQUIPPED_ITEM_MATCHES",
+              "properties": {
+                "Filter Item By": {
+                  "class": "Item",
+                  "logic": "NONE",
+                  "type": "NAME",
+                  "operator": "EQUALS",
+                  "value": "Dragon harpoon"
+                }
+              },
+              "children": [
+                {
+                  "id": "LOG",
+                  "properties": {
+                    "Message": "Using dragon harpoon special"
+                  }
+                },
+                {
+                  "id": "ENABLE_SPECIAL_ATTACK"
+                }
+              ]
+            },
+            {
+              "id": "IF_LOCAL_PLAYER_MATCHES",
+              "properties": {
+                "Filter By": {
+                  "class": "Player",
+                  "logic": "NONE",
+                  "type": "NOT_ANIMATING",
+                  "operator": "EQUALS"
+                }
+              },
+              "children": [
+                {
+                  "id": "SLEEP_NORMAL_DISTRIBUTION",
+                  "properties": {
+                    "Mean": "1000",
+                    "Variance": "1000"
+                  },
+                  "children": [
+                    {
+                      "id": "DELETE_TIMER",
+                      "properties": {
+                        "Timer name": "rotate_delay"
+                      }
+                    },
+                    {
+                      "id": "IF_RANDOM_NUMBER_IS",
+                      "properties": {
+                        "number": {
+                          "class": "Number",
+                          "operator": "LESS_THAN",
+                          "value": "10"
+                        },
+                        "Minimum": "1",
+                        "Maximum": "100"
+                      },
+                      "children": [
+                        {
+                          "id": "LOG",
+                          "properties": {
+                            "Message": "Interacting with fishing pool"
+                          }
+                        },
+                        {
+                          "id": "NPC_INTERACT",
+                          "properties": {
+                            "Action": "Bait",
+                            "Don\u0027t walk to NPC": false,
+                            "Force left click": false,
+                            "Filter NPC By": {
+                              "class": "NPC",
+                              "logic": "NONE",
+                              "type": "ID",
+                              "operator": "EQUALS",
+                              "value": "6825",
+                              "filters": [
+                                {
+                                  "class": "NPC",
+                                  "logic": "AND",
+                                  "type": "IN_AREA",
+                                  "operator": "EQUALS",
+                                  "value": "v(fishing_area)"
+                                }
+                              ]
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "MOVE_MOUSE_OFFSCREEN"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "ELSE_BRANCH",
+              "children": [
+                {
+                  "id": "IF_TIMER_DOES_NOT_EXIST",
+                  "properties": {
+                    "Timer name": "rotate_delay"
+                  },
+                  "children": [
+                    {
+                      "id": "LOG",
+                      "properties": {
+                        "Message": "Starting new camera rotation anti-ban timer"
+                      }
+                    },
+                    {
+                      "id": "START_TIMER",
+                      "properties": {
+                        "Timer name": "rotate_delay",
+                        "Time": "randGaussian(60,30)"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_TIMER_IS_FINISHED",
+                  "properties": {
+                    "Timer name": "rotate_delay"
+                  },
+                  "children": [
+                    {
+                      "id": "LOG",
+                      "properties": {
+                        "Message": "Rotating camera"
+                      }
+                    },
+                    {
+                      "id": "DELETE_TIMER",
+                      "properties": {
+                        "Timer name": "rotate_delay"
+                      }
+                    },
+                    {
+                      "id": "SET_VARIABLE_TO_RANDOM",
+                      "properties": {
+                        "Minimum": "0",
+                        "Maximum": "4",
+                        "Variable name": "rand"
+                      }
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "1"
+                        },
+                        "Variable name": "rand"
+                      },
+                      "children": [
+                        {
+                          "id": "LOG",
+                          "properties": {
+                            "Message": "Rotating to random npc"
+                          }
+                        },
+                        {
+                          "id": "ROTATE_TO_NPC",
+                          "properties": {
+                            "Filter NPC By": {
+                              "class": "NPC",
+                              "logic": "NONE",
+                              "type": "NAME",
+                              "operator": "CONTAINS"
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "2"
+                        },
+                        "Variable name": "rand"
+                      },
+                      "children": [
+                        {
+                          "id": "LOG",
+                          "properties": {
+                            "Message": "Rotating to random game object"
+                          }
+                        },
+                        {
+                          "id": "ROTATE_TO_GAME_OBJECT",
+                          "properties": {
+                            "Filter Object By": {
+                              "class": "GameObject",
+                              "logic": "NONE",
+                              "type": "NAME",
+                              "operator": "CONTAINS"
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "3"
+                        },
+                        "Variable name": "rand"
+                      },
+                      "children": [
+                        {
+                          "id": "LOG",
+                          "properties": {
+                            "Message": "Rotating to random player"
+                          }
+                        },
+                        {
+                          "id": "ROTATE_TO_PLAYER",
+                          "properties": {
+                            "Filter Player By": {
+                              "class": "Player",
+                              "logic": "NONE",
+                              "type": "NAME",
+                              "operator": "CONTAINS"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ELSE_BRANCH",
+          "children": [
+            {
+              "id": "IF_DISTANCE_TO_DESTINATION_IS",
+              "properties": {
+                "distance": {
+                  "class": "Number",
+                  "operator": "LESS_THAN_OR_EQUALS",
+                  "value": "4"
+                }
+              },
+              "children": [
+                {
+                  "id": "WALK_TO_AREA",
+                  "properties": {
+                    "Area": "v(fishing_area)"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ELSE_BRANCH",
+      "children": [
+        {
+          "id": "IF_BANK_IS_OPEN",
+          "children": [
+            {
+              "id": "LOG",
+              "properties": {
+                "Message": "Bank open depositing anglers"
+              }
+            },
+            {
+              "id": "BANK_DEPOSIT_ALL_MATCHING_ITEMS",
+              "properties": {
+                "Filter Item By": {
+                  "class": "Item",
+                  "logic": "NONE",
+                  "type": "NAME",
+                  "operator": "EQUALS",
+                  "value": "Raw anglerfish"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "ELSE_BRANCH",
+          "children": [
+            {
+              "id": "IF_RANDOM_NUMBER_IS",
+              "properties": {
+                "number": {
+                  "class": "Number",
+                  "operator": "LESS_THAN",
+                  "value": "33"
+                },
+                "Minimum": "1",
+                "Maximum": "100"
+              },
+              "children": [
+                {
+                  "id": "OPEN_BANK"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "COMMENT",
+      "properties": {
+        "Comment": "World Hop"
+      },
+      "children": [
+        {
+          "id": "IF_TIMER_IS_FINISHED",
+          "properties": {
+            "Timer name": "hop_timer"
+          },
+          "children": [
+            {
+              "id": "LOG",
+              "properties": {
+                "Message": "Hopping to random matching world"
+              }
+            },
+            {
+              "id": "SET_TO_LOCAL_PLAYER_TOTAL_LEVEL",
+              "properties": {
+                "Variable name": "total_level"
+              }
+            },
+            {
+              "id": "HOP_TO_RANDOM_WORLD",
+              "properties": {
+                "Ignore combat check": false,
+                "Filter World By": {
+                  "class": "World",
+                  "logic": "NONE",
+                  "type": "WORLD_IS_MEMBERS",
+                  "operator": "EQUALS",
+                  "filters": [
+                    {
+                      "class": "World",
+                      "logic": "AND",
+                      "type": "WORLD_IS_NORMAL",
+                      "operator": "EQUALS"
+                    },
+                    {
+                      "class": "World",
+                      "logic": "AND",
+                      "type": "WORLD_MINIMUM_LEVEL",
+                      "operator": "LESS_THAN",
+                      "value": "v(total_level)"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "id": "SLEEP_WHILE_WORLD_HOPPING"
+            },
+            {
+              "id": "DELETE_TIMER",
+              "properties": {
+                "Timer name": "hop_timer"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "PAINT_ROOT",
+      "properties": {
+        "Hide standard paint": false
+      },
+      "children": [
+        {
+          "id": "DRAW_TEXT",
+          "properties": {
+            "Font Size": "50",
+            "Outline color": {
+              "class": "Color",
+              "value": -1
+            },
+            "Color": {
+              "class": "Color",
+              "value": -58690
+            },
+            "X": "20",
+            "Y": "50",
+            "Text": "Caught: itemGain(Raw anglerfish) hourly(itemGain(Raw anglerfish))/h",
+            "Font": {
+              "class": "Font",
+              "value": "Inter V"
+            }
+          }
+        },
+        {
+          "id": "DRAW_TEXT",
+          "properties": {
+            "Font Size": "50",
+            "Outline color": {
+              "class": "Color",
+              "value": -1
+            },
+            "Color": {
+              "class": "Color",
+              "value": -1
+            },
+            "X": "20",
+            "Y": "100",
+            "Text": "Hopping in timer(hop_timer)",
+            "Font": {
+              "class": "Font",
+              "value": "Inter V"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

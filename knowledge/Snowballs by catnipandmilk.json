@@ -1,0 +1,976 @@
+{
+  "sleep": "444",
+  "name": "Snowballs",
+  "version": 1.0,
+  "metadata": {
+    "network-id": "22",
+    "network-downloaded-at": "1721665227470"
+  },
+  "actions": [
+    {
+      "id": "IF_NOT_LOGGED_IN",
+      "children": [
+        {
+          "id": "ENABLE_LOGIN_SOLVER"
+        }
+      ]
+    },
+    {
+      "id": "IF_LOCAL_PLAYER_MATCHES",
+      "customDisplayName": "Oregon Trail to Lumbridge",
+      "properties": {
+        "Filter By": {
+          "class": "Player",
+          "logic": "NONE",
+          "type": "NOT_IN_AREA",
+          "operator": "EQUALS",
+          "value": "(3191, 3302, 0), (3215, 3280, 0)"
+        }
+      },
+      "children": [
+        {
+          "id": "CUSTOM_20b04844-31da-4c2f-8540-2792dae503b1"
+        },
+        {
+          "id": "WALK_TO_AREA",
+          "properties": {
+            "Area": "(3190, 3288, 0), (3211, 3280, 0), (3191, 3280, 0), (3198, 3281, 0), (3196, 3281, 0), (3195, 3282, 0), (3194, 3283, 0), (3193, 3284, 0), (3192, 3285, 0), (3191, 3286, 0), (3191, 3287, 0), (3190, 3280, 0), (3190, 3281, 0), (3190, 3282, 0), (3190, 3283, 0), (3190, 3284, 0), (3190, 3285, 0), (3190, 3286, 0), (3190, 3287, 0), (3192, 3280, 0), (3193, 3280, 0), (3194, 3280, 0), (3195, 3280, 0), (3196, 3280, 0), (3197, 3280, 0), (3197, 3281, 0), (3198, 3280, 0), (3199, 3280, 0), (3200, 3280, 0), (3200, 3281, 0), (3199, 3281, 0), (3211, 3283, 0), (3210, 3282, 0), (3209, 3282, 0), (3209, 3283, 0), (3211, 3282, 0), (3208, 3283, 0), (3208, 3282, 0), (3209, 3281, 0), (3208, 3281, 0), (3211, 3281, 0), (3210, 3281, 0), (3210, 3280, 0), (3209, 3280, 0), (3208, 3280, 0), (3207, 3280, 0), (3206, 3280, 0), (3205, 3280, 0), (3204, 3280, 0), (3203, 3280, 0), (3201, 3280, 0), (3202, 3280, 0), (3194, 3281, 0), (3193, 3281, 0), (3192, 3281, 0), (3191, 3281, 0), (3191, 3282, 0), (3191, 3283, 0), (3191, 3284, 0), (3191, 3285, 0), (3192, 3284, 0), (3192, 3283, 0), (3193, 3283, 0), (3192, 3282, 0), (3193, 3282, 0), (3194, 3282, 0)"
+          },
+          "children": [
+            {
+              "id": "SLEEP_NORMAL_DISTRIBUTION",
+              "properties": {
+                "Mean": "734",
+                "Variance": "387"
+              }
+            }
+          ]
+        },
+        {
+          "id": "RETURN_TO_START_OF_SCRIPT"
+        }
+      ]
+    },
+    {
+      "id": "ELSE_BRANCH",
+      "children": [
+        {
+          "id": "IF_GAME_OBJECT_EXISTS",
+          "properties": {
+            "Filter Object By": {
+              "class": "GameObject",
+              "logic": "NONE",
+              "type": "NAME",
+              "operator": "EQUALS",
+              "value": "Snow"
+            }
+          },
+          "children": [
+            {
+              "id": "IF_LOCAL_PLAYER_MATCHES",
+              "properties": {
+                "Filter By": {
+                  "class": "Player",
+                  "logic": "NONE",
+                  "type": "NOT_ANIMATING",
+                  "operator": "EQUALS"
+                }
+              },
+              "children": [
+                {
+                  "id": "GAME_OBJECT_INTERACT",
+                  "properties": {
+                    "Don\u0027t walk to object": false,
+                    "Action": "Take",
+                    "Filter Object By": {
+                      "class": "GameObject",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Snow"
+                    },
+                    "Force left click": true
+                  },
+                  "children": [
+                    {
+                      "id": "SLEEP_UNTIL_GAME_TICK"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "IF_LOCAL_PLAYER_MATCHES",
+              "properties": {
+                "Filter By": {
+                  "class": "Player",
+                  "logic": "NONE",
+                  "type": "ANIMATING",
+                  "operator": "EQUALS"
+                }
+              },
+              "children": [
+                {
+                  "id": "CUSTOM_b9636152-19d5-4193-a543-d283587ce7db"
+                },
+                {
+                  "id": "CUSTOM_8090d0d5-b7ba-4ae5-b341-418ec10e81f7"
+                },
+                {
+                  "id": "SLEEP_NORMAL_DISTRIBUTION",
+                  "properties": {
+                    "Mean": "16432",
+                    "Variance": "34765"
+                  }
+                },
+                {
+                  "id": "IF_RANDOM_NUMBER_IS",
+                  "properties": {
+                    "number": {
+                      "class": "Number",
+                      "operator": "EQUALS",
+                      "value": "5"
+                    },
+                    "Minimum": "1",
+                    "Maximum": "10"
+                  },
+                  "children": [
+                    {
+                      "id": "ROTATE_CAMERA_RANDOMLY"
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_RANDOM_NUMBER_IS",
+                  "properties": {
+                    "number": {
+                      "class": "Number",
+                      "operator": "EQUALS",
+                      "value": "4"
+                    },
+                    "Minimum": "1",
+                    "Maximum": "10"
+                  },
+                  "children": [
+                    {
+                      "id": "GAME_OBJECT_INTERACT",
+                      "properties": {
+                        "Don\u0027t walk to object": false,
+                        "Action": "Take",
+                        "Filter Object By": {
+                          "class": "GameObject",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "Snow"
+                        },
+                        "Force left click": true
+                      },
+                      "children": [
+                        {
+                          "id": "SLEEP_UNTIL_GAME_TICK"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ELSE_BRANCH",
+          "children": [
+            {
+              "id": "WALK_TO_TILE",
+              "properties": {
+                "Tile": "(3192, 3285, 0)"
+              },
+              "children": [
+                {
+                  "id": "SLEEP_NORMAL_DISTRIBUTION",
+                  "properties": {
+                    "Mean": "444",
+                    "Variance": "222"
+                  }
+                },
+                {
+                  "id": "CUSTOM_b9636152-19d5-4193-a543-d283587ce7db"
+                }
+              ]
+            },
+            {
+              "id": "IF_LOCAL_PLAYER_MATCHES",
+              "properties": {
+                "Filter By": {
+                  "class": "Player",
+                  "logic": "NONE",
+                  "type": "TILE",
+                  "operator": "EQUALS",
+                  "value": "(3192, 3285, 0)"
+                }
+              },
+              "children": [
+                {
+                  "id": "IF_GAME_OBJECT_DOES_NOT_EXIST",
+                  "properties": {
+                    "Filter Object By": {
+                      "class": "GameObject",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Snow"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "SHOW_DIALOG_MESSAGE",
+                      "properties": {
+                        "Message": "We can\u0027t find the snow!"
+                      },
+                      "children": [
+                        {
+                          "id": "SLEEP_UNTIL_GAME_TICK",
+                          "children": [
+                            {
+                              "id": "SLEEP_BETWEEN",
+                              "properties": {
+                                "Minimum": "360000",
+                                "Maximum": "380000"
+                              }
+                            },
+                            {
+                              "id": "SHOW_DIALOG_MESSAGE",
+                              "properties": {
+                                "Message": "Taking the long nap, now. Reboot me in the winter."
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "PAINT_ROOT",
+      "properties": {
+        "Hide standard paint": false
+      },
+      "children": [
+        {
+          "id": "DRAW_USERNAME_CENSOR_BAR"
+        },
+        {
+          "id": "DRAW_TEXT",
+          "properties": {
+            "Font Size": "14",
+            "X": "160",
+            "Y": "471",
+            "Text": "Catnip\u0027s Snowplow",
+            "Font": {
+              "class": "Font",
+              "value": "Dialog"
+            },
+            "Color": {
+              "class": "Color",
+              "value": -16728065
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "customActions": {
+    "b9636152-19d5-4193-a543-d283587ce7db": {
+      "id": "b9636152-19d5-4193-a543-d283587ce7db",
+      "name": "Antiban \u003e Human Behavior",
+      "description": "",
+      "parameters": "",
+      "fail": false,
+      "actions": [
+        {
+          "id": "COMMENT",
+          "properties": {
+            "Comment": "Interact with others"
+          }
+        },
+        {
+          "id": "IF_PLAYER_EXISTS",
+          "properties": {
+            "Filter Player By": {
+              "class": "Player",
+              "logic": "NONE",
+              "type": "DISTANCE_TO_PLAYER",
+              "operator": "LESS_THAN_OR_EQUAL",
+              "value": "4"
+            }
+          },
+          "children": [
+            {
+              "id": "IF_RANDOM_NUMBER_IS",
+              "properties": {
+                "number": {
+                  "class": "Number",
+                  "operator": "EQUALS",
+                  "value": "5"
+                },
+                "Minimum": "1",
+                "Maximum": "10"
+              },
+              "children": [
+                {
+                  "id": "SLEEP_UNTIL_GAME_TICK",
+                  "children": [
+                    {
+                      "id": "HOVER_PLAYER",
+                      "properties": {
+                        "Filter By": {
+                          "class": "Player",
+                          "logic": "NONE",
+                          "type": "DISTANCE_TO_PLAYER",
+                          "operator": "LESS_THAN_OR_EQUAL",
+                          "value": "4"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "SLEEP_BETWEEN",
+                          "properties": {
+                            "Minimum": "284",
+                            "Maximum": "416"
+                          },
+                          "children": [
+                            {
+                              "id": "RIGHT_CLICK",
+                              "children": [
+                                {
+                                  "id": "SLEEP_UNTIL_GAME_TICK",
+                                  "children": [
+                                    {
+                                      "id": "MOVE_MOUSE_RANDOMLY"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "IF_NPC_EXISTS",
+          "properties": {
+            "Filter NPC By": {
+              "class": "NPC",
+              "logic": "NONE",
+              "type": "DISTANCE_TO_PLAYER",
+              "operator": "LESS_THAN_OR_EQUAL",
+              "value": "8",
+              "filters": [
+                {
+                  "class": "NPC",
+                  "logic": "AND",
+                  "type": "ON_SCREEN",
+                  "operator": "EQUALS"
+                }
+              ]
+            }
+          },
+          "children": [
+            {
+              "id": "IF_RANDOM_NUMBER_IS",
+              "properties": {
+                "number": {
+                  "class": "Number",
+                  "operator": "EQUALS",
+                  "value": "25"
+                },
+                "Minimum": "1",
+                "Maximum": "50"
+              },
+              "children": [
+                {
+                  "id": "SLEEP_UNTIL_GAME_TICK",
+                  "children": [
+                    {
+                      "id": "HOVER_NPC",
+                      "properties": {
+                        "Filter By": {
+                          "class": "NPC",
+                          "logic": "NONE",
+                          "type": "DISTANCE_TO_PLAYER",
+                          "operator": "LESS_THAN_OR_EQUAL",
+                          "value": "8"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "SLEEP_BETWEEN",
+                          "properties": {
+                            "Minimum": "284",
+                            "Maximum": "416"
+                          },
+                          "children": [
+                            {
+                              "id": "RIGHT_CLICK",
+                              "children": [
+                                {
+                                  "id": "SLEEP_UNTIL_GAME_TICK",
+                                  "children": [
+                                    {
+                                      "id": "MOVE_MOUSE_RANDOMLY"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "IF_RANDOM_NUMBER_IS",
+          "properties": {
+            "number": {
+              "class": "Number",
+              "operator": "EQUALS",
+              "value": "2"
+            },
+            "Minimum": "1",
+            "Maximum": "10"
+          },
+          "children": [
+            {
+              "id": "IF_TAB_IS_OPEN",
+              "properties": {
+                "Tab": {
+                  "class": "Tab",
+                  "value": "INVENTORY"
+                }
+              },
+              "children": [
+                {
+                  "id": "OPEN_TAB",
+                  "properties": {
+                    "Tab": {
+                      "class": "Tab",
+                      "value": "SKILLS"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "id": "ELSE_BRANCH",
+              "children": [
+                {
+                  "id": "OPEN_TAB",
+                  "properties": {
+                    "Tab": {
+                      "class": "Tab",
+                      "value": "INVENTORY"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "20b04844-31da-4c2f-8540-2792dae503b1": {
+      "id": "20b04844-31da-4c2f-8540-2792dae503b1",
+      "name": "Character \u003e Survival \u003e Passive",
+      "description": "Avoids fights",
+      "parameters": "",
+      "fail": false,
+      "actions": [
+        {
+          "id": "IF_LOCAL_PLAYER_MATCHES",
+          "customDisplayName": "Are we being attacked?",
+          "properties": {
+            "Filter By": {
+              "class": "Player",
+              "logic": "NONE",
+              "type": "IN_COMBAT",
+              "operator": "EQUALS"
+            }
+          },
+          "children": [
+            {
+              "id": "IF_NPC_EXISTS",
+              "properties": {
+                "Filter NPC By": {
+                  "class": "NPC",
+                  "logic": "NONE",
+                  "type": "IS_INTERACTING_WITH_ME",
+                  "operator": "EQUALS",
+                  "filters": [
+                    {
+                      "class": "NPC",
+                      "logic": "AND",
+                      "type": "IN_COMBAT",
+                      "operator": "EQUALS"
+                    }
+                  ]
+                }
+              },
+              "children": [
+                {
+                  "id": "IF_AUTO_RETALIATE_IS_ON",
+                  "children": [
+                    {
+                      "id": "DISABLE_AUTO_RETALIATE"
+                    },
+                    {
+                      "id": "SLEEP_UNTIL_GAME_TICK"
+                    }
+                  ]
+                },
+                {
+                  "id": "ENABLE_RUN",
+                  "children": [
+                    {
+                      "id": "IF_LOCAL_PLAYER_MATCHES",
+                      "customDisplayName": "Are we okay now?",
+                      "properties": {
+                        "Filter By": {
+                          "class": "Player",
+                          "logic": "NONE",
+                          "type": "NOT_IN_COMBAT",
+                          "operator": "EQUALS"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "SLEEP_UNTIL_GAME_TICK"
+                        },
+                        {
+                          "id": "DISABLE_RUN",
+                          "customDisplayName": "Why are we running?"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "IF_BOOSTED_SKILL_LEVEL_IS",
+          "customDisplayName": "Are we dying?",
+          "properties": {
+            "level": {
+              "class": "Number",
+              "operator": "LESS_THAN_OR_EQUALS",
+              "value": "7"
+            },
+            "Skill": {
+              "class": "Skill",
+              "value": "HITPOINTS"
+            }
+          },
+          "children": [
+            {
+              "id": "WALK_TO_NEAREST_BANK",
+              "children": [
+                {
+                  "id": "SLEEP_NORMAL_DISTRIBUTION",
+                  "properties": {
+                    "Mean": "465",
+                    "Variance": "132"
+                  },
+                  "children": [
+                    {
+                      "id": "LOGOUT"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "8090d0d5-b7ba-4ae5-b341-418ec10e81f7": {
+      "id": "8090d0d5-b7ba-4ae5-b341-418ec10e81f7",
+      "name": "Antiban \u003e Random Events",
+      "description": "Interacts with Random Events for their free rewards. Very beneficial for ironman accounts.",
+      "parameters": "",
+      "fail": false,
+      "actions": [
+        {
+          "id": "IF_CAN_CONTINUE",
+          "customDisplayName": "Level Up Notifications?",
+          "children": [
+            {
+              "id": "CLICK_TO_CONTINUE"
+            }
+          ]
+        },
+        {
+          "id": "IF_NPC_EXISTS",
+          "customDisplayName": "Stray Dog",
+          "properties": {
+            "Filter NPC By": {
+              "class": "NPC",
+              "logic": "NONE",
+              "type": "NAME",
+              "operator": "EQUALS",
+              "value": "Stray dog",
+              "filters": [
+                {
+                  "class": "NPC",
+                  "logic": "AND",
+                  "type": "DISTANCE_TO_PLAYER",
+                  "operator": "EQUALS",
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          "children": [
+            {
+              "id": "SLEEP_UNTIL_GAME_TICK"
+            },
+            {
+              "id": "NPC_INTERACT",
+              "customDisplayName": "Shoo-away Stray dog",
+              "properties": {
+                "Action": "Shoo-away",
+                "Don\u0027t walk to NPC": false,
+                "Force left click": false,
+                "Filter NPC By": {
+                  "class": "NPC",
+                  "logic": "NONE",
+                  "type": "ID",
+                  "operator": "EQUALS",
+                  "value": "2922"
+                }
+              },
+              "children": [
+                {
+                  "id": "SLEEP_UNTIL_GAME_TICK"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "IF_NPC_EXISTS",
+          "customDisplayName": "Mysterious old man",
+          "properties": {
+            "Filter NPC By": {
+              "class": "NPC",
+              "logic": "NONE",
+              "type": "NAME",
+              "operator": "EQUALS",
+              "value": "Mysterious old man",
+              "filters": [
+                {
+                  "class": "NPC",
+                  "logic": "AND",
+                  "type": "DISTANCE_TO_PLAYER",
+                  "operator": "EQUALS",
+                  "value": "1"
+                },
+                {
+                  "class": "NPC",
+                  "logic": "OR",
+                  "type": "NAME",
+                  "operator": "EQUALS",
+                  "value": "Mysterious Old Man"
+                },
+                {
+                  "class": "NPC",
+                  "logic": "AND",
+                  "type": "DISTANCE_TO_PLAYER",
+                  "operator": "EQUALS",
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          "children": [
+            {
+              "id": "SLEEP_UNTIL_GAME_TICK"
+            },
+            {
+              "id": "NPC_INTERACT",
+              "customDisplayName": "Talk to him",
+              "properties": {
+                "Action": "Talk to",
+                "Don\u0027t walk to NPC": false,
+                "Force left click": false,
+                "Filter NPC By": {
+                  "class": "NPC",
+                  "logic": "NONE",
+                  "type": "NAME",
+                  "operator": "EQUALS",
+                  "value": "Mysterious old man"
+                }
+              },
+              "children": [
+                {
+                  "id": "SLEEP_UNTIL_GAME_TICK",
+                  "children": [
+                    {
+                      "id": "IF_IN_DIALOGUE",
+                      "children": [
+                        {
+                          "id": "IF_CAN_CONTINUE",
+                          "children": [
+                            {
+                              "id": "CLICK_TO_CONTINUE",
+                              "children": [
+                                {
+                                  "id": "SLEEP_UNTIL_GAME_TICK"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "id": "ELSE_BRANCH"
+                        },
+                        {
+                          "id": "IF_DIALOGUE_CONTAINS",
+                          "customDisplayName": "Maze",
+                          "properties": {
+                            "Text": "maze"
+                          },
+                          "children": [
+                            {
+                              "id": "SLEEP_BETWEEN",
+                              "properties": {
+                                "Minimum": "345",
+                                "Maximum": "643"
+                              },
+                              "children": [
+                                {
+                                  "id": "IF_OPTIONS_ARE_AVAILABLE",
+                                  "children": [
+                                    {
+                                      "id": "CHOOSE_OPTION_CONTAINING",
+                                      "properties": {
+                                        "Text": "Sorry, I\u0027m busy."
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "id": "OR_BRANCH"
+                        },
+                        {
+                          "id": "IF_DIALOGUE_CONTAINS",
+                          "customDisplayName": "Mime show",
+                          "properties": {
+                            "Text": "mime"
+                          },
+                          "children": [
+                            {
+                              "id": "SLEEP_BETWEEN",
+                              "properties": {
+                                "Minimum": "345",
+                                "Maximum": "643"
+                              },
+                              "children": [
+                                {
+                                  "id": "IF_OPTIONS_ARE_AVAILABLE",
+                                  "children": [
+                                    {
+                                      "id": "CHOOSE_OPTION_CONTAINING",
+                                      "properties": {
+                                        "Text": "Sorry, I\u0027m busy."
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "IF_NPC_EXISTS",
+          "customDisplayName": "Rick Turpenine",
+          "properties": {
+            "Filter NPC By": {
+              "class": "NPC",
+              "logic": "NONE",
+              "type": "ID",
+              "operator": "EQUALS",
+              "value": "375",
+              "filters": [
+                {
+                  "class": "NPC",
+                  "logic": "AND",
+                  "type": "DISTANCE_TO_PLAYER",
+                  "operator": "EQUALS",
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          "children": [
+            {
+              "id": "NPC_INTERACT",
+              "properties": {
+                "Action": "Talk-to",
+                "Don\u0027t walk to NPC": false,
+                "Force left click": true,
+                "Filter NPC By": {
+                  "class": "NPC",
+                  "logic": "NONE",
+                  "type": "ID",
+                  "operator": "EQUALS",
+                  "value": "375"
+                }
+              },
+              "children": [
+                {
+                  "id": "IF_IN_DIALOGUE",
+                  "children": [
+                    {
+                      "id": "CLICK_TO_CONTINUE",
+                      "children": [
+                        {
+                          "id": "SLEEP_UNTIL_GAME_TICK"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "ELSE_BRANCH",
+                      "children": [
+                        {
+                          "id": "SLEEP_UNTIL_GAME_TICK"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "IF_NPC_EXISTS",
+          "properties": {
+            "Filter NPC By": {
+              "class": "NPC",
+              "logic": "NONE",
+              "type": "NAME",
+              "operator": "EQUALS",
+              "value": "Drunken dwarf",
+              "filters": [
+                {
+                  "class": "NPC",
+                  "logic": "AND",
+                  "type": "DISTANCE_TO_PLAYER",
+                  "operator": "EQUALS",
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          "children": [
+            {
+              "id": "NPC_INTERACT",
+              "properties": {
+                "Action": "Talk-to",
+                "Don\u0027t walk to NPC": false,
+                "Force left click": true,
+                "Filter NPC By": {
+                  "class": "NPC",
+                  "logic": "NONE",
+                  "type": "NAME",
+                  "operator": "EQUALS",
+                  "value": "Drunken dwarf"
+                }
+              },
+              "children": [
+                {
+                  "id": "IF_IN_DIALOGUE",
+                  "children": [
+                    {
+                      "id": "IF_CAN_CONTINUE",
+                      "children": [
+                        {
+                          "id": "CLICK_TO_CONTINUE",
+                          "children": [
+                            {
+                              "id": "SLEEP_UNTIL_GAME_TICK"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "IF_GROUND_ITEM_EXISTS",
+          "properties": {
+            "Filter Item By": {
+              "class": "GroundItem",
+              "logic": "NONE",
+              "type": "NAME",
+              "operator": "STARTS_WITH",
+              "value": "Clue nest"
+            }
+          },
+          "children": [
+            {
+              "id": "GROUND_ITEM_INTERACT",
+              "properties": {
+                "Action": "Take",
+                "Don\u0027t walk to item": false,
+                "Filter Item By": {
+                  "class": "GroundItem",
+                  "logic": "NONE",
+                  "type": "NAME",
+                  "operator": "STARTS_WITH",
+                  "value": "Clue nest"
+                },
+                "Force left click": true
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,599 @@
+{
+  "sleep": "500",
+  "name": "Chaos druids",
+  "version": 1.0,
+  "metadata": {
+    "network-id": "29",
+    "network-downloaded-at": "1721665206055"
+  },
+  "actions": [
+    {
+      "id": "SET_VARIABLE",
+      "properties": {
+        "Value": "2941, 3374, 2951, 3365",
+        "Variable name": "fbank"
+      }
+    },
+    {
+      "id": "SET_VARIABLE",
+      "properties": {
+        "Value": "2925, 9855, 2940, 9843",
+        "Variable name": "druids"
+      }
+    },
+    {
+      "id": "IF_VARIABLE_IS_SET",
+      "properties": {
+        "Variable name": "destination"
+      },
+      "children": [
+        {
+          "id": "CUSTOM_9f701db8-8482-4e7a-aab9-be4bf5540bc8"
+        }
+      ]
+    },
+    {
+      "id": "IF_LOCAL_PLAYER_MATCHES",
+      "properties": {
+        "Filter By": {
+          "class": "Player",
+          "logic": "NONE",
+          "type": "IN_AREA",
+          "operator": "EQUALS",
+          "value": "v(fbank)"
+        }
+      },
+      "children": [
+        {
+          "id": "IF_INVENTORY_IS_EMPTY",
+          "children": [
+            {
+              "id": "GAME_OBJECT_INTERACT",
+              "properties": {
+                "Filter Object By": {
+                  "class": "GameObject",
+                  "logic": "NONE",
+                  "type": "NAME",
+                  "operator": "EQUALS",
+                  "value": "Bank booth",
+                  "filters": [
+                    {
+                      "class": "GameObject",
+                      "logic": "AND",
+                      "type": "IN_AREA",
+                      "operator": "EQUALS",
+                      "value": "(2952, 3370, 0),(2952, 3364, 0),(2945, 3364, 0),(2945, 3371, 0)"
+                    }
+                  ]
+                },
+                "Action": "Bank"
+              }
+            },
+            {
+              "id": "SLEEP_WHILE_MOVING"
+            },
+            {
+              "id": "SLEEP_UNTIL_GAME_TICK"
+            },
+            {
+              "id": "BANK_WITHDRAW_ITEM",
+              "properties": {
+                "Filter Item By": {
+                  "class": "Item",
+                  "logic": "NONE",
+                  "type": "NAME",
+                  "operator": "EQUALS",
+                  "value": "Falador teleport"
+                },
+                "Amount": "1"
+              }
+            },
+            {
+              "id": "SLEEP_UNTIL_GAME_TICK"
+            },
+            {
+              "id": "BANK_WITHDRAW_ITEM",
+              "properties": {
+                "Filter Item By": {
+                  "class": "Item",
+                  "logic": "NONE",
+                  "type": "NAME",
+                  "operator": "EQUALS",
+                  "value": "Swordfish"
+                },
+                "Amount": "5"
+              }
+            },
+            {
+              "id": "SLEEP_UNTIL_GAME_TICK"
+            },
+            {
+              "id": "WIDGET_INTERACT",
+              "properties": {
+                "Action": "Close",
+                "Find Widget By": {
+                  "class": "Widget",
+                  "logic": "NONE",
+                  "type": "WIDGET_ID",
+                  "operator": "EQUALS",
+                  "value": "12, 2, 11"
+                }
+              }
+            },
+            {
+              "id": "SLEEP_UNTIL_GAME_TICK"
+            }
+          ]
+        },
+        {
+          "id": "IF_INVENTORY_DOES_NOT_CONTAIN_ANY",
+          "properties": {
+            "Filter Item By": {
+              "class": "Item",
+              "logic": "NONE",
+              "type": "ID",
+              "operator": "EQUALS",
+              "value": "8009"
+            }
+          },
+          "children": [
+            {
+              "id": "GAME_OBJECT_INTERACT",
+              "properties": {
+                "Filter Object By": {
+                  "class": "GameObject",
+                  "logic": "NONE",
+                  "type": "NAME",
+                  "operator": "EQUALS",
+                  "value": "Bank booth",
+                  "filters": [
+                    {
+                      "class": "GameObject",
+                      "logic": "AND",
+                      "type": "IN_AREA",
+                      "operator": "EQUALS",
+                      "value": "(2952, 3370, 0),(2952, 3364, 0),(2945, 3364, 0),(2945, 3371, 0)"
+                    }
+                  ]
+                },
+                "Action": "Bank"
+              }
+            },
+            {
+              "id": "SLEEP_WHILE_MOVING"
+            },
+            {
+              "id": "SLEEP_UNTIL_GAME_TICK"
+            },
+            {
+              "id": "WIDGET_INTERACT",
+              "properties": {
+                "Action": "Deposit inventory",
+                "Find Widget By": {
+                  "class": "Widget",
+                  "logic": "NONE",
+                  "type": "WIDGET_ID",
+                  "operator": "EQUALS",
+                  "value": "12, 42"
+                }
+              }
+            },
+            {
+              "id": "SLEEP_UNTIL_GAME_TICK"
+            },
+            {
+              "id": "BANK_WITHDRAW_ITEM",
+              "properties": {
+                "Filter Item By": {
+                  "class": "Item",
+                  "logic": "NONE",
+                  "type": "NAME",
+                  "operator": "EQUALS",
+                  "value": "Falador teleport"
+                },
+                "Amount": "1"
+              }
+            },
+            {
+              "id": "SLEEP_UNTIL_GAME_TICK"
+            },
+            {
+              "id": "BANK_WITHDRAW_ITEM",
+              "properties": {
+                "Filter Item By": {
+                  "class": "Item",
+                  "logic": "NONE",
+                  "type": "NAME",
+                  "operator": "EQUALS",
+                  "value": "Swordfish"
+                },
+                "Amount": "5"
+              }
+            },
+            {
+              "id": "SLEEP_UNTIL_GAME_TICK"
+            },
+            {
+              "id": "WIDGET_INTERACT",
+              "properties": {
+                "Action": "Close",
+                "Find Widget By": {
+                  "class": "Widget",
+                  "logic": "NONE",
+                  "type": "WIDGET_ID",
+                  "operator": "EQUALS",
+                  "value": "12, 2, 11"
+                }
+              }
+            },
+            {
+              "id": "SLEEP_UNTIL_GAME_TICK"
+            }
+          ]
+        },
+        {
+          "id": "IF_INVENTORY_COUNT",
+          "properties": {
+            "count": {
+              "class": "Number",
+              "operator": "EQUALS",
+              "value": "5"
+            },
+            "Filter Item By": {
+              "class": "Item",
+              "logic": "NONE",
+              "type": "ID",
+              "operator": "EQUALS",
+              "value": "373"
+            }
+          }
+        },
+        {
+          "id": "AND_BRANCH"
+        },
+        {
+          "id": "IF_INVENTORY_COUNT",
+          "properties": {
+            "count": {
+              "class": "Number",
+              "operator": "EQUALS",
+              "value": "1"
+            },
+            "Filter Item By": {
+              "class": "Item",
+              "logic": "NONE",
+              "type": "ID",
+              "operator": "EQUALS",
+              "value": "8009"
+            }
+          },
+          "children": [
+            {
+              "id": "SET_VARIABLE",
+              "properties": {
+                "Value": "v(druids)",
+                "Variable name": "destination"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "IF_LOCAL_PLAYER_MATCHES",
+      "properties": {
+        "Filter By": {
+          "class": "Player",
+          "logic": "NONE",
+          "type": "IN_AREA",
+          "operator": "EQUALS",
+          "value": "v(druids)"
+        }
+      },
+      "children": [
+        {
+          "id": "IF_LOCAL_PLAYER_MATCHES",
+          "properties": {
+            "Filter By": {
+              "class": "Player",
+              "logic": "NONE",
+              "type": "NOT_IN_COMBAT",
+              "operator": "EQUALS"
+            }
+          },
+          "children": [
+            {
+              "id": "IF_NPC_EXISTS",
+              "properties": {
+                "Filter NPC By": {
+                  "class": "NPC",
+                  "logic": "NONE",
+                  "type": "IS_VARIABLE_VALUE",
+                  "operator": "EQUALS",
+                  "value": "target",
+                  "filters": [
+                    {
+                      "class": "NPC",
+                      "logic": "AND",
+                      "type": "IN_COMBAT",
+                      "operator": "EQUALS"
+                    },
+                    {
+                      "class": "NPC",
+                      "logic": "AND",
+                      "type": "IS_NOT_INTERACTING_WITH_ME",
+                      "operator": "EQUALS"
+                    }
+                  ]
+                }
+              },
+              "children": [
+                {
+                  "id": "DELETE_VARIABLE",
+                  "properties": {
+                    "Variable name": "target"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "IF_NPC_EXISTS",
+              "properties": {
+                "Filter NPC By": {
+                  "class": "NPC",
+                  "logic": "NONE",
+                  "type": "IS_VARIABLE_VALUE",
+                  "operator": "EQUALS",
+                  "value": "target"
+                }
+              },
+              "children": [
+                {
+                  "id": "NPC_INTERACT",
+                  "properties": {
+                    "Action": "Attack",
+                    "Don\u0027t walk to NPC": false,
+                    "Force left click": false,
+                    "Filter NPC By": {
+                      "class": "NPC",
+                      "logic": "NONE",
+                      "type": "IS_VARIABLE_VALUE",
+                      "operator": "EQUALS",
+                      "value": "target"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "id": "IF_NPC_DOES_NOT_EXIST",
+              "properties": {
+                "Filter NPC By": {
+                  "class": "NPC",
+                  "logic": "NONE",
+                  "type": "IS_VARIABLE_VALUE",
+                  "operator": "EQUALS",
+                  "value": "target"
+                }
+              }
+            },
+            {
+              "id": "AND_BRANCH"
+            },
+            {
+              "id": "IF_NPC_EXISTS",
+              "properties": {
+                "Filter NPC By": {
+                  "class": "NPC",
+                  "logic": "NONE",
+                  "type": "ID",
+                  "operator": "EQUALS",
+                  "value": "520",
+                  "filters": [
+                    {
+                      "class": "NPC",
+                      "logic": "AND",
+                      "type": "NOT_IN_COMBAT",
+                      "operator": "EQUALS"
+                    }
+                  ]
+                }
+              },
+              "children": [
+                {
+                  "id": "SET_VARIABLE_TO_LAST_OUTPUT",
+                  "properties": {
+                    "Variable name": "target"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "IF_GROUND_ITEM_EXISTS",
+          "properties": {
+            "Filter Item By": {
+              "class": "GroundItem",
+              "logic": "NONE",
+              "type": "VALUE",
+              "operator": "GREATER_THAN",
+              "value": "500",
+              "filters": [
+                {
+                  "class": "GroundItem",
+                  "logic": "AND",
+                  "type": "IS_OUR_LOOT",
+                  "operator": "EQUALS"
+                }
+              ]
+            }
+          },
+          "children": [
+            {
+              "id": "GROUND_ITEM_INTERACT",
+              "properties": {
+                "Filter Item By": {
+                  "class": "GroundItem",
+                  "logic": "NONE",
+                  "type": "IS_LAST_OUTPUT",
+                  "operator": "EQUALS"
+                },
+                "Action": "Take"
+              }
+            }
+          ]
+        },
+        {
+          "id": "IF_LOCAL_PLAYER_MATCHES",
+          "properties": {
+            "Filter By": {
+              "class": "Player",
+              "logic": "NONE",
+              "type": "HEALTH",
+              "operator": "LESS_THAN",
+              "value": "50"
+            }
+          },
+          "children": [
+            {
+              "id": "INTERACT_WITH_INVENTORY_ITEM",
+              "properties": {
+                "Filter Item By": {
+                  "class": "Item",
+                  "logic": "NONE",
+                  "type": "NAME",
+                  "operator": "EQUALS",
+                  "value": "Swordfish"
+                },
+                "Action": "Eat"
+              }
+            },
+            {
+              "id": "SLEEP_UNTIL_GAME_TICK"
+            }
+          ]
+        },
+        {
+          "id": "IF_INVENTORY_IS_FULL"
+        },
+        {
+          "id": "OR_BRANCH"
+        },
+        {
+          "id": "IF_INVENTORY_COUNT",
+          "properties": {
+            "count": {
+              "class": "Number",
+              "operator": "LESS_THAN",
+              "value": "1"
+            },
+            "Filter Item By": {
+              "class": "Item",
+              "logic": "NONE",
+              "type": "ID",
+              "operator": "EQUALS",
+              "value": "373"
+            }
+          },
+          "children": [
+            {
+              "id": "SET_VARIABLE",
+              "properties": {
+                "Value": "v(fbank)",
+                "Variable name": "destination"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "customActions": {
+    "9f701db8-8482-4e7a-aab9-be4bf5540bc8": {
+      "id": "9f701db8-8482-4e7a-aab9-be4bf5540bc8",
+      "name": "Walker",
+      "description": "This will take a destination variable and then delete the destination variable once it arrives at the destination.",
+      "parameters": "",
+      "fail": false,
+      "actions": [
+        {
+          "id": "COMMENT",
+          "properties": {
+            "Comment": "Walking action"
+          }
+        },
+        {
+          "id": "IF_VARIABLE_IS_SET",
+          "properties": {
+            "Variable name": "destination"
+          },
+          "children": [
+            {
+              "id": "IF_TIMER_IS_READY",
+              "properties": {
+                "Don\u0027t fire on first call": false,
+                "Don\u0027t reset on timing changes": false,
+                "Seconds": "2.5"
+              },
+              "children": [
+                {
+                  "id": "IF_RUN_IS_NOT_ENABLED",
+                  "children": [
+                    {
+                      "id": "IF_RUN_ENERGY_IS",
+                      "properties": {
+                        "energy": {
+                          "class": "Number",
+                          "operator": "GREATER_THAN",
+                          "value": "15"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "ENABLE_RUN"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "WALK_TO_AREA",
+                  "properties": {
+                    "Area": "v(destination)"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "COMMENT",
+          "properties": {
+            "Comment": "destination delete"
+          }
+        },
+        {
+          "id": "IF_LOCAL_PLAYER_MATCHES",
+          "properties": {
+            "Filter By": {
+              "class": "Player",
+              "logic": "NONE",
+              "type": "IN_AREA",
+              "operator": "EQUALS",
+              "value": "v(destination)"
+            }
+          },
+          "children": [
+            {
+              "id": "DELETE_VARIABLE",
+              "properties": {
+                "Variable name": "destination"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

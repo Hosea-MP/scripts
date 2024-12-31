@@ -1,0 +1,69 @@
+{
+  "id": "276d102f-fa30-4fdf-aab3-d85fb6f0f04b",
+  "name": "Skills \u003e Utility \u003e Level Webhook",
+  "description": "[SET: \"SkillName\" variable to the skill of choice outside of the custom action.] Will track progress gained in a skill and send a webhook based on your LVL_HOOK GUI.",
+  "parameters": "",
+  "fail": false,
+  "actions": [
+    {
+      "id": "IF_FIRST_RUN",
+      "children": [
+        {
+          "id": "IF_VARIABLE_IS_NOT_SET",
+          "properties": {
+            "Variable name": "LVL_MUL"
+          },
+          "children": [
+            {
+              "id": "SET_VARIABLE",
+              "properties": {
+                "Value": "1",
+                "Variable name": "LVL_MUL"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SET_VARIABLE",
+      "properties": {
+        "Value": "levelGain(v(SkillName))",
+        "Variable name": "v(SkillName)LvL"
+      },
+      "children": [
+        {
+          "id": "IF_VARIABLE_IS",
+          "properties": {
+            "Filter Value By": {
+              "class": "Variable",
+              "logic": "NONE",
+              "type": "AS_NUMBER",
+              "operator": "LESS_THAN_OR_EQUAL",
+              "value": "div(v(v(SkillName)LvL), v(LVL_MUL))"
+            },
+            "Variable name": "LVL_HOOK"
+          },
+          "children": [
+            {
+              "id": "ADD_TO_VARIABLE",
+              "properties": {
+                "Variable name": "LVL_MUL",
+                "By": "1"
+              },
+              "children": [
+                {
+                  "id": "SEND_WEBHOOK_MESSAGE_WITH_SCREENSHOT",
+                  "properties": {
+                    "Message": "You\u0027ve gained a total of v(v(SkillName)LvL) v(SkillName) levels! Look at you go :D!",
+                    "URL": "v(WEB_HOOK)"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

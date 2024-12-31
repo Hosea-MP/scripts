@@ -1,0 +1,688 @@
+{
+  "id": "e7889949-c7d5-4cdb-8f10-d25eb839ef97",
+  "name": "Grand Exchange \u003e Tools \u003e GE Walker",
+  "description": "If player is not at the grand exchange it will walk there.",
+  "parameters": "",
+  "fail": false,
+  "actions": [
+    {
+      "id": "SET_VARIABLE",
+      "properties": {
+        "Value": "Walk2GE",
+        "Variable name": "CURRENT_TASK"
+      }
+    },
+    {
+      "id": "IF_VARIABLE_IS_NOT_SET",
+      "properties": {
+        "Variable name": "GRAND_EXCHANGE"
+      },
+      "children": [
+        {
+          "id": "SET_VARIABLE",
+          "properties": {
+            "Value": "3170,3473,0,3159,3473,0,3159,3474,0,3157,3474,0,3157,3475,0,3155,3475,0,3155,3476,0,3153,3476,0,3153,3477,0,3152,3477,0,3152,3478,0,3151,3478,0,3151,3480,0,3150,3480,0,3150,3482,0,3149,3482,0,3149,3484,0,3148,3484,0,3148,3496,0,3149,3496,0,3149,3498,0,3150,3498,0,3150,3500,0,3151,3500,0,3151,3502,0,3152,3502,0,3152,3503,0,3153,3503,0,3153,3504,0,3155,3504,0,3155,3505,0,3157,3505,0,3157,3506,0,3159,3506,0,3159,3507,0,3171,3507,0,3171,3506,0,3173,3506,0,3173,3505,0,3175,3505,0,3175,3504,0,3177,3504,0,3177,3503,0,3178,3503,0,3178,3502,0,3179,3502,0,3179,3500,0,3180,3500,0,3180,3498,0,3181,3498,0,3181,3496,0,3182,3496,0,3182,3484,0,3181,3484,0,3181,3482,0,3180,3482,0,3180,3480,0,3179,3480,0,3179,3478,0,3178,3478,0,3178,3477,0,3177,3477,0,3177,3476,0,3175,3476,0,3175,3475,0,3173,3475,0,3173,3474,0,3171,3474,0,3171,3473,0",
+            "Variable name": "GRAND_EXCHANGE"
+          }
+        }
+      ]
+    },
+    {
+      "id": "IF_INVENTORY_ITEM_IS_SELECTED",
+      "children": [
+        {
+          "id": "INVENTORY_DESELECT"
+        }
+      ]
+    },
+    {
+      "id": "CREATE_LABEL",
+      "properties": {
+        "Label": "GE Walker Loop"
+      },
+      "children": [
+        {
+          "id": "IF_LOCAL_PLAYER_MATCHES",
+          "customDisplayName": "If our player is not at the GE",
+          "properties": {
+            "Filter By": {
+              "class": "Player",
+              "logic": "NONE",
+              "type": "NOT_IN_AREA",
+              "operator": "EQUALS",
+              "value": "v(GRAND_EXCHANGE)"
+            }
+          },
+          "children": [
+            {
+              "id": "IF_DISTANCE_TO_BANK_IS",
+              "properties": {
+                "distance": {
+                  "class": "Number",
+                  "operator": "GREATER_THAN_OR_EQUALS",
+                  "value": "20"
+                },
+                "Bank": {
+                  "class": "BankLocation",
+                  "value": "GRAND_EXCHANGE"
+                }
+              },
+              "children": [
+                {
+                  "id": "IF_NOT_LOGGED_IN",
+                  "children": [
+                    {
+                      "id": "ENABLE_LOGIN_SOLVER",
+                      "children": [
+                        {
+                          "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                          "children": [
+                            {
+                              "id": "IF_LOGGED_IN"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_RUN_ENERGY_IS",
+                  "properties": {
+                    "energy": {
+                      "class": "Number",
+                      "operator": "LESS_THAN_OR_EQUALS",
+                      "value": "20"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "INTERACT_WITH_INVENTORY_ITEM",
+                      "customDisplayName": "Interact with matching item",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "CONTAINS",
+                          "value": "Stamina"
+                        },
+                        "Force left click": false,
+                        "Action": "Drink"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_RUN_ENERGY_IS",
+                  "properties": {
+                    "energy": {
+                      "class": "Number",
+                      "operator": "GREATER_THAN_OR_EQUALS",
+                      "value": "rand(3, 7)"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "IF_RUN_IS_NOT_ENABLED",
+                      "children": [
+                        {
+                          "id": "ENABLE_RUN"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_MEMBERSHIP_LEFT_IS",
+                  "properties": {
+                    "days": {
+                      "class": "Number",
+                      "operator": "GREATER_THAN_OR_EQUALS",
+                      "value": "1"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "CUSTOM_d4d09f20-4af6-4e9f-b67c-f7c450b6a2b0"
+                    },
+                    {
+                      "id": "IF_INVENTORY_DOES_NOT_CONTAIN_ANY",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "IS_IN_LIST",
+                          "value": "Ring of wealth (5),Ring of wealth (4),Ring of wealth (3),Ring of wealth (2),Ring of wealth (1),Amulet of glory(6),Amulet of glory(5),Amulet of glory(4),Amulet of glory(3),Amulet of glory(2),Amulet of glory(1),Skills necklace(6),Skills necklace(5),Skills necklace(4),Skills necklace(3),Skills necklace(2),Skills necklace(1),Varrock teleport"
+                        }
+                      }
+                    },
+                    {
+                      "id": "AND_BRANCH"
+                    },
+                    {
+                      "id": "IF_EQUIPPED_ITEM_DOES_NOT_MATCH",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "IS_IN_LIST",
+                          "value": "Ring of wealth (5),Ring of wealth (4),Ring of wealth (3),Ring of wealth (2),Ring of wealth (1),Amulet of glory(6),Amulet of glory(5),Amulet of glory(4),Amulet of glory(3),Amulet of glory(2),Amulet of glory(1),Skills necklace(6),Skills necklace(5),Skills necklace(4),Skills necklace(3),Skills necklace(2),Skills necklace(1)"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "CUSTOM_7c34cb9f-cec9-45f1-81de-7dba6eb0595e",
+                          "children": [
+                            {
+                              "id": "IF_LOCAL_PLAYER_MATCHES",
+                              "properties": {
+                                "Filter By": {
+                                  "class": "Player",
+                                  "logic": "NONE",
+                                  "type": "NOT_IN_AREA",
+                                  "operator": "EQUALS",
+                                  "value": "v(GRAND_EXCHANGE)"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "IF_BANK_IS_OPEN",
+                                  "children": [
+                                    {
+                                      "id": "IF_BANK_CONTAINS",
+                                      "properties": {
+                                        "Filter Item By": {
+                                          "class": "Item",
+                                          "logic": "NONE",
+                                          "type": "NAME",
+                                          "operator": "IS_IN_LIST",
+                                          "value": "Ring of wealth (5),Ring of wealth (4),Ring of wealth (3),Ring of wealth (2),Ring of wealth (1),Amulet of glory(6),Amulet of glory(5),Amulet of glory(4),Amulet of glory(3),Amulet of glory(2),Amulet of glory(1),Skills necklace(6),Skills necklace(5),Skills necklace(4),Skills necklace(3),Skills necklace(2),Skills necklace(1),Varrock teleport"
+                                        }
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "BANK_WITHDRAW_ITEM",
+                                          "properties": {
+                                            "Filter Item By": {
+                                              "class": "Item",
+                                              "logic": "NONE",
+                                              "type": "NAME",
+                                              "operator": "IS_IN_LIST",
+                                              "value": "Ring of wealth (5),Ring of wealth (4),Ring of wealth (3),Ring of wealth (2),Ring of wealth (1),Amulet of glory(6),Amulet of glory(5),Amulet of glory(4),Amulet of glory(3),Amulet of glory(2),Amulet of glory(1),Skills necklace(6),Skills necklace(5),Skills necklace(4),Skills necklace(3),Skills necklace(2),Skills necklace(1),Varrock teleport"
+                                            },
+                                            "Amount": "1"
+                                          },
+                                          "children": [
+                                            {
+                                              "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                                              "properties": {
+                                                "Max time (seconds)": "3"
+                                              },
+                                              "children": [
+                                                {
+                                                  "id": "IF_INVENTORY_CONTAINS_ANY",
+                                                  "properties": {
+                                                    "Filter Item By": {
+                                                      "class": "Item",
+                                                      "logic": "NONE",
+                                                      "type": "NAME",
+                                                      "operator": "IS_IN_LIST",
+                                                      "value": "Ring of wealth (5),Ring of wealth (4),Ring of wealth (3),Ring of wealth (2),Ring of wealth (1),Amulet of glory(6),Amulet of glory(5),Amulet of glory(4),Amulet of glory(3),Amulet of glory(2),Amulet of glory(1),Skills necklace(6),Skills necklace(5),Skills necklace(4),Skills necklace(3),Skills necklace(2),Skills necklace(1),Varrock teleport"
+                                                    }
+                                                  }
+                                                }
+                                              ]
+                                            },
+                                            {
+                                              "id": "CUSTOM_1185c37e-088d-41e8-bf49-0abf9b226030"
+                                            },
+                                            {
+                                              "id": "WALK_FULLY_TO_SPECIFIC_BANK",
+                                              "properties": {
+                                                "Bank": {
+                                                  "class": "BankLocation",
+                                                  "value": "GRAND_EXCHANGE"
+                                                }
+                                              },
+                                              "children": [
+                                                {
+                                                  "id": "GO_TO_LABEL",
+                                                  "properties": {
+                                                    "Label": "End GE Walker"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "id": "ELSE_BRANCH",
+                                      "children": [
+                                        {
+                                          "id": "CUSTOM_1185c37e-088d-41e8-bf49-0abf9b226030"
+                                        },
+                                        {
+                                          "id": "WALK_FULLY_TO_SPECIFIC_BANK",
+                                          "properties": {
+                                            "Bank": {
+                                              "class": "BankLocation",
+                                              "value": "GRAND_EXCHANGE"
+                                            }
+                                          },
+                                          "children": [
+                                            {
+                                              "id": "GO_TO_LABEL",
+                                              "properties": {
+                                                "Label": "End GE Walker"
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "id": "ELSE_BRANCH",
+                          "children": [
+                            {
+                              "id": "WALK_FULLY_TO_SPECIFIC_BANK",
+                              "properties": {
+                                "Bank": {
+                                  "class": "BankLocation",
+                                  "value": "GRAND_EXCHANGE"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "GO_TO_LABEL",
+                                  "properties": {
+                                    "Label": "End GE Walker"
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "ELSE_BRANCH",
+                      "children": [
+                        {
+                          "id": "IF_LOCAL_PLAYER_MATCHES",
+                          "properties": {
+                            "Filter By": {
+                              "class": "Player",
+                              "logic": "NONE",
+                              "type": "NOT_MOVING",
+                              "operator": "EQUALS"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "WALK_TO_SPECIFIC_BANK",
+                              "properties": {
+                                "Bank": {
+                                  "class": "BankLocation",
+                                  "value": "GRAND_EXCHANGE"
+                                }
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "id": "ELSE_BRANCH",
+                          "children": [
+                            {
+                              "id": "IF_DISTANCE_TO_DESTINATION_IS",
+                              "properties": {
+                                "distance": {
+                                  "class": "Number",
+                                  "operator": "LESS_THAN_OR_EQUALS",
+                                  "value": "rand(2, 6)"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "WALK_TO_SPECIFIC_BANK",
+                                  "properties": {
+                                    "Bank": {
+                                      "class": "BankLocation",
+                                      "value": "GRAND_EXCHANGE"
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "GO_TO_LABEL",
+                      "properties": {
+                        "Label": "GE Walker Loop"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_MEMBERSHIP_LEFT_IS",
+                  "properties": {
+                    "days": {
+                      "class": "Number",
+                      "operator": "EQUALS",
+                      "value": "0"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "IF_SKILL_LEVEL_IS",
+                      "customDisplayName": "If the real level of Magic is greater than or equal to 25",
+                      "properties": {
+                        "level": {
+                          "class": "Number",
+                          "operator": "GREATER_THAN_OR_EQUALS",
+                          "value": "25"
+                        },
+                        "Skill": {
+                          "class": "Skill",
+                          "value": "MAGIC"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "IF_CAN_CAST_SPELL",
+                          "properties": {
+                            "Spell": {
+                              "class": "Normal",
+                              "value": "Varrock teleport"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "WALK_FULLY_TO_SPECIFIC_BANK",
+                              "properties": {
+                                "Bank": {
+                                  "class": "BankLocation",
+                                  "value": "GRAND_EXCHANGE"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "GO_TO_LABEL",
+                                  "properties": {
+                                    "Label": "End GE Walker"
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "id": "ELSE_BRANCH",
+                          "children": [
+                            {
+                              "id": "CUSTOM_7c34cb9f-cec9-45f1-81de-7dba6eb0595e",
+                              "children": [
+                                {
+                                  "id": "IF_LOCAL_PLAYER_MATCHES",
+                                  "properties": {
+                                    "Filter By": {
+                                      "class": "Player",
+                                      "logic": "NONE",
+                                      "type": "NOT_IN_AREA",
+                                      "operator": "EQUALS",
+                                      "value": "v(GRAND_EXCHANGE)"
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "IF_BANK_IS_OPEN",
+                                      "children": [
+                                        {
+                                          "id": "IF_BANK_COUNT",
+                                          "properties": {
+                                            "count": {
+                                              "class": "Number",
+                                              "operator": "GREATER_THAN_OR_EQUALS",
+                                              "value": "1"
+                                            },
+                                            "Filter Item By": {
+                                              "class": "Item",
+                                              "logic": "NONE",
+                                              "type": "NAME",
+                                              "operator": "EQUALS",
+                                              "value": "Fire rune"
+                                            }
+                                          }
+                                        },
+                                        {
+                                          "id": "AND_BRANCH"
+                                        },
+                                        {
+                                          "id": "IF_BANK_COUNT",
+                                          "properties": {
+                                            "count": {
+                                              "class": "Number",
+                                              "operator": "GREATER_THAN_OR_EQUALS",
+                                              "value": "3"
+                                            },
+                                            "Filter Item By": {
+                                              "class": "Item",
+                                              "logic": "NONE",
+                                              "type": "NAME",
+                                              "operator": "EQUALS",
+                                              "value": "Air rune"
+                                            }
+                                          }
+                                        },
+                                        {
+                                          "id": "AND_BRANCH"
+                                        },
+                                        {
+                                          "id": "IF_BANK_COUNT",
+                                          "properties": {
+                                            "count": {
+                                              "class": "Number",
+                                              "operator": "GREATER_THAN_OR_EQUALS",
+                                              "value": "1"
+                                            },
+                                            "Filter Item By": {
+                                              "class": "Item",
+                                              "logic": "NONE",
+                                              "type": "NAME",
+                                              "operator": "EQUALS",
+                                              "value": "Law rune"
+                                            }
+                                          },
+                                          "children": [
+                                            {
+                                              "id": "BANK_WITHDRAW_ITEM",
+                                              "properties": {
+                                                "Filter Item By": {
+                                                  "class": "Item",
+                                                  "logic": "NONE",
+                                                  "type": "NAME",
+                                                  "operator": "EQUALS",
+                                                  "value": "Fire rune"
+                                                },
+                                                "Amount": "1"
+                                              },
+                                              "children": [
+                                                {
+                                                  "id": "BANK_WITHDRAW_ITEM",
+                                                  "properties": {
+                                                    "Filter Item By": {
+                                                      "class": "Item",
+                                                      "logic": "NONE",
+                                                      "type": "NAME",
+                                                      "operator": "EQUALS",
+                                                      "value": "Air rune"
+                                                    },
+                                                    "Amount": "3"
+                                                  },
+                                                  "children": [
+                                                    {
+                                                      "id": "BANK_WITHDRAW_ITEM",
+                                                      "properties": {
+                                                        "Filter Item By": {
+                                                          "class": "Item",
+                                                          "logic": "NONE",
+                                                          "type": "NAME",
+                                                          "operator": "EQUALS",
+                                                          "value": "Law rune"
+                                                        },
+                                                        "Amount": "1"
+                                                      },
+                                                      "children": [
+                                                        {
+                                                          "id": "CUSTOM_1185c37e-088d-41e8-bf49-0abf9b226030",
+                                                          "children": [
+                                                            {
+                                                              "id": "WALK_FULLY_TO_SPECIFIC_BANK",
+                                                              "properties": {
+                                                                "Bank": {
+                                                                  "class": "BankLocation",
+                                                                  "value": "GRAND_EXCHANGE"
+                                                                }
+                                                              },
+                                                              "children": [
+                                                                {
+                                                                  "id": "GO_TO_LABEL",
+                                                                  "properties": {
+                                                                    "Label": "End GE Walker"
+                                                                  }
+                                                                }
+                                                              ]
+                                                            }
+                                                          ]
+                                                        }
+                                                      ]
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "id": "ELSE_BRANCH",
+                                          "children": [
+                                            {
+                                              "id": "CUSTOM_1185c37e-088d-41e8-bf49-0abf9b226030"
+                                            },
+                                            {
+                                              "id": "WALK_FULLY_TO_SPECIFIC_BANK",
+                                              "properties": {
+                                                "Bank": {
+                                                  "class": "BankLocation",
+                                                  "value": "GRAND_EXCHANGE"
+                                                }
+                                              },
+                                              "children": [
+                                                {
+                                                  "id": "GO_TO_LABEL",
+                                                  "properties": {
+                                                    "Label": "End GE Walker"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "id": "ELSE_BRANCH",
+                                  "children": [
+                                    {
+                                      "id": "GO_TO_LABEL",
+                                      "properties": {
+                                        "Label": "End GE Walker"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "ELSE_BRANCH",
+                      "children": [
+                        {
+                          "id": "WALK_FULLY_TO_SPECIFIC_BANK",
+                          "properties": {
+                            "Bank": {
+                              "class": "BankLocation",
+                              "value": "GRAND_EXCHANGE"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "GO_TO_LABEL",
+                              "properties": {
+                                "Label": "End GE Walker"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "GO_TO_LABEL",
+                      "properties": {
+                        "Label": "GE Walker Loop"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CREATE_LABEL",
+      "properties": {
+        "Label": "End GE Walker"
+      },
+      "children": [
+        {
+          "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+          "properties": {
+            "Max time (seconds)": "1"
+          },
+          "children": [
+            {
+              "id": "IF_WILDERNESS_LEVEL_IS",
+              "properties": {
+                "level": {
+                  "class": "Number",
+                  "operator": "EQUALS",
+                  "value": "0"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

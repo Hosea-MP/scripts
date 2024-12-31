@@ -1,0 +1,3241 @@
+{
+  "sleep": "1000",
+  "name": "ZzTutorialCommunityEdition",
+  "version": 1.0,
+  "metadata": {
+    "network-id": "53",
+    "network-downloaded-at": "1721665183545"
+  },
+  "actions": [
+    {
+      "id": "COMMENT",
+      "properties": {
+        "Comment": "Version Control"
+      },
+      "children": [
+        {
+          "id": "COMMENT",
+          "properties": {
+            "Comment": "This is just a DEMO script. It may get stuck!"
+          }
+        }
+      ]
+    },
+    {
+      "id": "COMMENT",
+      "properties": {
+        "Comment": "SendWebHook on INT"
+      }
+    },
+    {
+      "id": "COMMENT",
+      "properties": {
+        "Comment": "Random Var for Outfit\n"
+      }
+    },
+    {
+      "id": "COMMENT",
+      "properties": {
+        "Comment": "Socket Connection for Python Name generator"
+      }
+    },
+    {
+      "id": "COMMENT",
+      "properties": {
+        "Comment": "CurrentPlayerVar"
+      },
+      "children": [
+        {
+          "id": "SET_VARIABLE_TO_PLAYER_SETTING",
+          "properties": {
+            "Variable name": "TutorialState",
+            "Player Setting": "281"
+          },
+          "children": [
+            {
+              "id": "IF_VARIABLE_IS",
+              "customDisplayName": "If variable \u0027TutorialState\u0027 matches 2",
+              "properties": {
+                "Filter Value By": {
+                  "class": "Variable",
+                  "logic": "NONE",
+                  "type": "AS_NUMBER",
+                  "operator": "EQUALS",
+                  "value": "2"
+                },
+                "Variable name": "TutorialState"
+              },
+              "children": [
+                {
+                  "id": "IF_WIDGET_EXISTS",
+                  "properties": {
+                    "Find Widget By": {
+                      "class": "Widget",
+                      "logic": "NONE",
+                      "type": "WIDGET_ID",
+                      "operator": "EQUALS",
+                      "value": "263, 1, 0",
+                      "filters": [
+                        {
+                          "class": "Widget",
+                          "logic": "AND",
+                          "type": "TEXT",
+                          "operator": "CONTAINS",
+                          "value": "Getting started"
+                        }
+                      ]
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "NPC_INTERACT",
+                      "properties": {
+                        "Action": "Talk-to",
+                        "Filter NPC By": {
+                          "class": "NPC",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "Gielinor Guide"
+                        }
+                      }
+                    },
+                    {
+                      "id": "SLEEP_WHILE_MOVING"
+                    },
+                    {
+                      "id": "SLEEP_UNTIL_GAME_TICK"
+                    }
+                  ]
+                },
+                {
+                  "id": "ELSE_BRANCH",
+                  "children": [
+                    {
+                      "id": "IF_IN_DIALOGUE",
+                      "children": [
+                        {
+                          "id": "IF_OPTIONS_ARE_AVAILABLE",
+                          "children": [
+                            {
+                              "id": "TYPE_MESSAGE_WITHOUT_ENTER",
+                              "properties": {
+                                "Message": "1"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "id": "SPACEBAR_TO_CONTINUE"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "IF_VARIABLE_IS",
+              "customDisplayName": "If variable \u0027TutorialState\u0027 matches 3",
+              "properties": {
+                "Filter Value By": {
+                  "class": "Variable",
+                  "logic": "NONE",
+                  "type": "AS_NUMBER",
+                  "operator": "EQUALS",
+                  "value": "3"
+                },
+                "Variable name": "TutorialState"
+              },
+              "children": [
+                {
+                  "id": "IF_IN_DIALOGUE",
+                  "children": [
+                    {
+                      "id": "IF_OPTIONS_ARE_AVAILABLE",
+                      "children": [
+                        {
+                          "id": "TYPE_MESSAGE_WITHOUT_ENTER",
+                          "properties": {
+                            "Message": "1"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "SPACEBAR_TO_CONTINUE"
+                    },
+                    {
+                      "id": "IF_WIDGET_EXISTS",
+                      "properties": {
+                        "Find Widget By": {
+                          "class": "Widget",
+                          "logic": "NONE",
+                          "type": "WIDGET_ID",
+                          "operator": "EQUALS",
+                          "value": "548, 51",
+                          "filters": [
+                            {
+                              "class": "Widget",
+                              "logic": "OR",
+                              "type": "WIDGET_ID",
+                              "operator": "EQUALS"
+                            }
+                          ]
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "WIDGET_INTERACT",
+                          "properties": {
+                            "Find Widget By": {
+                              "class": "Widget",
+                              "logic": "NONE",
+                              "type": "WIDGET_ID",
+                              "operator": "EQUALS",
+                              "value": "548, 51"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "IF_VARIABLE_IS",
+              "customDisplayName": "If variable \u0027TutorialState\u0027 matches 7",
+              "properties": {
+                "Filter Value By": {
+                  "class": "Variable",
+                  "logic": "NONE",
+                  "type": "AS_NUMBER",
+                  "operator": "EQUALS",
+                  "value": "7"
+                },
+                "Variable name": "TutorialState"
+              },
+              "children": [
+                {
+                  "id": "IF_WIDGET_EXISTS",
+                  "properties": {
+                    "Find Widget By": {
+                      "class": "Widget",
+                      "logic": "NONE",
+                      "type": "WIDGET_ID",
+                      "operator": "EQUALS",
+                      "value": "263, 1, 0",
+                      "filters": [
+                        {
+                          "class": "Widget",
+                          "logic": "AND",
+                          "type": "TEXT",
+                          "operator": "CONTAINS",
+                          "value": "Settings menu"
+                        }
+                      ]
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "NPC_INTERACT",
+                      "properties": {
+                        "Action": "Talk-to",
+                        "Filter NPC By": {
+                          "class": "NPC",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "Gielinor Guide"
+                        }
+                      }
+                    },
+                    {
+                      "id": "SLEEP_WHILE_MOVING"
+                    },
+                    {
+                      "id": "SLEEP_UNTIL_GAME_TICK"
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_IN_DIALOGUE",
+                  "children": [
+                    {
+                      "id": "PRESS_SPACEBAR"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "IF_VARIABLE_IS",
+              "customDisplayName": "If variable \u0027TutorialState\u0027 matches 10",
+              "properties": {
+                "Filter Value By": {
+                  "class": "Variable",
+                  "logic": "NONE",
+                  "type": "AS_NUMBER",
+                  "operator": "EQUALS",
+                  "value": "10"
+                },
+                "Variable name": "TutorialState"
+              },
+              "children": [
+                {
+                  "id": "IF_WIDGET_EXISTS",
+                  "properties": {
+                    "Find Widget By": {
+                      "class": "Widget",
+                      "logic": "NONE",
+                      "type": "WIDGET_ID",
+                      "operator": "EQUALS",
+                      "value": "263, 1, 0",
+                      "filters": [
+                        {
+                          "class": "Widget",
+                          "logic": "AND",
+                          "type": "TEXT",
+                          "operator": "CONTAINS",
+                          "value": "Moving on"
+                        }
+                      ]
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "WALK_FULLY_TO_AREA",
+                      "properties": {
+                        "Area": "(3104, 3097, 0), (3101, 3095, 0)"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "ELSE_BRANCH",
+                  "children": [
+                    {
+                      "id": "IF_IN_DIALOGUE",
+                      "children": [
+                        {
+                          "id": "PRESS_SPACEBAR"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "IF_VARIABLE_IS",
+              "customDisplayName": "If variable \u0027TutorialState\u0027 matches 20",
+              "properties": {
+                "Filter Value By": {
+                  "class": "Variable",
+                  "logic": "NONE",
+                  "type": "AS_NUMBER",
+                  "operator": "EQUALS",
+                  "value": "20"
+                },
+                "Variable name": "TutorialState"
+              },
+              "children": [
+                {
+                  "id": "NPC_INTERACT",
+                  "properties": {
+                    "Action": "Talk-to",
+                    "Filter NPC By": {
+                      "class": "NPC",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Survival Expert"
+                    }
+                  }
+                },
+                {
+                  "id": "SLEEP_WHILE_MOVING"
+                },
+                {
+                  "id": "SLEEP_UNTIL_GAME_TICK"
+                }
+              ]
+            },
+            {
+              "id": "IF_VARIABLE_IS",
+              "customDisplayName": "If variable \u0027TutorialState\u0027 matches 30",
+              "properties": {
+                "Filter Value By": {
+                  "class": "Variable",
+                  "logic": "NONE",
+                  "type": "AS_NUMBER",
+                  "operator": "EQUALS",
+                  "value": "30"
+                },
+                "Variable name": "TutorialState"
+              },
+              "children": [
+                {
+                  "id": "IF_WIDGET_EXISTS",
+                  "properties": {
+                    "Find Widget By": {
+                      "class": "Widget",
+                      "logic": "NONE",
+                      "type": "WIDGET_ID",
+                      "operator": "EQUALS",
+                      "value": "263, 1, 0",
+                      "filters": [
+                        {
+                          "class": "Widget",
+                          "logic": "AND",
+                          "type": "TEXT",
+                          "operator": "CONTAINS",
+                          "value": "given an item"
+                        }
+                      ]
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "WIDGET_INTERACT",
+                      "properties": {
+                        "Find Widget By": {
+                          "class": "Widget",
+                          "logic": "NONE",
+                          "type": "WIDGET_ID",
+                          "operator": "EQUALS",
+                          "value": "548, 66",
+                          "filters": [
+                            {
+                              "class": "Widget",
+                              "logic": "OR",
+                              "type": "WIDGET_ID",
+                              "operator": "EQUALS",
+                              "value": "164, 55"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "ELSE_BRANCH",
+                  "children": [
+                    {
+                      "id": "IF_IN_DIALOGUE",
+                      "children": [
+                        {
+                          "id": "PRESS_SPACEBAR"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "IF_VARIABLE_IS",
+              "customDisplayName": "If variable \u0027TutorialState\u0027 matches 40",
+              "properties": {
+                "Filter Value By": {
+                  "class": "Variable",
+                  "logic": "NONE",
+                  "type": "AS_NUMBER",
+                  "operator": "EQUALS",
+                  "value": "40"
+                },
+                "Variable name": "TutorialState"
+              },
+              "children": [
+                {
+                  "id": "NPC_INTERACT",
+                  "properties": {
+                    "Action": "Net",
+                    "Filter NPC By": {
+                      "class": "NPC",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Fishing spot"
+                    }
+                  }
+                },
+                {
+                  "id": "SLEEP_WHILE_MOVING"
+                },
+                {
+                  "id": "SLEEP_UNTIL_GAME_TICK"
+                }
+              ]
+            },
+            {
+              "id": "IF_VARIABLE_IS",
+              "customDisplayName": "If variable \u0027TutorialState\u0027 matches 50",
+              "properties": {
+                "Filter Value By": {
+                  "class": "Variable",
+                  "logic": "NONE",
+                  "type": "AS_NUMBER",
+                  "operator": "EQUALS",
+                  "value": "50"
+                },
+                "Variable name": "TutorialState"
+              },
+              "children": [
+                {
+                  "id": "WIDGET_INTERACT",
+                  "properties": {
+                    "Find Widget By": {
+                      "class": "Widget",
+                      "logic": "NONE",
+                      "type": "WIDGET_ID",
+                      "operator": "EQUALS",
+                      "value": "548, 64",
+                      "filters": [
+                        {
+                          "class": "Widget",
+                          "logic": "OR",
+                          "type": "WIDGET_ID",
+                          "operator": "EQUALS",
+                          "value": "164, 53"
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "id": "IF_VARIABLE_IS",
+              "customDisplayName": "If variable \u0027TutorialState\u0027 matches 60",
+              "properties": {
+                "Filter Value By": {
+                  "class": "Variable",
+                  "logic": "NONE",
+                  "type": "AS_NUMBER",
+                  "operator": "EQUALS",
+                  "value": "60"
+                },
+                "Variable name": "TutorialState"
+              },
+              "children": [
+                {
+                  "id": "IF_CAN_NOT_CONTINUE",
+                  "children": [
+                    {
+                      "id": "NPC_INTERACT",
+                      "properties": {
+                        "Action": "Talk-to",
+                        "Filter NPC By": {
+                          "class": "NPC",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "Survival Expert"
+                        }
+                      }
+                    },
+                    {
+                      "id": "SLEEP_WHILE_MOVING"
+                    },
+                    {
+                      "id": "SLEEP_UNTIL_GAME_TICK"
+                    }
+                  ]
+                },
+                {
+                  "id": "ELSE_BRANCH",
+                  "children": [
+                    {
+                      "id": "IF_IN_DIALOGUE",
+                      "children": [
+                        {
+                          "id": "PRESS_SPACEBAR"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "IF_VARIABLE_IS",
+              "customDisplayName": "If variable \u0027TutorialState\u0027 matches 70",
+              "properties": {
+                "Filter Value By": {
+                  "class": "Variable",
+                  "logic": "NONE",
+                  "type": "AS_NUMBER",
+                  "operator": "EQUALS",
+                  "value": "70"
+                },
+                "Variable name": "TutorialState"
+              },
+              "children": [
+                {
+                  "id": "IF_WIDGET_EXISTS",
+                  "properties": {
+                    "Find Widget By": {
+                      "class": "Widget",
+                      "logic": "NONE",
+                      "type": "WIDGET_ID",
+                      "operator": "EQUALS",
+                      "value": "263, 1, 0",
+                      "filters": [
+                        {
+                          "class": "Widget",
+                          "logic": "AND",
+                          "type": "TEXT",
+                          "operator": "CONTAINS",
+                          "value": "Woodcutting"
+                        }
+                      ]
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "GAME_OBJECT_INTERACT",
+                      "properties": {
+                        "Filter Object By": {
+                          "class": "GameObject",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "Tree",
+                          "filters": [
+                            {
+                              "class": "GameObject",
+                              "logic": "AND",
+                              "type": "IN_AREA",
+                              "operator": "EQUALS",
+                              "value": "(3103, 3098, 0),(3103, 3092, 0),(3096, 3092, 0),(3096, 3099, 0)"
+                            }
+                          ]
+                        },
+                        "Action": "Chop down"
+                      }
+                    },
+                    {
+                      "id": "SLEEP_WHILE_MOVING"
+                    },
+                    {
+                      "id": "SLEEP_UNTIL_GAME_TICK",
+                      "children": [
+                        {
+                          "id": "SLEEP_WHILE_ANIMATING"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "ELSE_BRANCH",
+                  "children": [
+                    {
+                      "id": "IF_IN_DIALOGUE",
+                      "children": [
+                        {
+                          "id": "PRESS_SPACEBAR"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "IF_VARIABLE_IS",
+              "customDisplayName": "If variable \u0027TutorialState\u0027 matches 80",
+              "properties": {
+                "Filter Value By": {
+                  "class": "Variable",
+                  "logic": "NONE",
+                  "type": "AS_NUMBER",
+                  "operator": "EQUALS",
+                  "value": "80"
+                },
+                "Variable name": "TutorialState"
+              },
+              "children": [
+                {
+                  "id": "INTERACT_WITH_INVENTORY_ITEM",
+                  "properties": {
+                    "Filter Item By": {
+                      "class": "Item",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Logs"
+                    },
+                    "Action": "Use"
+                  }
+                },
+                {
+                  "id": "SLEEP_UNTIL_GAME_TICK"
+                },
+                {
+                  "id": "INTERACT_WITH_INVENTORY_ITEM",
+                  "properties": {
+                    "Filter Item By": {
+                      "class": "Item",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Tinderbox"
+                    },
+                    "Action": "Use"
+                  }
+                },
+                {
+                  "id": "SLEEP_UNTIL_GAME_TICK"
+                },
+                {
+                  "id": "SLEEP_WHILE_ANIMATING"
+                }
+              ]
+            },
+            {
+              "id": "IF_VARIABLE_IS",
+              "customDisplayName": "If variable \u0027TutorialState\u0027 matches 90",
+              "properties": {
+                "Filter Value By": {
+                  "class": "Variable",
+                  "logic": "NONE",
+                  "type": "AS_NUMBER",
+                  "operator": "EQUALS",
+                  "value": "90"
+                },
+                "Variable name": "TutorialState"
+              },
+              "children": [
+                {
+                  "id": "INTERACT_WITH_INVENTORY_ITEM",
+                  "properties": {
+                    "Filter Item By": {
+                      "class": "Item",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Raw shrimps"
+                    },
+                    "Action": "Use"
+                  }
+                },
+                {
+                  "id": "SLEEP_UNTIL_GAME_TICK",
+                  "children": [
+                    {
+                      "id": "GAME_OBJECT_INTERACT",
+                      "properties": {
+                        "Filter Object By": {
+                          "class": "GameObject",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "Fire"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "IF_VARIABLE_IS",
+              "customDisplayName": "If variable \u0027TutorialState\u0027 matches 120",
+              "properties": {
+                "Filter Value By": {
+                  "class": "Variable",
+                  "logic": "NONE",
+                  "type": "AS_NUMBER",
+                  "operator": "EQUALS",
+                  "value": "120"
+                },
+                "Variable name": "TutorialState"
+              },
+              "children": [
+                {
+                  "id": "WALK_TO_AREA",
+                  "properties": {
+                    "Area": "(3086, 3090, 0), (3089, 3093, 0)"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "IF_VARIABLE_IS",
+              "customDisplayName": "If variable \u0027TutorialState\u0027 matches 130",
+              "properties": {
+                "Filter Value By": {
+                  "class": "Variable",
+                  "logic": "NONE",
+                  "type": "AS_NUMBER",
+                  "operator": "EQUALS",
+                  "value": "130"
+                },
+                "Variable name": "TutorialState"
+              },
+              "children": [
+                {
+                  "id": "WALK_TO_AREA",
+                  "properties": {
+                    "Area": "(3074, 3086, 0), (3077, 3083, 0)"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "IF_VARIABLE_IS",
+              "customDisplayName": "If variable \u0027TutorialState\u0027 matches 140",
+              "properties": {
+                "Filter Value By": {
+                  "class": "Variable",
+                  "logic": "NONE",
+                  "type": "AS_NUMBER",
+                  "operator": "EQUALS",
+                  "value": "140"
+                },
+                "Variable name": "TutorialState"
+              },
+              "children": [
+                {
+                  "id": "IF_CAN_NOT_CONTINUE",
+                  "children": [
+                    {
+                      "id": "NPC_INTERACT",
+                      "properties": {
+                        "Action": "Talk-to",
+                        "Filter NPC By": {
+                          "class": "NPC",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "Master Chef"
+                        }
+                      }
+                    },
+                    {
+                      "id": "SLEEP_WHILE_MOVING"
+                    },
+                    {
+                      "id": "SLEEP_UNTIL_GAME_TICK"
+                    }
+                  ]
+                },
+                {
+                  "id": "ELSE_BRANCH",
+                  "children": [
+                    {
+                      "id": "SPACEBAR_TO_CONTINUE"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "IF_VARIABLE_IS",
+              "customDisplayName": "If variable \u0027TutorialState\u0027 matches 150",
+              "properties": {
+                "Filter Value By": {
+                  "class": "Variable",
+                  "logic": "NONE",
+                  "type": "AS_NUMBER",
+                  "operator": "EQUALS",
+                  "value": "150"
+                },
+                "Variable name": "TutorialState"
+              },
+              "children": [
+                {
+                  "id": "IF_CAN_CONTINUE",
+                  "children": [
+                    {
+                      "id": "SPACEBAR_TO_CONTINUE"
+                    }
+                  ]
+                },
+                {
+                  "id": "ELSE_BRANCH",
+                  "children": [
+                    {
+                      "id": "INTERACT_WITH_INVENTORY_ITEM",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "Pot of flour"
+                        },
+                        "Action": "Use"
+                      }
+                    },
+                    {
+                      "id": "SLEEP_UNTIL_GAME_TICK"
+                    },
+                    {
+                      "id": "INTERACT_WITH_INVENTORY_ITEM",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "Bucket of water"
+                        },
+                        "Action": "Use"
+                      }
+                    },
+                    {
+                      "id": "SLEEP_UNTIL_GAME_TICK"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "IF_VARIABLE_IS",
+              "customDisplayName": "If variable \u0027TutorialState\u0027 matches 160",
+              "properties": {
+                "Filter Value By": {
+                  "class": "Variable",
+                  "logic": "NONE",
+                  "type": "AS_NUMBER",
+                  "operator": "EQUALS",
+                  "value": "160"
+                },
+                "Variable name": "TutorialState"
+              },
+              "children": [
+                {
+                  "id": "GAME_OBJECT_INTERACT",
+                  "properties": {
+                    "Filter Object By": {
+                      "class": "GameObject",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Range",
+                      "filters": [
+                        {
+                          "class": "GameObject",
+                          "logic": "AND",
+                          "type": "IN_AREA",
+                          "operator": "EQUALS",
+                          "value": "(3079, 3084, 0),(3079, 3078, 0),(3072, 3078, 0),(3072, 3085, 0)"
+                        }
+                      ]
+                    },
+                    "Action": "Cook"
+                  }
+                },
+                {
+                  "id": "SLEEP_WHILE_MOVING"
+                },
+                {
+                  "id": "SLEEP_WHILE_ANIMATING"
+                },
+                {
+                  "id": "SLEEP_UNTIL_GAME_TICK"
+                }
+              ]
+            },
+            {
+              "id": "IF_VARIABLE_IS",
+              "customDisplayName": "If variable \u0027TutorialState\u0027 matches 170",
+              "properties": {
+                "Filter Value By": {
+                  "class": "Variable",
+                  "logic": "NONE",
+                  "type": "AS_NUMBER",
+                  "operator": "EQUALS",
+                  "value": "170"
+                },
+                "Variable name": "TutorialState"
+              },
+              "children": [
+                {
+                  "id": "WALK_FULLY_TO_TILE",
+                  "properties": {
+                    "Tile": "(3071, 3090, 0)"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "IF_VARIABLE_IS",
+              "customDisplayName": "If variable \u0027TutorialState\u0027 matches 200",
+              "properties": {
+                "Filter Value By": {
+                  "class": "Variable",
+                  "logic": "NONE",
+                  "type": "AS_NUMBER",
+                  "operator": "EQUALS",
+                  "value": "200"
+                },
+                "Variable name": "TutorialState"
+              },
+              "children": [
+                {
+                  "id": "WALK_FULLY_TO_AREA",
+                  "properties": {
+                    "Area": "(3089, 3120, 0), (3084, 3124, 0)"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "IF_VARIABLE_IS",
+              "customDisplayName": "If variable \u0027TutorialState\u0027 matches 220",
+              "properties": {
+                "Filter Value By": {
+                  "class": "Variable",
+                  "logic": "NONE",
+                  "type": "AS_NUMBER",
+                  "operator": "EQUALS",
+                  "value": "220"
+                },
+                "Variable name": "TutorialState"
+              },
+              "children": [
+                {
+                  "id": "IF_CAN_NOT_CONTINUE",
+                  "children": [
+                    {
+                      "id": "NPC_INTERACT",
+                      "properties": {
+                        "Action": "Talk-to",
+                        "Filter NPC By": {
+                          "class": "NPC",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "Quest Guide"
+                        }
+                      }
+                    },
+                    {
+                      "id": "SLEEP_WHILE_MOVING"
+                    },
+                    {
+                      "id": "SLEEP_UNTIL_GAME_TICK"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "IF_VARIABLE_IS",
+              "customDisplayName": "If variable \u0027TutorialState\u0027 matches 230",
+              "properties": {
+                "Filter Value By": {
+                  "class": "Variable",
+                  "logic": "NONE",
+                  "type": "AS_NUMBER",
+                  "operator": "EQUALS",
+                  "value": "230"
+                },
+                "Variable name": "TutorialState"
+              },
+              "children": [
+                {
+                  "id": "IF_CAN_CONTINUE",
+                  "children": [
+                    {
+                      "id": "SPACEBAR_TO_CONTINUE"
+                    }
+                  ]
+                },
+                {
+                  "id": "ELSE_BRANCH",
+                  "children": [
+                    {
+                      "id": "WIDGET_INTERACT",
+                      "properties": {
+                        "Find Widget By": {
+                          "class": "Widget",
+                          "logic": "NONE",
+                          "type": "WIDGET_ID",
+                          "operator": "EQUALS",
+                          "value": "548, 72",
+                          "filters": [
+                            {
+                              "class": "Widget",
+                              "logic": "OR",
+                              "type": "WIDGET_ID",
+                              "operator": "EQUALS",
+                              "value": "164, 54"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "IF_VARIABLE_IS",
+              "customDisplayName": "If variable \u0027TutorialState\u0027 matches 240",
+              "properties": {
+                "Filter Value By": {
+                  "class": "Variable",
+                  "logic": "NONE",
+                  "type": "AS_NUMBER",
+                  "operator": "EQUALS",
+                  "value": "240"
+                },
+                "Variable name": "TutorialState"
+              },
+              "children": [
+                {
+                  "id": "IF_CAN_CONTINUE",
+                  "children": [
+                    {
+                      "id": "SPACEBAR_TO_CONTINUE"
+                    }
+                  ]
+                },
+                {
+                  "id": "ELSE_BRANCH",
+                  "children": [
+                    {
+                      "id": "NPC_INTERACT",
+                      "properties": {
+                        "Action": "Talk-to",
+                        "Filter NPC By": {
+                          "class": "NPC",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "Quest Guide"
+                        }
+                      }
+                    },
+                    {
+                      "id": "SLEEP_WHILE_MOVING"
+                    },
+                    {
+                      "id": "SLEEP_UNTIL_GAME_TICK"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "IF_VARIABLE_IS",
+              "customDisplayName": "If variable \u0027TutorialState\u0027 matches 250",
+              "properties": {
+                "Filter Value By": {
+                  "class": "Variable",
+                  "logic": "NONE",
+                  "type": "AS_NUMBER",
+                  "operator": "EQUALS",
+                  "value": "250"
+                },
+                "Variable name": "TutorialState"
+              },
+              "children": [
+                {
+                  "id": "IF_CAN_CONTINUE",
+                  "children": [
+                    {
+                      "id": "SPACEBAR_TO_CONTINUE"
+                    }
+                  ]
+                },
+                {
+                  "id": "ELSE_BRANCH",
+                  "children": [
+                    {
+                      "id": "GAME_OBJECT_INTERACT",
+                      "properties": {
+                        "Filter Object By": {
+                          "class": "GameObject",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "Ladder",
+                          "filters": [
+                            {
+                              "class": "GameObject",
+                              "logic": "AND",
+                              "type": "IN_AREA",
+                              "operator": "EQUALS",
+                              "value": "(3092, 3122, 0),(3092, 3116, 0),(3085, 3116, 0),(3085, 3123, 0)"
+                            }
+                          ]
+                        },
+                        "Action": "Climb-down"
+                      }
+                    },
+                    {
+                      "id": "SLEEP_WHILE_MOVING"
+                    },
+                    {
+                      "id": "SLEEP_UNTIL_GAME_TICK"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "IF_VARIABLE_IS",
+              "customDisplayName": "If variable \u0027TutorialState\u0027 matches 260",
+              "properties": {
+                "Filter Value By": {
+                  "class": "Variable",
+                  "logic": "NONE",
+                  "type": "AS_NUMBER",
+                  "operator": "EQUALS",
+                  "value": "260"
+                },
+                "Variable name": "TutorialState"
+              },
+              "children": [
+                {
+                  "id": "IF_LOCAL_PLAYER_MATCHES",
+                  "properties": {
+                    "Filter By": {
+                      "class": "Player",
+                      "logic": "NONE",
+                      "type": "NOT_IN_AREA",
+                      "operator": "EQUALS",
+                      "value": "(3079, 9502, 0), (3084, 9509, 0)"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "WALK_FULLY_TO_AREA",
+                      "properties": {
+                        "Area": "(3079, 9502, 0), (3084, 9509, 0)"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "ELSE_BRANCH",
+                  "children": [
+                    {
+                      "id": "IF_CAN_NOT_CONTINUE",
+                      "children": [
+                        {
+                          "id": "NPC_INTERACT",
+                          "properties": {
+                            "Action": "Talk-to",
+                            "Filter NPC By": {
+                              "class": "NPC",
+                              "logic": "NONE",
+                              "type": "NAME",
+                              "operator": "EQUALS",
+                              "value": "Mining Instructor"
+                            }
+                          }
+                        },
+                        {
+                          "id": "SLEEP_WHILE_MOVING"
+                        },
+                        {
+                          "id": "SLEEP_UNTIL_GAME_TICK"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "ELSE_BRANCH",
+                      "children": [
+                        {
+                          "id": "SPACEBAR_TO_CONTINUE"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "IF_VARIABLE_IS",
+              "customDisplayName": "If variable \u0027TutorialState\u0027 matches 270",
+              "properties": {
+                "Filter Value By": {
+                  "class": "Variable",
+                  "logic": "NONE",
+                  "type": "AS_NUMBER",
+                  "operator": "EQUALS",
+                  "value": "270"
+                },
+                "Variable name": "TutorialState"
+              },
+              "children": [
+                {
+                  "id": "IF_CAN_CONTINUE",
+                  "children": [
+                    {
+                      "id": "SPACEBAR_TO_CONTINUE"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "IF_VARIABLE_IS",
+              "customDisplayName": "If variable \u0027TutorialState\u0027 matches 300",
+              "properties": {
+                "Filter Value By": {
+                  "class": "Variable",
+                  "logic": "NONE",
+                  "type": "AS_NUMBER",
+                  "operator": "EQUALS",
+                  "value": "300"
+                },
+                "Variable name": "TutorialState"
+              },
+              "children": [
+                {
+                  "id": "GAME_OBJECT_INTERACT",
+                  "properties": {
+                    "Filter Object By": {
+                      "class": "GameObject",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Tin rocks"
+                    },
+                    "Action": "Mine"
+                  }
+                },
+                {
+                  "id": "SLEEP_WHILE_MOVING"
+                },
+                {
+                  "id": "SLEEP_UNTIL_GAME_TICK",
+                  "children": [
+                    {
+                      "id": "SLEEP_WHILE_ANIMATING"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "IF_VARIABLE_IS",
+              "customDisplayName": "If variable \u0027TutorialState\u0027 matches 310",
+              "properties": {
+                "Filter Value By": {
+                  "class": "Variable",
+                  "logic": "NONE",
+                  "type": "AS_NUMBER",
+                  "operator": "EQUALS",
+                  "value": "310"
+                },
+                "Variable name": "TutorialState"
+              },
+              "children": [
+                {
+                  "id": "GAME_OBJECT_INTERACT",
+                  "properties": {
+                    "Filter Object By": {
+                      "class": "GameObject",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Copper rocks"
+                    },
+                    "Action": "Mine"
+                  }
+                },
+                {
+                  "id": "SLEEP_WHILE_MOVING"
+                },
+                {
+                  "id": "SLEEP_UNTIL_GAME_TICK",
+                  "children": [
+                    {
+                      "id": "SLEEP_WHILE_ANIMATING"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "IF_VARIABLE_IS",
+              "customDisplayName": "If variable \u0027TutorialState\u0027 matches 320",
+              "properties": {
+                "Filter Value By": {
+                  "class": "Variable",
+                  "logic": "NONE",
+                  "type": "AS_NUMBER",
+                  "operator": "EQUALS",
+                  "value": "320"
+                },
+                "Variable name": "TutorialState"
+              },
+              "children": [
+                {
+                  "id": "GAME_OBJECT_INTERACT",
+                  "properties": {
+                    "Filter Object By": {
+                      "class": "GameObject",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Furnace",
+                      "filters": [
+                        {
+                          "class": "GameObject",
+                          "logic": "AND",
+                          "type": "IN_AREA",
+                          "operator": "EQUALS",
+                          "value": "(3082, 9498, 0),(3082, 9492, 0),(3075, 9492, 0),(3075, 9499, 0)"
+                        }
+                      ]
+                    },
+                    "Action": "Use"
+                  }
+                },
+                {
+                  "id": "SLEEP_WHILE_MOVING"
+                },
+                {
+                  "id": "SLEEP_UNTIL_GAME_TICK"
+                }
+              ]
+            },
+            {
+              "id": "IF_VARIABLE_IS",
+              "customDisplayName": "If variable \u0027TutorialState\u0027 matches 330",
+              "color": -65532,
+              "properties": {
+                "Filter Value By": {
+                  "class": "Variable",
+                  "logic": "NONE",
+                  "type": "AS_NUMBER",
+                  "operator": "EQUALS",
+                  "value": "330"
+                },
+                "Variable name": "TutorialState"
+              },
+              "children": [
+                {
+                  "id": "IF_LOCAL_PLAYER_MATCHES",
+                  "properties": {
+                    "Filter By": {
+                      "class": "Player",
+                      "logic": "NONE",
+                      "type": "NOT_IN_AREA",
+                      "operator": "EQUALS",
+                      "value": "(3079, 9502, 0), (3084, 9509, 0)"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "WALK_FULLY_TO_AREA",
+                      "properties": {
+                        "Area": "(3079, 9502, 0), (3084, 9509, 0)"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "ELSE_BRANCH",
+                  "children": [
+                    {
+                      "id": "IF_CAN_NOT_CONTINUE",
+                      "children": [
+                        {
+                          "id": "NPC_INTERACT",
+                          "properties": {
+                            "Action": "Talk-to",
+                            "Filter NPC By": {
+                              "class": "NPC",
+                              "logic": "NONE",
+                              "type": "NAME",
+                              "operator": "EQUALS",
+                              "value": "Mining Instructor"
+                            }
+                          }
+                        },
+                        {
+                          "id": "SLEEP_WHILE_MOVING"
+                        },
+                        {
+                          "id": "SLEEP_UNTIL_GAME_TICK"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "ELSE_BRANCH",
+                      "children": [
+                        {
+                          "id": "SPACEBAR_TO_CONTINUE"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "IF_VARIABLE_IS",
+              "customDisplayName": "If variable \u0027TutorialState\u0027 matches 340",
+              "properties": {
+                "Filter Value By": {
+                  "class": "Variable",
+                  "logic": "NONE",
+                  "type": "AS_NUMBER",
+                  "operator": "EQUALS",
+                  "value": "340"
+                },
+                "Variable name": "TutorialState"
+              },
+              "children": [
+                {
+                  "id": "IF_CAN_CONTINUE",
+                  "children": [
+                    {
+                      "id": "SPACEBAR_TO_CONTINUE"
+                    }
+                  ]
+                },
+                {
+                  "id": "GAME_OBJECT_INTERACT",
+                  "properties": {
+                    "Filter Object By": {
+                      "class": "GameObject",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Anvil",
+                      "filters": [
+                        {
+                          "class": "GameObject",
+                          "logic": "AND",
+                          "type": "IN_AREA",
+                          "operator": "EQUALS",
+                          "value": "(3087, 9502, 0),(3087, 9496, 0),(3080, 9496, 0),(3080, 9503, 0)"
+                        }
+                      ]
+                    },
+                    "Action": "Smith"
+                  }
+                },
+                {
+                  "id": "SLEEP_WHILE_MOVING"
+                },
+                {
+                  "id": "SLEEP_UNTIL_GAME_TICK"
+                },
+                {
+                  "id": "WIDGET_INTERACT",
+                  "properties": {
+                    "Action": "Smith",
+                    "Find Widget By": {
+                      "class": "Widget",
+                      "logic": "NONE",
+                      "type": "WIDGET_ID",
+                      "operator": "EQUALS",
+                      "value": "312, 9"
+                    }
+                  }
+                },
+                {
+                  "id": "SLEEP_UNTIL_GAME_TICK"
+                }
+              ]
+            },
+            {
+              "id": "IF_VARIABLE_IS",
+              "customDisplayName": "If variable \u0027TutorialState\u0027 matches 360",
+              "properties": {
+                "Filter Value By": {
+                  "class": "Variable",
+                  "logic": "NONE",
+                  "type": "AS_NUMBER",
+                  "operator": "EQUALS",
+                  "value": "360"
+                },
+                "Variable name": "TutorialState"
+              },
+              "children": [
+                {
+                  "id": "WALK_FULLY_TO_AREA",
+                  "properties": {
+                    "Area": "(3096, 9502, 0), (3095, 9503, 0)"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "IF_VARIABLE_IS",
+              "customDisplayName": "If variable \u0027TutorialState\u0027 matches 370",
+              "properties": {
+                "Filter Value By": {
+                  "class": "Variable",
+                  "logic": "NONE",
+                  "type": "AS_NUMBER",
+                  "operator": "EQUALS",
+                  "value": "370"
+                },
+                "Variable name": "TutorialState"
+              },
+              "children": [
+                {
+                  "id": "IF_CAN_NOT_CONTINUE",
+                  "children": [
+                    {
+                      "id": "NPC_INTERACT",
+                      "properties": {
+                        "Action": "Talk-to",
+                        "Filter NPC By": {
+                          "class": "NPC",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "Combat Instructor"
+                        }
+                      }
+                    },
+                    {
+                      "id": "SLEEP_WHILE_MOVING"
+                    },
+                    {
+                      "id": "SLEEP_UNTIL_GAME_TICK"
+                    }
+                  ]
+                },
+                {
+                  "id": "ELSE_BRANCH",
+                  "children": [
+                    {
+                      "id": "SPACEBAR_TO_CONTINUE",
+                      "children": [
+                        {
+                          "id": "SLEEP_UNTIL_GAME_TICK"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "IF_VARIABLE_IS",
+              "customDisplayName": "If variable \u0027TutorialState\u0027 matches 390",
+              "properties": {
+                "Filter Value By": {
+                  "class": "Variable",
+                  "logic": "NONE",
+                  "type": "AS_NUMBER",
+                  "operator": "EQUALS",
+                  "value": "390"
+                },
+                "Variable name": "TutorialState"
+              },
+              "children": [
+                {
+                  "id": "IF_CAN_CONTINUE",
+                  "children": [
+                    {
+                      "id": "SPACEBAR_TO_CONTINUE"
+                    }
+                  ]
+                },
+                {
+                  "id": "ELSE_BRANCH",
+                  "children": [
+                    {
+                      "id": "WIDGET_INTERACT",
+                      "properties": {
+                        "Find Widget By": {
+                          "class": "Widget",
+                          "logic": "NONE",
+                          "type": "WIDGET_ID",
+                          "operator": "EQUALS",
+                          "value": "548, 67",
+                          "filters": [
+                            {
+                              "class": "Widget",
+                              "logic": "OR",
+                              "type": "WIDGET_ID",
+                              "operator": "EQUALS",
+                              "value": "164, 56"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "IF_VARIABLE_IS",
+              "customDisplayName": "If variable \u0027TutorialState\u0027 matches 400",
+              "properties": {
+                "Filter Value By": {
+                  "class": "Variable",
+                  "logic": "NONE",
+                  "type": "AS_NUMBER",
+                  "operator": "EQUALS",
+                  "value": "400"
+                },
+                "Variable name": "TutorialState"
+              },
+              "children": [
+                {
+                  "id": "WIDGET_INTERACT",
+                  "properties": {
+                    "Find Widget By": {
+                      "class": "Widget",
+                      "logic": "NONE",
+                      "type": "WIDGET_ID",
+                      "operator": "EQUALS",
+                      "value": "387, 1"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "id": "IF_VARIABLE_IS",
+              "customDisplayName": "If variable \u0027TutorialState\u0027 matches 405",
+              "properties": {
+                "Filter Value By": {
+                  "class": "Variable",
+                  "logic": "NONE",
+                  "type": "AS_NUMBER",
+                  "operator": "EQUALS",
+                  "value": "405"
+                },
+                "Variable name": "TutorialState"
+              },
+              "children": [
+                {
+                  "id": "INTERACT_WITH_INVENTORY_ITEM",
+                  "properties": {
+                    "Filter Item By": {
+                      "class": "Item",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Bronze dagger"
+                    },
+                    "Action": "Equip"
+                  }
+                },
+                {
+                  "id": "SLEEP_UNTIL_GAME_TICK"
+                }
+              ]
+            },
+            {
+              "id": "IF_VARIABLE_IS",
+              "customDisplayName": "If variable \u0027TutorialState\u0027 matches 410",
+              "properties": {
+                "Filter Value By": {
+                  "class": "Variable",
+                  "logic": "NONE",
+                  "type": "AS_NUMBER",
+                  "operator": "EQUALS",
+                  "value": "410"
+                },
+                "Variable name": "TutorialState"
+              },
+              "children": [
+                {
+                  "id": "IF_CAN_NOT_CONTINUE",
+                  "children": [
+                    {
+                      "id": "NPC_INTERACT",
+                      "properties": {
+                        "Action": "Talk-to",
+                        "Filter NPC By": {
+                          "class": "NPC",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "Combat Instructor"
+                        }
+                      }
+                    },
+                    {
+                      "id": "SLEEP_WHILE_MOVING"
+                    },
+                    {
+                      "id": "SLEEP_UNTIL_GAME_TICK"
+                    }
+                  ]
+                },
+                {
+                  "id": "ELSE_BRANCH",
+                  "children": [
+                    {
+                      "id": "SPACEBAR_TO_CONTINUE"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "IF_VARIABLE_IS",
+              "customDisplayName": "If variable \u0027TutorialState\u0027 matches 420",
+              "properties": {
+                "Filter Value By": {
+                  "class": "Variable",
+                  "logic": "NONE",
+                  "type": "AS_NUMBER",
+                  "operator": "EQUALS",
+                  "value": "420"
+                },
+                "Variable name": "TutorialState"
+              },
+              "children": [
+                {
+                  "id": "IF_CAN_CONTINUE",
+                  "children": [
+                    {
+                      "id": "SPACEBAR_TO_CONTINUE"
+                    }
+                  ]
+                },
+                {
+                  "id": "ELSE_BRANCH",
+                  "children": [
+                    {
+                      "id": "INTERACT_WITH_INVENTORY_ITEM",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "Bronze sword"
+                        },
+                        "Action": "Wield"
+                      }
+                    },
+                    {
+                      "id": "SLEEP_UNTIL_GAME_TICK"
+                    },
+                    {
+                      "id": "INTERACT_WITH_INVENTORY_ITEM",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "Wooden shield"
+                        },
+                        "Action": "Wield"
+                      }
+                    },
+                    {
+                      "id": "SLEEP_UNTIL_GAME_TICK"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "IF_VARIABLE_IS",
+              "customDisplayName": "If variable \u0027TutorialState\u0027 matches 430",
+              "properties": {
+                "Filter Value By": {
+                  "class": "Variable",
+                  "logic": "NONE",
+                  "type": "AS_NUMBER",
+                  "operator": "EQUALS",
+                  "value": "430"
+                },
+                "Variable name": "TutorialState"
+              },
+              "children": [
+                {
+                  "id": "WIDGET_INTERACT",
+                  "properties": {
+                    "Find Widget By": {
+                      "class": "Widget",
+                      "logic": "NONE",
+                      "type": "WIDGET_ID",
+                      "operator": "EQUALS",
+                      "value": "548, 70",
+                      "filters": [
+                        {
+                          "class": "Widget",
+                          "logic": "OR",
+                          "type": "WIDGET_ID",
+                          "operator": "EQUALS",
+                          "value": "164, 52"
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "id": "IF_VARIABLE_IS",
+              "customDisplayName": "If variable \u0027TutorialState\u0027 matches 440",
+              "properties": {
+                "Filter Value By": {
+                  "class": "Variable",
+                  "logic": "NONE",
+                  "type": "AS_NUMBER",
+                  "operator": "EQUALS",
+                  "value": "440"
+                },
+                "Variable name": "TutorialState"
+              },
+              "children": [
+                {
+                  "id": "WALK_FULLY_TO_AREA",
+                  "properties": {
+                    "Area": "(3102, 9513, 0), (3107, 9522, 0)"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "IF_VARIABLE_IS",
+              "customDisplayName": "If variable \u0027TutorialState\u0027 matches 450",
+              "properties": {
+                "Filter Value By": {
+                  "class": "Variable",
+                  "logic": "NONE",
+                  "type": "AS_NUMBER",
+                  "operator": "EQUALS",
+                  "value": "450"
+                },
+                "Variable name": "TutorialState"
+              },
+              "children": [
+                {
+                  "id": "NPC_INTERACT",
+                  "properties": {
+                    "Action": "Attack",
+                    "Filter NPC By": {
+                      "class": "NPC",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Giant rat"
+                    }
+                  }
+                },
+                {
+                  "id": "SLEEP_WHILE_MOVING"
+                },
+                {
+                  "id": "SLEEP_WHILE_IN_COMBAT"
+                }
+              ]
+            },
+            {
+              "id": "IF_VARIABLE_IS",
+              "customDisplayName": "If variable \u0027TutorialState\u0027 matches 460",
+              "properties": {
+                "Filter Value By": {
+                  "class": "Variable",
+                  "logic": "NONE",
+                  "type": "AS_NUMBER",
+                  "operator": "EQUALS",
+                  "value": "460"
+                },
+                "Variable name": "TutorialState"
+              }
+            },
+            {
+              "id": "IF_VARIABLE_IS",
+              "customDisplayName": "If variable \u0027TutorialState\u0027 matches 470",
+              "properties": {
+                "Filter Value By": {
+                  "class": "Variable",
+                  "logic": "NONE",
+                  "type": "AS_NUMBER",
+                  "operator": "EQUALS",
+                  "value": "470"
+                },
+                "Variable name": "TutorialState"
+              },
+              "children": [
+                {
+                  "id": "IF_CAN_NOT_CONTINUE",
+                  "children": [
+                    {
+                      "id": "IF_LOCAL_PLAYER_MATCHES",
+                      "properties": {
+                        "Filter By": {
+                          "class": "Player",
+                          "logic": "NONE",
+                          "type": "NOT_IN_AREA",
+                          "operator": "EQUALS",
+                          "value": "(3111, 9509, 0), (3108, 9512, 0)"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "WALK_FULLY_TO_AREA",
+                          "properties": {
+                            "Area": "(3111, 9509, 0), (3108, 9512, 0)"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "ELSE_BRANCH",
+                      "children": [
+                        {
+                          "id": "NPC_INTERACT",
+                          "properties": {
+                            "Action": "Talk-to",
+                            "Filter NPC By": {
+                              "class": "NPC",
+                              "logic": "NONE",
+                              "type": "NAME",
+                              "operator": "EQUALS",
+                              "value": "Combat Instructor"
+                            }
+                          }
+                        },
+                        {
+                          "id": "SLEEP_WHILE_MOVING"
+                        },
+                        {
+                          "id": "SLEEP_UNTIL_GAME_TICK"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "ELSE_BRANCH",
+                  "children": [
+                    {
+                      "id": "SPACEBAR_TO_CONTINUE"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "IF_VARIABLE_IS",
+              "customDisplayName": "If variable \u0027TutorialState\u0027 matches 480",
+              "properties": {
+                "Filter Value By": {
+                  "class": "Variable",
+                  "logic": "NONE",
+                  "type": "AS_NUMBER",
+                  "operator": "EQUALS",
+                  "value": "480"
+                },
+                "Variable name": "TutorialState"
+              },
+              "children": [
+                {
+                  "id": "IF_CAN_CONTINUE",
+                  "children": [
+                    {
+                      "id": "SPACEBAR_TO_CONTINUE"
+                    }
+                  ]
+                },
+                {
+                  "id": "ELSE_BRANCH",
+                  "children": [
+                    {
+                      "id": "IF_EQUIPPED_ITEM_DOES_NOT_MATCH",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "ID",
+                          "operator": "EQUALS",
+                          "value": "841"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "INTERACT_WITH_INVENTORY_ITEM",
+                          "properties": {
+                            "Filter Item By": {
+                              "class": "Item",
+                              "logic": "NONE",
+                              "type": "NAME",
+                              "operator": "EQUALS",
+                              "value": "Shortbow"
+                            },
+                            "Action": "Wield"
+                          }
+                        },
+                        {
+                          "id": "SLEEP_UNTIL_GAME_TICK"
+                        },
+                        {
+                          "id": "INTERACT_WITH_INVENTORY_ITEM",
+                          "properties": {
+                            "Filter Item By": {
+                              "class": "Item",
+                              "logic": "NONE",
+                              "type": "NAME",
+                              "operator": "EQUALS",
+                              "value": "Bronze arrow"
+                            },
+                            "Action": "Wield"
+                          }
+                        },
+                        {
+                          "id": "SLEEP_UNTIL_GAME_TICK"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "ELSE_BRANCH",
+                      "children": [
+                        {
+                          "id": "NPC_INTERACT",
+                          "properties": {
+                            "Action": "Attack",
+                            "Filter NPC By": {
+                              "class": "NPC",
+                              "logic": "NONE",
+                              "type": "NAME",
+                              "operator": "EQUALS",
+                              "value": "Giant rat",
+                              "filters": [
+                                {
+                                  "class": "NPC",
+                                  "logic": "AND",
+                                  "type": "NOT_IN_COMBAT",
+                                  "operator": "EQUALS"
+                                }
+                              ]
+                            }
+                          }
+                        },
+                        {
+                          "id": "SLEEP_WHILE_MOVING"
+                        },
+                        {
+                          "id": "SLEEP_WHILE_IN_COMBAT"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "IF_VARIABLE_IS",
+              "customDisplayName": "If variable \u0027TutorialState\u0027 matches 490",
+              "properties": {
+                "Filter Value By": {
+                  "class": "Variable",
+                  "logic": "NONE",
+                  "type": "AS_NUMBER",
+                  "operator": "EQUALS",
+                  "value": "490"
+                },
+                "Variable name": "TutorialState"
+              }
+            },
+            {
+              "id": "IF_VARIABLE_IS",
+              "customDisplayName": "If variable \u0027TutorialState\u0027 matches 500",
+              "properties": {
+                "Filter Value By": {
+                  "class": "Variable",
+                  "logic": "NONE",
+                  "type": "AS_NUMBER",
+                  "operator": "EQUALS",
+                  "value": "500"
+                },
+                "Variable name": "TutorialState"
+              },
+              "children": [
+                {
+                  "id": "GAME_OBJECT_INTERACT",
+                  "properties": {
+                    "Filter Object By": {
+                      "class": "GameObject",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Ladder",
+                      "filters": [
+                        {
+                          "class": "GameObject",
+                          "logic": "AND",
+                          "type": "IN_AREA",
+                          "operator": "EQUALS",
+                          "value": "(3115, 9529, 0),(3115, 9523, 0),(3108, 9523, 0),(3108, 9530, 0)"
+                        }
+                      ]
+                    },
+                    "Action": "Climb-up"
+                  }
+                },
+                {
+                  "id": "SLEEP_WHILE_MOVING"
+                },
+                {
+                  "id": "SLEEP_UNTIL_GAME_TICK"
+                }
+              ]
+            },
+            {
+              "id": "IF_VARIABLE_IS",
+              "customDisplayName": "If variable \u0027TutorialState\u0027 matches 510",
+              "properties": {
+                "Filter Value By": {
+                  "class": "Variable",
+                  "logic": "NONE",
+                  "type": "AS_NUMBER",
+                  "operator": "EQUALS",
+                  "value": "510"
+                },
+                "Variable name": "TutorialState"
+              },
+              "children": [
+                {
+                  "id": "IF_LOCAL_PLAYER_MATCHES",
+                  "properties": {
+                    "Filter By": {
+                      "class": "Player",
+                      "logic": "NONE",
+                      "type": "NOT_IN_AREA",
+                      "operator": "EQUALS",
+                      "value": "(3119, 3123, 0), (3124, 3119, 0)"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "WALK_FULLY_TO_AREA",
+                      "properties": {
+                        "Area": "(3119, 3123, 0), (3124, 3119, 0)"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "ELSE_BRANCH",
+                  "children": [
+                    {
+                      "id": "GAME_OBJECT_INTERACT",
+                      "properties": {
+                        "Filter Object By": {
+                          "class": "GameObject",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "Bank booth",
+                          "filters": [
+                            {
+                              "class": "GameObject",
+                              "logic": "AND",
+                              "type": "IN_AREA",
+                              "operator": "EQUALS",
+                              "value": "(3126, 3127, 0),(3126, 3121, 0),(3119, 3121, 0),(3119, 3128, 0)"
+                            }
+                          ]
+                        },
+                        "Action": "Use"
+                      }
+                    },
+                    {
+                      "id": "SLEEP_WHILE_MOVING"
+                    },
+                    {
+                      "id": "SLEEP_UNTIL_GAME_TICK"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "IF_VARIABLE_IS",
+              "customDisplayName": "If variable \u0027TutorialState\u0027 matches 520",
+              "properties": {
+                "Filter Value By": {
+                  "class": "Variable",
+                  "logic": "NONE",
+                  "type": "AS_NUMBER",
+                  "operator": "EQUALS",
+                  "value": "520"
+                },
+                "Variable name": "TutorialState"
+              },
+              "children": [
+                {
+                  "id": "IF_CAN_CONTINUE",
+                  "children": [
+                    {
+                      "id": "SPACEBAR_TO_CONTINUE",
+                      "children": [
+                        {
+                          "id": "SLEEP_UNTIL_GAME_TICK"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "ELSE_BRANCH",
+                  "children": [
+                    {
+                      "id": "GAME_OBJECT_INTERACT",
+                      "properties": {
+                        "Filter Object By": {
+                          "class": "GameObject",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "Poll booth",
+                          "filters": [
+                            {
+                              "class": "GameObject",
+                              "logic": "AND",
+                              "type": "IN_AREA",
+                              "operator": "EQUALS",
+                              "value": "(3123, 3124, 0),(3123, 3118, 0),(3116, 3118, 0),(3116, 3125, 0)"
+                            }
+                          ]
+                        },
+                        "Action": "Use"
+                      }
+                    },
+                    {
+                      "id": "SLEEP_WHILE_MOVING"
+                    },
+                    {
+                      "id": "SLEEP_UNTIL_GAME_TICK"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "IF_VARIABLE_IS",
+              "customDisplayName": "If variable \u0027TutorialState\u0027 matches 525",
+              "properties": {
+                "Filter Value By": {
+                  "class": "Variable",
+                  "logic": "NONE",
+                  "type": "AS_NUMBER",
+                  "operator": "EQUALS",
+                  "value": "525"
+                },
+                "Variable name": "TutorialState"
+              },
+              "children": [
+                {
+                  "id": "IF_LOCAL_PLAYER_MATCHES",
+                  "properties": {
+                    "Filter By": {
+                      "class": "Player",
+                      "logic": "NONE",
+                      "type": "NOT_IN_AREA",
+                      "operator": "EQUALS",
+                      "value": "(3125, 3125, 0), (3127, 3123, 0)"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "WALK_TO_AREA",
+                      "properties": {
+                        "Area": "(3125, 3125, 0), (3127, 3123, 0)"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "IF_VARIABLE_IS",
+              "customDisplayName": "If variable \u0027TutorialState\u0027 matches 530",
+              "properties": {
+                "Filter Value By": {
+                  "class": "Variable",
+                  "logic": "NONE",
+                  "type": "AS_NUMBER",
+                  "operator": "EQUALS",
+                  "value": "530"
+                },
+                "Variable name": "TutorialState"
+              },
+              "children": [
+                {
+                  "id": "IF_CAN_NOT_CONTINUE",
+                  "children": [
+                    {
+                      "id": "NPC_INTERACT",
+                      "properties": {
+                        "Action": "Talk-to",
+                        "Filter NPC By": {
+                          "class": "NPC",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "Account Guide"
+                        }
+                      }
+                    },
+                    {
+                      "id": "SLEEP_WHILE_MOVING"
+                    },
+                    {
+                      "id": "SLEEP_UNTIL_GAME_TICK"
+                    }
+                  ]
+                },
+                {
+                  "id": "ELSE_BRANCH",
+                  "children": [
+                    {
+                      "id": "SPACEBAR_TO_CONTINUE",
+                      "children": [
+                        {
+                          "id": "SLEEP_UNTIL_GAME_TICK"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "IF_VARIABLE_IS",
+              "customDisplayName": "If variable \u0027TutorialState\u0027 matches 531",
+              "properties": {
+                "Filter Value By": {
+                  "class": "Variable",
+                  "logic": "NONE",
+                  "type": "AS_NUMBER",
+                  "operator": "EQUALS",
+                  "value": "531"
+                },
+                "Variable name": "TutorialState"
+              },
+              "children": [
+                {
+                  "id": "SPACEBAR_TO_CONTINUE"
+                },
+                {
+                  "id": "WIDGET_INTERACT",
+                  "properties": {
+                    "Find Widget By": {
+                      "class": "Widget",
+                      "logic": "NONE",
+                      "type": "WIDGET_ID",
+                      "operator": "EQUALS",
+                      "value": "548, 55"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "id": "IF_VARIABLE_IS",
+              "customDisplayName": "If variable \u0027TutorialState\u0027 matches 532",
+              "properties": {
+                "Filter Value By": {
+                  "class": "Variable",
+                  "logic": "NONE",
+                  "type": "AS_NUMBER",
+                  "operator": "EQUALS",
+                  "value": "532"
+                },
+                "Variable name": "TutorialState"
+              },
+              "children": [
+                {
+                  "id": "IF_CAN_NOT_CONTINUE",
+                  "children": [
+                    {
+                      "id": "NPC_INTERACT",
+                      "properties": {
+                        "Action": "Talk-to",
+                        "Filter NPC By": {
+                          "class": "NPC",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "Account Guide"
+                        }
+                      }
+                    },
+                    {
+                      "id": "SLEEP_WHILE_MOVING"
+                    },
+                    {
+                      "id": "SLEEP_UNTIL_GAME_TICK"
+                    }
+                  ]
+                },
+                {
+                  "id": "ELSE_BRANCH",
+                  "children": [
+                    {
+                      "id": "SPACEBAR_TO_CONTINUE",
+                      "children": [
+                        {
+                          "id": "SLEEP_UNTIL_GAME_TICK"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "IF_VARIABLE_IS",
+              "customDisplayName": "If variable \u0027TutorialState\u0027 matches 540",
+              "properties": {
+                "Filter Value By": {
+                  "class": "Variable",
+                  "logic": "NONE",
+                  "type": "AS_NUMBER",
+                  "operator": "EQUALS",
+                  "value": "540"
+                },
+                "Variable name": "TutorialState"
+              },
+              "children": [
+                {
+                  "id": "WALK_FULLY_TO_TILE",
+                  "properties": {
+                    "Tile": "(3132, 3124, 0)"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "IF_VARIABLE_IS",
+              "customDisplayName": "If variable \u0027TutorialState\u0027 matches 550",
+              "properties": {
+                "Filter Value By": {
+                  "class": "Variable",
+                  "logic": "NONE",
+                  "type": "AS_NUMBER",
+                  "operator": "EQUALS",
+                  "value": "550"
+                },
+                "Variable name": "TutorialState"
+              },
+              "children": [
+                {
+                  "id": "IF_LOCAL_PLAYER_MATCHES",
+                  "properties": {
+                    "Filter By": {
+                      "class": "Player",
+                      "logic": "NONE",
+                      "type": "NOT_IN_AREA",
+                      "operator": "EQUALS",
+                      "value": "(3122, 3104, 0), (3127, 3109, 0)"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "WALK_FULLY_TO_AREA",
+                      "properties": {
+                        "Area": "(3122, 3104, 0), (3127, 3109, 0)"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "ELSE_BRANCH",
+                  "children": [
+                    {
+                      "id": "IF_CAN_NOT_CONTINUE",
+                      "children": [
+                        {
+                          "id": "NPC_INTERACT",
+                          "properties": {
+                            "Action": "Talk-to",
+                            "Filter NPC By": {
+                              "class": "NPC",
+                              "logic": "NONE",
+                              "type": "NAME",
+                              "operator": "EQUALS",
+                              "value": "Brother Brace"
+                            }
+                          }
+                        },
+                        {
+                          "id": "SLEEP_WHILE_MOVING"
+                        },
+                        {
+                          "id": "SLEEP_UNTIL_GAME_TICK"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "ELSE_BRANCH",
+                      "children": [
+                        {
+                          "id": "SPACEBAR_TO_CONTINUE"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "IF_VARIABLE_IS",
+              "customDisplayName": "If variable \u0027TutorialState\u0027 matches 560",
+              "properties": {
+                "Filter Value By": {
+                  "class": "Variable",
+                  "logic": "NONE",
+                  "type": "AS_NUMBER",
+                  "operator": "EQUALS",
+                  "value": "560"
+                },
+                "Variable name": "TutorialState"
+              },
+              "children": [
+                {
+                  "id": "IF_WIDGET_EXISTS",
+                  "properties": {
+                    "Find Widget By": {
+                      "class": "Widget",
+                      "logic": "NONE",
+                      "type": "WIDGET_ID",
+                      "operator": "EQUALS",
+                      "value": "548, 68",
+                      "filters": [
+                        {
+                          "class": "Widget",
+                          "logic": "AND",
+                          "type": "TEXT",
+                          "operator": "CONTAINS",
+                          "value": "Prayer menu"
+                        },
+                        {
+                          "class": "Widget",
+                          "logic": "OR",
+                          "type": "WIDGET_ID",
+                          "operator": "EQUALS",
+                          "value": "263, 1, 0"
+                        }
+                      ]
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "WIDGET_INTERACT",
+                      "properties": {
+                        "Find Widget By": {
+                          "class": "Widget",
+                          "logic": "NONE",
+                          "type": "WIDGET_ID",
+                          "operator": "EQUALS",
+                          "value": "548, 68",
+                          "filters": [
+                            {
+                              "class": "Widget",
+                              "logic": "OR",
+                              "type": "WIDGET_ID",
+                              "operator": "EQUALS",
+                              "value": "164, 57"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "ELSE_BRANCH",
+                  "children": [
+                    {
+                      "id": "IF_CAN_NOT_CONTINUE",
+                      "children": [
+                        {
+                          "id": "NPC_INTERACT",
+                          "properties": {
+                            "Action": "Talk-to",
+                            "Filter NPC By": {
+                              "class": "NPC",
+                              "logic": "NONE",
+                              "type": "NAME",
+                              "operator": "EQUALS",
+                              "value": "Brother Brace"
+                            }
+                          }
+                        },
+                        {
+                          "id": "SLEEP_WHILE_MOVING"
+                        },
+                        {
+                          "id": "SLEEP_UNTIL_GAME_TICK"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "ELSE_BRANCH",
+                      "children": [
+                        {
+                          "id": "SPACEBAR_TO_CONTINUE"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "IF_VARIABLE_IS",
+              "customDisplayName": "If variable \u0027TutorialState\u0027 matches 570",
+              "properties": {
+                "Filter Value By": {
+                  "class": "Variable",
+                  "logic": "NONE",
+                  "type": "AS_NUMBER",
+                  "operator": "EQUALS",
+                  "value": "570"
+                },
+                "Variable name": "TutorialState"
+              },
+              "children": [
+                {
+                  "id": "IF_WIDGET_EXISTS",
+                  "properties": {
+                    "Find Widget By": {
+                      "class": "Widget",
+                      "logic": "NONE",
+                      "type": "WIDGET_ID",
+                      "operator": "EQUALS",
+                      "value": "263, 1, 0",
+                      "filters": [
+                        {
+                          "class": "Widget",
+                          "logic": "AND",
+                          "type": "TEXT",
+                          "operator": "CONTAINS",
+                          "value": "Prayer menu"
+                        }
+                      ]
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "NPC_INTERACT",
+                      "properties": {
+                        "Action": "Talk-to",
+                        "Filter NPC By": {
+                          "class": "NPC",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "Brother Brace"
+                        }
+                      }
+                    },
+                    {
+                      "id": "SLEEP_WHILE_MOVING"
+                    },
+                    {
+                      "id": "SLEEP_UNTIL_GAME_TICK"
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_CAN_CONTINUE",
+                  "children": [
+                    {
+                      "id": "SPACEBAR_TO_CONTINUE"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "IF_VARIABLE_IS",
+              "customDisplayName": "If variable \u0027TutorialState\u0027 matches 580",
+              "properties": {
+                "Filter Value By": {
+                  "class": "Variable",
+                  "logic": "NONE",
+                  "type": "AS_NUMBER",
+                  "operator": "EQUALS",
+                  "value": "580"
+                },
+                "Variable name": "TutorialState"
+              },
+              "children": [
+                {
+                  "id": "IF_CAN_CONTINUE",
+                  "children": [
+                    {
+                      "id": "SPACEBAR_TO_CONTINUE"
+                    }
+                  ]
+                },
+                {
+                  "id": "ELSE_BRANCH",
+                  "children": [
+                    {
+                      "id": "WIDGET_INTERACT",
+                      "properties": {
+                        "Find Widget By": {
+                          "class": "Widget",
+                          "logic": "NONE",
+                          "type": "WIDGET_ID",
+                          "operator": "EQUALS",
+                          "value": "548, 49"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "IF_VARIABLE_IS",
+              "customDisplayName": "If variable \u0027TutorialState\u0027 matches 600",
+              "properties": {
+                "Filter Value By": {
+                  "class": "Variable",
+                  "logic": "NONE",
+                  "type": "AS_NUMBER",
+                  "operator": "EQUALS",
+                  "value": "600"
+                },
+                "Variable name": "TutorialState"
+              },
+              "children": [
+                {
+                  "id": "IF_CAN_NOT_CONTINUE",
+                  "children": [
+                    {
+                      "id": "NPC_INTERACT",
+                      "properties": {
+                        "Action": "Talk-to",
+                        "Filter NPC By": {
+                          "class": "NPC",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "Brother Brace"
+                        }
+                      }
+                    },
+                    {
+                      "id": "SLEEP_WHILE_MOVING"
+                    },
+                    {
+                      "id": "SLEEP_UNTIL_GAME_TICK"
+                    }
+                  ]
+                },
+                {
+                  "id": "ELSE_BRANCH",
+                  "children": [
+                    {
+                      "id": "SPACEBAR_TO_CONTINUE"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "IF_VARIABLE_IS",
+              "customDisplayName": "If variable \u0027TutorialState\u0027 matches 610",
+              "properties": {
+                "Filter Value By": {
+                  "class": "Variable",
+                  "logic": "NONE",
+                  "type": "AS_NUMBER",
+                  "operator": "EQUALS",
+                  "value": "610"
+                },
+                "Variable name": "TutorialState"
+              },
+              "children": [
+                {
+                  "id": "IF_CAN_NOT_CONTINUE",
+                  "children": [
+                    {
+                      "id": "WALK_FULLY_TO_AREA",
+                      "properties": {
+                        "Area": "(3120, 3099, 0), (3123, 3102, 0)"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "ELSE_BRANCH",
+                  "children": [
+                    {
+                      "id": "SPACEBAR_TO_CONTINUE"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "IF_VARIABLE_IS",
+              "customDisplayName": "If variable \u0027TutorialState\u0027 matches 620",
+              "properties": {
+                "Filter Value By": {
+                  "class": "Variable",
+                  "logic": "NONE",
+                  "type": "AS_NUMBER",
+                  "operator": "EQUALS",
+                  "value": "620"
+                },
+                "Variable name": "TutorialState"
+              },
+              "children": [
+                {
+                  "id": "IF_LOCAL_PLAYER_MATCHES",
+                  "properties": {
+                    "Filter By": {
+                      "class": "Player",
+                      "logic": "NONE",
+                      "type": "NOT_IN_AREA",
+                      "operator": "EQUALS",
+                      "value": "(3143, 3089, 0), (3140, 3084, 0)"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "WALK_FULLY_TO_AREA",
+                      "properties": {
+                        "Area": "(3143, 3089, 0), (3140, 3084, 0)"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "ELSE_BRANCH",
+                  "children": [
+                    {
+                      "id": "IF_CAN_NOT_CONTINUE",
+                      "children": [
+                        {
+                          "id": "NPC_INTERACT",
+                          "properties": {
+                            "Action": "Talk-to",
+                            "Filter NPC By": {
+                              "class": "NPC",
+                              "logic": "NONE",
+                              "type": "NAME",
+                              "operator": "EQUALS",
+                              "value": "Magic Instructor"
+                            }
+                          }
+                        },
+                        {
+                          "id": "SLEEP_WHILE_MOVING"
+                        },
+                        {
+                          "id": "SLEEP_UNTIL_GAME_TICK"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "ELSE_BRANCH",
+                      "children": [
+                        {
+                          "id": "SPACEBAR_TO_CONTINUE"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "IF_VARIABLE_IS",
+              "customDisplayName": "If variable \u0027TutorialState\u0027 matches 630",
+              "properties": {
+                "Filter Value By": {
+                  "class": "Variable",
+                  "logic": "NONE",
+                  "type": "AS_NUMBER",
+                  "operator": "EQUALS",
+                  "value": "630"
+                },
+                "Variable name": "TutorialState"
+              },
+              "children": [
+                {
+                  "id": "WIDGET_INTERACT",
+                  "properties": {
+                    "Find Widget By": {
+                      "class": "Widget",
+                      "logic": "NONE",
+                      "type": "WIDGET_ID",
+                      "operator": "EQUALS",
+                      "value": "548, 76",
+                      "filters": [
+                        {
+                          "class": "Widget",
+                          "logic": "OR",
+                          "type": "WIDGET_ID",
+                          "operator": "EQUALS",
+                          "value": "164, 58"
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "id": "IF_VARIABLE_IS",
+              "customDisplayName": "If variable \u0027TutorialState\u0027 matches 640",
+              "properties": {
+                "Filter Value By": {
+                  "class": "Variable",
+                  "logic": "NONE",
+                  "type": "AS_NUMBER",
+                  "operator": "EQUALS",
+                  "value": "640"
+                },
+                "Variable name": "TutorialState"
+              },
+              "children": [
+                {
+                  "id": "IF_CAN_NOT_CONTINUE",
+                  "children": [
+                    {
+                      "id": "NPC_INTERACT",
+                      "properties": {
+                        "Action": "Talk-to",
+                        "Filter NPC By": {
+                          "class": "NPC",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "Magic Instructor"
+                        }
+                      }
+                    },
+                    {
+                      "id": "SLEEP_WHILE_MOVING"
+                    },
+                    {
+                      "id": "SLEEP_UNTIL_GAME_TICK"
+                    }
+                  ]
+                },
+                {
+                  "id": "ELSE_BRANCH",
+                  "children": [
+                    {
+                      "id": "SPACEBAR_TO_CONTINUE"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "IF_VARIABLE_IS",
+              "customDisplayName": "If variable \u0027TutorialState\u0027 matches 650",
+              "properties": {
+                "Filter Value By": {
+                  "class": "Variable",
+                  "logic": "NONE",
+                  "type": "AS_NUMBER",
+                  "operator": "EQUALS",
+                  "value": "650"
+                },
+                "Variable name": "TutorialState"
+              },
+              "children": [
+                {
+                  "id": "IF_LOCAL_PLAYER_MATCHES",
+                  "properties": {
+                    "Filter By": {
+                      "class": "Player",
+                      "logic": "NONE",
+                      "type": "NOT_IN_AREA",
+                      "operator": "EQUALS",
+                      "value": "(3138, 3091, 0), (3142, 3090, 0)"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "WALK_FULLY_TO_AREA",
+                      "properties": {
+                        "Area": "(3138, 3091, 0), (3142, 3090, 0)"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "CAST_SPELL_ON_NPC",
+                  "properties": {
+                    "Spell": {
+                      "class": "Normal",
+                      "value": "Wind strike"
+                    },
+                    "Filter NPC By": {
+                      "class": "NPC",
+                      "logic": "NONE",
+                      "type": "ID",
+                      "operator": "EQUALS",
+                      "value": "3316"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "id": "IF_VARIABLE_IS",
+              "customDisplayName": "If variable \u0027TutorialState\u0027 matches 670",
+              "properties": {
+                "Filter Value By": {
+                  "class": "Variable",
+                  "logic": "NONE",
+                  "type": "AS_NUMBER",
+                  "operator": "EQUALS",
+                  "value": "670"
+                },
+                "Variable name": "TutorialState"
+              },
+              "children": [
+                {
+                  "id": "IF_LOCAL_PLAYER_MATCHES",
+                  "properties": {
+                    "Filter By": {
+                      "class": "Player",
+                      "logic": "NONE",
+                      "type": "NOT_IN_AREA",
+                      "operator": "EQUALS",
+                      "value": "(3143, 3089, 0), (3140, 3084, 0)"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "WALK_FULLY_TO_AREA",
+                      "properties": {
+                        "Area": "(3143, 3089, 0), (3140, 3084, 0)"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "ELSE_BRANCH",
+                  "children": [
+                    {
+                      "id": "IF_CAN_NOT_CONTINUE",
+                      "children": [
+                        {
+                          "id": "IF_OPTIONS_ARE_AVAILABLE",
+                          "children": [
+                            {
+                              "id": "CHOOSE_OPTION_CONTAINING",
+                              "properties": {
+                                "Text": "not planning"
+                              }
+                            },
+                            {
+                              "id": "CHOOSE_OPTION_CONTAINING",
+                              "properties": {
+                                "Text": "yes"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "id": "ELSE_BRANCH",
+                          "children": [
+                            {
+                              "id": "NPC_INTERACT",
+                              "properties": {
+                                "Action": "Talk-to",
+                                "Filter NPC By": {
+                                  "class": "NPC",
+                                  "logic": "NONE",
+                                  "type": "NAME",
+                                  "operator": "EQUALS",
+                                  "value": "Magic Instructor"
+                                }
+                              }
+                            },
+                            {
+                              "id": "SLEEP_WHILE_MOVING"
+                            },
+                            {
+                              "id": "SLEEP_UNTIL_GAME_TICK"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "ELSE_BRANCH",
+                      "children": [
+                        {
+                          "id": "SPACEBAR_TO_CONTINUE"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "IF_VARIABLE_IS",
+              "customDisplayName": "If variable \u0027TutorialState\u0027 matches 1000",
+              "properties": {
+                "Filter Value By": {
+                  "class": "Variable",
+                  "logic": "NONE",
+                  "type": "AS_NUMBER",
+                  "operator": "EQUALS",
+                  "value": "1000"
+                },
+                "Variable name": "TutorialState"
+              },
+              "children": [
+                {
+                  "id": "LOG",
+                  "customDisplayName": "BB Complete message",
+                  "properties": {
+                    "Message": "reached target ttl and qp"
+                  },
+                  "children": [
+                    {
+                      "id": "LOGOUT"
+                    },
+                    {
+                      "id": "STOP_SCRIPT"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "PAINT_ROOT",
+      "children": [
+        {
+          "id": "DRAW_TEXT",
+          "properties": {
+            "Font Size": "15",
+            "Text": "Current State: v(TutorialState)",
+            "Font": {
+              "class": "Font",
+              "value": "Inter V"
+            },
+            "Color": {
+              "class": "Color",
+              "value": -11993344
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

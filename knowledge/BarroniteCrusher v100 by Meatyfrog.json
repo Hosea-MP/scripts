@@ -1,0 +1,698 @@
+{
+  "sleep": "700",
+  "name": "BarroniteCrusher v1.0.0",
+  "version": 1.0,
+  "metadata": {
+    "network-id": "4",
+    "network-downloaded-at": "1721665213349"
+  },
+  "actions": [
+    {
+      "id": "IF_FIRST_RUN",
+      "customDisplayName": "Setup Variables",
+      "children": [
+        {
+          "id": "SET_VARIABLE",
+          "properties": {
+            "Value": "False",
+            "Variable name": "do_banking"
+          }
+        },
+        {
+          "id": "SET_VARIABLE",
+          "properties": {
+            "Value": "False",
+            "Variable name": "do_crushing"
+          }
+        },
+        {
+          "id": "SET_VARIABLE",
+          "properties": {
+            "Value": "41551",
+            "Variable name": "barronite_crusher"
+          }
+        },
+        {
+          "id": "SET_VARIABLE",
+          "properties": {
+            "Value": "25684",
+            "Variable name": "crush_object_ids"
+          }
+        },
+        {
+          "id": "SET_VARIABLE",
+          "properties": {
+            "Value": "41547,41548",
+            "Variable name": "barronite_deposits"
+          }
+        },
+        {
+          "id": "SET_VARIABLE",
+          "properties": {
+            "Value": "2901, 5821, 2921, 5801",
+            "Variable name": "northern_mining_area"
+          }
+        },
+        {
+          "id": "SET_VARIABLE",
+          "properties": {
+            "Value": "2980, 5802, 2973, 5794",
+            "Variable name": "bank_area"
+          }
+        },
+        {
+          "id": "SET_VARIABLE",
+          "properties": {
+            "Value": "2953, 5809, 2962, 5804",
+            "Variable name": "crush_area"
+          }
+        },
+        {
+          "id": "SET_VARIABLE",
+          "properties": {
+            "Value": "2931, 5797, 2935, 5793",
+            "Variable name": "transition_area"
+          }
+        }
+      ]
+    },
+    {
+      "id": "IF_LOCAL_PLAYER_MATCHES",
+      "customDisplayName": "If in Northern Mining Area",
+      "properties": {
+        "Filter By": {
+          "class": "Player",
+          "logic": "NONE",
+          "type": "IN_AREA",
+          "operator": "EQUALS",
+          "value": "var(northern_mining_area)"
+        }
+      },
+      "children": [
+        {
+          "id": "IF_EQUIPPED_ITEM_MATCHES",
+          "customDisplayName": "Special Attack if DPick",
+          "properties": {
+            "Filter Item By": {
+              "class": "Item",
+              "logic": "NONE",
+              "type": "ID",
+              "operator": "EQUALS",
+              "value": "11920"
+            }
+          },
+          "children": [
+            {
+              "id": "IF_SPECIAL_ATTACK_ENERGY_IS",
+              "properties": {
+                "energy": {
+                  "class": "Number",
+                  "operator": "EQUALS",
+                  "value": "100"
+                }
+              },
+              "children": [
+                {
+                  "id": "ENABLE_SPECIAL_ATTACK"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "IF_INVENTORY_IS_NOT_FULL",
+          "children": [
+            {
+              "id": "IF_GAME_OBJECT_DOES_NOT_EXIST",
+              "customDisplayName": "The Barronite Exhausted",
+              "properties": {
+                "Filter Object By": {
+                  "class": "GameObject",
+                  "logic": "NONE",
+                  "type": "ID",
+                  "operator": "IS_IN_LIST",
+                  "value": "var(barronite_deposits)",
+                  "filters": [
+                    {
+                      "class": "GameObject",
+                      "logic": "AND",
+                      "type": "DISTANCE_TO_PLAYER",
+                      "operator": "EQUALS",
+                      "value": "1"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "id": "OR_BRANCH"
+            },
+            {
+              "id": "IF_LOCAL_PLAYER_MATCHES",
+              "properties": {
+                "Filter By": {
+                  "class": "Player",
+                  "logic": "NONE",
+                  "type": "NOT_ANIMATING",
+                  "operator": "EQUALS",
+                  "filters": [
+                    {
+                      "class": "Player",
+                      "logic": "AND",
+                      "type": "NOT_MOVING",
+                      "operator": "EQUALS"
+                    }
+                  ]
+                }
+              },
+              "children": [
+                {
+                  "id": "GAME_OBJECT_INTERACT",
+                  "properties": {
+                    "Filter Object By": {
+                      "class": "GameObject",
+                      "logic": "NONE",
+                      "type": "ID",
+                      "operator": "IS_IN_LIST",
+                      "value": "var(barronite_deposits)"
+                    },
+                    "Action": "Mine"
+                  }
+                },
+                {
+                  "id": "SLEEP_NORMAL_DISTRIBUTION",
+                  "properties": {
+                    "Mean": "2000",
+                    "Variance": "1000"
+                  }
+                },
+                {
+                  "id": "IF_RANDOM_NUMBER_IS",
+                  "properties": {
+                    "number": {
+                      "class": "Number",
+                      "operator": "LESS_THAN",
+                      "value": "4"
+                    },
+                    "Minimum": "1",
+                    "Maximum": "5"
+                  },
+                  "children": [
+                    {
+                      "id": "MOVE_MOUSE_OFFSCREEN"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "ELSE_BRANCH",
+              "children": [
+                {
+                  "id": "SLEEP_NORMAL_DISTRIBUTION",
+                  "properties": {
+                    "Mean": "5000",
+                    "Variance": "2000"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "IF_LOCAL_PLAYER_MATCHES",
+      "customDisplayName": "If in Crushing Area",
+      "properties": {
+        "Filter By": {
+          "class": "Player",
+          "logic": "NONE",
+          "type": "IN_AREA",
+          "operator": "EQUALS",
+          "value": "var(crush_area)"
+        }
+      },
+      "children": [
+        {
+          "id": "IF_INVENTORY_CONTAINS_ANY",
+          "properties": {
+            "Filter Item By": {
+              "class": "Item",
+              "logic": "NONE",
+              "type": "ID",
+              "operator": "IS_IN_LIST",
+              "value": "var(crush_object_ids)"
+            }
+          },
+          "children": [
+            {
+              "id": "SET_VARIABLE",
+              "properties": {
+                "Value": "True",
+                "Variable name": "do_crushing"
+              }
+            }
+          ]
+        },
+        {
+          "id": "IF_INVENTORY_DOES_NOT_CONTAIN_ANY",
+          "properties": {
+            "Filter Item By": {
+              "class": "Item",
+              "logic": "NONE",
+              "type": "ID",
+              "operator": "IS_IN_LIST",
+              "value": "var(crush_object_ids)"
+            }
+          },
+          "children": [
+            {
+              "id": "SET_VARIABLE",
+              "properties": {
+                "Value": "False",
+                "Variable name": "do_crushing"
+              }
+            }
+          ]
+        },
+        {
+          "id": "IF_VARIABLE_IS",
+          "properties": {
+            "Variable name": "do_crushing",
+            "Filter Value By": {
+              "class": "Variable",
+              "logic": "NONE",
+              "type": "AS_BOOLEAN",
+              "operator": "IS_TRUE"
+            }
+          },
+          "children": [
+            {
+              "id": "IF_LOCAL_PLAYER_MATCHES",
+              "properties": {
+                "Filter By": {
+                  "class": "Player",
+                  "logic": "NONE",
+                  "type": "NOT_MOVING",
+                  "operator": "EQUALS",
+                  "filters": [
+                    {
+                      "class": "Player",
+                      "logic": "AND",
+                      "type": "NOT_ANIMATING",
+                      "operator": "EQUALS"
+                    }
+                  ]
+                }
+              },
+              "children": [
+                {
+                  "id": "INTERACT_WITH_INVENTORY_ITEM",
+                  "properties": {
+                    "Filter Item By": {
+                      "class": "Item",
+                      "logic": "NONE",
+                      "type": "ID",
+                      "operator": "IS_IN_LIST",
+                      "value": "var(crush_object_ids)"
+                    },
+                    "Action": "Use"
+                  }
+                },
+                {
+                  "id": "SLEEP_NORMAL_DISTRIBUTION",
+                  "properties": {
+                    "Mean": "350",
+                    "Variance": "250"
+                  }
+                },
+                {
+                  "id": "GAME_OBJECT_INTERACT",
+                  "properties": {
+                    "Filter Object By": {
+                      "class": "GameObject",
+                      "logic": "NONE",
+                      "type": "ID",
+                      "operator": "EQUALS",
+                      "value": "var(barronite_crusher)"
+                    },
+                    "Action": "Use"
+                  }
+                },
+                {
+                  "id": "SLEEP_NORMAL_DISTRIBUTION",
+                  "properties": {
+                    "Mean": "500",
+                    "Variance": "300"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "ELSE_BRANCH",
+              "children": [
+                {
+                  "id": "SLEEP_NORMAL_DISTRIBUTION",
+                  "properties": {
+                    "Mean": "500",
+                    "Variance": "300"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ELSE_BRANCH",
+          "children": [
+            {
+              "id": "WALK_TO_AREA",
+              "properties": {
+                "Area": "var(bank_area)"
+              }
+            },
+            {
+              "id": "SET_VARIABLE",
+              "properties": {
+                "Value": "True",
+                "Variable name": "do_banking"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "IF_LOCAL_PLAYER_MATCHES",
+      "customDisplayName": "If in banking area",
+      "properties": {
+        "Filter By": {
+          "class": "Player",
+          "logic": "NONE",
+          "type": "IN_AREA",
+          "operator": "EQUALS",
+          "value": "var(bank_area)"
+        }
+      },
+      "children": [
+        {
+          "id": "IF_BANK_IS_OPEN",
+          "children": [
+            {
+              "id": "BANK_DEPOSIT_ALL_EXCEPT",
+              "properties": {
+                "Filter Item By": {
+                  "class": "Item",
+                  "logic": "NONE",
+                  "type": "ID",
+                  "operator": "EQUALS",
+                  "value": "2347"
+                }
+              }
+            },
+            {
+              "id": "SLEEP_NORMAL_DISTRIBUTION",
+              "properties": {
+                "Mean": "450",
+                "Variance": "250"
+              }
+            }
+          ]
+        },
+        {
+          "id": "ELSE_BRANCH",
+          "children": [
+            {
+              "id": "IF_VARIABLE_IS",
+              "properties": {
+                "Variable name": "do_banking",
+                "Filter Value By": {
+                  "class": "Variable",
+                  "logic": "NONE",
+                  "type": "AS_BOOLEAN",
+                  "operator": "IS_TRUE"
+                }
+              },
+              "children": [
+                {
+                  "id": "OPEN_BANK"
+                },
+                {
+                  "id": "SLEEP_NORMAL_DISTRIBUTION",
+                  "properties": {
+                    "Mean": "3000",
+                    "Variance": "1500"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "IF_INVENTORY_COUNT",
+          "properties": {
+            "Filter Item By": {
+              "class": "Item",
+              "logic": "NONE",
+              "type": "ID",
+              "operator": "DOES_NOT_EQUAL",
+              "value": "2347"
+            },
+            "count": {
+              "class": "Number",
+              "operator": "LESS_THAN",
+              "value": "1"
+            }
+          },
+          "children": [
+            {
+              "id": "SET_VARIABLE",
+              "properties": {
+                "Value": "false",
+                "Variable name": "do_banking"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "IF_INVENTORY_IS_FULL",
+      "customDisplayName": "Go to crushing area if inventory full",
+      "children": [
+        {
+          "id": "IF_LOCAL_PLAYER_MATCHES",
+          "properties": {
+            "Filter By": {
+              "class": "Player",
+              "logic": "NONE",
+              "type": "NOT_MOVING",
+              "operator": "EQUALS",
+              "filters": [
+                {
+                  "class": "Player",
+                  "logic": "AND",
+                  "type": "NOT_ANIMATING",
+                  "operator": "EQUALS"
+                }
+              ]
+            }
+          },
+          "children": [
+            {
+              "id": "WALK_TO_AREA",
+              "properties": {
+                "Area": "var(crush_area)"
+              }
+            },
+            {
+              "id": "SLEEP_NORMAL_DISTRIBUTION",
+              "properties": {
+                "Mean": "500",
+                "Variance": "300"
+              }
+            }
+          ]
+        },
+        {
+          "id": "ELSE_BRANCH",
+          "children": [
+            {
+              "id": "SLEEP_NORMAL_DISTRIBUTION",
+              "properties": {
+                "Mean": "500",
+                "Variance": "300"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ELSE_BRANCH",
+      "customDisplayName": "Traverse to mining area if not already there",
+      "children": [
+        {
+          "id": "IF_LOCAL_PLAYER_MATCHES",
+          "properties": {
+            "Filter By": {
+              "class": "Player",
+              "logic": "NONE",
+              "type": "NOT_IN_AREA",
+              "operator": "EQUALS",
+              "value": "var(crush_area)"
+            }
+          }
+        },
+        {
+          "id": "AND_BRANCH"
+        },
+        {
+          "id": "IF_LOCAL_PLAYER_MATCHES",
+          "properties": {
+            "Filter By": {
+              "class": "Player",
+              "logic": "NONE",
+              "type": "NOT_IN_AREA",
+              "operator": "EQUALS",
+              "value": "var(northern_mining_area)"
+            }
+          },
+          "children": [
+            {
+              "id": "IF_VARIABLE_IS",
+              "properties": {
+                "Variable name": "do_banking",
+                "Filter Value By": {
+                  "class": "Variable",
+                  "logic": "NONE",
+                  "type": "AS_BOOLEAN",
+                  "operator": "IS_FALSE"
+                }
+              },
+              "children": [
+                {
+                  "id": "IF_TIMER_IS_READY",
+                  "properties": {
+                    "Seconds": "1"
+                  }
+                },
+                {
+                  "id": "OR_BRANCH"
+                },
+                {
+                  "id": "IF_LOCAL_PLAYER_MATCHES",
+                  "properties": {
+                    "Filter By": {
+                      "class": "Player",
+                      "logic": "NONE",
+                      "type": "NOT_MOVING",
+                      "operator": "EQUALS",
+                      "filters": [
+                        {
+                          "class": "Player",
+                          "logic": "AND",
+                          "type": "NOT_ANIMATING",
+                          "operator": "EQUALS"
+                        }
+                      ]
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "WALK_TO_AREA",
+                      "properties": {
+                        "Area": "var(northern_mining_area)"
+                      }
+                    },
+                    {
+                      "id": "ELSE_BRANCH",
+                      "children": [
+                        {
+                          "id": "WALK_TO_AREA",
+                          "properties": {
+                            "Area": "var(transition_area)"
+                          }
+                        },
+                        {
+                          "id": "ELSE_BRANCH",
+                          "children": [
+                            {
+                              "id": "WALK_TO_TILE",
+                              "properties": {
+                                "Tile": "(2936, 5795, 0)"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "SLEEP_NORMAL_DISTRIBUTION",
+                      "properties": {
+                        "Mean": "450",
+                        "Variance": "200"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_BANK_IS_OPEN",
+                  "children": [
+                    {
+                      "id": "CLOSE_BANK"
+                    },
+                    {
+                      "id": "SLEEP_NORMAL_DISTRIBUTION",
+                      "properties": {
+                        "Mean": "450",
+                        "Variance": "200"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "ELSE_BRANCH",
+              "children": [
+                {
+                  "id": "IF_BANK_IS_NOT_OPEN",
+                  "children": [
+                    {
+                      "id": "IF_LOCAL_PLAYER_MATCHES",
+                      "properties": {
+                        "Filter By": {
+                          "class": "Player",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS"
+                        }
+                      }
+                    },
+                    {
+                      "id": "WALK_TO_AREA",
+                      "properties": {
+                        "Area": "var(bank_area)"
+                      },
+                      "children": [
+                        {
+                          "id": "SLEEP_NORMAL_DISTRIBUTION",
+                          "properties": {
+                            "Mean": "450",
+                            "Variance": "200"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,842 @@
+{
+  "sleep": "500",
+  "name": "WarriorGuildShop(FOOD)",
+  "version": 1.0,
+  "metadata": {
+    "network-id": "33",
+    "network-downloaded-at": "1721665218887"
+  },
+  "actions": [
+    {
+      "id": "IF_LOGGED_IN",
+      "children": [
+        {
+          "id": "IF_BREAK_IS_PENDING",
+          "children": [
+            {
+              "id": "ENABLE_BREAKS"
+            }
+          ]
+        },
+        {
+          "id": "IF_BREAK_IS_NOT_PENDING",
+          "children": [
+            {
+              "id": "IF_INVENTORY_IS_FULL",
+              "children": [
+                {
+                  "id": "IF_BANK_IS_NOT_OPEN",
+                  "children": [
+                    {
+                      "id": "OPEN_BANK"
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_BANK_IS_OPEN",
+                  "children": [
+                    {
+                      "id": "BANK_DEPOSIT_ALL_EXCEPT",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "ID",
+                          "operator": "EQUALS",
+                          "value": "995"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "CLOSE_BANK"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "IF_INVENTORY_IS_NOT_FULL",
+              "children": [
+                {
+                  "id": "IF_NPC_EXISTS",
+                  "properties": {
+                    "Filter NPC By": {
+                      "class": "NPC",
+                      "logic": "NONE",
+                      "type": "ID",
+                      "operator": "EQUALS",
+                      "value": "2469",
+                      "filters": [
+                        {
+                          "class": "NPC",
+                          "logic": "AND",
+                          "type": "DISTANCE_TO_PLAYER",
+                          "operator": "GREATER_THAN",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "IF_INVENTORY_COUNT",
+                      "properties": {
+                        "count": {
+                          "class": "Number",
+                          "operator": "GREATER_THAN",
+                          "value": "1000"
+                        },
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "ID",
+                          "operator": "EQUALS",
+                          "value": "995"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "WALK_TOWARDS_NPC",
+                          "properties": {
+                            "Filter NPC By": {
+                              "class": "NPC",
+                              "logic": "NONE",
+                              "type": "ID",
+                              "operator": "EQUALS",
+                              "value": "2469"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "SLEEP_NORMAL_DISTRIBUTION",
+                              "properties": {
+                                "Mean": "1850",
+                                "Variance": "400"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_NPC_EXISTS",
+                  "properties": {
+                    "Filter NPC By": {
+                      "class": "NPC",
+                      "logic": "NONE",
+                      "type": "ID",
+                      "operator": "EQUALS",
+                      "value": "2469",
+                      "filters": [
+                        {
+                          "class": "NPC",
+                          "logic": "AND",
+                          "type": "DISTANCE_TO_PLAYER",
+                          "operator": "LESS_THAN_OR_EQUAL",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "IF_SHOP_IS_NOT_OPEN",
+                      "children": [
+                        {
+                          "id": "IF_INVENTORY_COUNT",
+                          "properties": {
+                            "count": {
+                              "class": "Number",
+                              "operator": "GREATER_THAN",
+                              "value": "1000"
+                            },
+                            "Filter Item By": {
+                              "class": "Item",
+                              "logic": "NONE",
+                              "type": "ID",
+                              "operator": "EQUALS",
+                              "value": "995"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "IF_VARIABLE_IS",
+                              "properties": {
+                                "Filter Value By": {
+                                  "class": "Variable",
+                                  "logic": "NONE",
+                                  "type": "AS_BOOLEAN",
+                                  "operator": "IS_FALSE"
+                                },
+                                "Variable name": "NeedToHop"
+                              },
+                              "children": [
+                                {
+                                  "id": "NPC_INTERACT",
+                                  "properties": {
+                                    "Action": "Trade",
+                                    "Filter NPC By": {
+                                      "class": "NPC",
+                                      "logic": "NONE",
+                                      "type": "NAME",
+                                      "operator": "EQUALS",
+                                      "value": "Lidio"
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "SLEEP_UNTIL_GAME_TICK"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_INVENTORY_COUNT",
+                      "properties": {
+                        "count": {
+                          "class": "Number",
+                          "operator": "GREATER_THAN",
+                          "value": "1000"
+                        },
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "ID",
+                          "operator": "EQUALS",
+                          "value": "995"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "IF_SHOP_IS_OPEN",
+                          "children": [
+                            {
+                              "id": "IF_VARIABLE_IS",
+                              "properties": {
+                                "Filter Value By": {
+                                  "class": "Variable",
+                                  "logic": "NONE",
+                                  "type": "AS_BOOLEAN",
+                                  "operator": "IS_FALSE"
+                                },
+                                "Variable name": "NeedToHop"
+                              },
+                              "children": [
+                                {
+                                  "id": "IF_ITEM_COUNT",
+                                  "properties": {
+                                    "Filter Item By": {
+                                      "class": "Item",
+                                      "logic": "NONE",
+                                      "type": "NAME",
+                                      "operator": "EQUALS",
+                                      "value": "Plain pizza",
+                                      "filters": [
+                                        {
+                                          "class": "Item",
+                                          "logic": "OR",
+                                          "type": "NAME",
+                                          "operator": "EQUALS",
+                                          "value": "Potato with cheese"
+                                        }
+                                      ]
+                                    },
+                                    "amount": {
+                                      "class": "Number",
+                                      "operator": "GREATER_THAN",
+                                      "value": "0"
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "BUY_SHOP_ITEM",
+                                      "properties": {
+                                        "Filter Item By": {
+                                          "class": "Item",
+                                          "logic": "NONE",
+                                          "type": "NAME",
+                                          "operator": "EQUALS",
+                                          "value": "Plain pizza"
+                                        },
+                                        "Amount": "10"
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "BUY_SHOP_ITEM",
+                                          "properties": {
+                                            "Filter Item By": {
+                                              "class": "Item",
+                                              "logic": "NONE",
+                                              "type": "NAME",
+                                              "operator": "EQUALS",
+                                              "value": "Potato with cheese"
+                                            },
+                                            "Amount": "10"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "id": "ELSE_BRANCH",
+                                  "children": [
+                                    {
+                                      "id": "WIDGET_INTERACT",
+                                      "properties": {
+                                        "Action": "Close",
+                                        "Find Widget By": {
+                                          "class": "Widget",
+                                          "logic": "NONE",
+                                          "type": "WIDGET_ID",
+                                          "operator": "EQUALS",
+                                          "value": "300, 1, 11"
+                                        }
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "SLEEP_UNTIL_GAME_TICK",
+                                          "children": [
+                                            {
+                                              "id": "SET_VARIABLE",
+                                              "properties": {
+                                                "Value": "True",
+                                                "Variable name": "NeedToHop"
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS_NOT_SET",
+                      "properties": {
+                        "Variable name": "NeedToHop"
+                      },
+                      "children": [
+                        {
+                          "id": "IF_SHOP_IS_NOT_OPEN",
+                          "children": [
+                            {
+                              "id": "IF_INVENTORY_COUNT",
+                              "properties": {
+                                "count": {
+                                  "class": "Number",
+                                  "operator": "GREATER_THAN",
+                                  "value": "1000"
+                                },
+                                "Filter Item By": {
+                                  "class": "Item",
+                                  "logic": "NONE",
+                                  "type": "ID",
+                                  "operator": "EQUALS",
+                                  "value": "995"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "NPC_INTERACT",
+                                  "properties": {
+                                    "Action": "Trade",
+                                    "Filter NPC By": {
+                                      "class": "NPC",
+                                      "logic": "NONE",
+                                      "type": "NAME",
+                                      "operator": "EQUALS",
+                                      "value": "Lidio"
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "SLEEP_UNTIL_GAME_TICK"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "id": "IF_SHOP_IS_OPEN",
+                          "children": [
+                            {
+                              "id": "IF_INVENTORY_COUNT",
+                              "properties": {
+                                "count": {
+                                  "class": "Number",
+                                  "operator": "GREATER_THAN",
+                                  "value": "1000"
+                                },
+                                "Filter Item By": {
+                                  "class": "Item",
+                                  "logic": "NONE",
+                                  "type": "ID",
+                                  "operator": "EQUALS",
+                                  "value": "995"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "IF_ITEM_COUNT",
+                                  "properties": {
+                                    "Filter Item By": {
+                                      "class": "Item",
+                                      "logic": "NONE",
+                                      "type": "NAME",
+                                      "operator": "EQUALS",
+                                      "value": "Plain pizza",
+                                      "filters": [
+                                        {
+                                          "class": "Item",
+                                          "logic": "OR",
+                                          "type": "NAME",
+                                          "operator": "EQUALS",
+                                          "value": "Potato with cheese"
+                                        }
+                                      ]
+                                    },
+                                    "amount": {
+                                      "class": "Number",
+                                      "operator": "GREATER_THAN",
+                                      "value": "0"
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "BUY_SHOP_ITEM",
+                                      "properties": {
+                                        "Filter Item By": {
+                                          "class": "Item",
+                                          "logic": "NONE",
+                                          "type": "NAME",
+                                          "operator": "EQUALS",
+                                          "value": "Plain pizza"
+                                        },
+                                        "Amount": "10"
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "BUY_SHOP_ITEM",
+                                          "properties": {
+                                            "Filter Item By": {
+                                              "class": "Item",
+                                              "logic": "NONE",
+                                              "type": "NAME",
+                                              "operator": "EQUALS",
+                                              "value": "Potato with cheese"
+                                            },
+                                            "Amount": "10"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "id": "IF_ITEM_COUNT",
+                              "properties": {
+                                "Filter Item By": {
+                                  "class": "Item",
+                                  "logic": "NONE",
+                                  "type": "NAME",
+                                  "operator": "EQUALS",
+                                  "value": "Plain pizza",
+                                  "filters": [
+                                    {
+                                      "class": "Item",
+                                      "logic": "OR",
+                                      "type": "NAME",
+                                      "operator": "EQUALS",
+                                      "value": "Potato with cheese"
+                                    }
+                                  ]
+                                },
+                                "amount": {
+                                  "class": "Number",
+                                  "operator": "EQUALS",
+                                  "value": "0"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "WIDGET_INTERACT",
+                                  "properties": {
+                                    "Action": "Close",
+                                    "Find Widget By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "WIDGET_ID",
+                                      "operator": "EQUALS",
+                                      "value": "300, 1, 11"
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "SLEEP_UNTIL_GAME_TICK",
+                                      "children": [
+                                        {
+                                          "id": "SET_VARIABLE",
+                                          "properties": {
+                                            "Value": "True",
+                                            "Variable name": "NeedToHop"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_BOOLEAN",
+                          "operator": "IS_TRUE"
+                        },
+                        "Variable name": "NeedToHop"
+                      },
+                      "children": [
+                        {
+                          "id": "IF_SHOP_IS_NOT_OPEN",
+                          "children": [
+                            {
+                              "id": "HOP_TO_RANDOM_WORLD",
+                              "properties": {
+                                "Ignore combat check": false,
+                                "Filter World By": {
+                                  "class": "World",
+                                  "logic": "NONE",
+                                  "type": "WORLD_IS_MEMBERS",
+                                  "operator": "EQUALS",
+                                  "filters": [
+                                    {
+                                      "class": "World",
+                                      "logic": "AND",
+                                      "type": "WORLD_IS_NORMAL",
+                                      "operator": "EQUALS"
+                                    },
+                                    {
+                                      "class": "World",
+                                      "logic": "AND",
+                                      "type": "WORLD_MINIMUM_LEVEL",
+                                      "operator": "LESS_THAN_OR_EQUAL",
+                                      "value": "0"
+                                    },
+                                    {
+                                      "class": "World",
+                                      "logic": "AND",
+                                      "type": "WORLD_IS_NOT_PVP",
+                                      "operator": "EQUALS"
+                                    }
+                                  ]
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "SLEEP_WHILE_WORLD_HOPPING",
+                                  "children": [
+                                    {
+                                      "id": "SET_VARIABLE",
+                                      "properties": {
+                                        "Value": "False",
+                                        "Variable name": "NeedToHop"
+                                      }
+                                    },
+                                    {
+                                      "id": "SLEEP_NORMAL_DISTRIBUTION",
+                                      "properties": {
+                                        "Mean": "5000",
+                                        "Variance": "4200"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "CREATE_LABEL",
+              "properties": {
+                "Label": "Variable"
+              },
+              "children": [
+                {
+                  "id": "IF_BANK_CONTAINS",
+                  "properties": {
+                    "Filter Item By": {
+                      "class": "Item",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "CONTAINS",
+                      "value": "Potato"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "IF_BANK_COUNT",
+                      "properties": {
+                        "count": {
+                          "class": "Number",
+                          "operator": "GREATER_THAN",
+                          "value": "0"
+                        },
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "CONTAINS",
+                          "value": "Potato with cheese"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE_TO_LAST_OUTPUT",
+                          "properties": {
+                            "Variable name": "Potato"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_BANK_CONTAINS",
+                  "properties": {
+                    "Filter Item By": {
+                      "class": "Item",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "CONTAINS",
+                      "value": "Plain"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "IF_BANK_COUNT",
+                      "properties": {
+                        "count": {
+                          "class": "Number",
+                          "operator": "GREATER_THAN",
+                          "value": "0"
+                        },
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "CONTAINS",
+                          "value": "Plain"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE_TO_LAST_OUTPUT",
+                          "properties": {
+                            "Variable name": "Plain"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_RUN_IS_NOT_ENABLED",
+                  "children": [
+                    {
+                      "id": "IF_RUN_ENERGY_IS",
+                      "properties": {
+                        "energy": {
+                          "class": "Number",
+                          "operator": "GREATER_THAN",
+                          "value": "8"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "ENABLE_RUN"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_INVENTORY_COUNT",
+                  "properties": {
+                    "count": {
+                      "class": "Number",
+                      "operator": "LESS_THAN_OR_EQUALS",
+                      "value": "1000"
+                    },
+                    "Filter Item By": {
+                      "class": "Item",
+                      "logic": "NONE",
+                      "type": "ID",
+                      "operator": "EQUALS",
+                      "value": "995"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "DISABLE_LOGIN_SOLVER"
+                    },
+                    {
+                      "id": "IF_TAB_IS_NOT_OPEN",
+                      "properties": {
+                        "Tab": {
+                          "class": "Tab",
+                          "value": "LOGOUT"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "OPEN_TAB",
+                          "properties": {
+                            "Tab": {
+                              "class": "Tab",
+                              "value": "LOGOUT"
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_TAB_IS_OPEN",
+                      "properties": {
+                        "Tab": {
+                          "class": "Tab",
+                          "value": "LOGOUT"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "DELETE_ALL_VARIABLES",
+                          "children": [
+                            {
+                              "id": "LOGOUT",
+                              "children": [
+                                {
+                                  "id": "SHOW_DIALOG_MESSAGE",
+                                  "properties": {
+                                    "Message": "NeedMoreGPS Less than 1k is on hand"
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "SLEEP_NORMAL_DISTRIBUTION",
+                                      "properties": {
+                                        "Mean": "10000",
+                                        "Variance": "5000"
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "STOP_SCRIPT"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "PAINT_ROOT",
+      "properties": {
+        "Hide standard paint": true
+      },
+      "children": [
+        {
+          "id": "DRAW_USERNAME_CENSOR_BAR"
+        },
+        {
+          "id": "DRAW_TEXT",
+          "properties": {
+            "X": "10",
+            "Font Size": "17",
+            "Y": "472",
+            "Text": "(BankedAMT)CheesyPotato(num(var(Potato)))PlainPizza(num(var(Plain)))",
+            "Font": {
+              "class": "Font",
+              "value": "Dialog"
+            },
+            "Color": {
+              "class": "Color",
+              "value": -16711923
+            }
+          }
+        },
+        {
+          "id": "DRAW_TEXT",
+          "properties": {
+            "X": "0",
+            "Font Size": "20",
+            "Y": "338",
+            "Text": "RunTime(runtime())",
+            "Font": {
+              "class": "Font",
+              "value": "Inter V"
+            },
+            "Color": {
+              "class": "Color",
+              "value": -65519
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "IF_NOT_LOGGED_IN",
+      "children": [
+        {
+          "id": "IF_BREAK_IS_NOT_PENDING",
+          "children": [
+            {
+              "id": "ENABLE_LOGIN_SOLVER"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

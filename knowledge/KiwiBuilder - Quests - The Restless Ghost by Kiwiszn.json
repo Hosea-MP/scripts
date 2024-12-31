@@ -1,0 +1,2809 @@
+{
+  "sleep": "300",
+  "name": "KiwiBuilder - Quests - The Restless Ghost",
+  "version": 1.0,
+  "metadata": {
+    "network-id": "20",
+    "network-downloaded-at": "1721665173661"
+  },
+  "actions": [
+    {
+      "id": "COMMENT",
+      "properties": {
+        "Comment": "Running module, basic for now"
+      },
+      "children": [
+        {
+          "id": "CUSTOM_c66a6022-fdf3-4748-8f28-0ac454305825"
+        }
+      ]
+    },
+    {
+      "id": "COMMENT",
+      "properties": {
+        "Comment": "Variables \u0026 Locations"
+      },
+      "children": [
+        {
+          "id": "IF_FIRST_RUN",
+          "customDisplayName": "Locations",
+          "children": [
+            {
+              "id": "SET_VARIABLE",
+              "properties": {
+                "Value": "(3143, 3172,0),(3152, 3178,0)",
+                "Variable name": "Area_Lumbridge_Father_Aereck"
+              }
+            },
+            {
+              "id": "SET_VARIABLE",
+              "properties": {
+                "Value": "(3247,3195,0),(3252,3190,0)",
+                "Variable name": "Area_Lumbridge_Church_Ghost"
+              }
+            },
+            {
+              "id": "SET_VARIABLE",
+              "properties": {
+                "Value": "(3112,9564,0),(3121,9569,0)",
+                "Variable name": "Area_WizardTower_B1F_Altar"
+              }
+            },
+            {
+              "id": "SET_VARIABLE",
+              "properties": {
+                "Value": "(3144,3177,0),(3151,3173,0)",
+                "Variable name": "Area_Lumbridge_Swamp_Father_Urhney"
+              }
+            },
+            {
+              "id": "SET_VARIABLE",
+              "properties": {
+                "Value": "(3240,3215,0),(3247,3204,0)",
+                "Variable name": "Area_Lumbridge_Church"
+              }
+            }
+          ]
+        },
+        {
+          "id": "COMMENT",
+          "properties": {
+            "Comment": "Quest Stages and settings"
+          },
+          "children": [
+            {
+              "id": "IF_EQUIPPED_ITEM_MATCHES",
+              "customDisplayName": "If ghost speak is equipped",
+              "properties": {
+                "Filter Item By": {
+                  "class": "Item",
+                  "logic": "NONE",
+                  "type": "ID",
+                  "operator": "EQUALS",
+                  "value": "552"
+                }
+              },
+              "children": [
+                {
+                  "id": "SET_VARIABLE",
+                  "properties": {
+                    "Value": "true",
+                    "Variable name": "Item_Ghostspeak_Amulet_Equipped"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "ELSE_BRANCH",
+              "children": [
+                {
+                  "id": "SET_VARIABLE",
+                  "properties": {
+                    "Value": "false",
+                    "Variable name": "Item_Ghostspeak_Amulet_Equipped"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "IF_PLAYER_SETTING_MATCHES",
+              "properties": {
+                "value": {
+                  "class": "Number",
+                  "operator": "EQUALS",
+                  "value": "1"
+                },
+                "Player Setting": "107"
+              },
+              "children": [
+                {
+                  "id": "SET_VARIABLE",
+                  "properties": {
+                    "Value": "1",
+                    "Variable name": "Quest_Stage"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "IF_PLAYER_SETTING_MATCHES",
+              "properties": {
+                "value": {
+                  "class": "Number",
+                  "operator": "EQUALS",
+                  "value": "2"
+                },
+                "Player Setting": "107"
+              },
+              "children": [
+                {
+                  "id": "SET_VARIABLE",
+                  "properties": {
+                    "Value": "2",
+                    "Variable name": "Quest_Stage"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "IF_PLAYER_SETTING_MATCHES",
+              "properties": {
+                "value": {
+                  "class": "Number",
+                  "operator": "EQUALS",
+                  "value": "3"
+                },
+                "Player Setting": "107"
+              },
+              "children": [
+                {
+                  "id": "SET_VARIABLE",
+                  "properties": {
+                    "Value": "3",
+                    "Variable name": "Quest_Stage"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "IF_PLAYER_SETTING_MATCHES",
+              "properties": {
+                "value": {
+                  "class": "Number",
+                  "operator": "EQUALS",
+                  "value": "4"
+                },
+                "Player Setting": "107"
+              },
+              "children": [
+                {
+                  "id": "SET_VARIABLE",
+                  "properties": {
+                    "Value": "4",
+                    "Variable name": "Quest_Stage"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "IF_LOGGED_IN",
+              "children": [
+                {
+                  "id": "IF_QUEST_IS_FINISHED",
+                  "properties": {
+                    "Quest": {
+                      "class": "FreeQuest",
+                      "value": "THE_RESTLESS_GHOST"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "IF_VARIABLE_IS_NOT_SET",
+                      "properties": {
+                        "Variable name": "UsingAccountBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "LOG",
+                          "properties": {
+                            "Message": "The Restless Ghost completed"
+                          },
+                          "children": [
+                            {
+                              "id": "SHOW_DIALOG_MESSAGE",
+                              "properties": {
+                                "Message": "The restless ghost has been completed. Report bugs to Kiwiszn"
+                              },
+                              "children": [
+                                {
+                                  "id": "STOP_SCRIPT"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "COMMENT",
+          "properties": {
+            "Comment": "Banking checks(Checks for ghost speak amulet if already started)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "COMMENT",
+      "properties": {
+        "Comment": "Ghostspeak amulet stuff"
+      },
+      "children": [
+        {
+          "id": "IF_VARIABLE_IS",
+          "customDisplayName": "If at Stage 2 or further",
+          "properties": {
+            "Filter Value By": {
+              "class": "Variable",
+              "logic": "NONE",
+              "type": "AS_NUMBER",
+              "operator": "GREATER_THAN_OR_EQUAL",
+              "value": "2"
+            },
+            "Variable name": "Quest_Stage"
+          },
+          "children": [
+            {
+              "id": "IF_INVENTORY_DOES_NOT_CONTAIN_ANY",
+              "properties": {
+                "Filter Item By": {
+                  "class": "Item",
+                  "logic": "NONE",
+                  "type": "NAME",
+                  "operator": "EQUALS",
+                  "value": "Ghostspeak amulet"
+                }
+              }
+            },
+            {
+              "id": "AND_BRANCH"
+            },
+            {
+              "id": "IF_EQUIPPED_ITEM_DOES_NOT_MATCH",
+              "properties": {
+                "Filter Item By": {
+                  "class": "Item",
+                  "logic": "NONE",
+                  "type": "NAME",
+                  "operator": "EQUALS",
+                  "value": "Ghostspeak amulet"
+                }
+              },
+              "children": [
+                {
+                  "id": "SET_VARIABLE",
+                  "properties": {
+                    "Value": "true",
+                    "Variable name": "Ghostspeak_Missing"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "ELSE_BRANCH",
+              "children": [
+                {
+                  "id": "IF_EQUIPPED_ITEM_DOES_NOT_MATCH",
+                  "properties": {
+                    "Filter Item By": {
+                      "class": "Item",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Ghostspeak amulet"
+                    }
+                  }
+                },
+                {
+                  "id": "AND_BRANCH"
+                },
+                {
+                  "id": "IF_INVENTORY_CONTAINS_ANY",
+                  "properties": {
+                    "Filter Item By": {
+                      "class": "Item",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Ghostspeak amulet"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "INTERACT_WITH_INVENTORY_ITEM",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "Ghostspeak amulet"
+                        },
+                        "Action": "Wear"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_EQUIPPED_ITEM_MATCHES",
+                  "properties": {
+                    "Filter Item By": {
+                      "class": "Item",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Ghostspeak amulet"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "SET_VARIABLE",
+                      "properties": {
+                        "Value": "false",
+                        "Variable name": "Ghostspeak_Missing"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "COMMENT",
+          "properties": {
+            "Comment": "Go get the ghostspeak if missing"
+          },
+          "children": [
+            {
+              "id": "WHILE_VARIABLE_MATCHES",
+              "properties": {
+                "Filter Value By": {
+                  "class": "Variable",
+                  "logic": "NONE",
+                  "type": "AS_BOOLEAN",
+                  "operator": "IS_TRUE"
+                },
+                "Variable name": "Ghostspeak_Missing"
+              },
+              "children": [
+                {
+                  "id": "CUSTOM_c66a6022-fdf3-4748-8f28-0ac454305825"
+                },
+                {
+                  "id": "IF_LOCAL_PLAYER_MATCHES",
+                  "customDisplayName": "If in Father area",
+                  "properties": {
+                    "Filter By": {
+                      "class": "Player",
+                      "logic": "NONE",
+                      "type": "IN_AREA",
+                      "operator": "EQUALS",
+                      "value": "v(Area_Lumbridge_Swamp_Father_Urhney)"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "IF_NOT_IN_DIALOGUE",
+                      "children": [
+                        {
+                          "id": "NPC_INTERACT",
+                          "properties": {
+                            "Force left click": false,
+                            "Filter NPC By": {
+                              "class": "NPC",
+                              "logic": "NONE",
+                              "type": "ID",
+                              "operator": "EQUALS",
+                              "value": "923"
+                            },
+                            "Don\u0027t walk to NPC": false
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_LOCAL_PLAYER_MATCHES",
+                  "customDisplayName": "If not at Father area",
+                  "properties": {
+                    "Filter By": {
+                      "class": "Player",
+                      "logic": "NONE",
+                      "type": "NOT_IN_AREA",
+                      "operator": "EQUALS",
+                      "value": "v(Area_Lumbridge_Swamp_Father_Urhney)"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "WALK_TO_AREA",
+                      "properties": {
+                        "Area": "v(Area_Lumbridge_Swamp_Father_Urhney)"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_IN_DIALOGUE",
+                  "children": [
+                    {
+                      "id": "IF_CAN_CONTINUE",
+                      "children": [
+                        {
+                          "id": "SPACEBAR_TO_CONTINUE"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "CHOOSE_OPTION_CONTAINING",
+                  "properties": {
+                    "Text": "I\u0027ve lost the Amulet of Ghostspeak."
+                  }
+                },
+                {
+                  "id": "IF_INVENTORY_CONTAINS_ANY",
+                  "properties": {
+                    "Filter Item By": {
+                      "class": "Item",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Ghostspeak amulet"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "SET_VARIABLE",
+                      "properties": {
+                        "Value": "false",
+                        "Variable name": "Ghostspeak_Missing"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "COMMENT",
+      "properties": {
+        "Comment": "Conversation module"
+      },
+      "children": [
+        {
+          "id": "IF_IN_DIALOGUE",
+          "children": [
+            {
+              "id": "IF_QUEST_IS_NOT_STARTED",
+              "customDisplayName": "If we havent started The restless ghost",
+              "properties": {
+                "Quest": {
+                  "class": "FreeQuest",
+                  "value": "THE_RESTLESS_GHOST"
+                }
+              },
+              "children": [
+                {
+                  "id": "IF_OPTIONS_ARE_AVAILABLE",
+                  "children": [
+                    {
+                      "id": "CHOOSE_OPTION_CONTAINING",
+                      "properties": {
+                        "Text": "I\u0027m looking for a quest!"
+                      }
+                    },
+                    {
+                      "id": "IF_WIDGET_EXISTS",
+                      "customDisplayName": "Select Yes to start the Restless Ghost Quest",
+                      "properties": {
+                        "Find Widget By": {
+                          "class": "Widget",
+                          "logic": "NONE",
+                          "type": "WIDGET_ID",
+                          "operator": "EQUALS",
+                          "value": "219, 1, 0"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "CHOOSE_OPTION_BY_INDEX",
+                          "properties": {
+                            "Index": "1"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "IF_VARIABLE_IS",
+              "customDisplayName": "Father Uhrey dialogue",
+              "properties": {
+                "Filter Value By": {
+                  "class": "Variable",
+                  "logic": "NONE",
+                  "type": "AS_NUMBER",
+                  "operator": "EQUALS",
+                  "value": "1"
+                },
+                "Variable name": "Quest_Stage"
+              },
+              "children": [
+                {
+                  "id": "IF_OPTIONS_ARE_AVAILABLE",
+                  "children": [
+                    {
+                      "id": "CHOOSE_OPTION_CONTAINING",
+                      "properties": {
+                        "Text": "Father Aereck sent me to talk to you."
+                      }
+                    },
+                    {
+                      "id": "CHOOSE_OPTION_CONTAINING",
+                      "properties": {
+                        "Text": "He\u0027s got a ghost"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "IF_VARIABLE_IS",
+              "customDisplayName": "Restless ghost dialogue",
+              "properties": {
+                "Filter Value By": {
+                  "class": "Variable",
+                  "logic": "NONE",
+                  "type": "AS_TEXT",
+                  "operator": "EQUALS",
+                  "value": "2"
+                },
+                "Variable name": "Quest_Stage"
+              }
+            },
+            {
+              "id": "IF_CAN_CONTINUE",
+              "children": [
+                {
+                  "id": "SPACEBAR_TO_CONTINUE"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "IF_IN_CUTSCENE",
+          "children": [
+            {
+              "id": "IF_CAN_NOT_CONTINUE",
+              "children": [
+                {
+                  "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                  "properties": {
+                    "Max time (seconds)": "65"
+                  },
+                  "children": [
+                    {
+                      "id": "IF_NOT_IN_CUTSCENE"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "COMMENT",
+      "properties": {
+        "Comment": "Quest start\n"
+      },
+      "children": [
+        {
+          "id": "IF_QUEST_IS_NOT_STARTED",
+          "properties": {
+            "Quest": {
+              "class": "FreeQuest",
+              "value": "THE_RESTLESS_GHOST"
+            }
+          },
+          "children": [
+            {
+              "id": "IF_LOCAL_PLAYER_MATCHES",
+              "customDisplayName": "If in lumb area",
+              "properties": {
+                "Filter By": {
+                  "class": "Player",
+                  "logic": "NONE",
+                  "type": "IN_AREA",
+                  "operator": "EQUALS",
+                  "value": "v(Area_Lumbridge_Church)"
+                }
+              },
+              "children": [
+                {
+                  "id": "IF_NPC_EXISTS",
+                  "customDisplayName": "If we can see Father Aereck",
+                  "properties": {
+                    "Filter NPC By": {
+                      "class": "NPC",
+                      "logic": "NONE",
+                      "type": "ID",
+                      "operator": "EQUALS",
+                      "value": "2812"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "IF_NOT_IN_DIALOGUE",
+                      "children": [
+                        {
+                          "id": "NPC_INTERACT",
+                          "properties": {
+                            "Force left click": false,
+                            "Filter NPC By": {
+                              "class": "NPC",
+                              "logic": "NONE",
+                              "type": "ID",
+                              "operator": "EQUALS",
+                              "value": "2812",
+                              "filters": [
+                                {
+                                  "class": "NPC",
+                                  "logic": "AND",
+                                  "type": "WE_ARE_NOT_INTERACTING",
+                                  "operator": "EQUALS"
+                                }
+                              ]
+                            },
+                            "Don\u0027t walk to NPC": false
+                          },
+                          "children": [
+                            {
+                              "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                              "properties": {
+                                "Max time (seconds)": "5"
+                              },
+                              "children": [
+                                {
+                                  "id": "IF_IN_DIALOGUE"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "IF_LOCAL_PLAYER_MATCHES",
+              "customDisplayName": "If not in lumb church",
+              "properties": {
+                "Filter By": {
+                  "class": "Player",
+                  "logic": "NONE",
+                  "type": "NOT_IN_AREA",
+                  "operator": "EQUALS",
+                  "value": "v(Area_Lumbridge_Church)"
+                }
+              },
+              "children": [
+                {
+                  "id": "WALK_TO_AREA",
+                  "properties": {
+                    "Area": "v(Area_Lumbridge_Church)"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "COMMENT",
+      "properties": {
+        "Comment": "Banking before start if low on inv space"
+      },
+      "children": [
+        {
+          "id": "IF_VARIABLE_IS",
+          "properties": {
+            "Filter Value By": {
+              "class": "Variable",
+              "logic": "NONE",
+              "type": "AS_BOOLEAN",
+              "operator": "IS_TRUE"
+            },
+            "Variable name": "ShouldBank"
+          },
+          "children": [
+            {
+              "id": "IF_BANK_IS_OPEN",
+              "children": [
+                {
+                  "id": "BANK_DEPOSIT_ALL"
+                }
+              ]
+            },
+            {
+              "id": "IF_BANK_IS_NOT_OPEN",
+              "children": [
+                {
+                  "id": "CUSTOM_44138a48-022e-4ef1-9760-b00a6cd03704"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "IF_EMPTY_SLOT_COUNT",
+          "properties": {
+            "count": {
+              "class": "Number",
+              "operator": "LESS_THAN_OR_EQUALS",
+              "value": "3"
+            }
+          },
+          "children": [
+            {
+              "id": "SET_VARIABLE",
+              "properties": {
+                "Value": "true",
+                "Variable name": "ShouldBank"
+              }
+            }
+          ]
+        },
+        {
+          "id": "ELSE_BRANCH",
+          "children": [
+            {
+              "id": "SET_VARIABLE",
+              "properties": {
+                "Value": "false",
+                "Variable name": "ShouldBank"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "COMMENT",
+      "properties": {
+        "Comment": "Questline"
+      },
+      "children": [
+        {
+          "id": "IF_VARIABLE_IS",
+          "customDisplayName": "Quest Stage 1",
+          "properties": {
+            "Filter Value By": {
+              "class": "Variable",
+              "logic": "NONE",
+              "type": "AS_NUMBER",
+              "operator": "EQUALS",
+              "value": "1"
+            },
+            "Variable name": "Quest_Stage"
+          },
+          "children": [
+            {
+              "id": "COMMENT",
+              "properties": {
+                "Comment": "Dialogues"
+              },
+              "children": [
+                {
+                  "id": "IF_VARIABLE_IS_NOT_SET",
+                  "properties": {
+                    "Variable name": "Dialogue_Steps_Stage1"
+                  },
+                  "children": [
+                    {
+                      "id": "ADD_ALL_TO_LIST",
+                      "properties": {
+                        "List name": "Dialogue_Steps_Stage1",
+                        "Value": "2,1"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "IF_OPTIONS_ARE_AVAILABLE",
+              "children": [
+                {
+                  "id": "CHOOSE_OPTION_BY_INDEX",
+                  "properties": {
+                    "Index": "1"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "IF_LOCAL_PLAYER_MATCHES",
+              "customDisplayName": "If in Father area",
+              "properties": {
+                "Filter By": {
+                  "class": "Player",
+                  "logic": "NONE",
+                  "type": "IN_AREA",
+                  "operator": "EQUALS",
+                  "value": "v(Area_Lumbridge_Swamp_Father_Urhney)"
+                }
+              },
+              "children": [
+                {
+                  "id": "IF_NOT_IN_DIALOGUE",
+                  "children": [
+                    {
+                      "id": "NPC_INTERACT",
+                      "properties": {
+                        "Force left click": false,
+                        "Filter NPC By": {
+                          "class": "NPC",
+                          "logic": "NONE",
+                          "type": "ID",
+                          "operator": "EQUALS",
+                          "value": "923"
+                        },
+                        "Don\u0027t walk to NPC": false
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "IF_LOCAL_PLAYER_MATCHES",
+              "customDisplayName": "If not at Father area",
+              "properties": {
+                "Filter By": {
+                  "class": "Player",
+                  "logic": "NONE",
+                  "type": "NOT_IN_AREA",
+                  "operator": "EQUALS",
+                  "value": "v(Area_Lumbridge_Swamp_Father_Urhney)"
+                }
+              },
+              "children": [
+                {
+                  "id": "WALK_TO_AREA",
+                  "properties": {
+                    "Area": "v(Area_Lumbridge_Swamp_Father_Urhney)"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "IF_VARIABLE_IS",
+          "customDisplayName": "Quest Stage 2",
+          "properties": {
+            "Filter Value By": {
+              "class": "Variable",
+              "logic": "NONE",
+              "type": "AS_NUMBER",
+              "operator": "EQUALS",
+              "value": "2"
+            },
+            "Variable name": "Quest_Stage"
+          },
+          "children": [
+            {
+              "id": "IF_EQUIPPED_ITEM_MATCHES",
+              "properties": {
+                "Filter Item By": {
+                  "class": "Item",
+                  "logic": "NONE",
+                  "type": "NAME",
+                  "operator": "EQUALS",
+                  "value": "Ghostspeak amulet"
+                }
+              },
+              "children": [
+                {
+                  "id": "IF_LOCAL_PLAYER_MATCHES",
+                  "customDisplayName": "If at ghost",
+                  "properties": {
+                    "Filter By": {
+                      "class": "Player",
+                      "logic": "NONE",
+                      "type": "IN_AREA",
+                      "operator": "EQUALS",
+                      "value": "v(Area_Lumbridge_Church_Ghost)"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "IF_NPC_EXISTS",
+                      "properties": {
+                        "Filter NPC By": {
+                          "class": "NPC",
+                          "logic": "NONE",
+                          "type": "ID",
+                          "operator": "EQUALS",
+                          "value": "922"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "IF_NOT_IN_DIALOGUE",
+                          "children": [
+                            {
+                              "id": "NPC_INTERACT",
+                              "properties": {
+                                "Force left click": false,
+                                "Filter NPC By": {
+                                  "class": "NPC",
+                                  "logic": "NONE",
+                                  "type": "ID",
+                                  "operator": "EQUALS",
+                                  "value": "922"
+                                },
+                                "Don\u0027t walk to NPC": false
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_NPC_DOES_NOT_EXIST",
+                      "properties": {
+                        "Filter NPC By": {
+                          "class": "NPC",
+                          "logic": "NONE",
+                          "type": "ID",
+                          "operator": "EQUALS",
+                          "value": "922"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "IF_GAME_OBJECT_EXISTS",
+                          "properties": {
+                            "Filter Object By": {
+                              "class": "GameObject",
+                              "logic": "NONE",
+                              "type": "ID",
+                              "operator": "EQUALS",
+                              "value": "2145"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "GAME_OBJECT_INTERACT",
+                              "properties": {
+                                "Don\u0027t walk to object": false,
+                                "Action": "Open",
+                                "Filter Object By": {
+                                  "class": "GameObject",
+                                  "logic": "NONE",
+                                  "type": "ID",
+                                  "operator": "EQUALS",
+                                  "value": "2145"
+                                },
+                                "Force left click": false
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "id": "IF_GAME_OBJECT_EXISTS",
+                          "properties": {
+                            "Filter Object By": {
+                              "class": "GameObject",
+                              "logic": "NONE",
+                              "type": "ID",
+                              "operator": "EQUALS",
+                              "value": "15061"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "GAME_OBJECT_INTERACT",
+                              "properties": {
+                                "Don\u0027t walk to object": false,
+                                "Action": "Search",
+                                "Filter Object By": {
+                                  "class": "GameObject",
+                                  "logic": "NONE",
+                                  "type": "ID",
+                                  "operator": "EQUALS",
+                                  "value": "15061"
+                                },
+                                "Force left click": false
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_LOCAL_PLAYER_MATCHES",
+                  "customDisplayName": "If not at ghost",
+                  "properties": {
+                    "Filter By": {
+                      "class": "Player",
+                      "logic": "NONE",
+                      "type": "NOT_IN_AREA",
+                      "operator": "EQUALS",
+                      "value": "v(Area_Lumbridge_Church_Ghost)"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "WALK_TO_AREA",
+                      "properties": {
+                        "Area": "v(Area_Lumbridge_Church_Ghost)"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "IF_VARIABLE_IS",
+          "customDisplayName": "Quest Stage 3",
+          "properties": {
+            "Filter Value By": {
+              "class": "Variable",
+              "logic": "NONE",
+              "type": "AS_NUMBER",
+              "operator": "EQUALS",
+              "value": "3"
+            },
+            "Variable name": "Quest_Stage"
+          },
+          "children": [
+            {
+              "id": "IF_LOCAL_PLAYER_MATCHES",
+              "customDisplayName": "If at altar",
+              "properties": {
+                "Filter By": {
+                  "class": "Player",
+                  "logic": "NONE",
+                  "type": "IN_AREA",
+                  "operator": "EQUALS",
+                  "value": "v(Area_WizardTower_B1F_Altar)"
+                }
+              },
+              "children": [
+                {
+                  "id": "GAME_OBJECT_INTERACT",
+                  "properties": {
+                    "Don\u0027t walk to object": false,
+                    "Action": "Search",
+                    "Filter Object By": {
+                      "class": "GameObject",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Altar"
+                    },
+                    "Force left click": false
+                  },
+                  "children": [
+                    {
+                      "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                      "properties": {
+                        "Max time (seconds)": "5"
+                      },
+                      "children": [
+                        {
+                          "id": "IF_INVENTORY_CONTAINS_ANY",
+                          "properties": {
+                            "Filter Item By": {
+                              "class": "Item",
+                              "logic": "NONE",
+                              "type": "NAME",
+                              "operator": "EQUALS",
+                              "value": "Ghost\u0027s skull"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "IF_LOCAL_PLAYER_MATCHES",
+              "customDisplayName": "If not at Altar",
+              "properties": {
+                "Filter By": {
+                  "class": "Player",
+                  "logic": "NONE",
+                  "type": "NOT_IN_AREA",
+                  "operator": "EQUALS",
+                  "value": "v(Area_WizardTower_B1F_Altar)"
+                }
+              },
+              "children": [
+                {
+                  "id": "WALK_TO_AREA",
+                  "properties": {
+                    "Area": "v(Area_WizardTower_B1F_Altar)"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "IF_VARIABLE_IS",
+          "customDisplayName": "Quest stage 4",
+          "properties": {
+            "Filter Value By": {
+              "class": "Variable",
+              "logic": "NONE",
+              "type": "AS_NUMBER",
+              "operator": "EQUALS",
+              "value": "4"
+            },
+            "Variable name": "Quest_Stage"
+          },
+          "children": [
+            {
+              "id": "IF_LOCAL_PLAYER_MATCHES",
+              "customDisplayName": "If at ghost",
+              "properties": {
+                "Filter By": {
+                  "class": "Player",
+                  "logic": "NONE",
+                  "type": "IN_AREA",
+                  "operator": "EQUALS",
+                  "value": "v(Area_Lumbridge_Church_Ghost)"
+                }
+              },
+              "children": [
+                {
+                  "id": "IF_NPC_DOES_NOT_EXIST",
+                  "properties": {
+                    "Filter NPC By": {
+                      "class": "NPC",
+                      "logic": "NONE",
+                      "type": "ID",
+                      "operator": "EQUALS",
+                      "value": "922"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "IF_GAME_OBJECT_EXISTS",
+                      "properties": {
+                        "Filter Object By": {
+                          "class": "GameObject",
+                          "logic": "NONE",
+                          "type": "ID",
+                          "operator": "EQUALS",
+                          "value": "2145"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "GAME_OBJECT_INTERACT",
+                          "properties": {
+                            "Don\u0027t walk to object": false,
+                            "Action": "Open",
+                            "Filter Object By": {
+                              "class": "GameObject",
+                              "logic": "NONE",
+                              "type": "ID",
+                              "operator": "EQUALS",
+                              "value": "2145"
+                            },
+                            "Force left click": false
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_GAME_OBJECT_EXISTS",
+                      "properties": {
+                        "Filter Object By": {
+                          "class": "GameObject",
+                          "logic": "NONE",
+                          "type": "ID",
+                          "operator": "EQUALS",
+                          "value": "15061"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "IF_INVENTORY_CONTAINS_ANY",
+                          "customDisplayName": "If Skull is selected",
+                          "properties": {
+                            "Filter Item By": {
+                              "class": "Item",
+                              "logic": "NONE",
+                              "type": "SELECTED",
+                              "operator": "EQUALS",
+                              "filters": [
+                                {
+                                  "class": "Item",
+                                  "logic": "AND",
+                                  "type": "NAME",
+                                  "operator": "EQUALS",
+                                  "value": "Ghost\u0027s skull"
+                                }
+                              ]
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "GAME_OBJECT_INTERACT",
+                              "properties": {
+                                "Don\u0027t walk to object": false,
+                                "Action": "",
+                                "Filter Object By": {
+                                  "class": "GameObject",
+                                  "logic": "NONE",
+                                  "type": "ID",
+                                  "operator": "EQUALS",
+                                  "value": "15061"
+                                },
+                                "Force left click": true
+                              },
+                              "children": [
+                                {
+                                  "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                                  "properties": {
+                                    "Max time (seconds)": "5"
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "IF_IN_CUTSCENE"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "id": "IF_INVENTORY_CONTAINS_ANY",
+                          "properties": {
+                            "Filter Item By": {
+                              "class": "Item",
+                              "logic": "NONE",
+                              "type": "NAME",
+                              "operator": "EQUALS",
+                              "value": "Ghost\u0027s skull",
+                              "filters": [
+                                {
+                                  "class": "Item",
+                                  "logic": "AND",
+                                  "type": "NOT_SELECTED",
+                                  "operator": "EQUALS"
+                                }
+                              ]
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "INTERACT_WITH_INVENTORY_ITEM",
+                              "properties": {
+                                "Filter Item By": {
+                                  "class": "Item",
+                                  "logic": "NONE",
+                                  "type": "NAME",
+                                  "operator": "EQUALS",
+                                  "value": "Ghost\u0027s skull"
+                                },
+                                "Action": "Use"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_NPC_EXISTS",
+                  "properties": {
+                    "Filter NPC By": {
+                      "class": "NPC",
+                      "logic": "NONE",
+                      "type": "ID",
+                      "operator": "EQUALS",
+                      "value": "922"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "IF_NOT_IN_DIALOGUE",
+                      "children": [
+                        {
+                          "id": "NPC_INTERACT",
+                          "properties": {
+                            "Force left click": false,
+                            "Filter NPC By": {
+                              "class": "NPC",
+                              "logic": "NONE",
+                              "type": "ID",
+                              "operator": "EQUALS",
+                              "value": "922"
+                            },
+                            "Don\u0027t walk to NPC": false
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "IF_LOCAL_PLAYER_MATCHES",
+              "customDisplayName": "If not at ghost",
+              "properties": {
+                "Filter By": {
+                  "class": "Player",
+                  "logic": "NONE",
+                  "type": "NOT_IN_AREA",
+                  "operator": "EQUALS",
+                  "value": "v(Area_Lumbridge_Church_Ghost)"
+                }
+              },
+              "children": [
+                {
+                  "id": "WALK_TO_AREA",
+                  "properties": {
+                    "Area": "v(Area_Lumbridge_Church_Ghost)"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "customActions": {
+    "bed88118-c33b-4491-b6eb-adb282ade806": {
+      "id": "bed88118-c33b-4491-b6eb-adb282ade806",
+      "name": "KiwiBuilder \u003e Navigation \u003e Stronghold of Security Vault of War to Mainland",
+      "description": "",
+      "parameters": "",
+      "fail": false,
+      "actions": [
+        {
+          "id": "ADD_PASSABLE_LOCAL_OBSTACLE",
+          "properties": {
+            "Object name": "Gate of War",
+            "Action": "Open"
+          }
+        },
+        {
+          "id": "ADD_CLIMBABLE_LOCAL_OBSTACLE",
+          "properties": {
+            "Object name": "Ladder",
+            "Action": "Climb-up"
+          }
+        },
+        {
+          "id": "ADD_CLIMBABLE_LOCAL_OBSTACLE",
+          "properties": {
+            "Object name": "Entrance",
+            "Action": "Climb-down"
+          }
+        },
+        {
+          "id": "COMMENT",
+          "properties": {
+            "Comment": "Dialogue fix"
+          },
+          "children": [
+            {
+              "id": "IF_IN_DIALOGUE",
+              "children": [
+                {
+                  "id": "CUSTOM_115ac139-6154-4d16-8310-50b7188a320b"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "IF_LOCAL_PLAYER_MATCHES",
+          "properties": {
+            "Filter By": {
+              "class": "Player",
+              "logic": "NONE",
+              "type": "IN_AREA",
+              "operator": "EQUALS",
+              "value": "v(Area_Stronghold_Vault_Of_War_Ladder)"
+            }
+          },
+          "children": [
+            {
+              "id": "IF_GAME_OBJECT_EXISTS",
+              "properties": {
+                "Filter Object By": {
+                  "class": "GameObject",
+                  "logic": "NONE",
+                  "type": "NAME",
+                  "operator": "EQUALS",
+                  "value": "Ladder"
+                }
+              },
+              "children": [
+                {
+                  "id": "GAME_OBJECT_INTERACT",
+                  "properties": {
+                    "Don\u0027t walk to object": false,
+                    "Action": "",
+                    "Filter Object By": {
+                      "class": "GameObject",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Ladder"
+                    },
+                    "Force left click": false
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "IF_LOCAL_PLAYER_MATCHES",
+          "properties": {
+            "Filter By": {
+              "class": "Player",
+              "logic": "NONE",
+              "type": "NOT_IN_AREA",
+              "operator": "EQUALS",
+              "value": "v(Area_Stronghold_Vault_Of_War_Ladder_2)"
+            }
+          },
+          "children": [
+            {
+              "id": "IF_NOT_IN_DIALOGUE",
+              "children": [
+                {
+                  "id": "WALK_TO_AREA",
+                  "properties": {
+                    "Area": "v(Area_Stronghold_Vault_Of_War_Ladder)"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "44138a48-022e-4ef1-9760-b00a6cd03704": {
+      "id": "44138a48-022e-4ef1-9760-b00a6cd03704",
+      "name": "KiwiBuilder \u003e Banking \u003e Navigation \u0026 Opening(F2P)",
+      "description": "Walks and Opens closest Bank",
+      "parameters": "",
+      "fail": false,
+      "actions": [
+        {
+          "id": "COMMENT",
+          "properties": {
+            "Comment": "Instanced workarounds"
+          },
+          "children": [
+            {
+              "id": "COMMENT",
+              "properties": {
+                "Comment": "Stronghold of security - Vault of war"
+              },
+              "children": [
+                {
+                  "id": "IF_VARIABLE_IS_NOT_SET",
+                  "properties": {
+                    "Variable name": "Area_Stronghold_Vault_Of_War_Ladder_2"
+                  },
+                  "children": [
+                    {
+                      "id": "SET_VARIABLE",
+                      "properties": {
+                        "Value": "(1914, 5227, 0), (1909, 5222, 0)",
+                        "Variable name": "Area_Stronghold_Vault_Of_War_Ladder_2"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_VARIABLE_IS_NOT_SET",
+                  "properties": {
+                    "Variable name": "Area_Stronghold_Vault_Of_War_Ladder"
+                  },
+                  "children": [
+                    {
+                      "id": "SET_VARIABLE",
+                      "properties": {
+                        "Value": "(1858, 5240, 0), (1862, 5244, 0)",
+                        "Variable name": "Area_Stronghold_Vault_Of_War_Ladder"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_VARIABLE_IS_NOT_SET",
+                  "properties": {
+                    "Variable name": "Area_Stronghold_Vault_Of_War"
+                  },
+                  "children": [
+                    {
+                      "id": "SET_VARIABLE",
+                      "properties": {
+                        "Value": "(1856, 5246, 0), (1918, 5184, 0)",
+                        "Variable name": "Area_Stronghold_Vault_Of_War"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_LOCAL_PLAYER_MATCHES",
+                  "properties": {
+                    "Filter By": {
+                      "class": "Player",
+                      "logic": "NONE",
+                      "type": "IN_AREA",
+                      "operator": "EQUALS",
+                      "value": "v(Area_Stronghold_Vault_Of_War)"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "SET_VARIABLE",
+                      "properties": {
+                        "Value": "true",
+                        "Variable name": "inStronghold"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "ELSE_BRANCH",
+                  "children": [
+                    {
+                      "id": "SET_VARIABLE",
+                      "properties": {
+                        "Value": "false",
+                        "Variable name": "inStronghold"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_VARIABLE_IS",
+                  "properties": {
+                    "Filter Value By": {
+                      "class": "Variable",
+                      "logic": "NONE",
+                      "type": "AS_BOOLEAN",
+                      "operator": "IS_TRUE"
+                    },
+                    "Variable name": "inStronghold"
+                  },
+                  "children": [
+                    {
+                      "id": "CUSTOM_bed88118-c33b-4491-b6eb-adb282ade806"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "IF_BANK_IS_NOT_OPEN",
+          "children": [
+            {
+              "id": "SET_VARIABLE",
+              "properties": {
+                "Value": "false",
+                "Variable name": "BankOpen"
+              }
+            }
+          ]
+        },
+        {
+          "id": "IF_BANK_IS_OPEN",
+          "children": [
+            {
+              "id": "SET_VARIABLE",
+              "properties": {
+                "Value": "true",
+                "Variable name": "BankOpen"
+              },
+              "children": [
+                {
+                  "id": "DELETE_VARIABLE",
+                  "properties": {
+                    "Variable name": "BankOpen"
+                  },
+                  "children": [
+                    {
+                      "id": "_CUSTOM_ACTION_RETURN_TRUE"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "IF_VARIABLE_IS",
+          "properties": {
+            "Filter Value By": {
+              "class": "Variable",
+              "logic": "NONE",
+              "type": "AS_BOOLEAN",
+              "operator": "IS_FALSE"
+            },
+            "Variable name": "BankOpen"
+          },
+          "children": [
+            {
+              "id": "IF_DISTANCE_TO_DESTINATION_IS",
+              "properties": {
+                "distance": {
+                  "class": "Number",
+                  "operator": "GREATER_THAN",
+                  "value": "2"
+                }
+              },
+              "children": [
+                {
+                  "id": "SLEEP_BETWEEN",
+                  "properties": {
+                    "Minimum": "1000",
+                    "Maximum": "3000"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "IF_BANK_IS_NOT_OPEN",
+              "children": [
+                {
+                  "id": "IF_GAME_OBJECT_EXISTS",
+                  "properties": {
+                    "Filter Object By": {
+                      "class": "GameObject",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "CONTAINS",
+                      "value": "booth"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "OPEN_BANK"
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_GAME_OBJECT_DOES_NOT_EXIST",
+                  "properties": {
+                    "Filter Object By": {
+                      "class": "GameObject",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "CONTAINS",
+                      "value": "booth"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "WALK_TO_NEAREST_BANK"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "115ac139-6154-4d16-8310-50b7188a320b": {
+      "id": "115ac139-6154-4d16-8310-50b7188a320b",
+      "name": "KiwiBuilder \u003e Misc \u003e Stronghold questions",
+      "description": "",
+      "parameters": "",
+      "fail": false,
+      "actions": [
+        {
+          "id": "IF_IN_DIALOGUE",
+          "children": [
+            {
+              "id": "IF_TIMER_IS_FINISHED",
+              "properties": {
+                "Timer name": "QuestionTimer"
+              },
+              "children": [
+                {
+                  "id": "IF_RANDOM_NUMBER_IS",
+                  "properties": {
+                    "number": {
+                      "class": "Number",
+                      "operator": "GREATER_THAN_OR_EQUALS",
+                      "value": "50"
+                    },
+                    "Minimum": "0",
+                    "Maximum": "100"
+                  },
+                  "children": [
+                    {
+                      "id": "CHOOSE_OPTION_BY_INDEX",
+                      "properties": {
+                        "Index": "1"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "ELSE_BRANCH",
+                  "children": [
+                    {
+                      "id": "CHOOSE_OPTION_BY_INDEX",
+                      "properties": {
+                        "Index": "2"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "IF_WIDGET_EXISTS",
+              "customDisplayName": "Set last question",
+              "properties": {
+                "Find Widget By": {
+                  "class": "Widget",
+                  "logic": "NONE",
+                  "type": "WIDGET_ID",
+                  "operator": "EQUALS",
+                  "value": "231, 6"
+                }
+              },
+              "children": [
+                {
+                  "id": "SET_TO_WIDGET_TEXT",
+                  "properties": {
+                    "Variable name": "question_text"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "IF_TIMER_DOES_NOT_EXIST",
+              "properties": {
+                "Timer name": "QuestionTimer"
+              },
+              "children": [
+                {
+                  "id": "START_TIMER",
+                  "properties": {
+                    "Timer name": "QuestionTimer",
+                    "Time": "10"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "IF_TIMER_IS_RUNNING",
+          "properties": {
+            "Timer name": "QuestionTimer"
+          },
+          "children": [
+            {
+              "id": "IF_OPTIONS_ARE_AVAILABLE",
+              "children": [
+                {
+                  "id": "IF_WIDGET_EXISTS",
+                  "properties": {
+                    "Find Widget By": {
+                      "class": "Widget",
+                      "logic": "NONE",
+                      "type": "TEXT",
+                      "operator": "CONTAINS",
+                      "value": "No way!"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "CHOOSE_OPTION_CONTAINING",
+                      "properties": {
+                        "Text": "No way!"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_WIDGET_EXISTS",
+                  "properties": {
+                    "Find Widget By": {
+                      "class": "Widget",
+                      "logic": "NONE",
+                      "type": "TEXT",
+                      "operator": "CONTAINS",
+                      "value": "Nothing, it\u0027s a fake."
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "CHOOSE_OPTION_CONTAINING",
+                      "properties": {
+                        "Text": "Nothing, it\u0027s a fake."
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_WIDGET_EXISTS",
+                  "properties": {
+                    "Find Widget By": {
+                      "class": "Widget",
+                      "logic": "NONE",
+                      "type": "TEXT",
+                      "operator": "CONTAINS",
+                      "value": "Read the text and follow the advice given."
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "CHOOSE_OPTION_CONTAINING",
+                      "properties": {
+                        "Text": "Read the text and follow the advice given."
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_WIDGET_EXISTS",
+                  "properties": {
+                    "Find Widget By": {
+                      "class": "Widget",
+                      "logic": "NONE",
+                      "type": "TEXT",
+                      "operator": "CONTAINS",
+                      "value": "Me."
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "CHOOSE_OPTION_CONTAINING",
+                      "properties": {
+                        "Text": "Me."
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_VARIABLE_IS",
+                  "customDisplayName": "You have been offered a free  give away",
+                  "properties": {
+                    "Filter Value By": {
+                      "class": "Variable",
+                      "logic": "NONE",
+                      "type": "AS_TEXT",
+                      "operator": "EQUALS",
+                      "value": "To pass you must answer me this: You have been\u003cbr\u003eoffered a free giveaway or double XP invitation via\u003cbr\u003esocial media or a livestream. What should you do?"
+                    },
+                    "Variable name": "question_text"
+                  },
+                  "children": [
+                    {
+                      "id": "CHOOSE_OPTION_CONTAINING",
+                      "properties": {
+                        "Text": "Report"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_WIDGET_EXISTS",
+                  "properties": {
+                    "Find Widget By": {
+                      "class": "Widget",
+                      "logic": "NONE",
+                      "type": "TEXT",
+                      "operator": "CONTAINS",
+                      "value": "Only on the Old School Rune"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "CHOOSE_OPTION_CONTAINING",
+                      "properties": {
+                        "Text": "Only on the Old School Rune"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_VARIABLE_IS",
+                  "customDisplayName": "Lose out end text",
+                  "properties": {
+                    "Filter Value By": {
+                      "class": "Variable",
+                      "logic": "NONE",
+                      "type": "AS_TEXT",
+                      "operator": "EQUALS",
+                      "value": "lose out! What do you say?"
+                    },
+                    "Variable name": "question_text"
+                  },
+                  "children": [
+                    {
+                      "id": "CHOOSE_OPTION_CONTAINING",
+                      "properties": {
+                        "Text": "Nope,"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_VARIABLE_IS",
+                  "customDisplayName": "Moderator asks",
+                  "properties": {
+                    "Filter Value By": {
+                      "class": "Variable",
+                      "logic": "NONE",
+                      "type": "AS_TEXT",
+                      "operator": "CONTAINS",
+                      "value": "moderator asks"
+                    },
+                    "Variable name": "question_text"
+                  },
+                  "children": [
+                    {
+                      "id": "CHOOSE_OPTION_CONTAINING",
+                      "properties": {
+                        "Text": "Politely tell them no, then use"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_VARIABLE_IS",
+                  "customDisplayName": "Good bank pin",
+                  "properties": {
+                    "Filter Value By": {
+                      "class": "Variable",
+                      "logic": "NONE",
+                      "type": "AS_TEXT",
+                      "operator": "CONTAINS",
+                      "value": "good bank"
+                    },
+                    "Variable name": "question_text"
+                  },
+                  "children": [
+                    {
+                      "id": "CHOOSE_OPTION_CONTAINING",
+                      "properties": {
+                        "Text": "The birthday"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_VARIABLE_IS",
+                  "customDisplayName": "Good bank pin",
+                  "properties": {
+                    "Filter Value By": {
+                      "class": "Variable",
+                      "logic": "NONE",
+                      "type": "AS_TEXT",
+                      "operator": "EQUALS",
+                      "value": "11:14:50: [SCRIPT] To pass you must answer me this: What is an example\u003cbr\u003eof a good bank PIN?"
+                    },
+                    "Variable name": "question_text"
+                  },
+                  "children": [
+                    {
+                      "id": "CHOOSE_OPTION_CONTAINING",
+                      "properties": {
+                        "Text": "The birthday of a"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_VARIABLE_IS",
+                  "customDisplayName": "Website claims to make you a player mod",
+                  "properties": {
+                    "Filter Value By": {
+                      "class": "Variable",
+                      "logic": "NONE",
+                      "type": "AS_TEXT",
+                      "operator": "EQUALS",
+                      "value": "To pass you must answer me this: A website claims that\u003cbr\u003ethey can make me a player moderator. What should I\u003cbr\u003edo?"
+                    },
+                    "Variable name": "question_text"
+                  },
+                  "children": [
+                    {
+                      "id": "CHOOSE_OPTION_CONTAINING",
+                      "properties": {
+                        "Text": "Nothing"
+                      }
+                    },
+                    {
+                      "id": "OR_BRANCH"
+                    },
+                    {
+                      "id": "CHOOSE_OPTION_CONTAINING",
+                      "properties": {
+                        "Text": "Don\u0027t"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_VARIABLE_IS",
+                  "customDisplayName": "Whos responsibility is it to secure my account",
+                  "properties": {
+                    "Filter Value By": {
+                      "class": "Variable",
+                      "logic": "NONE",
+                      "type": "AS_TEXT",
+                      "operator": "EQUALS",
+                      "value": "To pass you must answer me this: Whose responsibility\u003cbr\u003eis it to keep your account secure?"
+                    },
+                    "Variable name": "question_text"
+                  },
+                  "children": [
+                    {
+                      "id": "CHOOSE_OPTION_CONTAINING",
+                      "properties": {
+                        "Text": "Me"
+                      }
+                    },
+                    {
+                      "id": "OR_BRANCH"
+                    },
+                    {
+                      "id": "CHOOSE_OPTION_CONTAINING",
+                      "properties": {
+                        "Text": "Nobody"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_VARIABLE_IS",
+                  "customDisplayName": "Where can i use my osrs password",
+                  "properties": {
+                    "Filter Value By": {
+                      "class": "Variable",
+                      "logic": "NONE",
+                      "type": "AS_TEXT",
+                      "operator": "EQUALS",
+                      "value": "To pass you must answer me this: Where is it safe to\u003cbr\u003euse my Old School RuneScape password?"
+                    },
+                    "Variable name": "question_text"
+                  },
+                  "children": [
+                    {
+                      "id": "CHOOSE_OPTION_CONTAINING",
+                      "properties": {
+                        "Text": "Only"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_VARIABLE_IS",
+                  "customDisplayName": "Makes you a player mod",
+                  "properties": {
+                    "Filter Value By": {
+                      "class": "Variable",
+                      "logic": "NONE",
+                      "type": "AS_TEXT",
+                      "operator": "EQUALS",
+                      "value": "To pass you must answer me this: What do you do if\u003cbr\u003esomeone asks you for your password or bank PIN to\u003cbr\u003emake you a player moderator?"
+                    },
+                    "Variable name": "question_text"
+                  },
+                  "children": [
+                    {
+                      "id": "CHOOSE_OPTION_CONTAINING",
+                      "properties": {
+                        "Text": "no"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_VARIABLE_IS",
+                  "customDisplayName": "Logged in while im out of the room",
+                  "properties": {
+                    "Filter Value By": {
+                      "class": "Variable",
+                      "logic": "NONE",
+                      "type": "AS_TEXT",
+                      "operator": "EQUALS",
+                      "value": "To pass you must answer me this: Can I leave my\u003cbr\u003eaccount logged in while I\u0027m out of the room?"
+                    },
+                    "Variable name": "question_text"
+                  },
+                  "children": [
+                    {
+                      "id": "CHOOSE_OPTION_CONTAINING",
+                      "properties": {
+                        "Text": "no"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_VARIABLE_IS",
+                  "customDisplayName": "What should you do if another player messages you recommending a website to buy items",
+                  "properties": {
+                    "Filter Value By": {
+                      "class": "Variable",
+                      "logic": "NONE",
+                      "type": "AS_TEXT",
+                      "operator": "EQUALS",
+                      "value": "To pass you must answer me this: What should you do\u003cbr\u003eif another player messages you recommending a website\u003cbr\u003eto purchase items and/or gold?"
+                    },
+                    "Variable name": "question_text"
+                  },
+                  "children": [
+                    {
+                      "id": "CHOOSE_OPTION_CONTAINING",
+                      "properties": {
+                        "Text": "no"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_VARIABLE_IS",
+                  "customDisplayName": "that sound? end text",
+                  "properties": {
+                    "Filter Value By": {
+                      "class": "Variable",
+                      "logic": "NONE",
+                      "type": "AS_TEXT",
+                      "operator": "EQUALS",
+                      "value": "that sound?"
+                    },
+                    "Variable name": "question_text"
+                  },
+                  "children": [
+                    {
+                      "id": "CHOOSE_OPTION_CONTAINING",
+                      "properties": {
+                        "Text": "no"
+                      }
+                    },
+                    {
+                      "id": "OR_BRANCH"
+                    },
+                    {
+                      "id": "CHOOSE_OPTION_CONTAINING",
+                      "properties": {
+                        "Text": "me"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_VARIABLE_IS",
+                  "customDisplayName": "Is it okay to buy a OSRS account",
+                  "properties": {
+                    "Filter Value By": {
+                      "class": "Variable",
+                      "logic": "NONE",
+                      "type": "AS_TEXT",
+                      "operator": "EQUALS",
+                      "value": "To pass you must answer me this: Is it okay to buy an\u003cbr\u003eOld School RuneScape account?"
+                    },
+                    "Variable name": "question_text"
+                  },
+                  "children": [
+                    {
+                      "id": "CHOOSE_OPTION_CONTAINING",
+                      "properties": {
+                        "Text": "no"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_VARIABLE_IS",
+                  "customDisplayName": "Free give away or double XP invitation",
+                  "properties": {
+                    "Filter Value By": {
+                      "class": "Variable",
+                      "logic": "NONE",
+                      "type": "AS_TEXT",
+                      "operator": "EQUALS",
+                      "value": "To pass you must answer me this: You have been\u003cbr\u003eoffered a free giveaway or double XP invitation via in-\u003cbr\u003egame chat or email. What should you do?"
+                    },
+                    "Variable name": "question_text"
+                  },
+                  "children": [
+                    {
+                      "id": "CHOOSE_OPTION_CONTAINING",
+                      "properties": {
+                        "Text": "Report the incident"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_VARIABLE_IS",
+                  "customDisplayName": "How do I set a bank PIN",
+                  "properties": {
+                    "Filter Value By": {
+                      "class": "Variable",
+                      "logic": "NONE",
+                      "type": "AS_TEXT",
+                      "operator": "EQUALS",
+                      "value": "To pass you must answer me this: How do I set a\u003cbr\u003ebank PIN?"
+                    },
+                    "Variable name": "question_text"
+                  },
+                  "children": [
+                    {
+                      "id": "CHOOSE_OPTION_CONTAINING",
+                      "properties": {
+                        "Text": "Use the account"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_VARIABLE_IS",
+                  "customDisplayName": "What do I do if my account is compromised",
+                  "properties": {
+                    "Filter Value By": {
+                      "class": "Variable",
+                      "logic": "NONE",
+                      "type": "AS_TEXT",
+                      "operator": "EQUALS",
+                      "value": "To pass you must answer me this: What do I do if my\u003cbr\u003eaccount is compromised?"
+                    },
+                    "Variable name": "question_text"
+                  },
+                  "children": [
+                    {
+                      "id": "CHOOSE_OPTION_CONTAINING",
+                      "properties": {
+                        "Text": "Secure my device and"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_VARIABLE_IS",
+                  "customDisplayName": "Who can I give my password to",
+                  "properties": {
+                    "Filter Value By": {
+                      "class": "Variable",
+                      "logic": "NONE",
+                      "type": "AS_TEXT",
+                      "operator": "EQUALS",
+                      "value": "To pass you must answer me this: Who can I give my\u003cbr\u003epassword to?"
+                    },
+                    "Variable name": "question_text"
+                  },
+                  "children": [
+                    {
+                      "id": "CHOOSE_OPTION_CONTAINING",
+                      "properties": {
+                        "Text": "Nobody."
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_VARIABLE_IS",
+                  "customDisplayName": "Is it safe for someone to level my account",
+                  "properties": {
+                    "Filter Value By": {
+                      "class": "Variable",
+                      "logic": "NONE",
+                      "type": "AS_TEXT",
+                      "operator": "EQUALS",
+                      "value": "To pass you must answer me this: Is it safe to get\u003cbr\u003esomeone to level your account?"
+                    },
+                    "Variable name": "question_text"
+                  },
+                  "children": [
+                    {
+                      "id": "CHOOSE_OPTION_CONTAINING",
+                      "properties": {
+                        "Text": "No, you should never allow anyone to use your account."
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_VARIABLE_IS",
+                  "customDisplayName": "react? end text",
+                  "properties": {
+                    "Filter Value By": {
+                      "class": "Variable",
+                      "logic": "NONE",
+                      "type": "AS_TEXT",
+                      "operator": "EQUALS",
+                      "value": "react?"
+                    },
+                    "Variable name": "question_text"
+                  },
+                  "children": [
+                    {
+                      "id": "CHOOSE_OPTION_CONTAINING",
+                      "properties": {
+                        "Text": "Don\u0027t share your information and report the player."
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_VARIABLE_IS",
+                  "customDisplayName": "Important charactersitic of a secure password",
+                  "properties": {
+                    "Filter Value By": {
+                      "class": "Variable",
+                      "logic": "NONE",
+                      "type": "AS_TEXT",
+                      "operator": "EQUALS",
+                      "value": "To pass you must answer me this: Which of these is an\u003cbr\u003eimportant characteristic of a secure password?"
+                    },
+                    "Variable name": "question_text"
+                  },
+                  "children": [
+                    {
+                      "id": "CHOOSE_OPTION_CONTAINING",
+                      "properties": {
+                        "Text": "It\u0027s never reused on other websites or accounts."
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_VARIABLE_IS",
+                  "customDisplayName": "How do I remove a hijacker from my account",
+                  "properties": {
+                    "Filter Value By": {
+                      "class": "Variable",
+                      "logic": "NONE",
+                      "type": "AS_TEXT",
+                      "operator": "EQUALS",
+                      "value": "How do I remove a\u003cbr\u003ehijacker from my account?"
+                    },
+                    "Variable name": "question_text"
+                  }
+                },
+                {
+                  "id": "OR_BRANCH"
+                },
+                {
+                  "id": "IF_VARIABLE_IS",
+                  "customDisplayName": "How do I remove a hijacker from my account",
+                  "properties": {
+                    "Filter Value By": {
+                      "class": "Variable",
+                      "logic": "NONE",
+                      "type": "AS_TEXT",
+                      "operator": "EQUALS",
+                      "value": "To pass you must answer me this: How do I remove a\u003cbr\u003ehijacker from my account?"
+                    },
+                    "Variable name": "question_text"
+                  },
+                  "children": [
+                    {
+                      "id": "CHOOSE_OPTION_CONTAINING",
+                      "properties": {
+                        "Text": "Use the"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_VARIABLE_IS",
+                  "customDisplayName": "To pass this, how do I setup my OSRS 2 factor",
+                  "properties": {
+                    "Filter Value By": {
+                      "class": "Variable",
+                      "logic": "NONE",
+                      "type": "AS_TEXT",
+                      "operator": "EQUALS",
+                      "value": "To pass you must answer me this: What do you do if\u003cbr\u003esomeone asks you for your password or bank PIN to\u003cbr\u003emake you a member for free?"
+                    },
+                    "Variable name": "question_text"
+                  },
+                  "children": [
+                    {
+                      "id": "CHOOSE_OPTION_CONTAINING",
+                      "properties": {
+                        "Text": "Through account settings on oldschool.runescape.com"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_VARIABLE_IS",
+                  "customDisplayName": "To pass this, if someone asks for your password or PIN to make you a member for free",
+                  "properties": {
+                    "Filter Value By": {
+                      "class": "Variable",
+                      "logic": "NONE",
+                      "type": "AS_TEXT",
+                      "operator": "EQUALS",
+                      "value": "To pass you must answer me this: What do you do if\u003cbr\u003esomeone asks you for your password or bank PIN to\u003cbr\u003emake you a member for free?"
+                    },
+                    "Variable name": "question_text"
+                  },
+                  "children": [
+                    {
+                      "id": "CHOOSE_OPTION_CONTAINING",
+                      "properties": {
+                        "Text": "Don\u0027t tell them anything and click the \u0027Report Abuse\u0027 button."
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_VARIABLE_IS",
+                  "customDisplayName": "Psst Adventurerer, special offer for you. Give me some gold coins",
+                  "properties": {
+                    "Filter Value By": {
+                      "class": "Variable",
+                      "logic": "NONE",
+                      "type": "AS_TEXT",
+                      "operator": "EQUALS",
+                      "value": "Psst! Adventurer!\u003cbr\u003eI\u0027ve got a special offer for you, but you\u0027re going to\u003cbr\u003ehave to trust me. If you give me some gold coins, I\u0027ll\u003cbr\u003egive you back twice whatever you gave me! How does"
+                    },
+                    "Variable name": "question_text"
+                  },
+                  "children": [
+                    {
+                      "id": "CHOOSE_OPTION_CONTAINING",
+                      "properties": {
+                        "Text": "No way! You\u0027ll just take my gold for your own! Reported!"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_VARIABLE_IS",
+                  "customDisplayName": "Real life friend asks for your password to check stats",
+                  "properties": {
+                    "Filter Value By": {
+                      "class": "Variable",
+                      "logic": "NONE",
+                      "type": "AS_TEXT",
+                      "operator": "EQUALS",
+                      "value": "To pass you must answer me this: What should you do\u003cbr\u003eif your real-life friend asks for your password so he\u003cbr\u003ecan check your stats?"
+                    },
+                    "Variable name": "question_text"
+                  },
+                  "children": [
+                    {
+                      "id": "CHOOSE_OPTION_CONTAINING",
+                      "properties": {
+                        "Text": "Don\u0027t give out your password to anyone. Not even close friends."
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_VARIABLE_IS",
+                  "customDisplayName": "Best way to keep your email secure",
+                  "properties": {
+                    "Filter Value By": {
+                      "class": "Variable",
+                      "logic": "NONE",
+                      "type": "AS_TEXT",
+                      "operator": "EQUALS",
+                      "value": "To pass you must answer me this: What is the best\u003cbr\u003esecurity step you can take to keep your registered\u003cbr\u003eemail secure?"
+                    },
+                    "Variable name": "question_text"
+                  },
+                  "children": [
+                    {
+                      "id": "CHOOSE_OPTION_CONTAINING",
+                      "properties": {
+                        "Text": "Set up two-factor authentication with my email provider."
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_VARIABLE_IS",
+                  "customDisplayName": "A player starts asking you very specific details linked to your account",
+                  "properties": {
+                    "Filter Value By": {
+                      "class": "Variable",
+                      "logic": "NONE",
+                      "type": "AS_TEXT",
+                      "operator": "EQUALS",
+                      "value": "To pass you must answer me this: A player starts\u003cbr\u003easking you about very specific details linked to your\u003cbr\u003eaccount, such as when you created your account, your\u003cbr\u003ebirthday date, internet provider etc. How should you"
+                    },
+                    "Variable name": "question_text"
+                  },
+                  "children": [
+                    {
+                      "id": "CHOOSE_OPTION_CONTAINING",
+                      "properties": {
+                        "Text": "Don\u0027t share your information and report the player."
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_VARIABLE_IS",
+                  "customDisplayName": "Friend asks for my password ask",
+                  "properties": {
+                    "Filter Value By": {
+                      "class": "Variable",
+                      "logic": "NONE",
+                      "type": "AS_TEXT",
+                      "operator": "EQUALS",
+                      "value": "To pass you must answer me this: My friend asks me\u003cbr\u003efor my password so that he can do a difficult quest for\u003cbr\u003eme. Do I give it to him?"
+                    },
+                    "Variable name": "question_text"
+                  },
+                  "children": [
+                    {
+                      "id": "CHOOSE_OPTION_CONTAINING",
+                      "properties": {
+                        "Text": "Don\u0027t give them my password."
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "IF_CAN_CONTINUE",
+          "children": [
+            {
+              "id": "SPACEBAR_TO_CONTINUE"
+            }
+          ]
+        },
+        {
+          "id": "PAINT_ROOT",
+          "children": [
+            {
+              "id": "DRAW_TEXT",
+              "properties": {
+                "X": "",
+                "Y": "150",
+                "Text": "v(question_text)",
+                "Font": {
+                  "class": "Font",
+                  "value": "Inter V"
+                },
+                "Color": {
+                  "class": "Color",
+                  "value": -1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "IF_WIDGET_EXISTS",
+          "properties": {
+            "Find Widget By": {
+              "class": "Widget",
+              "logic": "NONE",
+              "type": "TEXT",
+              "operator": "CONTAINS",
+              "value": "Nothing"
+            }
+          },
+          "children": [
+            {
+              "id": "CHOOSE_OPTION_CONTAINING",
+              "properties": {
+                "Text": "Me."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "c66a6022-fdf3-4748-8f28-0ac454305825": {
+      "id": "c66a6022-fdf3-4748-8f28-0ac454305825",
+      "name": "KiwiBuilder \u003e Antiban \u003e Random Moving \u0026 Animating",
+      "description": "",
+      "parameters": "",
+      "fail": false,
+      "actions": [
+        {
+          "id": "IF_LOCAL_PLAYER_MATCHES",
+          "customDisplayName": "If we are Moving",
+          "properties": {
+            "Filter By": {
+              "class": "Player",
+              "logic": "NONE",
+              "type": "MOVING",
+              "operator": "EQUALS"
+            }
+          },
+          "children": [
+            {
+              "id": "SLEEP_BETWEEN",
+              "properties": {
+                "Minimum": "500",
+                "Maximum": "2500"
+              }
+            }
+          ]
+        },
+        {
+          "id": "IF_LOCAL_PLAYER_MATCHES",
+          "customDisplayName": "If we are animating",
+          "properties": {
+            "Filter By": {
+              "class": "Player",
+              "logic": "NONE",
+              "type": "ANIMATING",
+              "operator": "EQUALS"
+            }
+          },
+          "children": [
+            {
+              "id": "IF_INVENTORY_CONTAINS_ANY",
+              "properties": {
+                "Filter Item By": {
+                  "class": "Item",
+                  "logic": "NONE",
+                  "type": "SELECTED",
+                  "operator": "EQUALS"
+                }
+              },
+              "children": [
+                {
+                  "id": "INVENTORY_DESELECT"
+                }
+              ]
+            },
+            {
+              "id": "IF_RANDOM_NUMBER_IS",
+              "properties": {
+                "number": {
+                  "class": "Number",
+                  "operator": "LESS_THAN_OR_EQUALS",
+                  "value": "69"
+                },
+                "Minimum": "0",
+                "Maximum": "100"
+              },
+              "children": [
+                {
+                  "id": "SLEEP_WHILE_ANIMATING",
+                  "properties": {
+                    "Stopped for (seconds)": "2"
+                  }
+                },
+                {
+                  "id": "ROTATE_CAMERA_RANDOMLY"
+                }
+              ]
+            },
+            {
+              "id": "IF_RANDOM_NUMBER_IS",
+              "properties": {
+                "number": {
+                  "class": "Number",
+                  "operator": "GREATER_THAN_OR_EQUALS",
+                  "value": "70"
+                },
+                "Minimum": "0",
+                "Maximum": "100"
+              },
+              "children": [
+                {
+                  "id": "MOVE_MOUSE_OFFSCREEN",
+                  "children": [
+                    {
+                      "id": "SLEEP_WHILE_ANIMATING",
+                      "properties": {
+                        "Stopped for (seconds)": "2"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "COMMENT",
+          "properties": {
+            "Comment": "Tutorial island stuff"
+          },
+          "children": [
+            {
+              "id": "IF_PLAYER_SETTING_MATCHES",
+              "properties": {
+                "value": {
+                  "class": "Number",
+                  "operator": "LESS_THAN",
+                  "value": "1000"
+                },
+                "Player Setting": "281"
+              },
+              "children": [
+                {
+                  "id": "IF_RANDOM_NUMBER_IS",
+                  "properties": {
+                    "number": {
+                      "class": "Number",
+                      "operator": "LESS_THAN",
+                      "value": "6"
+                    },
+                    "Minimum": "0",
+                    "Maximum": "100"
+                  },
+                  "children": [
+                    {
+                      "id": "SLEEP_BETWEEN",
+                      "properties": {
+                        "Minimum": "1500",
+                        "Maximum": "15000"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

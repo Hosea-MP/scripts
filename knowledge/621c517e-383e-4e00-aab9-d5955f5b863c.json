@@ -1,0 +1,43 @@
+{
+  "id": "621c517e-383e-4e00-aab9-d5955f5b863c",
+  "name": "Grand Exchange \u003e Tools \u003e Open GE",
+  "description": "This will open the grand exchange and collect any available offers that are completed.",
+  "parameters": "",
+  "fail": false,
+  "actions": [
+    {
+      "id": "CUSTOM_e7889949-c7d5-4cdb-8f10-d25eb839ef97"
+    },
+    {
+      "id": "SET_VARIABLE",
+      "properties": {
+        "Value": "OpenGE",
+        "Variable name": "CURRENT_TASK"
+      }
+    },
+    {
+      "id": "IF_GRAND_EXCHANGE_IS_NOT_OPEN",
+      "children": [
+        {
+          "id": "OPEN_GRAND_EXCHANGE",
+          "children": [
+            {
+              "id": "PAUSE_ITEM_TRACKER"
+            },
+            {
+              "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+              "children": [
+                {
+                  "id": "IF_GRAND_EXCHANGE_IS_OPEN"
+                }
+              ]
+            },
+            {
+              "id": "CUSTOM_613d1cd6-05ce-4ddc-ba25-f0e995146419"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

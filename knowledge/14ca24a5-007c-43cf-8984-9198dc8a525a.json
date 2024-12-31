@@ -1,0 +1,2952 @@
+{
+  "id": "14ca24a5-007c-43cf-8984-9198dc8a525a",
+  "name": "Utility \u003e Settings \u003e Settings Setter",
+  "description": "",
+  "parameters": "",
+  "fail": false,
+  "actions": [
+    {
+      "id": "IF_FIRST_RUN",
+      "children": [
+        {
+          "id": "SET_VARIABLE",
+          "properties": {
+            "Value": "False",
+            "Variable name": "typedText"
+          }
+        }
+      ]
+    },
+    {
+      "id": "IF_LOGGED_IN",
+      "children": [
+        {
+          "id": "COMMENT",
+          "properties": {
+            "Comment": "Config - Sound"
+          },
+          "children": [
+            {
+              "id": "COMMENT",
+              "properties": {
+                "Comment": "Config [168] - Music\n"
+              },
+              "children": [
+                {
+                  "id": "COMMENT",
+                  "properties": {
+                    "Comment": "If Music is on"
+                  },
+                  "children": [
+                    {
+                      "id": "IF_PLAYER_SETTING_MATCHES",
+                      "customDisplayName": "If Music config is on",
+                      "properties": {
+                        "value": {
+                          "class": "Number",
+                          "operator": "DOES_NOT_EQUAL",
+                          "value": "0"
+                        },
+                        "Player Setting": "168"
+                      },
+                      "children": [
+                        {
+                          "id": "IF_TAB_IS_NOT_OPEN",
+                          "properties": {
+                            "Tab": {
+                              "class": "Tab",
+                              "value": "OPTIONS"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "OPEN_TAB",
+                              "properties": {
+                                "Tab": {
+                                  "class": "Tab",
+                                  "value": "OPTIONS"
+                                }
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "id": "IF_WIDGET_EXISTS",
+                          "customDisplayName": "If Music setting exists",
+                          "properties": {
+                            "Find Widget By": {
+                              "class": "Widget",
+                              "logic": "NONE",
+                              "type": "WIDGET_ID",
+                              "operator": "EQUALS",
+                              "value": "116, 93"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "WIDGET_INTERACT",
+                              "customDisplayName": "Interact with \"Music\" setting",
+                              "properties": {
+                                "Find Widget By": {
+                                  "class": "Widget",
+                                  "logic": "NONE",
+                                  "type": "WIDGET_ID",
+                                  "operator": "EQUALS",
+                                  "value": "116, 93"
+                                }
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "id": "ELSE_BRANCH",
+                          "children": [
+                            {
+                              "id": "IF_WIDGET_EXISTS",
+                              "customDisplayName": "If widget \u0027Audio\u0027 exists",
+                              "properties": {
+                                "Find Widget By": {
+                                  "class": "Widget",
+                                  "logic": "NONE",
+                                  "type": "WIDGET_ID",
+                                  "operator": "EQUALS",
+                                  "value": "116, 73"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "WIDGET_INTERACT",
+                                  "customDisplayName": "Interact with widget \u0027Audio\u0027",
+                                  "properties": {
+                                    "Find Widget By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "WIDGET_ID",
+                                      "operator": "EQUALS",
+                                      "value": "116, 73"
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "RETURN_TO_START_OF_SCRIPT"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "COMMENT",
+                  "properties": {
+                    "Comment": "If Music is off"
+                  },
+                  "children": [
+                    {
+                      "id": "IF_PLAYER_SETTING_MATCHES",
+                      "customDisplayName": "If Music config is 0",
+                      "properties": {
+                        "value": {
+                          "class": "Number",
+                          "operator": "EQUALS",
+                          "value": "0"
+                        },
+                        "Player Setting": "168"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "COMMENT",
+              "properties": {
+                "Comment": "Config [169] - Sound Effects\n"
+              },
+              "children": [
+                {
+                  "id": "COMMENT",
+                  "properties": {
+                    "Comment": "If Sound Effects is on"
+                  },
+                  "children": [
+                    {
+                      "id": "IF_PLAYER_SETTING_MATCHES",
+                      "properties": {
+                        "value": {
+                          "class": "Number",
+                          "operator": "GREATER_THAN",
+                          "value": "0"
+                        },
+                        "Player Setting": "169"
+                      },
+                      "children": [
+                        {
+                          "id": "IF_TAB_IS_NOT_OPEN",
+                          "properties": {
+                            "Tab": {
+                              "class": "Tab",
+                              "value": "OPTIONS"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "OPEN_TAB",
+                              "properties": {
+                                "Tab": {
+                                  "class": "Tab",
+                                  "value": "OPTIONS"
+                                }
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "id": "IF_WIDGET_EXISTS",
+                          "customDisplayName": "If Sound Effect setting exists",
+                          "properties": {
+                            "Find Widget By": {
+                              "class": "Widget",
+                              "logic": "NONE",
+                              "type": "WIDGET_ID",
+                              "operator": "EQUALS",
+                              "value": "116, 107"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "WIDGET_INTERACT",
+                              "customDisplayName": "Interact with \"Sound Effects\" setting",
+                              "properties": {
+                                "Find Widget By": {
+                                  "class": "Widget",
+                                  "logic": "NONE",
+                                  "type": "WIDGET_ID",
+                                  "operator": "EQUALS",
+                                  "value": "116, 107"
+                                }
+                              }
+                            },
+                            {
+                              "id": "ELSE_BRANCH",
+                              "children": [
+                                {
+                                  "id": "IF_WIDGET_EXISTS",
+                                  "customDisplayName": "If widget \u0027Audio\u0027 exists",
+                                  "properties": {
+                                    "Find Widget By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "WIDGET_ID",
+                                      "operator": "EQUALS",
+                                      "value": "116, 73"
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "WIDGET_INTERACT",
+                                      "customDisplayName": "Interact with widget \u0027Audio\u0027",
+                                      "properties": {
+                                        "Find Widget By": {
+                                          "class": "Widget",
+                                          "logic": "NONE",
+                                          "type": "WIDGET_ID",
+                                          "operator": "EQUALS",
+                                          "value": "116, 73"
+                                        }
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "RETURN_TO_START_OF_SCRIPT"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "COMMENT",
+                  "properties": {
+                    "Comment": "If Sound Effects is off"
+                  },
+                  "children": [
+                    {
+                      "id": "IF_PLAYER_SETTING_MATCHES",
+                      "properties": {
+                        "value": {
+                          "class": "Number",
+                          "operator": "EQUALS",
+                          "value": "0"
+                        },
+                        "Player Setting": "169"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "COMMENT",
+              "properties": {
+                "Comment": "Config [872] - Area Sound"
+              },
+              "children": [
+                {
+                  "id": "COMMENT",
+                  "customDisplayName": "If Area Sound is on",
+                  "children": [
+                    {
+                      "id": "IF_TAB_IS_NOT_OPEN",
+                      "properties": {
+                        "Tab": {
+                          "class": "Tab",
+                          "value": "OPTIONS"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "OPEN_TAB",
+                          "properties": {
+                            "Tab": {
+                              "class": "Tab",
+                              "value": "OPTIONS"
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_PLAYER_SETTING_MATCHES",
+                      "customDisplayName": "If Area Sounds is on",
+                      "properties": {
+                        "value": {
+                          "class": "Number",
+                          "operator": "DOES_NOT_EQUAL",
+                          "value": "0"
+                        },
+                        "Player Setting": "872"
+                      },
+                      "children": [
+                        {
+                          "id": "IF_WIDGET_EXISTS",
+                          "customDisplayName": "If \"Area Sounds\" exist",
+                          "properties": {
+                            "Find Widget By": {
+                              "class": "Widget",
+                              "logic": "NONE",
+                              "type": "WIDGET_ID",
+                              "operator": "EQUALS",
+                              "value": "116, 122"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "WIDGET_INTERACT",
+                              "customDisplayName": "Interact with \"Area Sounds\" setting",
+                              "properties": {
+                                "Find Widget By": {
+                                  "class": "Widget",
+                                  "logic": "NONE",
+                                  "type": "WIDGET_ID",
+                                  "operator": "EQUALS",
+                                  "value": "116, 122, 0"
+                                }
+                              }
+                            },
+                            {
+                              "id": "ELSE_BRANCH",
+                              "children": [
+                                {
+                                  "id": "IF_WIDGET_EXISTS",
+                                  "customDisplayName": "If widget \u0027Audio\u0027 exists",
+                                  "properties": {
+                                    "Find Widget By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "WIDGET_ID",
+                                      "operator": "EQUALS",
+                                      "value": "116, 73"
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "WIDGET_INTERACT",
+                                      "customDisplayName": "Interact with widget \u0027Audio\u0027",
+                                      "properties": {
+                                        "Find Widget By": {
+                                          "class": "Widget",
+                                          "logic": "NONE",
+                                          "type": "WIDGET_ID",
+                                          "operator": "EQUALS",
+                                          "value": "116, 73"
+                                        }
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "RETURN_TO_START_OF_SCRIPT"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "COMMENT",
+                  "properties": {
+                    "Comment": "If Area Sound is off\n"
+                  },
+                  "children": [
+                    {
+                      "id": "IF_PLAYER_SETTING_MATCHES",
+                      "properties": {
+                        "value": {
+                          "class": "Number",
+                          "operator": "EQUALS",
+                          "value": "0"
+                        },
+                        "Player Setting": "872"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "IF_VARBIT_MATCHES",
+          "properties": {
+            "value": {
+              "class": "Number",
+              "operator": "DOES_NOT_EQUAL",
+              "value": "2"
+            },
+            "Varbit": "1306"
+          },
+          "children": [
+            {
+              "id": "IF_TAB_IS_NOT_OPEN",
+              "properties": {
+                "Tab": {
+                  "class": "Tab",
+                  "value": "OPTIONS"
+                }
+              },
+              "children": [
+                {
+                  "id": "OPEN_TAB",
+                  "customDisplayName": "Open tab",
+                  "properties": {
+                    "Tab": {
+                      "class": "Tab",
+                      "value": "OPTIONS"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "id": "IF_WIDGET_DOES_NOT_EXIST",
+              "properties": {
+                "Find Widget By": {
+                  "class": "Widget",
+                  "logic": "NONE",
+                  "type": "WIDGET_ID",
+                  "operator": "EQUALS",
+                  "value": "116, 7, 0"
+                }
+              },
+              "children": [
+                {
+                  "id": "WIDGET_INTERACT",
+                  "properties": {
+                    "Find Widget By": {
+                      "class": "Widget",
+                      "logic": "NONE",
+                      "type": "WIDGET_ID",
+                      "operator": "EQUALS",
+                      "value": "116, 67"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "CUSTOM_97d9d111-9283-408f-b7a0-d99aaaae41df"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "IF_WIDGET_EXISTS",
+              "properties": {
+                "Find Widget By": {
+                  "class": "Widget",
+                  "logic": "NONE",
+                  "type": "WIDGET_ID",
+                  "operator": "EQUALS",
+                  "value": "116, 7"
+                }
+              },
+              "children": [
+                {
+                  "id": "WIDGET_INTERACT",
+                  "properties": {
+                    "Find Widget By": {
+                      "class": "Widget",
+                      "logic": "NONE",
+                      "type": "WIDGET_ID",
+                      "operator": "EQUALS",
+                      "value": "116, 7, 0"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "CUSTOM_97d9d111-9283-408f-b7a0-d99aaaae41df"
+                    },
+                    {
+                      "id": "IF_WIDGET_EXISTS",
+                      "properties": {
+                        "Find Widget By": {
+                          "class": "Widget",
+                          "logic": "NONE",
+                          "type": "WIDGET_ID",
+                          "operator": "EQUALS",
+                          "value": "116, 39, 3"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "WIDGET_INTERACT",
+                          "properties": {
+                            "Find Widget By": {
+                              "class": "Widget",
+                              "logic": "NONE",
+                              "type": "WIDGET_ID",
+                              "operator": "EQUALS",
+                              "value": "116, 39, 3"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "CUSTOM_97d9d111-9283-408f-b7a0-d99aaaae41df",
+                              "customDisplayName": "Randomization \u003e Anti-Ban Timing"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "IF_VARBIT_MATCHES",
+          "properties": {
+            "value": {
+              "class": "Number",
+              "operator": "DOES_NOT_EQUAL",
+              "value": "1"
+            },
+            "Varbit": "9452"
+          }
+        },
+        {
+          "id": "OR_BRANCH"
+        },
+        {
+          "id": "IF_VARBIT_MATCHES",
+          "properties": {
+            "value": {
+              "class": "Number",
+              "operator": "DOES_NOT_EQUAL",
+              "value": "0"
+            },
+            "Varbit": "4180"
+          }
+        },
+        {
+          "id": "OR_BRANCH"
+        },
+        {
+          "id": "IF_VARBIT_MATCHES",
+          "properties": {
+            "value": {
+              "class": "Number",
+              "operator": "DOES_NOT_EQUAL",
+              "value": "1"
+            },
+            "Varbit": "12378"
+          }
+        },
+        {
+          "id": "OR_BRANCH"
+        },
+        {
+          "id": "IF_VARBIT_MATCHES",
+          "properties": {
+            "value": {
+              "class": "Number",
+              "operator": "DOES_NOT_EQUAL",
+              "value": "1"
+            },
+            "Varbit": "5697"
+          }
+        },
+        {
+          "id": "OR_BRANCH"
+        },
+        {
+          "id": "IF_VARBIT_MATCHES",
+          "properties": {
+            "value": {
+              "class": "Number",
+              "operator": "DOES_NOT_EQUAL",
+              "value": "1"
+            },
+            "Varbit": "4100"
+          }
+        },
+        {
+          "id": "OR_BRANCH"
+        },
+        {
+          "id": "IF_VARBIT_MATCHES",
+          "properties": {
+            "value": {
+              "class": "Number",
+              "operator": "DOES_NOT_EQUAL",
+              "value": "1"
+            },
+            "Varbit": "5368"
+          }
+        },
+        {
+          "id": "OR_BRANCH"
+        },
+        {
+          "id": "IF_VARBIT_MATCHES",
+          "properties": {
+            "value": {
+              "class": "Number",
+              "operator": "DOES_NOT_EQUAL",
+              "value": "0"
+            },
+            "Varbit": "13037"
+          },
+          "children": [
+            {
+              "id": "SET_VARIABLE",
+              "properties": {
+                "Value": "True",
+                "Variable name": "adjustSettings"
+              }
+            }
+          ]
+        },
+        {
+          "id": "ELSE_BRANCH",
+          "children": [
+            {
+              "id": "SET_VARIABLE",
+              "properties": {
+                "Value": "False",
+                "Variable name": "adjustSettings"
+              }
+            },
+            {
+              "id": "PRESS_ESCAPE"
+            },
+            {
+              "id": "PAUSE_SCRIPT"
+            }
+          ]
+        },
+        {
+          "id": "IF_VARIABLE_IS",
+          "properties": {
+            "Filter Value By": {
+              "class": "Variable",
+              "logic": "NONE",
+              "type": "AS_BOOLEAN",
+              "operator": "IS_TRUE"
+            },
+            "Variable name": "adjustSettings"
+          },
+          "children": [
+            {
+              "id": "IF_VARBIT_MATCHES",
+              "customDisplayName": "varbit4180 toggle accept aid",
+              "properties": {
+                "value": {
+                  "class": "Number",
+                  "operator": "EQUALS",
+                  "value": "1"
+                },
+                "Varbit": "4180"
+              },
+              "children": [
+                {
+                  "id": "SET_VARIABLE",
+                  "properties": {
+                    "Value": "1",
+                    "Variable name": "currentOption"
+                  }
+                },
+                {
+                  "id": "WHILE_VARIABLE_MATCHES",
+                  "properties": {
+                    "Filter Value By": {
+                      "class": "Variable",
+                      "logic": "NONE",
+                      "type": "AS_NUMBER",
+                      "operator": "EQUALS",
+                      "value": "1"
+                    },
+                    "Variable name": "currentOption"
+                  },
+                  "children": [
+                    {
+                      "id": "IF_TAB_IS_NOT_OPEN",
+                      "properties": {
+                        "Tab": {
+                          "class": "Tab",
+                          "value": "OPTIONS"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "OPEN_TAB",
+                          "properties": {
+                            "Tab": {
+                              "class": "Tab",
+                              "value": "OPTIONS"
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "ELSE_BRANCH",
+                      "children": [
+                        {
+                          "id": "IF_WIDGET_EXISTS",
+                          "properties": {
+                            "Find Widget By": {
+                              "class": "Widget",
+                              "logic": "NONE",
+                              "type": "WIDGET_ID",
+                              "operator": "EQUALS",
+                              "value": "134,3,1",
+                              "filters": [
+                                {
+                                  "class": "Widget",
+                                  "logic": "AND",
+                                  "type": "TEXT",
+                                  "operator": "EQUALS",
+                                  "value": "Settings"
+                                }
+                              ]
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "PRESS_ESCAPE"
+                            }
+                          ]
+                        },
+                        {
+                          "id": "IF_WIDGET_DOES_NOT_EXIST",
+                          "customDisplayName": "If settings not open",
+                          "properties": {
+                            "Find Widget By": {
+                              "class": "Widget",
+                              "logic": "NONE",
+                              "type": "WIDGET_ID",
+                              "operator": "EQUALS",
+                              "value": "134,3,1",
+                              "filters": [
+                                {
+                                  "class": "Widget",
+                                  "logic": "AND",
+                                  "type": "TEXT",
+                                  "operator": "EQUALS",
+                                  "value": "Settings"
+                                }
+                              ]
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "IF_VARBIT_MATCHES",
+                              "properties": {
+                                "value": {
+                                  "class": "Number",
+                                  "operator": "DOES_NOT_EQUAL",
+                                  "value": "0"
+                                },
+                                "Varbit": "9683"
+                              },
+                              "children": [
+                                {
+                                  "id": "WIDGET_INTERACT",
+                                  "properties": {
+                                    "Action": "Controls",
+                                    "Find Widget By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "WIDGET_ID",
+                                      "operator": "EQUALS",
+                                      "value": "116, 63"
+                                    }
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "id": "WIDGET_INTERACT",
+                              "properties": {
+                                "Action": "Toggle Accept Aid",
+                                "Find Widget By": {
+                                  "class": "Widget",
+                                  "logic": "NONE",
+                                  "type": "WIDGET_ID",
+                                  "operator": "EQUALS",
+                                  "value": "116, 29"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                                  "properties": {
+                                    "Max time (seconds)": "3"
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "IF_VARBIT_MATCHES",
+                                      "properties": {
+                                        "value": {
+                                          "class": "Number",
+                                          "operator": "EQUALS",
+                                          "value": "0"
+                                        },
+                                        "Varbit": "4180"
+                                      }
+                                    },
+                                    {
+                                      "id": "SET_VARIABLE",
+                                      "properties": {
+                                        "Value": "0",
+                                        "Variable name": "currentOption"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "IF_VARBIT_MATCHES",
+              "customDisplayName": "v5542 shift drop",
+              "properties": {
+                "value": {
+                  "class": "Number",
+                  "operator": "EQUALS",
+                  "value": "0"
+                },
+                "Varbit": "5542"
+              },
+              "children": [
+                {
+                  "id": "SET_VARIABLE",
+                  "properties": {
+                    "Value": "1",
+                    "Variable name": "currentOption"
+                  }
+                },
+                {
+                  "id": "WHILE_VARIABLE_MATCHES",
+                  "properties": {
+                    "Filter Value By": {
+                      "class": "Variable",
+                      "logic": "NONE",
+                      "type": "AS_NUMBER",
+                      "operator": "EQUALS",
+                      "value": "1"
+                    },
+                    "Variable name": "currentOption"
+                  },
+                  "children": [
+                    {
+                      "id": "IF_TAB_IS_NOT_OPEN",
+                      "properties": {
+                        "Tab": {
+                          "class": "Tab",
+                          "value": "OPTIONS"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "OPEN_TAB",
+                          "properties": {
+                            "Tab": {
+                              "class": "Tab",
+                              "value": "OPTIONS"
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "ELSE_BRANCH",
+                      "children": [
+                        {
+                          "id": "IF_WIDGET_DOES_NOT_EXIST",
+                          "customDisplayName": "If settings not open",
+                          "properties": {
+                            "Find Widget By": {
+                              "class": "Widget",
+                              "logic": "NONE",
+                              "type": "WIDGET_ID",
+                              "operator": "EQUALS",
+                              "value": "134,3,1",
+                              "filters": [
+                                {
+                                  "class": "Widget",
+                                  "logic": "AND",
+                                  "type": "TEXT",
+                                  "operator": "EQUALS",
+                                  "value": "Settings"
+                                }
+                              ]
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "WIDGET_INTERACT",
+                              "properties": {
+                                "Action": "All Settings",
+                                "Find Widget By": {
+                                  "class": "Widget",
+                                  "logic": "NONE",
+                                  "type": "WIDGET_ID",
+                                  "operator": "EQUALS",
+                                  "value": "116, 32, 9"
+                                }
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "id": "ELSE_BRANCH",
+                          "children": [
+                            {
+                              "id": "IF_WIDGET_EXISTS",
+                              "customDisplayName": "If search unselected",
+                              "properties": {
+                                "Find Widget By": {
+                                  "class": "Widget",
+                                  "logic": "NONE",
+                                  "type": "WIDGET_ID",
+                                  "operator": "EQUALS",
+                                  "value": "134, 10",
+                                  "filters": [
+                                    {
+                                      "class": "Widget",
+                                      "logic": "AND",
+                                      "type": "ACTION",
+                                      "operator": "EQUALS",
+                                      "value": "Search"
+                                    }
+                                  ]
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "SLEEP_BETWEEN",
+                                  "properties": {
+                                    "Minimum": "500",
+                                    "Maximum": "600"
+                                  }
+                                },
+                                {
+                                  "id": "WIDGET_INTERACT",
+                                  "properties": {
+                                    "Action": "Search",
+                                    "Find Widget By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "WIDGET_ID",
+                                      "operator": "EQUALS",
+                                      "value": "134, 11"
+                                    }
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "id": "IF_WIDGET_EXISTS",
+                              "customDisplayName": "If search selected",
+                              "properties": {
+                                "Find Widget By": {
+                                  "class": "Widget",
+                                  "logic": "NONE",
+                                  "type": "WIDGET_ID",
+                                  "operator": "EQUALS",
+                                  "value": "134, 10",
+                                  "filters": [
+                                    {
+                                      "class": "Widget",
+                                      "logic": "AND",
+                                      "type": "ACTION",
+                                      "operator": "DOES_NOT_EQUAL",
+                                      "value": "Search"
+                                    }
+                                  ]
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "SLEEP_BETWEEN",
+                                  "properties": {
+                                    "Minimum": "500",
+                                    "Maximum": "600"
+                                  }
+                                },
+                                {
+                                  "id": "IF_WIDGET_EXISTS",
+                                  "properties": {
+                                    "Find Widget By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "WIDGET_ID",
+                                      "operator": "EQUALS",
+                                      "value": "134,11",
+                                      "filters": [
+                                        {
+                                          "class": "Widget",
+                                          "logic": "AND",
+                                          "type": "TEXT",
+                                          "operator": "DOES_NOT_EQUAL",
+                                          "value": "\u003ccol\u003df4f4f4\u003e*\u003c/col\u003e"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "WIDGET_INTERACT",
+                                      "properties": {
+                                        "Action": "Select Activities",
+                                        "Find Widget By": {
+                                          "class": "Widget",
+                                          "logic": "NONE",
+                                          "type": "WIDGET_ID",
+                                          "operator": "EQUALS",
+                                          "value": "134,24,9"
+                                        }
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "id": "IF_WIDGET_EXISTS",
+                                  "properties": {
+                                    "Find Widget By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "WIDGET_ID",
+                                      "operator": "EQUALS",
+                                      "value": "134,11",
+                                      "filters": [
+                                        {
+                                          "class": "Widget",
+                                          "logic": "AND",
+                                          "type": "TEXT",
+                                          "operator": "EQUALS",
+                                          "value": "\u003ccol\u003df4f4f4\u003e*\u003c/col\u003e"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                },
+                                {
+                                  "id": "OR_BRANCH"
+                                },
+                                {
+                                  "id": "IF_WIDGET_EXISTS",
+                                  "customDisplayName": "If search bar is empty",
+                                  "properties": {
+                                    "Find Widget By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "WIDGET_ID",
+                                      "operator": "EQUALS",
+                                      "value": "134,11",
+                                      "filters": [
+                                        {
+                                          "class": "Widget",
+                                          "logic": "AND",
+                                          "type": "TEXT",
+                                          "operator": "EQUALS",
+                                          "value": "\u003ccol\u003dff981f\u003e\u003ccol\u003df4f4f4\u003e*\u003c/col\u003e\u003c/col\u003e"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "TYPE_MESSAGE_WITHOUT_ENTER",
+                                      "properties": {
+                                        "Message": "shift"
+                                      }
+                                    },
+                                    {
+                                      "id": "SLEEP_BETWEEN",
+                                      "properties": {
+                                        "Minimum": "1000",
+                                        "Maximum": "1001"
+                                      }
+                                    },
+                                    {
+                                      "id": "WIDGET_INTERACT",
+                                      "properties": {
+                                        "Action": "Toggle",
+                                        "Find Widget By": {
+                                          "class": "Widget",
+                                          "logic": "NONE",
+                                          "type": "WIDGET_ID",
+                                          "operator": "EQUALS",
+                                          "value": "134, 18, 1"
+                                        }
+                                      }
+                                    },
+                                    {
+                                      "id": "SET_VARIABLE",
+                                      "properties": {
+                                        "Value": "0",
+                                        "Variable name": "currentOption"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "IF_VARBIT_MATCHES",
+              "customDisplayName": "v13037 store",
+              "properties": {
+                "value": {
+                  "class": "Number",
+                  "operator": "EQUALS",
+                  "value": "1"
+                },
+                "Varbit": "13037"
+              },
+              "children": [
+                {
+                  "id": "SET_VARIABLE",
+                  "properties": {
+                    "Value": "1",
+                    "Variable name": "currentOption"
+                  }
+                },
+                {
+                  "id": "WHILE_VARIABLE_MATCHES",
+                  "properties": {
+                    "Filter Value By": {
+                      "class": "Variable",
+                      "logic": "NONE",
+                      "type": "AS_NUMBER",
+                      "operator": "EQUALS",
+                      "value": "1"
+                    },
+                    "Variable name": "currentOption"
+                  },
+                  "children": [
+                    {
+                      "id": "IF_TAB_IS_NOT_OPEN",
+                      "properties": {
+                        "Tab": {
+                          "class": "Tab",
+                          "value": "OPTIONS"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "OPEN_TAB",
+                          "properties": {
+                            "Tab": {
+                              "class": "Tab",
+                              "value": "OPTIONS"
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "ELSE_BRANCH",
+                      "children": [
+                        {
+                          "id": "IF_WIDGET_DOES_NOT_EXIST",
+                          "customDisplayName": "If settings not open",
+                          "properties": {
+                            "Find Widget By": {
+                              "class": "Widget",
+                              "logic": "NONE",
+                              "type": "WIDGET_ID",
+                              "operator": "EQUALS",
+                              "value": "134,3,1",
+                              "filters": [
+                                {
+                                  "class": "Widget",
+                                  "logic": "AND",
+                                  "type": "TEXT",
+                                  "operator": "EQUALS",
+                                  "value": "Settings"
+                                }
+                              ]
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "WIDGET_INTERACT",
+                              "properties": {
+                                "Action": "All Settings",
+                                "Find Widget By": {
+                                  "class": "Widget",
+                                  "logic": "NONE",
+                                  "type": "WIDGET_ID",
+                                  "operator": "EQUALS",
+                                  "value": "116, 32, 9"
+                                }
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "id": "ELSE_BRANCH",
+                          "children": [
+                            {
+                              "id": "IF_WIDGET_EXISTS",
+                              "customDisplayName": "If search unselected",
+                              "properties": {
+                                "Find Widget By": {
+                                  "class": "Widget",
+                                  "logic": "NONE",
+                                  "type": "WIDGET_ID",
+                                  "operator": "EQUALS",
+                                  "value": "134, 10",
+                                  "filters": [
+                                    {
+                                      "class": "Widget",
+                                      "logic": "AND",
+                                      "type": "ACTION",
+                                      "operator": "EQUALS",
+                                      "value": "Search"
+                                    }
+                                  ]
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "SLEEP_BETWEEN",
+                                  "properties": {
+                                    "Minimum": "500",
+                                    "Maximum": "600"
+                                  }
+                                },
+                                {
+                                  "id": "WIDGET_INTERACT",
+                                  "properties": {
+                                    "Action": "Search",
+                                    "Find Widget By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "WIDGET_ID",
+                                      "operator": "EQUALS",
+                                      "value": "134, 11"
+                                    }
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "id": "IF_WIDGET_EXISTS",
+                              "customDisplayName": "If search selected",
+                              "properties": {
+                                "Find Widget By": {
+                                  "class": "Widget",
+                                  "logic": "NONE",
+                                  "type": "WIDGET_ID",
+                                  "operator": "EQUALS",
+                                  "value": "134, 10",
+                                  "filters": [
+                                    {
+                                      "class": "Widget",
+                                      "logic": "AND",
+                                      "type": "ACTION",
+                                      "operator": "DOES_NOT_EQUAL",
+                                      "value": "Search"
+                                    }
+                                  ]
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "SLEEP_BETWEEN",
+                                  "properties": {
+                                    "Minimum": "500",
+                                    "Maximum": "600"
+                                  }
+                                },
+                                {
+                                  "id": "IF_WIDGET_EXISTS",
+                                  "properties": {
+                                    "Find Widget By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "WIDGET_ID",
+                                      "operator": "EQUALS",
+                                      "value": "134,11",
+                                      "filters": [
+                                        {
+                                          "class": "Widget",
+                                          "logic": "AND",
+                                          "type": "TEXT",
+                                          "operator": "DOES_NOT_EQUAL",
+                                          "value": "\u003ccol\u003df4f4f4\u003e*\u003c/col\u003e"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "WIDGET_INTERACT",
+                                      "properties": {
+                                        "Action": "Select Activities",
+                                        "Find Widget By": {
+                                          "class": "Widget",
+                                          "logic": "NONE",
+                                          "type": "WIDGET_ID",
+                                          "operator": "EQUALS",
+                                          "value": "134,24,9"
+                                        }
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "id": "IF_WIDGET_EXISTS",
+                                  "properties": {
+                                    "Find Widget By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "WIDGET_ID",
+                                      "operator": "EQUALS",
+                                      "value": "134,11",
+                                      "filters": [
+                                        {
+                                          "class": "Widget",
+                                          "logic": "AND",
+                                          "type": "TEXT",
+                                          "operator": "EQUALS",
+                                          "value": "\u003ccol\u003df4f4f4\u003e*\u003c/col\u003e"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                },
+                                {
+                                  "id": "OR_BRANCH"
+                                },
+                                {
+                                  "id": "IF_WIDGET_EXISTS",
+                                  "customDisplayName": "If search bar is empty",
+                                  "properties": {
+                                    "Find Widget By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "WIDGET_ID",
+                                      "operator": "EQUALS",
+                                      "value": "134,11",
+                                      "filters": [
+                                        {
+                                          "class": "Widget",
+                                          "logic": "AND",
+                                          "type": "TEXT",
+                                          "operator": "EQUALS",
+                                          "value": "\u003ccol\u003dff981f\u003e\u003ccol\u003df4f4f4\u003e*\u003c/col\u003e\u003c/col\u003e"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "TYPE_MESSAGE_WITHOUT_ENTER",
+                                      "properties": {
+                                        "Message": "store"
+                                      }
+                                    },
+                                    {
+                                      "id": "SLEEP_BETWEEN",
+                                      "properties": {
+                                        "Minimum": "1000",
+                                        "Maximum": "1001"
+                                      }
+                                    },
+                                    {
+                                      "id": "WIDGET_INTERACT",
+                                      "properties": {
+                                        "Action": "Toggle",
+                                        "Find Widget By": {
+                                          "class": "Widget",
+                                          "logic": "NONE",
+                                          "type": "WIDGET_ID",
+                                          "operator": "EQUALS",
+                                          "value": "134, 18, 12"
+                                        }
+                                      }
+                                    },
+                                    {
+                                      "id": "SET_VARIABLE",
+                                      "properties": {
+                                        "Value": "0",
+                                        "Variable name": "currentOption"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "IF_VARBIT_MATCHES",
+              "customDisplayName": "v5368 activity adviser",
+              "properties": {
+                "value": {
+                  "class": "Number",
+                  "operator": "EQUALS",
+                  "value": "0"
+                },
+                "Varbit": "5368"
+              },
+              "children": [
+                {
+                  "id": "SET_VARIABLE",
+                  "properties": {
+                    "Value": "1",
+                    "Variable name": "currentOption"
+                  }
+                },
+                {
+                  "id": "WHILE_VARIABLE_MATCHES",
+                  "properties": {
+                    "Filter Value By": {
+                      "class": "Variable",
+                      "logic": "NONE",
+                      "type": "AS_NUMBER",
+                      "operator": "EQUALS",
+                      "value": "1"
+                    },
+                    "Variable name": "currentOption"
+                  },
+                  "children": [
+                    {
+                      "id": "IF_TAB_IS_NOT_OPEN",
+                      "properties": {
+                        "Tab": {
+                          "class": "Tab",
+                          "value": "OPTIONS"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "OPEN_TAB",
+                          "properties": {
+                            "Tab": {
+                              "class": "Tab",
+                              "value": "OPTIONS"
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "ELSE_BRANCH",
+                      "children": [
+                        {
+                          "id": "IF_WIDGET_DOES_NOT_EXIST",
+                          "customDisplayName": "If settings not open",
+                          "properties": {
+                            "Find Widget By": {
+                              "class": "Widget",
+                              "logic": "NONE",
+                              "type": "WIDGET_ID",
+                              "operator": "EQUALS",
+                              "value": "134,3,1",
+                              "filters": [
+                                {
+                                  "class": "Widget",
+                                  "logic": "AND",
+                                  "type": "TEXT",
+                                  "operator": "EQUALS",
+                                  "value": "Settings"
+                                }
+                              ]
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "WIDGET_INTERACT",
+                              "properties": {
+                                "Action": "All Settings",
+                                "Find Widget By": {
+                                  "class": "Widget",
+                                  "logic": "NONE",
+                                  "type": "WIDGET_ID",
+                                  "operator": "EQUALS",
+                                  "value": "116, 32, 9"
+                                }
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "id": "ELSE_BRANCH",
+                          "children": [
+                            {
+                              "id": "IF_WIDGET_EXISTS",
+                              "customDisplayName": "If search unselected",
+                              "properties": {
+                                "Find Widget By": {
+                                  "class": "Widget",
+                                  "logic": "NONE",
+                                  "type": "WIDGET_ID",
+                                  "operator": "EQUALS",
+                                  "value": "134, 10",
+                                  "filters": [
+                                    {
+                                      "class": "Widget",
+                                      "logic": "AND",
+                                      "type": "ACTION",
+                                      "operator": "EQUALS",
+                                      "value": "Search"
+                                    }
+                                  ]
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "SLEEP_BETWEEN",
+                                  "properties": {
+                                    "Minimum": "500",
+                                    "Maximum": "600"
+                                  }
+                                },
+                                {
+                                  "id": "WIDGET_INTERACT",
+                                  "properties": {
+                                    "Action": "Search",
+                                    "Find Widget By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "WIDGET_ID",
+                                      "operator": "EQUALS",
+                                      "value": "134, 11"
+                                    }
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "id": "IF_WIDGET_EXISTS",
+                              "customDisplayName": "If search selected",
+                              "properties": {
+                                "Find Widget By": {
+                                  "class": "Widget",
+                                  "logic": "NONE",
+                                  "type": "WIDGET_ID",
+                                  "operator": "EQUALS",
+                                  "value": "134, 10",
+                                  "filters": [
+                                    {
+                                      "class": "Widget",
+                                      "logic": "AND",
+                                      "type": "ACTION",
+                                      "operator": "DOES_NOT_EQUAL",
+                                      "value": "Search"
+                                    }
+                                  ]
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "SLEEP_BETWEEN",
+                                  "properties": {
+                                    "Minimum": "500",
+                                    "Maximum": "600"
+                                  }
+                                },
+                                {
+                                  "id": "IF_WIDGET_EXISTS",
+                                  "properties": {
+                                    "Find Widget By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "WIDGET_ID",
+                                      "operator": "EQUALS",
+                                      "value": "134,11",
+                                      "filters": [
+                                        {
+                                          "class": "Widget",
+                                          "logic": "AND",
+                                          "type": "TEXT",
+                                          "operator": "DOES_NOT_EQUAL",
+                                          "value": "\u003ccol\u003df4f4f4\u003e*\u003c/col\u003e"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "WIDGET_INTERACT",
+                                      "properties": {
+                                        "Action": "Select Activities",
+                                        "Find Widget By": {
+                                          "class": "Widget",
+                                          "logic": "NONE",
+                                          "type": "WIDGET_ID",
+                                          "operator": "EQUALS",
+                                          "value": "134,24,9"
+                                        }
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "id": "IF_WIDGET_EXISTS",
+                                  "properties": {
+                                    "Find Widget By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "WIDGET_ID",
+                                      "operator": "EQUALS",
+                                      "value": "134,11",
+                                      "filters": [
+                                        {
+                                          "class": "Widget",
+                                          "logic": "AND",
+                                          "type": "TEXT",
+                                          "operator": "EQUALS",
+                                          "value": "\u003ccol\u003df4f4f4\u003e*\u003c/col\u003e"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                },
+                                {
+                                  "id": "OR_BRANCH"
+                                },
+                                {
+                                  "id": "IF_WIDGET_EXISTS",
+                                  "customDisplayName": "If search bar is empty",
+                                  "properties": {
+                                    "Find Widget By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "WIDGET_ID",
+                                      "operator": "EQUALS",
+                                      "value": "134,11",
+                                      "filters": [
+                                        {
+                                          "class": "Widget",
+                                          "logic": "AND",
+                                          "type": "TEXT",
+                                          "operator": "EQUALS",
+                                          "value": "\u003ccol\u003dff981f\u003e\u003ccol\u003df4f4f4\u003e*\u003c/col\u003e\u003c/col\u003e"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "TYPE_MESSAGE_WITHOUT_ENTER",
+                                      "properties": {
+                                        "Message": "activity ad"
+                                      }
+                                    },
+                                    {
+                                      "id": "SLEEP_BETWEEN",
+                                      "properties": {
+                                        "Minimum": "1000",
+                                        "Maximum": "1001"
+                                      }
+                                    },
+                                    {
+                                      "id": "WIDGET_INTERACT",
+                                      "properties": {
+                                        "Action": "Toggle",
+                                        "Find Widget By": {
+                                          "class": "Widget",
+                                          "logic": "NONE",
+                                          "type": "WIDGET_ID",
+                                          "operator": "EQUALS",
+                                          "value": "134, 18, 1"
+                                        }
+                                      }
+                                    },
+                                    {
+                                      "id": "SET_VARIABLE",
+                                      "properties": {
+                                        "Value": "0",
+                                        "Variable name": "currentOption"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "IF_VARBIT_MATCHES",
+              "customDisplayName": "v4100 world switcher",
+              "properties": {
+                "value": {
+                  "class": "Number",
+                  "operator": "EQUALS",
+                  "value": "0"
+                },
+                "Varbit": "4100"
+              },
+              "children": [
+                {
+                  "id": "SET_VARIABLE",
+                  "properties": {
+                    "Value": "1",
+                    "Variable name": "currentOption"
+                  }
+                },
+                {
+                  "id": "WHILE_VARIABLE_MATCHES",
+                  "properties": {
+                    "Filter Value By": {
+                      "class": "Variable",
+                      "logic": "NONE",
+                      "type": "AS_NUMBER",
+                      "operator": "EQUALS",
+                      "value": "1"
+                    },
+                    "Variable name": "currentOption"
+                  },
+                  "children": [
+                    {
+                      "id": "IF_TAB_IS_NOT_OPEN",
+                      "properties": {
+                        "Tab": {
+                          "class": "Tab",
+                          "value": "OPTIONS"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "OPEN_TAB",
+                          "properties": {
+                            "Tab": {
+                              "class": "Tab",
+                              "value": "OPTIONS"
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "ELSE_BRANCH",
+                      "children": [
+                        {
+                          "id": "IF_WIDGET_DOES_NOT_EXIST",
+                          "customDisplayName": "If settings not open",
+                          "properties": {
+                            "Find Widget By": {
+                              "class": "Widget",
+                              "logic": "NONE",
+                              "type": "WIDGET_ID",
+                              "operator": "EQUALS",
+                              "value": "134,3,1",
+                              "filters": [
+                                {
+                                  "class": "Widget",
+                                  "logic": "AND",
+                                  "type": "TEXT",
+                                  "operator": "EQUALS",
+                                  "value": "Settings"
+                                }
+                              ]
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "WIDGET_INTERACT",
+                              "properties": {
+                                "Action": "All Settings",
+                                "Find Widget By": {
+                                  "class": "Widget",
+                                  "logic": "NONE",
+                                  "type": "WIDGET_ID",
+                                  "operator": "EQUALS",
+                                  "value": "116, 32, 9"
+                                }
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "id": "ELSE_BRANCH",
+                          "children": [
+                            {
+                              "id": "IF_WIDGET_EXISTS",
+                              "customDisplayName": "If search unselected",
+                              "properties": {
+                                "Find Widget By": {
+                                  "class": "Widget",
+                                  "logic": "NONE",
+                                  "type": "WIDGET_ID",
+                                  "operator": "EQUALS",
+                                  "value": "134, 10",
+                                  "filters": [
+                                    {
+                                      "class": "Widget",
+                                      "logic": "AND",
+                                      "type": "ACTION",
+                                      "operator": "EQUALS",
+                                      "value": "Search"
+                                    }
+                                  ]
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "SLEEP_BETWEEN",
+                                  "properties": {
+                                    "Minimum": "500",
+                                    "Maximum": "600"
+                                  }
+                                },
+                                {
+                                  "id": "WIDGET_INTERACT",
+                                  "properties": {
+                                    "Action": "Search",
+                                    "Find Widget By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "WIDGET_ID",
+                                      "operator": "EQUALS",
+                                      "value": "134, 11"
+                                    }
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "id": "IF_WIDGET_EXISTS",
+                              "customDisplayName": "If search selected",
+                              "properties": {
+                                "Find Widget By": {
+                                  "class": "Widget",
+                                  "logic": "NONE",
+                                  "type": "WIDGET_ID",
+                                  "operator": "EQUALS",
+                                  "value": "134, 10",
+                                  "filters": [
+                                    {
+                                      "class": "Widget",
+                                      "logic": "AND",
+                                      "type": "ACTION",
+                                      "operator": "DOES_NOT_EQUAL",
+                                      "value": "Search"
+                                    }
+                                  ]
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "SLEEP_BETWEEN",
+                                  "properties": {
+                                    "Minimum": "500",
+                                    "Maximum": "600"
+                                  }
+                                },
+                                {
+                                  "id": "IF_WIDGET_EXISTS",
+                                  "properties": {
+                                    "Find Widget By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "WIDGET_ID",
+                                      "operator": "EQUALS",
+                                      "value": "134,11",
+                                      "filters": [
+                                        {
+                                          "class": "Widget",
+                                          "logic": "AND",
+                                          "type": "TEXT",
+                                          "operator": "DOES_NOT_EQUAL",
+                                          "value": "\u003ccol\u003df4f4f4\u003e*\u003c/col\u003e"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "WIDGET_INTERACT",
+                                      "properties": {
+                                        "Action": "Select Activities",
+                                        "Find Widget By": {
+                                          "class": "Widget",
+                                          "logic": "NONE",
+                                          "type": "WIDGET_ID",
+                                          "operator": "EQUALS",
+                                          "value": "134,24,9"
+                                        }
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "id": "IF_WIDGET_EXISTS",
+                                  "properties": {
+                                    "Find Widget By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "WIDGET_ID",
+                                      "operator": "EQUALS",
+                                      "value": "134,11",
+                                      "filters": [
+                                        {
+                                          "class": "Widget",
+                                          "logic": "AND",
+                                          "type": "TEXT",
+                                          "operator": "EQUALS",
+                                          "value": "\u003ccol\u003df4f4f4\u003e*\u003c/col\u003e"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                },
+                                {
+                                  "id": "OR_BRANCH"
+                                },
+                                {
+                                  "id": "IF_WIDGET_EXISTS",
+                                  "customDisplayName": "If search bar is empty",
+                                  "properties": {
+                                    "Find Widget By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "WIDGET_ID",
+                                      "operator": "EQUALS",
+                                      "value": "134,11",
+                                      "filters": [
+                                        {
+                                          "class": "Widget",
+                                          "logic": "AND",
+                                          "type": "TEXT",
+                                          "operator": "EQUALS",
+                                          "value": "\u003ccol\u003dff981f\u003e\u003ccol\u003df4f4f4\u003e*\u003c/col\u003e\u003c/col\u003e"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "TYPE_MESSAGE_WITHOUT_ENTER",
+                                      "properties": {
+                                        "Message": "world"
+                                      }
+                                    },
+                                    {
+                                      "id": "SLEEP_BETWEEN",
+                                      "properties": {
+                                        "Minimum": "1000",
+                                        "Maximum": "1001"
+                                      }
+                                    },
+                                    {
+                                      "id": "WIDGET_INTERACT",
+                                      "properties": {
+                                        "Action": "Toggle",
+                                        "Find Widget By": {
+                                          "class": "Widget",
+                                          "logic": "NONE",
+                                          "type": "WIDGET_ID",
+                                          "operator": "EQUALS",
+                                          "value": "134, 18, 31"
+                                        }
+                                      }
+                                    },
+                                    {
+                                      "id": "SET_VARIABLE",
+                                      "properties": {
+                                        "Value": "0",
+                                        "Variable name": "currentOption"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "IF_VARBIT_MATCHES",
+              "customDisplayName": "v5697 toggle ammo",
+              "properties": {
+                "value": {
+                  "class": "Number",
+                  "operator": "EQUALS",
+                  "value": "0"
+                },
+                "Varbit": "5697"
+              },
+              "children": [
+                {
+                  "id": "SET_VARIABLE",
+                  "properties": {
+                    "Value": "1",
+                    "Variable name": "currentOption"
+                  }
+                },
+                {
+                  "id": "WHILE_VARIABLE_MATCHES",
+                  "properties": {
+                    "Filter Value By": {
+                      "class": "Variable",
+                      "logic": "NONE",
+                      "type": "AS_NUMBER",
+                      "operator": "EQUALS",
+                      "value": "1"
+                    },
+                    "Variable name": "currentOption"
+                  },
+                  "children": [
+                    {
+                      "id": "IF_TAB_IS_NOT_OPEN",
+                      "properties": {
+                        "Tab": {
+                          "class": "Tab",
+                          "value": "OPTIONS"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "OPEN_TAB",
+                          "properties": {
+                            "Tab": {
+                              "class": "Tab",
+                              "value": "OPTIONS"
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "ELSE_BRANCH",
+                      "children": [
+                        {
+                          "id": "IF_WIDGET_DOES_NOT_EXIST",
+                          "customDisplayName": "If settings not open",
+                          "properties": {
+                            "Find Widget By": {
+                              "class": "Widget",
+                              "logic": "NONE",
+                              "type": "WIDGET_ID",
+                              "operator": "EQUALS",
+                              "value": "134,3,1",
+                              "filters": [
+                                {
+                                  "class": "Widget",
+                                  "logic": "AND",
+                                  "type": "TEXT",
+                                  "operator": "EQUALS",
+                                  "value": "Settings"
+                                }
+                              ]
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "WIDGET_INTERACT",
+                              "properties": {
+                                "Action": "All Settings",
+                                "Find Widget By": {
+                                  "class": "Widget",
+                                  "logic": "NONE",
+                                  "type": "WIDGET_ID",
+                                  "operator": "EQUALS",
+                                  "value": "116, 32, 9"
+                                }
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "id": "ELSE_BRANCH",
+                          "children": [
+                            {
+                              "id": "IF_WIDGET_EXISTS",
+                              "customDisplayName": "If search unselected",
+                              "properties": {
+                                "Find Widget By": {
+                                  "class": "Widget",
+                                  "logic": "NONE",
+                                  "type": "WIDGET_ID",
+                                  "operator": "EQUALS",
+                                  "value": "134, 10",
+                                  "filters": [
+                                    {
+                                      "class": "Widget",
+                                      "logic": "AND",
+                                      "type": "ACTION",
+                                      "operator": "EQUALS",
+                                      "value": "Search"
+                                    }
+                                  ]
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "SLEEP_BETWEEN",
+                                  "properties": {
+                                    "Minimum": "500",
+                                    "Maximum": "600"
+                                  }
+                                },
+                                {
+                                  "id": "WIDGET_INTERACT",
+                                  "properties": {
+                                    "Action": "Search",
+                                    "Find Widget By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "WIDGET_ID",
+                                      "operator": "EQUALS",
+                                      "value": "134, 11"
+                                    }
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "id": "IF_WIDGET_EXISTS",
+                              "customDisplayName": "If search selected",
+                              "properties": {
+                                "Find Widget By": {
+                                  "class": "Widget",
+                                  "logic": "NONE",
+                                  "type": "WIDGET_ID",
+                                  "operator": "EQUALS",
+                                  "value": "134, 10",
+                                  "filters": [
+                                    {
+                                      "class": "Widget",
+                                      "logic": "AND",
+                                      "type": "ACTION",
+                                      "operator": "DOES_NOT_EQUAL",
+                                      "value": "Search"
+                                    }
+                                  ]
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "SLEEP_BETWEEN",
+                                  "properties": {
+                                    "Minimum": "500",
+                                    "Maximum": "600"
+                                  }
+                                },
+                                {
+                                  "id": "IF_WIDGET_EXISTS",
+                                  "properties": {
+                                    "Find Widget By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "WIDGET_ID",
+                                      "operator": "EQUALS",
+                                      "value": "134,11",
+                                      "filters": [
+                                        {
+                                          "class": "Widget",
+                                          "logic": "AND",
+                                          "type": "TEXT",
+                                          "operator": "DOES_NOT_EQUAL",
+                                          "value": "\u003ccol\u003df4f4f4\u003e*\u003c/col\u003e"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "WIDGET_INTERACT",
+                                      "properties": {
+                                        "Action": "Select Activities",
+                                        "Find Widget By": {
+                                          "class": "Widget",
+                                          "logic": "NONE",
+                                          "type": "WIDGET_ID",
+                                          "operator": "EQUALS",
+                                          "value": "134,24,9"
+                                        }
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "id": "IF_WIDGET_EXISTS",
+                                  "properties": {
+                                    "Find Widget By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "WIDGET_ID",
+                                      "operator": "EQUALS",
+                                      "value": "134,11",
+                                      "filters": [
+                                        {
+                                          "class": "Widget",
+                                          "logic": "AND",
+                                          "type": "TEXT",
+                                          "operator": "EQUALS",
+                                          "value": "\u003ccol\u003df4f4f4\u003e*\u003c/col\u003e"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                },
+                                {
+                                  "id": "OR_BRANCH"
+                                },
+                                {
+                                  "id": "IF_WIDGET_EXISTS",
+                                  "customDisplayName": "If search bar is empty",
+                                  "properties": {
+                                    "Find Widget By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "WIDGET_ID",
+                                      "operator": "EQUALS",
+                                      "value": "134,11",
+                                      "filters": [
+                                        {
+                                          "class": "Widget",
+                                          "logic": "AND",
+                                          "type": "TEXT",
+                                          "operator": "EQUALS",
+                                          "value": "\u003ccol\u003dff981f\u003e\u003ccol\u003df4f4f4\u003e*\u003c/col\u003e\u003c/col\u003e"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "TYPE_MESSAGE_WITHOUT_ENTER",
+                                      "properties": {
+                                        "Message": "ammo"
+                                      }
+                                    },
+                                    {
+                                      "id": "SLEEP_BETWEEN",
+                                      "properties": {
+                                        "Minimum": "1000",
+                                        "Maximum": "1001"
+                                      }
+                                    },
+                                    {
+                                      "id": "WIDGET_INTERACT",
+                                      "properties": {
+                                        "Action": "Toggle",
+                                        "Find Widget By": {
+                                          "class": "Widget",
+                                          "logic": "NONE",
+                                          "type": "WIDGET_ID",
+                                          "operator": "EQUALS",
+                                          "value": "134, 18, 1"
+                                        }
+                                      }
+                                    },
+                                    {
+                                      "id": "SET_VARIABLE",
+                                      "properties": {
+                                        "Value": "0",
+                                        "Variable name": "currentOption"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "IF_VARBIT_MATCHES",
+              "customDisplayName": "v12378 hide roofs",
+              "properties": {
+                "value": {
+                  "class": "Number",
+                  "operator": "EQUALS",
+                  "value": "0"
+                },
+                "Varbit": "12378"
+              },
+              "children": [
+                {
+                  "id": "SET_VARIABLE",
+                  "properties": {
+                    "Value": "1",
+                    "Variable name": "currentOption"
+                  }
+                },
+                {
+                  "id": "WHILE_VARIABLE_MATCHES",
+                  "properties": {
+                    "Filter Value By": {
+                      "class": "Variable",
+                      "logic": "NONE",
+                      "type": "AS_NUMBER",
+                      "operator": "EQUALS",
+                      "value": "1"
+                    },
+                    "Variable name": "currentOption"
+                  },
+                  "children": [
+                    {
+                      "id": "IF_TAB_IS_NOT_OPEN",
+                      "properties": {
+                        "Tab": {
+                          "class": "Tab",
+                          "value": "OPTIONS"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "OPEN_TAB",
+                          "properties": {
+                            "Tab": {
+                              "class": "Tab",
+                              "value": "OPTIONS"
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "ELSE_BRANCH",
+                      "children": [
+                        {
+                          "id": "IF_WIDGET_DOES_NOT_EXIST",
+                          "customDisplayName": "If settings not open",
+                          "properties": {
+                            "Find Widget By": {
+                              "class": "Widget",
+                              "logic": "NONE",
+                              "type": "WIDGET_ID",
+                              "operator": "EQUALS",
+                              "value": "134,3,1",
+                              "filters": [
+                                {
+                                  "class": "Widget",
+                                  "logic": "AND",
+                                  "type": "TEXT",
+                                  "operator": "EQUALS",
+                                  "value": "Settings"
+                                }
+                              ]
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "WIDGET_INTERACT",
+                              "properties": {
+                                "Action": "All Settings",
+                                "Find Widget By": {
+                                  "class": "Widget",
+                                  "logic": "NONE",
+                                  "type": "WIDGET_ID",
+                                  "operator": "EQUALS",
+                                  "value": "116, 32, 9"
+                                }
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "id": "ELSE_BRANCH",
+                          "children": [
+                            {
+                              "id": "IF_WIDGET_EXISTS",
+                              "customDisplayName": "If search unselected",
+                              "properties": {
+                                "Find Widget By": {
+                                  "class": "Widget",
+                                  "logic": "NONE",
+                                  "type": "WIDGET_ID",
+                                  "operator": "EQUALS",
+                                  "value": "134, 10",
+                                  "filters": [
+                                    {
+                                      "class": "Widget",
+                                      "logic": "AND",
+                                      "type": "ACTION",
+                                      "operator": "EQUALS",
+                                      "value": "Search"
+                                    }
+                                  ]
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "SLEEP_BETWEEN",
+                                  "properties": {
+                                    "Minimum": "500",
+                                    "Maximum": "600"
+                                  }
+                                },
+                                {
+                                  "id": "WIDGET_INTERACT",
+                                  "properties": {
+                                    "Action": "Search",
+                                    "Find Widget By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "WIDGET_ID",
+                                      "operator": "EQUALS",
+                                      "value": "134, 11"
+                                    }
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "id": "IF_WIDGET_EXISTS",
+                              "customDisplayName": "If search selected",
+                              "properties": {
+                                "Find Widget By": {
+                                  "class": "Widget",
+                                  "logic": "NONE",
+                                  "type": "WIDGET_ID",
+                                  "operator": "EQUALS",
+                                  "value": "134, 10",
+                                  "filters": [
+                                    {
+                                      "class": "Widget",
+                                      "logic": "AND",
+                                      "type": "ACTION",
+                                      "operator": "DOES_NOT_EQUAL",
+                                      "value": "Search"
+                                    }
+                                  ]
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "SLEEP_BETWEEN",
+                                  "properties": {
+                                    "Minimum": "500",
+                                    "Maximum": "600"
+                                  }
+                                },
+                                {
+                                  "id": "IF_WIDGET_EXISTS",
+                                  "properties": {
+                                    "Find Widget By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "WIDGET_ID",
+                                      "operator": "EQUALS",
+                                      "value": "134,11",
+                                      "filters": [
+                                        {
+                                          "class": "Widget",
+                                          "logic": "AND",
+                                          "type": "TEXT",
+                                          "operator": "DOES_NOT_EQUAL",
+                                          "value": "\u003ccol\u003df4f4f4\u003e*\u003c/col\u003e"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "WIDGET_INTERACT",
+                                      "properties": {
+                                        "Action": "Select Activities",
+                                        "Find Widget By": {
+                                          "class": "Widget",
+                                          "logic": "NONE",
+                                          "type": "WIDGET_ID",
+                                          "operator": "EQUALS",
+                                          "value": "134,24,9"
+                                        }
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "id": "IF_WIDGET_EXISTS",
+                                  "properties": {
+                                    "Find Widget By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "WIDGET_ID",
+                                      "operator": "EQUALS",
+                                      "value": "134,11",
+                                      "filters": [
+                                        {
+                                          "class": "Widget",
+                                          "logic": "AND",
+                                          "type": "TEXT",
+                                          "operator": "EQUALS",
+                                          "value": "\u003ccol\u003df4f4f4\u003e*\u003c/col\u003e"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                },
+                                {
+                                  "id": "OR_BRANCH"
+                                },
+                                {
+                                  "id": "IF_WIDGET_EXISTS",
+                                  "customDisplayName": "If search bar is empty",
+                                  "properties": {
+                                    "Find Widget By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "WIDGET_ID",
+                                      "operator": "EQUALS",
+                                      "value": "134,11",
+                                      "filters": [
+                                        {
+                                          "class": "Widget",
+                                          "logic": "AND",
+                                          "type": "TEXT",
+                                          "operator": "EQUALS",
+                                          "value": "\u003ccol\u003dff981f\u003e\u003ccol\u003df4f4f4\u003e*\u003c/col\u003e\u003c/col\u003e"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "TYPE_MESSAGE_WITHOUT_ENTER",
+                                      "properties": {
+                                        "Message": "roof"
+                                      }
+                                    },
+                                    {
+                                      "id": "SLEEP_BETWEEN",
+                                      "properties": {
+                                        "Minimum": "1000",
+                                        "Maximum": "1001"
+                                      }
+                                    },
+                                    {
+                                      "id": "WIDGET_INTERACT",
+                                      "properties": {
+                                        "Action": "Toggle",
+                                        "Find Widget By": {
+                                          "class": "Widget",
+                                          "logic": "NONE",
+                                          "type": "WIDGET_ID",
+                                          "operator": "EQUALS",
+                                          "value": "134, 19, 182"
+                                        }
+                                      }
+                                    },
+                                    {
+                                      "id": "SET_VARIABLE",
+                                      "properties": {
+                                        "Value": "0",
+                                        "Variable name": "currentOption"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "IF_VARBIT_MATCHES",
+              "customDisplayName": "v9452 disable lvl up",
+              "properties": {
+                "value": {
+                  "class": "Number",
+                  "operator": "EQUALS",
+                  "value": "0"
+                },
+                "Varbit": "9452"
+              },
+              "children": [
+                {
+                  "id": "SET_VARIABLE",
+                  "properties": {
+                    "Value": "1",
+                    "Variable name": "currentOption"
+                  }
+                },
+                {
+                  "id": "WHILE_VARIABLE_MATCHES",
+                  "properties": {
+                    "Filter Value By": {
+                      "class": "Variable",
+                      "logic": "NONE",
+                      "type": "AS_NUMBER",
+                      "operator": "EQUALS",
+                      "value": "1"
+                    },
+                    "Variable name": "currentOption"
+                  },
+                  "children": [
+                    {
+                      "id": "IF_TAB_IS_NOT_OPEN",
+                      "properties": {
+                        "Tab": {
+                          "class": "Tab",
+                          "value": "OPTIONS"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "OPEN_TAB",
+                          "properties": {
+                            "Tab": {
+                              "class": "Tab",
+                              "value": "OPTIONS"
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "ELSE_BRANCH",
+                      "children": [
+                        {
+                          "id": "IF_WIDGET_DOES_NOT_EXIST",
+                          "customDisplayName": "If settings not open",
+                          "properties": {
+                            "Find Widget By": {
+                              "class": "Widget",
+                              "logic": "NONE",
+                              "type": "WIDGET_ID",
+                              "operator": "EQUALS",
+                              "value": "134,3,1",
+                              "filters": [
+                                {
+                                  "class": "Widget",
+                                  "logic": "AND",
+                                  "type": "TEXT",
+                                  "operator": "EQUALS",
+                                  "value": "Settings"
+                                }
+                              ]
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "WIDGET_INTERACT",
+                              "properties": {
+                                "Action": "All Settings",
+                                "Find Widget By": {
+                                  "class": "Widget",
+                                  "logic": "NONE",
+                                  "type": "WIDGET_ID",
+                                  "operator": "EQUALS",
+                                  "value": "116, 32, 9"
+                                }
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "id": "ELSE_BRANCH",
+                          "children": [
+                            {
+                              "id": "IF_WIDGET_EXISTS",
+                              "customDisplayName": "If search unselected",
+                              "properties": {
+                                "Find Widget By": {
+                                  "class": "Widget",
+                                  "logic": "NONE",
+                                  "type": "WIDGET_ID",
+                                  "operator": "EQUALS",
+                                  "value": "134, 10",
+                                  "filters": [
+                                    {
+                                      "class": "Widget",
+                                      "logic": "AND",
+                                      "type": "ACTION",
+                                      "operator": "EQUALS",
+                                      "value": "Search"
+                                    }
+                                  ]
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "SLEEP_BETWEEN",
+                                  "properties": {
+                                    "Minimum": "500",
+                                    "Maximum": "600"
+                                  }
+                                },
+                                {
+                                  "id": "WIDGET_INTERACT",
+                                  "properties": {
+                                    "Action": "Search",
+                                    "Find Widget By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "WIDGET_ID",
+                                      "operator": "EQUALS",
+                                      "value": "134, 11"
+                                    }
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "id": "IF_WIDGET_EXISTS",
+                              "customDisplayName": "If search selected",
+                              "properties": {
+                                "Find Widget By": {
+                                  "class": "Widget",
+                                  "logic": "NONE",
+                                  "type": "WIDGET_ID",
+                                  "operator": "EQUALS",
+                                  "value": "134, 10",
+                                  "filters": [
+                                    {
+                                      "class": "Widget",
+                                      "logic": "AND",
+                                      "type": "ACTION",
+                                      "operator": "DOES_NOT_EQUAL",
+                                      "value": "Search"
+                                    }
+                                  ]
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "SLEEP_BETWEEN",
+                                  "properties": {
+                                    "Minimum": "500",
+                                    "Maximum": "600"
+                                  }
+                                },
+                                {
+                                  "id": "IF_WIDGET_EXISTS",
+                                  "properties": {
+                                    "Find Widget By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "WIDGET_ID",
+                                      "operator": "EQUALS",
+                                      "value": "134,11",
+                                      "filters": [
+                                        {
+                                          "class": "Widget",
+                                          "logic": "AND",
+                                          "type": "TEXT",
+                                          "operator": "DOES_NOT_EQUAL",
+                                          "value": "\u003ccol\u003df4f4f4\u003e*\u003c/col\u003e"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "WIDGET_INTERACT",
+                                      "properties": {
+                                        "Action": "Select Activities",
+                                        "Find Widget By": {
+                                          "class": "Widget",
+                                          "logic": "NONE",
+                                          "type": "WIDGET_ID",
+                                          "operator": "EQUALS",
+                                          "value": "134,24,9"
+                                        }
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "id": "IF_WIDGET_EXISTS",
+                                  "properties": {
+                                    "Find Widget By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "WIDGET_ID",
+                                      "operator": "EQUALS",
+                                      "value": "134,11",
+                                      "filters": [
+                                        {
+                                          "class": "Widget",
+                                          "logic": "AND",
+                                          "type": "TEXT",
+                                          "operator": "EQUALS",
+                                          "value": "\u003ccol\u003df4f4f4\u003e*\u003c/col\u003e"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                },
+                                {
+                                  "id": "OR_BRANCH"
+                                },
+                                {
+                                  "id": "IF_WIDGET_EXISTS",
+                                  "customDisplayName": "If search bar is empty",
+                                  "properties": {
+                                    "Find Widget By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "WIDGET_ID",
+                                      "operator": "EQUALS",
+                                      "value": "134,11",
+                                      "filters": [
+                                        {
+                                          "class": "Widget",
+                                          "logic": "AND",
+                                          "type": "TEXT",
+                                          "operator": "EQUALS",
+                                          "value": "\u003ccol\u003dff981f\u003e\u003ccol\u003df4f4f4\u003e*\u003c/col\u003e\u003c/col\u003e"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "TYPE_MESSAGE_WITHOUT_ENTER",
+                                      "properties": {
+                                        "Message": "disable level"
+                                      }
+                                    },
+                                    {
+                                      "id": "SLEEP_BETWEEN",
+                                      "properties": {
+                                        "Minimum": "1000",
+                                        "Maximum": "1001"
+                                      }
+                                    },
+                                    {
+                                      "id": "WIDGET_INTERACT",
+                                      "properties": {
+                                        "Action": "Toggle",
+                                        "Find Widget By": {
+                                          "class": "Widget",
+                                          "logic": "NONE",
+                                          "type": "WIDGET_ID",
+                                          "operator": "EQUALS",
+                                          "value": "134,18,1"
+                                        }
+                                      }
+                                    },
+                                    {
+                                      "id": "SET_VARIABLE",
+                                      "properties": {
+                                        "Value": "0",
+                                        "Variable name": "currentOption"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "PRESS_ESCAPE",
+          "children": [
+            {
+              "id": "CUSTOM_06b15362-bede-462f-9125-02cf0f33f141"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

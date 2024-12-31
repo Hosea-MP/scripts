@@ -1,0 +1,2373 @@
+{
+  "sleep": "500",
+  "name": "Sarachnis",
+  "version": 1.0,
+  "metadata": {
+    "network-id": "50",
+    "network-downloaded-at": "1721665207059"
+  },
+  "actions": [
+    {
+      "id": "IF_FIRST_RUN",
+      "children": [
+        {
+          "id": "WALK_FULLY_TO_TILE",
+          "properties": {
+            "Tile": "(1748, 3599, 0)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "COMMENT",
+      "properties": {
+        "Comment": "Health/Poitions"
+      },
+      "children": [
+        {
+          "id": "IF_LOCAL_PLAYER_MATCHES",
+          "properties": {
+            "Filter By": {
+              "class": "Player",
+              "logic": "NONE",
+              "type": "HEALTH",
+              "operator": "LESS_THAN_OR_EQUAL",
+              "value": "45"
+            }
+          },
+          "children": [
+            {
+              "id": "INTERACT_WITH_INVENTORY_ITEM",
+              "properties": {
+                "Filter Item By": {
+                  "class": "Item",
+                  "logic": "NONE",
+                  "type": "NAME",
+                  "operator": "EQUALS",
+                  "value": "Shark"
+                },
+                "Action": "Eat"
+              }
+            }
+          ]
+        },
+        {
+          "id": "IF_SKILL_DIFFERENCE_IS",
+          "properties": {
+            "Skill": {
+              "class": "Skill",
+              "value": "PRAYER"
+            },
+            "the difference": {
+              "class": "Number",
+              "operator": "LESS_THAN_OR_EQUALS",
+              "value": "-29"
+            }
+          },
+          "children": [
+            {
+              "id": "INTERACT_WITH_INVENTORY_ITEM",
+              "properties": {
+                "Filter Item By": {
+                  "class": "Item",
+                  "logic": "NONE",
+                  "type": "NAME",
+                  "operator": "EQUALS",
+                  "value": "Prayer potion(4)",
+                  "filters": [
+                    {
+                      "class": "Item",
+                      "logic": "OR",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Prayer potion(3)"
+                    },
+                    {
+                      "class": "Item",
+                      "logic": "OR",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Prayer potion(2)"
+                    },
+                    {
+                      "class": "Item",
+                      "logic": "OR",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Prayer potion(1)"
+                    }
+                  ]
+                },
+                "Force left click": false,
+                "Action": "Drink"
+              }
+            }
+          ]
+        },
+        {
+          "id": "IF_BOOSTED_SKILL_LEVEL_IS",
+          "properties": {
+            "level": {
+              "class": "Number",
+              "operator": "LESS_THAN_OR_EQUALS",
+              "value": "87"
+            },
+            "Skill": {
+              "class": "Skill",
+              "value": "ATTACK"
+            }
+          },
+          "children": [
+            {
+              "id": "INTERACT_WITH_INVENTORY_ITEM",
+              "properties": {
+                "Filter Item By": {
+                  "class": "Item",
+                  "logic": "NONE",
+                  "type": "NAME",
+                  "operator": "EQUALS",
+                  "value": "Super combat potion(4)",
+                  "filters": [
+                    {
+                      "class": "Item",
+                      "logic": "OR",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Super combat potion(3)"
+                    },
+                    {
+                      "class": "Item",
+                      "logic": "OR",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Super combat potion(2)"
+                    },
+                    {
+                      "class": "Item",
+                      "logic": "OR",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Super combat potion(1)"
+                    }
+                  ]
+                },
+                "Action": "Drink"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "COMMENT",
+      "properties": {
+        "Comment": "Gear"
+      }
+    },
+    {
+      "id": "IF_FIRST_RUN",
+      "children": [
+        {
+          "id": "ADD_ALL_TO_LIST",
+          "customDisplayName": "Put armour and weapon in this",
+          "properties": {
+            "List name": "Gear",
+            "Value": "Amulet of fury,Dragon defender,Brimstone ring,Saradomin cloak,Dragon boots,Helm of neitiznot,Ancient chaps,Ancient d\u0027hide body,Combat bracelet(6),Sarachnis cudgel,Unholy blessing"
+          }
+        }
+      ]
+    },
+    {
+      "id": "IF_EQUIPPED_ITEM_DOES_NOT_MATCH",
+      "customDisplayName": "Change me to what you will be wearing",
+      "properties": {
+        "Filter Item By": {
+          "class": "Item",
+          "logic": "NONE",
+          "type": "NAME",
+          "operator": "EQUALS",
+          "value": "Amulet of fury"
+        }
+      }
+    },
+    {
+      "id": "OR_BRANCH"
+    },
+    {
+      "id": "IF_EQUIPPED_ITEM_DOES_NOT_MATCH",
+      "customDisplayName": "Change me to what you will be wearing",
+      "properties": {
+        "Filter Item By": {
+          "class": "Item",
+          "logic": "NONE",
+          "type": "NAME",
+          "operator": "EQUALS",
+          "value": "Dragon boots"
+        }
+      }
+    },
+    {
+      "id": "OR_BRANCH"
+    },
+    {
+      "id": "IF_EQUIPPED_ITEM_DOES_NOT_MATCH",
+      "customDisplayName": "Change me to what you will be wearing",
+      "properties": {
+        "Filter Item By": {
+          "class": "Item",
+          "logic": "NONE",
+          "type": "NAME",
+          "operator": "EQUALS",
+          "value": "Brimstone ring"
+        }
+      }
+    },
+    {
+      "id": "OR_BRANCH"
+    },
+    {
+      "id": "IF_EQUIPPED_ITEM_DOES_NOT_MATCH",
+      "customDisplayName": "CHANGE ME IF YOU ARE NO USING COMBAT BRACLET",
+      "properties": {
+        "Filter Item By": {
+          "class": "Item",
+          "logic": "NONE",
+          "type": "NAME",
+          "operator": "EQUALS",
+          "value": "Combat bracelet(6)"
+        }
+      },
+      "children": [
+        {
+          "id": "FOR_EACH_IN_LIST",
+          "properties": {
+            "Reverse order": false,
+            "List name": "Gear"
+          },
+          "children": [
+            {
+              "id": "SET_VARIABLE_TO_LAST_OUTPUT",
+              "properties": {
+                "Variable name": "Item"
+              },
+              "children": [
+                {
+                  "id": "REMOVE_LAST_OUTPUT_FROM_LIST",
+                  "properties": {
+                    "List name": "Gear"
+                  },
+                  "children": [
+                    {
+                      "id": "BANK_WITHDRAW_ITEM",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "v(Item)"
+                        },
+                        "Amount": "1"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "INTERACT_WITH_INVENTORY_ITEM",
+              "properties": {
+                "Filter Item By": {
+                  "class": "Item",
+                  "logic": "NONE",
+                  "type": "ACTION",
+                  "operator": "EQUALS",
+                  "value": "Wield"
+                },
+                "Action": "Wield"
+              }
+            },
+            {
+              "id": "OR_BRANCH"
+            },
+            {
+              "id": "INTERACT_WITH_INVENTORY_ITEM",
+              "properties": {
+                "Filter Item By": {
+                  "class": "Item",
+                  "logic": "NONE",
+                  "type": "ID",
+                  "operator": "EQUALS",
+                  "value": "20223"
+                },
+                "Force left click": false,
+                "Action": "Equip"
+              }
+            },
+            {
+              "id": "OR_BRANCH"
+            },
+            {
+              "id": "INTERACT_WITH_INVENTORY_ITEM",
+              "properties": {
+                "Filter Item By": {
+                  "class": "Item",
+                  "logic": "NONE",
+                  "type": "ACTION",
+                  "operator": "EQUALS",
+                  "value": "Wear"
+                },
+                "Action": "Wear"
+              },
+              "children": [
+                {
+                  "id": "DELETE_VARIABLE",
+                  "properties": {
+                    "Variable name": "Item"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "IF_EQUIPPED_ITEM_MATCHES",
+      "properties": {
+        "Filter Item By": {
+          "class": "Item",
+          "logic": "NONE",
+          "type": "NAME",
+          "operator": "EQUALS",
+          "value": "Unholy blessing"
+        }
+      },
+      "children": [
+        {
+          "id": "IF_BANK_IS_OPEN",
+          "children": [
+            {
+              "id": "BANK_DEPOSIT_ALL"
+            },
+            {
+              "id": "BANK_WITHDRAW_ITEM",
+              "properties": {
+                "Filter Item By": {
+                  "class": "Item",
+                  "logic": "NONE",
+                  "type": "NAME",
+                  "operator": "EQUALS",
+                  "value": "Stamina potion(4)",
+                  "filters": [
+                    {
+                      "class": "Item",
+                      "logic": "OR",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Stamina potion(3)"
+                    },
+                    {
+                      "class": "Item",
+                      "logic": "OR",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Stamina potion(2)"
+                    },
+                    {
+                      "class": "Item",
+                      "logic": "OR",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Stamina potion(1)"
+                    }
+                  ]
+                },
+                "Amount": "1"
+              }
+            },
+            {
+              "id": "SLEEP_NORMAL_DISTRIBUTION",
+              "properties": {
+                "Mean": "800",
+                "Variance": "1300"
+              }
+            },
+            {
+              "id": "INTERACT_WITH_INVENTORY_ITEM",
+              "properties": {
+                "Filter Item By": {
+                  "class": "Item",
+                  "logic": "NONE",
+                  "type": "NAME",
+                  "operator": "EQUALS",
+                  "value": "Stamina potion(4)",
+                  "filters": [
+                    {
+                      "class": "Item",
+                      "logic": "OR",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Stamina potion(3)"
+                    },
+                    {
+                      "class": "Item",
+                      "logic": "OR",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Stamina potion(2)"
+                    },
+                    {
+                      "class": "Item",
+                      "logic": "OR",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Stamina potion(1)"
+                    }
+                  ]
+                },
+                "Force left click": false,
+                "Action": "Drink"
+              }
+            },
+            {
+              "id": "BANK_DEPOSIT_ALL"
+            },
+            {
+              "id": "BANK_WITHDRAW_ITEM",
+              "properties": {
+                "Filter Item By": {
+                  "class": "Item",
+                  "logic": "NONE",
+                  "type": "NAME",
+                  "operator": "EQUALS",
+                  "value": "Super combat potion(4)"
+                },
+                "Amount": "2"
+              }
+            },
+            {
+              "id": "BANK_WITHDRAW_ITEM",
+              "properties": {
+                "Filter Item By": {
+                  "class": "Item",
+                  "logic": "NONE",
+                  "type": "NAME",
+                  "operator": "EQUALS",
+                  "value": "Prayer potion(4)"
+                },
+                "Amount": "4"
+              }
+            },
+            {
+              "id": "BANK_WITHDRAW_ITEM",
+              "properties": {
+                "Filter Item By": {
+                  "class": "Item",
+                  "logic": "NONE",
+                  "type": "NAME",
+                  "operator": "EQUALS",
+                  "value": "Knife"
+                },
+                "Amount": "1"
+              }
+            },
+            {
+              "id": "BANK_WITHDRAW_ITEM",
+              "properties": {
+                "Filter Item By": {
+                  "class": "Item",
+                  "logic": "NONE",
+                  "type": "NAME",
+                  "operator": "EQUALS",
+                  "value": "Shark"
+                },
+                "Amount": "20"
+              }
+            },
+            {
+              "id": "BANK_WITHDRAW_ITEM",
+              "properties": {
+                "Filter Item By": {
+                  "class": "Item",
+                  "logic": "NONE",
+                  "type": "NAME",
+                  "operator": "EQUALS",
+                  "value": "Ring of stone"
+                },
+                "Amount": "1"
+              }
+            },
+            {
+              "id": "CLOSE_BANK"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "COMMENT",
+      "properties": {
+        "Comment": "Walk to there"
+      }
+    },
+    {
+      "id": "IF_EQUIPPED_ITEM_MATCHES",
+      "properties": {
+        "Filter Item By": {
+          "class": "Item",
+          "logic": "NONE",
+          "type": "NAME",
+          "operator": "EQUALS",
+          "value": "Unholy blessing"
+        }
+      },
+      "children": [
+        {
+          "id": "IF_INVENTORY_COUNT",
+          "properties": {
+            "count": {
+              "class": "Number",
+              "operator": "GREATER_THAN_OR_EQUALS",
+              "value": "15"
+            },
+            "Filter Item By": {
+              "class": "Item",
+              "logic": "NONE",
+              "type": "NAME",
+              "operator": "EQUALS",
+              "value": "Shark"
+            }
+          },
+          "children": [
+            {
+              "id": "IF_LOCAL_PLAYER_MATCHES",
+              "properties": {
+                "Filter By": {
+                  "class": "Player",
+                  "logic": "NONE",
+                  "type": "IN_AREA",
+                  "operator": "EQUALS",
+                  "value": "(1748, 3596, 0), (1752, 3601, 0)"
+                }
+              },
+              "children": [
+                {
+                  "id": "WALK_FULLY_TO_AREA",
+                  "properties": {
+                    "Area": "1700, 3576, 1704, 3574"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "IF_INVENTORY_COUNT",
+      "properties": {
+        "count": {
+          "class": "Number",
+          "operator": "GREATER_THAN_OR_EQUALS",
+          "value": "15"
+        },
+        "Filter Item By": {
+          "class": "Item",
+          "logic": "NONE",
+          "type": "IS_FOOD",
+          "operator": "EQUALS",
+          "value": "Shark"
+        }
+      },
+      "children": [
+        {
+          "id": "IF_LOCAL_PLAYER_MATCHES",
+          "properties": {
+            "Filter By": {
+              "class": "Player",
+              "logic": "NONE",
+              "type": "IN_AREA",
+              "operator": "EQUALS",
+              "value": "(1701, 3574, 0), (1704, 3578, 0)"
+            }
+          },
+          "children": [
+            {
+              "id": "GAME_OBJECT_INTERACT",
+              "properties": {
+                "Filter Object By": {
+                  "class": "GameObject",
+                  "logic": "NONE",
+                  "type": "NAME",
+                  "operator": "EQUALS",
+                  "value": "Ladder"
+                },
+                "Don\u0027t walk to object": false,
+                "Action": "Climb-down"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "IF_EQUIPPED_ITEM_MATCHES",
+      "properties": {
+        "Filter Item By": {
+          "class": "Item",
+          "logic": "NONE",
+          "type": "NAME",
+          "operator": "EQUALS",
+          "value": "Unholy blessing"
+        }
+      },
+      "children": [
+        {
+          "id": "IF_INVENTORY_COUNT",
+          "properties": {
+            "count": {
+              "class": "Number",
+              "operator": "GREATER_THAN_OR_EQUALS",
+              "value": "15"
+            },
+            "Filter Item By": {
+              "class": "Item",
+              "logic": "NONE",
+              "type": "NAME",
+              "operator": "EQUALS",
+              "value": "Shark"
+            }
+          },
+          "children": [
+            {
+              "id": "IF_LOCAL_PLAYER_MATCHES",
+              "properties": {
+                "Filter By": {
+                  "class": "Player",
+                  "logic": "NONE",
+                  "type": "IN_AREA",
+                  "operator": "EQUALS",
+                  "value": "(1825, 9971, 0), (1834, 9979, 0)"
+                }
+              },
+              "children": [
+                {
+                  "id": "WALK_FULLY_TO_TILE",
+                  "properties": {
+                    "Tile": "(1833, 9944, 0)"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "IF_EQUIPPED_ITEM_MATCHES",
+      "properties": {
+        "Filter Item By": {
+          "class": "Item",
+          "logic": "NONE",
+          "type": "NAME",
+          "operator": "EQUALS",
+          "value": "Unholy blessing"
+        }
+      },
+      "children": [
+        {
+          "id": "IF_INVENTORY_COUNT",
+          "properties": {
+            "count": {
+              "class": "Number",
+              "operator": "GREATER_THAN_OR_EQUALS",
+              "value": "15"
+            },
+            "Filter Item By": {
+              "class": "Item",
+              "logic": "NONE",
+              "type": "NAME",
+              "operator": "EQUALS",
+              "value": "Shark"
+            }
+          },
+          "children": [
+            {
+              "id": "IF_LOCAL_PLAYER_MATCHES",
+              "properties": {
+                "Filter By": {
+                  "class": "Player",
+                  "logic": "NONE",
+                  "type": "IN_AREA",
+                  "operator": "EQUALS",
+                  "value": "(1834, 9944, 0), (1832, 9945, 0)"
+                }
+              },
+              "children": [
+                {
+                  "id": "IF_GAME_OBJECT_EXISTS",
+                  "properties": {
+                    "Filter Object By": {
+                      "class": "GameObject",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Web"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "GAME_OBJECT_INTERACT",
+                      "properties": {
+                        "Filter Object By": {
+                          "class": "GameObject",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "Web"
+                        },
+                        "Don\u0027t walk to object": false,
+                        "Action": "Slash"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "IF_EQUIPPED_ITEM_MATCHES",
+      "properties": {
+        "Filter Item By": {
+          "class": "Item",
+          "logic": "NONE",
+          "type": "NAME",
+          "operator": "EQUALS",
+          "value": "Unholy blessing"
+        }
+      },
+      "children": [
+        {
+          "id": "IF_INVENTORY_COUNT",
+          "properties": {
+            "count": {
+              "class": "Number",
+              "operator": "EQUALS",
+              "value": "20"
+            },
+            "Filter Item By": {
+              "class": "Item",
+              "logic": "NONE",
+              "type": "NAME",
+              "operator": "EQUALS",
+              "value": "Shark"
+            }
+          },
+          "children": [
+            {
+              "id": "IF_LOCAL_PLAYER_MATCHES",
+              "properties": {
+                "Filter By": {
+                  "class": "Player",
+                  "logic": "NONE",
+                  "type": "IN_AREA",
+                  "operator": "EQUALS",
+                  "value": "(1833, 9943, 0), (1833, 9945, 0)"
+                }
+              },
+              "children": [
+                {
+                  "id": "IF_GAME_OBJECT_DOES_NOT_EXIST",
+                  "properties": {
+                    "Filter Object By": {
+                      "class": "GameObject",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Web",
+                      "filters": [
+                        {
+                          "class": "GameObject",
+                          "logic": "AND",
+                          "type": "IN_AREA",
+                          "operator": "EQUALS",
+                          "value": "(1833, 9943, 0), (1833, 9945, 0)"
+                        }
+                      ]
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "WALK_FULLY_TO_TILE",
+                      "properties": {
+                        "Tile": "(1841, 9934, 0)"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "IF_EQUIPPED_ITEM_MATCHES",
+      "properties": {
+        "Filter Item By": {
+          "class": "Item",
+          "logic": "NONE",
+          "type": "NAME",
+          "operator": "EQUALS",
+          "value": "Unholy blessing"
+        }
+      },
+      "children": [
+        {
+          "id": "IF_INVENTORY_COUNT",
+          "properties": {
+            "count": {
+              "class": "Number",
+              "operator": "GREATER_THAN_OR_EQUALS",
+              "value": "10"
+            },
+            "Filter Item By": {
+              "class": "Item",
+              "logic": "NONE",
+              "type": "NAME",
+              "operator": "EQUALS",
+              "value": "Shark"
+            }
+          },
+          "children": [
+            {
+              "id": "IF_LOCAL_PLAYER_MATCHES",
+              "properties": {
+                "Filter By": {
+                  "class": "Player",
+                  "logic": "NONE",
+                  "type": "IN_AREA",
+                  "operator": "EQUALS",
+                  "value": "(1843, 9934, 0), (1840, 9936, 0)"
+                }
+              },
+              "children": [
+                {
+                  "id": "IF_GAME_OBJECT_EXISTS",
+                  "properties": {
+                    "Filter Object By": {
+                      "class": "GameObject",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Web"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "GAME_OBJECT_INTERACT",
+                      "properties": {
+                        "Filter Object By": {
+                          "class": "GameObject",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "Web",
+                          "filters": [
+                            {
+                              "class": "GameObject",
+                              "logic": "AND",
+                              "type": "IN_AREA",
+                              "operator": "EQUALS",
+                              "value": "(1841, 9933, 0), (1840, 9934, 0)"
+                            }
+                          ]
+                        },
+                        "Don\u0027t walk to object": false,
+                        "Action": "Slash"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "IF_EQUIPPED_ITEM_MATCHES",
+      "properties": {
+        "Filter Item By": {
+          "class": "Item",
+          "logic": "NONE",
+          "type": "NAME",
+          "operator": "EQUALS",
+          "value": "Unholy blessing"
+        }
+      },
+      "children": [
+        {
+          "id": "IF_INVENTORY_COUNT",
+          "properties": {
+            "count": {
+              "class": "Number",
+              "operator": "GREATER_THAN_OR_EQUALS",
+              "value": "15"
+            },
+            "Filter Item By": {
+              "class": "Item",
+              "logic": "NONE",
+              "type": "NAME",
+              "operator": "EQUALS",
+              "value": "Shark"
+            }
+          },
+          "children": [
+            {
+              "id": "IF_LOCAL_PLAYER_MATCHES",
+              "properties": {
+                "Filter By": {
+                  "class": "Player",
+                  "logic": "NONE",
+                  "type": "IN_AREA",
+                  "operator": "EQUALS",
+                  "value": "(1840, 9935, 0), (1842, 9932, 0)"
+                }
+              },
+              "children": [
+                {
+                  "id": "IF_GAME_OBJECT_DOES_NOT_EXIST",
+                  "properties": {
+                    "Filter Object By": {
+                      "class": "GameObject",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Web",
+                      "filters": [
+                        {
+                          "class": "GameObject",
+                          "logic": "AND",
+                          "type": "IN_AREA",
+                          "operator": "EQUALS",
+                          "value": "(1841, 9934, 0), (1841, 9932, 0)"
+                        }
+                      ]
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "WALK_FULLY_TO_TILE",
+                      "properties": {
+                        "Tile": "(1847, 9920, 0)"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "IF_EQUIPPED_ITEM_MATCHES",
+      "properties": {
+        "Filter Item By": {
+          "class": "Item",
+          "logic": "NONE",
+          "type": "NAME",
+          "operator": "EQUALS",
+          "value": "Unholy blessing"
+        }
+      },
+      "children": [
+        {
+          "id": "IF_INVENTORY_COUNT",
+          "properties": {
+            "count": {
+              "class": "Number",
+              "operator": "GREATER_THAN_OR_EQUALS",
+              "value": "15"
+            },
+            "Filter Item By": {
+              "class": "Item",
+              "logic": "NONE",
+              "type": "NAME",
+              "operator": "EQUALS",
+              "value": "Shark"
+            }
+          },
+          "children": [
+            {
+              "id": "IF_LOCAL_PLAYER_MATCHES",
+              "properties": {
+                "Filter By": {
+                  "class": "Player",
+                  "logic": "NONE",
+                  "type": "IN_AREA",
+                  "operator": "EQUALS",
+                  "value": "(1848, 9920, 0), (1846, 9921, 0)"
+                }
+              },
+              "children": [
+                {
+                  "id": "IF_GAME_OBJECT_EXISTS",
+                  "properties": {
+                    "Filter Object By": {
+                      "class": "GameObject",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Web"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "GAME_OBJECT_INTERACT",
+                      "properties": {
+                        "Filter Object By": {
+                          "class": "GameObject",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "Web",
+                          "filters": [
+                            {
+                              "class": "GameObject",
+                              "logic": "AND",
+                              "type": "IN_AREA",
+                              "operator": "EQUALS",
+                              "value": "(1847, 9919, 0), (1846, 9920, 0)"
+                            }
+                          ]
+                        },
+                        "Don\u0027t walk to object": false,
+                        "Action": "Slash"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "IF_EQUIPPED_ITEM_MATCHES",
+      "properties": {
+        "Filter Item By": {
+          "class": "Item",
+          "logic": "NONE",
+          "type": "NAME",
+          "operator": "EQUALS",
+          "value": "Unholy blessing"
+        }
+      },
+      "children": [
+        {
+          "id": "IF_INVENTORY_COUNT",
+          "properties": {
+            "count": {
+              "class": "Number",
+              "operator": "GREATER_THAN",
+              "value": "15"
+            },
+            "Filter Item By": {
+              "class": "Item",
+              "logic": "NONE",
+              "type": "NAME",
+              "operator": "EQUALS",
+              "value": "Shark"
+            }
+          },
+          "children": [
+            {
+              "id": "IF_LOCAL_PLAYER_MATCHES",
+              "properties": {
+                "Filter By": {
+                  "class": "Player",
+                  "logic": "NONE",
+                  "type": "IN_AREA",
+                  "operator": "EQUALS",
+                  "value": "(1847, 9918, 0), (1847, 9921, 0)"
+                }
+              },
+              "children": [
+                {
+                  "id": "IF_GAME_OBJECT_DOES_NOT_EXIST",
+                  "properties": {
+                    "Filter Object By": {
+                      "class": "GameObject",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Web",
+                      "filters": [
+                        {
+                          "class": "GameObject",
+                          "logic": "AND",
+                          "type": "IN_AREA",
+                          "operator": "EQUALS",
+                          "value": "(1847, 9921, 0), (1847, 9918, 0)"
+                        }
+                      ]
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "WALK_FULLY_TO_TILE",
+                      "properties": {
+                        "Tile": "(1842, 9914, 0)"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "IF_LOCAL_PLAYER_MATCHES",
+      "properties": {
+        "Filter By": {
+          "class": "Player",
+          "logic": "NONE",
+          "type": "IN_AREA",
+          "operator": "EQUALS",
+          "value": "(1710, 3585, 0), (1694, 3567, 0)"
+        }
+      },
+      "children": [
+        {
+          "id": "GAME_OBJECT_INTERACT",
+          "properties": {
+            "Filter Object By": {
+              "class": "GameObject",
+              "logic": "NONE",
+              "type": "NAME",
+              "operator": "EQUALS",
+              "value": "Thick Web"
+            },
+            "Action": "Quick-enter"
+          }
+        }
+      ]
+    },
+    {
+      "id": "COMMENT",
+      "properties": {
+        "Comment": "Fight"
+      }
+    },
+    {
+      "id": "START_NEW_THREAD",
+      "customDisplayName": "Prayer",
+      "properties": {
+        "Thread name": "prayer",
+        "Sleep between runs (ms)": "100",
+        "Repeat until stopped": false
+      },
+      "children": [
+        {
+          "id": "IF_LOCAL_PLAYER_MATCHES",
+          "properties": {
+            "Filter By": {
+              "class": "Player",
+              "logic": "NONE",
+              "type": "IN_AREA",
+              "operator": "EQUALS",
+              "value": "(1829, 9911, 0), (1851, 9891, 0)"
+            }
+          },
+          "children": [
+            {
+              "id": "IF_NPC_EXISTS",
+              "properties": {
+                "Filter NPC By": {
+                  "class": "NPC",
+                  "logic": "NONE",
+                  "type": "TILE",
+                  "operator": "EQUALS",
+                  "value": "4",
+                  "filters": [
+                    {
+                      "class": "NPC",
+                      "logic": "AND",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Sarachnis"
+                    }
+                  ]
+                }
+              },
+              "children": [
+                {
+                  "id": "IF_PROJECTILE_DOES_NOT_EXIST",
+                  "properties": {
+                    "Filter By": {
+                      "class": "Projectile",
+                      "logic": "NONE",
+                      "type": "ID",
+                      "operator": "EQUALS",
+                      "value": "1687"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "IF_PRAYER_IS_NOT_ACTIVE",
+                      "properties": {
+                        "Prayer": {
+                          "class": "Prayer",
+                          "value": "PROTECT_FROM_MELEE"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "ENABLE_PRAYER",
+                          "properties": {
+                            "Prayer": {
+                              "class": "Prayer",
+                              "value": "PROTECT_FROM_MELEE"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "IF_NPC_EXISTS",
+              "properties": {
+                "Filter NPC By": {
+                  "class": "NPC",
+                  "logic": "NONE",
+                  "type": "DISTANCE_TO_PLAYER",
+                  "operator": "LESS_THAN_OR_EQUAL",
+                  "value": "4",
+                  "filters": [
+                    {
+                      "class": "NPC",
+                      "logic": "AND",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Sarachnis"
+                    }
+                  ]
+                }
+              },
+              "children": [
+                {
+                  "id": "IF_PRAYER_IS_NOT_ACTIVE",
+                  "properties": {
+                    "Prayer": {
+                      "class": "Prayer",
+                      "value": "PROTECT_FROM_MELEE"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "ENABLE_PRAYER",
+                      "properties": {
+                        "Prayer": {
+                          "class": "Prayer",
+                          "value": "PROTECT_FROM_MELEE"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "IF_PROJECTILE_EXISTS",
+              "properties": {
+                "Filter By": {
+                  "class": "Projectile",
+                  "logic": "NONE",
+                  "type": "ID",
+                  "operator": "EQUALS",
+                  "value": "1687"
+                }
+              },
+              "children": [
+                {
+                  "id": "SLEEP_FOR_GAME_TICKS",
+                  "properties": {
+                    "Ticks": "2"
+                  },
+                  "children": [
+                    {
+                      "id": "INTERACT_WITH_INVENTORY_ITEM",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "Ring of stone"
+                        },
+                        "Action": "Wear"
+                      }
+                    },
+                    {
+                      "id": "NPC_INTERACT",
+                      "properties": {
+                        "Action": "Attack",
+                        "Don\u0027t walk to NPC": false,
+                        "Force left click": false,
+                        "Filter NPC By": {
+                          "class": "NPC",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "Sarachnis"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "IF_NPC_EXISTS",
+              "properties": {
+                "Filter NPC By": {
+                  "class": "NPC",
+                  "logic": "NONE",
+                  "type": "DISTANCE_TO_PLAYER",
+                  "operator": "GREATER_THAN",
+                  "value": "5",
+                  "filters": [
+                    {
+                      "class": "NPC",
+                      "logic": "AND",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Sarachnis"
+                    }
+                  ]
+                }
+              },
+              "children": [
+                {
+                  "id": "IF_PRAYER_IS_NOT_ACTIVE",
+                  "properties": {
+                    "Prayer": {
+                      "class": "Prayer",
+                      "value": "PROTECT_FROM_MISSILES"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "ENABLE_PRAYER",
+                      "properties": {
+                        "Prayer": {
+                          "class": "Prayer",
+                          "value": "PROTECT_FROM_MISSILES"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "IF_PLAYER_EXISTS",
+      "customDisplayName": "Log out if players in room",
+      "properties": {
+        "Filter Player By": {
+          "class": "Player",
+          "logic": "NONE",
+          "type": "IN_AREA",
+          "operator": "EQUALS",
+          "value": "(1854, 9910, 0), (1830, 9891, 0)"
+        }
+      },
+      "children": [
+        {
+          "id": "QUICK_HOP_TO_RANDOM_WORLD",
+          "properties": {
+            "Filter World By": {
+              "class": "World",
+              "logic": "NONE",
+              "type": "WORLD_IS_MEMBERS",
+              "operator": "EQUALS",
+              "filters": [
+                {
+                  "class": "World",
+                  "logic": "AND",
+                  "type": "WORLD_IS_NORMAL",
+                  "operator": "EQUALS"
+                },
+                {
+                  "class": "World",
+                  "logic": "AND",
+                  "type": "WORLD_MINIMUM_LEVEL",
+                  "operator": "LESS_THAN_OR_EQUAL",
+                  "value": "200"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "IF_PLAYER_DOES_NOT_EXIST",
+      "customDisplayName": "Walk in if rooms empty",
+      "properties": {
+        "Filter Player By": {
+          "class": "Player",
+          "logic": "NONE",
+          "type": "IN_AREA",
+          "operator": "EQUALS",
+          "value": "(1829, 9911, 0), (1851, 9891, 0)"
+        }
+      },
+      "children": [
+        {
+          "id": "IF_INVENTORY_COUNT",
+          "properties": {
+            "count": {
+              "class": "Number",
+              "operator": "GREATER_THAN",
+              "value": "4"
+            },
+            "Filter Item By": {
+              "class": "Item",
+              "logic": "NONE",
+              "type": "NAME",
+              "operator": "EQUALS",
+              "value": "Shark"
+            }
+          },
+          "children": [
+            {
+              "id": "IF_LOCAL_PLAYER_MATCHES",
+              "properties": {
+                "Filter By": {
+                  "class": "Player",
+                  "logic": "NONE",
+                  "type": "IN_AREA",
+                  "operator": "EQUALS",
+                  "value": "(1843, 9914, 0), (1840, 9913, 0)"
+                }
+              },
+              "children": [
+                {
+                  "id": "GAME_OBJECT_INTERACT",
+                  "properties": {
+                    "Filter Object By": {
+                      "class": "GameObject",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Thick Web"
+                    },
+                    "Action": "Quick-enter"
+                  }
+                },
+                {
+                  "id": "SLEEP_NORMAL_DISTRIBUTION",
+                  "properties": {
+                    "Mean": "2400",
+                    "Variance": "2900"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "IF_LOCAL_PLAYER_MATCHES",
+      "customDisplayName": "Attacking",
+      "properties": {
+        "Filter By": {
+          "class": "Player",
+          "logic": "NONE",
+          "type": "IN_AREA",
+          "operator": "EQUALS",
+          "value": "(1829, 9911, 0), (1851, 9891, 0)"
+        }
+      },
+      "children": [
+        {
+          "id": "IF_INVENTORY_COUNT",
+          "properties": {
+            "count": {
+              "class": "Number",
+              "operator": "GREATER_THAN_OR_EQUALS",
+              "value": "5"
+            },
+            "Filter Item By": {
+              "class": "Item",
+              "logic": "NONE",
+              "type": "NAME",
+              "operator": "EQUALS",
+              "value": "Shark"
+            }
+          },
+          "children": [
+            {
+              "id": "NPC_INTERACT",
+              "properties": {
+                "Action": "Attack",
+                "Don\u0027t walk to NPC": false,
+                "Force left click": false,
+                "Filter NPC By": {
+                  "class": "NPC",
+                  "logic": "NONE",
+                  "type": "NAME",
+                  "operator": "EQUALS",
+                  "value": "Sarachnis",
+                  "filters": [
+                    {
+                      "class": "NPC",
+                      "logic": "AND",
+                      "type": "WE_ARE_NOT_INTERACTING",
+                      "operator": "EQUALS"
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "IF_GROUND_ITEM_EXISTS",
+      "properties": {
+        "Filter Item By": {
+          "class": "GroundItem",
+          "logic": "NONE",
+          "type": "IS_OUR_LOOT",
+          "operator": "EQUALS"
+        }
+      },
+      "children": [
+        {
+          "id": "IF_INVENTORY_IS_FULL",
+          "children": [
+            {
+              "id": "INTERACT_WITH_INVENTORY_ITEM",
+              "properties": {
+                "Filter Item By": {
+                  "class": "Item",
+                  "logic": "NONE",
+                  "type": "NAME",
+                  "operator": "EQUALS",
+                  "value": "Shark"
+                },
+                "Action": "Eat"
+              }
+            }
+          ]
+        },
+        {
+          "id": "IF_INVENTORY_IS_NOT_FULL",
+          "children": [
+            {
+              "id": "GROUND_ITEM_INTERACT",
+              "properties": {
+                "Filter Item By": {
+                  "class": "GroundItem",
+                  "logic": "NONE",
+                  "type": "IS_OUR_LOOT",
+                  "operator": "EQUALS"
+                },
+                "Action": "Take",
+                "Don\u0027t walk to item": false
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "COMMENT",
+      "properties": {
+        "Comment": "Walk back\n"
+      }
+    },
+    {
+      "id": "IF_INVENTORY_COUNT",
+      "properties": {
+        "count": {
+          "class": "Number",
+          "operator": "LESS_THAN_OR_EQUALS",
+          "value": "5"
+        },
+        "Filter Item By": {
+          "class": "Item",
+          "logic": "NONE",
+          "type": "NAME",
+          "operator": "EQUALS",
+          "value": "Shark"
+        }
+      },
+      "children": [
+        {
+          "id": "IF_LOCAL_PLAYER_MATCHES",
+          "properties": {
+            "Filter By": {
+              "class": "Player",
+              "logic": "NONE",
+              "type": "NOT_IN_COMBAT",
+              "operator": "EQUALS",
+              "value": "(1848, 9909, 0), (1834, 9895, 0)",
+              "filters": [
+                {
+                  "class": "Player",
+                  "logic": "AND",
+                  "type": "NOT_IN_AREA",
+                  "operator": "EQUALS",
+                  "value": "(1866, 9912, 0), (1823, 9982, 0)"
+                }
+              ]
+            }
+          },
+          "children": [
+            {
+              "id": "SLEEP_NORMAL_DISTRIBUTION",
+              "properties": {
+                "Mean": "1500",
+                "Variance": "1800"
+              }
+            },
+            {
+              "id": "IF_GROUND_ITEM_DOES_NOT_EXIST",
+              "properties": {
+                "Filter Item By": {
+                  "class": "GroundItem",
+                  "logic": "NONE",
+                  "type": "IS_OUR_LOOT",
+                  "operator": "EQUALS"
+                }
+              },
+              "children": [
+                {
+                  "id": "GAME_OBJECT_INTERACT",
+                  "properties": {
+                    "Filter Object By": {
+                      "class": "GameObject",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Thick Web"
+                    },
+                    "Action": "Quick-enter"
+                  },
+                  "children": [
+                    {
+                      "id": "SLEEP_WHILE_ANIMATING",
+                      "properties": {
+                        "Stopped for (seconds)": "3"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ELSE_BRANCH",
+          "children": [
+            {
+              "id": "GROUND_ITEM_INTERACT",
+              "properties": {
+                "Filter Item By": {
+                  "class": "GroundItem",
+                  "logic": "NONE",
+                  "type": "IS_OUR_LOOT",
+                  "operator": "EQUALS"
+                },
+                "Action": "Take",
+                "Don\u0027t walk to item": false
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "IF_INVENTORY_COUNT",
+      "properties": {
+        "count": {
+          "class": "Number",
+          "operator": "LESS_THAN_OR_EQUALS",
+          "value": "2"
+        },
+        "Filter Item By": {
+          "class": "Item",
+          "logic": "NONE",
+          "type": "NAME",
+          "operator": "EQUALS",
+          "value": "Shark"
+        }
+      },
+      "children": [
+        {
+          "id": "IF_LOCAL_PLAYER_MATCHES",
+          "properties": {
+            "Filter By": {
+              "class": "Player",
+              "logic": "NONE",
+              "type": "IN_COMBAT",
+              "operator": "EQUALS",
+              "value": "(1848, 9909, 0), (1834, 9895, 0)"
+            }
+          },
+          "children": [
+            {
+              "id": "IF_NPC_EXISTS",
+              "properties": {
+                "Filter NPC By": {
+                  "class": "NPC",
+                  "logic": "NONE",
+                  "type": "HEALTH",
+                  "operator": "GREATER_THAN",
+                  "value": "40"
+                }
+              },
+              "children": [
+                {
+                  "id": "GAME_OBJECT_INTERACT",
+                  "properties": {
+                    "Filter Object By": {
+                      "class": "GameObject",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Thick Web"
+                    },
+                    "Action": "Quick-enter"
+                  },
+                  "children": [
+                    {
+                      "id": "SLEEP_WHILE_ANIMATING",
+                      "properties": {
+                        "Stopped for (seconds)": "3"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "IF_LOCAL_PLAYER_MATCHES",
+      "properties": {
+        "Filter By": {
+          "class": "Player",
+          "logic": "NONE",
+          "type": "IN_AREA",
+          "operator": "EQUALS",
+          "value": "(1840, 9912, 0), (1843, 9914, 0)"
+        }
+      },
+      "children": [
+        {
+          "id": "DISABLE_ALL_PRAYERS"
+        }
+      ]
+    },
+    {
+      "id": "IF_INVENTORY_COUNT",
+      "properties": {
+        "count": {
+          "class": "Number",
+          "operator": "LESS_THAN_OR_EQUALS",
+          "value": "5"
+        },
+        "Filter Item By": {
+          "class": "Item",
+          "logic": "NONE",
+          "type": "NAME",
+          "operator": "EQUALS",
+          "value": "Shark"
+        }
+      },
+      "children": [
+        {
+          "id": "IF_LOCAL_PLAYER_MATCHES",
+          "properties": {
+            "Filter By": {
+              "class": "Player",
+              "logic": "NONE",
+              "type": "IN_AREA",
+              "operator": "EQUALS",
+              "value": "(1840, 9912, 0), (1843, 9914, 0)"
+            }
+          },
+          "children": [
+            {
+              "id": "WALK_FULLY_TO_TILE",
+              "properties": {
+                "Tile": "(1847, 9919, 0)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "IF_INVENTORY_COUNT",
+      "properties": {
+        "count": {
+          "class": "Number",
+          "operator": "LESS_THAN_OR_EQUALS",
+          "value": "5"
+        },
+        "Filter Item By": {
+          "class": "Item",
+          "logic": "NONE",
+          "type": "NAME",
+          "operator": "EQUALS",
+          "value": "Shark"
+        }
+      },
+      "children": [
+        {
+          "id": "IF_LOCAL_PLAYER_MATCHES",
+          "properties": {
+            "Filter By": {
+              "class": "Player",
+              "logic": "NONE",
+              "type": "IN_AREA",
+              "operator": "EQUALS",
+              "value": "(1845, 9918, 0), (1848, 9919, 0)"
+            }
+          },
+          "children": [
+            {
+              "id": "IF_GAME_OBJECT_EXISTS",
+              "properties": {
+                "Filter Object By": {
+                  "class": "GameObject",
+                  "logic": "NONE",
+                  "type": "NAME",
+                  "operator": "EQUALS",
+                  "value": "Web"
+                }
+              },
+              "children": [
+                {
+                  "id": "GAME_OBJECT_INTERACT",
+                  "properties": {
+                    "Filter Object By": {
+                      "class": "GameObject",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Web",
+                      "filters": [
+                        {
+                          "class": "GameObject",
+                          "logic": "AND",
+                          "type": "IN_AREA",
+                          "operator": "EQUALS",
+                          "value": "(1847, 9919, 0), (1846, 9920, 0)"
+                        }
+                      ]
+                    },
+                    "Don\u0027t walk to object": false,
+                    "Action": "Slash"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "IF_INVENTORY_COUNT",
+      "properties": {
+        "count": {
+          "class": "Number",
+          "operator": "LESS_THAN_OR_EQUALS",
+          "value": "5"
+        },
+        "Filter Item By": {
+          "class": "Item",
+          "logic": "NONE",
+          "type": "NAME",
+          "operator": "EQUALS",
+          "value": "Shark"
+        }
+      },
+      "children": [
+        {
+          "id": "IF_LOCAL_PLAYER_MATCHES",
+          "properties": {
+            "Filter By": {
+              "class": "Player",
+              "logic": "NONE",
+              "type": "IN_AREA",
+              "operator": "EQUALS",
+              "value": "(1846, 9919, 0), (1848, 9918, 0)"
+            }
+          },
+          "children": [
+            {
+              "id": "IF_GAME_OBJECT_DOES_NOT_EXIST",
+              "properties": {
+                "Filter Object By": {
+                  "class": "GameObject",
+                  "logic": "NONE",
+                  "type": "NAME",
+                  "operator": "EQUALS",
+                  "value": "Web",
+                  "filters": [
+                    {
+                      "class": "GameObject",
+                      "logic": "AND",
+                      "type": "IN_AREA",
+                      "operator": "EQUALS",
+                      "value": "(1846, 9920, 0), (1848, 9919, 0)"
+                    }
+                  ]
+                }
+              },
+              "children": [
+                {
+                  "id": "WALK_FULLY_TO_TILE",
+                  "properties": {
+                    "Tile": "(1842, 9933, 0)"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "IF_INVENTORY_COUNT",
+      "properties": {
+        "count": {
+          "class": "Number",
+          "operator": "LESS_THAN_OR_EQUALS",
+          "value": "5"
+        },
+        "Filter Item By": {
+          "class": "Item",
+          "logic": "NONE",
+          "type": "NAME",
+          "operator": "EQUALS",
+          "value": "Shark"
+        }
+      },
+      "children": [
+        {
+          "id": "IF_LOCAL_PLAYER_MATCHES",
+          "properties": {
+            "Filter By": {
+              "class": "Player",
+              "logic": "NONE",
+              "type": "IN_AREA",
+              "operator": "EQUALS",
+              "value": "(1841, 9933, 0), (1842, 9932, 0)"
+            }
+          },
+          "children": [
+            {
+              "id": "IF_GAME_OBJECT_EXISTS",
+              "properties": {
+                "Filter Object By": {
+                  "class": "GameObject",
+                  "logic": "NONE",
+                  "type": "NAME",
+                  "operator": "EQUALS",
+                  "value": "Web",
+                  "filters": [
+                    {
+                      "class": "GameObject",
+                      "logic": "AND",
+                      "type": "IN_AREA",
+                      "operator": "EQUALS",
+                      "value": "(1840, 9935, 0), (1843, 9932, 0)"
+                    }
+                  ]
+                }
+              },
+              "children": [
+                {
+                  "id": "GAME_OBJECT_INTERACT",
+                  "properties": {
+                    "Filter Object By": {
+                      "class": "GameObject",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Web",
+                      "filters": [
+                        {
+                          "class": "GameObject",
+                          "logic": "AND",
+                          "type": "IN_AREA",
+                          "operator": "EQUALS",
+                          "value": "(1840, 9935, 0), (1843, 9932, 0)"
+                        }
+                      ]
+                    },
+                    "Don\u0027t walk to object": false,
+                    "Action": "Slash"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "IF_INVENTORY_COUNT",
+      "properties": {
+        "count": {
+          "class": "Number",
+          "operator": "LESS_THAN_OR_EQUALS",
+          "value": "5"
+        },
+        "Filter Item By": {
+          "class": "Item",
+          "logic": "NONE",
+          "type": "NAME",
+          "operator": "EQUALS",
+          "value": "Shark"
+        }
+      },
+      "children": [
+        {
+          "id": "IF_LOCAL_PLAYER_MATCHES",
+          "properties": {
+            "Filter By": {
+              "class": "Player",
+              "logic": "NONE",
+              "type": "IN_AREA",
+              "operator": "EQUALS",
+              "value": "(1842, 9933, 0), (1841, 9934, 0)"
+            }
+          },
+          "children": [
+            {
+              "id": "IF_GAME_OBJECT_DOES_NOT_EXIST",
+              "properties": {
+                "Filter Object By": {
+                  "class": "GameObject",
+                  "logic": "NONE",
+                  "type": "NAME",
+                  "operator": "EQUALS",
+                  "value": "Web",
+                  "filters": [
+                    {
+                      "class": "GameObject",
+                      "logic": "AND",
+                      "type": "IN_AREA",
+                      "operator": "EQUALS",
+                      "value": "(1842, 9933, 0), (1842, 9934, 0)"
+                    }
+                  ]
+                }
+              },
+              "children": [
+                {
+                  "id": "WALK_FULLY_TO_TILE",
+                  "properties": {
+                    "Tile": "(1833, 9943, 0)"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "IF_INVENTORY_COUNT",
+      "properties": {
+        "count": {
+          "class": "Number",
+          "operator": "LESS_THAN_OR_EQUALS",
+          "value": "5"
+        },
+        "Filter Item By": {
+          "class": "Item",
+          "logic": "NONE",
+          "type": "NAME",
+          "operator": "EQUALS",
+          "value": "Shark"
+        }
+      },
+      "children": [
+        {
+          "id": "IF_LOCAL_PLAYER_MATCHES",
+          "properties": {
+            "Filter By": {
+              "class": "Player",
+              "logic": "NONE",
+              "type": "IN_AREA",
+              "operator": "EQUALS",
+              "value": "(1833, 9943, 0), (1833, 9944, 0)"
+            }
+          },
+          "children": [
+            {
+              "id": "IF_GAME_OBJECT_EXISTS",
+              "properties": {
+                "Filter Object By": {
+                  "class": "GameObject",
+                  "logic": "NONE",
+                  "type": "NAME",
+                  "operator": "EQUALS",
+                  "value": "Web",
+                  "filters": [
+                    {
+                      "class": "GameObject",
+                      "logic": "AND",
+                      "type": "IN_AREA",
+                      "operator": "EQUALS",
+                      "value": "(1833, 9943, 0), (1833, 9944, 0)"
+                    }
+                  ]
+                }
+              },
+              "children": [
+                {
+                  "id": "GAME_OBJECT_INTERACT",
+                  "properties": {
+                    "Filter Object By": {
+                      "class": "GameObject",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Web",
+                      "filters": [
+                        {
+                          "class": "GameObject",
+                          "logic": "AND",
+                          "type": "IN_AREA",
+                          "operator": "EQUALS",
+                          "value": "(1833, 9943, 0), (1833, 9944, 0)"
+                        }
+                      ]
+                    },
+                    "Don\u0027t walk to object": false,
+                    "Action": "Slash"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "IF_INVENTORY_COUNT",
+      "properties": {
+        "count": {
+          "class": "Number",
+          "operator": "LESS_THAN_OR_EQUALS",
+          "value": "5"
+        },
+        "Filter Item By": {
+          "class": "Item",
+          "logic": "NONE",
+          "type": "NAME",
+          "operator": "EQUALS",
+          "value": "Shark"
+        }
+      },
+      "children": [
+        {
+          "id": "IF_LOCAL_PLAYER_MATCHES",
+          "properties": {
+            "Filter By": {
+              "class": "Player",
+              "logic": "NONE",
+              "type": "IN_AREA",
+              "operator": "EQUALS",
+              "value": "(1833, 9943, 0), (1833, 9944, 0)"
+            }
+          },
+          "children": [
+            {
+              "id": "IF_GAME_OBJECT_DOES_NOT_EXIST",
+              "properties": {
+                "Filter Object By": {
+                  "class": "GameObject",
+                  "logic": "NONE",
+                  "type": "NAME",
+                  "operator": "EQUALS",
+                  "value": "Web",
+                  "filters": [
+                    {
+                      "class": "GameObject",
+                      "logic": "AND",
+                      "type": "IN_AREA",
+                      "operator": "EQUALS",
+                      "value": "(1833, 9943, 0), (1833, 9944, 0)"
+                    }
+                  ]
+                }
+              },
+              "children": [
+                {
+                  "id": "WALK_FULLY_TO_TILE",
+                  "properties": {
+                    "Tile": "(1830, 9973, 0)"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "IF_INVENTORY_COUNT",
+      "properties": {
+        "count": {
+          "class": "Number",
+          "operator": "LESS_THAN_OR_EQUALS",
+          "value": "5"
+        },
+        "Filter Item By": {
+          "class": "Item",
+          "logic": "NONE",
+          "type": "NAME",
+          "operator": "EQUALS",
+          "value": "Shark"
+        }
+      },
+      "children": [
+        {
+          "id": "IF_LOCAL_PLAYER_MATCHES",
+          "properties": {
+            "Filter By": {
+              "class": "Player",
+              "logic": "NONE",
+              "type": "IN_AREA",
+              "operator": "EQUALS",
+              "value": "(1832, 9971, 0), (1827, 9976, 0)"
+            }
+          },
+          "children": [
+            {
+              "id": "GAME_OBJECT_INTERACT",
+              "properties": {
+                "Don\u0027t walk to object": false,
+                "Action": "Climb-up",
+                "Filter Object By": {
+                  "class": "GameObject",
+                  "logic": "NONE",
+                  "type": "NAME",
+                  "operator": "EQUALS",
+                  "value": "Ladder"
+                },
+                "Force left click": false
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "IF_INVENTORY_COUNT",
+      "properties": {
+        "count": {
+          "class": "Number",
+          "operator": "LESS_THAN_OR_EQUALS",
+          "value": "5"
+        },
+        "Filter Item By": {
+          "class": "Item",
+          "logic": "NONE",
+          "type": "NAME",
+          "operator": "EQUALS",
+          "value": "Shark"
+        }
+      },
+      "children": [
+        {
+          "id": "IF_LOCAL_PLAYER_MATCHES",
+          "properties": {
+            "Filter By": {
+              "class": "Player",
+              "logic": "NONE",
+              "type": "IN_AREA",
+              "operator": "EQUALS",
+              "value": "(1701, 3576, 0), (1703, 3575, 0)"
+            }
+          },
+          "children": [
+            {
+              "id": "WALK_FULLY_TO_AREA",
+              "properties": {
+                "Area": "(1748, 3599, 0), (1750, 3597, 0)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "IF_INVENTORY_COUNT",
+      "properties": {
+        "count": {
+          "class": "Number",
+          "operator": "LESS_THAN_OR_EQUALS",
+          "value": "5"
+        },
+        "Filter Item By": {
+          "class": "Item",
+          "logic": "NONE",
+          "type": "NAME",
+          "operator": "EQUALS",
+          "value": "Shark"
+        }
+      },
+      "children": [
+        {
+          "id": "IF_LOCAL_PLAYER_MATCHES",
+          "properties": {
+            "Filter By": {
+              "class": "Player",
+              "logic": "NONE",
+              "type": "IN_AREA",
+              "operator": "EQUALS",
+              "value": "(1755, 3602, 0), (1747, 3596, 0)"
+            }
+          },
+          "children": [
+            {
+              "id": "OPEN_BANK"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

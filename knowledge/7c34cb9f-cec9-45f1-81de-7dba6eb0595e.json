@@ -1,0 +1,597 @@
+{
+  "id": "7c34cb9f-cec9-45f1-81de-7dba6eb0595e",
+  "name": "Bank \u003e Open Bank",
+  "description": "Will open the nearest bank.",
+  "parameters": "",
+  "fail": false,
+  "actions": [
+    {
+      "id": "CREATE_LABEL",
+      "properties": {
+        "Label": "Bank Loop"
+      },
+      "children": [
+        {
+          "id": "IF_BANK_IS_NOT_OPEN",
+          "children": [
+            {
+              "id": "SET_VARIABLE",
+              "customDisplayName": "Set variable \u0027CURRENT_TASK\u0027 to \u0027OpenBank\u0027",
+              "properties": {
+                "Value": "OpenBank",
+                "Variable name": "CURRENT_TASK"
+              }
+            },
+            {
+              "id": "IF_LOGGED_IN",
+              "children": [
+                {
+                  "id": "IF_WILDERNESS_LEVEL_IS",
+                  "properties": {
+                    "level": {
+                      "class": "Number",
+                      "operator": "GREATER_THAN_OR_EQUALS",
+                      "value": "40"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "IF_INVENTORY_CONTAINS_ANY",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "Knife",
+                          "filters": [
+                            {
+                              "class": "Item",
+                              "logic": "OR",
+                              "type": "NAME",
+                              "operator": "CONTAINS",
+                              "value": "dagger"
+                            },
+                            {
+                              "class": "Item",
+                              "logic": "OR",
+                              "type": "NAME",
+                              "operator": "CONTAINS",
+                              "value": "sword"
+                            },
+                            {
+                              "class": "Item",
+                              "logic": "OR",
+                              "type": "NAME",
+                              "operator": "CONTAINS",
+                              "value": "scimitar"
+                            }
+                          ]
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "customDisplayName": "Set variable \u0027CURRENT_TASK\u0027 to \u0027MageBank\u0027",
+                          "properties": {
+                            "Value": "MageBank",
+                            "Variable name": "CURRENT_TASK"
+                          }
+                        },
+                        {
+                          "id": "WALK_FULLY_TO_SPECIFIC_BANK",
+                          "properties": {
+                            "Bank": {
+                              "class": "BankLocation",
+                              "value": "MAGE_BANK"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "CUSTOM_59b0d6d5-80ef-4fde-a09a-4da2e972c4b2",
+                              "children": [
+                                {
+                                  "id": "CUSTOM_5fb714e7-9682-4397-ad16-4f1fc98d7850"
+                                },
+                                {
+                                  "id": "OPEN_BANK",
+                                  "customDisplayName": "Open the nearest bank",
+                                  "children": [
+                                    {
+                                      "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                                      "properties": {
+                                        "Max time (seconds)": "5"
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "IF_BANK_IS_OPEN",
+                                          "customDisplayName": "If bank is open"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "id": "GO_TO_LABEL",
+                                      "properties": {
+                                        "Label": "Bank Opened"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "ELSE_BRANCH",
+                      "children": [
+                        {
+                          "id": "IF_WILDERNESS_LEVEL_IS",
+                          "properties": {
+                            "level": {
+                              "class": "Number",
+                              "operator": "GREATER_THAN_OR_EQUALS",
+                              "value": "1"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "SET_VARIABLE",
+                              "customDisplayName": "Set variable \u0027CURRENT_TASK\u0027 to \u0027GEBank\u0027",
+                              "properties": {
+                                "Value": "GEBank",
+                                "Variable name": "CURRENT_TASK"
+                              }
+                            },
+                            {
+                              "id": "WALK_FULLY_TO_SPECIFIC_BANK",
+                              "properties": {
+                                "Bank": {
+                                  "class": "BankLocation",
+                                  "value": "GRAND_EXCHANGE"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "CUSTOM_59b0d6d5-80ef-4fde-a09a-4da2e972c4b2",
+                                  "children": [
+                                    {
+                                      "id": "CUSTOM_5fb714e7-9682-4397-ad16-4f1fc98d7850"
+                                    },
+                                    {
+                                      "id": "OPEN_BANK",
+                                      "customDisplayName": "Open the nearest bank",
+                                      "children": [
+                                        {
+                                          "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                                          "properties": {
+                                            "Max time (seconds)": "5"
+                                          },
+                                          "children": [
+                                            {
+                                              "id": "IF_BANK_IS_OPEN",
+                                              "customDisplayName": "If bank is open"
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "id": "CUSTOM_613d1cd6-05ce-4ddc-ba25-f0e995146419"
+                                        },
+                                        {
+                                          "id": "GO_TO_LABEL",
+                                          "properties": {
+                                            "Label": "Bank Opened"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "id": "ELSE_BRANCH",
+                          "children": [
+                            {
+                              "id": "IF_DISTANCE_TO_CLOSEST_BANK_IS",
+                              "properties": {
+                                "distance": {
+                                  "class": "Number",
+                                  "operator": "GREATER_THAN_OR_EQUALS",
+                                  "value": "5"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "SET_VARIABLE",
+                                  "customDisplayName": "Set variable \u0027CURRENT_TASK\u0027 to \u0027BankFar\u0027",
+                                  "properties": {
+                                    "Value": "BankFar",
+                                    "Variable name": "CURRENT_TASK"
+                                  }
+                                },
+                                {
+                                  "id": "WALK_FULLY_TO_NEAREST_BANK",
+                                  "children": [
+                                    {
+                                      "id": "CUSTOM_59b0d6d5-80ef-4fde-a09a-4da2e972c4b2",
+                                      "children": [
+                                        {
+                                          "id": "CUSTOM_5fb714e7-9682-4397-ad16-4f1fc98d7850"
+                                        },
+                                        {
+                                          "id": "OPEN_BANK",
+                                          "customDisplayName": "Open the nearest bank",
+                                          "children": [
+                                            {
+                                              "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                                              "properties": {
+                                                "Max time (seconds)": "5"
+                                              },
+                                              "children": [
+                                                {
+                                                  "id": "IF_BANK_IS_OPEN",
+                                                  "customDisplayName": "If bank is open"
+                                                }
+                                              ]
+                                            },
+                                            {
+                                              "id": "CUSTOM_613d1cd6-05ce-4ddc-ba25-f0e995146419"
+                                            },
+                                            {
+                                              "id": "GO_TO_LABEL",
+                                              "properties": {
+                                                "Label": "Bank Opened"
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "id": "ELSE_BRANCH",
+                              "children": [
+                                {
+                                  "id": "SET_VARIABLE",
+                                  "customDisplayName": "Set variable \u0027CURRENT_TASK\u0027 to \u0027BankNear\u0027",
+                                  "properties": {
+                                    "Value": "BankNear",
+                                    "Variable name": "CURRENT_TASK"
+                                  }
+                                },
+                                {
+                                  "id": "CUSTOM_5fb714e7-9682-4397-ad16-4f1fc98d7850"
+                                },
+                                {
+                                  "id": "OPEN_BANK",
+                                  "customDisplayName": "Open the nearest bank",
+                                  "children": [
+                                    {
+                                      "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                                      "properties": {
+                                        "Max time (seconds)": "5"
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "IF_BANK_IS_OPEN",
+                                          "customDisplayName": "If bank is open"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "id": "CUSTOM_613d1cd6-05ce-4ddc-ba25-f0e995146419"
+                                    },
+                                    {
+                                      "id": "GO_TO_LABEL",
+                                      "properties": {
+                                        "Label": "Bank Opened"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "ELSE_BRANCH",
+                  "children": [
+                    {
+                      "id": "IF_WILDERNESS_LEVEL_IS",
+                      "properties": {
+                        "level": {
+                          "class": "Number",
+                          "operator": "GREATER_THAN_OR_EQUALS",
+                          "value": "1"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "customDisplayName": "Set variable \u0027CURRENT_TASK\u0027 to \u0027GEBank\u0027",
+                          "properties": {
+                            "Value": "GEBank",
+                            "Variable name": "CURRENT_TASK"
+                          }
+                        },
+                        {
+                          "id": "WALK_FULLY_TO_SPECIFIC_BANK",
+                          "properties": {
+                            "Bank": {
+                              "class": "BankLocation",
+                              "value": "GRAND_EXCHANGE"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "CUSTOM_59b0d6d5-80ef-4fde-a09a-4da2e972c4b2",
+                              "children": [
+                                {
+                                  "id": "OPEN_BANK",
+                                  "customDisplayName": "Open the nearest bank",
+                                  "children": [
+                                    {
+                                      "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                                      "properties": {
+                                        "Max time (seconds)": "5"
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "IF_BANK_IS_OPEN",
+                                          "customDisplayName": "If bank is open"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "id": "CUSTOM_613d1cd6-05ce-4ddc-ba25-f0e995146419"
+                                    },
+                                    {
+                                      "id": "GO_TO_LABEL",
+                                      "properties": {
+                                        "Label": "Bank Opened"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "ELSE_BRANCH",
+                      "children": [
+                        {
+                          "id": "IF_DISTANCE_TO_CLOSEST_BANK_IS",
+                          "properties": {
+                            "distance": {
+                              "class": "Number",
+                              "operator": "GREATER_THAN_OR_EQUALS",
+                              "value": "5"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "SET_VARIABLE",
+                              "customDisplayName": "Set variable \u0027CURRENT_TASK\u0027 to \u0027BankFar\u0027",
+                              "properties": {
+                                "Value": "BankFar",
+                                "Variable name": "CURRENT_TASK"
+                              }
+                            },
+                            {
+                              "id": "WALK_FULLY_TO_NEAREST_BANK",
+                              "children": [
+                                {
+                                  "id": "CUSTOM_59b0d6d5-80ef-4fde-a09a-4da2e972c4b2",
+                                  "children": [
+                                    {
+                                      "id": "OPEN_BANK",
+                                      "customDisplayName": "Open the nearest bank",
+                                      "children": [
+                                        {
+                                          "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                                          "properties": {
+                                            "Max time (seconds)": "5"
+                                          },
+                                          "children": [
+                                            {
+                                              "id": "IF_BANK_IS_OPEN",
+                                              "customDisplayName": "If bank is open"
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "id": "CUSTOM_613d1cd6-05ce-4ddc-ba25-f0e995146419"
+                                        },
+                                        {
+                                          "id": "GO_TO_LABEL",
+                                          "properties": {
+                                            "Label": "Bank Opened"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "id": "ELSE_BRANCH",
+                          "children": [
+                            {
+                              "id": "SET_VARIABLE",
+                              "customDisplayName": "Set variable \u0027CURRENT_TASK\u0027 to \u0027BankNear\u0027",
+                              "properties": {
+                                "Value": "BankNear",
+                                "Variable name": "CURRENT_TASK"
+                              }
+                            },
+                            {
+                              "id": "OPEN_BANK",
+                              "customDisplayName": "Open the nearest bank",
+                              "children": [
+                                {
+                                  "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                                  "properties": {
+                                    "Max time (seconds)": "5"
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "IF_BANK_IS_OPEN",
+                                      "customDisplayName": "If bank is open"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "id": "CUSTOM_613d1cd6-05ce-4ddc-ba25-f0e995146419"
+                                },
+                                {
+                                  "id": "GO_TO_LABEL",
+                                  "properties": {
+                                    "Label": "Bank Opened"
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "ELSE_BRANCH",
+              "children": [
+                {
+                  "id": "ENABLE_LOGIN_SOLVER",
+                  "children": [
+                    {
+                      "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                      "children": [
+                        {
+                          "id": "IF_LOGGED_IN"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "GO_TO_LABEL",
+                      "properties": {
+                        "Label": "Bank Loop"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "CREATE_LABEL",
+              "properties": {
+                "Label": "Bank Opened"
+              },
+              "children": [
+                {
+                  "id": "CUSTOM_613d1cd6-05ce-4ddc-ba25-f0e995146419"
+                },
+                {
+                  "id": "PAUSE_ITEM_TRACKER"
+                },
+                {
+                  "id": "IF_MENU_MANIPULATION_IS_NOT_ENABLED",
+                  "children": [
+                    {
+                      "id": "ENABLE_MENU_MANIPULATION"
+                    }
+                  ]
+                },
+                {
+                  "id": "CREATE_LABEL",
+                  "properties": {
+                    "Label": "Coin Count Check"
+                  },
+                  "children": [
+                    {
+                      "id": "SET_VARIABLE",
+                      "properties": {
+                        "Value": "0",
+                        "Variable name": "COIN_COUNT"
+                      }
+                    },
+                    {
+                      "id": "IF_BANK_COUNT",
+                      "properties": {
+                        "count": {
+                          "class": "Number",
+                          "operator": "GREATER_THAN_OR_EQUALS",
+                          "value": "1"
+                        },
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "Coins"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "ADD_TO_VARIABLE",
+                          "properties": {
+                            "Variable name": "COIN_COUNT",
+                            "By": "lastOutput()"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_INVENTORY_COUNT",
+                      "properties": {
+                        "count": {
+                          "class": "Number",
+                          "operator": "GREATER_THAN_OR_EQUALS",
+                          "value": "1"
+                        },
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "Coins"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "ADD_TO_VARIABLE",
+                          "properties": {
+                            "Variable name": "COIN_COUNT",
+                            "By": "lastOutput()"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "id": "bank-opener-script",
+  "name": "Bank \u003e Open Bank",
+  "description": "Will open the nearest bank when within 5 tiles.",
+  "parameters": "",
+  "fail": false,
+  "sleep": "500",
+  "version": 1.0,
+  "actions": [
+    {
+      "id": "IF_DISTANCE_TO_CLOSEST_BANK_IS",
+      "properties": {
+        "distance": {
+          "class": "Number",
+          "operator": "LESS_THAN_OR_EQUALS", 
+          "value": "5"
+        }
+      },
+      "children": [
+        {
+          "id": "IF_BANK_IS_NOT_OPEN",
+          "children": [
+            {
+              "id": "OPEN_BANK",
+              "children": [
+                {
+                  "id": "SLEEP_WHILE_MOVING"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "IF_BANK_IS_OPEN",
+          "children": [
+            {
+              "id": "BANK_WITHDRAW_ITEM",
+              "properties": {
+                "Filter Item By": {
+                  "class": "Item",
+                  "logic": "NONE",
+                  "type": "NAME",
+                  "operator": "EQUALS",
+                  "value": "Silk"
+                },
+                "Amount": "28"
+              },
+              "children": [
+                {
+                  "id": "CLOSE_BANK"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "IF_BANK_IS_NOT_OPEN",
+      "children": [
+        {
+          "id": "IF_DISTANCE_TO_TILE_IS",
+          "properties": {
+            "distance": {
+              "class": "Number",
+              "operator": "GREATER_THAN",
+              "value": "5"
+            },
+            "Tile": "(2656, 3300, 0)"
+          },
+          "children": [
+            {
+              "id": "WALK_FULLY_TO_TILE",
+              "properties": {
+                "Tile": "(2656, 3300, 0)"
+              }
+            }
+          ]
+        },
+        {
+          "id": "IF_DISTANCE_TO_TILE_IS",
+          "properties": {
+            "distance": {
+              "class": "Number",
+              "operator": "LESS_THAN_OR_EQUALS",
+              "value": "5"
+            },
+            "Tile": "(2656, 3300, 0)"
+          },
+          "children": [
+            {
+              "id": "NPC_INTERACT",
+              "properties": {
+                "Action": "Talk-to",
+                "Filter NPC By": {
+                  "class": "NPC",
+                  "logic": "NONE",
+                  "type": "NAME",
+                  "operator": "EQUALS",
+                  "value": "Silk merchant"
+                }
+              },
+              "children": [
+                {
+                  "id": "IF_DIALOG_IS_OPEN",
+                  "children": [
+                    {
+                      "id": "PRESS_SPACE"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+} 

@@ -1,0 +1,1106 @@
+{
+  "sleep": "50",
+  "name": "Oborv4",
+  "version": 1.0,
+  "metadata": {
+    "network-id": "9",
+    "network-downloaded-at": "1721665193842"
+  },
+  "actions": [
+    {
+      "id": "SET_VARIABLE",
+      "properties": {
+        "Value": "3096, 9854, 3129, 9819",
+        "Variable name": "hillys"
+      }
+    },
+    {
+      "id": "SET_VARIABLE",
+      "properties": {
+        "Value": "3181, 3445, 3186, 3436",
+        "Variable name": "bank"
+      }
+    },
+    {
+      "id": "SET_VARIABLE",
+      "properties": {
+        "Value": "False",
+        "Variable name": "hasKey"
+      }
+    },
+    {
+      "id": "SET_VARIABLE",
+      "properties": {
+        "Value": "True",
+        "Variable name": "runScript"
+      }
+    },
+    {
+      "id": "SET_VARIABLE",
+      "properties": {
+        "Value": "3095, 9833, 3095, 9832",
+        "Variable name": "bossArea"
+      }
+    },
+    {
+      "id": "SET_VARIABLE",
+      "properties": {
+        "Value": "False",
+        "Variable name": "oborAlive"
+      }
+    },
+    {
+      "id": "WHILE_VARIABLE_MATCHES",
+      "properties": {
+        "Filter Value By": {
+          "class": "Variable",
+          "logic": "NONE",
+          "type": "AS_BOOLEAN",
+          "operator": "IS_TRUE"
+        },
+        "Variable name": "runScript"
+      },
+      "children": [
+        {
+          "id": "COMMENT",
+          "properties": {
+            "Comment": "destination delete"
+          }
+        },
+        {
+          "id": "IF_LOCAL_PLAYER_MATCHES",
+          "properties": {
+            "Filter By": {
+              "class": "Player",
+              "logic": "NONE",
+              "type": "IN_AREA",
+              "operator": "EQUALS",
+              "value": "v(destination)"
+            }
+          },
+          "children": [
+            {
+              "id": "DELETE_VARIABLE",
+              "properties": {
+                "Variable name": "destination"
+              }
+            },
+            {
+              "id": "SET_VARIABLE",
+              "properties": {
+                "Value": "False",
+                "Variable name": "hasKey"
+              }
+            }
+          ]
+        },
+        {
+          "id": "COMMENT",
+          "properties": {
+            "Comment": "Walking action"
+          }
+        },
+        {
+          "id": "IF_VARIABLE_IS_SET",
+          "properties": {
+            "Variable name": "destination"
+          },
+          "children": [
+            {
+              "id": "IF_TIMER_IS_READY",
+              "properties": {
+                "Don\u0027t fire on first call": false,
+                "Don\u0027t reset on timing changes": false,
+                "Seconds": "4"
+              },
+              "children": [
+                {
+                  "id": "WALK_TO_AREA",
+                  "properties": {
+                    "Area": "v(destination)"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "COMMENT",
+          "properties": {
+            "Comment": "At hill giants"
+          }
+        },
+        {
+          "id": "IF_LOCAL_PLAYER_MATCHES",
+          "properties": {
+            "Filter By": {
+              "class": "Player",
+              "logic": "NONE",
+              "type": "IN_AREA",
+              "operator": "EQUALS",
+              "value": "v(hillys)"
+            }
+          },
+          "children": [
+            {
+              "id": "COMMENT",
+              "properties": {
+                "Comment": "At hill giants"
+              }
+            },
+            {
+              "id": "IF_VARIABLE_IS_NOT_SET",
+              "properties": {
+                "Variable name": "destination"
+              },
+              "children": [
+                {
+                  "id": "IF_INVENTORY_COUNT",
+                  "properties": {
+                    "count": {
+                      "class": "Number",
+                      "operator": "GREATER_THAN",
+                      "value": "0"
+                    },
+                    "Filter Item By": {
+                      "class": "Item",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Giant key"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "IF_INVENTORY_COUNT",
+                      "properties": {
+                        "count": {
+                          "class": "Number",
+                          "operator": "LESS_THAN",
+                          "value": "10"
+                        },
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "Swordfish"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "v(bank)",
+                            "Variable name": "destination"
+                          }
+                        },
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "True",
+                            "Variable name": "hasKey"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_INVENTORY_COUNT",
+                      "properties": {
+                        "count": {
+                          "class": "Number",
+                          "operator": "GREATER_THAN",
+                          "value": "9"
+                        },
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "Swordfish"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "v(bossArea)",
+                            "Variable name": "destination"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "GROUND_ITEM_INTERACT",
+                  "properties": {
+                    "Filter Item By": {
+                      "class": "GroundItem",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Giant key"
+                    },
+                    "Action": "Take"
+                  },
+                  "children": [
+                    {
+                      "id": "SLEEP_WHILE_MOVING"
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_INVENTORY_COUNT",
+                  "properties": {
+                    "count": {
+                      "class": "Number",
+                      "operator": "LESS_THAN",
+                      "value": "1"
+                    },
+                    "Filter Item By": {
+                      "class": "Item",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Swordfish"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "SET_VARIABLE",
+                      "properties": {
+                        "Value": "v(bank)",
+                        "Variable name": "destination"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "COMMENT",
+                  "properties": {
+                    "Comment": "Attacking hill giant logic"
+                  }
+                },
+                {
+                  "id": "IF_LOCAL_PLAYER_MATCHES",
+                  "properties": {
+                    "Filter By": {
+                      "class": "Player",
+                      "logic": "NONE",
+                      "type": "NOT_IN_COMBAT",
+                      "operator": "EQUALS"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "NPC_INTERACT",
+                      "properties": {
+                        "Action": "Attack",
+                        "Don\u0027t walk to NPC": false,
+                        "Force left click": false,
+                        "Filter NPC By": {
+                          "class": "NPC",
+                          "logic": "NONE",
+                          "type": "NOT_IN_COMBAT",
+                          "operator": "EQUALS",
+                          "filters": [
+                            {
+                              "class": "NPC",
+                              "logic": "AND",
+                              "type": "NAME",
+                              "operator": "EQUALS",
+                              "value": "Hill Giant"
+                            }
+                          ]
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "IF_SPECIAL_ATTACK_ENERGY_IS",
+                          "properties": {
+                            "energy": {
+                              "class": "Number",
+                              "operator": "EQUALS",
+                              "value": "100"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "ENABLE_SPECIAL_ATTACK"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_LOCAL_PLAYER_MATCHES",
+                  "properties": {
+                    "Filter By": {
+                      "class": "Player",
+                      "logic": "NONE",
+                      "type": "HEALTH",
+                      "operator": "LESS_THAN",
+                      "value": "50"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "INTERACT_WITH_INVENTORY_ITEM",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "Swordfish"
+                        },
+                        "Action": "Eat"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_RUN_ENERGY_IS",
+                  "properties": {
+                    "energy": {
+                      "class": "Number",
+                      "operator": "GREATER_THAN",
+                      "value": "60"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "ENABLE_RUN"
+                    }
+                  ]
+                },
+                {
+                  "id": "GROUND_ITEM_INTERACT",
+                  "properties": {
+                    "Filter Item By": {
+                      "class": "GroundItem",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "CONTAINS",
+                      "value": "Law"
+                    },
+                    "Force left click": false,
+                    "Action": "Take"
+                  },
+                  "children": [
+                    {
+                      "id": "SLEEP_WHILE_MOVING"
+                    }
+                  ]
+                },
+                {
+                  "id": "GROUND_ITEM_INTERACT",
+                  "properties": {
+                    "Filter Item By": {
+                      "class": "GroundItem",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "CONTAINS",
+                      "value": "Nature"
+                    },
+                    "Force left click": false,
+                    "Action": "Take"
+                  },
+                  "children": [
+                    {
+                      "id": "SLEEP_WHILE_MOVING"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "COMMENT",
+          "properties": {
+            "Comment": "banking"
+          }
+        },
+        {
+          "id": "IF_LOCAL_PLAYER_MATCHES",
+          "properties": {
+            "Filter By": {
+              "class": "Player",
+              "logic": "NONE",
+              "type": "IN_AREA",
+              "operator": "EQUALS",
+              "value": "v(bank)"
+            }
+          },
+          "children": [
+            {
+              "id": "IF_VARIABLE_IS_NOT_SET",
+              "properties": {
+                "Variable name": "destination"
+              },
+              "children": [
+                {
+                  "id": "CUSTOM_f46c89c6-68f3-4201-af9e-cdb0dba69bf3"
+                },
+                {
+                  "id": "IF_INVENTORY_COUNT",
+                  "properties": {
+                    "count": {
+                      "class": "Number",
+                      "operator": "GREATER_THAN",
+                      "value": "0"
+                    },
+                    "Filter Item By": {
+                      "class": "Item",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Giant key"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "SET_VARIABLE",
+                      "properties": {
+                        "Value": "True",
+                        "Variable name": "hasKey"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_VARIABLE_IS",
+                  "properties": {
+                    "Filter Value By": {
+                      "class": "Variable",
+                      "logic": "NONE",
+                      "type": "AS_BOOLEAN",
+                      "operator": "IS_TRUE"
+                    },
+                    "Variable name": "hasKey"
+                  },
+                  "children": [
+                    {
+                      "id": "SET_VARIABLE",
+                      "properties": {
+                        "Value": "v(bossArea)",
+                        "Variable name": "destination"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_VARIABLE_IS",
+                  "properties": {
+                    "Filter Value By": {
+                      "class": "Variable",
+                      "logic": "NONE",
+                      "type": "AS_BOOLEAN",
+                      "operator": "IS_FALSE"
+                    },
+                    "Variable name": "hasKey"
+                  },
+                  "children": [
+                    {
+                      "id": "SET_VARIABLE",
+                      "properties": {
+                        "Value": "v(hillys)",
+                        "Variable name": "destination"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "COMMENT",
+          "properties": {
+            "Comment": "obor fight"
+          }
+        },
+        {
+          "id": "IF_LOCAL_PLAYER_MATCHES",
+          "properties": {
+            "Filter By": {
+              "class": "Player",
+              "logic": "NONE",
+              "type": "IN_AREA",
+              "operator": "EQUALS",
+              "value": "v(bossArea)"
+            }
+          },
+          "children": [
+            {
+              "id": "IF_VARIABLE_IS_NOT_SET",
+              "properties": {
+                "Variable name": "destination"
+              },
+              "children": [
+                {
+                  "id": "CUSTOM_e94b57c2-bac1-451c-a2cd-012541e068b7",
+                  "children": [
+                    {
+                      "id": "SLEEP_WHILE_ANIMATING"
+                    },
+                    {
+                      "id": "SLEEP_WHILE_MOVING"
+                    },
+                    {
+                      "id": "SET_VARIABLE",
+                      "properties": {
+                        "Value": "True",
+                        "Variable name": "oborAlive"
+                      }
+                    },
+                    {
+                      "id": "IF_NPC_EXISTS",
+                      "properties": {
+                        "Filter NPC By": {
+                          "class": "NPC",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "Obor"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "WHILE_VARIABLE_MATCHES",
+                          "properties": {
+                            "Filter Value By": {
+                              "class": "Variable",
+                              "logic": "NONE",
+                              "type": "AS_BOOLEAN",
+                              "operator": "IS_TRUE"
+                            },
+                            "Variable name": "oborAlive"
+                          },
+                          "children": [
+                            {
+                              "id": "IF_LOCAL_PLAYER_MATCHES",
+                              "properties": {
+                                "Filter By": {
+                                  "class": "Player",
+                                  "logic": "NONE",
+                                  "type": "IN_COMBAT",
+                                  "operator": "EQUALS"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "IF_TIMER_IS_READY",
+                                  "properties": {
+                                    "Don\u0027t fire on first call": false,
+                                    "Seconds": "3"
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "NPC_INTERACT",
+                                      "properties": {
+                                        "Action": "Attack",
+                                        "Don\u0027t walk to NPC": false,
+                                        "Force left click": false,
+                                        "Filter NPC By": {
+                                          "class": "NPC",
+                                          "logic": "NONE",
+                                          "type": "NAME",
+                                          "operator": "EQUALS",
+                                          "value": "Obor"
+                                        }
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "id": "ENABLE_QUICK_PRAYERS"
+                                },
+                                {
+                                  "id": "SLEEP_UNTIL_GAME_TICK"
+                                },
+                                {
+                                  "id": "DISABLE_QUICK_PRAYERS"
+                                },
+                                {
+                                  "id": "ENABLE_QUICK_PRAYERS"
+                                },
+                                {
+                                  "id": "IF_LOCAL_PLAYER_MATCHES",
+                                  "properties": {
+                                    "Filter By": {
+                                      "class": "Player",
+                                      "logic": "NONE",
+                                      "type": "HEALTH",
+                                      "operator": "LESS_THAN",
+                                      "value": "65"
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "INTERACT_WITH_INVENTORY_ITEM",
+                                      "properties": {
+                                        "Filter Item By": {
+                                          "class": "Item",
+                                          "logic": "NONE",
+                                          "type": "NAME",
+                                          "operator": "EQUALS",
+                                          "value": "Swordfish"
+                                        },
+                                        "Action": "Eat"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "id": "IF_NPC_DOES_NOT_EXIST",
+                              "properties": {
+                                "Filter NPC By": {
+                                  "class": "NPC",
+                                  "logic": "NONE",
+                                  "type": "NAME",
+                                  "operator": "EQUALS",
+                                  "value": "Obor"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "SET_VARIABLE",
+                                  "properties": {
+                                    "Value": "False",
+                                    "Variable name": "oborAlive"
+                                  }
+                                },
+                                {
+                                  "id": "DISABLE_QUICK_PRAYERS"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "id": "SLEEP_BETWEEN",
+                          "properties": {
+                            "Minimum": "6000",
+                            "Maximum": "7000"
+                          }
+                        },
+                        {
+                          "id": "CUSTOM_eaf3e0e1-d2e3-46f1-9e93-24e6d5782894",
+                          "children": [
+                            {
+                              "id": "SLEEP_WHILE_ANIMATING"
+                            },
+                            {
+                              "id": "SLEEP_WHILE_MOVING"
+                            }
+                          ]
+                        },
+                        {
+                          "id": "SLEEP_BETWEEN",
+                          "properties": {
+                            "Minimum": "2000",
+                            "Maximum": "3000"
+                          }
+                        },
+                        {
+                          "id": "CUSTOM_a9076840-4283-4142-903a-f686fa0182ae",
+                          "children": [
+                            {
+                              "id": "SLEEP_WHILE_ANIMATING"
+                            },
+                            {
+                              "id": "SLEEP_WHILE_MOVING"
+                            },
+                            {
+                              "id": "SET_VARIABLE",
+                              "properties": {
+                                "Value": "v(hillys)",
+                                "Variable name": "destination"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "customActions": {
+    "eaf3e0e1-d2e3-46f1-9e93-24e6d5782894": {
+      "id": "eaf3e0e1-d2e3-46f1-9e93-24e6d5782894",
+      "name": "oborLoot",
+      "description": "Loots after obor dies",
+      "parameters": "",
+      "fail": false,
+      "actions": [
+        {
+          "id": "GROUND_ITEM_INTERACT",
+          "properties": {
+            "Filter Item By": {
+              "class": "GroundItem",
+              "logic": "NONE",
+              "type": "IS_OUR_LOOT",
+              "operator": "EQUALS"
+            },
+            "Force left click": false,
+            "Action": "Take"
+          }
+        },
+        {
+          "id": "SLEEP_BETWEEN",
+          "properties": {
+            "Minimum": "2000",
+            "Maximum": "3000"
+          }
+        },
+        {
+          "id": "GROUND_ITEM_INTERACT",
+          "properties": {
+            "Filter Item By": {
+              "class": "GroundItem",
+              "logic": "NONE",
+              "type": "IS_OUR_LOOT",
+              "operator": "EQUALS"
+            },
+            "Force left click": false,
+            "Action": "Take"
+          }
+        },
+        {
+          "id": "SLEEP_UNTIL_GAME_TICK"
+        },
+        {
+          "id": "GROUND_ITEM_INTERACT",
+          "properties": {
+            "Filter Item By": {
+              "class": "GroundItem",
+              "logic": "NONE",
+              "type": "IS_OUR_LOOT",
+              "operator": "EQUALS"
+            },
+            "Force left click": false,
+            "Action": "Take"
+          }
+        },
+        {
+          "id": "SLEEP_UNTIL_GAME_TICK"
+        },
+        {
+          "id": "GROUND_ITEM_INTERACT",
+          "properties": {
+            "Filter Item By": {
+              "class": "GroundItem",
+              "logic": "NONE",
+              "type": "IS_OUR_LOOT",
+              "operator": "EQUALS"
+            },
+            "Force left click": false,
+            "Action": "Take"
+          }
+        },
+        {
+          "id": "SLEEP_UNTIL_GAME_TICK"
+        },
+        {
+          "id": "GROUND_ITEM_INTERACT",
+          "properties": {
+            "Filter Item By": {
+              "class": "GroundItem",
+              "logic": "NONE",
+              "type": "IS_OUR_LOOT",
+              "operator": "EQUALS"
+            },
+            "Force left click": false,
+            "Action": "Take"
+          }
+        },
+        {
+          "id": "SLEEP_UNTIL_GAME_TICK"
+        },
+        {
+          "id": "SLEEP_UNTIL_GAME_TICK"
+        },
+        {
+          "id": "SLEEP_UNTIL_GAME_TICK"
+        },
+        {
+          "id": "GROUND_ITEM_INTERACT",
+          "properties": {
+            "Filter Item By": {
+              "class": "GroundItem",
+              "logic": "NONE",
+              "type": "NAME",
+              "operator": "EQUALS",
+              "value": "Giant key"
+            },
+            "Action": "Take"
+          }
+        },
+        {
+          "id": "SLEEP_UNTIL_GAME_TICK"
+        }
+      ]
+    },
+    "a9076840-4283-4142-903a-f686fa0182ae": {
+      "id": "a9076840-4283-4142-903a-f686fa0182ae",
+      "name": "Leave_Obor_lair",
+      "description": "Leaves Obors lair",
+      "parameters": "",
+      "fail": false,
+      "actions": [
+        {
+          "id": "GAME_OBJECT_INTERACT",
+          "properties": {
+            "Don\u0027t walk to object": false,
+            "Action": "Climb",
+            "Filter Object By": {
+              "class": "GameObject",
+              "logic": "NONE",
+              "type": "ID",
+              "operator": "EQUALS",
+              "value": "29491"
+            },
+            "Force left click": false
+          },
+          "children": [
+            {
+              "id": "SLEEP_WHILE_MOVING"
+            },
+            {
+              "id": "SLEEP_WHILE_ANIMATING"
+            },
+            {
+              "id": "SLEEP_BETWEEN",
+              "properties": {
+                "Minimum": "2000",
+                "Maximum": "3000"
+              }
+            }
+          ]
+        },
+        {
+          "id": "SLEEP_UNTIL_GAME_TICK"
+        },
+        {
+          "id": "SLEEP_UNTIL_GAME_TICK"
+        },
+        {
+          "id": "GAME_OBJECT_INTERACT",
+          "properties": {
+            "Don\u0027t walk to object": false,
+            "Action": "Open",
+            "Filter Object By": {
+              "class": "GameObject",
+              "logic": "NONE",
+              "type": "ID",
+              "operator": "EQUALS",
+              "value": "29489"
+            },
+            "Force left click": false
+          },
+          "children": [
+            {
+              "id": "SLEEP_BETWEEN",
+              "properties": {
+                "Minimum": "2000",
+                "Maximum": "3000"
+              }
+            },
+            {
+              "id": "SLEEP_WHILE_MOVING"
+            }
+          ]
+        },
+        {
+          "id": "SLEEP_UNTIL_GAME_TICK"
+        },
+        {
+          "id": "SLEEP_UNTIL_GAME_TICK"
+        },
+        {
+          "id": "MOVE_MOUSE_TO_POINT",
+          "properties": {
+            "X": "256",
+            "Y": "402"
+          }
+        },
+        {
+          "id": "SLEEP_UNTIL_GAME_TICK"
+        },
+        {
+          "id": "LEFT_CLICK"
+        },
+        {
+          "id": "SLEEP_UNTIL_GAME_TICK"
+        },
+        {
+          "id": "LEFT_CLICK"
+        }
+      ]
+    },
+    "f46c89c6-68f3-4201-af9e-cdb0dba69bf3": {
+      "id": "f46c89c6-68f3-4201-af9e-cdb0dba69bf3",
+      "name": "oborBanking",
+      "description": "Handles banking for obor scripts",
+      "parameters": "",
+      "fail": false,
+      "actions": [
+        {
+          "id": "OPEN_BANK"
+        },
+        {
+          "id": "SLEEP_UNTIL_GAME_TICK"
+        },
+        {
+          "id": "BANK_DEPOSIT_ALL"
+        },
+        {
+          "id": "SLEEP_UNTIL_GAME_TICK"
+        },
+        {
+          "id": "BANK_WITHDRAW_ITEM",
+          "properties": {
+            "Filter Item By": {
+              "class": "Item",
+              "logic": "NONE",
+              "type": "NAME",
+              "operator": "EQUALS",
+              "value": "Swordfish"
+            },
+            "Amount": "20"
+          }
+        },
+        {
+          "id": "SLEEP_UNTIL_GAME_TICK"
+        },
+        {
+          "id": "BANK_WITHDRAW_ITEM",
+          "properties": {
+            "Filter Item By": {
+              "class": "Item",
+              "logic": "NONE",
+              "type": "NAME",
+              "operator": "EQUALS",
+              "value": "Brass key"
+            },
+            "Amount": "1"
+          }
+        },
+        {
+          "id": "SLEEP_UNTIL_GAME_TICK"
+        },
+        {
+          "id": "BANK_WITHDRAW_ITEM",
+          "properties": {
+            "Filter Item By": {
+              "class": "Item",
+              "logic": "NONE",
+              "type": "NAME",
+              "operator": "EQUALS",
+              "value": "Giant key"
+            },
+            "Amount": "10"
+          }
+        },
+        {
+          "id": "SLEEP_UNTIL_GAME_TICK"
+        },
+        {
+          "id": "CLOSE_BANK"
+        }
+      ]
+    },
+    "e94b57c2-bac1-451c-a2cd-012541e068b7": {
+      "id": "e94b57c2-bac1-451c-a2cd-012541e068b7",
+      "name": "Enter_Obor_lair",
+      "description": "This handles opening the initial gates to obor\u0027s lair, as well as climbing down the rock wall.",
+      "parameters": "",
+      "fail": false,
+      "actions": [
+        {
+          "id": "GAME_OBJECT_INTERACT",
+          "properties": {
+            "Don\u0027t walk to object": false,
+            "Action": "Open",
+            "Filter Object By": {
+              "class": "GameObject",
+              "logic": "NONE",
+              "type": "ID",
+              "operator": "EQUALS",
+              "value": "29487"
+            },
+            "Force left click": false
+          },
+          "children": [
+            {
+              "id": "SLEEP_WHILE_MOVING"
+            }
+          ]
+        },
+        {
+          "id": "MOVE_MOUSE_TO_POINT",
+          "properties": {
+            "X": "260",
+            "Y": "404"
+          },
+          "children": [
+            {
+              "id": "SLEEP_UNTIL_GAME_TICK"
+            }
+          ]
+        },
+        {
+          "id": "LEFT_CLICK"
+        },
+        {
+          "id": "SLEEP_UNTIL_GAME_TICK"
+        },
+        {
+          "id": "LEFT_CLICK",
+          "children": [
+            {
+              "id": "SLEEP_BETWEEN",
+              "properties": {
+                "Minimum": "3000",
+                "Maximum": "3500"
+              }
+            }
+          ]
+        },
+        {
+          "id": "GAME_OBJECT_INTERACT",
+          "properties": {
+            "Don\u0027t walk to object": false,
+            "Action": "Climb",
+            "Filter Object By": {
+              "class": "GameObject",
+              "logic": "NONE",
+              "type": "ID",
+              "operator": "EQUALS",
+              "value": "29491"
+            },
+            "Force left click": false
+          },
+          "children": [
+            {
+              "id": "SLEEP_WHILE_MOVING"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

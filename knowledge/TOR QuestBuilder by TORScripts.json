@@ -1,0 +1,1574 @@
+{
+  "sleep": "300",
+  "name": "TOR QuestBuilder",
+  "version": 1.0,
+  "metadata": {
+    "network-id": "100",
+    "network-downloaded-at": "1735647274194"
+  },
+  "actions": [
+    {
+      "id": "CUSTOM_ec9eb0d0-850d-40d7-aaa1-0f69e407acaf"
+    },
+    {
+      "id": "PAINT_ROOT",
+      "properties": {
+        "Hide standard paint": true
+      },
+      "children": [
+        {
+          "id": "COMMENT",
+          "properties": {
+            "Comment": "Username Censor Bar"
+          },
+          "children": [
+            {
+              "id": "IF_NOT_IN_DIALOGUE",
+              "children": [
+                {
+                  "id": "DRAW_USERNAME_CENSOR_BAR"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "COMMENT",
+          "properties": {
+            "Comment": "Draw General Varbit\n\nextraVars"
+          },
+          "children": [
+            {
+              "id": "DRAW_TEXT",
+              "properties": {
+                "Font Size": "25",
+                "Outline color": {
+                  "class": "Color",
+                  "value": -1
+                },
+                "Color": {
+                  "class": "Color",
+                  "value": -2762
+                },
+                "X": "270",
+                "Y": "330",
+                "Text": "var(questName) : v(playerSettingStored)",
+                "Font": {
+                  "class": "Font",
+                  "value": "Dialog"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "COMMENT",
+          "properties": {
+            "Comment": "Draw Extra Varbits"
+          },
+          "children": [
+            {
+              "id": "SET_VARIABLE",
+              "properties": {
+                "Value": "0",
+                "Variable name": "index"
+              }
+            },
+            {
+              "id": "FOR_EACH_IN_LIST",
+              "properties": {
+                "List name": "extraVars"
+              },
+              "children": [
+                {
+                  "id": "DRAW_TEXT",
+                  "properties": {
+                    "Font Size": "16",
+                    "Outline color": {
+                      "class": "Color",
+                      "value": -1
+                    },
+                    "Color": {
+                      "class": "Color",
+                      "value": -2762
+                    },
+                    "X": "10",
+                    "Y": "add(20,mul(var(index),16))",
+                    "Text": "lastOutput() : var(lastOutput())",
+                    "Font": {
+                      "class": "Font",
+                      "value": "Dialog"
+                    }
+                  }
+                },
+                {
+                  "id": "ADD_TO_VARIABLE",
+                  "properties": {
+                    "By": "1",
+                    "Variable name": "index"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "COMMENT",
+          "properties": {
+            "Comment": "Add Note"
+          },
+          "children": [
+            {
+              "id": "DRAW_RECTANGLE_BUTTON",
+              "properties": {
+                "Radius": "10",
+                "Opacity (0-100)": "100",
+                "Color": {
+                  "class": "Color",
+                  "value": -4024244
+                },
+                "X": "10",
+                "Y": "305",
+                "Height": "30",
+                "Pressed Color": {
+                  "class": "Color",
+                  "value": -9546197
+                },
+                "Hovered Color": {
+                  "class": "Color",
+                  "value": -13469
+                },
+                "Width": "80"
+              },
+              "children": [
+                {
+                  "id": "SET_VARIABLE_TO_USER_INPUT",
+                  "properties": {
+                    "Message": "Enter a note to log:",
+                    "Variable name": "questNote"
+                  },
+                  "children": [
+                    {
+                      "id": "WRITE_TEXT_TO_FILE",
+                      "properties": {
+                        "File": "../../../Quest Vars/var(questName).log",
+                        "Text": "***NOTE*** : var(questNote)",
+                        "Append": true
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "DRAW_TEXT",
+              "properties": {
+                "Font Size": "16",
+                "Outline color": {
+                  "class": "Color",
+                  "value": -1
+                },
+                "Color": {
+                  "class": "Color",
+                  "value": -1
+                },
+                "X": "15",
+                "Y": "326",
+                "Text": "Add Note",
+                "Font": {
+                  "class": "Font",
+                  "value": "Inter V"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "COMMENT",
+          "properties": {
+            "Comment": "Add Area"
+          },
+          "children": [
+            {
+              "id": "DRAW_RECTANGLE_BUTTON",
+              "properties": {
+                "Radius": "10",
+                "Opacity (0-100)": "100",
+                "Color": {
+                  "class": "Color",
+                  "value": -4024244
+                },
+                "X": "95",
+                "Y": "305",
+                "Height": "30",
+                "Pressed Color": {
+                  "class": "Color",
+                  "value": -9546197
+                },
+                "Hovered Color": {
+                  "class": "Color",
+                  "value": -13469
+                },
+                "Width": "80"
+              },
+              "children": [
+                {
+                  "id": "SET_VARIABLE_TO_USER_INPUT_TILE",
+                  "properties": {
+                    "Message": "Select an tile to note:",
+                    "Variable name": "questNoteTile"
+                  },
+                  "children": [
+                    {
+                      "id": "WRITE_TEXT_TO_FILE",
+                      "properties": {
+                        "File": "../../../Quest Vars/var(questName).log",
+                        "Text": "***WALK TO AREA*** : var(questNoteTile)",
+                        "Append": true
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "DRAW_TEXT",
+              "properties": {
+                "Font Size": "16",
+                "Outline color": {
+                  "class": "Color",
+                  "value": -1
+                },
+                "Color": {
+                  "class": "Color",
+                  "value": -1
+                },
+                "X": "102",
+                "Y": "326",
+                "Text": "Add Area",
+                "Font": {
+                  "class": "Font",
+                  "value": "Inter V"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "COMMENT",
+          "properties": {
+            "Comment": "Add Area"
+          },
+          "children": [
+            {
+              "id": "DRAW_RECTANGLE_BUTTON",
+              "properties": {
+                "Radius": "10",
+                "Opacity (0-100)": "100",
+                "Color": {
+                  "class": "Color",
+                  "value": -4024244
+                },
+                "X": "180",
+                "Y": "305",
+                "Height": "30",
+                "Pressed Color": {
+                  "class": "Color",
+                  "value": -9546197
+                },
+                "Hovered Color": {
+                  "class": "Color",
+                  "value": -13469
+                },
+                "Width": "80"
+              },
+              "children": [
+                {
+                  "id": "SET_VARIABLE_TO_USER_INPUT_OPTIONS",
+                  "properties": {
+                    "Message": "Is this a Varbit or Varp?",
+                    "Options": "Varbit,Varp",
+                    "Variable name": "varbitOrVarp"
+                  }
+                },
+                {
+                  "id": "SET_VARIABLE_TO_USER_INPUT",
+                  "properties": {
+                    "Message": "Enter the var(varbitOrVarp) number:",
+                    "Variable name": "extraVarbitNumber"
+                  }
+                },
+                {
+                  "id": "SET_VARIABLE_TO_USER_INPUT",
+                  "properties": {
+                    "Message": "Enter a brief description:\n\n(It will read as ---- VARP \u0027Potatoes Picked\u0027 2938:1 ----)",
+                    "Variable name": "extraVarbitDesc"
+                  }
+                },
+                {
+                  "id": "IF_VARIABLE_IS",
+                  "properties": {
+                    "Filter Value By": {
+                      "class": "Variable",
+                      "logic": "NONE",
+                      "type": "AS_TEXT",
+                      "operator": "DOES_NOT_EQUAL"
+                    },
+                    "Variable name": "varbitOrVarp"
+                  }
+                },
+                {
+                  "id": "AND_BRANCH"
+                },
+                {
+                  "id": "IF_VARIABLE_IS",
+                  "properties": {
+                    "Filter Value By": {
+                      "class": "Variable",
+                      "logic": "NONE",
+                      "type": "AS_TEXT",
+                      "operator": "DOES_NOT_EQUAL"
+                    },
+                    "Variable name": "extraVarbitNumber"
+                  }
+                },
+                {
+                  "id": "AND_BRANCH"
+                },
+                {
+                  "id": "IF_VARIABLE_IS",
+                  "properties": {
+                    "Filter Value By": {
+                      "class": "Variable",
+                      "logic": "NONE",
+                      "type": "AS_TEXT",
+                      "operator": "DOES_NOT_EQUAL"
+                    },
+                    "Variable name": "extraVarbitDesc"
+                  },
+                  "children": [
+                    {
+                      "id": "SEND_DISCORD_WEBHOOK",
+                      "properties": {
+                        "Message": "\"var(questName)\": {\r\n                 \"Extra\": {\r\n                         var(varbitOrVarp): {\r\n                            var(extraVarbitDesc): var(extraVarbitNumber)                 \r\n      }\r\n    },  ",
+                        "URL": "https://discord.com/api/webhooks/1268547447307767808/tjYYP1gWrFhrXtrDyyVakgTS8ugVnIGcFWisnSzhC69yfEs-jziT4AsT9uElycOl1sgJ"
+                      }
+                    },
+                    {
+                      "id": "SET_MAP_KEY_TO_VALUE",
+                      "properties": {
+                        "Value": "var(extraVarbitNumber)",
+                        "Key": "var(extraVarbitDesc)",
+                        "Map name": "questsBuilderMap.var(questType).var(questName).Extra.var(varbitOrVarp)"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "DRAW_TEXT",
+              "properties": {
+                "Font Size": "16",
+                "Outline color": {
+                  "class": "Color",
+                  "value": -1
+                },
+                "Color": {
+                  "class": "Color",
+                  "value": -1
+                },
+                "X": "186",
+                "Y": "326",
+                "Text": "Add Varp",
+                "Font": {
+                  "class": "Font",
+                  "value": "Inter V"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ADD_QUESTS_TO_LIST",
+      "properties": {
+        "List name": "sssssssssssssssssssssss"
+      }
+    }
+  ],
+  "customActions": {
+    "ec9eb0d0-850d-40d7-aaa1-0f69e407acaf": {
+      "id": "ec9eb0d0-850d-40d7-aaa1-0f69e407acaf",
+      "name": "Quests\u003equestBuilder",
+      "description": "",
+      "parameters": "",
+      "fail": false,
+      "actions": [
+        {
+          "id": "IF_VARIABLE_IS_NOT_SET",
+          "properties": {
+            "Variable name": "questName"
+          },
+          "children": [
+            {
+              "id": "SET_VARIABLE",
+              "properties": {
+                "Value": "Loading...",
+                "Variable name": "questName"
+              }
+            }
+          ]
+        },
+        {
+          "id": "IF_VARIABLE_IS_NOT_SET",
+          "properties": {
+            "Variable name": "playerSettingStored"
+          },
+          "children": [
+            {
+              "id": "SET_VARIABLE",
+              "properties": {
+                "Value": "",
+                "Variable name": "playerSettingStored"
+              }
+            }
+          ]
+        },
+        {
+          "id": "COMMENT",
+          "properties": {
+            "Comment": "Build Quest Map"
+          },
+          "children": [
+            {
+              "id": "IF_VARIABLE_IS_NOT_SET",
+              "properties": {
+                "Variable name": "questsBuilderMap"
+              },
+              "children": [
+                {
+                  "id": "LOAD_MAP_FROM_JSON",
+                  "properties": {
+                    "JSON": "{\r\n    \"F2P\": {\r\n        \"Below Ice Mountain\": {\r\n            \"Quest\": {\r\n                \"Varp\": 998\r\n            }\r\n        },\r\n        \"Black Knights Fortress\": {\r\n            \"Quest\": {\r\n                \"Varp\": 130\r\n            }\r\n        },\r\n        \"Cooks Assistant\": {\r\n            \"Quest\": {\r\n                \"Varp\": 29\r\n            }\r\n        },\r\n        \"Corsair Curse\": {\r\n            \"Quest\": {\r\n                \"Varp\": 538\r\n            }\r\n        },\r\n        \"Demon Slayer\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 2561\r\n            }\r\n        },\r\n        \"Dorics Quest\": {\r\n            \"Quest\": {\r\n                \"Varp\": 31\r\n            }\r\n        },\r\n        \"Dragon Slayer\": {\r\n            \"Quest\": {\r\n                \"Varp\": 176\r\n            }\r\n        },\r\n        \"Ernest The Chicken\": {\r\n            \"Quest\": {\r\n                \"Varp\": 32\r\n            }\r\n        },\r\n        \"Goblin Diplomacy\": {\r\n            \"Quest\": {\r\n                \"Varp\": 238\r\n            }\r\n        },\r\n        \"Imp Catcher\": {\r\n            \"Quest\": {\r\n                \"Varp\": 160\r\n            }\r\n        },\r\n        \"The Knights Sword\": {\r\n            \"Quest\": {\r\n                \"Varp\": 122\r\n            }\r\n        },\r\n        \"Misthalin Mystery\": {\r\n            \"Quest\": {\r\n                \"Varp\": 347\r\n            }\r\n        },\r\n        \"Pirates Treasure\": {\r\n            \"Quest\": {\r\n                \"Varp\": 71\r\n            }\r\n        },\r\n        \"Prince Ali Rescue\": {\r\n            \"Quest\": {\r\n                \"Varp\": 273\r\n            }\r\n        },\r\n        \"The Restless Ghost\": {\r\n            \"Quest\": {\r\n                \"Varp\": 107\r\n            }\r\n        },\r\n        \"Romeo And Juliet\": {\r\n            \"Quest\": {\r\n                \"Varp\": 144\r\n            }\r\n        },\r\n        \"Rune Mysteries\": {\r\n            \"Quest\": {\r\n                \"Varp\": 63\r\n            }\r\n        },\r\n        \"Sheep Shearer\": {\r\n            \"Quest\": {\r\n                \"Varp\": 179\r\n            }\r\n        },\r\n        \"Shield Of Arrav\": {\r\n            \"Quest\": {\r\n                \"Varp\": 145\r\n            }\r\n        },\r\n        \"Vampire Slayer\": {\r\n            \"Quest\": {\r\n                \"Varp\": 178\r\n            }\r\n        },\r\n        \"Witchs Potion\": {\r\n            \"Quest\": {\r\n                \"Varp\": 67\r\n            }\r\n        },\r\n        \"X Marks The Spot\": {\r\n            \"Quest\": {\r\n                \"Varp\": 1611\r\n            }\r\n        }\r\n    },\r\n    \"P2P\": {\r\n        \"Priest In Peril\": {\r\n            \"Quest\": {\r\n                \"Varp\": 302\r\n            }\r\n        },\r\n        \"Druidic Ritual\": {\r\n            \"Quest\": {\r\n                \"Varp\": 80\r\n            }\r\n        },\r\n        \"The Tourist Trap\": {\r\n            \"Quest\": {\r\n                \"Varp\": 197\r\n            }\r\n        },\r\n        \"Tower Of Life\": {\r\n            \"Quest\": {\r\n                \"Varp\": 3337\r\n            }\r\n        },\r\n        \"Tree Gnome Village\": {\r\n            \"Quest\": {\r\n                \"Varp\": 111\r\n            }\r\n        },\r\n        \"Tribal Totem\": {\r\n            \"Quest\": {\r\n                \"Varp\": 200\r\n            }\r\n        },\r\n        \"Waterfall Quest\": {\r\n            \"Quest\": {\r\n                \"Varp\": 65\r\n            }\r\n        },\r\n        \"Witchs House\": {\r\n            \"Quest\": {\r\n                \"Varp\": 226\r\n            }\r\n        },\r\n        \"Client Of Kourend\": {\r\n            \"Quest\": {\r\n                \"Varp\": 561\r\n            }\r\n        },\r\n        \"Clock Tower\": {\r\n            \"Quest\": {\r\n                \"Varp\": 10\r\n            }\r\n        },\r\n        \"Cold War\": {\r\n            \"Quest\": {\r\n                \"Varp\": 3293\r\n            }\r\n        },\r\n        \"Family Crest\": {\r\n            \"Quest\": {\r\n                \"Varp\": 148\r\n            }\r\n        },\r\n        \"The Feud\": {\r\n            \"Quest\": {\r\n                \"Varp\": 334\r\n            }\r\n        },\r\n        \"Fight Arena\": {\r\n            \"Quest\": {\r\n                \"Varp\": 17\r\n            }\r\n        },\r\n        \"Fishing Contest\": {\r\n            \"Quest\": {\r\n                \"Varp\": 11\r\n            }\r\n        },\r\n        \"The Lost Tribe\": {\r\n            \"Quest\": {\r\n                \"Varp\": 532\r\n            }\r\n        },\r\n        \"Animal Magnetism\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 3185\r\n            }\r\n        },\r\n        \"Death To The Dorgeshuun\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 2258\r\n            }\r\n        },\r\n        \"The Giant Dwarf\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 571\r\n            }\r\n        },\r\n        \"The Dig Site\": {\r\n            \"Quest\": {\r\n                \"Varp\": 131\r\n            }\r\n        },\r\n        \"Another Slice Of Ham\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 3550\r\n            }\r\n        },\r\n        \"The Ascent Of Arceuus\": {\r\n            \"Quest\": {\r\n                \"Varp\": 1273\r\n            }\r\n        },\r\n        \"Dwarf Cannon\": {\r\n            \"Quest\": {\r\n                \"Varp\": 0\r\n            }\r\n        },\r\n        \"Between A Rock\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 299\r\n            }\r\n        },\r\n        \"Big Chompy Bird Hunting\": {\r\n            \"Quest\": {\r\n                \"Varp\": 293\r\n            }\r\n        },\r\n        \"Jungle Potion\": {\r\n            \"Quest\": {\r\n                \"Varp\": 175\r\n            }\r\n        },\r\n        \"Zogre Flesh Eaters\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 487\r\n            }\r\n        },\r\n        \"Rum Deal\": {\r\n            \"Quest\": {\r\n                \"Varp\": 600\r\n            }\r\n        },\r\n        \"Plague City\": {\r\n            \"Quest\": {\r\n                \"Varp\": 165\r\n            }\r\n        },\r\n        \"Biohazard\": {\r\n            \"Quest\": {\r\n                \"Varp\": 68\r\n            }\r\n        },\r\n        \"Bone Voyage\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 5795\r\n            }\r\n        },\r\n        \"Cabin Fever\": {\r\n            \"Quest\": {\r\n                \"Varp\": 655\r\n            }\r\n        },\r\n        \"Gertrudes Cat\": {\r\n            \"Quest\": {\r\n                \"Varp\": 180\r\n            }\r\n        },\r\n        \"Icthlarins Little Helper\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 418\r\n            }\r\n        },\r\n        \"Contact\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 3274\r\n            }\r\n        },\r\n        \"Creature Of Fenkenstrain\": {\r\n            \"Quest\": {\r\n                \"Varp\": 399\r\n            }\r\n        },\r\n        \"Nature Spirit\": {\r\n            \"Quest\": {\r\n                \"Varp\": 307\r\n            }\r\n        },\r\n        \"In Search Of The Myreque\": {\r\n            \"Quest\": {\r\n                \"Varp\": 387\r\n            }\r\n        },\r\n        \"In Aid Of The Myreque\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 1990\r\n            }\r\n        },\r\n        \"Darkness Of Hallowvale\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 2573\r\n            }\r\n        },\r\n        \"Death Plateau\": {\r\n            \"Quest\": {\r\n                \"Varp\": 314\r\n            }\r\n        },\r\n        \"Troll Stronghold\": {\r\n            \"Quest\": {\r\n                \"Varp\": 317\r\n            }\r\n        },\r\n        \"Troll Romance\": {\r\n            \"Quest\": {\r\n                \"Varp\": 385\r\n            }\r\n        },\r\n        \"The Depths Of Despair\": {\r\n            \"Quest\": {\r\n                \"Varp\": 2930\r\n            }\r\n        },\r\n        \"Temple Of Ikov\": {\r\n            \"Quest\": {\r\n                \"Varp\": 26\r\n            }\r\n        },\r\n        \"Temple Of The Eye\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 13738\r\n            }\r\n        },\r\n        \"Desert Treasure\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 358\r\n            }\r\n        },\r\n        \"Recruitment Drive\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 657\r\n            }\r\n        },\r\n        \"Wanted\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 1051\r\n            }\r\n        },\r\n        \"Devious Minds\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 1465\r\n            }\r\n        },\r\n        \"Lost City\": {\r\n            \"Quest\": {\r\n                \"Varp\": 147\r\n            }\r\n        },\r\n        \"Shilo Village\": {\r\n            \"Quest\": {\r\n                \"Varp\": 116\r\n            }\r\n        },\r\n        \"The Fremennik Trials\": {\r\n            \"Quest\": {\r\n                \"Varp\": 347\r\n            }\r\n        },\r\n        \"Lunar Diplomacy\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 2448\r\n            }\r\n        },\r\n        \"Eadgars Ruse\": {\r\n            \"Quest\": {\r\n                \"Varp\": 335\r\n            }\r\n        },\r\n        \"Dream Mentor\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 3618\r\n            }\r\n        },\r\n        \"Eagles Peak\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 2780\r\n            }\r\n        },\r\n        \"Elemental Workshop I\": {\r\n            \"Quest\": {\r\n                \"Varp\": 299\r\n            }\r\n        },\r\n        \"Elemental Workshop Ii\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 2639\r\n            }\r\n        },\r\n        \"Enakhras Lament\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 1560\r\n            }\r\n        },\r\n        \"Enlightened Journey\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 2866\r\n            }\r\n        },\r\n        \"The Grand Tree\": {\r\n            \"Quest\": {\r\n                \"Varp\": 150\r\n            }\r\n        },\r\n        \"The Eyes Of Glouphrie\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 2497\r\n            }\r\n        },\r\n        \"Fairytale I\": {\r\n            \"Quest\": {\r\n                \"Varp\": 762\r\n            }\r\n        },\r\n        \"Fairytale Ii\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 2326\r\n            }\r\n        },\r\n        \"Forgettable Tale\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 822\r\n            }\r\n        },\r\n        \"The Forsaken Tower\": {\r\n            \"Quest\": {\r\n                \"Varp\": 773\r\n            }\r\n        },\r\n        \"Mountain Daughter\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 260\r\n            }\r\n        },\r\n        \"Merlins Crystal\": {\r\n            \"Quest\": {\r\n                \"Varp\": 14\r\n            }\r\n        },\r\n        \"Heroes Quest\": {\r\n            \"Quest\": {\r\n                \"Varp\": 188\r\n            }\r\n        },\r\n        \"The Fremennik Isles\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 3311\r\n            }\r\n        },\r\n        \"The Fremennik Exiles\": {\r\n            \"Quest\": {\r\n                \"Varp\": 3385\r\n            }\r\n        },\r\n        \"Garden Of Tranquility\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 961\r\n            }\r\n        },\r\n        \"Ghosts Ahoy\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 217\r\n            }\r\n        },\r\n        \"The Golem\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 346\r\n            }\r\n        },\r\n        \"The Great Brain Robbery\": {\r\n            \"Quest\": {\r\n                \"Varp\": 980\r\n            }\r\n        },\r\n        \"Grim Tales\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 2783\r\n            }\r\n        },\r\n        \"The Hand In The Sand\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 1527\r\n            }\r\n        },\r\n        \"Haunted Mine\": {\r\n            \"Quest\": {\r\n                \"Varp\": 382\r\n            }\r\n        },\r\n        \"Hazeel Cult\": {\r\n            \"Quest\": {\r\n                \"Varp\": 223\r\n            }\r\n        },\r\n        \"Holy Grail\": {\r\n            \"Quest\": {\r\n                \"Varp\": 5\r\n            }\r\n        },\r\n        \"Horror From The Deep\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 34\r\n            }\r\n        },\r\n        \"One Small Favour\": {\r\n            \"Quest\": {\r\n                \"Varp\": 416\r\n            }\r\n        },\r\n        \"Murder Mystery\": {\r\n            \"Quest\": {\r\n                \"Varp\": 192\r\n            }\r\n        },\r\n        \"Kings Ransom\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 3888\r\n            }\r\n        },\r\n        \"Swan Song\": {\r\n            \"Quest\": {\r\n                \"Varp\": 214\r\n            }\r\n        },\r\n        \"My Arms Big Adventure\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 2790\r\n            }\r\n        },\r\n        \"Making Friends With My Arm\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 6528\r\n            }\r\n        },\r\n        \"Making History\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 1383\r\n            }\r\n        },\r\n        \"Monks Friend\": {\r\n            \"Quest\": {\r\n                \"Varp\": 30\r\n            }\r\n        },\r\n        \"Watchtower\": {\r\n            \"Quest\": {\r\n                \"Varp\": 212\r\n            }\r\n        },\r\n        \"Monkey Madness\": {\r\n            \"Quest\": {\r\n                \"Varp\": 365\r\n            }\r\n        },\r\n        \"Monkey Madness Ii\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 5027\r\n            }\r\n        },\r\n        \"Sheep Herder\": {\r\n            \"Quest\": {\r\n                \"Varp\": 60\r\n            }\r\n        },\r\n        \"Underground Pass\": {\r\n            \"Quest\": {\r\n                \"Varp\": 161\r\n            }\r\n        },\r\n        \"Regicide\": {\r\n            \"Quest\": {\r\n                \"Varp\": 328\r\n            }\r\n        },\r\n        \"Roving Elves\": {\r\n            \"Quest\": {\r\n                \"Varp\": 402\r\n            }\r\n        },\r\n        \"Mournings End Part I\": {\r\n            \"Quest\": {\r\n                \"Varp\": 517\r\n            }\r\n        },\r\n        \"Mournings End Part Ii\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 1103\r\n            }\r\n        },\r\n        \"Observatory Quest\": {\r\n            \"Quest\": {\r\n                \"Varp\": 112\r\n            }\r\n        },\r\n        \"Olafs Quest\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 3534\r\n            }\r\n        },\r\n        \"The Queen Of Thieves\": {\r\n            \"Quest\": {\r\n                \"Varp\": 1838\r\n            }\r\n        },\r\n        \"Rag And Bone Man\": {\r\n            \"Quest\": {\r\n                \"Varp\": 714\r\n            }\r\n        },\r\n        \"Rag And Bone Man 2\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 714\r\n            }\r\n        },\r\n        \"Rat Catchers\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 1404\r\n            }\r\n        },\r\n        \"Recipe For Disaster\": {\r\n            \"Quest\": {\r\n                \"Varp\": 1850\r\n            }\r\n        },\r\n        \"Throne Of Miscellania\": {\r\n            \"Quest\": {\r\n                \"Varp\": 359\r\n            }\r\n        },\r\n        \"Royal Trouble\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 2140\r\n            }\r\n        },\r\n        \"Scorpion Catcher\": {\r\n            \"Quest\": {\r\n                \"Varp\": 76\r\n            }\r\n        },\r\n        \"Sea Slug\": {\r\n            \"Quest\": {\r\n                \"Varp\": 159\r\n            }\r\n        },\r\n        \"Shades Of Mortton\": {\r\n            \"Quest\": {\r\n                \"Varp\": 339\r\n            }\r\n        },\r\n        \"Shadow Of The Storm\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 1372\r\n            }\r\n        },\r\n        \"The Slug Menace\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 2610\r\n            }\r\n        },\r\n        \"Song Of The Elves\": {\r\n            \"Quest\": {\r\n                \"Varp\": 1816\r\n            }\r\n        },\r\n        \"A Souls Bane\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 2011\r\n            }\r\n        },\r\n        \"Spirits Of The Elid\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 1444\r\n            }\r\n        },\r\n        \"Tai Bwo Wannai Trio\": {\r\n            \"Quest\": {\r\n                \"Varp\": 320\r\n            }\r\n        },\r\n        \"A Tail Of Two Cats\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 1028\r\n            }\r\n        },\r\n        \"Tale Of The Righteous\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 6358\r\n            }\r\n        },\r\n        \"Taste Of Hope\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 6396\r\n            }\r\n        },\r\n        \"Tears Of Guthix\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 451\r\n            }\r\n        },\r\n        \"What Lies Below\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 3523\r\n            }\r\n        },\r\n        \"Legends Quest\": {\r\n            \"Quest\": {\r\n                \"Varp\": 139\r\n            }\r\n        },\r\n        \"Dragon Slayer 2\": {\r\n            \"Quest\": {\r\n                \"Varp\": 218\r\n            }\r\n        },\r\n        \"Sins Of The Father\": {\r\n            \"Quest\": {\r\n                \"Varp\": 1142\r\n            }\r\n        },\r\n        \"A Porcine Of Interest\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 10582\r\n            }\r\n        },\r\n        \"Getting Ahead\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 693\r\n            }\r\n        },\r\n        \"Sleeping Giants\": {\r\n            \"Quest\": {\r\n                \"Varp\": 3699\r\n            }\r\n        },\r\n        \"A Night At The Theatre\": {\r\n            \"Quest\": {\r\n                \"Varp\": 2455\r\n            }\r\n        },\r\n        \"A Kingdom Divided\": {\r\n            \"Quest\": {\r\n                \"Varp\": 3059\r\n            }\r\n        },\r\n        \"Land Of The Goblins\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 13599\r\n            }\r\n        },\r\n        \"Beneath Cursed Sands\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 13841\r\n            }\r\n        },\r\n        \"Secrets Of The North\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 14722\r\n            }\r\n        },\r\n        \"The Garden Of Death\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 14609\r\n            }\r\n        },\r\n        \"Defender Of Varrock\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 9655\r\n            }\r\n        },\r\n        \"The Path Of Glouphrie\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 15288\r\n            }\r\n        },\r\n        \"Children Of The Sun\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 9632\r\n            }\r\n        },\r\n        \"Ribbiting Tale\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 9844\r\n            }\r\n        },\r\n        \"Twilights Promise\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 9649\r\n            }\r\n        },\r\n        \"Perilous Moons\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 9819\r\n            }\r\n        },\r\n        \"While Guthix Sleeps\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 1\r\n            }\r\n        },\r\n        \"At First Light\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 9835\r\n            }\r\n        },\r\n        \"Desert Treasure Ii\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 14862\r\n            }\r\n        }\r\n    },\r\n    \"Miniquest\": {\r\n        \"Enter The Abyss\": {\r\n            \"Quest\": {\r\n                \"Varp\": 492\r\n            }\r\n        },\r\n        \"Architectural Alliance\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 4982\r\n            }\r\n        },\r\n        \"Bear Your Soul\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 5078\r\n            }\r\n        },\r\n        \"Alfred Grimhands Barcrawl\": {\r\n            \"Quest\": {\r\n                \"Varp\": 77\r\n            }\r\n        },\r\n        \"Curse Of The Empty Lord\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 821\r\n            }\r\n        },\r\n        \"Enchanted Key\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 1391\r\n            }\r\n        },\r\n        \"The Generals Shadow\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 3330\r\n            }\r\n        },\r\n        \"Skippy And The Mogres\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 1344\r\n            }\r\n        },\r\n        \"The Mage Arena\": {\r\n            \"Quest\": {\r\n                \"Varp\": 267\r\n            }\r\n        },\r\n        \"Lair Of Tarn Razorlor\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 3290\r\n            }\r\n        },\r\n        \"Family Pest\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 5347\r\n            }\r\n        },\r\n        \"The Mage Arena 2\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 6067\r\n            }\r\n        },\r\n        \"In Search Of Knowledge\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 8403\r\n            }\r\n        },\r\n        \"Daddys Home\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 10570\r\n            }\r\n        },\r\n        \"Hopespears Will\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 13619\r\n            }\r\n        },\r\n        \"His Faithful Servants\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 14973\r\n            }\r\n        },\r\n        \"Knight Waves Training Grounds\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 3909\r\n            }\r\n        }\r\n    },\r\n    \"Achievement\": {\r\n        \"Ardougne Easy Diary\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 4499\r\n            }\r\n        },\r\n        \"Ardougne Medium Diary\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 4500\r\n            }\r\n        },\r\n        \"Ardougne Hard Diary\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 4501\r\n            }\r\n        },\r\n        \"Ardougne Elite Diary\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 4502\r\n            }\r\n        },\r\n        \"Desert Easy Diary\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 4523\r\n            }\r\n        },\r\n        \"Desert Medium Diary\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 4524\r\n            }\r\n        },\r\n        \"Desert Hard Diary\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 4525\r\n            }\r\n        },\r\n        \"Desert Elite Diary\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 4526\r\n            }\r\n        },\r\n        \"Falador Easy Diary\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 4503\r\n            }\r\n        },\r\n        \"Falador Medium Diary\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 4504\r\n            }\r\n        },\r\n        \"Falador Hard Diary\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 4505\r\n            }\r\n        },\r\n        \"Falador Elite Diary\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 4506\r\n            }\r\n        },\r\n        \"Fremennik Easy Diary\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 4531\r\n            }\r\n        },\r\n        \"Fremennik Medium Diary\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 4532\r\n            }\r\n        },\r\n        \"Fremennik Hard Diary\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 4533\r\n            }\r\n        },\r\n        \"Fremennik Elite Diary\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 4534\r\n            }\r\n        },\r\n        \"Kandarin Easy Diary\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 4515\r\n            }\r\n        },\r\n        \"Kandarin Medium Diary\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 4516\r\n            }\r\n        },\r\n        \"Kandarin Hard Diary\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 4517\r\n            }\r\n        },\r\n        \"Kandarin Elite Diary\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 4518\r\n            }\r\n        },\r\n        \"Karamja Easy Diary\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 3577\r\n            }\r\n        },\r\n        \"Karamja Medium Diary\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 3598\r\n            }\r\n        },\r\n        \"Karamja Hard Diary\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 3610\r\n            }\r\n        },\r\n        \"Karamja Elite Diary\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 4567\r\n            }\r\n        },\r\n        \"Kourend Easy Diary\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 7929\r\n            }\r\n        },\r\n        \"Kourend Medium Diary\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 7930\r\n            }\r\n        },\r\n        \"Kourend Hard Diary\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 7931\r\n            }\r\n        },\r\n        \"Kourend Elite Diary\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 7932\r\n            }\r\n        },\r\n        \"Lumbridge Easy Diary\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 4535\r\n            }\r\n        },\r\n        \"Lumbridge Medium Diary\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 4536\r\n            }\r\n        },\r\n        \"Lumbridge Hard Diary\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 4537\r\n            }\r\n        },\r\n        \"Lumbridge Elite Diary\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 4538\r\n            }\r\n        },\r\n        \"Morytania Easy Diary\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 4527\r\n            }\r\n        },\r\n        \"Morytania Medium Diary\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 4528\r\n            }\r\n        },\r\n        \"Morytania Hard Diary\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 4529\r\n            }\r\n        },\r\n        \"Morytania Elite Diary\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 4530\r\n            }\r\n        },\r\n        \"Varrock Easy Diary\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 4519\r\n            }\r\n        },\r\n        \"Varrock Medium Diary\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 4520\r\n            }\r\n        },\r\n        \"Varrock Hard Diary\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 4521\r\n            }\r\n        },\r\n        \"Varrock Elite Diary\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 4522\r\n            }\r\n        },\r\n        \"Western Easy Diary\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 4511\r\n            }\r\n        },\r\n        \"Western Medium Diary\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 4512\r\n            }\r\n        },\r\n        \"Western Hard Diary\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 4513\r\n            }\r\n        },\r\n        \"Western Elite Diary\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 4514\r\n            }\r\n        },\r\n        \"Wilderness Easy Diary\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 4507\r\n            }\r\n        },\r\n        \"Wilderness Medium Diary\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 4508\r\n            }\r\n        },\r\n        \"Wilderness Hard Diary\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 4509\r\n            }\r\n        },\r\n        \"Wilderness Elite Diary\": {\r\n            \"Quest\": {\r\n                \"Varbit\": 4510\r\n            }\r\n        }\r\n    }\r\n}",
+                    "Map name": "questsBuilderMap"
+                  }
+                },
+                {
+                  "id": "ADD_MAP_KEYS_TO_LIST",
+                  "properties": {
+                    "List name": "f2pQuestBuilderList",
+                    "Map name": "questsBuilderMap.F2P"
+                  }
+                },
+                {
+                  "id": "ADD_MAP_KEYS_TO_LIST",
+                  "properties": {
+                    "List name": "p2pQuestBuilderList",
+                    "Map name": "questsBuilderMap.P2P"
+                  }
+                },
+                {
+                  "id": "ADD_MAP_KEYS_TO_LIST",
+                  "properties": {
+                    "List name": "miniQuestBuilderList",
+                    "Map name": "questsBuilderMap.Miniquest"
+                  }
+                },
+                {
+                  "id": "ADD_MAP_KEYS_TO_LIST",
+                  "properties": {
+                    "List name": "achievementQuestBuilderList",
+                    "Map name": "questsBuilderMap.Achievement"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "COMMENT",
+          "properties": {
+            "Comment": "Get Quest From User"
+          },
+          "children": [
+            {
+              "id": "IF_VARIABLE_IS_NOT_SET",
+              "properties": {
+                "Variable name": "questConfigNum"
+              },
+              "children": [
+                {
+                  "id": "SET_VARIABLE_TO_USER_INPUT_OPTIONS",
+                  "properties": {
+                    "Message": "Select the type of quest you are doing:",
+                    "Options": "F2P,P2P,Miniquest,Achievement",
+                    "Variable name": "questType"
+                  }
+                },
+                {
+                  "id": "IF_VARIABLE_IS",
+                  "properties": {
+                    "Filter Value By": {
+                      "class": "Variable",
+                      "logic": "NONE",
+                      "type": "AS_TEXT",
+                      "operator": "EQUALS",
+                      "value": "F2P"
+                    },
+                    "Variable name": "questType"
+                  },
+                  "children": [
+                    {
+                      "id": "SET_VARIABLE_TO_USER_INPUT_OPTIONS",
+                      "properties": {
+                        "Message": "Select the quest you are doing:",
+                        "Options": "list(f2pQuestBuilderList)",
+                        "Variable name": "questName"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_VARIABLE_IS",
+                  "properties": {
+                    "Filter Value By": {
+                      "class": "Variable",
+                      "logic": "NONE",
+                      "type": "AS_TEXT",
+                      "operator": "EQUALS",
+                      "value": "P2P"
+                    },
+                    "Variable name": "questType"
+                  },
+                  "children": [
+                    {
+                      "id": "SET_VARIABLE_TO_USER_INPUT_OPTIONS",
+                      "properties": {
+                        "Message": "Select the quest you are doing:",
+                        "Options": "list(p2pQuestBuilderList)",
+                        "Variable name": "questName"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_VARIABLE_IS",
+                  "properties": {
+                    "Filter Value By": {
+                      "class": "Variable",
+                      "logic": "NONE",
+                      "type": "AS_TEXT",
+                      "operator": "EQUALS",
+                      "value": "Miniquest"
+                    },
+                    "Variable name": "questType"
+                  },
+                  "children": [
+                    {
+                      "id": "SET_VARIABLE_TO_USER_INPUT_OPTIONS",
+                      "properties": {
+                        "Message": "Select the quest you are doing:",
+                        "Options": "list(miniQuestBuilderList)",
+                        "Variable name": "questName"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_VARIABLE_IS",
+                  "properties": {
+                    "Filter Value By": {
+                      "class": "Variable",
+                      "logic": "NONE",
+                      "type": "AS_TEXT",
+                      "operator": "EQUALS",
+                      "value": "Achievement"
+                    },
+                    "Variable name": "questType"
+                  },
+                  "children": [
+                    {
+                      "id": "SET_VARIABLE_TO_USER_INPUT_OPTIONS",
+                      "properties": {
+                        "Message": "Select the Diary you are doing:",
+                        "Options": "list(achievementQuestBuilderList)",
+                        "Variable name": "questName"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_MAP_CONTAINS_KEY",
+                  "properties": {
+                    "Key": "Varp",
+                    "Map name": "questsBuilderMap.var(questType).var(questName).Quest"
+                  },
+                  "children": [
+                    {
+                      "id": "SET_VARIABLE",
+                      "properties": {
+                        "Value": "map(questsBuilderMap.var(questType).var(questName).Quest.Varp)",
+                        "Variable name": "questConfigNum"
+                      }
+                    },
+                    {
+                      "id": "SET_VARIABLE",
+                      "properties": {
+                        "Value": "Varp",
+                        "Variable name": "questVarType"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_MAP_CONTAINS_KEY",
+                  "properties": {
+                    "Key": "Varbit",
+                    "Map name": "questsBuilderMap.var(questType).var(questName).Quest"
+                  },
+                  "children": [
+                    {
+                      "id": "SET_VARIABLE",
+                      "properties": {
+                        "Value": "map(questsBuilderMap.var(questType).var(questName).Quest.Varbit)",
+                        "Variable name": "questConfigNum"
+                      }
+                    },
+                    {
+                      "id": "SET_VARIABLE",
+                      "properties": {
+                        "Value": "Varbit",
+                        "Variable name": "questVarType"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "COMMENT",
+          "properties": {
+            "Comment": "Set Quest Config"
+          },
+          "children": [
+            {
+              "id": "IF_VARIABLE_IS_NOT",
+              "properties": {
+                "Filter Value By": {
+                  "class": "Variable",
+                  "logic": "NONE",
+                  "type": "AS_NUMBER",
+                  "operator": "EQUALS",
+                  "value": "0"
+                },
+                "Variable name": "questConfigNum"
+              },
+              "children": [
+                {
+                  "id": "COMMENT",
+                  "properties": {
+                    "Comment": "Quest Status"
+                  },
+                  "children": [
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_TEXT",
+                          "operator": "EQUALS",
+                          "value": "Varp"
+                        },
+                        "Variable name": "questVarType"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE_TO_PLAYER_SETTING",
+                          "properties": {
+                            "Variable name": "playerSettingStored",
+                            "Player Setting": "floor(v(questConfigNum))"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_TEXT",
+                          "operator": "EQUALS",
+                          "value": "Varbit"
+                        },
+                        "Variable name": "questVarType"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE_TO_VARBIT",
+                          "properties": {
+                            "Varbit": "floor(v(questConfigNum))",
+                            "Variable name": "playerSettingStored"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "COMMENT",
+                  "properties": {
+                    "Comment": "Extra Varps/Varbits"
+                  },
+                  "children": [
+                    {
+                      "id": "FOR_EACH_KEY_IN_MAP",
+                      "properties": {
+                        "Map name": "questsBuilderMap.var(questType).var(questName).Extra.Varp"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE_TO_PLAYER_SETTING",
+                          "properties": {
+                            "Variable name": "lastOutput()",
+                            "Player Setting": "floor(map(questsBuilderMap.var(questType).var(questName).Extra.Varp.lastOutput()))"
+                          }
+                        },
+                        {
+                          "id": "IF_LIST_DOES_NOT_CONTAIN",
+                          "properties": {
+                            "List name": "extraVars",
+                            "Value": "lastOutput()"
+                          },
+                          "children": [
+                            {
+                              "id": "ADD_TO_LIST",
+                              "properties": {
+                                "Value": "lastOutput()",
+                                "List name": "extraVars"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "FOR_EACH_KEY_IN_MAP",
+                      "properties": {
+                        "Map name": "questsBuilderMap.var(questType).var(questName).Extra.Varbit"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE_TO_VARBIT",
+                          "properties": {
+                            "Varbit": "floor(map(questsBuilderMap.var(questType).var(questName).Extra.Varbit.lastOutput()))",
+                            "Variable name": "lastOutput()"
+                          }
+                        },
+                        {
+                          "id": "IF_LIST_DOES_NOT_CONTAIN",
+                          "properties": {
+                            "List name": "extraVars",
+                            "Value": "lastOutput()"
+                          },
+                          "children": [
+                            {
+                              "id": "ADD_TO_LIST",
+                              "properties": {
+                                "Value": "lastOutput()",
+                                "List name": "extraVars"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "COMMENT",
+          "properties": {
+            "Comment": "Setup"
+          },
+          "children": [
+            {
+              "id": "IF_FIRST_RUN",
+              "children": [
+                {
+                  "id": "ADD_INVENTORY_ITEMS_TO_LIST",
+                  "properties": {
+                    "Filter Item By": {
+                      "class": "Item",
+                      "logic": "NONE",
+                      "type": "NONE",
+                      "operator": "EQUALS"
+                    },
+                    "List name": "questItemList"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "COMMENT",
+          "properties": {
+            "Comment": "Write Start"
+          },
+          "children": [
+            {
+              "id": "IF_FIRST_RUN",
+              "children": [
+                {
+                  "id": "IF_FILE_DOES_NOT_EXIST",
+                  "properties": {
+                    "File": "../../../Quest Vars/var(questName).log"
+                  },
+                  "children": [
+                    {
+                      "id": "WRITE_TEXT_TO_FILE",
+                      "properties": {
+                        "File": "../../../Quest Vars/var(questName).log",
+                        "Text": "-------------------- QUEST START :  floor(v(questConfigNum)) : 0 --------------------",
+                        "Append": false
+                      }
+                    },
+                    {
+                      "id": "WRITE_TEXT_TO_FILE",
+                      "properties": {
+                        "File": "../../../Quest Vars/var(questName).log",
+                        "Text": "Starting Items:    list(questItemList)",
+                        "Append": true
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "ELSE_BRANCH",
+                  "children": [
+                    {
+                      "id": "SET_VARIABLE_TO_USER_INPUT_OPTIONS",
+                      "properties": {
+                        "Message": "This quest has already been started, would you like to restart?",
+                        "Options": "Yes,No",
+                        "Variable name": "questRestart"
+                      }
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_TEXT",
+                          "operator": "EQUALS",
+                          "value": "Yes"
+                        },
+                        "Variable name": "questRestart"
+                      },
+                      "children": [
+                        {
+                          "id": "WRITE_TEXT_TO_FILE",
+                          "properties": {
+                            "File": "../../../Quest Vars/var(questName).log",
+                            "Text": "-------------------- QUEST START :  floor(v(questConfigNum)) : lastOutput()  --------------------",
+                            "Append": false
+                          }
+                        },
+                        {
+                          "id": "WRITE_TEXT_TO_FILE",
+                          "properties": {
+                            "File": "../../../Quest Vars/var(questName).log",
+                            "Text": "Starting Items:    list(questItemList)",
+                            "Append": true
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "COMMENT",
+          "properties": {
+            "Comment": "Write NPC Interacts to File"
+          },
+          "children": [
+            {
+              "id": "IF_VARIABLE_IS_SET",
+              "properties": {
+                "Variable name": "playerSettingStored"
+              },
+              "children": [
+                {
+                  "id": "IF_NPC_EXISTS",
+                  "properties": {
+                    "Filter NPC By": {
+                      "class": "NPC",
+                      "logic": "NONE",
+                      "type": "IS_INTERACTING_WITH_ME",
+                      "operator": "EQUALS"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "SET_VARIABLE_TO_LAST_OUTPUT",
+                      "properties": {
+                        "Variable name": "questNPC"
+                      }
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS_NOT_SET",
+                      "properties": {
+                        "Variable name": "lastQuestTile"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "null",
+                            "Variable name": "lastQuestTile"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "SET_VARIABLE_TO_LOCAL_SERVER_TILE",
+                      "properties": {
+                        "Variable name": "ourQuestTile"
+                      }
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_TEXT",
+                          "operator": "DOES_NOT_EQUAL",
+                          "value": "var(ourQuestTile)"
+                        },
+                        "Variable name": "lastQuestTile"
+                      },
+                      "children": [
+                        {
+                          "id": "SLEEP_FOR_GAME_TICKS",
+                          "properties": {
+                            "Ticks": "2"
+                          }
+                        },
+                        {
+                          "id": "IF_IN_DIALOGUE",
+                          "children": [
+                            {
+                              "id": "WRITE_TEXT_TO_FILE",
+                              "properties": {
+                                "File": "../../../Quest Vars/var(questName).log",
+                                "Text": "Talking to NPC: var(questNPC)      |      Tile: var(ourQuestTile)",
+                                "Append": true
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "var(ourQuestTile)",
+                            "Variable name": "lastQuestTile"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_NPC_EXISTS",
+                  "properties": {
+                    "Filter NPC By": {
+                      "class": "NPC",
+                      "logic": "NONE",
+                      "type": "IS_INTERACTING_WITH_ME",
+                      "operator": "EQUALS",
+                      "filters": [
+                        {
+                          "class": "NPC",
+                          "logic": "AND",
+                          "type": "WE_ARE_INTERACTING",
+                          "operator": "EQUALS"
+                        },
+                        {
+                          "class": "NPC",
+                          "logic": "AND",
+                          "type": "IN_COMBAT",
+                          "operator": "EQUALS"
+                        },
+                        {
+                          "class": "NPC",
+                          "logic": "AND",
+                          "type": "IS_HEALTH_BAR_VISIBLE",
+                          "operator": "EQUALS"
+                        }
+                      ]
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "SET_VARIABLE_TO_LAST_OUTPUT",
+                      "properties": {
+                        "Variable name": "questNPC"
+                      }
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS_NOT_SET",
+                      "properties": {
+                        "Variable name": "lastQuestTile"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "null",
+                            "Variable name": "lastQuestTile"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "SET_VARIABLE_TO_LOCAL_SERVER_TILE",
+                      "properties": {
+                        "Variable name": "ourQuestTile"
+                      }
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_TEXT",
+                          "operator": "DOES_NOT_EQUAL",
+                          "value": "var(ourQuestTile)"
+                        },
+                        "Variable name": "lastQuestTile"
+                      },
+                      "children": [
+                        {
+                          "id": "WRITE_TEXT_TO_FILE",
+                          "properties": {
+                            "File": "../../../Quest Vars/var(questName).log",
+                            "Text": "Fighting with NPC: var(questNPC)      |      Tile: var(ourQuestTile)",
+                            "Append": true
+                          }
+                        },
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "var(ourQuestTile)",
+                            "Variable name": "lastQuestTile"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "COMMENT",
+          "properties": {
+            "Comment": "Write Cutscene to file"
+          },
+          "children": [
+            {
+              "id": "IF_VARIABLE_IS_SET",
+              "properties": {
+                "Variable name": "playerSettingStored"
+              },
+              "children": [
+                {
+                  "id": "IF_IN_CUTSCENE",
+                  "children": [
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_TEXT",
+                          "operator": "EQUALS",
+                          "value": "false"
+                        },
+                        "Variable name": "inCutscene"
+                      },
+                      "children": [
+                        {
+                          "id": "WRITE_TEXT_TO_FILE",
+                          "properties": {
+                            "File": "../../../Quest Vars/var(questName).log",
+                            "Text": "*****   CHARACTER ENTERED CUTSCENE *****",
+                            "Append": true
+                          }
+                        },
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "true",
+                            "Variable name": "inCutscene"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "ELSE_BRANCH",
+                  "children": [
+                    {
+                      "id": "SET_VARIABLE",
+                      "properties": {
+                        "Value": "false",
+                        "Variable name": "inCutscene"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "COMMENT",
+          "properties": {
+            "Comment": "Write Item Interacts to File"
+          },
+          "children": [
+            {
+              "id": "IF_VARIABLE_IS_NOT_SET",
+              "properties": {
+                "Variable name": "lastQuestUseID"
+              },
+              "children": [
+                {
+                  "id": "SET_VARIABLE",
+                  "properties": {
+                    "Value": "0",
+                    "Variable name": "lastQuestUseID"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "IF_VARIABLE_IS_SET",
+              "properties": {
+                "Variable name": "playerSettingStored"
+              },
+              "children": [
+                {
+                  "id": "IF_INVENTORY_DOES_NOT_CONTAIN_ANY",
+                  "properties": {
+                    "Filter Item By": {
+                      "class": "Item",
+                      "logic": "NONE",
+                      "type": "SELECTED",
+                      "operator": "EQUALS"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "SET_VARIABLE",
+                      "properties": {
+                        "Value": "0",
+                        "Variable name": "lastQuestUseID"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_INVENTORY_CONTAINS_ANY",
+                  "properties": {
+                    "Filter Item By": {
+                      "class": "Item",
+                      "logic": "NONE",
+                      "type": "SELECTED",
+                      "operator": "EQUALS",
+                      "filters": [
+                        {
+                          "class": "Item",
+                          "logic": "AND",
+                          "type": "ID",
+                          "operator": "DOES_NOT_EQUAL",
+                          "value": "var(lastQuestUseID)"
+                        }
+                      ]
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "WRITE_TEXT_TO_FILE",
+                      "properties": {
+                        "File": "../../../Quest Vars/var(questName).log",
+                        "Text": "\u0027Selected\u0027 Item: lastOutput()",
+                        "Append": true
+                      }
+                    },
+                    {
+                      "id": "SET_TO_LAST_MATCHING_ITEM_ID",
+                      "properties": {
+                        "Variable name": "lastQuestUseID"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "COMMENT",
+          "properties": {
+            "Comment": "Write Inventory Updates to File"
+          },
+          "children": [
+            {
+              "id": "IF_VARIABLE_IS_SET",
+              "properties": {
+                "Variable name": "playerSettingStored"
+              },
+              "children": [
+                {
+                  "id": "IF_INVENTORY_HAS_CHANGED",
+                  "children": [
+                    {
+                      "id": "ADD_INVENTORY_ITEMS_TO_LIST",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "NONE",
+                          "operator": "EQUALS"
+                        },
+                        "List name": "questItemListUpdate"
+                      }
+                    },
+                    {
+                      "id": "FOR_EACH_IN_LIST",
+                      "properties": {
+                        "List name": "questItemList"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE_TO_LAST_OUTPUT",
+                          "properties": {
+                            "Variable name": "currentQuestItem"
+                          }
+                        },
+                        {
+                          "id": "IF_VALUE_IS",
+                          "properties": {
+                            "Value": "var(questItemListUpdate)",
+                            "Filter By": {
+                              "class": "Variable",
+                              "logic": "NONE",
+                              "type": "AS_TEXT",
+                              "operator": "DOES_NOT_CONTAIN",
+                              "value": "var(currentQuestItem)"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "WRITE_TEXT_TO_FILE",
+                              "properties": {
+                                "File": "../../../Quest Vars/var(questName).log",
+                                "Text": "Item Removed: var(currentQuestItem)",
+                                "Append": true
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "FOR_EACH_IN_LIST",
+                      "properties": {
+                        "List name": "questItemListUpdate"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE_TO_LAST_OUTPUT",
+                          "properties": {
+                            "Variable name": "newQuestItem"
+                          }
+                        },
+                        {
+                          "id": "IF_LIST_DOES_NOT_CONTAIN",
+                          "properties": {
+                            "List name": "questItemList",
+                            "Value": "var(newQuestItem)"
+                          },
+                          "children": [
+                            {
+                              "id": "WRITE_TEXT_TO_FILE",
+                              "properties": {
+                                "File": "../../../Quest Vars/var(questName).log",
+                                "Text": "Item Gained: var(newQuestItem)",
+                                "Append": true
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "DELETE_LIST",
+                      "properties": {
+                        "List name": "questItemList"
+                      }
+                    },
+                    {
+                      "id": "FOR_EACH_IN_LIST",
+                      "properties": {
+                        "List name": "questItemListUpdate"
+                      },
+                      "children": [
+                        {
+                          "id": "ADD_TO_LIST",
+                          "properties": {
+                            "List name": "questItemList",
+                            "Value": "lastOutput()"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "DELETE_LIST",
+                      "properties": {
+                        "List name": "questItemListUpdate"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "COMMENT",
+          "properties": {
+            "Comment": "Write Varp/Varbit Changes to File"
+          },
+          "children": [
+            {
+              "id": "IF_VARIABLE_HAS_CHANGED",
+              "properties": {
+                "Variable name": "playerSettingStored"
+              },
+              "children": [
+                {
+                  "id": "WRITE_TEXT_TO_FILE",
+                  "properties": {
+                    "File": "../../../Quest Vars/var(questName).log",
+                    "Text": "--------------- var(questType)  floor(v(questConfigNum)) : var(playerSettingStored) ---------------",
+                    "Append": true
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "COMMENT",
+          "properties": {
+            "Comment": "Write EXTRA Varp/Varbit Changes to File"
+          },
+          "children": [
+            {
+              "id": "FOR_EACH_IN_LIST",
+              "properties": {
+                "List name": "extraVars"
+              },
+              "children": [
+                {
+                  "id": "SET_VARIABLE_TO_LAST_OUTPUT",
+                  "properties": {
+                    "Variable name": "currentVar"
+                  }
+                },
+                {
+                  "id": "IF_VARIABLE_IS_NOT_SET",
+                  "properties": {
+                    "Variable name": "var(currentVar)Old"
+                  },
+                  "children": [
+                    {
+                      "id": "SET_VARIABLE",
+                      "properties": {
+                        "Value": "var(var(currentVar))",
+                        "Variable name": "var(currentVar)Old"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_VARIABLE_IS_NOT",
+                  "properties": {
+                    "Filter Value By": {
+                      "class": "Variable",
+                      "logic": "NONE",
+                      "type": "AS_TEXT",
+                      "operator": "EQUALS",
+                      "value": "var(var(currentVar)Old)"
+                    },
+                    "Variable name": "var(currentVar)"
+                  },
+                  "children": [
+                    {
+                      "id": "IF_MAP_CONTAINS_KEY",
+                      "properties": {
+                        "Key": "var(currentVar)",
+                        "Map name": "questsBuilderMap.var(questType).var(questName).Extra.Varp"
+                      },
+                      "children": [
+                        {
+                          "id": "WRITE_TEXT_TO_FILE",
+                          "properties": {
+                            "File": "../../../Quest Vars/var(questName).log",
+                            "Text": "--------------- Varp UPDATED - var(currentVar) map(questsBuilderMap.var(questType).var(questName).Extra.Varp.var(currentVar)) : var(var(currentVar)) ---------------",
+                            "Append": true
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_MAP_CONTAINS_KEY",
+                      "properties": {
+                        "Key": "var(currentVar)",
+                        "Map name": "questsBuilderMap.var(questType).var(questName).Extra.Varbit"
+                      },
+                      "children": [
+                        {
+                          "id": "WRITE_TEXT_TO_FILE",
+                          "properties": {
+                            "File": "../../../Quest Vars/var(questName).log",
+                            "Text": "--------------- Varbit UPDATED - var(currentVar) map(questsBuilderMap.var(questType).var(questName).Extra.Varbit.var(currentVar)) : var(var(currentVar)) ---------------",
+                            "Append": true
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "SET_VARIABLE",
+                      "properties": {
+                        "Value": "var(var(currentVar))",
+                        "Variable name": "var(currentVar)Old"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "COMMENT",
+          "properties": {
+            "Comment": "Write Quest Finished to File"
+          },
+          "children": [
+            {
+              "id": "IF_QUEST_IS_FINISHED",
+              "properties": {
+                "__TEXT__Quest": "var(questName)"
+              },
+              "children": [
+                {
+                  "id": "IF_PLAYER_SETTING_MATCHES",
+                  "properties": {
+                    "value": {
+                      "class": "Number",
+                      "operator": "DOES_NOT_EQUAL",
+                      "value": "0"
+                    },
+                    "Player Setting": "floor(v(questConfigNum))"
+                  },
+                  "children": [
+                    {
+                      "id": "IF_FIRST_RUN",
+                      "children": [
+                        {
+                          "id": "WRITE_TEXT_TO_FILE",
+                          "properties": {
+                            "File": "../../../Quest Vars/var(questName).log",
+                            "Text": "--------------- QUEST COMPLETE - var(questVarType)  floor(v(questConfigNum)) : lastOutput() ---------------",
+                            "Append": true
+                          }
+                        },
+                        {
+                          "id": "SHOW_DIALOG_MESSAGE",
+                          "properties": {
+                            "Message": "Quest Complete. Script will Stop in 5 Seconds."
+                          }
+                        },
+                        {
+                          "id": "SLEEP_BETWEEN",
+                          "properties": {
+                            "Minimum": "5000",
+                            "Maximum": "5000"
+                          },
+                          "children": [
+                            {
+                              "id": "STOP_SCRIPT"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "PAINT_ROOT",
+          "children": [
+            {
+              "id": "DRAW_TEXT",
+              "properties": {
+                "Font Size": "25",
+                "Outline color": {
+                  "class": "Color",
+                  "value": -1
+                },
+                "Color": {
+                  "class": "Color",
+                  "value": -1
+                },
+                "X": "280",
+                "Y": "330",
+                "Text": "var(questName) : v(playerSettingStored)",
+                "Font": {
+                  "class": "Font",
+                  "value": "Dialog"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,599 @@
+{
+  "sleep": "500",
+  "name": "Al Kharid Killer V1.0",
+  "version": 1.0,
+  "metadata": {
+    "network-id": "57",
+    "network-downloaded-at": "1721665195849"
+  },
+  "actions": [
+    {
+      "id": "IF_FIRST_RUN",
+      "children": [
+        {
+          "id": "WALK_FULLY_TO_TILE",
+          "properties": {
+            "Tile": "(3269, 3167, 0)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "SET_TO_LOCAL_PLAYER_BOOSTED_SKILL_LEVEL",
+      "properties": {
+        "Skill": {
+          "class": "Skill",
+          "value": "ATTACK"
+        },
+        "Variable name": "Atk"
+      }
+    },
+    {
+      "id": "SET_TO_LOCAL_PLAYER_BOOSTED_SKILL_LEVEL",
+      "properties": {
+        "Skill": {
+          "class": "Skill",
+          "value": "STRENGTH"
+        },
+        "Variable name": "Str"
+      }
+    },
+    {
+      "id": "SET_TO_LOCAL_PLAYER_BOOSTED_SKILL_LEVEL",
+      "properties": {
+        "Skill": {
+          "class": "Skill",
+          "value": "DEFENCE"
+        },
+        "Variable name": "Def"
+      }
+    },
+    {
+      "id": "SET_TO_LOCAL_PLAYER_REAL_SKILL_LEVEL",
+      "properties": {
+        "Skill": {
+          "class": "Skill",
+          "value": "PRAYER"
+        },
+        "Variable name": "Prayer"
+      }
+    },
+    {
+      "id": "SET_VARIABLE",
+      "properties": {
+        "Value": "profit()",
+        "Variable name": "ppm"
+      },
+      "children": [
+        {
+          "id": "MULTIPLY_VARIABLE_BY",
+          "properties": {
+            "Variable name": "ppm",
+            "By": "1"
+          }
+        }
+      ]
+    },
+    {
+      "id": "IF_INVENTORY_IS_FULL",
+      "children": [
+        {
+          "id": "WALK_FULLY_TO_NEAREST_BANK",
+          "children": [
+            {
+              "id": "OPEN_BANK",
+              "children": [
+                {
+                  "id": "BANK_DEPOSIT_ALL_EXCEPT",
+                  "properties": {
+                    "Filter Item By": {
+                      "class": "Item",
+                      "logic": "NONE",
+                      "type": "ID",
+                      "operator": "EQUALS",
+                      "value": "379"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "IF_GROUND_ITEM_EXISTS",
+      "properties": {
+        "Filter Item By": {
+          "class": "GroundItem",
+          "logic": "NONE",
+          "type": "IS_OUR_LOOT",
+          "operator": "EQUALS",
+          "filters": [
+            {
+              "class": "GroundItem",
+              "logic": "AND",
+              "type": "ID",
+              "operator": "IS_IN_LIST",
+              "value": " 201, 199, 211, 203, 526, 562, 207, 209, 205"
+            },
+            {
+              "class": "GroundItem",
+              "logic": "AND",
+              "type": "IS_OUR_LOOT",
+              "operator": "EQUALS"
+            }
+          ]
+        }
+      },
+      "children": [
+        {
+          "id": "ROTATE_TO_GAME_OBJECT",
+          "properties": {
+            "Filter Object By": {
+              "class": "GameObject",
+              "logic": "NONE",
+              "type": "ID",
+              "operator": "IS_IN_LIST",
+              "value": " 201, 199, 211, 203, 526, 562, 207, 209, 205, 2485"
+            },
+            "Use mouse only": true
+          },
+          "children": [
+            {
+              "id": "GROUND_ITEM_INTERACT",
+              "properties": {
+                "Filter Item By": {
+                  "class": "GroundItem",
+                  "logic": "NONE",
+                  "type": "IS_OUR_LOOT",
+                  "operator": "EQUALS",
+                  "filters": [
+                    {
+                      "class": "GroundItem",
+                      "logic": "AND",
+                      "type": "ID",
+                      "operator": "IS_IN_LIST",
+                      "value": " 201, 199, 211, 203, 526, 562, 207, 209, 205, 2485"
+                    }
+                  ]
+                },
+                "Action": "Take"
+              },
+              "children": [
+                {
+                  "id": "SLEEP_WHILE_MOVING",
+                  "children": [
+                    {
+                      "id": "SLEEP_WHILE_ANIMATING",
+                      "children": [
+                        {
+                          "id": "CONTINUE_LOOP"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "IF_INVENTORY_CONTAINS_ANY",
+      "properties": {
+        "Filter Item By": {
+          "class": "Item",
+          "logic": "NONE",
+          "type": "ID",
+          "operator": "EQUALS",
+          "value": "526"
+        }
+      },
+      "children": [
+        {
+          "id": "INTERACT_WITH_INVENTORY_ITEM",
+          "properties": {
+            "Filter Item By": {
+              "class": "Item",
+              "logic": "NONE",
+              "type": "ID",
+              "operator": "EQUALS",
+              "value": "526"
+            },
+            "Action": "Bury"
+          },
+          "children": [
+            {
+              "id": "SLEEP_WHILE_MOVING",
+              "children": [
+                {
+                  "id": "SLEEP_WHILE_ANIMATING",
+                  "children": [
+                    {
+                      "id": "CONTINUE_LOOP"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "IF_INVENTORY_DOES_NOT_CONTAIN_ANY",
+      "properties": {
+        "Filter Item By": {
+          "class": "Item",
+          "logic": "NONE",
+          "type": "NAME",
+          "operator": "EQUALS",
+          "value": "Lobster"
+        }
+      },
+      "children": [
+        {
+          "id": "WALK_FULLY_TO_NEAREST_BANK",
+          "children": [
+            {
+              "id": "OPEN_BANK",
+              "children": [
+                {
+                  "id": "WITHDRAW_ITEM_TO_SET_AMOUNT",
+                  "properties": {
+                    "Filter Item By": {
+                      "class": "Item",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Lobster"
+                    },
+                    "Amount": "5"
+                  },
+                  "children": [
+                    {
+                      "id": "BANK_DEPOSIT_ALL_EXCEPT",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "Lobster"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "IF_LOCAL_PLAYER_MATCHES",
+      "properties": {
+        "Filter By": {
+          "class": "Player",
+          "logic": "NONE",
+          "type": "NOT_MOVING",
+          "operator": "EQUALS"
+        }
+      },
+      "children": [
+        {
+          "id": "IF_NPC_EXISTS",
+          "properties": {
+            "Filter NPC By": {
+              "class": "NPC",
+              "logic": "NONE",
+              "type": "ID",
+              "operator": "EQUALS",
+              "value": "3292",
+              "filters": [
+                {
+                  "class": "NPC",
+                  "logic": "AND",
+                  "type": "NOT_IN_COMBAT",
+                  "operator": "EQUALS"
+                }
+              ]
+            }
+          },
+          "children": [
+            {
+              "id": "ROTATE_TO_NPC",
+              "properties": {
+                "Filter NPC By": {
+                  "class": "NPC",
+                  "logic": "NONE",
+                  "type": "ID",
+                  "operator": "EQUALS",
+                  "value": "3292"
+                }
+              }
+            },
+            {
+              "id": "IF_LOCAL_PLAYER_MATCHES",
+              "properties": {
+                "Filter By": {
+                  "class": "Player",
+                  "logic": "NONE",
+                  "type": "HEALTH",
+                  "operator": "LESS_THAN_OR_EQUAL",
+                  "value": "50"
+                }
+              },
+              "children": [
+                {
+                  "id": "INTERACT_WITH_INVENTORY_ITEM",
+                  "properties": {
+                    "Filter Item By": {
+                      "class": "Item",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Lobster"
+                    },
+                    "Action": "Eat"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "NPC_INTERACT",
+              "properties": {
+                "Filter NPC By": {
+                  "class": "NPC",
+                  "logic": "NONE",
+                  "type": "ID",
+                  "operator": "EQUALS",
+                  "value": "3292"
+                },
+                "Action": "Attack"
+              },
+              "children": [
+                {
+                  "id": "MOVE_MOUSE_OFFSCREEN"
+                },
+                {
+                  "id": "SLEEP_WHILE_IN_COMBAT"
+                },
+                {
+                  "id": "SLEEP_BETWEEN",
+                  "properties": {
+                    "Minimum": "2000",
+                    "Maximum": "5000"
+                  },
+                  "children": [
+                    {
+                      "id": "CONTINUE_LOOP"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "PAINT_ROOT",
+      "children": [
+        {
+          "id": "DRAW_RECTANGLE",
+          "properties": {
+            "Radius": "15",
+            "Opacity (0-100)": "50",
+            "Color": {
+              "class": "Color",
+              "value": -16777216
+            },
+            "X": "0",
+            "Y": "0",
+            "Height": "485",
+            "Width": "350"
+          }
+        },
+        {
+          "id": "DRAW_IMAGE",
+          "properties": {
+            "Path": "C:\\Users\\Jake\\DreamBot\\Scripts\\Pandemic\u0027s Script Creator\\Brown_Mascot_Lion_Free_Logo-removebg-preview.png",
+            "X": "-75",
+            "Y": "-100"
+          }
+        },
+        {
+          "id": "DRAW_TEXT",
+          "properties": {
+            "X": "0",
+            "Font Size": "25",
+            "Y": "325",
+            "Text": "runtime()",
+            "Font": {
+              "class": "Font",
+              "value": "Inter V"
+            },
+            "Color": {
+              "class": "Color",
+              "value": -16711936
+            }
+          }
+        },
+        {
+          "id": "DRAW_TEXT",
+          "properties": {
+            "X": "0",
+            "Font Size": "25",
+            "Y": "350",
+            "Text": "Attack Xp/hr: hourly(expGain(Attack))xp",
+            "Font": {
+              "class": "Font",
+              "value": "Inter V"
+            },
+            "Color": {
+              "class": "Color",
+              "value": -256
+            }
+          }
+        },
+        {
+          "id": "DRAW_TEXT",
+          "properties": {
+            "X": "0",
+            "Font Size": "25",
+            "Y": "375",
+            "Text": "Strength Xp/hr: hourly(expGain(Strength))xp",
+            "Font": {
+              "class": "Font",
+              "value": "Inter V"
+            },
+            "Color": {
+              "class": "Color",
+              "value": -256
+            }
+          }
+        },
+        {
+          "id": "DRAW_TEXT",
+          "properties": {
+            "X": "0",
+            "Font Size": "25",
+            "Y": "400",
+            "Text": "Defence Xp/hr: hourly(expGain(Defence))xp",
+            "Font": {
+              "class": "Font",
+              "value": "Inter V"
+            },
+            "Color": {
+              "class": "Color",
+              "value": -256
+            }
+          }
+        },
+        {
+          "id": "DRAW_TEXT",
+          "properties": {
+            "X": "0",
+            "Font Size": "25",
+            "Y": "425",
+            "Text": "Prayer Xp/hr: hourly(expGain(Prayer))xp",
+            "Font": {
+              "class": "Font",
+              "value": "Inter V"
+            },
+            "Color": {
+              "class": "Color",
+              "value": -256
+            }
+          }
+        },
+        {
+          "id": "DRAW_TEXT",
+          "properties": {
+            "X": "300",
+            "Font Size": "25",
+            "Y": "350",
+            "Text": "|v(Atk)",
+            "Font": {
+              "class": "Font",
+              "value": "Inter V"
+            },
+            "Color": {
+              "class": "Color",
+              "value": -256
+            }
+          }
+        },
+        {
+          "id": "DRAW_TEXT",
+          "properties": {
+            "X": "300",
+            "Font Size": "25",
+            "Y": "375",
+            "Text": "|v(Str)",
+            "Font": {
+              "class": "Font",
+              "value": "Inter V"
+            },
+            "Color": {
+              "class": "Color",
+              "value": -256
+            }
+          }
+        },
+        {
+          "id": "DRAW_TEXT",
+          "properties": {
+            "X": "300",
+            "Font Size": "25",
+            "Y": "400",
+            "Text": "|v(Def)",
+            "Font": {
+              "class": "Font",
+              "value": "Inter V"
+            },
+            "Color": {
+              "class": "Color",
+              "value": -256
+            }
+          }
+        },
+        {
+          "id": "DRAW_TEXT",
+          "properties": {
+            "X": "300",
+            "Font Size": "25",
+            "Y": "425",
+            "Text": "|v(Prayer)",
+            "Font": {
+              "class": "Font",
+              "value": "Inter V"
+            },
+            "Color": {
+              "class": "Color",
+              "value": -256
+            }
+          }
+        },
+        {
+          "id": "DRAW_TEXT",
+          "properties": {
+            "X": "0",
+            "Font Size": "25",
+            "Y": "450",
+            "Text": "Profit: profit()",
+            "Font": {
+              "class": "Font",
+              "value": "Inter V"
+            },
+            "Color": {
+              "class": "Color",
+              "value": -65536
+            }
+          }
+        },
+        {
+          "id": "DRAW_TEXT",
+          "properties": {
+            "X": "0",
+            "Font Size": "25",
+            "Y": "475",
+            "Text": "Hourly Profit: hourly(profit())gp",
+            "Font": {
+              "class": "Font",
+              "value": "Inter V"
+            },
+            "Color": {
+              "class": "Color",
+              "value": -65536
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

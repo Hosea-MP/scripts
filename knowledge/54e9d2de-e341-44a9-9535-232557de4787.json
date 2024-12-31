@@ -1,0 +1,5623 @@
+{
+  "id": "54e9d2de-e341-44a9-9535-232557de4787",
+  "name": "character rand",
+  "description": "randomizes player",
+  "parameters": "used for tut island",
+  "fail": false,
+  "actions": [
+    {
+      "id": "COMMENT",
+      "properties": {
+        "Comment": "Timers"
+      },
+      "children": [
+        {
+          "id": "IF_FIRST_RUN",
+          "children": [
+            {
+              "id": "START_TIMER",
+              "properties": {
+                "Timer name": "ModelTimer",
+                "Time": "rand(180, 420)"
+              }
+            }
+          ]
+        },
+        {
+          "id": "IF_TIMER_DOES_NOT_EXIST",
+          "properties": {
+            "Timer name": "BackBuildTimer"
+          },
+          "children": [
+            {
+              "id": "START_TIMER",
+              "properties": {
+                "Timer name": "BackBuildTimer",
+                "Time": "rand(5, 45)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CREATE_LABEL",
+      "properties": {
+        "Label": "Sex"
+      },
+      "children": [
+        {
+          "id": "IF_FIRST_RUN",
+          "children": [
+            {
+              "id": "IF_CAN_CONTINUE",
+              "children": [
+                {
+                  "id": "CLICK_TO_CONTINUE"
+                }
+              ]
+            },
+            {
+              "id": "SET_VARIABLE_TO_RANDOM",
+              "properties": {
+                "Minimum": "1",
+                "Maximum": "10000",
+                "Variable name": "SexGuess"
+              },
+              "children": [
+                {
+                  "id": "IF_VARIABLE_IS",
+                  "properties": {
+                    "Filter Value By": {
+                      "class": "Variable",
+                      "logic": "NONE",
+                      "type": "AS_NUMBER",
+                      "operator": "GREATER_THAN_OR_EQUAL",
+                      "value": "9000"
+                    },
+                    "Variable name": "SexGuess"
+                  },
+                  "children": [
+                    {
+                      "id": "WIDGET_INTERACT",
+                      "properties": {
+                        "Action": "Female",
+                        "Find Widget By": {
+                          "class": "Widget",
+                          "logic": "NONE",
+                          "type": "WIDGET_ID",
+                          "operator": "EQUALS",
+                          "value": "679, 66"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "SLEEP_BETWEEN",
+                          "properties": {
+                            "Minimum": "800",
+                            "Maximum": "2600"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "SET_VARIABLE_TO_RANDOM",
+              "properties": {
+                "Maximum": "13",
+                "Minimum": "1",
+                "Variable name": "ModelBuilder"
+              },
+              "children": [
+                {
+                  "id": "IF_VARIABLE_IS",
+                  "properties": {
+                    "Filter Value By": {
+                      "class": "Variable",
+                      "logic": "NONE",
+                      "type": "AS_NUMBER",
+                      "operator": "EQUALS",
+                      "value": "1"
+                    },
+                    "Variable name": "ModelBuilder"
+                  },
+                  "children": [
+                    {
+                      "id": "SET_VARIABLE",
+                      "properties": {
+                        "Value": "head",
+                        "Variable name": "ModelSection"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_VARIABLE_IS",
+                  "properties": {
+                    "Filter Value By": {
+                      "class": "Variable",
+                      "logic": "NONE",
+                      "type": "AS_NUMBER",
+                      "operator": "EQUALS",
+                      "value": "2"
+                    },
+                    "Variable name": "ModelBuilder"
+                  },
+                  "children": [
+                    {
+                      "id": "SET_VARIABLE",
+                      "properties": {
+                        "Value": "jaw",
+                        "Variable name": "ModelSection"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_VARIABLE_IS",
+                  "properties": {
+                    "Filter Value By": {
+                      "class": "Variable",
+                      "logic": "NONE",
+                      "type": "AS_NUMBER",
+                      "operator": "EQUALS",
+                      "value": "3"
+                    },
+                    "Variable name": "ModelBuilder"
+                  },
+                  "children": [
+                    {
+                      "id": "SET_VARIABLE",
+                      "properties": {
+                        "Value": "torso",
+                        "Variable name": "ModelSection"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_VARIABLE_IS",
+                  "properties": {
+                    "Filter Value By": {
+                      "class": "Variable",
+                      "logic": "NONE",
+                      "type": "AS_NUMBER",
+                      "operator": "EQUALS",
+                      "value": "4"
+                    },
+                    "Variable name": "ModelBuilder"
+                  },
+                  "children": [
+                    {
+                      "id": "SET_VARIABLE",
+                      "properties": {
+                        "Value": "arms",
+                        "Variable name": "ModelSection"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_VARIABLE_IS",
+                  "properties": {
+                    "Filter Value By": {
+                      "class": "Variable",
+                      "logic": "NONE",
+                      "type": "AS_NUMBER",
+                      "operator": "EQUALS",
+                      "value": "5"
+                    },
+                    "Variable name": "ModelBuilder"
+                  },
+                  "children": [
+                    {
+                      "id": "SET_VARIABLE",
+                      "properties": {
+                        "Value": "hands",
+                        "Variable name": "ModelSection"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_VARIABLE_IS",
+                  "properties": {
+                    "Filter Value By": {
+                      "class": "Variable",
+                      "logic": "NONE",
+                      "type": "AS_NUMBER",
+                      "operator": "EQUALS",
+                      "value": "6"
+                    },
+                    "Variable name": "ModelBuilder"
+                  },
+                  "children": [
+                    {
+                      "id": "SET_VARIABLE",
+                      "properties": {
+                        "Value": "legs",
+                        "Variable name": "ModelSection"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_VARIABLE_IS",
+                  "properties": {
+                    "Filter Value By": {
+                      "class": "Variable",
+                      "logic": "NONE",
+                      "type": "AS_NUMBER",
+                      "operator": "EQUALS",
+                      "value": "7"
+                    },
+                    "Variable name": "ModelBuilder"
+                  },
+                  "children": [
+                    {
+                      "id": "SET_VARIABLE",
+                      "properties": {
+                        "Value": "feet",
+                        "Variable name": "ModelSection"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_VARIABLE_IS",
+                  "properties": {
+                    "Filter Value By": {
+                      "class": "Variable",
+                      "logic": "NONE",
+                      "type": "AS_NUMBER",
+                      "operator": "EQUALS",
+                      "value": "8"
+                    },
+                    "Variable name": "ModelBuilder"
+                  },
+                  "children": [
+                    {
+                      "id": "SET_VARIABLE",
+                      "properties": {
+                        "Value": "hair",
+                        "Variable name": "ModelSection"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_VARIABLE_IS",
+                  "properties": {
+                    "Filter Value By": {
+                      "class": "Variable",
+                      "logic": "NONE",
+                      "type": "AS_NUMBER",
+                      "operator": "EQUALS",
+                      "value": "9"
+                    },
+                    "Variable name": "ModelBuilder"
+                  },
+                  "children": [
+                    {
+                      "id": "SET_VARIABLE",
+                      "properties": {
+                        "Value": "torso color",
+                        "Variable name": "ModelSection"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_VARIABLE_IS",
+                  "properties": {
+                    "Filter Value By": {
+                      "class": "Variable",
+                      "logic": "NONE",
+                      "type": "AS_NUMBER",
+                      "operator": "EQUALS",
+                      "value": "10"
+                    },
+                    "Variable name": "ModelBuilder"
+                  },
+                  "children": [
+                    {
+                      "id": "SET_VARIABLE",
+                      "properties": {
+                        "Value": "legs color",
+                        "Variable name": "ModelSection"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_VARIABLE_IS",
+                  "properties": {
+                    "Filter Value By": {
+                      "class": "Variable",
+                      "logic": "NONE",
+                      "type": "AS_NUMBER",
+                      "operator": "EQUALS",
+                      "value": "11"
+                    },
+                    "Variable name": "ModelBuilder"
+                  },
+                  "children": [
+                    {
+                      "id": "SET_VARIABLE",
+                      "properties": {
+                        "Value": "feet color",
+                        "Variable name": "ModelSection"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_VARIABLE_IS",
+                  "properties": {
+                    "Filter Value By": {
+                      "class": "Variable",
+                      "logic": "NONE",
+                      "type": "AS_NUMBER",
+                      "operator": "EQUALS",
+                      "value": "12"
+                    },
+                    "Variable name": "ModelBuilder"
+                  },
+                  "children": [
+                    {
+                      "id": "SET_VARIABLE",
+                      "properties": {
+                        "Value": "skin",
+                        "Variable name": "ModelSection"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "GO_TO_LABEL",
+                  "properties": {
+                    "Label": "v(ModelSection)"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CREATE_LABEL",
+      "properties": {
+        "Label": "head"
+      },
+      "children": [
+        {
+          "id": "IF_CAN_CONTINUE",
+          "children": [
+            {
+              "id": "CLICK_TO_CONTINUE"
+            }
+          ]
+        },
+        {
+          "id": "IF_TIMER_IS_FINISHED",
+          "properties": {
+            "Timer name": "BackBuildTimer"
+          },
+          "children": [
+            {
+              "id": "DELETE_TIMER",
+              "properties": {
+                "Timer name": "BackBuildTimer"
+              },
+              "children": [
+                {
+                  "id": "START_TIMER",
+                  "properties": {
+                    "Timer name": "BackBuildTimer",
+                    "Time": "rand(15, 90)"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "HOVER_WIDGET",
+              "properties": {
+                "Filter By": {
+                  "class": "Widget",
+                  "logic": "NONE",
+                  "type": "WIDGET_ID",
+                  "operator": "EQUALS",
+                  "value": "679, 12"
+                }
+              },
+              "children": [
+                {
+                  "id": "SLEEP_BETWEEN",
+                  "properties": {
+                    "Minimum": "800",
+                    "Maximum": "2600"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "WIDGET_INTERACT",
+              "properties": {
+                "Find Widget By": {
+                  "class": "Widget",
+                  "logic": "NONE",
+                  "type": "WIDGET_ID",
+                  "operator": "EQUALS",
+                  "value": "679, 12"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "ELSE_BRANCH",
+          "children": [
+            {
+              "id": "HOVER_WIDGET",
+              "properties": {
+                "Filter By": {
+                  "class": "Widget",
+                  "logic": "NONE",
+                  "type": "WIDGET_ID",
+                  "operator": "EQUALS",
+                  "value": "679, 13"
+                }
+              },
+              "children": [
+                {
+                  "id": "SLEEP_BETWEEN",
+                  "properties": {
+                    "Minimum": "800",
+                    "Maximum": "2600"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "WIDGET_INTERACT",
+              "properties": {
+                "Action": "Select",
+                "Find Widget By": {
+                  "class": "Widget",
+                  "logic": "NONE",
+                  "type": "WIDGET_ID",
+                  "operator": "EQUALS",
+                  "value": "679, 13"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "IF_TIMER_IS_NOT_FINISHED",
+          "properties": {
+            "Timer name": "ModelTimer"
+          },
+          "children": [
+            {
+              "id": "IF_RANDOM_NUMBER_IS",
+              "properties": {
+                "number": {
+                  "class": "Number",
+                  "operator": "GREATER_THAN_OR_EQUALS",
+                  "value": "8"
+                },
+                "Minimum": "1",
+                "Maximum": "10"
+              },
+              "children": [
+                {
+                  "id": "SET_VARIABLE_TO_RANDOM",
+                  "properties": {
+                    "Maximum": "13",
+                    "Minimum": "1",
+                    "Variable name": "ModelBuilder"
+                  },
+                  "children": [
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "1"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "head",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "2"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "jaw",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "3"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "torso",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "4"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "arms",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "5"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "hands",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "6"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "legs",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "7"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "feet",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "8"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "hair",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "9"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "torso color",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "10"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "legs color",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "11"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "feet color",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "12"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "skin",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "GO_TO_LABEL",
+                  "properties": {
+                    "Label": "v(ModelSection)"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ELSE_BRANCH",
+          "children": [
+            {
+              "id": "GO_TO_LABEL",
+              "properties": {
+                "Label": "EndModelBuilder"
+              }
+            }
+          ]
+        },
+        {
+          "id": "GO_TO_LABEL",
+          "properties": {
+            "Label": "head"
+          }
+        }
+      ]
+    },
+    {
+      "id": "CREATE_LABEL",
+      "properties": {
+        "Label": "jaw"
+      },
+      "children": [
+        {
+          "id": "IF_CAN_CONTINUE",
+          "children": [
+            {
+              "id": "CLICK_TO_CONTINUE"
+            }
+          ]
+        },
+        {
+          "id": "IF_TIMER_IS_FINISHED",
+          "properties": {
+            "Timer name": "BackBuildTimer"
+          },
+          "children": [
+            {
+              "id": "DELETE_TIMER",
+              "properties": {
+                "Timer name": "BackBuildTimer"
+              },
+              "children": [
+                {
+                  "id": "START_TIMER",
+                  "properties": {
+                    "Timer name": "BackBuildTimer",
+                    "Time": "rand(15, 90)"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "HOVER_WIDGET",
+              "properties": {
+                "Filter By": {
+                  "class": "Widget",
+                  "logic": "NONE",
+                  "type": "WIDGET_ID",
+                  "operator": "EQUALS",
+                  "value": "679, 16"
+                }
+              },
+              "children": [
+                {
+                  "id": "SLEEP_BETWEEN",
+                  "properties": {
+                    "Minimum": "800",
+                    "Maximum": "2600"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "WIDGET_INTERACT",
+              "properties": {
+                "Find Widget By": {
+                  "class": "Widget",
+                  "logic": "NONE",
+                  "type": "WIDGET_ID",
+                  "operator": "EQUALS",
+                  "value": "679, 16"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "ELSE_BRANCH",
+          "children": [
+            {
+              "id": "HOVER_WIDGET",
+              "properties": {
+                "Filter By": {
+                  "class": "Widget",
+                  "logic": "NONE",
+                  "type": "WIDGET_ID",
+                  "operator": "EQUALS",
+                  "value": "679, 17"
+                }
+              },
+              "children": [
+                {
+                  "id": "SLEEP_BETWEEN",
+                  "properties": {
+                    "Minimum": "800",
+                    "Maximum": "2600"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "WIDGET_INTERACT",
+              "properties": {
+                "Action": "Select",
+                "Find Widget By": {
+                  "class": "Widget",
+                  "logic": "NONE",
+                  "type": "WIDGET_ID",
+                  "operator": "EQUALS",
+                  "value": "679, 17"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "IF_TIMER_IS_NOT_FINISHED",
+          "properties": {
+            "Timer name": "ModelTimer"
+          },
+          "children": [
+            {
+              "id": "IF_RANDOM_NUMBER_IS",
+              "properties": {
+                "number": {
+                  "class": "Number",
+                  "operator": "GREATER_THAN_OR_EQUALS",
+                  "value": "8"
+                },
+                "Minimum": "1",
+                "Maximum": "10"
+              },
+              "children": [
+                {
+                  "id": "SET_VARIABLE_TO_RANDOM",
+                  "properties": {
+                    "Maximum": "13",
+                    "Minimum": "1",
+                    "Variable name": "ModelBuilder"
+                  },
+                  "children": [
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "1"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "head",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "2"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "jaw",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "3"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "torso",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "4"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "arms",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "5"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "hands",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "6"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "legs",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "7"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "feet",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "8"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "hair",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "9"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "torso color",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "10"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "legs color",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "11"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "feet color",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "12"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "skin",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "GO_TO_LABEL",
+                  "properties": {
+                    "Label": "v(ModelSection)"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ELSE_BRANCH",
+          "children": [
+            {
+              "id": "GO_TO_LABEL",
+              "properties": {
+                "Label": "EndModelBuilder"
+              }
+            }
+          ]
+        },
+        {
+          "id": "GO_TO_LABEL",
+          "properties": {
+            "Label": "jaw"
+          }
+        }
+      ]
+    },
+    {
+      "id": "CREATE_LABEL",
+      "properties": {
+        "Label": "torso"
+      },
+      "children": [
+        {
+          "id": "IF_CAN_CONTINUE",
+          "children": [
+            {
+              "id": "CLICK_TO_CONTINUE"
+            }
+          ]
+        },
+        {
+          "id": "IF_TIMER_IS_FINISHED",
+          "properties": {
+            "Timer name": "BackBuildTimer"
+          },
+          "children": [
+            {
+              "id": "DELETE_TIMER",
+              "properties": {
+                "Timer name": "BackBuildTimer"
+              },
+              "children": [
+                {
+                  "id": "START_TIMER",
+                  "properties": {
+                    "Timer name": "BackBuildTimer",
+                    "Time": "rand(15, 90)"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "HOVER_WIDGET",
+              "properties": {
+                "Filter By": {
+                  "class": "Widget",
+                  "logic": "NONE",
+                  "type": "WIDGET_ID",
+                  "operator": "EQUALS",
+                  "value": "679, 20"
+                }
+              },
+              "children": [
+                {
+                  "id": "SLEEP_BETWEEN",
+                  "properties": {
+                    "Minimum": "800",
+                    "Maximum": "2600"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "WIDGET_INTERACT",
+              "properties": {
+                "Find Widget By": {
+                  "class": "Widget",
+                  "logic": "NONE",
+                  "type": "WIDGET_ID",
+                  "operator": "EQUALS",
+                  "value": "679, 20"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "ELSE_BRANCH",
+          "children": [
+            {
+              "id": "HOVER_WIDGET",
+              "properties": {
+                "Filter By": {
+                  "class": "Widget",
+                  "logic": "NONE",
+                  "type": "WIDGET_ID",
+                  "operator": "EQUALS",
+                  "value": "679, 21"
+                }
+              },
+              "children": [
+                {
+                  "id": "SLEEP_BETWEEN",
+                  "properties": {
+                    "Minimum": "800",
+                    "Maximum": "2600"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "WIDGET_INTERACT",
+              "properties": {
+                "Action": "Select",
+                "Find Widget By": {
+                  "class": "Widget",
+                  "logic": "NONE",
+                  "type": "WIDGET_ID",
+                  "operator": "EQUALS",
+                  "value": "679, 21"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "IF_TIMER_IS_NOT_FINISHED",
+          "properties": {
+            "Timer name": "ModelTimer"
+          },
+          "children": [
+            {
+              "id": "IF_RANDOM_NUMBER_IS",
+              "properties": {
+                "number": {
+                  "class": "Number",
+                  "operator": "GREATER_THAN_OR_EQUALS",
+                  "value": "8"
+                },
+                "Minimum": "1",
+                "Maximum": "10"
+              },
+              "children": [
+                {
+                  "id": "SET_VARIABLE_TO_RANDOM",
+                  "properties": {
+                    "Maximum": "13",
+                    "Minimum": "1",
+                    "Variable name": "ModelBuilder"
+                  },
+                  "children": [
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "1"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "head",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "2"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "jaw",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "3"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "torso",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "4"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "arms",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "5"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "hands",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "6"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "legs",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "7"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "feet",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "8"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "hair",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "9"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "torso color",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "10"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "legs color",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "11"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "feet color",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "12"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "skin",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "GO_TO_LABEL",
+                  "properties": {
+                    "Label": "v(ModelSection)"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ELSE_BRANCH",
+          "children": [
+            {
+              "id": "GO_TO_LABEL",
+              "properties": {
+                "Label": "EndModelBuilder"
+              }
+            }
+          ]
+        },
+        {
+          "id": "GO_TO_LABEL",
+          "properties": {
+            "Label": "torso"
+          }
+        }
+      ]
+    },
+    {
+      "id": "CREATE_LABEL",
+      "properties": {
+        "Label": "arms"
+      },
+      "children": [
+        {
+          "id": "IF_CAN_CONTINUE",
+          "children": [
+            {
+              "id": "CLICK_TO_CONTINUE"
+            }
+          ]
+        },
+        {
+          "id": "IF_TIMER_IS_FINISHED",
+          "properties": {
+            "Timer name": "BackBuildTimer"
+          },
+          "children": [
+            {
+              "id": "DELETE_TIMER",
+              "properties": {
+                "Timer name": "BackBuildTimer"
+              },
+              "children": [
+                {
+                  "id": "START_TIMER",
+                  "properties": {
+                    "Timer name": "BackBuildTimer",
+                    "Time": "rand(15, 90)"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "HOVER_WIDGET",
+              "properties": {
+                "Filter By": {
+                  "class": "Widget",
+                  "logic": "NONE",
+                  "type": "WIDGET_ID",
+                  "operator": "EQUALS",
+                  "value": "679, 24"
+                }
+              },
+              "children": [
+                {
+                  "id": "SLEEP_BETWEEN",
+                  "properties": {
+                    "Minimum": "800",
+                    "Maximum": "2600"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "WIDGET_INTERACT",
+              "properties": {
+                "Find Widget By": {
+                  "class": "Widget",
+                  "logic": "NONE",
+                  "type": "WIDGET_ID",
+                  "operator": "EQUALS",
+                  "value": "679, 24"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "ELSE_BRANCH",
+          "children": [
+            {
+              "id": "HOVER_WIDGET",
+              "properties": {
+                "Filter By": {
+                  "class": "Widget",
+                  "logic": "NONE",
+                  "type": "WIDGET_ID",
+                  "operator": "EQUALS",
+                  "value": "679, 25"
+                }
+              },
+              "children": [
+                {
+                  "id": "SLEEP_BETWEEN",
+                  "properties": {
+                    "Minimum": "800",
+                    "Maximum": "2600"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "WIDGET_INTERACT",
+              "properties": {
+                "Action": "Select",
+                "Find Widget By": {
+                  "class": "Widget",
+                  "logic": "NONE",
+                  "type": "WIDGET_ID",
+                  "operator": "EQUALS",
+                  "value": "679, 25"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "IF_TIMER_IS_NOT_FINISHED",
+          "properties": {
+            "Timer name": "ModelTimer"
+          },
+          "children": [
+            {
+              "id": "IF_RANDOM_NUMBER_IS",
+              "properties": {
+                "number": {
+                  "class": "Number",
+                  "operator": "GREATER_THAN_OR_EQUALS",
+                  "value": "8"
+                },
+                "Minimum": "1",
+                "Maximum": "10"
+              },
+              "children": [
+                {
+                  "id": "SET_VARIABLE_TO_RANDOM",
+                  "properties": {
+                    "Maximum": "13",
+                    "Minimum": "1",
+                    "Variable name": "ModelBuilder"
+                  },
+                  "children": [
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "1"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "head",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "2"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "jaw",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "3"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "torso",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "4"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "arms",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "5"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "hands",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "6"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "legs",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "7"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "feet",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "8"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "hair",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "9"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "torso color",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "10"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "legs color",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "11"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "feet color",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "12"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "skin",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "GO_TO_LABEL",
+                  "properties": {
+                    "Label": "v(ModelSection)"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ELSE_BRANCH",
+          "children": [
+            {
+              "id": "GO_TO_LABEL",
+              "properties": {
+                "Label": "EndModelBuilder"
+              }
+            }
+          ]
+        },
+        {
+          "id": "GO_TO_LABEL",
+          "properties": {
+            "Label": "arms"
+          }
+        }
+      ]
+    },
+    {
+      "id": "CREATE_LABEL",
+      "properties": {
+        "Label": "hands"
+      },
+      "children": [
+        {
+          "id": "IF_CAN_CONTINUE",
+          "children": [
+            {
+              "id": "CLICK_TO_CONTINUE"
+            }
+          ]
+        },
+        {
+          "id": "IF_TIMER_IS_FINISHED",
+          "properties": {
+            "Timer name": "BackBuildTimer"
+          },
+          "children": [
+            {
+              "id": "DELETE_TIMER",
+              "properties": {
+                "Timer name": "BackBuildTimer"
+              },
+              "children": [
+                {
+                  "id": "START_TIMER",
+                  "properties": {
+                    "Timer name": "BackBuildTimer",
+                    "Time": "rand(15, 90)"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "HOVER_WIDGET",
+              "properties": {
+                "Filter By": {
+                  "class": "Widget",
+                  "logic": "NONE",
+                  "type": "WIDGET_ID",
+                  "operator": "EQUALS",
+                  "value": "679, 28"
+                }
+              },
+              "children": [
+                {
+                  "id": "SLEEP_BETWEEN",
+                  "properties": {
+                    "Minimum": "800",
+                    "Maximum": "2600"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "WIDGET_INTERACT",
+              "properties": {
+                "Find Widget By": {
+                  "class": "Widget",
+                  "logic": "NONE",
+                  "type": "WIDGET_ID",
+                  "operator": "EQUALS",
+                  "value": "679, 28"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "ELSE_BRANCH",
+          "children": [
+            {
+              "id": "HOVER_WIDGET",
+              "properties": {
+                "Filter By": {
+                  "class": "Widget",
+                  "logic": "NONE",
+                  "type": "WIDGET_ID",
+                  "operator": "EQUALS",
+                  "value": "679, 29"
+                }
+              },
+              "children": [
+                {
+                  "id": "SLEEP_BETWEEN",
+                  "properties": {
+                    "Minimum": "800",
+                    "Maximum": "2600"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "WIDGET_INTERACT",
+              "properties": {
+                "Action": "Select",
+                "Find Widget By": {
+                  "class": "Widget",
+                  "logic": "NONE",
+                  "type": "WIDGET_ID",
+                  "operator": "EQUALS",
+                  "value": "679, 29"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "IF_TIMER_IS_NOT_FINISHED",
+          "properties": {
+            "Timer name": "ModelTimer"
+          },
+          "children": [
+            {
+              "id": "IF_RANDOM_NUMBER_IS",
+              "properties": {
+                "number": {
+                  "class": "Number",
+                  "operator": "GREATER_THAN_OR_EQUALS",
+                  "value": "8"
+                },
+                "Minimum": "1",
+                "Maximum": "10"
+              },
+              "children": [
+                {
+                  "id": "SET_VARIABLE_TO_RANDOM",
+                  "properties": {
+                    "Maximum": "13",
+                    "Minimum": "1",
+                    "Variable name": "ModelBuilder"
+                  },
+                  "children": [
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "1"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "head",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "2"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "jaw",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "3"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "torso",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "4"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "arms",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "5"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "hands",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "6"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "legs",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "7"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "feet",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "8"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "hair",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "9"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "torso color",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "10"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "legs color",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "11"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "feet color",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "12"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "skin",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "GO_TO_LABEL",
+                  "properties": {
+                    "Label": "v(ModelSection)"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ELSE_BRANCH",
+          "children": [
+            {
+              "id": "GO_TO_LABEL",
+              "properties": {
+                "Label": "EndModelBuilder"
+              }
+            }
+          ]
+        },
+        {
+          "id": "GO_TO_LABEL",
+          "properties": {
+            "Label": "hands"
+          }
+        }
+      ]
+    },
+    {
+      "id": "CREATE_LABEL",
+      "properties": {
+        "Label": "legs"
+      },
+      "children": [
+        {
+          "id": "IF_CAN_CONTINUE",
+          "children": [
+            {
+              "id": "CLICK_TO_CONTINUE"
+            }
+          ]
+        },
+        {
+          "id": "IF_TIMER_IS_FINISHED",
+          "properties": {
+            "Timer name": "BackBuildTimer"
+          },
+          "children": [
+            {
+              "id": "DELETE_TIMER",
+              "properties": {
+                "Timer name": "BackBuildTimer"
+              },
+              "children": [
+                {
+                  "id": "START_TIMER",
+                  "properties": {
+                    "Timer name": "BackBuildTimer",
+                    "Time": "rand(15, 90)"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "HOVER_WIDGET",
+              "properties": {
+                "Filter By": {
+                  "class": "Widget",
+                  "logic": "NONE",
+                  "type": "WIDGET_ID",
+                  "operator": "EQUALS",
+                  "value": "679, 32"
+                }
+              },
+              "children": [
+                {
+                  "id": "SLEEP_BETWEEN",
+                  "properties": {
+                    "Minimum": "800",
+                    "Maximum": "2600"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "WIDGET_INTERACT",
+              "properties": {
+                "Find Widget By": {
+                  "class": "Widget",
+                  "logic": "NONE",
+                  "type": "WIDGET_ID",
+                  "operator": "EQUALS",
+                  "value": "679, 32"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "ELSE_BRANCH",
+          "children": [
+            {
+              "id": "HOVER_WIDGET",
+              "properties": {
+                "Filter By": {
+                  "class": "Widget",
+                  "logic": "NONE",
+                  "type": "WIDGET_ID",
+                  "operator": "EQUALS",
+                  "value": "679, 33"
+                }
+              },
+              "children": [
+                {
+                  "id": "SLEEP_BETWEEN",
+                  "properties": {
+                    "Minimum": "800",
+                    "Maximum": "2600"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "WIDGET_INTERACT",
+              "properties": {
+                "Action": "Select",
+                "Find Widget By": {
+                  "class": "Widget",
+                  "logic": "NONE",
+                  "type": "WIDGET_ID",
+                  "operator": "EQUALS",
+                  "value": "679, 33"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "IF_TIMER_IS_NOT_FINISHED",
+          "properties": {
+            "Timer name": "ModelTimer"
+          },
+          "children": [
+            {
+              "id": "IF_RANDOM_NUMBER_IS",
+              "properties": {
+                "number": {
+                  "class": "Number",
+                  "operator": "GREATER_THAN_OR_EQUALS",
+                  "value": "8"
+                },
+                "Minimum": "1",
+                "Maximum": "10"
+              },
+              "children": [
+                {
+                  "id": "SET_VARIABLE_TO_RANDOM",
+                  "properties": {
+                    "Maximum": "13",
+                    "Minimum": "1",
+                    "Variable name": "ModelBuilder"
+                  },
+                  "children": [
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "1"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "head",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "2"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "jaw",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "3"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "torso",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "4"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "arms",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "5"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "hands",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "6"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "legs",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "7"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "feet",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "8"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "hair",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "9"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "torso color",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "10"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "legs color",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "11"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "feet color",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "12"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "skin",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "GO_TO_LABEL",
+                  "properties": {
+                    "Label": "v(ModelSection)"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ELSE_BRANCH",
+          "children": [
+            {
+              "id": "GO_TO_LABEL",
+              "properties": {
+                "Label": "EndModelBuilder"
+              }
+            }
+          ]
+        },
+        {
+          "id": "GO_TO_LABEL",
+          "properties": {
+            "Label": "legs"
+          }
+        }
+      ]
+    },
+    {
+      "id": "CREATE_LABEL",
+      "properties": {
+        "Label": "feet"
+      },
+      "children": [
+        {
+          "id": "IF_CAN_CONTINUE",
+          "children": [
+            {
+              "id": "CLICK_TO_CONTINUE"
+            }
+          ]
+        },
+        {
+          "id": "IF_TIMER_IS_FINISHED",
+          "properties": {
+            "Timer name": "BackBuildTimer"
+          },
+          "children": [
+            {
+              "id": "DELETE_TIMER",
+              "properties": {
+                "Timer name": "BackBuildTimer"
+              },
+              "children": [
+                {
+                  "id": "START_TIMER",
+                  "properties": {
+                    "Timer name": "BackBuildTimer",
+                    "Time": "rand(15, 90)"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "HOVER_WIDGET",
+              "properties": {
+                "Filter By": {
+                  "class": "Widget",
+                  "logic": "NONE",
+                  "type": "WIDGET_ID",
+                  "operator": "EQUALS",
+                  "value": "679, 36"
+                }
+              },
+              "children": [
+                {
+                  "id": "SLEEP_BETWEEN",
+                  "properties": {
+                    "Minimum": "800",
+                    "Maximum": "2600"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "WIDGET_INTERACT",
+              "properties": {
+                "Find Widget By": {
+                  "class": "Widget",
+                  "logic": "NONE",
+                  "type": "WIDGET_ID",
+                  "operator": "EQUALS",
+                  "value": "679, 36"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "ELSE_BRANCH",
+          "children": [
+            {
+              "id": "HOVER_WIDGET",
+              "properties": {
+                "Filter By": {
+                  "class": "Widget",
+                  "logic": "NONE",
+                  "type": "WIDGET_ID",
+                  "operator": "EQUALS",
+                  "value": "679, 37"
+                }
+              },
+              "children": [
+                {
+                  "id": "SLEEP_BETWEEN",
+                  "properties": {
+                    "Minimum": "800",
+                    "Maximum": "2600"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "WIDGET_INTERACT",
+              "properties": {
+                "Action": "Select",
+                "Find Widget By": {
+                  "class": "Widget",
+                  "logic": "NONE",
+                  "type": "WIDGET_ID",
+                  "operator": "EQUALS",
+                  "value": "679, 37"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "IF_TIMER_IS_NOT_FINISHED",
+          "properties": {
+            "Timer name": "ModelTimer"
+          },
+          "children": [
+            {
+              "id": "IF_RANDOM_NUMBER_IS",
+              "properties": {
+                "number": {
+                  "class": "Number",
+                  "operator": "GREATER_THAN_OR_EQUALS",
+                  "value": "8"
+                },
+                "Minimum": "1",
+                "Maximum": "10"
+              },
+              "children": [
+                {
+                  "id": "SET_VARIABLE_TO_RANDOM",
+                  "properties": {
+                    "Maximum": "13",
+                    "Minimum": "1",
+                    "Variable name": "ModelBuilder"
+                  },
+                  "children": [
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "1"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "head",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "2"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "jaw",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "3"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "torso",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "4"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "arms",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "5"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "hands",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "6"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "legs",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "7"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "feet",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "8"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "hair",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "9"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "torso color",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "10"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "legs color",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "11"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "feet color",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "12"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "skin",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "GO_TO_LABEL",
+                  "properties": {
+                    "Label": "v(ModelSection)"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ELSE_BRANCH",
+          "children": [
+            {
+              "id": "GO_TO_LABEL",
+              "properties": {
+                "Label": "EndModelBuilder"
+              }
+            }
+          ]
+        },
+        {
+          "id": "GO_TO_LABEL",
+          "properties": {
+            "Label": "feet"
+          }
+        }
+      ]
+    },
+    {
+      "id": "CREATE_LABEL",
+      "properties": {
+        "Label": "hair"
+      },
+      "children": [
+        {
+          "id": "IF_CAN_CONTINUE",
+          "children": [
+            {
+              "id": "CLICK_TO_CONTINUE"
+            }
+          ]
+        },
+        {
+          "id": "IF_TIMER_IS_FINISHED",
+          "properties": {
+            "Timer name": "BackBuildTimer"
+          },
+          "children": [
+            {
+              "id": "DELETE_TIMER",
+              "properties": {
+                "Timer name": "BackBuildTimer"
+              },
+              "children": [
+                {
+                  "id": "START_TIMER",
+                  "properties": {
+                    "Timer name": "BackBuildTimer",
+                    "Time": "rand(15, 90)"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "HOVER_WIDGET",
+              "properties": {
+                "Filter By": {
+                  "class": "Widget",
+                  "logic": "NONE",
+                  "type": "WIDGET_ID",
+                  "operator": "EQUALS",
+                  "value": "679, 43"
+                }
+              },
+              "children": [
+                {
+                  "id": "SLEEP_BETWEEN",
+                  "properties": {
+                    "Minimum": "800",
+                    "Maximum": "2600"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "WIDGET_INTERACT",
+              "properties": {
+                "Find Widget By": {
+                  "class": "Widget",
+                  "logic": "NONE",
+                  "type": "WIDGET_ID",
+                  "operator": "EQUALS",
+                  "value": "679, 43"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "ELSE_BRANCH",
+          "children": [
+            {
+              "id": "HOVER_WIDGET",
+              "properties": {
+                "Filter By": {
+                  "class": "Widget",
+                  "logic": "NONE",
+                  "type": "WIDGET_ID",
+                  "operator": "EQUALS",
+                  "value": "679, 44"
+                }
+              },
+              "children": [
+                {
+                  "id": "SLEEP_BETWEEN",
+                  "properties": {
+                    "Minimum": "800",
+                    "Maximum": "2600"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "WIDGET_INTERACT",
+              "properties": {
+                "Action": "Select",
+                "Find Widget By": {
+                  "class": "Widget",
+                  "logic": "NONE",
+                  "type": "WIDGET_ID",
+                  "operator": "EQUALS",
+                  "value": "679, 44"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "IF_TIMER_IS_NOT_FINISHED",
+          "properties": {
+            "Timer name": "ModelTimer"
+          },
+          "children": [
+            {
+              "id": "IF_RANDOM_NUMBER_IS",
+              "properties": {
+                "number": {
+                  "class": "Number",
+                  "operator": "GREATER_THAN_OR_EQUALS",
+                  "value": "8"
+                },
+                "Minimum": "1",
+                "Maximum": "10"
+              },
+              "children": [
+                {
+                  "id": "SET_VARIABLE_TO_RANDOM",
+                  "properties": {
+                    "Maximum": "13",
+                    "Minimum": "1",
+                    "Variable name": "ModelBuilder"
+                  },
+                  "children": [
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "1"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "head",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "2"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "jaw",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "3"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "torso",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "4"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "arms",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "5"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "hands",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "6"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "legs",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "7"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "feet",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "8"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "hair",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "9"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "torso color",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "10"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "legs color",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "11"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "feet color",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "12"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "skin",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "GO_TO_LABEL",
+                  "properties": {
+                    "Label": "v(ModelSection)"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ELSE_BRANCH",
+          "children": [
+            {
+              "id": "GO_TO_LABEL",
+              "properties": {
+                "Label": "EndModelBuilder"
+              }
+            }
+          ]
+        },
+        {
+          "id": "GO_TO_LABEL",
+          "properties": {
+            "Label": "hair"
+          }
+        }
+      ]
+    },
+    {
+      "id": "CREATE_LABEL",
+      "properties": {
+        "Label": "torso color"
+      },
+      "children": [
+        {
+          "id": "IF_CAN_CONTINUE",
+          "children": [
+            {
+              "id": "CLICK_TO_CONTINUE"
+            }
+          ]
+        },
+        {
+          "id": "IF_TIMER_IS_FINISHED",
+          "properties": {
+            "Timer name": "BackBuildTimer"
+          },
+          "children": [
+            {
+              "id": "DELETE_TIMER",
+              "properties": {
+                "Timer name": "BackBuildTimer"
+              },
+              "children": [
+                {
+                  "id": "START_TIMER",
+                  "properties": {
+                    "Timer name": "BackBuildTimer",
+                    "Time": "rand(15, 90)"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "HOVER_WIDGET",
+              "properties": {
+                "Filter By": {
+                  "class": "Widget",
+                  "logic": "NONE",
+                  "type": "WIDGET_ID",
+                  "operator": "EQUALS",
+                  "value": "679, 47"
+                }
+              },
+              "children": [
+                {
+                  "id": "SLEEP_BETWEEN",
+                  "properties": {
+                    "Minimum": "800",
+                    "Maximum": "2600"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "WIDGET_INTERACT",
+              "properties": {
+                "Find Widget By": {
+                  "class": "Widget",
+                  "logic": "NONE",
+                  "type": "WIDGET_ID",
+                  "operator": "EQUALS",
+                  "value": "679, 47"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "ELSE_BRANCH",
+          "children": [
+            {
+              "id": "HOVER_WIDGET",
+              "properties": {
+                "Filter By": {
+                  "class": "Widget",
+                  "logic": "NONE",
+                  "type": "WIDGET_ID",
+                  "operator": "EQUALS",
+                  "value": "679, 48"
+                }
+              },
+              "children": [
+                {
+                  "id": "SLEEP_BETWEEN",
+                  "properties": {
+                    "Minimum": "800",
+                    "Maximum": "2600"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "WIDGET_INTERACT",
+              "properties": {
+                "Action": "Select",
+                "Find Widget By": {
+                  "class": "Widget",
+                  "logic": "NONE",
+                  "type": "WIDGET_ID",
+                  "operator": "EQUALS",
+                  "value": "679, 48"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "IF_TIMER_IS_NOT_FINISHED",
+          "properties": {
+            "Timer name": "ModelTimer"
+          },
+          "children": [
+            {
+              "id": "IF_RANDOM_NUMBER_IS",
+              "properties": {
+                "number": {
+                  "class": "Number",
+                  "operator": "GREATER_THAN_OR_EQUALS",
+                  "value": "8"
+                },
+                "Minimum": "1",
+                "Maximum": "10"
+              },
+              "children": [
+                {
+                  "id": "SET_VARIABLE_TO_RANDOM",
+                  "properties": {
+                    "Maximum": "13",
+                    "Minimum": "1",
+                    "Variable name": "ModelBuilder"
+                  },
+                  "children": [
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "1"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "head",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "2"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "jaw",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "3"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "torso",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "4"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "arms",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "5"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "hands",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "6"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "legs",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "7"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "feet",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "8"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "hair",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "9"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "torso color",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "10"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "legs color",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "11"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "feet color",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "12"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "skin",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "GO_TO_LABEL",
+                  "properties": {
+                    "Label": "v(ModelSection)"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ELSE_BRANCH",
+          "children": [
+            {
+              "id": "GO_TO_LABEL",
+              "properties": {
+                "Label": "EndModelBuilder"
+              }
+            }
+          ]
+        },
+        {
+          "id": "GO_TO_LABEL",
+          "properties": {
+            "Label": "torso color"
+          }
+        }
+      ]
+    },
+    {
+      "id": "CREATE_LABEL",
+      "properties": {
+        "Label": "legs color"
+      },
+      "children": [
+        {
+          "id": "IF_CAN_CONTINUE",
+          "children": [
+            {
+              "id": "CLICK_TO_CONTINUE"
+            }
+          ]
+        },
+        {
+          "id": "IF_TIMER_IS_FINISHED",
+          "properties": {
+            "Timer name": "BackBuildTimer"
+          },
+          "children": [
+            {
+              "id": "DELETE_TIMER",
+              "properties": {
+                "Timer name": "BackBuildTimer"
+              },
+              "children": [
+                {
+                  "id": "START_TIMER",
+                  "properties": {
+                    "Timer name": "BackBuildTimer",
+                    "Time": "rand(15, 90)"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "HOVER_WIDGET",
+              "properties": {
+                "Filter By": {
+                  "class": "Widget",
+                  "logic": "NONE",
+                  "type": "WIDGET_ID",
+                  "operator": "EQUALS",
+                  "value": "679, 51"
+                }
+              },
+              "children": [
+                {
+                  "id": "SLEEP_BETWEEN",
+                  "properties": {
+                    "Minimum": "800",
+                    "Maximum": "2600"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "WIDGET_INTERACT",
+              "properties": {
+                "Find Widget By": {
+                  "class": "Widget",
+                  "logic": "NONE",
+                  "type": "WIDGET_ID",
+                  "operator": "EQUALS",
+                  "value": "679, 51"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "ELSE_BRANCH",
+          "children": [
+            {
+              "id": "HOVER_WIDGET",
+              "properties": {
+                "Filter By": {
+                  "class": "Widget",
+                  "logic": "NONE",
+                  "type": "WIDGET_ID",
+                  "operator": "EQUALS",
+                  "value": "679, 52"
+                }
+              },
+              "children": [
+                {
+                  "id": "SLEEP_BETWEEN",
+                  "properties": {
+                    "Minimum": "800",
+                    "Maximum": "2600"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "WIDGET_INTERACT",
+              "properties": {
+                "Action": "Select",
+                "Find Widget By": {
+                  "class": "Widget",
+                  "logic": "NONE",
+                  "type": "WIDGET_ID",
+                  "operator": "EQUALS",
+                  "value": "679, 52"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "IF_TIMER_IS_NOT_FINISHED",
+          "properties": {
+            "Timer name": "ModelTimer"
+          },
+          "children": [
+            {
+              "id": "IF_RANDOM_NUMBER_IS",
+              "properties": {
+                "number": {
+                  "class": "Number",
+                  "operator": "GREATER_THAN_OR_EQUALS",
+                  "value": "8"
+                },
+                "Minimum": "1",
+                "Maximum": "10"
+              },
+              "children": [
+                {
+                  "id": "SET_VARIABLE_TO_RANDOM",
+                  "properties": {
+                    "Maximum": "13",
+                    "Minimum": "1",
+                    "Variable name": "ModelBuilder"
+                  },
+                  "children": [
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "1"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "head",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "2"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "jaw",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "3"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "torso",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "4"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "arms",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "5"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "hands",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "6"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "legs",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "7"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "feet",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "8"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "hair",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "9"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "torso color",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "10"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "legs color",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "11"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "feet color",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "12"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "skin",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "GO_TO_LABEL",
+                  "properties": {
+                    "Label": "v(ModelSection)"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ELSE_BRANCH",
+          "children": [
+            {
+              "id": "GO_TO_LABEL",
+              "properties": {
+                "Label": "EndModelBuilder"
+              }
+            }
+          ]
+        },
+        {
+          "id": "GO_TO_LABEL",
+          "properties": {
+            "Label": "legs color"
+          }
+        }
+      ]
+    },
+    {
+      "id": "CREATE_LABEL",
+      "properties": {
+        "Label": "feet color"
+      },
+      "children": [
+        {
+          "id": "IF_CAN_CONTINUE",
+          "children": [
+            {
+              "id": "CLICK_TO_CONTINUE"
+            }
+          ]
+        },
+        {
+          "id": "IF_TIMER_IS_FINISHED",
+          "properties": {
+            "Timer name": "BackBuildTimer"
+          },
+          "children": [
+            {
+              "id": "DELETE_TIMER",
+              "properties": {
+                "Timer name": "BackBuildTimer"
+              },
+              "children": [
+                {
+                  "id": "START_TIMER",
+                  "properties": {
+                    "Timer name": "BackBuildTimer",
+                    "Time": "rand(15, 90)"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "HOVER_WIDGET",
+              "properties": {
+                "Filter By": {
+                  "class": "Widget",
+                  "logic": "NONE",
+                  "type": "WIDGET_ID",
+                  "operator": "EQUALS",
+                  "value": "679, 55"
+                }
+              },
+              "children": [
+                {
+                  "id": "SLEEP_BETWEEN",
+                  "properties": {
+                    "Minimum": "800",
+                    "Maximum": "2600"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "WIDGET_INTERACT",
+              "properties": {
+                "Find Widget By": {
+                  "class": "Widget",
+                  "logic": "NONE",
+                  "type": "WIDGET_ID",
+                  "operator": "EQUALS",
+                  "value": "679, 55"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "ELSE_BRANCH",
+          "children": [
+            {
+              "id": "HOVER_WIDGET",
+              "properties": {
+                "Filter By": {
+                  "class": "Widget",
+                  "logic": "NONE",
+                  "type": "WIDGET_ID",
+                  "operator": "EQUALS",
+                  "value": "679, 56"
+                }
+              },
+              "children": [
+                {
+                  "id": "SLEEP_BETWEEN",
+                  "properties": {
+                    "Minimum": "800",
+                    "Maximum": "2600"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "WIDGET_INTERACT",
+              "properties": {
+                "Action": "Select",
+                "Find Widget By": {
+                  "class": "Widget",
+                  "logic": "NONE",
+                  "type": "WIDGET_ID",
+                  "operator": "EQUALS",
+                  "value": "679, 56"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "IF_TIMER_IS_NOT_FINISHED",
+          "properties": {
+            "Timer name": "ModelTimer"
+          },
+          "children": [
+            {
+              "id": "IF_RANDOM_NUMBER_IS",
+              "properties": {
+                "number": {
+                  "class": "Number",
+                  "operator": "GREATER_THAN_OR_EQUALS",
+                  "value": "8"
+                },
+                "Minimum": "1",
+                "Maximum": "10"
+              },
+              "children": [
+                {
+                  "id": "SET_VARIABLE_TO_RANDOM",
+                  "properties": {
+                    "Maximum": "13",
+                    "Minimum": "1",
+                    "Variable name": "ModelBuilder"
+                  },
+                  "children": [
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "1"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "head",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "2"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "jaw",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "3"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "torso",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "4"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "arms",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "5"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "hands",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "6"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "legs",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "7"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "feet",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "8"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "hair",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "9"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "torso color",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "10"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "legs color",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "11"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "feet color",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "12"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "skin",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "GO_TO_LABEL",
+                  "properties": {
+                    "Label": "v(ModelSection)"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ELSE_BRANCH",
+          "children": [
+            {
+              "id": "GO_TO_LABEL",
+              "properties": {
+                "Label": "EndModelBuilder"
+              }
+            }
+          ]
+        },
+        {
+          "id": "GO_TO_LABEL",
+          "properties": {
+            "Label": "feet color"
+          }
+        }
+      ]
+    },
+    {
+      "id": "CREATE_LABEL",
+      "properties": {
+        "Label": "skin"
+      },
+      "children": [
+        {
+          "id": "IF_CAN_CONTINUE",
+          "children": [
+            {
+              "id": "CLICK_TO_CONTINUE"
+            }
+          ]
+        },
+        {
+          "id": "IF_TIMER_IS_FINISHED",
+          "properties": {
+            "Timer name": "BackBuildTimer"
+          },
+          "children": [
+            {
+              "id": "DELETE_TIMER",
+              "properties": {
+                "Timer name": "BackBuildTimer"
+              },
+              "children": [
+                {
+                  "id": "START_TIMER",
+                  "properties": {
+                    "Timer name": "BackBuildTimer",
+                    "Time": "rand(15, 90)"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "HOVER_WIDGET",
+              "properties": {
+                "Filter By": {
+                  "class": "Widget",
+                  "logic": "NONE",
+                  "type": "WIDGET_ID",
+                  "operator": "EQUALS",
+                  "value": "679, 59"
+                }
+              },
+              "children": [
+                {
+                  "id": "SLEEP_BETWEEN",
+                  "properties": {
+                    "Minimum": "800",
+                    "Maximum": "2600"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "WIDGET_INTERACT",
+              "properties": {
+                "Find Widget By": {
+                  "class": "Widget",
+                  "logic": "NONE",
+                  "type": "WIDGET_ID",
+                  "operator": "EQUALS",
+                  "value": "679, 59"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "ELSE_BRANCH",
+          "children": [
+            {
+              "id": "HOVER_WIDGET",
+              "properties": {
+                "Filter By": {
+                  "class": "Widget",
+                  "logic": "NONE",
+                  "type": "WIDGET_ID",
+                  "operator": "EQUALS",
+                  "value": "679, 60"
+                }
+              },
+              "children": [
+                {
+                  "id": "SLEEP_BETWEEN",
+                  "properties": {
+                    "Minimum": "800",
+                    "Maximum": "2600"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "WIDGET_INTERACT",
+              "properties": {
+                "Action": "Select",
+                "Find Widget By": {
+                  "class": "Widget",
+                  "logic": "NONE",
+                  "type": "WIDGET_ID",
+                  "operator": "EQUALS",
+                  "value": "679, 60"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "IF_TIMER_IS_NOT_FINISHED",
+          "properties": {
+            "Timer name": "ModelTimer"
+          },
+          "children": [
+            {
+              "id": "IF_RANDOM_NUMBER_IS",
+              "properties": {
+                "number": {
+                  "class": "Number",
+                  "operator": "GREATER_THAN_OR_EQUALS",
+                  "value": "8"
+                },
+                "Minimum": "1",
+                "Maximum": "10"
+              },
+              "children": [
+                {
+                  "id": "SET_VARIABLE_TO_RANDOM",
+                  "properties": {
+                    "Maximum": "13",
+                    "Minimum": "1",
+                    "Variable name": "ModelBuilder"
+                  },
+                  "children": [
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "1"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "head",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "2"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "jaw",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "3"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "torso",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "4"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "arms",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "5"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "hands",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "6"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "legs",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "7"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "feet",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "8"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "hair",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "9"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "torso color",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "10"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "legs color",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "11"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "feet color",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "12"
+                        },
+                        "Variable name": "ModelBuilder"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "skin",
+                            "Variable name": "ModelSection"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "GO_TO_LABEL",
+                  "properties": {
+                    "Label": "v(ModelSection)"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ELSE_BRANCH",
+          "children": [
+            {
+              "id": "GO_TO_LABEL",
+              "properties": {
+                "Label": "EndModelBuilder"
+              }
+            }
+          ]
+        },
+        {
+          "id": "GO_TO_LABEL",
+          "properties": {
+            "Label": "skin"
+          }
+        }
+      ]
+    },
+    {
+      "id": "CREATE_LABEL",
+      "properties": {
+        "Label": "EndModelBuilder"
+      },
+      "children": [
+        {
+          "id": "IF_CAN_CONTINUE",
+          "children": [
+            {
+              "id": "CLICK_TO_CONTINUE"
+            }
+          ]
+        },
+        {
+          "id": "IF_TIMER_IS_FINISHED",
+          "properties": {
+            "Timer name": "ModelTimer"
+          },
+          "children": [
+            {
+              "id": "DELETE_TIMER",
+              "properties": {
+                "Timer name": "ModelTimer"
+              },
+              "children": [
+                {
+                  "id": "DELETE_TIMER",
+                  "properties": {
+                    "Timer name": "BackBuildTimer"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "SLEEP_BETWEEN",
+              "properties": {
+                "Minimum": "1000",
+                "Maximum": "10000"
+              }
+            },
+            {
+              "id": "HOVER_WIDGET",
+              "properties": {
+                "Filter By": {
+                  "class": "Widget",
+                  "logic": "NONE",
+                  "type": "WIDGET_ID",
+                  "operator": "EQUALS",
+                  "value": "679, 68, 0"
+                }
+              },
+              "children": [
+                {
+                  "id": "SLEEP_BETWEEN",
+                  "properties": {
+                    "Minimum": "10",
+                    "Maximum": "4000"
+                  },
+                  "children": [
+                    {
+                      "id": "LEFT_CLICK"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

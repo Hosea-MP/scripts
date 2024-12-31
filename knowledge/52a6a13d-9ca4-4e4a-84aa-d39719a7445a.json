@@ -1,0 +1,938 @@
+{
+  "id": "52a6a13d-9ca4-4e4a-84aa-d39719a7445a",
+  "name": "Grand Exchange \u003e Selling \u003e High-Sell",
+  "description": "Will sell all of the items in the bank related to Herblore for the highest buy price for max proffits.",
+  "parameters": "",
+  "fail": false,
+  "actions": [
+    {
+      "id": "CUSTOM_621c517e-383e-4e00-aab9-d5955f5b863c",
+      "children": [
+        {
+          "id": "CREATE_LABEL",
+          "properties": {
+            "Label": "Slot Check"
+          },
+          "children": [
+            {
+              "id": "IF_FIRST_RUN",
+              "children": [
+                {
+                  "id": "ADD_ALL_TO_LIST",
+                  "properties": {
+                    "List name": "SLOT_OFFER_LIST",
+                    "Value": "0,1,2,3,4,5,6,7"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "FOR_EACH_IN_LIST",
+              "properties": {
+                "List name": "SLOT_OFFER_LIST"
+              },
+              "children": [
+                {
+                  "id": "SET_VARIABLE_TO_LAST_OUTPUT",
+                  "properties": {
+                    "Variable name": "SLOT_CHECK"
+                  },
+                  "children": [
+                    {
+                      "id": "IF_SLOT_HAS_OFFER",
+                      "properties": {
+                        "Slot": "v(SLOT_CHECK)"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_TO_LAST_MATCHING_ITEM_NAME",
+                          "properties": {
+                            "Variable name": "SLOT_ITEM"
+                          },
+                          "children": [
+                            {
+                              "id": "IF_SLOT_IS_READY_TO_COLLECT",
+                              "properties": {
+                                "Slot": "v(SLOT_CHECK)"
+                              },
+                              "children": [
+                                {
+                                  "id": "IF_TIMER_EXISTS",
+                                  "properties": {
+                                    "Timer name": "v(SLOT_ITEM)_TIMER"
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "DELETE_TIMER",
+                                      "properties": {
+                                        "Timer name": "v(SLOT_ITEM)_TIMER"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "id": "IF_SLOT_IS_NOT_READY_TO_COLLECT",
+                              "properties": {
+                                "Slot": "v(SLOT_CHECK)"
+                              },
+                              "children": [
+                                {
+                                  "id": "IF_TIMER_EXISTS",
+                                  "properties": {
+                                    "Timer name": "v(SLOT_ITEM)_TIMER"
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "IF_TIMER_TIME_LEFT_IS_LESS_THAN",
+                                      "properties": {
+                                        "Timer name": "v(SLOT_ITEM)_TIMER",
+                                        "Time": "600"
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "IF_GRAND_EXCHANGE_NOT_READY_TO_COLLECT",
+                                          "children": [
+                                            {
+                                              "id": "CANCEL_OFFER_IN_SLOT",
+                                              "properties": {
+                                                "Slot": "v(SLOT_CHECK)"
+                                              },
+                                              "children": [
+                                                {
+                                                  "id": "SLEEP_NORMAL_DISTRIBUTION",
+                                                  "properties": {
+                                                    "Mean": "678",
+                                                    "Variance": "123"
+                                                  },
+                                                  "children": [
+                                                    {
+                                                      "id": "DELETE_TIMER",
+                                                      "properties": {
+                                                        "Timer name": "v(SLOT_ITEM)_TIMER"
+                                                      },
+                                                      "children": [
+                                                        {
+                                                          "id": "DELETE_VARIABLE",
+                                                          "customDisplayName": "Delete variable v(SLOT_CHECK)_HIGH\u0027",
+                                                          "properties": {
+                                                            "Variable name": "v(SLOT_CHECK)_HIGH"
+                                                          }
+                                                        }
+                                                      ]
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "id": "IF_TIMER_IS_FINISHED",
+                                      "properties": {
+                                        "Timer name": "v(SLOT_ITEM)_TIMER"
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "IF_GRAND_EXCHANGE_NOT_READY_TO_COLLECT",
+                                          "children": [
+                                            {
+                                              "id": "CANCEL_OFFER_IN_SLOT",
+                                              "properties": {
+                                                "Slot": "v(SLOT_CHECK)"
+                                              },
+                                              "children": [
+                                                {
+                                                  "id": "SLEEP_NORMAL_DISTRIBUTION",
+                                                  "properties": {
+                                                    "Mean": "678",
+                                                    "Variance": "123"
+                                                  },
+                                                  "children": [
+                                                    {
+                                                      "id": "DELETE_TIMER",
+                                                      "properties": {
+                                                        "Timer name": "v(SLOT_ITEM)_TIMER"
+                                                      },
+                                                      "children": [
+                                                        {
+                                                          "id": "DELETE_VARIABLE",
+                                                          "customDisplayName": "Delete variable v(SLOT_CHECK)_HIGH\u0027",
+                                                          "properties": {
+                                                            "Variable name": "v(SLOT_CHECK)_HIGH"
+                                                          }
+                                                        }
+                                                      ]
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "id": "IF_TIMER_DOES_NOT_EXIST",
+                                  "properties": {
+                                    "Timer name": "v(SLOT_ITEM)_TIMER"
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "CANCEL_OFFER_IN_SLOT",
+                                      "properties": {
+                                        "Slot": "v(SLOT_CHECK)"
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "SLEEP_NORMAL_DISTRIBUTION",
+                                          "properties": {
+                                            "Mean": "678",
+                                            "Variance": "123"
+                                          },
+                                          "children": [
+                                            {
+                                              "id": "DELETE_TIMER",
+                                              "properties": {
+                                                "Timer name": "v(SLOT_ITEM)_TIMER"
+                                              },
+                                              "children": [
+                                                {
+                                                  "id": "DELETE_VARIABLE",
+                                                  "customDisplayName": "Delete variable v(SLOT_CHECK)_HIGH\u0027",
+                                                  "properties": {
+                                                    "Variable name": "v(SLOT_CHECK)_HIGH"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "IF_GRAND_EXCHANGE_READY_TO_COLLECT",
+              "children": [
+                {
+                  "id": "IF_INVENTORY_IS_NOT_FULL",
+                  "children": [
+                    {
+                      "id": "COLLECT_GRAND_EXCHANGE",
+                      "children": [
+                        {
+                          "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                          "properties": {
+                            "Max time (seconds)": "3"
+                          },
+                          "children": [
+                            {
+                              "id": "IF_ANY_SLOT_IS_EMPTY"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_INVENTORY_IS_FULL",
+                  "children": [
+                    {
+                      "id": "COLLECT_TO_BANK_GRAND_EXCHANGE",
+                      "children": [
+                        {
+                          "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                          "properties": {
+                            "Max time (seconds)": "3"
+                          },
+                          "children": [
+                            {
+                              "id": "IF_ANY_SLOT_IS_EMPTY"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "CLEAR_LIST",
+          "properties": {
+            "List name": "HIGH_SELL_LIST"
+          }
+        },
+        {
+          "id": "ADD_INVENTORY_ITEMS_TO_LIST",
+          "properties": {
+            "Filter Item By": {
+              "class": "Item",
+              "logic": "NONE",
+              "type": "VALUE",
+              "operator": "GREATER_THAN",
+              "value": "1",
+              "filters": [
+                {
+                  "class": "Item",
+                  "logic": "AND",
+                  "type": "NAME",
+                  "operator": "DOES_NOT_EQUAL",
+                  "value": "Coins"
+                }
+              ]
+            },
+            "List name": "HIGH_SELL_LIST"
+          }
+        },
+        {
+          "id": "FOR_EACH_IN_LIST",
+          "properties": {
+            "List name": "HIGH_SELL_LIST"
+          },
+          "children": [
+            {
+              "id": "SET_TO_LAST_MATCHING_ITEM_NAME",
+              "properties": {
+                "Variable name": "HIGH_CHECK"
+              },
+              "children": [
+                {
+                  "id": "IF_OFFER_EXISTS",
+                  "properties": {
+                    "Filter Item By": {
+                      "class": "Item",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "v(HIGH_CHECK)"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "DELETE_TIMER",
+                      "properties": {
+                        "Timer name": "v(HIGH_CHECK)_TIMER"
+                      }
+                    },
+                    {
+                      "id": "CANCEL_MATCHING_OFFER",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "v(HIGH_CHECK)"
+                        }
+                      }
+                    },
+                    {
+                      "id": "CANCEL_MATCHING_OFFER",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "v(HIGH_CHECK)"
+                        }
+                      }
+                    },
+                    {
+                      "id": "CANCEL_MATCHING_OFFER",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "v(HIGH_CHECK)"
+                        }
+                      }
+                    },
+                    {
+                      "id": "CANCEL_MATCHING_OFFER",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "v(HIGH_CHECK)"
+                        }
+                      }
+                    },
+                    {
+                      "id": "CANCEL_MATCHING_OFFER",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "v(HIGH_CHECK)"
+                        }
+                      }
+                    },
+                    {
+                      "id": "CANCEL_MATCHING_OFFER",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "v(HIGH_CHECK)"
+                        }
+                      }
+                    },
+                    {
+                      "id": "CANCEL_MATCHING_OFFER",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "v(HIGH_CHECK)"
+                        }
+                      }
+                    },
+                    {
+                      "id": "CANCEL_MATCHING_OFFER",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "v(HIGH_CHECK)"
+                        }
+                      }
+                    },
+                    {
+                      "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                      "properties": {
+                        "Max time (seconds)": "3"
+                      },
+                      "children": [
+                        {
+                          "id": "IF_ANY_SLOT_IS_EMPTY"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_GRAND_EXCHANGE_READY_TO_COLLECT",
+                      "children": [
+                        {
+                          "id": "COLLECT_GRAND_EXCHANGE",
+                          "children": [
+                            {
+                              "id": "CUSTOM_59b0d6d5-80ef-4fde-a09a-4da2e972c4b2"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_ANY_SLOT_IS_EMPTY",
+                  "children": [
+                    {
+                      "id": "IF_VARIABLE_IS_SET",
+                      "properties": {
+                        "Variable name": "v(HIGH_CHECK)_HIGH"
+                      },
+                      "children": [
+                        {
+                          "id": "SELL_ALL_OF_MATCHING_ITEM_GRAND_EXCHANGE",
+                          "properties": {
+                            "Filter Item By": {
+                              "class": "Item",
+                              "logic": "NONE",
+                              "type": "NAME",
+                              "operator": "EQUALS",
+                              "value": "v(HIGH_CHECK)"
+                            },
+                            "Price": "sub(v(v(HIGH_CHECK)_HIGH), 1)"
+                          },
+                          "children": [
+                            {
+                              "id": "IF_TIMER_DOES_NOT_EXIST",
+                              "properties": {
+                                "Timer name": "v(HIGH_CHECK)_TIMER"
+                              },
+                              "children": [
+                                {
+                                  "id": "START_TIMER",
+                                  "properties": {
+                                    "Timer name": "v(HIGH_CHECK)_TIMER",
+                                    "Time": "30:00"
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "id": "ELSE_BRANCH",
+                              "children": [
+                                {
+                                  "id": "DELETE_TIMER",
+                                  "properties": {
+                                    "Timer name": "v(HIGH_CHECK)_TIMER"
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "START_TIMER",
+                                      "properties": {
+                                        "Timer name": "v(HIGH_CHECK)_TIMER",
+                                        "Time": "30:00"
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "ADD_TO_LIST",
+                                          "properties": {
+                                            "Value": "v(HIGH_CHECK)",
+                                            "List name": "SELL_WAIT_LIST"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "id": "REMOVE_FROM_LIST",
+                              "properties": {
+                                "Value": "v(HIGH_CHECK)",
+                                "List name": "HIGH_SELL_LIST"
+                              }
+                            },
+                            {
+                              "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                              "properties": {
+                                "Max time (seconds)": "5"
+                              },
+                              "children": [
+                                {
+                                  "id": "IF_ANY_SLOT_IS_EMPTY"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "ELSE_BRANCH",
+                      "children": [
+                        {
+                          "id": "SELL_ALL_OF_MATCHING_ITEM_GRAND_EXCHANGE",
+                          "properties": {
+                            "Filter Item By": {
+                              "class": "Item",
+                              "logic": "NONE",
+                              "type": "NAME",
+                              "operator": "EQUALS",
+                              "value": "v(HIGH_CHECK)"
+                            },
+                            "Price": "sub(v(v(HIGH_CHECK)_LIVE), 1)"
+                          },
+                          "children": [
+                            {
+                              "id": "IF_TIMER_DOES_NOT_EXIST",
+                              "properties": {
+                                "Timer name": "v(HIGH_CHECK)_TIMER"
+                              },
+                              "children": [
+                                {
+                                  "id": "START_TIMER",
+                                  "properties": {
+                                    "Timer name": "v(HIGH_CHECK)_TIMER",
+                                    "Time": "30:00"
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "id": "ELSE_BRANCH",
+                              "children": [
+                                {
+                                  "id": "DELETE_TIMER",
+                                  "properties": {
+                                    "Timer name": "v(HIGH_CHECK)_TIMER"
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "START_TIMER",
+                                      "properties": {
+                                        "Timer name": "v(HIGH_CHECK)_TIMER",
+                                        "Time": "30:00"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "id": "REMOVE_FROM_LIST",
+                              "properties": {
+                                "Value": "v(HIGH_CHECK)",
+                                "List name": "HIGH_SELL_LIST"
+                              }
+                            },
+                            {
+                              "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                              "properties": {
+                                "Max time (seconds)": "5"
+                              },
+                              "children": [
+                                {
+                                  "id": "IF_ANY_SLOT_IS_EMPTY"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_NO_SLOTS_ARE_EMPTY",
+                  "children": [
+                    {
+                      "id": "CUSTOM_04452cdc-2a82-4813-af22-22f24e4fbc1a",
+                      "children": [
+                        {
+                          "id": "CLEAR_LIST",
+                          "properties": {
+                            "List name": "HIGH_SELL_LIST"
+                          },
+                          "children": [
+                            {
+                              "id": "GO_TO_LABEL",
+                              "properties": {
+                                "Label": "End Seller"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CREATE_LABEL",
+      "properties": {
+        "Label": "End Seller"
+      },
+      "children": [
+        {
+          "id": "CLEAR_LIST",
+          "properties": {
+            "List name": "HIGH_SELL_LIST"
+          }
+        },
+        {
+          "id": "CREATE_LABEL",
+          "properties": {
+            "Label": "Slot Check"
+          },
+          "children": [
+            {
+              "id": "IF_FIRST_RUN",
+              "children": [
+                {
+                  "id": "ADD_ALL_TO_LIST",
+                  "properties": {
+                    "List name": "SLOT_OFFER_LIST",
+                    "Value": "0,1,2,3,4,5,6,7"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "FOR_EACH_IN_LIST",
+              "properties": {
+                "List name": "SLOT_OFFER_LIST"
+              },
+              "children": [
+                {
+                  "id": "SET_VARIABLE_TO_LAST_OUTPUT",
+                  "properties": {
+                    "Variable name": "SLOT_CHECK"
+                  },
+                  "children": [
+                    {
+                      "id": "IF_SLOT_HAS_OFFER",
+                      "properties": {
+                        "Slot": "v(SLOT_CHECK)"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_TO_LAST_MATCHING_ITEM_NAME",
+                          "properties": {
+                            "Variable name": "SLOT_ITEM"
+                          },
+                          "children": [
+                            {
+                              "id": "IF_SLOT_IS_READY_TO_COLLECT",
+                              "properties": {
+                                "Slot": "v(SLOT_CHECK)"
+                              },
+                              "children": [
+                                {
+                                  "id": "IF_TIMER_EXISTS",
+                                  "properties": {
+                                    "Timer name": "v(SLOT_ITEM)_TIMER"
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "DELETE_TIMER",
+                                      "properties": {
+                                        "Timer name": "v(SLOT_ITEM)_TIMER"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "id": "IF_SLOT_IS_NOT_READY_TO_COLLECT",
+                              "properties": {
+                                "Slot": "v(SLOT_CHECK)"
+                              },
+                              "children": [
+                                {
+                                  "id": "IF_TIMER_EXISTS",
+                                  "properties": {
+                                    "Timer name": "v(SLOT_ITEM)_TIMER"
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "IF_TIMER_TIME_LEFT_IS_LESS_THAN",
+                                      "properties": {
+                                        "Timer name": "v(SLOT_ITEM)_TIMER",
+                                        "Time": "600"
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "IF_GRAND_EXCHANGE_NOT_READY_TO_COLLECT",
+                                          "children": [
+                                            {
+                                              "id": "CANCEL_OFFER_IN_SLOT",
+                                              "properties": {
+                                                "Slot": "v(SLOT_CHECK)"
+                                              },
+                                              "children": [
+                                                {
+                                                  "id": "SLEEP_NORMAL_DISTRIBUTION",
+                                                  "properties": {
+                                                    "Mean": "678",
+                                                    "Variance": "123"
+                                                  },
+                                                  "children": [
+                                                    {
+                                                      "id": "DELETE_TIMER",
+                                                      "properties": {
+                                                        "Timer name": "v(SLOT_ITEM)_TIMER"
+                                                      },
+                                                      "children": [
+                                                        {
+                                                          "id": "DELETE_VARIABLE",
+                                                          "customDisplayName": "Delete variable v(SLOT_CHECK)_HIGH\u0027",
+                                                          "properties": {
+                                                            "Variable name": "v(SLOT_CHECK)_HIGH"
+                                                          }
+                                                        }
+                                                      ]
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "id": "IF_TIMER_IS_FINISHED",
+                                      "properties": {
+                                        "Timer name": "v(SLOT_ITEM)_TIMER"
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "IF_GRAND_EXCHANGE_NOT_READY_TO_COLLECT",
+                                          "children": [
+                                            {
+                                              "id": "CANCEL_OFFER_IN_SLOT",
+                                              "properties": {
+                                                "Slot": "v(SLOT_CHECK)"
+                                              },
+                                              "children": [
+                                                {
+                                                  "id": "SLEEP_NORMAL_DISTRIBUTION",
+                                                  "properties": {
+                                                    "Mean": "678",
+                                                    "Variance": "123"
+                                                  },
+                                                  "children": [
+                                                    {
+                                                      "id": "DELETE_TIMER",
+                                                      "properties": {
+                                                        "Timer name": "v(SLOT_ITEM)_TIMER"
+                                                      },
+                                                      "children": [
+                                                        {
+                                                          "id": "DELETE_VARIABLE",
+                                                          "customDisplayName": "Delete variable v(SLOT_CHECK)_HIGH\u0027",
+                                                          "properties": {
+                                                            "Variable name": "v(SLOT_CHECK)_HIGH"
+                                                          }
+                                                        }
+                                                      ]
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "id": "IF_TIMER_DOES_NOT_EXIST",
+                                  "properties": {
+                                    "Timer name": "v(SLOT_ITEM)_TIMER"
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "CANCEL_OFFER_IN_SLOT",
+                                      "properties": {
+                                        "Slot": "v(SLOT_CHECK)"
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "SLEEP_NORMAL_DISTRIBUTION",
+                                          "properties": {
+                                            "Mean": "678",
+                                            "Variance": "123"
+                                          },
+                                          "children": [
+                                            {
+                                              "id": "DELETE_TIMER",
+                                              "properties": {
+                                                "Timer name": "v(SLOT_ITEM)_TIMER"
+                                              },
+                                              "children": [
+                                                {
+                                                  "id": "DELETE_VARIABLE",
+                                                  "customDisplayName": "Delete variable v(SLOT_CHECK)_HIGH\u0027",
+                                                  "properties": {
+                                                    "Variable name": "v(SLOT_CHECK)_HIGH"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "IF_GRAND_EXCHANGE_READY_TO_COLLECT",
+              "children": [
+                {
+                  "id": "IF_INVENTORY_IS_NOT_FULL",
+                  "children": [
+                    {
+                      "id": "COLLECT_GRAND_EXCHANGE",
+                      "children": [
+                        {
+                          "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                          "properties": {
+                            "Max time (seconds)": "3"
+                          },
+                          "children": [
+                            {
+                              "id": "IF_ANY_SLOT_IS_EMPTY"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_INVENTORY_IS_FULL",
+                  "children": [
+                    {
+                      "id": "COLLECT_TO_BANK_GRAND_EXCHANGE",
+                      "children": [
+                        {
+                          "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                          "properties": {
+                            "Max time (seconds)": "3"
+                          },
+                          "children": [
+                            {
+                              "id": "IF_ANY_SLOT_IS_EMPTY"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "CUSTOM_04452cdc-2a82-4813-af22-22f24e4fbc1a"
+        }
+      ]
+    }
+  ]
+}

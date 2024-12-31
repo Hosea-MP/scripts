@@ -1,0 +1,367 @@
+{
+  "id": "22c7352a-4d6f-4bd6-a1f9-e33c5f23f75d",
+  "name": "Muling \u003e Give to Mule",
+  "description": "SET VARIABE: v(MULE_THRESHOLD) Will communicate on ports: 50808 \u0026 50809 to speak with the mule account to Give GP to Mule.",
+  "parameters": "",
+  "fail": false,
+  "actions": [
+    {
+      "id": "IF_VARIABLE_IS",
+      "properties": {
+        "Filter Value By": {
+          "class": "Variable",
+          "logic": "NONE",
+          "type": "AS_TEXT",
+          "operator": "DOES_NOT_EQUAL",
+          "value": "null"
+        },
+        "Variable name": "MULE_NAME"
+      },
+      "children": [
+        {
+          "id": "IF_VARIABLE_IS",
+          "customDisplayName": "If variable \u0027COIN_COUNT\u0027 is greater than v(MULE_THRESHOLD)",
+          "properties": {
+            "Filter Value By": {
+              "class": "Variable",
+              "logic": "NONE",
+              "type": "AS_NUMBER",
+              "operator": "GREATER_THAN_OR_EQUAL",
+              "value": "v(MULE_THRESHOLD)"
+            },
+            "Variable name": "COIN_COUNT"
+          },
+          "children": [
+            {
+              "id": "PAUSE_ITEM_TRACKER"
+            },
+            {
+              "id": "SET_VARIABLE",
+              "properties": {
+                "Value": "Give2Mule",
+                "Variable name": "CURRENT_TASK"
+              }
+            },
+            {
+              "id": "CUSTOM_76ffccc9-35e9-409b-ace8-a941e9754582"
+            },
+            {
+              "id": "CUSTOM_e7889949-c7d5-4cdb-8f10-d25eb839ef97"
+            },
+            {
+              "id": "SET_VARIABLE",
+              "customDisplayName": "Set variable v(GIVE_X) to sub(v(COIN_COUNT), v(MULE_GIVE))",
+              "properties": {
+                "Value": "sub(v(COIN_COUNT), v(MULE_GIVE))",
+                "Variable name": "GIVE_X"
+              },
+              "children": [
+                {
+                  "id": "CUSTOM_7b65bab3-1208-4d4a-90da-91764d48f8ed",
+                  "children": [
+                    {
+                      "id": "PAUSE_ITEM_TRACKER"
+                    },
+                    {
+                      "id": "BANK_WITHDRAW_ITEM",
+                      "customDisplayName": "Withdraw v(GIVE_X) of Coins",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "Coins"
+                        },
+                        "Amount": "v(GIVE_X)"
+                      },
+                      "children": [
+                        {
+                          "id": "SUBTRACT_FROM_VARIABLE",
+                          "properties": {
+                            "Variable name": "COIN_COUNT",
+                            "By": "v(GIVE_X)"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "CUSTOM_1185c37e-088d-41e8-bf49-0abf9b226030"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "SEND_MESSAGE_TO_PORT",
+              "customDisplayName": "Send v(OUR_NAME) to port 50808",
+              "properties": {
+                "Message": "v(OUR_NAME)",
+                "Host": "50808"
+              }
+            },
+            {
+              "id": "SEND_MESSAGE_TO_PORT",
+              "customDisplayName": "Send \"Take\" to port 50809",
+              "properties": {
+                "Message": "Take",
+                "Host": "50809"
+              }
+            },
+            {
+              "id": "CREATE_LABEL",
+              "properties": {
+                "Label": "World Verification"
+              },
+              "children": [
+                {
+                  "id": "CUSTOM_c8866571-30d1-462d-98a7-a91e25600263"
+                }
+              ]
+            },
+            {
+              "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+              "properties": {
+                "Max time (seconds)": ""
+              },
+              "children": [
+                {
+                  "id": "IF_PLAYER_EXISTS",
+                  "properties": {
+                    "Filter Player By": {
+                      "class": "Player",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "v(MULE_NAME)"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "id": "IF_TRADE_IS_NOT_OPEN",
+              "children": [
+                {
+                  "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                  "properties": {
+                    "Max time (seconds)": "600"
+                  },
+                  "children": [
+                    {
+                      "id": "IF_GAME_MESSAGE_RECEIVED_MATCHES",
+                      "properties": {
+                        "Filter Message": {
+                          "class": "Message",
+                          "logic": "NONE",
+                          "type": "FROM",
+                          "operator": "EQUALS",
+                          "value": "v(MULE_NAME)",
+                          "filters": [
+                            {
+                              "class": "Message",
+                              "logic": "AND",
+                              "type": "IS_TRADE_MESSAGE",
+                              "operator": "EQUALS"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "CUSTOM_59b0d6d5-80ef-4fde-a09a-4da2e972c4b2"
+                },
+                {
+                  "id": "ENABLE_MENU_MANIPULATION"
+                },
+                {
+                  "id": "TRADE_PLAYER",
+                  "properties": {
+                    "Filter Player By": {
+                      "class": "Player",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "v(MULE_NAME)"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                      "children": [
+                        {
+                          "id": "IF_TRADE_IS_OPEN"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "DISABLE_MENU_MANIPULATION"
+                }
+              ]
+            },
+            {
+              "id": "IF_TRADE_IS_OPEN",
+              "children": [
+                {
+                  "id": "IF_TRADING_WITH_NAME_EQUALS",
+                  "customDisplayName": "If trading with name equals v(MULE_NAME)",
+                  "properties": {
+                    "Name": "v(MULE_NAME)"
+                  },
+                  "children": [
+                    {
+                      "id": "IF_FIRST_TRADE_SCREEN_IS_OPEN",
+                      "customDisplayName": "If first trade screen is open",
+                      "children": [
+                        {
+                          "id": "CUSTOM_59b0d6d5-80ef-4fde-a09a-4da2e972c4b2"
+                        },
+                        {
+                          "id": "INVENTORY_DESELECT"
+                        },
+                        {
+                          "id": "INTERACT_WITH_INVENTORY_ITEM",
+                          "customDisplayName": "Offer-All Coins",
+                          "properties": {
+                            "Filter Item By": {
+                              "class": "Item",
+                              "logic": "NONE",
+                              "type": "NAME",
+                              "operator": "EQUALS",
+                              "value": "Coins"
+                            },
+                            "Force left click": false,
+                            "Action": "Offer-All"
+                          },
+                          "children": [
+                            {
+                              "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                              "properties": {
+                                "Max time (seconds)": ""
+                              },
+                              "children": [
+                                {
+                                  "id": "IF_OUR_OFFER_VALUE_IS",
+                                  "customDisplayName": "If our offer value is more than 0",
+                                  "properties": {
+                                    "value": {
+                                      "class": "Number",
+                                      "operator": "GREATER_THAN",
+                                      "value": "0"
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "id": "IF_OUR_OFFER_VALUE_IS",
+                          "customDisplayName": "If our offer value is more than 0",
+                          "properties": {
+                            "value": {
+                              "class": "Number",
+                              "operator": "GREATER_THAN",
+                              "value": "0"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "SET_VARIABLE",
+                              "properties": {
+                                "Value": "lastOutput()",
+                                "Variable name": "TRADE_AMOUNT"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                          "properties": {
+                            "Max time (seconds)": "20"
+                          },
+                          "children": [
+                            {
+                              "id": "IF_CAN_ACCEPT_OFFER"
+                            }
+                          ]
+                        },
+                        {
+                          "id": "ACCEPT_TRADE",
+                          "children": [
+                            {
+                              "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                              "properties": {
+                                "Max time (seconds)": "20"
+                              },
+                              "children": [
+                                {
+                                  "id": "IF_SECOND_TRADE_SCREEN_IS_OPEN"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_SECOND_TRADE_SCREEN_IS_OPEN",
+                      "children": [
+                        {
+                          "id": "ACCEPT_TRADE",
+                          "children": [
+                            {
+                              "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                              "children": [
+                                {
+                                  "id": "IF_TRADE_IS_NOT_OPEN"
+                                }
+                              ]
+                            },
+                            {
+                              "id": "ADD_TO_VARIABLE",
+                              "customDisplayName": "Add to variable \u0027v(MULED_AMOUNT)\u0027 by v(TRADE_AMOUNT)",
+                              "properties": {
+                                "Variable name": "v(MULED_AMOUNT)",
+                                "By": "v(TRADE_AMOUNT)"
+                              },
+                              "children": [
+                                {
+                                  "id": "SET_VARIABLE",
+                                  "properties": {
+                                    "Value": "0",
+                                    "Variable name": "BANK_VALUE"
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "id": "CUSTOM_59b0d6d5-80ef-4fde-a09a-4da2e972c4b2"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "CUSTOM_d4d09f20-4af6-4e9f-b67c-f7c450b6a2b0"
+            },
+            {
+              "id": "CUSTOM_d5971488-41b4-4c6f-9a14-a44e7e6699e8"
+            },
+            {
+              "id": "RESUME_ITEM_TRACKER"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,567 @@
+{
+  "sleep": "500",
+  "name": "ChompyMaster",
+  "version": 1.0,
+  "metadata": {
+    "network-id": "7",
+    "network-downloaded-at": "1721665209519"
+  },
+  "actions": [
+    {
+      "id": "IF_FIRST_RUN",
+      "children": [
+        {
+          "id": "COMMENT",
+          "properties": {
+            "Comment": "Script Variables\n"
+          },
+          "children": [
+            {
+              "id": "SET_VARIABLE",
+              "properties": {
+                "Value": "fill_bellows",
+                "Variable name": "state"
+              }
+            }
+          ]
+        },
+        {
+          "id": "COMMENT",
+          "properties": {
+            "Comment": "Constants"
+          },
+          "children": [
+            {
+              "id": "SET_VARIABLE",
+              "properties": {
+                "Value": "2872,2873,2874",
+                "Variable name": "filled_bellows"
+              }
+            },
+            {
+              "id": "SET_VARIABLE",
+              "properties": {
+                "Value": "2871",
+                "Variable name": "empty_bellows"
+              }
+            },
+            {
+              "id": "SET_VARIABLE",
+              "properties": {
+                "Value": "2875",
+                "Variable name": "toad"
+              }
+            },
+            {
+              "id": "SET_VARIABLE",
+              "properties": {
+                "Value": "1473",
+                "Variable name": "toad_npc"
+              }
+            },
+            {
+              "id": "SET_VARIABLE",
+              "properties": {
+                "Value": "1475",
+                "Variable name": "chompy"
+              }
+            }
+          ]
+        },
+        {
+          "id": "COMMENT",
+          "properties": {
+            "Comment": "Areas"
+          },
+          "children": [
+            {
+              "id": "SET_VARIABLE",
+              "properties": {
+                "Value": "(2335, 3056, 0), (2332, 3060, 0)",
+                "Variable name": "drop_area"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "IF_NPC_EXISTS",
+      "properties": {
+        "Filter NPC By": {
+          "class": "NPC",
+          "logic": "NONE",
+          "type": "ID",
+          "operator": "EQUALS",
+          "value": "var(chompy)"
+        }
+      },
+      "children": [
+        {
+          "id": "IF_LOCAL_PLAYER_MATCHES",
+          "properties": {
+            "Filter By": {
+              "class": "Player",
+              "logic": "NONE",
+              "type": "NOT_ANIMATING",
+              "operator": "EQUALS",
+              "filters": [
+                {
+                  "class": "Player",
+                  "logic": "AND",
+                  "type": "NOT_IN_COMBAT",
+                  "operator": "EQUALS"
+                }
+              ]
+            }
+          },
+          "children": [
+            {
+              "id": "SLEEP_NORMAL_DISTRIBUTION",
+              "properties": {
+                "Mean": "500",
+                "Variance": "200"
+              }
+            },
+            {
+              "id": "NPC_INTERACT",
+              "properties": {
+                "Action": "Attack",
+                "Don\u0027t walk to NPC": false,
+                "Force left click": false,
+                "Filter NPC By": {
+                  "class": "NPC",
+                  "logic": "NONE",
+                  "type": "ID",
+                  "operator": "EQUALS",
+                  "value": "var(chompy)"
+                }
+              }
+            },
+            {
+              "id": "SLEEP_NORMAL_DISTRIBUTION",
+              "properties": {
+                "Mean": "500",
+                "Variance": "200"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ELSE_BRANCH",
+      "children": [
+        {
+          "id": "COMMENT",
+          "properties": {
+            "Comment": "Figure out state\n"
+          },
+          "children": [
+            {
+              "id": "IF_VARIABLE_IS",
+              "properties": {
+                "Filter Value By": {
+                  "class": "Variable",
+                  "logic": "NONE",
+                  "type": "AS_TEXT",
+                  "operator": "DOES_NOT_EQUAL",
+                  "value": "drop"
+                },
+                "Variable name": "state"
+              }
+            },
+            {
+              "id": "AND_BRANCH"
+            },
+            {
+              "id": "IF_INVENTORY_DOES_NOT_CONTAIN_ANY",
+              "properties": {
+                "Filter Item By": {
+                  "class": "Item",
+                  "logic": "NONE",
+                  "type": "ID",
+                  "operator": "IS_IN_LIST",
+                  "value": "var(filled_bellows)"
+                }
+              },
+              "children": [
+                {
+                  "id": "SET_VARIABLE",
+                  "properties": {
+                    "Value": "fill_bellows",
+                    "Variable name": "state"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "IF_VARIABLE_IS",
+          "properties": {
+            "Filter Value By": {
+              "class": "Variable",
+              "logic": "NONE",
+              "type": "AS_TEXT",
+              "operator": "EQUALS",
+              "value": "fill_bellows"
+            },
+            "Variable name": "state"
+          },
+          "children": [
+            {
+              "id": "IF_INVENTORY_DOES_NOT_CONTAIN_ANY",
+              "properties": {
+                "Filter Item By": {
+                  "class": "Item",
+                  "logic": "NONE",
+                  "type": "ID",
+                  "operator": "EQUALS",
+                  "value": "var(empty_bellows)"
+                }
+              },
+              "children": [
+                {
+                  "id": "SET_VARIABLE",
+                  "properties": {
+                    "Value": "capture",
+                    "Variable name": "state"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "ELSE_BRANCH",
+              "children": [
+                {
+                  "id": "IF_LOCAL_PLAYER_MATCHES",
+                  "properties": {
+                    "Filter By": {
+                      "class": "Player",
+                      "logic": "NONE",
+                      "type": "NOT_ANIMATING",
+                      "operator": "EQUALS",
+                      "filters": [
+                        {
+                          "class": "Player",
+                          "logic": "AND",
+                          "type": "NOT_MOVING",
+                          "operator": "EQUALS"
+                        }
+                      ]
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "GAME_OBJECT_INTERACT",
+                      "properties": {
+                        "Don\u0027t walk to object": false,
+                        "Action": "Suck",
+                        "Filter Object By": {
+                          "class": "GameObject",
+                          "logic": "NONE",
+                          "type": "ID",
+                          "operator": "EQUALS",
+                          "value": "684"
+                        },
+                        "Force left click": false
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "IF_VARIABLE_IS",
+          "properties": {
+            "Filter Value By": {
+              "class": "Variable",
+              "logic": "NONE",
+              "type": "AS_TEXT",
+              "operator": "EQUALS",
+              "value": "capture"
+            },
+            "Variable name": "state"
+          },
+          "children": [
+            {
+              "id": "IF_INVENTORY_COUNT",
+              "properties": {
+                "count": {
+                  "class": "Number",
+                  "operator": "LESS_THAN",
+                  "value": "3"
+                },
+                "Filter Item By": {
+                  "class": "Item",
+                  "logic": "NONE",
+                  "type": "ID",
+                  "operator": "EQUALS",
+                  "value": "var(toad)"
+                }
+              },
+              "children": [
+                {
+                  "id": "IF_LOCAL_PLAYER_MATCHES",
+                  "properties": {
+                    "Filter By": {
+                      "class": "Player",
+                      "logic": "NONE",
+                      "type": "NOT_ANIMATING",
+                      "operator": "EQUALS",
+                      "filters": [
+                        {
+                          "class": "Player",
+                          "logic": "AND",
+                          "type": "NOT_MOVING",
+                          "operator": "EQUALS"
+                        }
+                      ]
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "NPC_INTERACT",
+                      "properties": {
+                        "Action": "Inflate",
+                        "Don\u0027t walk to NPC": false,
+                        "Force left click": false,
+                        "Filter NPC By": {
+                          "class": "NPC",
+                          "logic": "NONE",
+                          "type": "ID",
+                          "operator": "EQUALS",
+                          "value": "var(toad_npc)"
+                        }
+                      }
+                    },
+                    {
+                      "id": "SLEEP_NORMAL_DISTRIBUTION",
+                      "properties": {
+                        "Mean": "450",
+                        "Variance": "150"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "ELSE_BRANCH",
+              "children": [
+                {
+                  "id": "SET_VARIABLE",
+                  "properties": {
+                    "Value": "drop",
+                    "Variable name": "state"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "IF_VARIABLE_IS",
+          "properties": {
+            "Filter Value By": {
+              "class": "Variable",
+              "logic": "NONE",
+              "type": "AS_TEXT",
+              "operator": "EQUALS",
+              "value": "drop"
+            },
+            "Variable name": "state"
+          },
+          "children": [
+            {
+              "id": "IF_LOCAL_PLAYER_MATCHES",
+              "properties": {
+                "Filter By": {
+                  "class": "Player",
+                  "logic": "NONE",
+                  "type": "IN_AREA",
+                  "operator": "EQUALS",
+                  "value": "var(drop_area)"
+                }
+              },
+              "children": [
+                {
+                  "id": "IF_INVENTORY_CONTAINS_ANY",
+                  "properties": {
+                    "Filter Item By": {
+                      "class": "Item",
+                      "logic": "NONE",
+                      "type": "ID",
+                      "operator": "EQUALS",
+                      "value": "var(toad)"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "IF_NPC_DOES_NOT_EXIST",
+                      "properties": {
+                        "Filter NPC By": {
+                          "class": "NPC",
+                          "logic": "NONE",
+                          "type": "ID",
+                          "operator": "EQUALS",
+                          "value": "1474",
+                          "filters": [
+                            {
+                              "class": "NPC",
+                              "logic": "AND",
+                              "type": "IS_UNDER_PLAYER",
+                              "operator": "EQUALS"
+                            }
+                          ]
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "INTERACT_WITH_INVENTORY_ITEM",
+                          "properties": {
+                            "Filter Item By": {
+                              "class": "Item",
+                              "logic": "NONE",
+                              "type": "ID",
+                              "operator": "EQUALS",
+                              "value": "var(toad)"
+                            },
+                            "Action": "Drop"
+                          }
+                        },
+                        {
+                          "id": "SLEEP_NORMAL_DISTRIBUTION",
+                          "properties": {
+                            "Mean": "1000",
+                            "Variance": "200"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "ELSE_BRANCH",
+                      "children": [
+                        {
+                          "id": "WALK_TO_AREA",
+                          "properties": {
+                            "Area": "(2331, 3058, 0), (2336, 3060, 0)"
+                          }
+                        },
+                        {
+                          "id": "SLEEP_NORMAL_DISTRIBUTION",
+                          "properties": {
+                            "Mean": "500",
+                            "Variance": "200"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "ELSE_BRANCH",
+                  "children": [
+                    {
+                      "id": "SET_VARIABLE",
+                      "properties": {
+                        "Value": "hunt",
+                        "Variable name": "state"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "ELSE_BRANCH",
+              "children": [
+                {
+                  "id": "IF_LOCAL_PLAYER_MATCHES",
+                  "properties": {
+                    "Filter By": {
+                      "class": "Player",
+                      "logic": "NONE",
+                      "type": "NOT_MOVING",
+                      "operator": "EQUALS",
+                      "filters": [
+                        {
+                          "class": "Player",
+                          "logic": "AND",
+                          "type": "NOT_ANIMATING",
+                          "operator": "EQUALS"
+                        }
+                      ]
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "WALK_TO_AREA",
+                      "properties": {
+                        "Area": "var(drop_area)"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "IF_VARIABLE_IS",
+          "properties": {
+            "Filter Value By": {
+              "class": "Variable",
+              "logic": "NONE",
+              "type": "AS_TEXT",
+              "operator": "EQUALS",
+              "value": "hunt"
+            },
+            "Variable name": "state"
+          },
+          "children": [
+            {
+              "id": "IF_TIMER_IS_READY",
+              "properties": {
+                "Seconds": "30"
+              },
+              "children": [
+                {
+                  "id": "SET_VARIABLE",
+                  "properties": {
+                    "Value": "capture",
+                    "Variable name": "state"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "PAINT_ROOT",
+      "properties": {
+        "Hide standard paint": false
+      },
+      "children": [
+        {
+          "id": "DRAW_TEXT",
+          "properties": {
+            "Font": {
+              "class": "Font",
+              "value": "Inter V"
+            },
+            "Color": {
+              "class": "Color",
+              "value": -1
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

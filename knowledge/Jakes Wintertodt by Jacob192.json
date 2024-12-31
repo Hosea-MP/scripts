@@ -1,0 +1,4076 @@
+{
+  "sleep": "500",
+  "name": "Jake\u0027s Wintertodt",
+  "version": 1.0,
+  "metadata": {
+    "network-id": "106",
+    "network-downloaded-at": "1735647431766"
+  },
+  "actions": [
+    {
+      "id": "IF_FIRST_RUN",
+      "children": [
+        {
+          "id": "SET_VARIABLE_TO_USER_INPUT_OPTIONS",
+          "properties": {
+            "Message": "Enable fletching? (fletching increases points but decreases FM XP)",
+            "Options": "Yes, No",
+            "Variable name": "fletch?"
+          }
+        },
+        {
+          "id": "START_TIMER",
+          "properties": {
+            "Timer name": "logout",
+            "Time": "21000"
+          }
+        }
+      ]
+    },
+    {
+      "id": "CREATE_LABEL",
+      "properties": {
+        "Label": "Start"
+      },
+      "children": [
+        {
+          "id": "IF_DISTANCE_TO_TILE_IS",
+          "customDisplayName": "Walking to wintertodt...",
+          "properties": {
+            "distance": {
+              "class": "Number",
+              "operator": "GREATER_THAN",
+              "value": "15"
+            },
+            "Tile": "(1629, 3991, 0)"
+          },
+          "children": [
+            {
+              "id": "IF_RUN_IS_NOT_ENABLED",
+              "customDisplayName": "Walking to wintertodt...",
+              "children": [
+                {
+                  "id": "ENABLE_RUN",
+                  "customDisplayName": "Walking to wintertodt..."
+                }
+              ]
+            },
+            {
+              "id": "WALK_FULLY_TO_AREA",
+              "customDisplayName": "Walking to wintertodt...",
+              "properties": {
+                "Area": "(1633, 3990, 0), (1633, 3991, 0), (1633, 3992, 0), (1633, 3993, 0), (1634, 3993, 0), (1634, 3992, 0), (1634, 3991, 0), (1634, 3990, 0), (1632, 3990, 0), (1632, 3991, 0)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CREATE_LABEL",
+      "properties": {
+        "Label": "World"
+      },
+      "children": [
+        {
+          "id": "IF_WORLD_MATCHES",
+          "customDisplayName": "Going to wintertodt world...",
+          "properties": {
+            "Filter World By": {
+              "class": "World",
+              "logic": "NONE",
+              "type": "ID",
+              "operator": "NOT_IN_LIST",
+              "value": "307,309"
+            }
+          },
+          "children": [
+            {
+              "id": "HOP_TO_RANDOM_WORLD",
+              "customDisplayName": "Going to wintertodt world...",
+              "properties": {
+                "Filter World By": {
+                  "class": "World",
+                  "logic": "NONE",
+                  "type": "ID",
+                  "operator": "IS_IN_LIST",
+                  "value": "307,309"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CREATE_LABEL",
+      "properties": {
+        "Label": "Run"
+      },
+      "children": [
+        {
+          "id": "IF_RUN_IS_NOT_ENABLED",
+          "customDisplayName": "Running...",
+          "children": [
+            {
+              "id": "ENABLE_RUN",
+              "customDisplayName": "Running..."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CREATE_LABEL",
+      "properties": {
+        "Label": "Eat"
+      },
+      "children": [
+        {
+          "id": "IF_LOCAL_PLAYER_MATCHES",
+          "customDisplayName": "Healing...",
+          "properties": {
+            "Filter By": {
+              "class": "Player",
+              "logic": "NONE",
+              "type": "HEALTH",
+              "operator": "LESS_THAN",
+              "value": "60"
+            }
+          },
+          "children": [
+            {
+              "id": "INTERACT_WITH_INVENTORY_ITEM",
+              "customDisplayName": "Healing...",
+              "properties": {
+                "Filter Item By": {
+                  "class": "Item",
+                  "logic": "NONE",
+                  "type": "NAME",
+                  "operator": "EQUALS",
+                  "value": "Monkfish"
+                },
+                "Force left click": true,
+                "Action": "Eat"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "IF_VARIABLE_IS",
+      "properties": {
+        "Filter Value By": {
+          "class": "Variable",
+          "logic": "NONE",
+          "type": "AS_TEXT",
+          "operator": "EQUALS",
+          "value": "No"
+        },
+        "Variable name": "fletch?"
+      },
+      "children": [
+        {
+          "id": "CREATE_LABEL",
+          "properties": {
+            "Label": "Cut No Fletch"
+          },
+          "children": [
+            {
+              "id": "IF_INVENTORY_IS_NOT_FULL",
+              "children": [
+                {
+                  "id": "IF_INVENTORY_DOES_NOT_CONTAIN_ANY",
+                  "properties": {
+                    "Filter Item By": {
+                      "class": "Item",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Bruma kindling"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "IF_SPECIAL_ATTACK_ENERGY_IS",
+                      "properties": {
+                        "energy": {
+                          "class": "Number",
+                          "operator": "EQUALS",
+                          "value": "100"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "ENABLE_SPECIAL_ATTACK"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "GAME_OBJECT_INTERACT",
+                      "properties": {
+                        "Don\u0027t walk to object": true,
+                        "Action": "Chop",
+                        "Filter Object By": {
+                          "class": "GameObject",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "Bruma roots"
+                        },
+                        "Force left click": true
+                      },
+                      "children": [
+                        {
+                          "id": "IF_RANDOM_NUMBER_IS",
+                          "properties": {
+                            "number": {
+                              "class": "Number",
+                              "operator": "EQUALS",
+                              "value": "3"
+                            },
+                            "Minimum": "1",
+                            "Maximum": "5"
+                          },
+                          "children": [
+                            {
+                              "id": "MOVE_MOUSE_OFFSCREEN"
+                            }
+                          ]
+                        },
+                        {
+                          "id": "SLEEP_BETWEEN",
+                          "properties": {
+                            "Minimum": "1000",
+                            "Maximum": "2000"
+                          }
+                        },
+                        {
+                          "id": "IF_GAME_MESSAGE_RECEIVED_MATCHES",
+                          "properties": {
+                            "Filter Message": {
+                              "class": "Message",
+                              "logic": "NONE",
+                              "type": "TEXT",
+                              "operator": "EQUALS",
+                              "value": "no use"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "SLEEP_BETWEEN",
+                              "properties": {
+                                "Minimum": "5000",
+                                "Maximum": "10000"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "id": "IF_INVENTORY_IS_NOT_FULL",
+                          "children": [
+                            {
+                              "id": "SLEEP_UNTIL_ANY_INSIDE_IS_TRUE",
+                              "properties": {
+                                "Max time (seconds)": "30"
+                              },
+                              "children": [
+                                {
+                                  "id": "IF_INVENTORY_CONTAINS_ANY",
+                                  "properties": {
+                                    "Filter Item By": {
+                                      "class": "Item",
+                                      "logic": "NONE",
+                                      "type": "NAME",
+                                      "operator": "EQUALS",
+                                      "value": "Supply crate"
+                                    }
+                                  }
+                                },
+                                {
+                                  "id": "IF_LOCAL_PLAYER_MATCHES",
+                                  "properties": {
+                                    "Filter By": {
+                                      "class": "Player",
+                                      "logic": "NONE",
+                                      "type": "IS_HEALTH_BAR_VISIBLE",
+                                      "operator": "EQUALS"
+                                    }
+                                  }
+                                },
+                                {
+                                  "id": "IF_INVENTORY_IS_FULL"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_LOCAL_PLAYER_MATCHES",
+                      "properties": {
+                        "Filter By": {
+                          "class": "Player",
+                          "logic": "NONE",
+                          "type": "HEALTH",
+                          "operator": "LESS_THAN",
+                          "value": "60"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "INTERACT_WITH_INVENTORY_ITEM",
+                          "properties": {
+                            "Filter Item By": {
+                              "class": "Item",
+                              "logic": "NONE",
+                              "type": "NAME",
+                              "operator": "EQUALS",
+                              "value": "Monkfish"
+                            },
+                            "Force left click": true,
+                            "Action": "Eat"
+                          }
+                        },
+                        {
+                          "id": "CREATE_LABEL",
+                          "properties": {
+                            "Label": "No food AFK"
+                          },
+                          "children": [
+                            {
+                              "id": "IF_LOCAL_PLAYER_MATCHES",
+                              "properties": {
+                                "Filter By": {
+                                  "class": "Player",
+                                  "logic": "NONE",
+                                  "type": "HEALTH",
+                                  "operator": "LESS_THAN",
+                                  "value": "30"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "IF_INVENTORY_DOES_NOT_CONTAIN_ANY",
+                                  "properties": {
+                                    "Filter Item By": {
+                                      "class": "Item",
+                                      "logic": "NONE",
+                                      "type": "NAME",
+                                      "operator": "EQUALS",
+                                      "value": "Monkfish"
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "WALK_FULLY_TO_TILE",
+                                      "properties": {
+                                        "Tile": "(1630, 3972, 0)"
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "SLEEP_UNTIL_ANY_INSIDE_IS_TRUE",
+                                          "properties": {
+                                            "Max time (seconds)": "1000"
+                                          },
+                                          "children": [
+                                            {
+                                              "id": "IF_GAME_MESSAGE_RECEIVED_MATCHES",
+                                              "properties": {
+                                                "Filter Message": {
+                                                  "class": "Message",
+                                                  "logic": "NONE",
+                                                  "type": "TEXT",
+                                                  "operator": "CONTAINS",
+                                                  "value": "worthy of a gift from the citizens"
+                                                }
+                                              }
+                                            },
+                                            {
+                                              "id": "IF_INVENTORY_CONTAINS_ANY",
+                                              "properties": {
+                                                "Filter Item By": {
+                                                  "class": "Item",
+                                                  "logic": "NONE",
+                                                  "type": "NAME",
+                                                  "operator": "EQUALS",
+                                                  "value": "Supply crate"
+                                                }
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_INVENTORY_DOES_NOT_CONTAIN_ANY",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "Supply crate"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "IF_INVENTORY_IS_NOT_FULL",
+                          "children": [
+                            {
+                              "id": "GO_TO_LABEL",
+                              "properties": {
+                                "Label": "Cut No Fletch"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "CREATE_LABEL",
+          "properties": {
+            "Label": "Feed No Fletch"
+          },
+          "children": [
+            {
+              "id": "IF_INVENTORY_CONTAINS_ANY",
+              "properties": {
+                "Filter Item By": {
+                  "class": "Item",
+                  "logic": "NONE",
+                  "type": "NAME",
+                  "operator": "EQUALS",
+                  "value": "Bruma root"
+                }
+              },
+              "children": [
+                {
+                  "id": "GAME_OBJECT_INTERACT",
+                  "properties": {
+                    "Filter Object By": {
+                      "class": "GameObject",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Burning brazier"
+                    },
+                    "Force left click": true,
+                    "Action": "Feed"
+                  },
+                  "children": [
+                    {
+                      "id": "IF_RANDOM_NUMBER_IS",
+                      "properties": {
+                        "number": {
+                          "class": "Number",
+                          "operator": "EQUALS",
+                          "value": "3"
+                        },
+                        "Minimum": "1",
+                        "Maximum": "5"
+                      },
+                      "children": [
+                        {
+                          "id": "MOVE_MOUSE_OFFSCREEN"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "SLEEP_WHILE_ANIMATING"
+                    },
+                    {
+                      "id": "SLEEP_UNTIL_ANY_INSIDE_IS_TRUE",
+                      "properties": {
+                        "Max time (seconds)": "30"
+                      },
+                      "children": [
+                        {
+                          "id": "IF_LOCAL_PLAYER_MATCHES",
+                          "properties": {
+                            "Filter By": {
+                              "class": "Player",
+                              "logic": "NONE",
+                              "type": "IS_HEALTH_BAR_VISIBLE",
+                              "operator": "EQUALS"
+                            }
+                          }
+                        },
+                        {
+                          "id": "IF_INVENTORY_DOES_NOT_CONTAIN_ANY",
+                          "properties": {
+                            "Filter Item By": {
+                              "class": "Item",
+                              "logic": "NONE",
+                              "type": "NAME",
+                              "operator": "EQUALS",
+                              "value": "Bruma root"
+                            }
+                          }
+                        },
+                        {
+                          "id": "IF_GAME_MESSAGE_RECEIVED_MATCHES",
+                          "properties": {
+                            "Filter Message": {
+                              "class": "Message",
+                              "logic": "NONE",
+                              "type": "TEXT",
+                              "operator": "EQUALS",
+                              "value": "The brazier has gone out."
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_LOCAL_PLAYER_MATCHES",
+                      "properties": {
+                        "Filter By": {
+                          "class": "Player",
+                          "logic": "NONE",
+                          "type": "HEALTH",
+                          "operator": "LESS_THAN",
+                          "value": "60"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "INTERACT_WITH_INVENTORY_ITEM",
+                          "properties": {
+                            "Filter Item By": {
+                              "class": "Item",
+                              "logic": "NONE",
+                              "type": "NAME",
+                              "operator": "EQUALS",
+                              "value": "Monkfish"
+                            },
+                            "Force left click": true,
+                            "Action": "Eat"
+                          }
+                        },
+                        {
+                          "id": "CREATE_LABEL",
+                          "properties": {
+                            "Label": "No food AFK"
+                          },
+                          "children": [
+                            {
+                              "id": "IF_LOCAL_PLAYER_MATCHES",
+                              "properties": {
+                                "Filter By": {
+                                  "class": "Player",
+                                  "logic": "NONE",
+                                  "type": "HEALTH",
+                                  "operator": "LESS_THAN",
+                                  "value": "30"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "IF_INVENTORY_DOES_NOT_CONTAIN_ANY",
+                                  "properties": {
+                                    "Filter Item By": {
+                                      "class": "Item",
+                                      "logic": "NONE",
+                                      "type": "NAME",
+                                      "operator": "EQUALS",
+                                      "value": "Monkfish"
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "WALK_FULLY_TO_TILE",
+                                      "properties": {
+                                        "Tile": "(1630, 3972, 0)"
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "SLEEP_UNTIL_ANY_INSIDE_IS_TRUE",
+                                          "properties": {
+                                            "Max time (seconds)": "1000"
+                                          },
+                                          "children": [
+                                            {
+                                              "id": "IF_GAME_MESSAGE_RECEIVED_MATCHES",
+                                              "properties": {
+                                                "Filter Message": {
+                                                  "class": "Message",
+                                                  "logic": "NONE",
+                                                  "type": "TEXT",
+                                                  "operator": "CONTAINS",
+                                                  "value": "worthy of a gift from the citizens"
+                                                }
+                                              }
+                                            },
+                                            {
+                                              "id": "IF_INVENTORY_CONTAINS_ANY",
+                                              "properties": {
+                                                "Filter Item By": {
+                                                  "class": "Item",
+                                                  "logic": "NONE",
+                                                  "type": "NAME",
+                                                  "operator": "EQUALS",
+                                                  "value": "Supply crate"
+                                                }
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "CREATE_LABEL",
+                      "properties": {
+                        "Label": "Relocate"
+                      },
+                      "children": [
+                        {
+                          "id": "IF_DISTANCE_TO_TILE_IS",
+                          "properties": {
+                            "distance": {
+                              "class": "Number",
+                              "operator": "LESS_THAN",
+                              "value": "10"
+                            },
+                            "Tile": "(1621, 3993, 0)"
+                          },
+                          "children": [
+                            {
+                              "id": "IF_GAME_OBJECT_DOES_NOT_EXIST",
+                              "properties": {
+                                "Filter Object By": {
+                                  "class": "GameObject",
+                                  "logic": "NONE",
+                                  "type": "NAME",
+                                  "operator": "EQUALS",
+                                  "value": "Burning brazier",
+                                  "filters": [
+                                    {
+                                      "class": "GameObject",
+                                      "logic": "AND",
+                                      "type": "DISTANCE_TO_PLAYER",
+                                      "operator": "LESS_THAN",
+                                      "value": "10"
+                                    }
+                                  ]
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "SLEEP_UNTIL_ANY_INSIDE_IS_TRUE",
+                                  "properties": {
+                                    "Max time (seconds)": "10"
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "IF_INVENTORY_CONTAINS_ANY",
+                                      "properties": {
+                                        "Filter Item By": {
+                                          "class": "Item",
+                                          "logic": "NONE",
+                                          "type": "NAME",
+                                          "operator": "EQUALS",
+                                          "value": "Supply crate"
+                                        }
+                                      }
+                                    },
+                                    {
+                                      "id": "IF_LOCAL_PLAYER_MATCHES",
+                                      "properties": {
+                                        "Filter By": {
+                                          "class": "Player",
+                                          "logic": "NONE",
+                                          "type": "HEALTH",
+                                          "operator": "LESS_THAN",
+                                          "value": "60"
+                                        }
+                                      }
+                                    },
+                                    {
+                                      "id": "IF_GAME_OBJECT_EXISTS",
+                                      "properties": {
+                                        "Filter Object By": {
+                                          "class": "GameObject",
+                                          "logic": "NONE",
+                                          "type": "NAME",
+                                          "operator": "EQUALS",
+                                          "value": "Burning brazier",
+                                          "filters": [
+                                            {
+                                              "class": "GameObject",
+                                              "logic": "AND",
+                                              "type": "DISTANCE_TO_PLAYER",
+                                              "operator": "LESS_THAN",
+                                              "value": "10"
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "id": "IF_DISTANCE_TO_TILE_IS",
+                          "properties": {
+                            "distance": {
+                              "class": "Number",
+                              "operator": "LESS_THAN",
+                              "value": "10"
+                            },
+                            "Tile": "(1639, 3993, 0)"
+                          },
+                          "children": [
+                            {
+                              "id": "IF_GAME_OBJECT_DOES_NOT_EXIST",
+                              "properties": {
+                                "Filter Object By": {
+                                  "class": "GameObject",
+                                  "logic": "NONE",
+                                  "type": "NAME",
+                                  "operator": "EQUALS",
+                                  "value": "Burning brazier",
+                                  "filters": [
+                                    {
+                                      "class": "GameObject",
+                                      "logic": "AND",
+                                      "type": "DISTANCE_TO_PLAYER",
+                                      "operator": "LESS_THAN",
+                                      "value": "10"
+                                    }
+                                  ]
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "SLEEP_UNTIL_ANY_INSIDE_IS_TRUE",
+                                  "properties": {
+                                    "Max time (seconds)": "10"
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "IF_INVENTORY_CONTAINS_ANY",
+                                      "properties": {
+                                        "Filter Item By": {
+                                          "class": "Item",
+                                          "logic": "NONE",
+                                          "type": "NAME",
+                                          "operator": "EQUALS",
+                                          "value": "Supply crate"
+                                        }
+                                      }
+                                    },
+                                    {
+                                      "id": "IF_LOCAL_PLAYER_MATCHES",
+                                      "properties": {
+                                        "Filter By": {
+                                          "class": "Player",
+                                          "logic": "NONE",
+                                          "type": "HEALTH",
+                                          "operator": "LESS_THAN",
+                                          "value": "60"
+                                        }
+                                      }
+                                    },
+                                    {
+                                      "id": "IF_GAME_OBJECT_EXISTS",
+                                      "properties": {
+                                        "Filter Object By": {
+                                          "class": "GameObject",
+                                          "logic": "NONE",
+                                          "type": "NAME",
+                                          "operator": "EQUALS",
+                                          "value": "Burning brazier",
+                                          "filters": [
+                                            {
+                                              "class": "GameObject",
+                                              "logic": "AND",
+                                              "type": "DISTANCE_TO_PLAYER",
+                                              "operator": "LESS_THAN",
+                                              "value": "10"
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_INVENTORY_DOES_NOT_CONTAIN_ANY",
+                  "properties": {
+                    "Filter Item By": {
+                      "class": "Item",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Supply crate"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "IF_INVENTORY_CONTAINS_ANY",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "Bruma root"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "GO_TO_LABEL",
+                          "properties": {
+                            "Label": "Feed No Fletch"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "CREATE_LABEL",
+          "properties": {
+            "Label": "No food AFK No Fletch"
+          },
+          "children": [
+            {
+              "id": "IF_LOCAL_PLAYER_MATCHES",
+              "properties": {
+                "Filter By": {
+                  "class": "Player",
+                  "logic": "NONE",
+                  "type": "HEALTH",
+                  "operator": "LESS_THAN",
+                  "value": "30"
+                }
+              },
+              "children": [
+                {
+                  "id": "IF_INVENTORY_DOES_NOT_CONTAIN_ANY",
+                  "properties": {
+                    "Filter Item By": {
+                      "class": "Item",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Monkfish"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "WALK_FULLY_TO_TILE",
+                      "properties": {
+                        "Tile": "(1630, 3972, 0)"
+                      },
+                      "children": [
+                        {
+                          "id": "SLEEP_UNTIL_ANY_INSIDE_IS_TRUE",
+                          "properties": {
+                            "Max time (seconds)": "1000"
+                          },
+                          "children": [
+                            {
+                              "id": "IF_GAME_MESSAGE_RECEIVED_MATCHES",
+                              "properties": {
+                                "Filter Message": {
+                                  "class": "Message",
+                                  "logic": "NONE",
+                                  "type": "TEXT",
+                                  "operator": "CONTAINS",
+                                  "value": "worthy of a gift from the citizens"
+                                }
+                              }
+                            },
+                            {
+                              "id": "IF_INVENTORY_CONTAINS_ANY",
+                              "properties": {
+                                "Filter Item By": {
+                                  "class": "Item",
+                                  "logic": "NONE",
+                                  "type": "NAME",
+                                  "operator": "EQUALS",
+                                  "value": "Supply crate"
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "CREATE_LABEL",
+          "properties": {
+            "Label": "Bank No Fletch"
+          },
+          "children": [
+            {
+              "id": "IF_GAME_MESSAGE_RECEIVED_MATCHES",
+              "properties": {
+                "Filter Message": {
+                  "class": "Message",
+                  "logic": "NONE",
+                  "type": "TEXT",
+                  "operator": "CONTAINS",
+                  "value": "worthy of a gift from the citizens"
+                }
+              },
+              "children": [
+                {
+                  "id": "IF_RANDOM_NUMBER_IS",
+                  "properties": {
+                    "number": {
+                      "class": "Number",
+                      "operator": "GREATER_THAN_OR_EQUALS",
+                      "value": "3"
+                    },
+                    "Minimum": "1",
+                    "Maximum": "4"
+                  },
+                  "children": [
+                    {
+                      "id": "SLEEP_BETWEEN",
+                      "properties": {
+                        "Minimum": "5000",
+                        "Maximum": "15000"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "ADD_TO_VARIABLE",
+                  "properties": {
+                    "Variable name": "games",
+                    "By": "1"
+                  }
+                },
+                {
+                  "id": "IF_TAB_IS_NOT_OPEN",
+                  "properties": {
+                    "Tab": {
+                      "class": "Tab",
+                      "value": "INVENTORY"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "OPEN_TAB",
+                      "properties": {
+                        "Tab": {
+                          "class": "Tab",
+                          "value": "INVENTORY"
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "INTERACT_WITH_INVENTORY_ITEM",
+                  "properties": {
+                    "Filter Item By": {
+                      "class": "Item",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Supply crate"
+                    },
+                    "Force left click": true,
+                    "Action": "Open"
+                  }
+                },
+                {
+                  "id": "WALK_FULLY_TO_NEAREST_BANK",
+                  "children": [
+                    {
+                      "id": "SLEEP_WHILE_MOVING"
+                    }
+                  ]
+                },
+                {
+                  "id": "OPEN_BANK",
+                  "children": [
+                    {
+                      "id": "SLEEP_WHILE_MOVING"
+                    }
+                  ]
+                },
+                {
+                  "id": "BANK_DEPOSIT_ALL_EXCEPT",
+                  "properties": {
+                    "Filter Item By": {
+                      "class": "Item",
+                      "logic": "NONE",
+                      "type": "ID",
+                      "operator": "IS_IN_LIST",
+                      "value": "946, 7946, 6739, 2347, 590"
+                    }
+                  }
+                },
+                {
+                  "id": "WITHDRAW_ITEM_TO_SET_AMOUNT",
+                  "properties": {
+                    "Filter Item By": {
+                      "class": "Item",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Monkfish"
+                    },
+                    "Deposit excess": true,
+                    "Amount": "6"
+                  }
+                },
+                {
+                  "id": "CLOSE_BANK"
+                },
+                {
+                  "id": "IF_RANDOM_NUMBER_IS",
+                  "properties": {
+                    "number": {
+                      "class": "Number",
+                      "operator": "EQUALS",
+                      "value": "3"
+                    },
+                    "Minimum": "1",
+                    "Maximum": "4"
+                  },
+                  "children": [
+                    {
+                      "id": "SLEEP_BETWEEN",
+                      "properties": {
+                        "Minimum": "5000",
+                        "Maximum": "15000"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_BANK_DOES_NOT_CONTAIN",
+                  "properties": {
+                    "Filter Item By": {
+                      "class": "Item",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Monkfish"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "STOP_SCRIPT"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "IF_INVENTORY_CONTAINS_ANY",
+              "properties": {
+                "Filter Item By": {
+                  "class": "Item",
+                  "logic": "NONE",
+                  "type": "NAME",
+                  "operator": "EQUALS",
+                  "value": "Supply crate"
+                }
+              },
+              "children": [
+                {
+                  "id": "IF_RANDOM_NUMBER_IS",
+                  "properties": {
+                    "number": {
+                      "class": "Number",
+                      "operator": "GREATER_THAN_OR_EQUALS",
+                      "value": "3"
+                    },
+                    "Minimum": "1",
+                    "Maximum": "4"
+                  },
+                  "children": [
+                    {
+                      "id": "SLEEP_BETWEEN",
+                      "properties": {
+                        "Minimum": "5000",
+                        "Maximum": "15000"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "ADD_TO_VARIABLE",
+                  "properties": {
+                    "Variable name": "games",
+                    "By": "1"
+                  }
+                },
+                {
+                  "id": "ADD_TO_VARIABLE",
+                  "properties": {
+                    "Variable name": "crate",
+                    "By": "1"
+                  }
+                },
+                {
+                  "id": "IF_TAB_IS_NOT_OPEN",
+                  "properties": {
+                    "Tab": {
+                      "class": "Tab",
+                      "value": "INVENTORY"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "OPEN_TAB",
+                      "properties": {
+                        "Tab": {
+                          "class": "Tab",
+                          "value": "INVENTORY"
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "INTERACT_WITH_INVENTORY_ITEM",
+                  "properties": {
+                    "Filter Item By": {
+                      "class": "Item",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Supply crate"
+                    },
+                    "Force left click": true,
+                    "Action": "Open"
+                  },
+                  "children": [
+                    {
+                      "id": "SLEEP_BETWEEN",
+                      "properties": {
+                        "Minimum": "300",
+                        "Maximum": "500"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "WALK_FULLY_TO_NEAREST_BANK",
+                  "children": [
+                    {
+                      "id": "SLEEP_WHILE_MOVING"
+                    }
+                  ]
+                },
+                {
+                  "id": "INTERACT_WITH_INVENTORY_ITEM",
+                  "properties": {
+                    "Filter Item By": {
+                      "class": "Item",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Supply crate"
+                    },
+                    "Force left click": true,
+                    "Action": "Open"
+                  },
+                  "children": [
+                    {
+                      "id": "SLEEP_BETWEEN",
+                      "properties": {
+                        "Minimum": "300",
+                        "Maximum": "500"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "OPEN_BANK",
+                  "children": [
+                    {
+                      "id": "SLEEP_WHILE_MOVING"
+                    }
+                  ]
+                },
+                {
+                  "id": "BANK_DEPOSIT_ALL_EXCEPT",
+                  "properties": {
+                    "Filter Item By": {
+                      "class": "Item",
+                      "logic": "NONE",
+                      "type": "ID",
+                      "operator": "IS_IN_LIST",
+                      "value": "946, 7946, 6739, 2347, 590"
+                    }
+                  }
+                },
+                {
+                  "id": "WITHDRAW_ITEM_TO_SET_AMOUNT",
+                  "properties": {
+                    "Filter Item By": {
+                      "class": "Item",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Monkfish"
+                    },
+                    "Deposit excess": true,
+                    "Amount": "6"
+                  }
+                },
+                {
+                  "id": "CLOSE_BANK"
+                },
+                {
+                  "id": "IF_RANDOM_NUMBER_IS",
+                  "properties": {
+                    "number": {
+                      "class": "Number",
+                      "operator": "EQUALS",
+                      "value": "3"
+                    },
+                    "Minimum": "1",
+                    "Maximum": "4"
+                  },
+                  "children": [
+                    {
+                      "id": "SLEEP_BETWEEN",
+                      "properties": {
+                        "Minimum": "5000",
+                        "Maximum": "15000"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_BANK_DOES_NOT_CONTAIN",
+                  "properties": {
+                    "Filter Item By": {
+                      "class": "Item",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Monkfish"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "STOP_SCRIPT"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "IF_VARIABLE_IS",
+      "properties": {
+        "Filter Value By": {
+          "class": "Variable",
+          "logic": "NONE",
+          "type": "AS_TEXT",
+          "operator": "EQUALS",
+          "value": "Yes"
+        },
+        "Variable name": "fletch?"
+      },
+      "children": [
+        {
+          "id": "CREATE_LABEL",
+          "properties": {
+            "Label": "Cut"
+          },
+          "children": [
+            {
+              "id": "IF_VARBIT_MATCHES",
+              "customDisplayName": "Waiting for game to start...",
+              "properties": {
+                "value": {
+                  "class": "Number",
+                  "operator": "GREATER_THAN",
+                  "value": "0"
+                },
+                "Varbit": "7980"
+              },
+              "children": [
+                {
+                  "id": "SLEEP_UNTIL_ANY_INSIDE_IS_TRUE",
+                  "customDisplayName": "Waiting for game to start...",
+                  "properties": {
+                    "Max time (seconds)": "60"
+                  },
+                  "children": [
+                    {
+                      "id": "IF_VARBIT_MATCHES",
+                      "customDisplayName": "Waiting for game to start...",
+                      "properties": {
+                        "value": {
+                          "class": "Number",
+                          "operator": "EQUALS",
+                          "value": "0"
+                        },
+                        "Varbit": "7980"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "IF_INVENTORY_IS_NOT_FULL",
+              "customDisplayName": "Chopping roots...",
+              "children": [
+                {
+                  "id": "IF_INVENTORY_DOES_NOT_CONTAIN_ANY",
+                  "customDisplayName": "Chopping roots...",
+                  "properties": {
+                    "Filter Item By": {
+                      "class": "Item",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Bruma kindling"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "IF_SPECIAL_ATTACK_ENERGY_IS",
+                      "customDisplayName": "Enabling special...",
+                      "properties": {
+                        "energy": {
+                          "class": "Number",
+                          "operator": "EQUALS",
+                          "value": "100"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "ENABLE_SPECIAL_ATTACK",
+                          "customDisplayName": "Enabling special..."
+                        }
+                      ]
+                    },
+                    {
+                      "id": "ROTATE_TO_GAME_OBJECT",
+                      "customDisplayName": "Looking at roots...",
+                      "properties": {
+                        "Filter Object By": {
+                          "class": "GameObject",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "Bruma roots"
+                        }
+                      }
+                    },
+                    {
+                      "id": "IF_GAME_OBJECT_DOES_NOT_EXIST",
+                      "properties": {
+                        "Filter Object By": {
+                          "class": "GameObject",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "Bruma roots",
+                          "filters": [
+                            {
+                              "class": "GameObject",
+                              "logic": "AND",
+                              "type": "DISTANCE_TO_PLAYER",
+                              "operator": "LESS_THAN",
+                              "value": "20"
+                            }
+                          ]
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "GO_TO_LABEL",
+                          "properties": {
+                            "Label": "Start"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "GAME_OBJECT_INTERACT",
+                      "customDisplayName": "Chopping roots...",
+                      "properties": {
+                        "Don\u0027t walk to object": true,
+                        "Action": "Chop",
+                        "Filter Object By": {
+                          "class": "GameObject",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "Bruma roots"
+                        },
+                        "Force left click": true
+                      },
+                      "children": [
+                        {
+                          "id": "IF_RANDOM_NUMBER_IS",
+                          "customDisplayName": "AFKing...",
+                          "properties": {
+                            "number": {
+                              "class": "Number",
+                              "operator": "EQUALS",
+                              "value": "3"
+                            },
+                            "Minimum": "1",
+                            "Maximum": "5"
+                          },
+                          "children": [
+                            {
+                              "id": "MOVE_MOUSE_OFFSCREEN",
+                              "customDisplayName": "AFKing..."
+                            }
+                          ]
+                        },
+                        {
+                          "id": "SLEEP_BETWEEN",
+                          "customDisplayName": "Chopping roots...",
+                          "properties": {
+                            "Minimum": "1000",
+                            "Maximum": "2000"
+                          }
+                        },
+                        {
+                          "id": "IF_GAME_MESSAGE_RECEIVED_MATCHES",
+                          "customDisplayName": "Waiting for game to start...",
+                          "properties": {
+                            "Filter Message": {
+                              "class": "Message",
+                              "logic": "NONE",
+                              "type": "TEXT",
+                              "operator": "EQUALS",
+                              "value": "no use"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "SLEEP_BETWEEN",
+                              "customDisplayName": "Waiting for game to start...",
+                              "properties": {
+                                "Minimum": "5000",
+                                "Maximum": "10000"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "id": "IF_INVENTORY_COUNT",
+                          "customDisplayName": "Chopping roots...",
+                          "properties": {
+                            "count": {
+                              "class": "Number",
+                              "operator": "LESS_THAN_OR_EQUALS",
+                              "value": "19"
+                            },
+                            "Filter Item By": {
+                              "class": "Item",
+                              "logic": "NONE",
+                              "type": "NAME",
+                              "operator": "EQUALS",
+                              "value": "Bruma root"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "SLEEP_UNTIL_ANY_INSIDE_IS_TRUE",
+                              "customDisplayName": "Chopping roots...",
+                              "properties": {
+                                "Max time (seconds)": "30"
+                              },
+                              "children": [
+                                {
+                                  "id": "IF_INVENTORY_CONTAINS_ANY",
+                                  "customDisplayName": "Chopping roots...",
+                                  "properties": {
+                                    "Filter Item By": {
+                                      "class": "Item",
+                                      "logic": "NONE",
+                                      "type": "NAME",
+                                      "operator": "EQUALS",
+                                      "value": "Supply crate"
+                                    }
+                                  }
+                                },
+                                {
+                                  "id": "IF_LOCAL_PLAYER_MATCHES",
+                                  "customDisplayName": "Chopping roots...",
+                                  "properties": {
+                                    "Filter By": {
+                                      "class": "Player",
+                                      "logic": "NONE",
+                                      "type": "IS_HEALTH_BAR_VISIBLE",
+                                      "operator": "EQUALS"
+                                    }
+                                  }
+                                },
+                                {
+                                  "id": "IF_INVENTORY_IS_FULL",
+                                  "customDisplayName": "Chopping roots..."
+                                },
+                                {
+                                  "id": "IF_INVENTORY_COUNT",
+                                  "customDisplayName": "Chopping roots...",
+                                  "properties": {
+                                    "count": {
+                                      "class": "Number",
+                                      "operator": "GREATER_THAN",
+                                      "value": "19"
+                                    },
+                                    "Filter Item By": {
+                                      "class": "Item",
+                                      "logic": "NONE",
+                                      "type": "NAME",
+                                      "operator": "EQUALS",
+                                      "value": "Bruma root"
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_LOCAL_PLAYER_MATCHES",
+                      "customDisplayName": "Healing...",
+                      "properties": {
+                        "Filter By": {
+                          "class": "Player",
+                          "logic": "NONE",
+                          "type": "HEALTH",
+                          "operator": "LESS_THAN",
+                          "value": "60"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "INTERACT_WITH_INVENTORY_ITEM",
+                          "customDisplayName": "Healing...",
+                          "properties": {
+                            "Filter Item By": {
+                              "class": "Item",
+                              "logic": "NONE",
+                              "type": "NAME",
+                              "operator": "EQUALS",
+                              "value": "Monkfish"
+                            },
+                            "Force left click": true,
+                            "Action": "Eat"
+                          }
+                        },
+                        {
+                          "id": "CREATE_LABEL",
+                          "properties": {
+                            "Label": "No food AFK"
+                          },
+                          "children": [
+                            {
+                              "id": "IF_LOCAL_PLAYER_MATCHES",
+                              "customDisplayName": "No food...",
+                              "properties": {
+                                "Filter By": {
+                                  "class": "Player",
+                                  "logic": "NONE",
+                                  "type": "HEALTH",
+                                  "operator": "LESS_THAN",
+                                  "value": "30"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "IF_INVENTORY_DOES_NOT_CONTAIN_ANY",
+                                  "customDisplayName": "No food...",
+                                  "properties": {
+                                    "Filter Item By": {
+                                      "class": "Item",
+                                      "logic": "NONE",
+                                      "type": "NAME",
+                                      "operator": "EQUALS",
+                                      "value": "Monkfish"
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "WALK_FULLY_TO_TILE",
+                                      "customDisplayName": "No food, AFKing...",
+                                      "properties": {
+                                        "Tile": "(1630, 3972, 0)"
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "SLEEP_UNTIL_ANY_INSIDE_IS_TRUE",
+                                          "customDisplayName": "No food, AFKing...",
+                                          "properties": {
+                                            "Max time (seconds)": "1000"
+                                          },
+                                          "children": [
+                                            {
+                                              "id": "IF_GAME_MESSAGE_RECEIVED_MATCHES",
+                                              "customDisplayName": "No food, AFKing...",
+                                              "properties": {
+                                                "Filter Message": {
+                                                  "class": "Message",
+                                                  "logic": "NONE",
+                                                  "type": "TEXT",
+                                                  "operator": "CONTAINS",
+                                                  "value": "worthy of a gift from the citizens"
+                                                }
+                                              }
+                                            },
+                                            {
+                                              "id": "IF_INVENTORY_CONTAINS_ANY",
+                                              "customDisplayName": "No food, AFKing...",
+                                              "properties": {
+                                                "Filter Item By": {
+                                                  "class": "Item",
+                                                  "logic": "NONE",
+                                                  "type": "NAME",
+                                                  "operator": "EQUALS",
+                                                  "value": "Supply crate"
+                                                }
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_INVENTORY_DOES_NOT_CONTAIN_ANY",
+                      "customDisplayName": "Chopping roots...",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "Supply crate"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "IF_INVENTORY_COUNT",
+                          "customDisplayName": "Chopping roots...",
+                          "properties": {
+                            "count": {
+                              "class": "Number",
+                              "operator": "LESS_THAN_OR_EQUALS",
+                              "value": "19"
+                            },
+                            "Filter Item By": {
+                              "class": "Item",
+                              "logic": "NONE",
+                              "type": "NAME",
+                              "operator": "EQUALS",
+                              "value": "Bruma root"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "IF_INVENTORY_IS_NOT_FULL",
+                              "customDisplayName": "Chopping roots...",
+                              "children": [
+                                {
+                                  "id": "GO_TO_LABEL",
+                                  "properties": {
+                                    "Label": "Cut"
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "CREATE_LABEL",
+          "properties": {
+            "Label": "Fletch"
+          },
+          "children": [
+            {
+              "id": "IF_INVENTORY_COUNT",
+              "customDisplayName": "Slicing roots...",
+              "properties": {
+                "count": {
+                  "class": "Number",
+                  "operator": "GREATER_THAN_OR_EQUALS",
+                  "value": "1"
+                },
+                "Filter Item By": {
+                  "class": "Item",
+                  "logic": "NONE",
+                  "type": "NAME",
+                  "operator": "EQUALS",
+                  "value": "Bruma root"
+                }
+              },
+              "children": [
+                {
+                  "id": "COMBINE",
+                  "customDisplayName": "Slicing roots...",
+                  "properties": {
+                    "Filter Second By": {
+                      "class": "Item",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Bruma root"
+                    },
+                    "Filter First By": {
+                      "class": "Item",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Knife"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "SLEEP_BETWEEN",
+                      "customDisplayName": "Slicing roots...",
+                      "properties": {
+                        "Minimum": "200",
+                        "Maximum": "700"
+                      }
+                    },
+                    {
+                      "id": "IF_RANDOM_NUMBER_IS",
+                      "customDisplayName": "AFKing...",
+                      "properties": {
+                        "number": {
+                          "class": "Number",
+                          "operator": "EQUALS",
+                          "value": "3"
+                        },
+                        "Minimum": "1",
+                        "Maximum": "5"
+                      },
+                      "children": [
+                        {
+                          "id": "MOVE_MOUSE_OFFSCREEN",
+                          "customDisplayName": "AFKing..."
+                        }
+                      ]
+                    },
+                    {
+                      "id": "SLEEP_WHILE_ANIMATING",
+                      "customDisplayName": "Slicing roots...",
+                      "properties": {
+                        "Stopped for (seconds)": ""
+                      }
+                    },
+                    {
+                      "id": "IF_LOCAL_PLAYER_MATCHES",
+                      "customDisplayName": "Healing...",
+                      "properties": {
+                        "Filter By": {
+                          "class": "Player",
+                          "logic": "NONE",
+                          "type": "HEALTH",
+                          "operator": "LESS_THAN",
+                          "value": "60"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "INTERACT_WITH_INVENTORY_ITEM",
+                          "customDisplayName": "Healing...",
+                          "properties": {
+                            "Filter Item By": {
+                              "class": "Item",
+                              "logic": "NONE",
+                              "type": "NAME",
+                              "operator": "EQUALS",
+                              "value": "Monkfish"
+                            },
+                            "Force left click": true,
+                            "Action": "Eat"
+                          }
+                        },
+                        {
+                          "id": "CREATE_LABEL",
+                          "properties": {
+                            "Label": "No food AFK"
+                          },
+                          "children": [
+                            {
+                              "id": "IF_LOCAL_PLAYER_MATCHES",
+                              "customDisplayName": "No food...",
+                              "properties": {
+                                "Filter By": {
+                                  "class": "Player",
+                                  "logic": "NONE",
+                                  "type": "HEALTH",
+                                  "operator": "LESS_THAN",
+                                  "value": "30"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "IF_INVENTORY_DOES_NOT_CONTAIN_ANY",
+                                  "customDisplayName": "No food, AFKing...",
+                                  "properties": {
+                                    "Filter Item By": {
+                                      "class": "Item",
+                                      "logic": "NONE",
+                                      "type": "NAME",
+                                      "operator": "EQUALS",
+                                      "value": "Monkfish"
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "WALK_FULLY_TO_TILE",
+                                      "customDisplayName": "No food, AFKing...",
+                                      "properties": {
+                                        "Tile": "(1630, 3972, 0)"
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "SLEEP_UNTIL_ANY_INSIDE_IS_TRUE",
+                                          "customDisplayName": "No food, AFKing...",
+                                          "properties": {
+                                            "Max time (seconds)": "1000"
+                                          },
+                                          "children": [
+                                            {
+                                              "id": "IF_GAME_MESSAGE_RECEIVED_MATCHES",
+                                              "customDisplayName": "No food, AFKing...",
+                                              "properties": {
+                                                "Filter Message": {
+                                                  "class": "Message",
+                                                  "logic": "NONE",
+                                                  "type": "TEXT",
+                                                  "operator": "CONTAINS",
+                                                  "value": "worthy of a gift from the citizens"
+                                                }
+                                              }
+                                            },
+                                            {
+                                              "id": "IF_INVENTORY_CONTAINS_ANY",
+                                              "customDisplayName": "No food, AFKing...",
+                                              "properties": {
+                                                "Filter Item By": {
+                                                  "class": "Item",
+                                                  "logic": "NONE",
+                                                  "type": "NAME",
+                                                  "operator": "EQUALS",
+                                                  "value": "Supply crate"
+                                                }
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_INVENTORY_CONTAINS_ANY",
+                      "customDisplayName": "Slicing roots...",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "Bruma root"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "GO_TO_LABEL",
+                          "properties": {
+                            "Label": "Fletch"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "CREATE_LABEL",
+          "properties": {
+            "Label": "Feed"
+          },
+          "children": [
+            {
+              "id": "IF_INVENTORY_CONTAINS_ANY",
+              "customDisplayName": "Fueling fire...",
+              "properties": {
+                "Filter Item By": {
+                  "class": "Item",
+                  "logic": "NONE",
+                  "type": "NAME",
+                  "operator": "EQUALS",
+                  "value": "Bruma kindling"
+                }
+              },
+              "children": [
+                {
+                  "id": "IF_INVENTORY_DOES_NOT_CONTAIN_ANY",
+                  "customDisplayName": "Fueling fire...",
+                  "properties": {
+                    "Filter Item By": {
+                      "class": "Item",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Bruma root"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "IF_INVENTORY_ITEM_IS_SELECTED",
+                      "children": [
+                        {
+                          "id": "INVENTORY_DESELECT",
+                          "customDisplayName": "Deselecting item..."
+                        }
+                      ]
+                    },
+                    {
+                      "id": "GAME_OBJECT_INTERACT",
+                      "customDisplayName": "Fueling fire...",
+                      "properties": {
+                        "Filter Object By": {
+                          "class": "GameObject",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "Burning brazier"
+                        },
+                        "Force left click": true,
+                        "Action": "Feed"
+                      },
+                      "children": [
+                        {
+                          "id": "IF_RANDOM_NUMBER_IS",
+                          "customDisplayName": "AFKing...",
+                          "properties": {
+                            "number": {
+                              "class": "Number",
+                              "operator": "EQUALS",
+                              "value": "3"
+                            },
+                            "Minimum": "1",
+                            "Maximum": "5"
+                          },
+                          "children": [
+                            {
+                              "id": "MOVE_MOUSE_OFFSCREEN",
+                              "customDisplayName": "AFKing..."
+                            }
+                          ]
+                        },
+                        {
+                          "id": "SLEEP_WHILE_ANIMATING",
+                          "customDisplayName": "Fueling fire..."
+                        },
+                        {
+                          "id": "SLEEP_UNTIL_ANY_INSIDE_IS_TRUE",
+                          "customDisplayName": "Fueling fire...",
+                          "properties": {
+                            "Max time (seconds)": "30"
+                          },
+                          "children": [
+                            {
+                              "id": "IF_LOCAL_PLAYER_MATCHES",
+                              "customDisplayName": "Fueling fire...",
+                              "properties": {
+                                "Filter By": {
+                                  "class": "Player",
+                                  "logic": "NONE",
+                                  "type": "IS_HEALTH_BAR_VISIBLE",
+                                  "operator": "EQUALS"
+                                }
+                              }
+                            },
+                            {
+                              "id": "IF_INVENTORY_DOES_NOT_CONTAIN_ANY",
+                              "customDisplayName": "Fueling fire...",
+                              "properties": {
+                                "Filter Item By": {
+                                  "class": "Item",
+                                  "logic": "NONE",
+                                  "type": "NAME",
+                                  "operator": "EQUALS",
+                                  "value": "Bruma kindling"
+                                }
+                              }
+                            },
+                            {
+                              "id": "IF_GAME_MESSAGE_RECEIVED_MATCHES",
+                              "customDisplayName": "Fueling fire...",
+                              "properties": {
+                                "Filter Message": {
+                                  "class": "Message",
+                                  "logic": "NONE",
+                                  "type": "TEXT",
+                                  "operator": "EQUALS",
+                                  "value": "The brazier has gone out."
+                                }
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "id": "IF_LOCAL_PLAYER_MATCHES",
+                          "customDisplayName": "Healing...",
+                          "properties": {
+                            "Filter By": {
+                              "class": "Player",
+                              "logic": "NONE",
+                              "type": "HEALTH",
+                              "operator": "LESS_THAN",
+                              "value": "60"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "INTERACT_WITH_INVENTORY_ITEM",
+                              "customDisplayName": "Healing...",
+                              "properties": {
+                                "Filter Item By": {
+                                  "class": "Item",
+                                  "logic": "NONE",
+                                  "type": "NAME",
+                                  "operator": "EQUALS",
+                                  "value": "Monkfish"
+                                },
+                                "Force left click": true,
+                                "Action": "Eat"
+                              }
+                            },
+                            {
+                              "id": "CREATE_LABEL",
+                              "properties": {
+                                "Label": "No food AFK"
+                              },
+                              "children": [
+                                {
+                                  "id": "IF_LOCAL_PLAYER_MATCHES",
+                                  "customDisplayName": "No food, AFKing...",
+                                  "properties": {
+                                    "Filter By": {
+                                      "class": "Player",
+                                      "logic": "NONE",
+                                      "type": "HEALTH",
+                                      "operator": "LESS_THAN",
+                                      "value": "30"
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "IF_INVENTORY_DOES_NOT_CONTAIN_ANY",
+                                      "customDisplayName": "No food, AFKing...",
+                                      "properties": {
+                                        "Filter Item By": {
+                                          "class": "Item",
+                                          "logic": "NONE",
+                                          "type": "NAME",
+                                          "operator": "EQUALS",
+                                          "value": "Monkfish"
+                                        }
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "WALK_FULLY_TO_TILE",
+                                          "customDisplayName": "No food, AFKing...",
+                                          "properties": {
+                                            "Tile": "(1630, 3972, 0)"
+                                          },
+                                          "children": [
+                                            {
+                                              "id": "SLEEP_UNTIL_ANY_INSIDE_IS_TRUE",
+                                              "customDisplayName": "No food, AFKing...",
+                                              "properties": {
+                                                "Max time (seconds)": "1000"
+                                              },
+                                              "children": [
+                                                {
+                                                  "id": "IF_GAME_MESSAGE_RECEIVED_MATCHES",
+                                                  "customDisplayName": "No food, AFKing...",
+                                                  "properties": {
+                                                    "Filter Message": {
+                                                      "class": "Message",
+                                                      "logic": "NONE",
+                                                      "type": "TEXT",
+                                                      "operator": "CONTAINS",
+                                                      "value": "worthy of a gift from the citizens"
+                                                    }
+                                                  }
+                                                },
+                                                {
+                                                  "id": "IF_INVENTORY_CONTAINS_ANY",
+                                                  "customDisplayName": "No food, AFKing...",
+                                                  "properties": {
+                                                    "Filter Item By": {
+                                                      "class": "Item",
+                                                      "logic": "NONE",
+                                                      "type": "NAME",
+                                                      "operator": "EQUALS",
+                                                      "value": "Supply crate"
+                                                    }
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "CREATE_LABEL",
+                      "properties": {
+                        "Label": "Relocate"
+                      },
+                      "children": [
+                        {
+                          "id": "IF_DISTANCE_TO_TILE_IS",
+                          "customDisplayName": "Waiting for someone to fix brazier...",
+                          "properties": {
+                            "distance": {
+                              "class": "Number",
+                              "operator": "LESS_THAN",
+                              "value": "10"
+                            },
+                            "Tile": "(1621, 3993, 0)"
+                          },
+                          "children": [
+                            {
+                              "id": "IF_GAME_OBJECT_DOES_NOT_EXIST",
+                              "customDisplayName": "Waiting for someone to fix brazier...",
+                              "properties": {
+                                "Filter Object By": {
+                                  "class": "GameObject",
+                                  "logic": "NONE",
+                                  "type": "NAME",
+                                  "operator": "EQUALS",
+                                  "value": "Burning brazier",
+                                  "filters": [
+                                    {
+                                      "class": "GameObject",
+                                      "logic": "AND",
+                                      "type": "DISTANCE_TO_PLAYER",
+                                      "operator": "LESS_THAN",
+                                      "value": "10"
+                                    }
+                                  ]
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "SLEEP_UNTIL_ANY_INSIDE_IS_TRUE",
+                                  "customDisplayName": "Waiting for someone to fix brazier...",
+                                  "properties": {
+                                    "Max time (seconds)": "10"
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "IF_INVENTORY_CONTAINS_ANY",
+                                      "customDisplayName": "Waiting for someone to fix brazier...",
+                                      "properties": {
+                                        "Filter Item By": {
+                                          "class": "Item",
+                                          "logic": "NONE",
+                                          "type": "NAME",
+                                          "operator": "EQUALS",
+                                          "value": "Supply crate"
+                                        }
+                                      }
+                                    },
+                                    {
+                                      "id": "IF_LOCAL_PLAYER_MATCHES",
+                                      "customDisplayName": "Waiting for someone to fix brazier...",
+                                      "properties": {
+                                        "Filter By": {
+                                          "class": "Player",
+                                          "logic": "NONE",
+                                          "type": "HEALTH",
+                                          "operator": "LESS_THAN",
+                                          "value": "60"
+                                        }
+                                      }
+                                    },
+                                    {
+                                      "id": "IF_GAME_OBJECT_EXISTS",
+                                      "customDisplayName": "Waiting for someone to fix brazier...",
+                                      "properties": {
+                                        "Filter Object By": {
+                                          "class": "GameObject",
+                                          "logic": "NONE",
+                                          "type": "NAME",
+                                          "operator": "EQUALS",
+                                          "value": "Burning brazier",
+                                          "filters": [
+                                            {
+                                              "class": "GameObject",
+                                              "logic": "AND",
+                                              "type": "DISTANCE_TO_PLAYER",
+                                              "operator": "LESS_THAN",
+                                              "value": "10"
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "id": "IF_DISTANCE_TO_TILE_IS",
+                          "customDisplayName": "Waiting for someone to fix brazier...",
+                          "properties": {
+                            "distance": {
+                              "class": "Number",
+                              "operator": "LESS_THAN",
+                              "value": "10"
+                            },
+                            "Tile": "(1639, 3993, 0)"
+                          },
+                          "children": [
+                            {
+                              "id": "IF_GAME_OBJECT_DOES_NOT_EXIST",
+                              "customDisplayName": "Waiting for someone to fix brazier...",
+                              "properties": {
+                                "Filter Object By": {
+                                  "class": "GameObject",
+                                  "logic": "NONE",
+                                  "type": "NAME",
+                                  "operator": "EQUALS",
+                                  "value": "Burning brazier",
+                                  "filters": [
+                                    {
+                                      "class": "GameObject",
+                                      "logic": "AND",
+                                      "type": "DISTANCE_TO_PLAYER",
+                                      "operator": "LESS_THAN",
+                                      "value": "10"
+                                    }
+                                  ]
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "SLEEP_UNTIL_ANY_INSIDE_IS_TRUE",
+                                  "customDisplayName": "Waiting for someone to fix brazier...",
+                                  "properties": {
+                                    "Max time (seconds)": "10"
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "IF_INVENTORY_CONTAINS_ANY",
+                                      "customDisplayName": "Waiting for someone to fix brazier...",
+                                      "properties": {
+                                        "Filter Item By": {
+                                          "class": "Item",
+                                          "logic": "NONE",
+                                          "type": "NAME",
+                                          "operator": "EQUALS",
+                                          "value": "Supply crate"
+                                        }
+                                      }
+                                    },
+                                    {
+                                      "id": "IF_LOCAL_PLAYER_MATCHES",
+                                      "customDisplayName": "Waiting for someone to fix brazier...",
+                                      "properties": {
+                                        "Filter By": {
+                                          "class": "Player",
+                                          "logic": "NONE",
+                                          "type": "HEALTH",
+                                          "operator": "LESS_THAN",
+                                          "value": "60"
+                                        }
+                                      }
+                                    },
+                                    {
+                                      "id": "IF_GAME_OBJECT_EXISTS",
+                                      "customDisplayName": "Waiting for someone to fix brazier...",
+                                      "properties": {
+                                        "Filter Object By": {
+                                          "class": "GameObject",
+                                          "logic": "NONE",
+                                          "type": "NAME",
+                                          "operator": "EQUALS",
+                                          "value": "Burning brazier",
+                                          "filters": [
+                                            {
+                                              "class": "GameObject",
+                                              "logic": "AND",
+                                              "type": "DISTANCE_TO_PLAYER",
+                                              "operator": "LESS_THAN",
+                                              "value": "10"
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "CREATE_LABEL",
+          "properties": {
+            "Label": "No food AFK"
+          },
+          "children": [
+            {
+              "id": "IF_LOCAL_PLAYER_MATCHES",
+              "customDisplayName": "No food, AFKing...",
+              "properties": {
+                "Filter By": {
+                  "class": "Player",
+                  "logic": "NONE",
+                  "type": "HEALTH",
+                  "operator": "LESS_THAN",
+                  "value": "30"
+                }
+              },
+              "children": [
+                {
+                  "id": "IF_INVENTORY_DOES_NOT_CONTAIN_ANY",
+                  "customDisplayName": "No food, AFKing...",
+                  "properties": {
+                    "Filter Item By": {
+                      "class": "Item",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Monkfish"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "WALK_FULLY_TO_TILE",
+                      "customDisplayName": "No food, AFKing...",
+                      "properties": {
+                        "Tile": "(1630, 3972, 0)"
+                      },
+                      "children": [
+                        {
+                          "id": "SLEEP_UNTIL_ANY_INSIDE_IS_TRUE",
+                          "customDisplayName": "No food, AFKing...",
+                          "properties": {
+                            "Max time (seconds)": "1000"
+                          },
+                          "children": [
+                            {
+                              "id": "IF_GAME_MESSAGE_RECEIVED_MATCHES",
+                              "customDisplayName": "No food, AFKing...",
+                              "properties": {
+                                "Filter Message": {
+                                  "class": "Message",
+                                  "logic": "NONE",
+                                  "type": "TEXT",
+                                  "operator": "CONTAINS",
+                                  "value": "worthy of a gift from the citizens"
+                                }
+                              }
+                            },
+                            {
+                              "id": "IF_INVENTORY_CONTAINS_ANY",
+                              "customDisplayName": "No food, AFKing...",
+                              "properties": {
+                                "Filter Item By": {
+                                  "class": "Item",
+                                  "logic": "NONE",
+                                  "type": "NAME",
+                                  "operator": "EQUALS",
+                                  "value": "Supply crate"
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "CREATE_LABEL",
+          "properties": {
+            "Label": "Bank"
+          },
+          "children": [
+            {
+              "id": "IF_GAME_MESSAGE_RECEIVED_MATCHES",
+              "properties": {
+                "Filter Message": {
+                  "class": "Message",
+                  "logic": "NONE",
+                  "type": "TEXT",
+                  "operator": "CONTAINS",
+                  "value": "worthy of a gift from the citizens"
+                }
+              },
+              "children": [
+                {
+                  "id": "IF_RANDOM_NUMBER_IS",
+                  "properties": {
+                    "number": {
+                      "class": "Number",
+                      "operator": "GREATER_THAN_OR_EQUALS",
+                      "value": "3"
+                    },
+                    "Minimum": "1",
+                    "Maximum": "4"
+                  },
+                  "children": [
+                    {
+                      "id": "SLEEP_BETWEEN",
+                      "properties": {
+                        "Minimum": "5000",
+                        "Maximum": "15000"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "ADD_TO_VARIABLE",
+                  "properties": {
+                    "Variable name": "games",
+                    "By": "1"
+                  }
+                },
+                {
+                  "id": "IF_TAB_IS_NOT_OPEN",
+                  "properties": {
+                    "Tab": {
+                      "class": "Tab",
+                      "value": "INVENTORY"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "OPEN_TAB",
+                      "properties": {
+                        "Tab": {
+                          "class": "Tab",
+                          "value": "INVENTORY"
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "INTERACT_WITH_INVENTORY_ITEM",
+                  "properties": {
+                    "Filter Item By": {
+                      "class": "Item",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Supply crate"
+                    },
+                    "Force left click": true,
+                    "Action": "Open"
+                  }
+                },
+                {
+                  "id": "CREATE_LABEL",
+                  "properties": {
+                    "Label": "Bank rerun"
+                  }
+                },
+                {
+                  "id": "WALK_FULLY_TO_NEAREST_BANK",
+                  "children": [
+                    {
+                      "id": "SLEEP_WHILE_MOVING"
+                    }
+                  ]
+                },
+                {
+                  "id": "OPEN_BANK",
+                  "children": [
+                    {
+                      "id": "SLEEP_WHILE_MOVING"
+                    }
+                  ]
+                },
+                {
+                  "id": "BANK_DEPOSIT_ALL_EXCEPT",
+                  "properties": {
+                    "Filter Item By": {
+                      "class": "Item",
+                      "logic": "NONE",
+                      "type": "ID",
+                      "operator": "IS_IN_LIST",
+                      "value": "946, 7946, 6739, 2347, 590"
+                    }
+                  }
+                },
+                {
+                  "id": "WITHDRAW_ITEM_TO_SET_AMOUNT",
+                  "properties": {
+                    "Filter Item By": {
+                      "class": "Item",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Monkfish"
+                    },
+                    "Deposit excess": true,
+                    "Amount": "7"
+                  }
+                },
+                {
+                  "id": "CLOSE_BANK"
+                },
+                {
+                  "id": "IF_RANDOM_NUMBER_IS",
+                  "properties": {
+                    "number": {
+                      "class": "Number",
+                      "operator": "EQUALS",
+                      "value": "3"
+                    },
+                    "Minimum": "1",
+                    "Maximum": "4"
+                  },
+                  "children": [
+                    {
+                      "id": "SLEEP_BETWEEN",
+                      "properties": {
+                        "Minimum": "5000",
+                        "Maximum": "15000"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_BANK_DOES_NOT_CONTAIN",
+                  "properties": {
+                    "Filter Item By": {
+                      "class": "Item",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Monkfish"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "STOP_SCRIPT"
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_INVENTORY_DOES_NOT_ONLY_CONTAIN",
+                  "properties": {
+                    "Filter Items By": {
+                      "class": "Item",
+                      "logic": "NONE",
+                      "type": "ID",
+                      "operator": "IS_IN_LIST",
+                      "value": "7946, 946"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "GO_TO_LABEL",
+                      "properties": {
+                        "Label": "Bank rerun"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_TIMER_IS_FINISHED",
+                  "properties": {
+                    "Timer name": "logout"
+                  },
+                  "children": [
+                    {
+                      "id": "DISABLE_LOGIN_SOLVER",
+                      "customDisplayName": "Avoiding 6-hour auto-logout..."
+                    },
+                    {
+                      "id": "LOGOUT",
+                      "customDisplayName": "Avoiding 6-hour auto-logout..."
+                    },
+                    {
+                      "id": "SLEEP_BETWEEN",
+                      "customDisplayName": "Avoiding 6-hour auto-logout...",
+                      "properties": {
+                        "Minimum": "5000",
+                        "Maximum": "10000"
+                      }
+                    },
+                    {
+                      "id": "RESTART_TIMER",
+                      "properties": {
+                        "Timer name": "logout"
+                      }
+                    },
+                    {
+                      "id": "ENABLE_LOGIN_SOLVER",
+                      "customDisplayName": "Avoiding 6-hour auto-logout..."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "IF_INVENTORY_CONTAINS_ANY",
+              "properties": {
+                "Filter Item By": {
+                  "class": "Item",
+                  "logic": "NONE",
+                  "type": "NAME",
+                  "operator": "EQUALS",
+                  "value": "Supply crate"
+                }
+              },
+              "children": [
+                {
+                  "id": "IF_RANDOM_NUMBER_IS",
+                  "properties": {
+                    "number": {
+                      "class": "Number",
+                      "operator": "GREATER_THAN_OR_EQUALS",
+                      "value": "3"
+                    },
+                    "Minimum": "1",
+                    "Maximum": "4"
+                  },
+                  "children": [
+                    {
+                      "id": "SLEEP_BETWEEN",
+                      "customDisplayName": "Continuing AFK session...",
+                      "properties": {
+                        "Minimum": "5000",
+                        "Maximum": "15000"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "ADD_TO_VARIABLE",
+                  "properties": {
+                    "Variable name": "games",
+                    "By": "1"
+                  }
+                },
+                {
+                  "id": "ADD_TO_VARIABLE",
+                  "properties": {
+                    "Variable name": "crate",
+                    "By": "1"
+                  }
+                },
+                {
+                  "id": "IF_TAB_IS_NOT_OPEN",
+                  "properties": {
+                    "Tab": {
+                      "class": "Tab",
+                      "value": "INVENTORY"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "OPEN_TAB",
+                      "properties": {
+                        "Tab": {
+                          "class": "Tab",
+                          "value": "INVENTORY"
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "INTERACT_WITH_INVENTORY_ITEM",
+                  "customDisplayName": "Opening crate...",
+                  "properties": {
+                    "Filter Item By": {
+                      "class": "Item",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Supply crate"
+                    },
+                    "Force left click": true,
+                    "Action": "Open"
+                  },
+                  "children": [
+                    {
+                      "id": "SLEEP_BETWEEN",
+                      "customDisplayName": "Opening crate...",
+                      "properties": {
+                        "Minimum": "300",
+                        "Maximum": "500"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "CREATE_LABEL",
+                  "properties": {
+                    "Label": "Bank rerun"
+                  }
+                },
+                {
+                  "id": "WALK_FULLY_TO_NEAREST_BANK",
+                  "customDisplayName": "Walking to bank...",
+                  "children": [
+                    {
+                      "id": "SLEEP_WHILE_MOVING",
+                      "customDisplayName": "Walking to bank..."
+                    }
+                  ]
+                },
+                {
+                  "id": "INTERACT_WITH_INVENTORY_ITEM",
+                  "customDisplayName": "Opening crate...",
+                  "properties": {
+                    "Filter Item By": {
+                      "class": "Item",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Supply crate"
+                    },
+                    "Force left click": true,
+                    "Action": "Open"
+                  },
+                  "children": [
+                    {
+                      "id": "SLEEP_BETWEEN",
+                      "customDisplayName": "Opening crate...",
+                      "properties": {
+                        "Minimum": "300",
+                        "Maximum": "500"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "OPEN_BANK",
+                  "customDisplayName": "Opening bank...",
+                  "children": [
+                    {
+                      "id": "SLEEP_WHILE_MOVING",
+                      "customDisplayName": "Opening bank..."
+                    }
+                  ]
+                },
+                {
+                  "id": "BANK_DEPOSIT_ALL_EXCEPT",
+                  "customDisplayName": "Depositing unneededs...",
+                  "properties": {
+                    "Filter Item By": {
+                      "class": "Item",
+                      "logic": "NONE",
+                      "type": "ID",
+                      "operator": "IS_IN_LIST",
+                      "value": "946, 7946, 6739, 2347, 590"
+                    }
+                  }
+                },
+                {
+                  "id": "WITHDRAW_ITEM_TO_SET_AMOUNT",
+                  "customDisplayName": "Getting food...",
+                  "properties": {
+                    "Filter Item By": {
+                      "class": "Item",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Monkfish"
+                    },
+                    "Deposit excess": true,
+                    "Amount": "7"
+                  }
+                },
+                {
+                  "id": "CLOSE_BANK",
+                  "customDisplayName": "Closing bank..."
+                },
+                {
+                  "id": "IF_RANDOM_NUMBER_IS",
+                  "properties": {
+                    "number": {
+                      "class": "Number",
+                      "operator": "EQUALS",
+                      "value": "3"
+                    },
+                    "Minimum": "1",
+                    "Maximum": "4"
+                  },
+                  "children": [
+                    {
+                      "id": "SLEEP_BETWEEN",
+                      "customDisplayName": "AFKing...",
+                      "properties": {
+                        "Minimum": "5000",
+                        "Maximum": "15000"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_BANK_DOES_NOT_CONTAIN",
+                  "properties": {
+                    "Filter Item By": {
+                      "class": "Item",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Monkfish"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "STOP_SCRIPT"
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_INVENTORY_DOES_NOT_ONLY_CONTAIN",
+                  "properties": {
+                    "Filter Items By": {
+                      "class": "Item",
+                      "logic": "NONE",
+                      "type": "ID",
+                      "operator": "IS_IN_LIST",
+                      "value": "7946, 946"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "GO_TO_LABEL",
+                      "properties": {
+                        "Label": "Bank rerun"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_TIMER_IS_FINISHED",
+                  "properties": {
+                    "Timer name": "logout"
+                  },
+                  "children": [
+                    {
+                      "id": "DISABLE_LOGIN_SOLVER",
+                      "customDisplayName": "Avoiding 6-hour auto-logout..."
+                    },
+                    {
+                      "id": "LOGOUT",
+                      "customDisplayName": "Avoiding 6-hour auto-logout..."
+                    },
+                    {
+                      "id": "SLEEP_BETWEEN",
+                      "customDisplayName": "Avoiding 6-hour auto-logout...",
+                      "properties": {
+                        "Minimum": "5000",
+                        "Maximum": "10000"
+                      }
+                    },
+                    {
+                      "id": "RESTART_TIMER",
+                      "properties": {
+                        "Timer name": "logout"
+                      }
+                    },
+                    {
+                      "id": "ENABLE_LOGIN_SOLVER",
+                      "customDisplayName": "Avoiding 6-hour auto-logout..."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "PAINT_ROOT",
+      "properties": {
+        "Hide standard paint": true
+      },
+      "children": [
+        {
+          "id": "CREATE_LABEL",
+          "properties": {
+            "Label": "Type override"
+          },
+          "children": [
+            {
+              "id": "DRAW_RECTANGLE_BUTTON",
+              "properties": {
+                "Color": {
+                  "class": "Color",
+                  "value": -1
+                },
+                "X": "3",
+                "Y": "289",
+                "Height": "14",
+                "Pressed Color": {
+                  "class": "Color",
+                  "value": -16777216
+                },
+                "Hovered Color": {
+                  "class": "Color",
+                  "value": -62208
+                },
+                "Width": "140"
+              },
+              "children": [
+                {
+                  "id": "SET_VARIABLE",
+                  "properties": {
+                    "Value": "1",
+                    "Variable name": "msg"
+                  }
+                },
+                {
+                  "id": "GO_TO_LABEL",
+                  "properties": {
+                    "Label": "Button"
+                  },
+                  "children": [
+                    {
+                      "id": "CREATE_LABEL",
+                      "properties": {
+                        "Label": "Button"
+                      },
+                      "children": [
+                        {
+                          "id": "IF_VARIABLE_IS",
+                          "properties": {
+                            "Filter Value By": {
+                              "class": "Variable",
+                              "logic": "NONE",
+                              "type": "AS_TEXT",
+                              "operator": "EQUALS",
+                              "value": "1"
+                            },
+                            "Variable name": "msg"
+                          },
+                          "children": [
+                            {
+                              "id": "SET_VARIABLE_TO_USER_INPUT",
+                              "customDisplayName": "Transcribing your message...",
+                              "properties": {
+                                "Message": "Type your message here.",
+                                "Variable name": "msgcontent"
+                              }
+                            },
+                            {
+                              "id": "TYPE_MESSAGE",
+                              "customDisplayName": "Typing your message and pressing enter...",
+                              "properties": {
+                                "Message": "var(msgcontent)"
+                              }
+                            },
+                            {
+                              "id": "SET_VARIABLE",
+                              "customDisplayName": "Waiting for next action...",
+                              "properties": {
+                                "Value": "2",
+                                "Variable name": "msg"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "DRAW_TEXT",
+              "properties": {
+                "X": "5",
+                "Y": "300",
+                "Text": "Click to type message.",
+                "Outline color": {
+                  "class": "Color",
+                  "value": -1
+                },
+                "Font": {
+                  "class": "Font",
+                  "value": "Inter V"
+                },
+                "Color": {
+                  "class": "Color",
+                  "value": -16777216
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "CREATE_LABEL",
+          "properties": {
+            "Label": "Check for pet"
+          },
+          "children": [
+            {
+              "id": "DRAW_RECTANGLE_BUTTON",
+              "properties": {
+                "Color": {
+                  "class": "Color",
+                  "value": -1
+                },
+                "X": "3",
+                "Y": "306",
+                "Height": "14",
+                "Pressed Color": {
+                  "class": "Color",
+                  "value": -16777216
+                },
+                "Hovered Color": {
+                  "class": "Color",
+                  "value": -62208
+                },
+                "Width": "160"
+              },
+              "children": [
+                {
+                  "id": "SET_VARIABLE",
+                  "properties": {
+                    "Value": "1",
+                    "Variable name": "pet"
+                  }
+                },
+                {
+                  "id": "GO_TO_LABEL",
+                  "properties": {
+                    "Label": "Pet"
+                  },
+                  "children": [
+                    {
+                      "id": "CREATE_LABEL",
+                      "properties": {
+                        "Label": "Pet"
+                      },
+                      "children": [
+                        {
+                          "id": "IF_VARIABLE_IS",
+                          "properties": {
+                            "Filter Value By": {
+                              "class": "Variable",
+                              "logic": "NONE",
+                              "type": "AS_TEXT",
+                              "operator": "EQUALS",
+                              "value": "1"
+                            },
+                            "Variable name": "pet"
+                          },
+                          "children": [
+                            {
+                              "id": "IF_TAB_IS_NOT_OPEN",
+                              "customDisplayName": "Opening equipment...",
+                              "properties": {
+                                "Tab": {
+                                  "class": "Tab",
+                                  "value": "EQUIPMENT"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "OPEN_TAB",
+                                  "customDisplayName": "Opening equipment...",
+                                  "properties": {
+                                    "Tab": {
+                                      "class": "Tab",
+                                      "value": "EQUIPMENT"
+                                    }
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "id": "WIDGET_INTERACT",
+                              "customDisplayName": "Calling follower...",
+                              "properties": {
+                                "Find Widget By": {
+                                  "class": "Widget",
+                                  "logic": "NONE",
+                                  "type": "WIDGET_ID",
+                                  "operator": "EQUALS",
+                                  "value": "387, 8"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "SLEEP_BETWEEN",
+                                  "customDisplayName": "Please read chat...",
+                                  "properties": {
+                                    "Minimum": "700",
+                                    "Maximum": "1200"
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "id": "IF_TAB_IS_NOT_OPEN",
+                              "customDisplayName": "Opening inventory...",
+                              "properties": {
+                                "Tab": {
+                                  "class": "Tab",
+                                  "value": "INVENTORY"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "OPEN_TAB",
+                                  "customDisplayName": "Opening inventory...",
+                                  "properties": {
+                                    "Tab": {
+                                      "class": "Tab",
+                                      "value": "INVENTORY"
+                                    }
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "id": "SET_VARIABLE",
+                              "customDisplayName": "Waiting for next action...",
+                              "properties": {
+                                "Value": "2",
+                                "Variable name": "pet"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "DRAW_TEXT",
+              "properties": {
+                "X": "5",
+                "Y": "317",
+                "Text": "Click to check for phoenix.",
+                "Outline color": {
+                  "class": "Color",
+                  "value": -1
+                },
+                "Font": {
+                  "class": "Font",
+                  "value": "Inter V"
+                },
+                "Color": {
+                  "class": "Color",
+                  "value": -16777216
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "DRAW_RECTANGLE",
+          "properties": {
+            "X": "3",
+            "Y": "40",
+            "Height": "13",
+            "Opacity (0-100)": "50",
+            "Width": "350",
+            "Color": {
+              "class": "Color",
+              "value": -16777216
+            }
+          }
+        },
+        {
+          "id": "DRAW_RECTANGLE",
+          "properties": {
+            "X": "3",
+            "Y": "143",
+            "Height": "120",
+            "Opacity (0-100)": "50",
+            "Width": "350",
+            "Color": {
+              "class": "Color",
+              "value": -16777216
+            }
+          }
+        },
+        {
+          "id": "DRAW_RECTANGLE",
+          "properties": {
+            "X": "99",
+            "Y": "53",
+            "Height": "90",
+            "Opacity (0-100)": "50",
+            "Width": "254",
+            "Color": {
+              "class": "Color",
+              "value": -16777216
+            }
+          }
+        },
+        {
+          "id": "DRAW_TEXT",
+          "properties": {
+            "Outline color": {
+              "class": "Color",
+              "value": -1700096
+            },
+            "Draw outline": false,
+            "Color": {
+              "class": "Color",
+              "value": -64512
+            },
+            "X": "5",
+            "Y": "50",
+            "Text": "Status: status()",
+            "Font": {
+              "class": "Font",
+              "value": "Inter V"
+            }
+          }
+        },
+        {
+          "id": "DRAW_TEXT",
+          "properties": {
+            "Outline color": {
+              "class": "Color",
+              "value": -1
+            },
+            "Draw outline": false,
+            "Color": {
+              "class": "Color",
+              "value": -16711923
+            },
+            "X": "100",
+            "Y": "65",
+            "Text": "Loot Tracker: (equpped \u0026 bank)",
+            "Font": {
+              "class": "Font",
+              "value": "Inter V"
+            }
+          }
+        },
+        {
+          "id": "DRAW_TEXT",
+          "properties": {
+            "Outline color": {
+              "class": "Color",
+              "value": -1
+            },
+            "Draw outline": false,
+            "Color": {
+              "class": "Color",
+              "value": -1
+            },
+            "X": "100",
+            "Y": "80",
+            "Text": "Pyro hood:      var(hood)",
+            "Font": {
+              "class": "Font",
+              "value": "Inter V"
+            }
+          },
+          "children": [
+            {
+              "id": "SET_VARIABLE",
+              "properties": {
+                "Value": "bankCount(Pyromancer hood)",
+                "Variable name": "hoodbank"
+              }
+            },
+            {
+              "id": "SET_VARIABLE",
+              "properties": {
+                "Value": "invCount(Pyromancer hood)",
+                "Variable name": "hoodinv"
+              }
+            },
+            {
+              "id": "SET_VARIABLE",
+              "properties": {
+                "Value": "add(var(hoodbank),var(hoodinv))",
+                "Variable name": "hood"
+              }
+            },
+            {
+              "id": "IF_EQUIPPED_ITEM_MATCHES",
+              "properties": {
+                "Filter Item By": {
+                  "class": "Item",
+                  "logic": "NONE",
+                  "type": "NAME",
+                  "operator": "EQUALS",
+                  "value": "Pyromancer hood"
+                }
+              },
+              "children": [
+                {
+                  "id": "ADD_TO_VARIABLE",
+                  "properties": {
+                    "Variable name": "hood",
+                    "By": "1"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "DRAW_TEXT",
+          "properties": {
+            "X": "100",
+            "Y": "95",
+            "Text": "Pyro garb:       var(garb)",
+            "Outline color": {
+              "class": "Color",
+              "value": -1
+            },
+            "Font": {
+              "class": "Font",
+              "value": "Inter V"
+            },
+            "Color": {
+              "class": "Color",
+              "value": -1
+            }
+          },
+          "children": [
+            {
+              "id": "SET_VARIABLE",
+              "properties": {
+                "Value": "bankCount(Pyromancer garb)",
+                "Variable name": "garbbank"
+              }
+            },
+            {
+              "id": "SET_VARIABLE",
+              "properties": {
+                "Value": "invCount(Pyromancer garb)",
+                "Variable name": "garbinv"
+              }
+            },
+            {
+              "id": "SET_VARIABLE",
+              "properties": {
+                "Value": "add(var(garbbank),var(garbinv))",
+                "Variable name": "garb"
+              }
+            },
+            {
+              "id": "IF_EQUIPPED_ITEM_MATCHES",
+              "properties": {
+                "Filter Item By": {
+                  "class": "Item",
+                  "logic": "NONE",
+                  "type": "NAME",
+                  "operator": "EQUALS",
+                  "value": "Pyromancer garb"
+                }
+              },
+              "children": [
+                {
+                  "id": "ADD_TO_VARIABLE",
+                  "properties": {
+                    "Variable name": "garb",
+                    "By": "1"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "DRAW_TEXT",
+          "properties": {
+            "X": "100",
+            "Y": "110",
+            "Text": "Pyro robe:       var(robe)",
+            "Outline color": {
+              "class": "Color",
+              "value": -1
+            },
+            "Font": {
+              "class": "Font",
+              "value": "Inter V"
+            },
+            "Color": {
+              "class": "Color",
+              "value": -1
+            }
+          },
+          "children": [
+            {
+              "id": "SET_VARIABLE",
+              "properties": {
+                "Value": "bankCount(Pyromancer robe)",
+                "Variable name": "robebank"
+              }
+            },
+            {
+              "id": "SET_VARIABLE",
+              "properties": {
+                "Value": "invCount(Pyromancer robe)",
+                "Variable name": "robeinv"
+              }
+            },
+            {
+              "id": "SET_VARIABLE",
+              "properties": {
+                "Value": "add(var(robebank),var(robeinv))",
+                "Variable name": "robe"
+              }
+            },
+            {
+              "id": "IF_EQUIPPED_ITEM_MATCHES",
+              "properties": {
+                "Filter Item By": {
+                  "class": "Item",
+                  "logic": "NONE",
+                  "type": "NAME",
+                  "operator": "EQUALS",
+                  "value": "Pyromancer robe"
+                }
+              },
+              "children": [
+                {
+                  "id": "ADD_TO_VARIABLE",
+                  "properties": {
+                    "Variable name": "robe",
+                    "By": "1"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "DRAW_TEXT",
+          "properties": {
+            "X": "100",
+            "Y": "125",
+            "Text": "Pyro boots:     var(boot)",
+            "Outline color": {
+              "class": "Color",
+              "value": -1
+            },
+            "Font": {
+              "class": "Font",
+              "value": "Inter V"
+            },
+            "Color": {
+              "class": "Color",
+              "value": -1
+            }
+          },
+          "children": [
+            {
+              "id": "SET_VARIABLE",
+              "properties": {
+                "Value": "bankCount(Pyromancer boots)",
+                "Variable name": "bootbank"
+              }
+            },
+            {
+              "id": "SET_VARIABLE",
+              "properties": {
+                "Value": "invCount(Pyromancer boots)",
+                "Variable name": "bootinv"
+              }
+            },
+            {
+              "id": "SET_VARIABLE",
+              "properties": {
+                "Value": "add(var(bootbank),var(bootinv))",
+                "Variable name": "boot"
+              }
+            },
+            {
+              "id": "IF_EQUIPPED_ITEM_MATCHES",
+              "properties": {
+                "Filter Item By": {
+                  "class": "Item",
+                  "logic": "NONE",
+                  "type": "NAME",
+                  "operator": "EQUALS",
+                  "value": "Pyromancer boots"
+                }
+              },
+              "children": [
+                {
+                  "id": "ADD_TO_VARIABLE",
+                  "properties": {
+                    "Variable name": "boot",
+                    "By": "1"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "DRAW_TEXT",
+          "properties": {
+            "X": "200",
+            "Y": "80",
+            "Text": "Bruma torch:   var(torch)",
+            "Outline color": {
+              "class": "Color",
+              "value": -1
+            },
+            "Font": {
+              "class": "Font",
+              "value": "Inter V"
+            },
+            "Color": {
+              "class": "Color",
+              "value": -1
+            }
+          },
+          "children": [
+            {
+              "id": "SET_VARIABLE",
+              "properties": {
+                "Value": "bankCount(Bruma torch)",
+                "Variable name": "torchbank"
+              }
+            },
+            {
+              "id": "SET_VARIABLE",
+              "properties": {
+                "Value": "invCount(Bruma torch)",
+                "Variable name": "torchinv"
+              }
+            },
+            {
+              "id": "SET_VARIABLE",
+              "properties": {
+                "Value": "add(var(torchbank),var(torchinv))",
+                "Variable name": "torch"
+              }
+            },
+            {
+              "id": "IF_EQUIPPED_ITEM_MATCHES",
+              "properties": {
+                "Filter Item By": {
+                  "class": "Item",
+                  "logic": "NONE",
+                  "type": "NAME",
+                  "operator": "EQUALS",
+                  "value": "Bruma torch"
+                }
+              },
+              "children": [
+                {
+                  "id": "ADD_TO_VARIABLE",
+                  "properties": {
+                    "Variable name": "torch",
+                    "By": "1"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "DRAW_TEXT",
+          "properties": {
+            "X": "200",
+            "Y": "95",
+            "Text": "Warm gloves: var(glove)",
+            "Outline color": {
+              "class": "Color",
+              "value": -1
+            },
+            "Font": {
+              "class": "Font",
+              "value": "Inter V"
+            },
+            "Color": {
+              "class": "Color",
+              "value": -1
+            }
+          },
+          "children": [
+            {
+              "id": "SET_VARIABLE",
+              "properties": {
+                "Value": "bankCount(Warm gloves)",
+                "Variable name": "glovebank"
+              }
+            },
+            {
+              "id": "SET_VARIABLE",
+              "properties": {
+                "Value": "invCount(Warm gloves)",
+                "Variable name": "gloveinv"
+              }
+            },
+            {
+              "id": "SET_VARIABLE",
+              "properties": {
+                "Value": "add(var(glovebank),var(gloveinv))",
+                "Variable name": "glove"
+              }
+            },
+            {
+              "id": "IF_EQUIPPED_ITEM_MATCHES",
+              "properties": {
+                "Filter Item By": {
+                  "class": "Item",
+                  "logic": "NONE",
+                  "type": "NAME",
+                  "operator": "EQUALS",
+                  "value": "Warm gloves"
+                }
+              },
+              "children": [
+                {
+                  "id": "ADD_TO_VARIABLE",
+                  "properties": {
+                    "Variable name": "glove",
+                    "By": "1"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "DRAW_TEXT",
+          "properties": {
+            "X": "200",
+            "Y": "110",
+            "Text": "Tome of fire:   var(tome)",
+            "Outline color": {
+              "class": "Color",
+              "value": -1
+            },
+            "Font": {
+              "class": "Font",
+              "value": "Inter V"
+            },
+            "Color": {
+              "class": "Color",
+              "value": -1
+            }
+          },
+          "children": [
+            {
+              "id": "SET_VARIABLE",
+              "properties": {
+                "Value": "bankCount(Tome of fire (empty))",
+                "Variable name": "tomebank"
+              }
+            },
+            {
+              "id": "SET_VARIABLE",
+              "properties": {
+                "Value": "invCount(Tome of fire (empty))",
+                "Variable name": "tomeinv"
+              }
+            },
+            {
+              "id": "SET_VARIABLE",
+              "properties": {
+                "Value": "add(var(tomebank),var(tomeinv))",
+                "Variable name": "tome"
+              }
+            },
+            {
+              "id": "IF_EQUIPPED_ITEM_MATCHES",
+              "properties": {
+                "Filter Item By": {
+                  "class": "Item",
+                  "logic": "NONE",
+                  "type": "NAME",
+                  "operator": "EQUALS",
+                  "value": "Tome of fire (empty)"
+                }
+              },
+              "children": [
+                {
+                  "id": "ADD_TO_VARIABLE",
+                  "properties": {
+                    "Variable name": "tome",
+                    "By": "1"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "DRAW_TEXT",
+          "properties": {
+            "X": "200",
+            "Y": "125",
+            "Text": "Burnt pages:   var(page)",
+            "Outline color": {
+              "class": "Color",
+              "value": -1
+            },
+            "Font": {
+              "class": "Font",
+              "value": "Inter V"
+            },
+            "Color": {
+              "class": "Color",
+              "value": -1
+            }
+          },
+          "children": [
+            {
+              "id": "SET_VARIABLE",
+              "properties": {
+                "Value": "bankCount(Burnt page)",
+                "Variable name": "pagebank"
+              }
+            },
+            {
+              "id": "SET_VARIABLE",
+              "properties": {
+                "Value": "invCount(Burnt page)",
+                "Variable name": "pageinv"
+              }
+            },
+            {
+              "id": "SET_VARIABLE",
+              "properties": {
+                "Value": "add(var(pagebank),var(pageinv))",
+                "Variable name": "page"
+              }
+            }
+          ]
+        },
+        {
+          "id": "DRAW_TEXT",
+          "properties": {
+            "X": "5",
+            "Y": "155",
+            "Text": "num(expGain(firemaking)) firemaking XP in runtime() (num(hourly(expGain(firemaking)))/hr)",
+            "Outline color": {
+              "class": "Color",
+              "value": -1
+            },
+            "Font": {
+              "class": "Font",
+              "value": "Inter V"
+            },
+            "Color": {
+              "class": "Color",
+              "value": -1
+            }
+          }
+        },
+        {
+          "id": "DRAW_TEXT",
+          "properties": {
+            "X": "5",
+            "Y": "170",
+            "Text": "num(expGain(woodcutting)) woodcutting XP (num(hourly(expGain(woodcutting)))/hr)",
+            "Outline color": {
+              "class": "Color",
+              "value": -1
+            },
+            "Font": {
+              "class": "Font",
+              "value": "Inter V"
+            },
+            "Color": {
+              "class": "Color",
+              "value": -1
+            }
+          }
+        },
+        {
+          "id": "DRAW_TEXT",
+          "properties": {
+            "X": "5",
+            "Y": "185",
+            "Text": "num(expGain(fletching)) fletching XP (num(hourly(expGain(fletching)))/hr)",
+            "Outline color": {
+              "class": "Color",
+              "value": -1
+            },
+            "Font": {
+              "class": "Font",
+              "value": "Inter V"
+            },
+            "Color": {
+              "class": "Color",
+              "value": -1
+            }
+          }
+        },
+        {
+          "id": "DRAW_TEXT",
+          "properties": {
+            "X": "5",
+            "Y": "200",
+            "Text": "Games: var(games) (hourly(var(games))/hr) Crates: var(crate) (hourly(var(crate))/hr)",
+            "Outline color": {
+              "class": "Color",
+              "value": -1
+            },
+            "Font": {
+              "class": "Font",
+              "value": "Inter V"
+            },
+            "Color": {
+              "class": "Color",
+              "value": -1
+            }
+          }
+        },
+        {
+          "id": "DRAW_TEXT",
+          "properties": {
+            "X": "5",
+            "Y": "215",
+            "Text": "Profit: num(profit()) (num(hourly(profit()))/hr)",
+            "Outline color": {
+              "class": "Color",
+              "value": -1
+            },
+            "Font": {
+              "class": "Font",
+              "value": "Inter V"
+            },
+            "Color": {
+              "class": "Color",
+              "value": -1
+            }
+          }
+        },
+        {
+          "id": "DRAW_TEXT",
+          "properties": {
+            "X": "5",
+            "Y": "230",
+            "Text": "Next levels in...",
+            "Outline color": {
+              "class": "Color",
+              "value": -1
+            },
+            "Font": {
+              "class": "Font",
+              "value": "Inter V"
+            },
+            "Color": {
+              "class": "Color",
+              "value": -1
+            }
+          }
+        },
+        {
+          "id": "DRAW_TEXT",
+          "properties": {
+            "X": "5",
+            "Y": "245",
+            "Text": "FM (var(fm)): timeToLevel(firemaking) | WC (var(wc)): timeToLevel(woodcutting) | F (var(f)): timeToLevel(fletching)",
+            "Outline color": {
+              "class": "Color",
+              "value": -1
+            },
+            "Font": {
+              "class": "Font",
+              "value": "Inter V"
+            },
+            "Color": {
+              "class": "Color",
+              "value": -1
+            }
+          },
+          "children": [
+            {
+              "id": "SET_TO_LOCAL_PLAYER_REAL_SKILL_LEVEL",
+              "properties": {
+                "Skill": {
+                  "class": "Skill",
+                  "value": "WOODCUTTING"
+                },
+                "Variable name": "wc"
+              },
+              "children": [
+                {
+                  "id": "ADD_TO_VARIABLE",
+                  "properties": {
+                    "Variable name": "wc",
+                    "By": "1"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "SET_TO_LOCAL_PLAYER_REAL_SKILL_LEVEL",
+              "properties": {
+                "Skill": {
+                  "class": "Skill",
+                  "value": "FLETCHING"
+                },
+                "Variable name": "f"
+              },
+              "children": [
+                {
+                  "id": "ADD_TO_VARIABLE",
+                  "properties": {
+                    "Variable name": "f",
+                    "By": "1"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "SET_TO_LOCAL_PLAYER_REAL_SKILL_LEVEL",
+              "properties": {
+                "Skill": {
+                  "class": "Skill",
+                  "value": "FIREMAKING"
+                },
+                "Variable name": "fm"
+              },
+              "children": [
+                {
+                  "id": "ADD_TO_VARIABLE",
+                  "properties": {
+                    "Variable name": "fm",
+                    "By": "1"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "DRAW_TEXT",
+          "properties": {
+            "X": "5",
+            "Y": "260",
+            "Text": "FM (99): timeToLevel(firemaking,99) | WC (99): timeToLevel(woodcutting,99) | F (99): timeToLevel(fletching,99)",
+            "Outline color": {
+              "class": "Color",
+              "value": -1
+            },
+            "Font": {
+              "class": "Font",
+              "value": "Inter V"
+            },
+            "Color": {
+              "class": "Color",
+              "value": -1
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

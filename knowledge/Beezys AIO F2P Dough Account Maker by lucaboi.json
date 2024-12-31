@@ -1,0 +1,1246 @@
+{
+  "sleep": "1500",
+  "name": "Beezy\u0027s AIO F2P Dough Maker",
+  "version": 0.1,
+  "metadata": {
+    "network-id": "73",
+    "network-downloaded-at": "1721665202095"
+  },
+  "actions": [
+    {
+      "id": "COMMENT",
+      "children": [
+        {
+          "id": "SET_VARIABLE",
+          "properties": {
+            "Value": "(3262, 3371, 0), (3278, 3365,0)",
+            "Variable name": "Cadavar_area"
+          }
+        },
+        {
+          "id": "SET_VARIABLE",
+          "properties": {
+            "Value": "(3244, 3430, 0), (3264, 3412, 0)",
+            "Variable name": "Varrock_bank"
+          }
+        },
+        {
+          "id": "SET_TO_ITEM_NAME",
+          "properties": {
+            "Item ID": "753",
+            "Variable name": "berry"
+          }
+        },
+        {
+          "id": "SET_VARIABLE",
+          "properties": {
+            "Value": "(3197, 3262, 0), (3262, 3200, 0)",
+            "Variable name": "Lumbridge"
+          }
+        },
+        {
+          "id": "SET_VARIABLE",
+          "properties": {
+            "Value": "(3007, 3360, 0), (3023, 3351, 0)",
+            "Variable name": "falador_bank"
+          }
+        },
+        {
+          "id": "SET_VARIABLE",
+          "properties": {
+            "Value": "(3033, 3348, 0), 3042, 3340, 0)",
+            "Variable name": "falador_range"
+          }
+        },
+        {
+          "id": "SET_VARIABLE",
+          "properties": {
+            "Value": "(3005, 3365, 0), (3035, 3336, 0)",
+            "Variable name": "falador_area"
+          }
+        },
+        {
+          "id": "SET_VARIABLE",
+          "properties": {
+            "Value": "(3142, 3513, 0), (3185, 3470, 0)",
+            "Variable name": "grand_exchange"
+          }
+        },
+        {
+          "id": "SET_VARIABLE",
+          "properties": {
+            "Value": "0",
+            "Variable name": "change"
+          }
+        },
+        {
+          "id": "SET_VARIABLE",
+          "properties": {
+            "Value": "0",
+            "Variable name": "change2"
+          }
+        },
+        {
+          "id": "SET_VARIABLE",
+          "properties": {
+            "Value": "(3008, 3391, 0), (3071, 3328, 0)",
+            "Variable name": "falador"
+          }
+        }
+      ]
+    },
+    {
+      "id": "COMMENT",
+      "color": -65519,
+      "properties": {
+        "Comment": "Deposit all to nearest bank on start\n\n"
+      },
+      "children": [
+        {
+          "id": "IF_FIRST_RUN",
+          "children": [
+            {
+              "id": "IF_LOCAL_PLAYER_MATCHES",
+              "properties": {
+                "Filter By": {
+                  "class": "Player",
+                  "logic": "NONE",
+                  "type": "NOT_IN_AREA",
+                  "operator": "EQUALS",
+                  "value": "v(Cadavar_area)",
+                  "filters": [
+                    {
+                      "class": "Player",
+                      "logic": "OR",
+                      "type": "NOT_IN_AREA",
+                      "operator": "EQUALS",
+                      "value": "v(Varrock_bank)"
+                    }
+                  ]
+                }
+              },
+              "children": [
+                {
+                  "id": "IF_INVENTORY_IS_NOT_EMPTY",
+                  "children": [
+                    {
+                      "id": "WALK_FULLY_TO_NEAREST_BANK",
+                      "children": [
+                        {
+                          "id": "SLEEP_NORMAL_DISTRIBUTION",
+                          "properties": {
+                            "Mean": "1500",
+                            "Variance": "2000"
+                          },
+                          "children": [
+                            {
+                              "id": "BANK_DEPOSIT_ALL",
+                              "children": [
+                                {
+                                  "id": "IF_INVENTORY_IS_EMPTY",
+                                  "children": [
+                                    {
+                                      "id": "CLOSE_BANK"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "id": "IF_INVENTORY_IS_NOT_EMPTY",
+                                  "children": [
+                                    {
+                                      "id": "BANK_DEPOSIT_ALL",
+                                      "children": [
+                                        {
+                                          "id": "CLOSE_BANK"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "COMMENT",
+      "color": -16640,
+      "properties": {
+        "Comment": "Pick Berries until 160 in bank\n"
+      },
+      "children": [
+        {
+          "id": "IF_LOCAL_PLAYER_MATCHES",
+          "properties": {
+            "Filter By": {
+              "class": "Player",
+              "logic": "NONE",
+              "type": "NOT_IN_AREA",
+              "operator": "EQUALS",
+              "value": "V(Cadavar_area)",
+              "filters": [
+                {
+                  "class": "Player",
+                  "logic": "AND",
+                  "type": "NOT_IN_AREA",
+                  "operator": "EQUALS",
+                  "value": "v(falador)"
+                }
+              ]
+            }
+          },
+          "children": [
+            {
+              "id": "WALK_FULLY_TO_AREA",
+              "properties": {
+                "Area": "v(Cadavar_area)"
+              }
+            }
+          ]
+        },
+        {
+          "id": "IF_INVENTORY_IS_NOT_FULL",
+          "children": [
+            {
+              "id": "SLEEP_NORMAL_DISTRIBUTION",
+              "properties": {
+                "Mean": "100",
+                "Variance": "300"
+              }
+            },
+            {
+              "id": "IF_GAME_OBJECT_EXISTS",
+              "properties": {
+                "Filter Object By": {
+                  "class": "GameObject",
+                  "logic": "NONE",
+                  "type": "ID",
+                  "operator": "EQUALS",
+                  "value": "23625",
+                  "filters": [
+                    {
+                      "class": "GameObject",
+                      "logic": "OR",
+                      "type": "ID",
+                      "operator": "EQUALS",
+                      "value": "23626"
+                    },
+                    {
+                      "class": "GameObject",
+                      "logic": "AND",
+                      "type": "IN_AREA",
+                      "operator": "EQUALS",
+                      "value": "v(Cadavar_area)"
+                    }
+                  ]
+                }
+              },
+              "children": [
+                {
+                  "id": "GAME_OBJECT_INTERACT",
+                  "properties": {
+                    "Filter Object By": {
+                      "class": "GameObject",
+                      "logic": "NONE",
+                      "type": "ID",
+                      "operator": "EQUALS",
+                      "value": "23625",
+                      "filters": [
+                        {
+                          "class": "GameObject",
+                          "logic": "OR",
+                          "type": "ID",
+                          "operator": "EQUALS",
+                          "value": "23626"
+                        },
+                        {
+                          "class": "GameObject",
+                          "logic": "AND",
+                          "type": "IN_AREA",
+                          "operator": "EQUALS",
+                          "value": "v(Cadavar_area)"
+                        }
+                      ]
+                    },
+                    "Action": "Pick-from"
+                  },
+                  "children": [
+                    {
+                      "id": "SLEEP_WHILE_ANIMATING"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "IF_LOCAL_PLAYER_MATCHES",
+              "properties": {
+                "Filter By": {
+                  "class": "Player",
+                  "logic": "NONE",
+                  "type": "IN_AREA",
+                  "operator": "EQUALS",
+                  "value": "v(Cadavar_area)"
+                }
+              },
+              "children": [
+                {
+                  "id": "IF_GAME_OBJECT_DOES_NOT_EXIST",
+                  "properties": {
+                    "Filter Object By": {
+                      "class": "GameObject",
+                      "logic": "NONE",
+                      "type": "IN_AREA",
+                      "operator": "EQUALS",
+                      "value": "v(Cadavar_area)",
+                      "filters": [
+                        {
+                          "class": "GameObject",
+                          "logic": "AND",
+                          "type": "ID",
+                          "operator": "EQUALS",
+                          "value": "23625"
+                        }
+                      ]
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "IF_GAME_OBJECT_DOES_NOT_EXIST",
+                      "properties": {
+                        "Filter Object By": {
+                          "class": "GameObject",
+                          "logic": "NONE",
+                          "type": "IN_AREA",
+                          "operator": "EQUALS",
+                          "value": "v(Cadavar_area)",
+                          "filters": [
+                            {
+                              "class": "GameObject",
+                              "logic": "AND",
+                              "type": "ID",
+                              "operator": "EQUALS",
+                              "value": "23626"
+                            }
+                          ]
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "HOP_TO_RANDOM_WORLD",
+                          "properties": {
+                            "Filter World By": {
+                              "class": "World",
+                              "logic": "NONE",
+                              "type": "WORLD_IS_F2P",
+                              "operator": "EQUALS",
+                              "filters": [
+                                {
+                                  "class": "World",
+                                  "logic": "AND",
+                                  "type": "WORLD_IS_NORMAL",
+                                  "operator": "EQUALS"
+                                },
+                                {
+                                  "class": "World",
+                                  "logic": "AND",
+                                  "type": "WORLD_IS_NOT_PVP",
+                                  "operator": "EQUALS"
+                                }
+                              ]
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "SLEEP_NORMAL_DISTRIBUTION",
+                              "properties": {
+                                "Mean": "1500",
+                                "Variance": "2000"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "IF_LOCAL_PLAYER_MATCHES",
+          "properties": {
+            "Filter By": {
+              "class": "Player",
+              "logic": "NONE",
+              "type": "IN_AREA",
+              "operator": "EQUALS",
+              "value": "v(Cadavar_area)"
+            }
+          },
+          "children": [
+            {
+              "id": "IF_INVENTORY_IS_FULL",
+              "children": [
+                {
+                  "id": "WALK_FULLY_TO_SPECIFIC_BANK",
+                  "properties": {
+                    "Bank": {
+                      "class": "BankLocation",
+                      "value": "VARROCK_EAST"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "SLEEP_NORMAL_DISTRIBUTION",
+                      "properties": {
+                        "Mean": "1500",
+                        "Variance": "3000"
+                      },
+                      "children": [
+                        {
+                          "id": "BANK_DEPOSIT_ALL",
+                          "children": [
+                            {
+                              "id": "SLEEP_NORMAL_DISTRIBUTION",
+                              "properties": {
+                                "Mean": "1000",
+                                "Variance": "4000"
+                              },
+                              "children": [
+                                {
+                                  "id": "IF_BANK_CONTAINS",
+                                  "properties": {
+                                    "Filter Item By": {
+                                      "class": "Item",
+                                      "logic": "NONE",
+                                      "type": "ID",
+                                      "operator": "EQUALS",
+                                      "value": "753"
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "IF_BANK_COUNT",
+                                      "properties": {
+                                        "count": {
+                                          "class": "Number",
+                                          "operator": "GREATER_THAN",
+                                          "value": "170"
+                                        },
+                                        "Filter Item By": {
+                                          "class": "Item",
+                                          "logic": "NONE",
+                                          "type": "ID",
+                                          "operator": "EQUALS",
+                                          "value": "753"
+                                        }
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "SET_WITHDRAW_MODE_NOTED",
+                                          "children": [
+                                            {
+                                              "id": "BANK_WITHDRAW_ITEM",
+                                              "properties": {
+                                                "Filter Item By": {
+                                                  "class": "Item",
+                                                  "logic": "NONE",
+                                                  "type": "ID",
+                                                  "operator": "EQUALS",
+                                                  "value": "753"
+                                                },
+                                                "Amount": "310"
+                                              },
+                                              "children": [
+                                                {
+                                                  "id": "SLEEP_NORMAL_DISTRIBUTION",
+                                                  "properties": {
+                                                    "Mean": "2500",
+                                                    "Variance": "4500"
+                                                  },
+                                                  "children": [
+                                                    {
+                                                      "id": "WALK_FULLY_TO_SPECIFIC_BANK",
+                                                      "properties": {
+                                                        "Bank": {
+                                                          "class": "BankLocation",
+                                                          "value": "GRAND_EXCHANGE"
+                                                        }
+                                                      },
+                                                      "children": [
+                                                        {
+                                                          "id": "SLEEP_NORMAL_DISTRIBUTION",
+                                                          "properties": {
+                                                            "Mean": "1500",
+                                                            "Variance": "3000"
+                                                          },
+                                                          "children": [
+                                                            {
+                                                              "id": "OPEN_GRAND_EXCHANGE",
+                                                              "children": [
+                                                                {
+                                                                  "id": "SLEEP_NORMAL_DISTRIBUTION",
+                                                                  "properties": {
+                                                                    "Mean": "1000",
+                                                                    "Variance": "1500"
+                                                                  },
+                                                                  "children": [
+                                                                    {
+                                                                      "id": "SELL_ALL_OF_MATCHING_ITEM_GRAND_EXCHANGE",
+                                                                      "properties": {
+                                                                        "Filter Item By": {
+                                                                          "class": "Item",
+                                                                          "logic": "NONE",
+                                                                          "type": "ID",
+                                                                          "operator": "EQUALS",
+                                                                          "value": "754"
+                                                                        },
+                                                                        "Price": "-10%"
+                                                                      },
+                                                                      "children": [
+                                                                        {
+                                                                          "id": "SLEEP_NORMAL_DISTRIBUTION",
+                                                                          "properties": {
+                                                                            "Mean": "1500",
+                                                                            "Variance": "2000"
+                                                                          },
+                                                                          "children": [
+                                                                            {
+                                                                              "id": "IF_GRAND_EXCHANGE_IS_OPEN",
+                                                                              "children": [
+                                                                                {
+                                                                                  "id": "COLLECT_GRAND_EXCHANGE"
+                                                                                }
+                                                                              ]
+                                                                            }
+                                                                          ]
+                                                                        },
+                                                                        {
+                                                                          "id": "IF_GRAND_EXCHANGE_IS_NOT_OPEN",
+                                                                          "children": [
+                                                                            {
+                                                                              "id": "OPEN_GRAND_EXCHANGE",
+                                                                              "children": [
+                                                                                {
+                                                                                  "id": "COLLECT_GRAND_EXCHANGE"
+                                                                                }
+                                                                              ]
+                                                                            }
+                                                                          ]
+                                                                        },
+                                                                        {
+                                                                          "id": "SLEEP_NORMAL_DISTRIBUTION",
+                                                                          "properties": {
+                                                                            "Mean": "1500",
+                                                                            "Variance": "2000"
+                                                                          },
+                                                                          "children": [
+                                                                            {
+                                                                              "id": "BUY_ITEM_GRAND_EXCHANGE",
+                                                                              "properties": {
+                                                                                "Item Name": "chef\u0027s hat",
+                                                                                "Price": "+100%",
+                                                                                "Amount": "1"
+                                                                              },
+                                                                              "children": [
+                                                                                {
+                                                                                  "id": "SLEEP_NORMAL_DISTRIBUTION",
+                                                                                  "properties": {
+                                                                                    "Mean": "1000",
+                                                                                    "Variance": "1500"
+                                                                                  },
+                                                                                  "children": [
+                                                                                    {
+                                                                                      "id": "COLLECT_GRAND_EXCHANGE"
+                                                                                    }
+                                                                                  ]
+                                                                                }
+                                                                              ]
+                                                                            },
+                                                                            {
+                                                                              "id": "BUY_ITEM_GRAND_EXCHANGE",
+                                                                              "properties": {
+                                                                                "Item Name": "Raw sardine",
+                                                                                "Buy as many as we can afford": true,
+                                                                                "Price": "+10%",
+                                                                                "Amount": "500"
+                                                                              },
+                                                                              "children": [
+                                                                                {
+                                                                                  "id": "SLEEP_NORMAL_DISTRIBUTION",
+                                                                                  "properties": {
+                                                                                    "Mean": "2500",
+                                                                                    "Variance": "3500"
+                                                                                  }
+                                                                                },
+                                                                                {
+                                                                                  "id": "COLLECT_GRAND_EXCHANGE",
+                                                                                  "children": [
+                                                                                    {
+                                                                                      "id": "SLEEP_BETWEEN",
+                                                                                      "properties": {
+                                                                                        "Minimum": "3500",
+                                                                                        "Maximum": "6000"
+                                                                                      }
+                                                                                    }
+                                                                                  ]
+                                                                                },
+                                                                                {
+                                                                                  "id": "SLEEP_NORMAL_DISTRIBUTION",
+                                                                                  "properties": {
+                                                                                    "Mean": "1500",
+                                                                                    "Variance": "2000"
+                                                                                  }
+                                                                                }
+                                                                              ]
+                                                                            },
+                                                                            {
+                                                                              "id": "SET_VARIABLE",
+                                                                              "properties": {
+                                                                                "Value": "1",
+                                                                                "Variable name": "change"
+                                                                              }
+                                                                            },
+                                                                            {
+                                                                              "id": "IF_INVENTORY_CONTAINS_ANY",
+                                                                              "properties": {
+                                                                                "Filter Item By": {
+                                                                                  "class": "Item",
+                                                                                  "logic": "NONE",
+                                                                                  "type": "ID",
+                                                                                  "operator": "EQUALS",
+                                                                                  "value": "1949"
+                                                                                }
+                                                                              },
+                                                                              "children": [
+                                                                                {
+                                                                                  "id": "SLEEP_NORMAL_DISTRIBUTION",
+                                                                                  "properties": {
+                                                                                    "Mean": "1000",
+                                                                                    "Variance": "1500"
+                                                                                  }
+                                                                                },
+                                                                                {
+                                                                                  "id": "INTERACT_WITH_INVENTORY_ITEM",
+                                                                                  "properties": {
+                                                                                    "Filter Item By": {
+                                                                                      "class": "Item",
+                                                                                      "logic": "NONE",
+                                                                                      "type": "ID",
+                                                                                      "operator": "EQUALS",
+                                                                                      "value": "1949"
+                                                                                    },
+                                                                                    "Action": "Wear"
+                                                                                  }
+                                                                                }
+                                                                              ]
+                                                                            }
+                                                                          ]
+                                                                        }
+                                                                      ]
+                                                                    }
+                                                                  ]
+                                                                }
+                                                              ]
+                                                            }
+                                                          ]
+                                                        }
+                                                      ]
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "id": "IF_INVENTORY_IS_EMPTY",
+                                  "children": [
+                                    {
+                                      "id": "CLOSE_BANK"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "COMMENT",
+      "color": -16056452,
+      "properties": {
+        "Comment": "Go to Falador and Cook\n"
+      },
+      "children": [
+        {
+          "id": "SET_VARIABLE",
+          "properties": {
+            "Value": "1",
+            "Variable name": "change2"
+          },
+          "children": [
+            {
+              "id": "IF_VARIABLE_IS",
+              "properties": {
+                "Filter Value By": {
+                  "class": "Variable",
+                  "logic": "NONE",
+                  "type": "AS_NUMBER",
+                  "operator": "EQUALS",
+                  "value": "1"
+                },
+                "Variable name": "change2"
+              },
+              "children": [
+                {
+                  "id": "IF_LOCAL_PLAYER_MATCHES",
+                  "properties": {
+                    "Filter By": {
+                      "class": "Player",
+                      "logic": "NONE",
+                      "type": "NOT_IN_AREA",
+                      "operator": "EQUALS",
+                      "value": "v(falador_range)",
+                      "filters": [
+                        {
+                          "class": "Player",
+                          "logic": "AND",
+                          "type": "NOT_IN_AREA",
+                          "operator": "EQUALS",
+                          "value": "v(Lumbridge)"
+                        },
+                        {
+                          "class": "Player",
+                          "logic": "AND",
+                          "type": "NOT_IN_AREA",
+                          "operator": "EQUALS",
+                          "value": "v(Cadavar_area)"
+                        },
+                        {
+                          "class": "Player",
+                          "logic": "AND",
+                          "type": "NOT_IN_AREA",
+                          "operator": "EQUALS",
+                          "value": "v(Varrock_bank)"
+                        }
+                      ]
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "WALK_TO_SPECIFIC_BANK",
+                      "properties": {
+                        "Bank": {
+                          "class": "BankLocation",
+                          "value": "FALADOR_EAST"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "SLEEP_NORMAL_DISTRIBUTION",
+                          "properties": {
+                            "Mean": "1500",
+                            "Variance": "2000"
+                          },
+                          "children": [
+                            {
+                              "id": "WALK_FULLY_TO_SPECIFIC_BANK",
+                              "properties": {
+                                "Bank": {
+                                  "class": "BankLocation",
+                                  "value": "FALADOR_EAST"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "SLEEP_BETWEEN",
+                                  "properties": {
+                                    "Minimum": "1500",
+                                    "Maximum": "2500"
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_LOCAL_PLAYER_MATCHES",
+                  "properties": {
+                    "Filter By": {
+                      "class": "Player",
+                      "logic": "NONE",
+                      "type": "NOT_IN_AREA",
+                      "operator": "EQUALS",
+                      "value": "v(Cadavar_area)",
+                      "filters": [
+                        {
+                          "class": "Player",
+                          "logic": "AND",
+                          "type": "NOT_IN_AREA",
+                          "operator": "EQUALS",
+                          "value": "v(Varrock_bank)"
+                        }
+                      ]
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "IF_SKILL_LEVEL_IS",
+                      "properties": {
+                        "level": {
+                          "class": "Number",
+                          "operator": "LESS_THAN_OR_EQUALS",
+                          "value": "32"
+                        },
+                        "Skill": {
+                          "class": "Skill",
+                          "value": "COOKING"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "IF_LOCAL_PLAYER_MATCHES",
+                          "properties": {
+                            "Filter By": {
+                              "class": "Player",
+                              "logic": "NONE",
+                              "type": "NOT_IN_AREA",
+                              "operator": "EQUALS",
+                              "value": "v(falador_range)"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "OPEN_BANK",
+                              "children": [
+                                {
+                                  "id": "BANK_DEPOSIT_ALL"
+                                },
+                                {
+                                  "id": "BANK_WITHDRAW_ITEM",
+                                  "properties": {
+                                    "Filter Item By": {
+                                      "class": "Item",
+                                      "logic": "NONE",
+                                      "type": "ID",
+                                      "operator": "EQUALS",
+                                      "value": "327"
+                                    },
+                                    "Amount": "28"
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "SLEEP_NORMAL_DISTRIBUTION",
+                                      "properties": {
+                                        "Mean": "500",
+                                        "Variance": "1000"
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "CLOSE_BANK",
+                                          "children": [
+                                            {
+                                              "id": "WALK_FULLY_TO_AREA",
+                                              "properties": {
+                                                "Area": "v(falador_range)"
+                                              },
+                                              "children": [
+                                                {
+                                                  "id": "SLEEP_NORMAL_DISTRIBUTION",
+                                                  "properties": {
+                                                    "Mean": "1500",
+                                                    "Variance": "2000"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "id": "SLEEP_NORMAL_DISTRIBUTION",
+                                  "properties": {
+                                    "Mean": "1000",
+                                    "Variance": "1500"
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "id": "IF_GAME_OBJECT_EXISTS",
+                          "properties": {
+                            "Filter Object By": {
+                              "class": "GameObject",
+                              "logic": "NONE",
+                              "type": "ID",
+                              "operator": "EQUALS",
+                              "value": "40296"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "SET_VARIABLE",
+                              "properties": {
+                                "Value": "1",
+                                "Variable name": "change"
+                              }
+                            },
+                            {
+                              "id": "GAME_OBJECT_INTERACT",
+                              "properties": {
+                                "Filter Object By": {
+                                  "class": "GameObject",
+                                  "logic": "NONE",
+                                  "type": "ID",
+                                  "operator": "EQUALS",
+                                  "value": "40296"
+                                },
+                                "Action": "Cook"
+                              },
+                              "children": [
+                                {
+                                  "id": "SLEEP_NORMAL_DISTRIBUTION",
+                                  "properties": {
+                                    "Mean": "1000",
+                                    "Variance": "1500"
+                                  }
+                                },
+                                {
+                                  "id": "IF_WIDGET_EXISTS",
+                                  "properties": {
+                                    "Find Widget By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "WIDGET_ID",
+                                      "operator": "EQUALS",
+                                      "value": "162, 35, 0"
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "SLEEP_NORMAL_DISTRIBUTION",
+                                      "properties": {
+                                        "Mean": "1500",
+                                        "Variance": "2000"
+                                      }
+                                    },
+                                    {
+                                      "id": "WIDGET_INTERACT",
+                                      "properties": {
+                                        "Find Widget By": {
+                                          "class": "Widget",
+                                          "logic": "NONE",
+                                          "type": "WIDGET_ID",
+                                          "operator": "EQUALS",
+                                          "value": "270, 14, 38"
+                                        }
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "SLEEP_WHILE_ANIMATING",
+                                          "children": [
+                                            {
+                                              "id": "IF_WIDGET_EXISTS",
+                                              "properties": {
+                                                "Find Widget By": {
+                                                  "class": "Widget",
+                                                  "logic": "NONE",
+                                                  "type": "WIDGET_ID",
+                                                  "operator": "EQUALS",
+                                                  "value": "162, 35, 0"
+                                                }
+                                              },
+                                              "children": [
+                                                {
+                                                  "id": "WIDGET_INTERACT",
+                                                  "properties": {
+                                                    "Find Widget By": {
+                                                      "class": "Widget",
+                                                      "logic": "NONE",
+                                                      "type": "WIDGET_ID",
+                                                      "operator": "EQUALS",
+                                                      "value": "233, 3"
+                                                    }
+                                                  },
+                                                  "children": [
+                                                    {
+                                                      "id": "SLEEP_WHILE_ANIMATING"
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "id": "IF_INVENTORY_DOES_NOT_CONTAIN_ANY",
+                          "properties": {
+                            "Filter Item By": {
+                              "class": "Item",
+                              "logic": "NONE",
+                              "type": "ID",
+                              "operator": "EQUALS",
+                              "value": "327"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "INTERACT_WITH_INVENTORY_ITEM",
+                              "properties": {
+                                "Filter Item By": {
+                                  "class": "Item",
+                                  "logic": "NONE",
+                                  "type": "ID",
+                                  "operator": "EQUALS",
+                                  "value": "325",
+                                  "filters": [
+                                    {
+                                      "class": "Item",
+                                      "logic": "OR",
+                                      "type": "ID",
+                                      "operator": "EQUALS",
+                                      "value": "369"
+                                    }
+                                  ]
+                                },
+                                "Force left click": true
+                              },
+                              "children": [
+                                {
+                                  "id": "GAME_OBJECT_INTERACT",
+                                  "properties": {
+                                    "Filter Object By": {
+                                      "class": "GameObject",
+                                      "logic": "NONE",
+                                      "type": "ID",
+                                      "operator": "EQUALS",
+                                      "value": "325",
+                                      "filters": [
+                                        {
+                                          "class": "GameObject",
+                                          "logic": "OR",
+                                          "type": "ID",
+                                          "operator": "EQUALS",
+                                          "value": "369"
+                                        }
+                                      ]
+                                    },
+                                    "Action": "Drop"
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "id": "WALK_FULLY_TO_SPECIFIC_BANK",
+                              "properties": {
+                                "Bank": {
+                                  "class": "BankLocation",
+                                  "value": "FALADOR_EAST"
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_SKILL_LEVEL_IS",
+                      "properties": {
+                        "level": {
+                          "class": "Number",
+                          "operator": "GREATER_THAN_OR_EQUALS",
+                          "value": "32"
+                        },
+                        "Skill": {
+                          "class": "Skill",
+                          "value": "COOKING"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "WALK_FULLY_TO_SPECIFIC_BANK",
+                          "properties": {
+                            "Bank": {
+                              "class": "BankLocation",
+                              "value": "GRAND_EXCHANGE"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "SLEEP_NORMAL_DISTRIBUTION",
+                              "properties": {
+                                "Mean": "1500",
+                                "Variance": "2000"
+                              },
+                              "children": [
+                                {
+                                  "id": "STOP_SCRIPT"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "PAINT_ROOT",
+      "properties": {
+        "Hide standard paint": true
+      },
+      "children": [
+        {
+          "id": "DRAW_IMAGE",
+          "properties": {
+            "Path": "https://i.ibb.co/WzbfXrR/beezy-dough-account-creator.jpg",
+            "X": "0",
+            "Y": "339"
+          },
+          "children": [
+            {
+              "id": "DRAW_TEXT",
+              "properties": {
+                "Font Size": "16",
+                "Outline color": {
+                  "class": "Color",
+                  "value": -1
+                },
+                "Color": {
+                  "class": "Color",
+                  "value": -1
+                },
+                "X": "300",
+                "Y": "375",
+                "Text": "runtime()",
+                "Font": {
+                  "class": "Font",
+                  "value": "Verdana"
+                }
+              }
+            },
+            {
+              "id": "DRAW_TEXT",
+              "properties": {
+                "Font Size": "15",
+                "Outline color": {
+                  "class": "Color",
+                  "value": -1
+                },
+                "Color": {
+                  "class": "Color",
+                  "value": -1
+                },
+                "X": "300",
+                "Y": "415",
+                "Text": "itemGain(Cadava Berries) / 170",
+                "Font": {
+                  "class": "Font",
+                  "value": "Verdana"
+                }
+              }
+            },
+            {
+              "id": "DRAW_TEXT",
+              "properties": {
+                "Font Size": "15",
+                "Outline color": {
+                  "class": "Color",
+                  "value": -1
+                },
+                "Color": {
+                  "class": "Color",
+                  "value": -1
+                },
+                "X": "300",
+                "Y": "455",
+                "Text": "skillLevel(Cooking) / 32",
+                "Font": {
+                  "class": "Font",
+                  "value": "Verdana"
+                }
+              }
+            },
+            {
+              "id": "DRAW_BUTTON",
+              "properties": {
+                "X": "380",
+                "Y": "445",
+                "Hover Path": "https://i.ibb.co/4dPvs6x/discord.jpg",
+                "Normal Path": "https://i.ibb.co/4dPvs6x/discord.jpg",
+                "Pressed Path": "https://i.ibb.co/4dPvs6x/discord.jpg"
+              },
+              "children": [
+                {
+                  "id": "BROWSE_URL",
+                  "properties": {
+                    "URL": "https://discord.gg/6SJWc6aK"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "DRAW_BUTTON",
+          "disabled": true,
+          "properties": {
+            "X": "494",
+            "Y": "340",
+            "Hover Path": "",
+            "Normal Path": "https://i.ibb.co/WFKMk4d/close-button.jpg",
+            "Pressed Path": ""
+          }
+        }
+      ]
+    }
+  ]
+}

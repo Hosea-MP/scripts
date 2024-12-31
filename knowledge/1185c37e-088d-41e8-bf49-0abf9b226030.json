@@ -1,0 +1,40 @@
+{
+  "id": "1185c37e-088d-41e8-bf49-0abf9b226030",
+  "name": "Bank \u003e Close Bank",
+  "description": "Will close the bank and wait until bank is closed.",
+  "parameters": "",
+  "fail": false,
+  "actions": [
+    {
+      "id": "IF_BANK_IS_OPEN",
+      "children": [
+        {
+          "id": "CLOSE_BANK",
+          "children": [
+            {
+              "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+              "properties": {
+                "Max time (seconds)": ""
+              },
+              "children": [
+                {
+                  "id": "IF_BANK_IS_NOT_OPEN",
+                  "customDisplayName": "If bank is not open"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "CUSTOM_613d1cd6-05ce-4ddc-ba25-f0e995146419"
+        },
+        {
+          "id": "DISABLE_MENU_MANIPULATION"
+        },
+        {
+          "id": "RESUME_ITEM_TRACKER"
+        }
+      ]
+    }
+  ]
+}

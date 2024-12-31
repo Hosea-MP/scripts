@@ -1,0 +1,2079 @@
+{
+  "id": "6b6a0eb1-3fe9-45e8-82ff-53e17493180e",
+  "name": "Bank \u003e Genie Lamp",
+  "description": "Will use the genie lamp based on the most recent exp gained.",
+  "parameters": "",
+  "fail": false,
+  "actions": [
+    {
+      "id": "IF_INVENTORY_CONTAINS_ANY",
+      "customDisplayName": "If inventory contains Lamp",
+      "properties": {
+        "Filter Item By": {
+          "class": "Item",
+          "logic": "NONE",
+          "type": "NAME",
+          "operator": "EQUALS",
+          "value": "Lamp"
+        }
+      },
+      "children": [
+        {
+          "id": "INTERACT_WITH_INVENTORY_ITEM",
+          "properties": {
+            "Filter Item By": {
+              "class": "Item",
+              "logic": "NONE",
+              "type": "NAME",
+              "operator": "EQUALS",
+              "value": "Lamp"
+            },
+            "Action": "Rub"
+          },
+          "children": [
+            {
+              "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+              "properties": {
+                "Max time (seconds)": "5"
+              },
+              "children": [
+                {
+                  "id": "IF_WIDGET_EXISTS",
+                  "properties": {
+                    "Find Widget By": {
+                      "class": "Widget",
+                      "logic": "NONE",
+                      "type": "WIDGET_ID",
+                      "operator": "EQUALS",
+                      "value": "240, 2"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "IF_WIDGET_EXISTS",
+          "properties": {
+            "Find Widget By": {
+              "class": "Widget",
+              "logic": "NONE",
+              "type": "WIDGET_ID",
+              "operator": "EQUALS",
+              "value": "240, 2"
+            }
+          },
+          "children": [
+            {
+              "id": "IF_GAINED_EXPERIENCE_MATCHES",
+              "properties": {
+                "exp gained": {
+                  "class": "Number",
+                  "operator": "GREATER_THAN_OR_EQUALS",
+                  "value": "1"
+                },
+                "Skill": {
+                  "class": "Skill",
+                  "value": "ATTACK"
+                }
+              },
+              "children": [
+                {
+                  "id": "WIDGET_INTERACT",
+                  "properties": {
+                    "Action": "Attack",
+                    "Find Widget By": {
+                      "class": "Widget",
+                      "logic": "NONE",
+                      "type": "WIDGET_ID",
+                      "operator": "EQUALS",
+                      "value": "240, 2"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "SLEEP_UNTIL_GAME_TICK",
+                      "children": [
+                        {
+                          "id": "WIDGET_INTERACT",
+                          "customDisplayName": "Interact with widget \u0027240, 26\u0027 (Confirm)",
+                          "properties": {
+                            "Action": "Confirm",
+                            "Find Widget By": {
+                              "class": "Widget",
+                              "logic": "NONE",
+                              "type": "WIDGET_ID",
+                              "operator": "EQUALS",
+                              "value": "240, 26"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "SLEEP_UNTIL_GAME_TICK"
+                            }
+                          ]
+                        },
+                        {
+                          "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                          "properties": {
+                            "Max time (seconds)": "5"
+                          },
+                          "children": [
+                            {
+                              "id": "IF_WIDGET_DOES_NOT_EXIST",
+                              "properties": {
+                                "Find Widget By": {
+                                  "class": "Widget",
+                                  "logic": "NONE",
+                                  "type": "WIDGET_ID",
+                                  "operator": "EQUALS",
+                                  "value": "240, 2"
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "IF_WIDGET_EXISTS",
+          "properties": {
+            "Find Widget By": {
+              "class": "Widget",
+              "logic": "NONE",
+              "type": "WIDGET_ID",
+              "operator": "EQUALS",
+              "value": "240, 2"
+            }
+          },
+          "children": [
+            {
+              "id": "IF_GAINED_EXPERIENCE_MATCHES",
+              "properties": {
+                "exp gained": {
+                  "class": "Number",
+                  "operator": "GREATER_THAN_OR_EQUALS",
+                  "value": "1"
+                },
+                "Skill": {
+                  "class": "Skill",
+                  "value": "STRENGTH"
+                }
+              },
+              "children": [
+                {
+                  "id": "WIDGET_INTERACT",
+                  "properties": {
+                    "Action": "Strength",
+                    "Find Widget By": {
+                      "class": "Widget",
+                      "logic": "NONE",
+                      "type": "WIDGET_ID",
+                      "operator": "EQUALS",
+                      "value": "240, 3"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "SLEEP_UNTIL_GAME_TICK",
+                      "children": [
+                        {
+                          "id": "WIDGET_INTERACT",
+                          "customDisplayName": "Interact with widget \u0027240, 26\u0027 (Confirm)",
+                          "properties": {
+                            "Action": "Confirm",
+                            "Find Widget By": {
+                              "class": "Widget",
+                              "logic": "NONE",
+                              "type": "WIDGET_ID",
+                              "operator": "EQUALS",
+                              "value": "240, 26"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "SLEEP_UNTIL_GAME_TICK"
+                            },
+                            {
+                              "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                              "properties": {
+                                "Max time (seconds)": "5"
+                              },
+                              "children": [
+                                {
+                                  "id": "IF_WIDGET_DOES_NOT_EXIST",
+                                  "properties": {
+                                    "Find Widget By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "WIDGET_ID",
+                                      "operator": "EQUALS",
+                                      "value": "240, 2"
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "IF_WIDGET_EXISTS",
+          "properties": {
+            "Find Widget By": {
+              "class": "Widget",
+              "logic": "NONE",
+              "type": "WIDGET_ID",
+              "operator": "EQUALS",
+              "value": "240, 2"
+            }
+          },
+          "children": [
+            {
+              "id": "IF_GAINED_EXPERIENCE_MATCHES",
+              "properties": {
+                "exp gained": {
+                  "class": "Number",
+                  "operator": "GREATER_THAN_OR_EQUALS",
+                  "value": "1"
+                },
+                "Skill": {
+                  "class": "Skill",
+                  "value": "PRAYER"
+                }
+              },
+              "children": [
+                {
+                  "id": "WIDGET_INTERACT",
+                  "properties": {
+                    "Action": "Prayer",
+                    "Find Widget By": {
+                      "class": "Widget",
+                      "logic": "NONE",
+                      "type": "WIDGET_ID",
+                      "operator": "EQUALS",
+                      "value": "240, 8"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "SLEEP_UNTIL_GAME_TICK",
+                      "children": [
+                        {
+                          "id": "WIDGET_INTERACT",
+                          "customDisplayName": "Interact with widget \u0027240, 26\u0027 (Confirm)",
+                          "properties": {
+                            "Action": "Confirm",
+                            "Find Widget By": {
+                              "class": "Widget",
+                              "logic": "NONE",
+                              "type": "WIDGET_ID",
+                              "operator": "EQUALS",
+                              "value": "240, 26"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "SLEEP_UNTIL_GAME_TICK"
+                            },
+                            {
+                              "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                              "properties": {
+                                "Max time (seconds)": "5"
+                              },
+                              "children": [
+                                {
+                                  "id": "IF_WIDGET_DOES_NOT_EXIST",
+                                  "properties": {
+                                    "Find Widget By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "WIDGET_ID",
+                                      "operator": "EQUALS",
+                                      "value": "240, 2"
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "IF_WIDGET_EXISTS",
+          "properties": {
+            "Find Widget By": {
+              "class": "Widget",
+              "logic": "NONE",
+              "type": "WIDGET_ID",
+              "operator": "EQUALS",
+              "value": "240, 2"
+            }
+          },
+          "children": [
+            {
+              "id": "IF_GAINED_EXPERIENCE_MATCHES",
+              "properties": {
+                "exp gained": {
+                  "class": "Number",
+                  "operator": "GREATER_THAN_OR_EQUALS",
+                  "value": "1"
+                },
+                "Skill": {
+                  "class": "Skill",
+                  "value": "SLAYER"
+                }
+              },
+              "children": [
+                {
+                  "id": "WIDGET_INTERACT",
+                  "properties": {
+                    "Action": "Slayer",
+                    "Find Widget By": {
+                      "class": "Widget",
+                      "logic": "NONE",
+                      "type": "WIDGET_ID",
+                      "operator": "EQUALS",
+                      "value": "240, 14"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "SLEEP_UNTIL_GAME_TICK",
+                      "children": [
+                        {
+                          "id": "WIDGET_INTERACT",
+                          "customDisplayName": "Interact with widget \u0027240, 26\u0027 (Confirm)",
+                          "properties": {
+                            "Action": "Confirm",
+                            "Find Widget By": {
+                              "class": "Widget",
+                              "logic": "NONE",
+                              "type": "WIDGET_ID",
+                              "operator": "EQUALS",
+                              "value": "240, 26"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "SLEEP_UNTIL_GAME_TICK"
+                            },
+                            {
+                              "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                              "properties": {
+                                "Max time (seconds)": "5"
+                              },
+                              "children": [
+                                {
+                                  "id": "IF_WIDGET_DOES_NOT_EXIST",
+                                  "properties": {
+                                    "Find Widget By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "WIDGET_ID",
+                                      "operator": "EQUALS",
+                                      "value": "240, 2"
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "IF_WIDGET_EXISTS",
+          "properties": {
+            "Find Widget By": {
+              "class": "Widget",
+              "logic": "NONE",
+              "type": "WIDGET_ID",
+              "operator": "EQUALS",
+              "value": "240, 2"
+            }
+          },
+          "children": [
+            {
+              "id": "IF_GAINED_EXPERIENCE_MATCHES",
+              "properties": {
+                "exp gained": {
+                  "class": "Number",
+                  "operator": "GREATER_THAN_OR_EQUALS",
+                  "value": "1"
+                },
+                "Skill": {
+                  "class": "Skill",
+                  "value": "COOKING"
+                }
+              },
+              "children": [
+                {
+                  "id": "WIDGET_INTERACT",
+                  "properties": {
+                    "Action": "Cooking",
+                    "Find Widget By": {
+                      "class": "Widget",
+                      "logic": "NONE",
+                      "type": "WIDGET_ID",
+                      "operator": "EQUALS",
+                      "value": "240, 19"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "SLEEP_UNTIL_GAME_TICK",
+                      "children": [
+                        {
+                          "id": "WIDGET_INTERACT",
+                          "customDisplayName": "Interact with widget \u0027240, 26\u0027 (Confirm)",
+                          "properties": {
+                            "Action": "Confirm",
+                            "Find Widget By": {
+                              "class": "Widget",
+                              "logic": "NONE",
+                              "type": "WIDGET_ID",
+                              "operator": "EQUALS",
+                              "value": "240, 26"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "SLEEP_UNTIL_GAME_TICK"
+                            },
+                            {
+                              "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                              "properties": {
+                                "Max time (seconds)": "5"
+                              },
+                              "children": [
+                                {
+                                  "id": "IF_WIDGET_DOES_NOT_EXIST",
+                                  "properties": {
+                                    "Find Widget By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "WIDGET_ID",
+                                      "operator": "EQUALS",
+                                      "value": "240, 2"
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "IF_WIDGET_EXISTS",
+          "properties": {
+            "Find Widget By": {
+              "class": "Widget",
+              "logic": "NONE",
+              "type": "WIDGET_ID",
+              "operator": "EQUALS",
+              "value": "240, 2"
+            }
+          },
+          "children": [
+            {
+              "id": "IF_GAINED_EXPERIENCE_MATCHES",
+              "properties": {
+                "exp gained": {
+                  "class": "Number",
+                  "operator": "GREATER_THAN_OR_EQUALS",
+                  "value": "1"
+                },
+                "Skill": {
+                  "class": "Skill",
+                  "value": "DEFENCE"
+                }
+              },
+              "children": [
+                {
+                  "id": "WIDGET_INTERACT",
+                  "properties": {
+                    "Action": "Defence",
+                    "Find Widget By": {
+                      "class": "Widget",
+                      "logic": "NONE",
+                      "type": "WIDGET_ID",
+                      "operator": "EQUALS",
+                      "value": "240, 6"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "SLEEP_UNTIL_GAME_TICK",
+                      "children": [
+                        {
+                          "id": "WIDGET_INTERACT",
+                          "customDisplayName": "Interact with widget \u0027240, 26\u0027 (Confirm)",
+                          "properties": {
+                            "Action": "Confirm",
+                            "Find Widget By": {
+                              "class": "Widget",
+                              "logic": "NONE",
+                              "type": "WIDGET_ID",
+                              "operator": "EQUALS",
+                              "value": "240, 26"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "SLEEP_UNTIL_GAME_TICK"
+                            },
+                            {
+                              "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                              "properties": {
+                                "Max time (seconds)": "5"
+                              },
+                              "children": [
+                                {
+                                  "id": "IF_WIDGET_DOES_NOT_EXIST",
+                                  "properties": {
+                                    "Find Widget By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "WIDGET_ID",
+                                      "operator": "EQUALS",
+                                      "value": "240, 2"
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "IF_WIDGET_EXISTS",
+          "properties": {
+            "Find Widget By": {
+              "class": "Widget",
+              "logic": "NONE",
+              "type": "WIDGET_ID",
+              "operator": "EQUALS",
+              "value": "240, 2"
+            }
+          },
+          "children": [
+            {
+              "id": "IF_GAINED_EXPERIENCE_MATCHES",
+              "properties": {
+                "exp gained": {
+                  "class": "Number",
+                  "operator": "GREATER_THAN_OR_EQUALS",
+                  "value": "1"
+                },
+                "Skill": {
+                  "class": "Skill",
+                  "value": "FISHING"
+                }
+              },
+              "children": [
+                {
+                  "id": "WIDGET_INTERACT",
+                  "properties": {
+                    "Action": "Fishing",
+                    "Find Widget By": {
+                      "class": "Widget",
+                      "logic": "NONE",
+                      "type": "WIDGET_ID",
+                      "operator": "EQUALS",
+                      "value": "240, 18"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "SLEEP_UNTIL_GAME_TICK",
+                      "children": [
+                        {
+                          "id": "WIDGET_INTERACT",
+                          "customDisplayName": "Interact with widget \u0027240, 26\u0027 (Confirm)",
+                          "properties": {
+                            "Action": "Confirm",
+                            "Find Widget By": {
+                              "class": "Widget",
+                              "logic": "NONE",
+                              "type": "WIDGET_ID",
+                              "operator": "EQUALS",
+                              "value": "240, 26"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "SLEEP_UNTIL_GAME_TICK"
+                            },
+                            {
+                              "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                              "properties": {
+                                "Max time (seconds)": "5"
+                              },
+                              "children": [
+                                {
+                                  "id": "IF_WIDGET_DOES_NOT_EXIST",
+                                  "properties": {
+                                    "Find Widget By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "WIDGET_ID",
+                                      "operator": "EQUALS",
+                                      "value": "240, 2"
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "IF_WIDGET_EXISTS",
+          "properties": {
+            "Find Widget By": {
+              "class": "Widget",
+              "logic": "NONE",
+              "type": "WIDGET_ID",
+              "operator": "EQUALS",
+              "value": "240, 2"
+            }
+          },
+          "children": [
+            {
+              "id": "IF_GAINED_EXPERIENCE_MATCHES",
+              "properties": {
+                "exp gained": {
+                  "class": "Number",
+                  "operator": "GREATER_THAN_OR_EQUALS",
+                  "value": "1"
+                },
+                "Skill": {
+                  "class": "Skill",
+                  "value": "FIREMAKING"
+                }
+              },
+              "children": [
+                {
+                  "id": "WIDGET_INTERACT",
+                  "properties": {
+                    "Action": "Firemaking",
+                    "Find Widget By": {
+                      "class": "Widget",
+                      "logic": "NONE",
+                      "type": "WIDGET_ID",
+                      "operator": "EQUALS",
+                      "value": "240, 20"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "SLEEP_UNTIL_GAME_TICK",
+                      "children": [
+                        {
+                          "id": "WIDGET_INTERACT",
+                          "customDisplayName": "Interact with widget \u0027240, 26\u0027 (Confirm)",
+                          "properties": {
+                            "Action": "Confirm",
+                            "Find Widget By": {
+                              "class": "Widget",
+                              "logic": "NONE",
+                              "type": "WIDGET_ID",
+                              "operator": "EQUALS",
+                              "value": "240, 26"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "SLEEP_UNTIL_GAME_TICK"
+                            },
+                            {
+                              "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                              "properties": {
+                                "Max time (seconds)": "5"
+                              },
+                              "children": [
+                                {
+                                  "id": "IF_WIDGET_DOES_NOT_EXIST",
+                                  "properties": {
+                                    "Find Widget By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "WIDGET_ID",
+                                      "operator": "EQUALS",
+                                      "value": "240, 2"
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "IF_WIDGET_EXISTS",
+          "properties": {
+            "Find Widget By": {
+              "class": "Widget",
+              "logic": "NONE",
+              "type": "WIDGET_ID",
+              "operator": "EQUALS",
+              "value": "240, 2"
+            }
+          },
+          "children": [
+            {
+              "id": "IF_GAINED_EXPERIENCE_MATCHES",
+              "properties": {
+                "exp gained": {
+                  "class": "Number",
+                  "operator": "GREATER_THAN_OR_EQUALS",
+                  "value": "1"
+                },
+                "Skill": {
+                  "class": "Skill",
+                  "value": "RANGED"
+                }
+              },
+              "children": [
+                {
+                  "id": "WIDGET_INTERACT",
+                  "properties": {
+                    "Action": "Ranged",
+                    "Find Widget By": {
+                      "class": "Widget",
+                      "logic": "NONE",
+                      "type": "WIDGET_ID",
+                      "operator": "EQUALS",
+                      "value": "240, 4"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "SLEEP_UNTIL_GAME_TICK",
+                      "children": [
+                        {
+                          "id": "WIDGET_INTERACT",
+                          "customDisplayName": "Interact with widget \u0027240, 26\u0027 (Confirm)",
+                          "properties": {
+                            "Action": "Confirm",
+                            "Find Widget By": {
+                              "class": "Widget",
+                              "logic": "NONE",
+                              "type": "WIDGET_ID",
+                              "operator": "EQUALS",
+                              "value": "240, 26"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "SLEEP_UNTIL_GAME_TICK"
+                            },
+                            {
+                              "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                              "properties": {
+                                "Max time (seconds)": "5"
+                              },
+                              "children": [
+                                {
+                                  "id": "IF_WIDGET_DOES_NOT_EXIST",
+                                  "properties": {
+                                    "Find Widget By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "WIDGET_ID",
+                                      "operator": "EQUALS",
+                                      "value": "240, 2"
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "IF_WIDGET_EXISTS",
+          "properties": {
+            "Find Widget By": {
+              "class": "Widget",
+              "logic": "NONE",
+              "type": "WIDGET_ID",
+              "operator": "EQUALS",
+              "value": "240, 2"
+            }
+          },
+          "children": [
+            {
+              "id": "IF_GAINED_EXPERIENCE_MATCHES",
+              "properties": {
+                "exp gained": {
+                  "class": "Number",
+                  "operator": "GREATER_THAN_OR_EQUALS",
+                  "value": "1"
+                },
+                "Skill": {
+                  "class": "Skill",
+                  "value": "THIEVING"
+                }
+              },
+              "children": [
+                {
+                  "id": "WIDGET_INTERACT",
+                  "properties": {
+                    "Action": "Thieving",
+                    "Find Widget By": {
+                      "class": "Widget",
+                      "logic": "NONE",
+                      "type": "WIDGET_ID",
+                      "operator": "EQUALS",
+                      "value": "240, 11"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "SLEEP_UNTIL_GAME_TICK",
+                      "children": [
+                        {
+                          "id": "WIDGET_INTERACT",
+                          "customDisplayName": "Interact with widget \u0027240, 26\u0027 (Confirm)",
+                          "properties": {
+                            "Action": "Confirm",
+                            "Find Widget By": {
+                              "class": "Widget",
+                              "logic": "NONE",
+                              "type": "WIDGET_ID",
+                              "operator": "EQUALS",
+                              "value": "240, 26"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "SLEEP_UNTIL_GAME_TICK"
+                            },
+                            {
+                              "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                              "properties": {
+                                "Max time (seconds)": "5"
+                              },
+                              "children": [
+                                {
+                                  "id": "IF_WIDGET_DOES_NOT_EXIST",
+                                  "properties": {
+                                    "Find Widget By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "WIDGET_ID",
+                                      "operator": "EQUALS",
+                                      "value": "240, 2"
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "IF_WIDGET_EXISTS",
+          "properties": {
+            "Find Widget By": {
+              "class": "Widget",
+              "logic": "NONE",
+              "type": "WIDGET_ID",
+              "operator": "EQUALS",
+              "value": "240, 2"
+            }
+          },
+          "children": [
+            {
+              "id": "IF_GAINED_EXPERIENCE_MATCHES",
+              "properties": {
+                "exp gained": {
+                  "class": "Number",
+                  "operator": "GREATER_THAN_OR_EQUALS",
+                  "value": "1"
+                },
+                "Skill": {
+                  "class": "Skill",
+                  "value": "FARMING"
+                }
+              },
+              "children": [
+                {
+                  "id": "WIDGET_INTERACT",
+                  "properties": {
+                    "Action": "Farming",
+                    "Find Widget By": {
+                      "class": "Widget",
+                      "logic": "NONE",
+                      "type": "WIDGET_ID",
+                      "operator": "EQUALS",
+                      "value": "240, 15"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "SLEEP_UNTIL_GAME_TICK",
+                      "children": [
+                        {
+                          "id": "WIDGET_INTERACT",
+                          "customDisplayName": "Interact with widget \u0027240, 26\u0027 (Confirm)",
+                          "properties": {
+                            "Action": "Confirm",
+                            "Find Widget By": {
+                              "class": "Widget",
+                              "logic": "NONE",
+                              "type": "WIDGET_ID",
+                              "operator": "EQUALS",
+                              "value": "240, 26"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "SLEEP_UNTIL_GAME_TICK"
+                            },
+                            {
+                              "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                              "properties": {
+                                "Max time (seconds)": "5"
+                              },
+                              "children": [
+                                {
+                                  "id": "IF_WIDGET_DOES_NOT_EXIST",
+                                  "properties": {
+                                    "Find Widget By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "WIDGET_ID",
+                                      "operator": "EQUALS",
+                                      "value": "240, 2"
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "IF_WIDGET_EXISTS",
+          "properties": {
+            "Find Widget By": {
+              "class": "Widget",
+              "logic": "NONE",
+              "type": "WIDGET_ID",
+              "operator": "EQUALS",
+              "value": "240, 2"
+            }
+          },
+          "children": [
+            {
+              "id": "IF_GAINED_EXPERIENCE_MATCHES",
+              "properties": {
+                "exp gained": {
+                  "class": "Number",
+                  "operator": "GREATER_THAN_OR_EQUALS",
+                  "value": "1"
+                },
+                "Skill": {
+                  "class": "Skill",
+                  "value": "HUNTER"
+                }
+              },
+              "children": [
+                {
+                  "id": "WIDGET_INTERACT",
+                  "properties": {
+                    "Action": "Hunter",
+                    "Find Widget By": {
+                      "class": "Widget",
+                      "logic": "NONE",
+                      "type": "WIDGET_ID",
+                      "operator": "EQUALS",
+                      "value": "240, 24"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "SLEEP_UNTIL_GAME_TICK",
+                      "children": [
+                        {
+                          "id": "WIDGET_INTERACT",
+                          "customDisplayName": "Interact with widget \u0027240, 26\u0027 (Confirm)",
+                          "properties": {
+                            "Action": "Confirm",
+                            "Find Widget By": {
+                              "class": "Widget",
+                              "logic": "NONE",
+                              "type": "WIDGET_ID",
+                              "operator": "EQUALS",
+                              "value": "240, 26"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "SLEEP_UNTIL_GAME_TICK"
+                            },
+                            {
+                              "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                              "properties": {
+                                "Max time (seconds)": "5"
+                              },
+                              "children": [
+                                {
+                                  "id": "IF_WIDGET_DOES_NOT_EXIST",
+                                  "properties": {
+                                    "Find Widget By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "WIDGET_ID",
+                                      "operator": "EQUALS",
+                                      "value": "240, 2"
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "IF_WIDGET_EXISTS",
+          "properties": {
+            "Find Widget By": {
+              "class": "Widget",
+              "logic": "NONE",
+              "type": "WIDGET_ID",
+              "operator": "EQUALS",
+              "value": "240, 2"
+            }
+          },
+          "children": [
+            {
+              "id": "IF_GAINED_EXPERIENCE_MATCHES",
+              "properties": {
+                "exp gained": {
+                  "class": "Number",
+                  "operator": "GREATER_THAN_OR_EQUALS",
+                  "value": "1"
+                },
+                "Skill": {
+                  "class": "Skill",
+                  "value": "MAGIC"
+                }
+              },
+              "children": [
+                {
+                  "id": "WIDGET_INTERACT",
+                  "properties": {
+                    "Action": "Magic",
+                    "Find Widget By": {
+                      "class": "Widget",
+                      "logic": "NONE",
+                      "type": "WIDGET_ID",
+                      "operator": "EQUALS",
+                      "value": "240, 5"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "SLEEP_UNTIL_GAME_TICK",
+                      "children": [
+                        {
+                          "id": "WIDGET_INTERACT",
+                          "customDisplayName": "Interact with widget \u0027240, 26\u0027 (Confirm)",
+                          "properties": {
+                            "Action": "Confirm",
+                            "Find Widget By": {
+                              "class": "Widget",
+                              "logic": "NONE",
+                              "type": "WIDGET_ID",
+                              "operator": "EQUALS",
+                              "value": "240, 26"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "SLEEP_UNTIL_GAME_TICK"
+                            },
+                            {
+                              "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                              "properties": {
+                                "Max time (seconds)": "5"
+                              },
+                              "children": [
+                                {
+                                  "id": "IF_WIDGET_DOES_NOT_EXIST",
+                                  "properties": {
+                                    "Find Widget By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "WIDGET_ID",
+                                      "operator": "EQUALS",
+                                      "value": "240, 2"
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "IF_WIDGET_EXISTS",
+          "properties": {
+            "Find Widget By": {
+              "class": "Widget",
+              "logic": "NONE",
+              "type": "WIDGET_ID",
+              "operator": "EQUALS",
+              "value": "240, 2"
+            }
+          },
+          "children": [
+            {
+              "id": "IF_GAINED_EXPERIENCE_MATCHES",
+              "properties": {
+                "exp gained": {
+                  "class": "Number",
+                  "operator": "GREATER_THAN_OR_EQUALS",
+                  "value": "1"
+                },
+                "Skill": {
+                  "class": "Skill",
+                  "value": "CRAFTING"
+                }
+              },
+              "children": [
+                {
+                  "id": "WIDGET_INTERACT",
+                  "properties": {
+                    "Action": "Crafting",
+                    "Find Widget By": {
+                      "class": "Widget",
+                      "logic": "NONE",
+                      "type": "WIDGET_ID",
+                      "operator": "EQUALS",
+                      "value": "240, 12"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "SLEEP_UNTIL_GAME_TICK",
+                      "children": [
+                        {
+                          "id": "WIDGET_INTERACT",
+                          "customDisplayName": "Interact with widget \u0027240, 26\u0027 (Confirm)",
+                          "properties": {
+                            "Action": "Confirm",
+                            "Find Widget By": {
+                              "class": "Widget",
+                              "logic": "NONE",
+                              "type": "WIDGET_ID",
+                              "operator": "EQUALS",
+                              "value": "240, 26"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "SLEEP_UNTIL_GAME_TICK"
+                            },
+                            {
+                              "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                              "properties": {
+                                "Max time (seconds)": "5"
+                              },
+                              "children": [
+                                {
+                                  "id": "IF_WIDGET_DOES_NOT_EXIST",
+                                  "properties": {
+                                    "Find Widget By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "WIDGET_ID",
+                                      "operator": "EQUALS",
+                                      "value": "240, 2"
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "IF_WIDGET_EXISTS",
+          "properties": {
+            "Find Widget By": {
+              "class": "Widget",
+              "logic": "NONE",
+              "type": "WIDGET_ID",
+              "operator": "EQUALS",
+              "value": "240, 2"
+            }
+          },
+          "children": [
+            {
+              "id": "IF_GAINED_EXPERIENCE_MATCHES",
+              "properties": {
+                "exp gained": {
+                  "class": "Number",
+                  "operator": "GREATER_THAN_OR_EQUALS",
+                  "value": "1"
+                },
+                "Skill": {
+                  "class": "Skill",
+                  "value": "AGILITY"
+                }
+              },
+              "children": [
+                {
+                  "id": "WIDGET_INTERACT",
+                  "properties": {
+                    "Action": "Agility",
+                    "Find Widget By": {
+                      "class": "Widget",
+                      "logic": "NONE",
+                      "type": "WIDGET_ID",
+                      "operator": "EQUALS",
+                      "value": "240, 9"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "SLEEP_UNTIL_GAME_TICK",
+                      "children": [
+                        {
+                          "id": "WIDGET_INTERACT",
+                          "customDisplayName": "Interact with widget \u0027240, 26\u0027 (Confirm)",
+                          "properties": {
+                            "Action": "Confirm",
+                            "Find Widget By": {
+                              "class": "Widget",
+                              "logic": "NONE",
+                              "type": "WIDGET_ID",
+                              "operator": "EQUALS",
+                              "value": "240, 26"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                              "properties": {
+                                "Max time (seconds)": "5"
+                              },
+                              "children": [
+                                {
+                                  "id": "IF_WIDGET_DOES_NOT_EXIST",
+                                  "properties": {
+                                    "Find Widget By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "WIDGET_ID",
+                                      "operator": "EQUALS",
+                                      "value": "240, 2"
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "IF_WIDGET_EXISTS",
+          "properties": {
+            "Find Widget By": {
+              "class": "Widget",
+              "logic": "NONE",
+              "type": "WIDGET_ID",
+              "operator": "EQUALS",
+              "value": "240, 2"
+            }
+          },
+          "children": [
+            {
+              "id": "IF_GAINED_EXPERIENCE_MATCHES",
+              "properties": {
+                "exp gained": {
+                  "class": "Number",
+                  "operator": "GREATER_THAN_OR_EQUALS",
+                  "value": "1"
+                },
+                "Skill": {
+                  "class": "Skill",
+                  "value": "HERBLORE"
+                }
+              },
+              "children": [
+                {
+                  "id": "WIDGET_INTERACT",
+                  "properties": {
+                    "Action": "Herblore",
+                    "Find Widget By": {
+                      "class": "Widget",
+                      "logic": "NONE",
+                      "type": "WIDGET_ID",
+                      "operator": "EQUALS",
+                      "value": "240, 10"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "SLEEP_UNTIL_GAME_TICK",
+                      "children": [
+                        {
+                          "id": "WIDGET_INTERACT",
+                          "customDisplayName": "Interact with widget \u0027240, 26\u0027 (Confirm)",
+                          "properties": {
+                            "Action": "Confirm",
+                            "Find Widget By": {
+                              "class": "Widget",
+                              "logic": "NONE",
+                              "type": "WIDGET_ID",
+                              "operator": "EQUALS",
+                              "value": "240, 26"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                              "properties": {
+                                "Max time (seconds)": "5"
+                              },
+                              "children": [
+                                {
+                                  "id": "IF_WIDGET_DOES_NOT_EXIST",
+                                  "properties": {
+                                    "Find Widget By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "WIDGET_ID",
+                                      "operator": "EQUALS",
+                                      "value": "240, 2"
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "IF_WIDGET_EXISTS",
+          "properties": {
+            "Find Widget By": {
+              "class": "Widget",
+              "logic": "NONE",
+              "type": "WIDGET_ID",
+              "operator": "EQUALS",
+              "value": "240, 2"
+            }
+          },
+          "children": [
+            {
+              "id": "IF_GAINED_EXPERIENCE_MATCHES",
+              "properties": {
+                "exp gained": {
+                  "class": "Number",
+                  "operator": "GREATER_THAN_OR_EQUALS",
+                  "value": "1"
+                },
+                "Skill": {
+                  "class": "Skill",
+                  "value": "FLETCHING"
+                }
+              },
+              "children": [
+                {
+                  "id": "WIDGET_INTERACT",
+                  "properties": {
+                    "Action": "Fletching",
+                    "Find Widget By": {
+                      "class": "Widget",
+                      "logic": "NONE",
+                      "type": "WIDGET_ID",
+                      "operator": "EQUALS",
+                      "value": "240, 22"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "SLEEP_UNTIL_GAME_TICK",
+                      "children": [
+                        {
+                          "id": "WIDGET_INTERACT",
+                          "customDisplayName": "Interact with widget \u0027240, 26\u0027 (Confirm)",
+                          "properties": {
+                            "Action": "Confirm",
+                            "Find Widget By": {
+                              "class": "Widget",
+                              "logic": "NONE",
+                              "type": "WIDGET_ID",
+                              "operator": "EQUALS",
+                              "value": "240, 26"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                              "properties": {
+                                "Max time (seconds)": "5"
+                              },
+                              "children": [
+                                {
+                                  "id": "IF_WIDGET_DOES_NOT_EXIST",
+                                  "properties": {
+                                    "Find Widget By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "WIDGET_ID",
+                                      "operator": "EQUALS",
+                                      "value": "240, 2"
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "IF_WIDGET_EXISTS",
+          "properties": {
+            "Find Widget By": {
+              "class": "Widget",
+              "logic": "NONE",
+              "type": "WIDGET_ID",
+              "operator": "EQUALS",
+              "value": "240, 2"
+            }
+          },
+          "children": [
+            {
+              "id": "IF_GAINED_EXPERIENCE_MATCHES",
+              "properties": {
+                "exp gained": {
+                  "class": "Number",
+                  "operator": "GREATER_THAN_OR_EQUALS",
+                  "value": "1"
+                },
+                "Skill": {
+                  "class": "Skill",
+                  "value": "WOODCUTTING"
+                }
+              },
+              "children": [
+                {
+                  "id": "WIDGET_INTERACT",
+                  "properties": {
+                    "Action": "Woodcutting",
+                    "Find Widget By": {
+                      "class": "Widget",
+                      "logic": "NONE",
+                      "type": "WIDGET_ID",
+                      "operator": "EQUALS",
+                      "value": "240, 21"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "SLEEP_UNTIL_GAME_TICK",
+                      "children": [
+                        {
+                          "id": "WIDGET_INTERACT",
+                          "customDisplayName": "Interact with widget \u0027240, 26\u0027 (Confirm)",
+                          "properties": {
+                            "Action": "Confirm",
+                            "Find Widget By": {
+                              "class": "Widget",
+                              "logic": "NONE",
+                              "type": "WIDGET_ID",
+                              "operator": "EQUALS",
+                              "value": "240, 26"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                              "properties": {
+                                "Max time (seconds)": "5"
+                              },
+                              "children": [
+                                {
+                                  "id": "IF_WIDGET_DOES_NOT_EXIST",
+                                  "properties": {
+                                    "Find Widget By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "WIDGET_ID",
+                                      "operator": "EQUALS",
+                                      "value": "240, 2"
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "IF_WIDGET_EXISTS",
+          "properties": {
+            "Find Widget By": {
+              "class": "Widget",
+              "logic": "NONE",
+              "type": "WIDGET_ID",
+              "operator": "EQUALS",
+              "value": "240, 2"
+            }
+          },
+          "children": [
+            {
+              "id": "IF_GAINED_EXPERIENCE_MATCHES",
+              "properties": {
+                "exp gained": {
+                  "class": "Number",
+                  "operator": "GREATER_THAN_OR_EQUALS",
+                  "value": "1"
+                },
+                "Skill": {
+                  "class": "Skill",
+                  "value": "MINING"
+                }
+              },
+              "children": [
+                {
+                  "id": "WIDGET_INTERACT",
+                  "properties": {
+                    "Action": "Mining",
+                    "Find Widget By": {
+                      "class": "Widget",
+                      "logic": "NONE",
+                      "type": "WIDGET_ID",
+                      "operator": "EQUALS",
+                      "value": "240, 16"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "SLEEP_UNTIL_GAME_TICK",
+                      "children": [
+                        {
+                          "id": "WIDGET_INTERACT",
+                          "customDisplayName": "Interact with widget \u0027240, 26\u0027 (Confirm)",
+                          "properties": {
+                            "Action": "Confirm",
+                            "Find Widget By": {
+                              "class": "Widget",
+                              "logic": "NONE",
+                              "type": "WIDGET_ID",
+                              "operator": "EQUALS",
+                              "value": "240, 26"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                              "properties": {
+                                "Max time (seconds)": "5"
+                              },
+                              "children": [
+                                {
+                                  "id": "IF_WIDGET_DOES_NOT_EXIST",
+                                  "properties": {
+                                    "Find Widget By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "WIDGET_ID",
+                                      "operator": "EQUALS",
+                                      "value": "240, 2"
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "IF_WIDGET_EXISTS",
+          "properties": {
+            "Find Widget By": {
+              "class": "Widget",
+              "logic": "NONE",
+              "type": "WIDGET_ID",
+              "operator": "EQUALS",
+              "value": "240, 2"
+            }
+          },
+          "children": [
+            {
+              "id": "IF_GAINED_EXPERIENCE_MATCHES",
+              "properties": {
+                "exp gained": {
+                  "class": "Number",
+                  "operator": "GREATER_THAN_OR_EQUALS",
+                  "value": "1"
+                },
+                "Skill": {
+                  "class": "Skill",
+                  "value": "SMITHING"
+                }
+              },
+              "children": [
+                {
+                  "id": "WIDGET_INTERACT",
+                  "properties": {
+                    "Action": "Smithing",
+                    "Find Widget By": {
+                      "class": "Widget",
+                      "logic": "NONE",
+                      "type": "WIDGET_ID",
+                      "operator": "EQUALS",
+                      "value": "240, 17"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "SLEEP_UNTIL_GAME_TICK",
+                      "children": [
+                        {
+                          "id": "WIDGET_INTERACT",
+                          "customDisplayName": "Interact with widget \u0027240, 26\u0027 (Confirm)",
+                          "properties": {
+                            "Action": "Confirm",
+                            "Find Widget By": {
+                              "class": "Widget",
+                              "logic": "NONE",
+                              "type": "WIDGET_ID",
+                              "operator": "EQUALS",
+                              "value": "240, 26"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                              "properties": {
+                                "Max time (seconds)": "5"
+                              },
+                              "children": [
+                                {
+                                  "id": "IF_WIDGET_DOES_NOT_EXIST",
+                                  "properties": {
+                                    "Find Widget By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "WIDGET_ID",
+                                      "operator": "EQUALS",
+                                      "value": "240, 2"
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "IF_WIDGET_EXISTS",
+          "properties": {
+            "Find Widget By": {
+              "class": "Widget",
+              "logic": "NONE",
+              "type": "WIDGET_ID",
+              "operator": "EQUALS",
+              "value": "240, 2"
+            }
+          },
+          "children": [
+            {
+              "id": "IF_GAINED_EXPERIENCE_MATCHES",
+              "properties": {
+                "exp gained": {
+                  "class": "Number",
+                  "operator": "GREATER_THAN_OR_EQUALS",
+                  "value": "1"
+                },
+                "Skill": {
+                  "class": "Skill",
+                  "value": "RUNECRAFTING"
+                }
+              },
+              "children": [
+                {
+                  "id": "WIDGET_INTERACT",
+                  "properties": {
+                    "Action": "Runecraft",
+                    "Find Widget By": {
+                      "class": "Widget",
+                      "logic": "NONE",
+                      "type": "WIDGET_ID",
+                      "operator": "EQUALS",
+                      "value": "240, 13"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "SLEEP_UNTIL_GAME_TICK",
+                      "children": [
+                        {
+                          "id": "WIDGET_INTERACT",
+                          "customDisplayName": "Interact with widget \u0027240, 26\u0027 (Confirm)",
+                          "properties": {
+                            "Action": "Confirm",
+                            "Find Widget By": {
+                              "class": "Widget",
+                              "logic": "NONE",
+                              "type": "WIDGET_ID",
+                              "operator": "EQUALS",
+                              "value": "240, 26"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                              "properties": {
+                                "Max time (seconds)": "5"
+                              },
+                              "children": [
+                                {
+                                  "id": "IF_WIDGET_DOES_NOT_EXIST",
+                                  "properties": {
+                                    "Find Widget By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "WIDGET_ID",
+                                      "operator": "EQUALS",
+                                      "value": "240, 2"
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "IF_WIDGET_EXISTS",
+          "properties": {
+            "Find Widget By": {
+              "class": "Widget",
+              "logic": "NONE",
+              "type": "WIDGET_ID",
+              "operator": "EQUALS",
+              "value": "240, 2"
+            }
+          },
+          "children": [
+            {
+              "id": "IF_GAINED_EXPERIENCE_MATCHES",
+              "properties": {
+                "exp gained": {
+                  "class": "Number",
+                  "operator": "GREATER_THAN_OR_EQUALS",
+                  "value": "1"
+                },
+                "Skill": {
+                  "class": "Skill",
+                  "value": "HITPOINTS"
+                }
+              },
+              "children": [
+                {
+                  "id": "WIDGET_INTERACT",
+                  "properties": {
+                    "Action": "Hitpoints",
+                    "Find Widget By": {
+                      "class": "Widget",
+                      "logic": "NONE",
+                      "type": "WIDGET_ID",
+                      "operator": "EQUALS",
+                      "value": "240, 7"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "SLEEP_UNTIL_GAME_TICK",
+                      "children": [
+                        {
+                          "id": "WIDGET_INTERACT",
+                          "customDisplayName": "Interact with widget \u0027240, 26\u0027 (Confirm)",
+                          "properties": {
+                            "Action": "Confirm",
+                            "Find Widget By": {
+                              "class": "Widget",
+                              "logic": "NONE",
+                              "type": "WIDGET_ID",
+                              "operator": "EQUALS",
+                              "value": "240, 26"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                              "properties": {
+                                "Max time (seconds)": "5"
+                              },
+                              "children": [
+                                {
+                                  "id": "IF_WIDGET_DOES_NOT_EXIST",
+                                  "properties": {
+                                    "Find Widget By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "WIDGET_ID",
+                                      "operator": "EQUALS",
+                                      "value": "240, 2"
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "IF_WIDGET_EXISTS",
+          "properties": {
+            "Find Widget By": {
+              "class": "Widget",
+              "logic": "NONE",
+              "type": "WIDGET_ID",
+              "operator": "EQUALS",
+              "value": "240, 2"
+            }
+          },
+          "children": [
+            {
+              "id": "IF_GAINED_EXPERIENCE_MATCHES",
+              "properties": {
+                "exp gained": {
+                  "class": "Number",
+                  "operator": "GREATER_THAN_OR_EQUALS",
+                  "value": "1"
+                },
+                "Skill": {
+                  "class": "Skill",
+                  "value": "CONSTRUCTION"
+                }
+              },
+              "children": [
+                {
+                  "id": "WIDGET_INTERACT",
+                  "properties": {
+                    "Action": "Construction",
+                    "Find Widget By": {
+                      "class": "Widget",
+                      "logic": "NONE",
+                      "type": "WIDGET_ID",
+                      "operator": "EQUALS",
+                      "value": "240, 23"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "SLEEP_UNTIL_GAME_TICK",
+                      "children": [
+                        {
+                          "id": "WIDGET_INTERACT",
+                          "customDisplayName": "Interact with widget \u0027240, 26\u0027 (Confirm)",
+                          "properties": {
+                            "Action": "Confirm",
+                            "Find Widget By": {
+                              "class": "Widget",
+                              "logic": "NONE",
+                              "type": "WIDGET_ID",
+                              "operator": "EQUALS",
+                              "value": "240, 26"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                              "properties": {
+                                "Max time (seconds)": "5"
+                              },
+                              "children": [
+                                {
+                                  "id": "IF_WIDGET_DOES_NOT_EXIST",
+                                  "properties": {
+                                    "Find Widget By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "WIDGET_ID",
+                                      "operator": "EQUALS",
+                                      "value": "240, 2"
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

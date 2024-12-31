@@ -1,0 +1,708 @@
+{
+  "sleep": "2000",
+  "name": "G.E. Begger F2P",
+  "version": 1.0,
+  "metadata": {
+    "network-id": "14",
+    "network-downloaded-at": "1721665175237"
+  },
+  "actions": [
+    {
+      "id": "IF_NOT_LOGGED_IN",
+      "children": [
+        {
+          "id": "ENABLE_LOGIN_SOLVER"
+        }
+      ]
+    },
+    {
+      "id": "IF_LOGGED_IN",
+      "children": [
+        {
+          "id": "IF_RUN_ENERGY_IS",
+          "properties": {
+            "energy": {
+              "class": "Number",
+              "operator": "GREATER_THAN",
+              "value": "20"
+            }
+          },
+          "children": [
+            {
+              "id": "ENABLE_RUN"
+            }
+          ]
+        },
+        {
+          "id": "WALK_TO_TILE",
+          "properties": {
+            "Tile": "(3164, 3484, 0)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "MOVE_MOUSE_TO_POINT",
+      "properties": {
+        "X": "404",
+        "Y": "490"
+      },
+      "children": [
+        {
+          "id": "LEFT_CLICK"
+        }
+      ]
+    },
+    {
+      "id": "IF_PLAYER_EXISTS",
+      "properties": {
+        "Filter Player By": {
+          "class": "Player",
+          "logic": "NONE",
+          "type": "IS_WEARING_ITEM_BY_NAME",
+          "operator": "EQUALS",
+          "value": "Yellow partyhat",
+          "filters": [
+            {
+              "class": "Player",
+              "logic": "AND",
+              "type": "IS_WEARING_ITEM_BY_NAME",
+              "operator": "EQUALS",
+              "value": "Yellow boots"
+            }
+          ]
+        }
+      },
+      "children": [
+        {
+          "id": "HOP_TO_RANDOM_WORLD",
+          "properties": {
+            "Ignore combat check": false,
+            "Filter World By": {
+              "class": "World",
+              "logic": "NONE",
+              "type": "WORLD_IS_F2P",
+              "operator": "EQUALS",
+              "filters": [
+                {
+                  "class": "World",
+                  "logic": "AND",
+                  "type": "WORLD_MINIMUM_LEVEL",
+                  "operator": "LESS_THAN",
+                  "value": "250"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "IF_DISTANCE_TO_TILE_IS",
+      "properties": {
+        "distance": {
+          "class": "Number",
+          "operator": "LESS_THAN",
+          "value": "1"
+        },
+        "Tile": "(3164, 3484, 0)"
+      },
+      "children": [
+        {
+          "id": "IF_TRADE_IS_NOT_OPEN",
+          "children": [
+            {
+              "id": "TYPE_MESSAGE",
+              "properties": {
+                "Message": "Can anyone help me with some gold? I lost everything"
+              },
+              "children": [
+                {
+                  "id": "SLEEP_NORMAL_DISTRIBUTION",
+                  "properties": {
+                    "Mean": "500",
+                    "Variance": "200"
+                  },
+                  "children": [
+                    {
+                      "id": "IF_TRADE_IS_NOT_OPEN",
+                      "children": [
+                        {
+                          "id": "IF_GAME_MESSAGE_RECEIVED_MATCHES",
+                          "properties": {
+                            "Filter Message": {
+                              "class": "Message",
+                              "logic": "NONE",
+                              "type": "TEXT",
+                              "operator": "CONTAINS",
+                              "value": "wishes to trade with you"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "WIDGET_INTERACT",
+                              "properties": {
+                                "Find Widget By": {
+                                  "class": "Widget",
+                                  "logic": "NONE",
+                                  "type": "TEXT",
+                                  "operator": "CONTAINS",
+                                  "value": "wishes to trade with you"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "SLEEP_NORMAL_DISTRIBUTION",
+                                  "properties": {
+                                    "Mean": "1000",
+                                    "Variance": "200"
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "GO_TO_LABEL",
+                                      "properties": {
+                                        "Label": "In trade"
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "SLEEP_NORMAL_DISTRIBUTION",
+                                          "properties": {
+                                            "Mean": "5000",
+                                            "Variance": "2000"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "TYPE_MESSAGE",
+              "properties": {
+                "Message": "I got scammed for my bank, can anyone help me"
+              },
+              "children": [
+                {
+                  "id": "SLEEP_NORMAL_DISTRIBUTION",
+                  "properties": {
+                    "Mean": "500",
+                    "Variance": "200"
+                  },
+                  "children": [
+                    {
+                      "id": "IF_TRADE_IS_NOT_OPEN",
+                      "children": [
+                        {
+                          "id": "IF_GAME_MESSAGE_RECEIVED_MATCHES",
+                          "properties": {
+                            "Filter Message": {
+                              "class": "Message",
+                              "logic": "NONE",
+                              "type": "TEXT",
+                              "operator": "CONTAINS",
+                              "value": "wishes to trade with you"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "WIDGET_INTERACT",
+                              "properties": {
+                                "Find Widget By": {
+                                  "class": "Widget",
+                                  "logic": "NONE",
+                                  "type": "TEXT",
+                                  "operator": "CONTAINS",
+                                  "value": "wishes to trade with you"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "SLEEP_NORMAL_DISTRIBUTION",
+                                  "properties": {
+                                    "Mean": "1000",
+                                    "Variance": "200"
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "GO_TO_LABEL",
+                                      "properties": {
+                                        "Label": "In trade"
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "SLEEP_NORMAL_DISTRIBUTION",
+                                          "properties": {
+                                            "Mean": "5000",
+                                            "Variance": "2000"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "TYPE_MESSAGE",
+              "properties": {
+                "Message": "I lost everything i had to a scammer, can someone help"
+              },
+              "children": [
+                {
+                  "id": "SLEEP_NORMAL_DISTRIBUTION",
+                  "properties": {
+                    "Mean": "500",
+                    "Variance": "200"
+                  },
+                  "children": [
+                    {
+                      "id": "IF_TRADE_IS_NOT_OPEN",
+                      "children": [
+                        {
+                          "id": "IF_GAME_MESSAGE_RECEIVED_MATCHES",
+                          "properties": {
+                            "Filter Message": {
+                              "class": "Message",
+                              "logic": "NONE",
+                              "type": "TEXT",
+                              "operator": "CONTAINS",
+                              "value": "wishes to trade with you"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "WIDGET_INTERACT",
+                              "properties": {
+                                "Find Widget By": {
+                                  "class": "Widget",
+                                  "logic": "NONE",
+                                  "type": "TEXT",
+                                  "operator": "CONTAINS",
+                                  "value": "wishes to trade with you"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "SLEEP_NORMAL_DISTRIBUTION",
+                                  "properties": {
+                                    "Mean": "1000",
+                                    "Variance": "200"
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "GO_TO_LABEL",
+                                      "properties": {
+                                        "Label": "In trade"
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "SLEEP_NORMAL_DISTRIBUTION",
+                                          "properties": {
+                                            "Mean": "5000",
+                                            "Variance": "2000"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "TYPE_MESSAGE",
+              "properties": {
+                "Message": "I got tricked for all my items, can anyone help me"
+              },
+              "children": [
+                {
+                  "id": "SLEEP_NORMAL_DISTRIBUTION",
+                  "properties": {
+                    "Mean": "500",
+                    "Variance": "200"
+                  },
+                  "children": [
+                    {
+                      "id": "IF_TRADE_IS_NOT_OPEN",
+                      "children": [
+                        {
+                          "id": "IF_GAME_MESSAGE_RECEIVED_MATCHES",
+                          "properties": {
+                            "Filter Message": {
+                              "class": "Message",
+                              "logic": "NONE",
+                              "type": "TEXT",
+                              "operator": "CONTAINS",
+                              "value": "wishes to trade with you"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "WIDGET_INTERACT",
+                              "properties": {
+                                "Find Widget By": {
+                                  "class": "Widget",
+                                  "logic": "NONE",
+                                  "type": "TEXT",
+                                  "operator": "CONTAINS",
+                                  "value": "wishes to trade with you"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "SLEEP_NORMAL_DISTRIBUTION",
+                                  "properties": {
+                                    "Mean": "1000",
+                                    "Variance": "200"
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "GO_TO_LABEL",
+                                      "properties": {
+                                        "Label": "In trade"
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "SLEEP_NORMAL_DISTRIBUTION",
+                                          "properties": {
+                                            "Mean": "5000",
+                                            "Variance": "2000"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "TYPE_MESSAGE",
+              "properties": {
+                "Message": "I need some gold or items to rebuild, can someone help"
+              },
+              "children": [
+                {
+                  "id": "SLEEP_NORMAL_DISTRIBUTION",
+                  "properties": {
+                    "Mean": "2000",
+                    "Variance": "500"
+                  },
+                  "children": [
+                    {
+                      "id": "IF_TRADE_IS_NOT_OPEN",
+                      "children": [
+                        {
+                          "id": "IF_GAME_MESSAGE_RECEIVED_MATCHES",
+                          "properties": {
+                            "Filter Message": {
+                              "class": "Message",
+                              "logic": "NONE",
+                              "type": "TEXT",
+                              "operator": "CONTAINS",
+                              "value": "wishes to trade with you"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "WIDGET_INTERACT",
+                              "properties": {
+                                "Find Widget By": {
+                                  "class": "Widget",
+                                  "logic": "NONE",
+                                  "type": "TEXT",
+                                  "operator": "CONTAINS",
+                                  "value": "wishes to trade with you"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "SLEEP_NORMAL_DISTRIBUTION",
+                                  "properties": {
+                                    "Mean": "1000",
+                                    "Variance": "200"
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "GO_TO_LABEL",
+                                      "properties": {
+                                        "Label": "In trade"
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "SLEEP_NORMAL_DISTRIBUTION",
+                                          "properties": {
+                                            "Mean": "5000",
+                                            "Variance": "2000"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "IF_TRADE_IS_NOT_OPEN",
+      "children": [
+        {
+          "id": "IF_GAME_MESSAGE_RECEIVED_MATCHES",
+          "properties": {
+            "Filter Message": {
+              "class": "Message",
+              "logic": "NONE",
+              "type": "TEXT",
+              "operator": "CONTAINS",
+              "value": "wishes to trade with you"
+            }
+          },
+          "children": [
+            {
+              "id": "WIDGET_INTERACT",
+              "properties": {
+                "Find Widget By": {
+                  "class": "Widget",
+                  "logic": "NONE",
+                  "type": "TEXT",
+                  "operator": "CONTAINS",
+                  "value": "wishes to trade with you"
+                }
+              },
+              "children": [
+                {
+                  "id": "SLEEP_NORMAL_DISTRIBUTION",
+                  "properties": {
+                    "Mean": "1000",
+                    "Variance": "200"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CREATE_LABEL",
+      "properties": {
+        "Label": "In trade"
+      },
+      "children": [
+        {
+          "id": "IF_TRADE_IS_OPEN",
+          "children": [
+            {
+              "id": "TYPE_MESSAGE",
+              "properties": {
+                "Message": "Thank you so much for helping me"
+              },
+              "children": [
+                {
+                  "id": "ACCEPT_TRADE",
+                  "children": [
+                    {
+                      "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                      "properties": {
+                        "Max time (seconds)": "60"
+                      },
+                      "children": [
+                        {
+                          "id": "ACCEPT_TRADE"
+                        },
+                        {
+                          "id": "OR_BRANCH"
+                        },
+                        {
+                          "id": "IF_TRADE_IS_NOT_OPEN",
+                          "children": [
+                            {
+                              "id": "GO_TO_LABEL",
+                              "properties": {
+                                "Label": "Hop worlds"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CREATE_LABEL",
+      "properties": {
+        "Label": "Hop worlds"
+      },
+      "children": [
+        {
+          "id": "IF_GAME_MESSAGE_RECEIVED_MATCHES",
+          "properties": {
+            "Filter Message": {
+              "class": "Message",
+              "logic": "NONE",
+              "type": "TEXT",
+              "operator": "CONTAINS",
+              "value": "Accepted trade",
+              "filters": [
+                {
+                  "class": "Message",
+                  "logic": "OR",
+                  "type": "TEXT",
+                  "operator": "CONTAINS",
+                  "value": "player declined trade"
+                }
+              ]
+            }
+          },
+          "children": [
+            {
+              "id": "HOP_TO_RANDOM_WORLD",
+              "properties": {
+                "Ignore combat check": false,
+                "Filter World By": {
+                  "class": "World",
+                  "logic": "NONE",
+                  "type": "WORLD_IS_F2P",
+                  "operator": "EQUALS",
+                  "filters": [
+                    {
+                      "class": "World",
+                      "logic": "AND",
+                      "type": "WORLD_MINIMUM_LEVEL",
+                      "operator": "LESS_THAN",
+                      "value": "250"
+                    },
+                    {
+                      "class": "World",
+                      "logic": "AND",
+                      "type": "WORLD_IS_NORMAL",
+                      "operator": "EQUALS"
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "IF_INVENTORY_IS_FULL",
+      "children": [
+        {
+          "id": "OPEN_BANK",
+          "children": [
+            {
+              "id": "SLEEP_NORMAL_DISTRIBUTION",
+              "properties": {
+                "Mean": "2000",
+                "Variance": "200"
+              },
+              "children": [
+                {
+                  "id": "BANK_DEPOSIT_ALL_EXCEPT",
+                  "properties": {
+                    "Filter Item By": {
+                      "class": "Item",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Coins"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "SLEEP_NORMAL_DISTRIBUTION",
+                      "properties": {
+                        "Mean": "2000",
+                        "Variance": "200"
+                      },
+                      "children": [
+                        {
+                          "id": "CLOSE_BANK"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "PAINT_ROOT",
+      "properties": {
+        "Hide standard paint": true
+      },
+      "children": [
+        {
+          "id": "DRAW_TEXT",
+          "properties": {
+            "X": "10",
+            "Font Size": "22",
+            "Y": "330",
+            "Text": "Velli\u0027s G.E. Begger F2P runtime()",
+            "Font": {
+              "class": "Font",
+              "value": "Dialog"
+            },
+            "Color": {
+              "class": "Color",
+              "value": -1
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

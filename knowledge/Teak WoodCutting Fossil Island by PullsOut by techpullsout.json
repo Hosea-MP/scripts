@@ -1,0 +1,946 @@
+{
+  "sleep": "500",
+  "name": "Teak woodcutting",
+  "version": 1.0,
+  "metadata": {
+    "network-id": "30",
+    "network-downloaded-at": "1721665215341"
+  },
+  "actions": [
+    {
+      "id": "IF_VARIABLE_IS",
+      "properties": {
+        "Filter Value By": {
+          "class": "Variable",
+          "logic": "NONE",
+          "type": "AS_TEXT",
+          "operator": "EQUALS",
+          "value": "No"
+        },
+        "Variable name": "bankteaks"
+      }
+    },
+    {
+      "id": "IF_VARIABLE_IS_SET",
+      "properties": {
+        "Variable name": "tree1"
+      },
+      "children": [
+        {
+          "id": "IF_GAME_OBJECT_DOES_NOT_EXIST",
+          "properties": {
+            "Filter Object By": {
+              "class": "GameObject",
+              "logic": "NONE",
+              "type": "NAME",
+              "operator": "EQUALS",
+              "value": "Teak tree",
+              "filters": [
+                {
+                  "class": "GameObject",
+                  "logic": "AND",
+                  "type": "TILE",
+                  "operator": "EQUALS",
+                  "value": "3707,3832,0"
+                }
+              ]
+            }
+          },
+          "children": [
+            {
+              "id": "DELETE_VARIABLE",
+              "properties": {
+                "Variable name": "tree1"
+              }
+            },
+            {
+              "id": "SET_VARIABLE",
+              "properties": {
+                "Value": "true",
+                "Variable name": "tree2"
+              }
+            }
+          ]
+        },
+        {
+          "id": "IF_LOCAL_PLAYER_MATCHES",
+          "properties": {
+            "Filter By": {
+              "class": "Player",
+              "logic": "NONE",
+              "type": "NOT_ANIMATING",
+              "operator": "EQUALS"
+            }
+          },
+          "children": [
+            {
+              "id": "IF_INVENTORY_CONTAINS_ANY",
+              "properties": {
+                "Filter Item By": {
+                  "class": "Item",
+                  "logic": "NONE",
+                  "type": "NAME",
+                  "operator": "EQUALS",
+                  "value": "Teak logs"
+                }
+              },
+              "children": [
+                {
+                  "id": "IF_RANDOM_NUMBER_IS",
+                  "properties": {
+                    "number": {
+                      "class": "Number",
+                      "operator": "EQUALS",
+                      "value": "7"
+                    },
+                    "Minimum": "1",
+                    "Maximum": "10"
+                  },
+                  "children": [
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_TEXT",
+                          "operator": "EQUALS",
+                          "value": "No"
+                        },
+                        "Variable name": "bankteaks"
+                      },
+                      "children": [
+                        {
+                          "id": "DROP_ALL_MATCHING_ITEMS",
+                          "properties": {
+                            "Filter Item By": {
+                              "class": "Item",
+                              "logic": "NONE",
+                              "type": "NAME",
+                              "operator": "EQUALS",
+                              "value": "Teak logs"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "OR_BRANCH"
+            },
+            {
+              "id": "IF_RANDOM_NUMBER_IS",
+              "properties": {
+                "number": {
+                  "class": "Number",
+                  "operator": "EQUALS",
+                  "value": "7"
+                },
+                "Minimum": "1",
+                "Maximum": "8"
+              },
+              "children": [
+                {
+                  "id": "IF_INVENTORY_IS_FULL",
+                  "children": [
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_TEXT",
+                          "operator": "EQUALS",
+                          "value": "No"
+                        },
+                        "Variable name": "bankteaks"
+                      },
+                      "children": [
+                        {
+                          "id": "DROP_ALL_MATCHING_ITEMS",
+                          "properties": {
+                            "Filter Item By": {
+                              "class": "Item",
+                              "logic": "NONE",
+                              "type": "NAME",
+                              "operator": "EQUALS",
+                              "value": "Teak logs"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "IF_RANDOM_NUMBER_IS",
+          "properties": {
+            "number": {
+              "class": "Number",
+              "operator": "EQUALS",
+              "value": "2"
+            },
+            "Minimum": "1",
+            "Maximum": "3"
+          },
+          "children": [
+            {
+              "id": "IF_LOCAL_PLAYER_MATCHES",
+              "properties": {
+                "Filter By": {
+                  "class": "Player",
+                  "logic": "NONE",
+                  "type": "ANIMATION",
+                  "operator": "EQUALS",
+                  "value": "-1"
+                }
+              },
+              "children": [
+                {
+                  "id": "GAME_OBJECT_INTERACT",
+                  "properties": {
+                    "Filter Object By": {
+                      "class": "GameObject",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Teak tree",
+                      "filters": [
+                        {
+                          "class": "GameObject",
+                          "logic": "AND",
+                          "type": "TILE",
+                          "operator": "EQUALS",
+                          "value": "3707,3832,0"
+                        }
+                      ]
+                    },
+                    "Force left click": false,
+                    "Don\u0027t walk to object": false
+                  },
+                  "children": [
+                    {
+                      "id": "SLEEP_WHILE_MOVING"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "IF_EQUIPPED_ITEM_MATCHES",
+          "properties": {
+            "Filter Item By": {
+              "class": "Item",
+              "logic": "NONE",
+              "type": "NAME",
+              "operator": "CONTAINS",
+              "value": "Dragon",
+              "filters": [
+                {
+                  "class": "Item",
+                  "logic": "OR",
+                  "type": "NAME",
+                  "operator": "CONTAINS",
+                  "value": "Infernal"
+                }
+              ]
+            }
+          },
+          "children": [
+            {
+              "id": "IF_SPECIAL_ATTACK_ENERGY_IS",
+              "properties": {
+                "energy": {
+                  "class": "Number",
+                  "operator": "EQUALS",
+                  "value": "100"
+                }
+              },
+              "children": [
+                {
+                  "id": "ENABLE_SPECIAL_ATTACK"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "IF_VARIABLE_IS_SET",
+      "properties": {
+        "Variable name": "tree2"
+      },
+      "children": [
+        {
+          "id": "IF_GAME_OBJECT_DOES_NOT_EXIST",
+          "properties": {
+            "Filter Object By": {
+              "class": "GameObject",
+              "logic": "NONE",
+              "type": "NAME",
+              "operator": "EQUALS",
+              "value": "Teak tree",
+              "filters": [
+                {
+                  "class": "GameObject",
+                  "logic": "AND",
+                  "type": "TILE",
+                  "operator": "EQUALS",
+                  "value": "3714,3834,0"
+                }
+              ]
+            }
+          },
+          "children": [
+            {
+              "id": "DELETE_VARIABLE",
+              "properties": {
+                "Variable name": "tree2"
+              }
+            },
+            {
+              "id": "SET_VARIABLE",
+              "properties": {
+                "Value": "true",
+                "Variable name": "tree1"
+              }
+            }
+          ]
+        },
+        {
+          "id": "IF_LOCAL_PLAYER_MATCHES",
+          "properties": {
+            "Filter By": {
+              "class": "Player",
+              "logic": "NONE",
+              "type": "NOT_ANIMATING",
+              "operator": "EQUALS"
+            }
+          },
+          "children": [
+            {
+              "id": "IF_INVENTORY_CONTAINS_ANY",
+              "properties": {
+                "Filter Item By": {
+                  "class": "Item",
+                  "logic": "NONE",
+                  "type": "NAME",
+                  "operator": "EQUALS",
+                  "value": "Teak logs"
+                }
+              },
+              "children": [
+                {
+                  "id": "IF_RANDOM_NUMBER_IS",
+                  "properties": {
+                    "number": {
+                      "class": "Number",
+                      "operator": "EQUALS",
+                      "value": "7"
+                    },
+                    "Minimum": "1",
+                    "Maximum": "10"
+                  },
+                  "children": [
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_TEXT",
+                          "operator": "EQUALS",
+                          "value": "No"
+                        },
+                        "Variable name": "bankteaks"
+                      },
+                      "children": [
+                        {
+                          "id": "DROP_ALL_MATCHING_ITEMS",
+                          "properties": {
+                            "Filter Item By": {
+                              "class": "Item",
+                              "logic": "NONE",
+                              "type": "NAME",
+                              "operator": "EQUALS",
+                              "value": "Teak logs"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "OR_BRANCH"
+            },
+            {
+              "id": "IF_RANDOM_NUMBER_IS",
+              "properties": {
+                "number": {
+                  "class": "Number",
+                  "operator": "EQUALS",
+                  "value": "7"
+                },
+                "Minimum": "1",
+                "Maximum": "8"
+              },
+              "children": [
+                {
+                  "id": "IF_INVENTORY_IS_FULL",
+                  "children": [
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_TEXT",
+                          "operator": "EQUALS",
+                          "value": "No"
+                        },
+                        "Variable name": "bankteaks"
+                      },
+                      "children": [
+                        {
+                          "id": "DROP_ALL_MATCHING_ITEMS",
+                          "properties": {
+                            "Filter Item By": {
+                              "class": "Item",
+                              "logic": "NONE",
+                              "type": "NAME",
+                              "operator": "EQUALS",
+                              "value": "Teak logs"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "IF_RANDOM_NUMBER_IS",
+          "properties": {
+            "number": {
+              "class": "Number",
+              "operator": "EQUALS",
+              "value": "2"
+            },
+            "Minimum": "1",
+            "Maximum": "3"
+          },
+          "children": [
+            {
+              "id": "IF_LOCAL_PLAYER_MATCHES",
+              "properties": {
+                "Filter By": {
+                  "class": "Player",
+                  "logic": "NONE",
+                  "type": "ANIMATION",
+                  "operator": "EQUALS",
+                  "value": "-1"
+                }
+              },
+              "children": [
+                {
+                  "id": "GAME_OBJECT_INTERACT",
+                  "properties": {
+                    "Filter Object By": {
+                      "class": "GameObject",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Teak tree",
+                      "filters": [
+                        {
+                          "class": "GameObject",
+                          "logic": "AND",
+                          "type": "TILE",
+                          "operator": "EQUALS",
+                          "value": "3714,3834,0"
+                        }
+                      ]
+                    },
+                    "Force left click": false,
+                    "Don\u0027t walk to object": false
+                  },
+                  "children": [
+                    {
+                      "id": "SLEEP_WHILE_MOVING"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "IF_SPECIAL_ATTACK_ENERGY_IS",
+          "properties": {
+            "energy": {
+              "class": "Number",
+              "operator": "EQUALS",
+              "value": "100"
+            }
+          },
+          "children": [
+            {
+              "id": "ENABLE_SPECIAL_ATTACK"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "IF_VARIABLE_IS_NOT_SET",
+      "properties": {
+        "Variable name": "tree2"
+      }
+    },
+    {
+      "id": "IF_FIRST_RUN",
+      "children": [
+        {
+          "id": "IF_VARIABLE_IS_NOT_SET",
+          "properties": {
+            "Variable name": "tree1"
+          },
+          "children": [
+            {
+              "id": "SET_VARIABLE",
+              "properties": {
+                "Value": "true",
+                "Variable name": "tree1"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "COMMENT",
+      "properties": {
+        "Comment": "Antiban"
+      }
+    },
+    {
+      "id": "IF_RANDOM_NUMBER_IS",
+      "customDisplayName": "Human like break",
+      "properties": {
+        "number": {
+          "class": "Number",
+          "operator": "EQUALS",
+          "value": "25"
+        },
+        "Minimum": "1",
+        "Maximum": "50"
+      },
+      "children": [
+        {
+          "id": "SLEEP_BETWEEN",
+          "properties": {
+            "Minimum": "1000",
+            "Maximum": "15000"
+          }
+        }
+      ]
+    },
+    {
+      "id": "GROUND_ITEM_INTERACT",
+      "customDisplayName": "Bird nest pickup",
+      "properties": {
+        "Filter Item By": {
+          "class": "GroundItem",
+          "logic": "NONE",
+          "type": "NAME",
+          "operator": "CONTAINS",
+          "value": "Bird nest"
+        },
+        "Force left click": false,
+        "Don\u0027t walk to item": false
+      },
+      "children": [
+        {
+          "id": "SLEEP_WHILE_MOVING"
+        }
+      ]
+    },
+    {
+      "id": "IF_RANDOM_NUMBER_IS",
+      "customDisplayName": "Human break",
+      "properties": {
+        "number": {
+          "class": "Number",
+          "operator": "EQUALS",
+          "value": "69"
+        },
+        "Minimum": "1",
+        "Maximum": "69"
+      },
+      "children": [
+        {
+          "id": "SLEEP_BETWEEN",
+          "properties": {
+            "Minimum": "1",
+            "Maximum": "169845"
+          }
+        }
+      ]
+    },
+    {
+      "id": "COMMENT",
+      "properties": {
+        "Comment": "User varibles\n"
+      },
+      "children": [
+        {
+          "id": "IF_FIRST_RUN",
+          "children": [
+            {
+              "id": "SET_VARIABLE_TO_USER_INPUT_OPTIONS",
+              "properties": {
+                "Message": "Do you want to bank teaks?",
+                "Options": "Yes,No",
+                "Variable name": "bankteaks"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "COMMENT",
+      "properties": {
+        "Comment": "Banking\n"
+      },
+      "children": [
+        {
+          "id": "IF_INVENTORY_IS_FULL",
+          "children": [
+            {
+              "id": "IF_VARIABLE_IS",
+              "properties": {
+                "Filter Value By": {
+                  "class": "Variable",
+                  "logic": "NONE",
+                  "type": "AS_TEXT",
+                  "operator": "EQUALS",
+                  "value": "Yes"
+                },
+                "Variable name": "bankteaks"
+              },
+              "children": [
+                {
+                  "id": "DELETE_VARIABLES",
+                  "properties": {
+                    "Variable names": "tree1,tree2"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "IF_VARIABLE_IS",
+          "properties": {
+            "Filter Value By": {
+              "class": "Variable",
+              "logic": "NONE",
+              "type": "AS_TEXT",
+              "operator": "EQUALS",
+              "value": "Yes"
+            },
+            "Variable name": "bankteaks"
+          },
+          "children": [
+            {
+              "id": "IF_INVENTORY_IS_FULL",
+              "children": [
+                {
+                  "id": "IF_VARIABLE_IS",
+                  "properties": {
+                    "Filter Value By": {
+                      "class": "Variable",
+                      "logic": "NONE",
+                      "type": "AS_TEXT",
+                      "operator": "EQUALS",
+                      "value": "Yes"
+                    },
+                    "Variable name": "bankteaks"
+                  },
+                  "children": [
+                    {
+                      "id": "IF_SKILL_LEVEL_IS",
+                      "properties": {
+                        "level": {
+                          "class": "Number",
+                          "operator": "GREATER_THAN_OR_EQUALS",
+                          "value": "70"
+                        },
+                        "Skill": {
+                          "class": "Skill",
+                          "value": "AGILITY"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "IF_DISTANCE_TO_CLOSEST_BANK_IS",
+                          "properties": {
+                            "distance": {
+                              "class": "Number",
+                              "operator": "GREATER_THAN_OR_EQUALS",
+                              "value": "5"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "OPEN_BANK"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_BANK_IS_OPEN",
+                  "children": [
+                    {
+                      "id": "BANK_DEPOSIT_ALL"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "ELSE_BRANCH",
+              "children": [
+                {
+                  "id": "IF_INVENTORY_IS_FULL",
+                  "children": [
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_TEXT",
+                          "operator": "EQUALS",
+                          "value": "Yes"
+                        },
+                        "Variable name": "bankteaks"
+                      },
+                      "children": [
+                        {
+                          "id": "IF_SKILL_LEVEL_IS",
+                          "properties": {
+                            "level": {
+                              "class": "Number",
+                              "operator": "LESS_THAN",
+                              "value": "70"
+                            },
+                            "Skill": {
+                              "class": "Skill",
+                              "value": "AGILITY"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "IF_DISTANCE_TO_CLOSEST_BANK_IS",
+                              "properties": {
+                                "distance": {
+                                  "class": "Number",
+                                  "operator": "GREATER_THAN_OR_EQUALS",
+                                  "value": "5"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "OPEN_BANK",
+                                  "children": [
+                                    {
+                                      "id": "IF_BANK_IS_OPEN",
+                                      "children": [
+                                        {
+                                          "id": "BANK_DEPOSIT_ALL"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "IF_INVENTORY_IS_EMPTY",
+      "children": [
+        {
+          "id": "IF_VARIABLE_IS_NOT_SET",
+          "properties": {
+            "Variable name": "tree1"
+          },
+          "children": [
+            {
+              "id": "IF_SKILL_LEVEL_IS",
+              "properties": {
+                "level": {
+                  "class": "Number",
+                  "operator": "GREATER_THAN_OR_EQUALS",
+                  "value": "70"
+                },
+                "Skill": {
+                  "class": "Skill",
+                  "value": "AGILITY"
+                }
+              },
+              "children": [
+                {
+                  "id": "WALK_TO_TILE",
+                  "properties": {
+                    "Tile": "(3713, 3830, 0)"
+                  },
+                  "children": [
+                    {
+                      "id": "IF_DISTANCE_TO_DESTINATION_IS",
+                      "properties": {
+                        "distance": {
+                          "class": "Number",
+                          "operator": "GREATER_THAN_OR_EQUALS",
+                          "value": "5"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "SLEEP_NORMAL_DISTRIBUTION",
+                          "properties": {
+                            "Mean": "600",
+                            "Variance": "900"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_LOCAL_PLAYER_MATCHES",
+                  "properties": {
+                    "Filter By": {
+                      "class": "Player",
+                      "logic": "NONE",
+                      "type": "TILE",
+                      "operator": "EQUALS",
+                      "value": "(3713, 3830, 0)"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "SET_VARIABLE",
+                      "properties": {
+                        "Variable name": "tree1"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "ELSE_BRANCH",
+              "children": [
+                {
+                  "id": "IF_SKILL_LEVEL_IS",
+                  "properties": {
+                    "level": {
+                      "class": "Number",
+                      "operator": "LESS_THAN",
+                      "value": "70"
+                    },
+                    "Skill": {
+                      "class": "Skill",
+                      "value": "AGILITY"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "WALK_TO_TILE",
+                      "properties": {
+                        "Tile": "(3710, 3834, 0)"
+                      },
+                      "children": [
+                        {
+                          "id": "IF_DISTANCE_TO_DESTINATION_IS",
+                          "properties": {
+                            "distance": {
+                              "class": "Number",
+                              "operator": "GREATER_THAN_OR_EQUALS",
+                              "value": "5"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "SLEEP_NORMAL_DISTRIBUTION",
+                              "properties": {
+                                "Mean": "600",
+                                "Variance": "900"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_LOCAL_PLAYER_MATCHES",
+                      "properties": {
+                        "Filter By": {
+                          "class": "Player",
+                          "logic": "NONE",
+                          "type": "TILE",
+                          "operator": "EQUALS",
+                          "value": "(3710, 3834, 0)"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Variable name": "tree1"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

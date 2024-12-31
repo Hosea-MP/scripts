@@ -1,0 +1,264 @@
+{
+  "sleep": "500",
+  "name": "D Combiner",
+  "version": 1.0,
+  "metadata": {
+    "network-id": "95",
+    "network-downloaded-at": "1721665294570"
+  },
+  "actions": [
+    {
+      "id": "SET_VARIABLE",
+      "properties": {
+        "Value": "0",
+        "Variable name": "Runs"
+      }
+    },
+    {
+      "id": "SET_VARIABLE_TO_USER_INPUT",
+      "properties": {
+        "Message": "what is the first item called (case sensitive)",
+        "Default": "",
+        "Variable name": "item1"
+      }
+    },
+    {
+      "id": "SET_VARIABLE_TO_USER_INPUT",
+      "properties": {
+        "Message": "how many in each inventory?",
+        "Default": "",
+        "Variable name": "quantity1"
+      }
+    },
+    {
+      "id": "SET_VARIABLE_TO_USER_INPUT",
+      "properties": {
+        "Message": "what is the next item called (case sensitive)",
+        "Default": "",
+        "Variable name": "item2"
+      }
+    },
+    {
+      "id": "SET_VARIABLE_TO_USER_INPUT",
+      "properties": {
+        "Message": "how many in each inventory?",
+        "Default": "",
+        "Variable name": "quantity2"
+      }
+    },
+    {
+      "id": "WHILE_VALUE_MATCHES",
+      "properties": {
+        "Value": "1",
+        "Filter Value By": {
+          "class": "Variable",
+          "logic": "NONE",
+          "type": "AS_NUMBER",
+          "operator": "EQUALS",
+          "value": "1"
+        }
+      },
+      "children": [
+        {
+          "id": "IF_BANK_IS_NOT_OPEN",
+          "children": [
+            {
+              "id": "OPEN_BANK"
+            },
+            {
+              "id": "SLEEP_WHILE_MOVING"
+            },
+            {
+              "id": "SLEEP_UNTIL_GAME_TICK"
+            }
+          ]
+        },
+        {
+          "id": "IF_INVENTORY_IS_NOT_EMPTY",
+          "children": [
+            {
+              "id": "BANK_DEPOSIT_ALL"
+            }
+          ]
+        },
+        {
+          "id": "SET_WITHDRAW_MODE_ITEM",
+          "children": [
+            {
+              "id": "SLEEP_UNTIL_GAME_TICK"
+            }
+          ]
+        },
+        {
+          "id": "WITHDRAW_ITEM_TO_SET_AMOUNT",
+          "properties": {
+            "Filter Item By": {
+              "class": "Item",
+              "logic": "NONE",
+              "type": "NAME",
+              "operator": "EQUALS",
+              "value": "v(item1)"
+            },
+            "Amount": "v(quantity1)"
+          },
+          "children": [
+            {
+              "id": "SLEEP_UNTIL_GAME_TICK"
+            }
+          ]
+        },
+        {
+          "id": "WITHDRAW_ITEM_TO_SET_AMOUNT",
+          "properties": {
+            "Filter Item By": {
+              "class": "Item",
+              "logic": "NONE",
+              "type": "NAME",
+              "operator": "EQUALS",
+              "value": "v(item2)"
+            },
+            "Amount": "v(quantity2)"
+          },
+          "children": [
+            {
+              "id": "SLEEP_UNTIL_GAME_TICK"
+            }
+          ]
+        },
+        {
+          "id": "WIDGET_INTERACT",
+          "properties": {
+            "Find Widget By": {
+              "class": "Widget",
+              "logic": "NONE",
+              "type": "WIDGET_ID",
+              "operator": "EQUALS",
+              "value": "12, 2, 11"
+            }
+          },
+          "children": [
+            {
+              "id": "SLEEP_UNTIL_GAME_TICK"
+            },
+            {
+              "id": "SLEEP_UNTIL_GAME_TICK"
+            }
+          ]
+        },
+        {
+          "id": "COMBINE",
+          "properties": {
+            "Filter Second By": {
+              "class": "Item",
+              "logic": "NONE",
+              "type": "NAME",
+              "operator": "EQUALS",
+              "value": "v(item2)"
+            },
+            "Filter First By": {
+              "class": "Item",
+              "logic": "NONE",
+              "type": "NAME",
+              "operator": "EQUALS",
+              "value": "v(item1)"
+            }
+          }
+        },
+        {
+          "id": "SLEEP_FOR_GAME_TICKS",
+          "properties": {
+            "Ticks": "3"
+          }
+        },
+        {
+          "id": "IF_IN_DIALOGUE",
+          "children": [
+            {
+              "id": "SLEEP_UNTIL_GAME_TICK",
+              "children": [
+                {
+                  "id": "SLEEP_UNTIL_GAME_TICK"
+                },
+                {
+                  "id": "SLEEP_UNTIL_GAME_TICK"
+                },
+                {
+                  "id": "HOLD_KEY",
+                  "properties": {
+                    "Character": " "
+                  }
+                },
+                {
+                  "id": "RELEASE_KEY",
+                  "properties": {
+                    "Character": " "
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "SLEEP_WHILE_ANIMATING",
+          "properties": {
+            "Stopped for (seconds)": "6"
+          }
+        },
+        {
+          "id": "ADD_TO_VARIABLE",
+          "properties": {
+            "Variable name": "Runs",
+            "By": "1"
+          }
+        }
+      ]
+    },
+    {
+      "id": "PAINT_ROOT",
+      "properties": {
+        "Hide standard paint": true
+      },
+      "children": [
+        {
+          "id": "DRAW_USERNAME_CENSOR_BAR"
+        },
+        {
+          "id": "DRAW_RECTANGLE",
+          "properties": {
+            "Radius": "5",
+            "Opacity (0-100)": "",
+            "Color": {
+              "class": "Color",
+              "value": -1644826
+            },
+            "X": "5",
+            "Y": "345",
+            "Height": "130",
+            "Width": "505"
+          }
+        },
+        {
+          "id": "DRAW_TEXT",
+          "properties": {
+            "Outline color": {
+              "class": "Color",
+              "value": -8224126
+            },
+            "Draw outline": false,
+            "Color": {
+              "class": "Color",
+              "value": -16777216
+            },
+            "X": "",
+            "Y": "355",
+            "Text": "Number of inventories: num(Runs)",
+            "Font": {
+              "class": "Font",
+              "value": "Inter V"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

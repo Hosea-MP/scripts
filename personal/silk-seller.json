@@ -1,0 +1,300 @@
+{
+  "sleep": "500",
+  "name": "Silk Seller",
+  "version": 1.0,
+  "actions": [
+    {
+      "id": "IF_LOCAL_PLAYER_MATCHES",
+      "properties": {
+        "Filter By": {
+          "class": "Player",
+          "logic": "NONE",
+          "type": "IN_COMBAT",
+          "operator": "EQUALS"
+        }
+      },
+      "children": [
+        {
+          "id": "IF_RUN_IS_NOT_ENABLED",
+          "children": [
+            {
+              "id": "ENABLE_RUN"
+            }
+          ]
+        },
+        {
+          "id": "WALK_FULLY_TO_NEAREST_BANK",
+          "children": [
+            {
+              "id": "SLEEP_WHILE_MOVING"
+            }
+          ]
+        },
+        {
+          "id": "DISABLE_LOGIN_SOLVER"
+        },
+        {
+          "id": "SLEEP_BETWEEN",
+          "properties": {
+            "Minimum": "1000",
+            "Maximum": "2000"
+          }
+        },
+        {
+          "id": "LOGOUT"
+        },
+        {
+          "id": "STOP_SCRIPT"
+        }
+      ]
+    },
+    {
+      "id": "IF_INVENTORY_DOES_NOT_CONTAIN_ANY",
+      "properties": {
+        "Filter Item By": {
+          "class": "Item",
+          "logic": "NONE",
+          "type": "NAME",
+          "operator": "EQUALS",
+          "value": "Silk"
+        }
+      },
+      "children": [
+        {
+          "id": "IF_DISTANCE_TO_CLOSEST_BANK_IS",
+          "properties": {
+            "distance": {
+              "class": "Number",
+              "operator": "GREATER_THAN",
+              "value": "5"
+            }
+          },
+          "children": [
+            {
+              "id": "WALK_FULLY_TO_NEAREST_BANK",
+              "children": [
+                {
+                  "id": "SLEEP_WHILE_MOVING"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "IF_BANK_IS_NOT_OPEN",
+          "children": [
+            {
+              "id": "OPEN_BANK",
+              "children": [
+                {
+                  "id": "SLEEP_WHILE_MOVING"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "IF_BANK_IS_OPEN",
+          "children": [
+            {
+              "id": "IF_BANK_DOES_NOT_CONTAIN",
+              "properties": {
+                "Filter Item By": {
+                  "class": "Item",
+                  "logic": "NONE",
+                  "type": "NAME",
+                  "operator": "EQUALS",
+                  "value": "Silk"
+                }
+              },
+              "children": [
+                {
+                  "id": "DISABLE_LOGIN_SOLVER"
+                },
+                {
+                  "id": "SLEEP_BETWEEN",
+                  "properties": {
+                    "Minimum": "1000",
+                    "Maximum": "2000"
+                  }
+                },
+                {
+                  "id": "LOGOUT"
+                },
+                {
+                  "id": "STOP_SCRIPT"
+                }
+              ]
+            },
+            {
+              "id": "BANK_WITHDRAW_ITEM",
+              "properties": {
+                "Filter Item By": {
+                  "class": "Item",
+                  "logic": "NONE",
+                  "type": "NAME",
+                  "operator": "EQUALS",
+                  "value": "Silk"
+                },
+                "Amount": "28"
+              },
+              "children": [
+                {
+                  "id": "CLOSE_BANK"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "IF_INVENTORY_CONTAINS_ANY",
+      "properties": {
+        "Filter Item By": {
+          "class": "Item",
+          "logic": "NONE",
+          "type": "NAME",
+          "operator": "EQUALS",
+          "value": "Silk"
+        }
+      },
+      "children": [
+        {
+          "id": "WALK_FULLY_TO_TILE",
+          "properties": {
+            "Tile": "(2656, 3300, 0)"
+          },
+          "children": [
+            {
+              "id": "NPC_INTERACT",
+              "properties": {
+                "Action": "Talk-to",
+                "Don\u0027t walk to NPC": false,
+                "Force left click": false,
+                "Filter NPC By": {
+                  "class": "NPC",
+                  "logic": "NONE",
+                  "type": "NAME",
+                  "operator": "EQUALS",
+                  "value": "Silk merchant"
+                }
+              },
+              "children": [
+                {
+                  "id": "SLEEP_WHILE_MOVING"
+                },
+                {
+                  "id": "IF_IN_DIALOGUE",
+                  "children": [
+                    {
+                      "id": "IF_INVENTORY_CONTAINS_ANY",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "Silk"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "SPACEBAR_TO_CONTINUE"
+                        },
+                        {
+                          "id": "SLEEP_FOR_GAME_TICKS",
+                          "properties": {
+                            "Ticks": "rand(3,9)"
+                          }
+                        },
+                        {
+                          "id": "SPACEBAR_TO_CONTINUE"
+                        },
+                        {
+                          "id": "SLEEP_FOR_GAME_TICKS",
+                          "properties": {
+                            "Ticks": "rand(3,9)"
+                          }
+                        },
+                        {
+                          "id": "CHOOSE_OPTION_BY_INDEX",
+                          "properties": {
+                            "Index": "3"
+                          }
+                        },
+                        {
+                          "id": "SLEEP_FOR_GAME_TICKS",
+                          "properties": {
+                            "Ticks": "rand(3,9)"
+                          }
+                        },
+                        {
+                          "id": "SPACEBAR_TO_CONTINUE"
+                        },
+                        {
+                          "id": "SLEEP_FOR_GAME_TICKS",
+                          "properties": {
+                            "Ticks": "rand(3,9)"
+                          }
+                        },
+                        {
+                          "id": "SPACEBAR_TO_CONTINUE"
+                        },
+                        {
+                          "id": "SLEEP_FOR_GAME_TICKS",
+                          "properties": {
+                            "Ticks": "rand(3,9)"
+                          }
+                        },
+                        {
+                          "id": "CHOOSE_OPTION_BY_INDEX",
+                          "properties": {
+                            "Index": "2"
+                          }
+                        },
+                        {
+                          "id": "SLEEP_FOR_GAME_TICKS",
+                          "properties": {
+                            "Ticks": "rand(3,9)"
+                          }
+                        },
+                        {
+                          "id": "SPACEBAR_TO_CONTINUE"
+                        },
+                        {
+                          "id": "SLEEP_FOR_GAME_TICKS",
+                          "properties": {
+                            "Ticks": "rand(3,9)"
+                          }
+                        },
+                        {
+                          "id": "SPACEBAR_TO_CONTINUE"
+                        },
+                        {
+                          "id": "SLEEP_FOR_GAME_TICKS",
+                          "properties": {
+                            "Ticks": "rand(3,9)"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_NOT_IN_DIALOGUE",
+                  "children": [
+                    {
+                      "id": "RETURN_TO_START_OF_SCRIPT"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+

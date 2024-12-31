@@ -1,0 +1,493 @@
+{
+  "sleep": "500",
+  "name": "Camdoozey Fisher",
+  "version": 1.0,
+  "metadata": {
+    "network-id": "28",
+    "network-downloaded-at": "1721665229947"
+  },
+  "actions": [
+    {
+      "id": "IF_INVENTORY_CONTAINS_ANY",
+      "properties": {
+        "Filter Item By": {
+          "class": "Item",
+          "logic": "NONE",
+          "type": "NAME",
+          "operator": "CONTAINS",
+          "value": "Raw"
+        }
+      },
+      "children": [
+        {
+          "id": "GAME_OBJECT_INTERACT",
+          "properties": {
+            "Don\u0027t walk to object": false,
+            "Action": "Prepare-fish",
+            "Filter Object By": {
+              "class": "GameObject",
+              "logic": "NONE",
+              "type": "NAME",
+              "operator": "EQUALS",
+              "value": "Preparation Table"
+            },
+            "Force left click": true
+          },
+          "children": [
+            {
+              "id": "SLEEP_NORMAL_DISTRIBUTION",
+              "properties": {
+                "Mean": "6000",
+                "Variance": "300"
+              }
+            },
+            {
+              "id": "PRESS_SPACEBAR",
+              "children": [
+                {
+                  "id": "SLEEP_WHILE_ANIMATING"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "GAME_OBJECT_INTERACT",
+          "properties": {
+            "Don\u0027t walk to object": false,
+            "Action": "Prepare-fish",
+            "Filter Object By": {
+              "class": "GameObject",
+              "logic": "NONE",
+              "type": "NAME",
+              "operator": "EQUALS",
+              "value": "Preparation Table"
+            },
+            "Force left click": true
+          },
+          "children": [
+            {
+              "id": "SLEEP_NORMAL_DISTRIBUTION",
+              "properties": {
+                "Mean": "4000",
+                "Variance": "300"
+              }
+            },
+            {
+              "id": "PRESS_SPACEBAR",
+              "children": [
+                {
+                  "id": "SLEEP_WHILE_ANIMATING"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "SLEEP_NORMAL_DISTRIBUTION",
+          "properties": {
+            "Mean": "3000",
+            "Variance": "500"
+          },
+          "children": [
+            {
+              "id": "GAME_OBJECT_INTERACT",
+              "properties": {
+                "Don\u0027t walk to object": false,
+                "Action": "Prepare-fish",
+                "Filter Object By": {
+                  "class": "GameObject",
+                  "logic": "NONE",
+                  "type": "NAME",
+                  "operator": "EQUALS",
+                  "value": "Preparation Table"
+                },
+                "Force left click": true
+              },
+              "children": [
+                {
+                  "id": "SLEEP_NORMAL_DISTRIBUTION",
+                  "properties": {
+                    "Mean": "4000",
+                    "Variance": "300"
+                  }
+                },
+                {
+                  "id": "PRESS_SPACEBAR",
+                  "children": [
+                    {
+                      "id": "SLEEP_WHILE_ANIMATING"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "IF_INVENTORY_CONTAINS_ANY",
+      "properties": {
+        "Filter Item By": {
+          "class": "Item",
+          "logic": "NONE",
+          "type": "NAME",
+          "operator": "EQUALS",
+          "value": "Guppy",
+          "filters": [
+            {
+              "class": "Item",
+              "logic": "OR",
+              "type": "NAME",
+              "operator": "EQUALS",
+              "value": "Cavefish"
+            },
+            {
+              "class": "Item",
+              "logic": "OR",
+              "type": "NAME",
+              "operator": "EQUALS",
+              "value": "Tetra"
+            }
+          ]
+        }
+      },
+      "children": [
+        {
+          "id": "GAME_OBJECT_INTERACT",
+          "properties": {
+            "Don\u0027t walk to object": false,
+            "Action": "Offer-fish",
+            "Filter Object By": {
+              "class": "GameObject",
+              "logic": "NONE",
+              "type": "NAME",
+              "operator": "EQUALS",
+              "value": "Altar"
+            },
+            "Force left click": true
+          },
+          "children": [
+            {
+              "id": "SLEEP_NORMAL_DISTRIBUTION",
+              "properties": {
+                "Mean": "3000",
+                "Variance": "200"
+              },
+              "children": [
+                {
+                  "id": "WIDGET_INTERACT",
+                  "properties": {
+                    "Find Widget By": {
+                      "class": "Widget",
+                      "logic": "NONE",
+                      "type": "WIDGET_ID",
+                      "operator": "EQUALS",
+                      "value": "270, 4"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "PRESS_SPACEBAR",
+                      "children": [
+                        {
+                          "id": "SLEEP_WHILE_ANIMATING",
+                          "children": [
+                            {
+                              "id": "SLEEP_NORMAL_DISTRIBUTION",
+                              "properties": {
+                                "Mean": "3000",
+                                "Variance": "300"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "GAME_OBJECT_INTERACT",
+          "properties": {
+            "Don\u0027t walk to object": false,
+            "Action": "Offer-fish",
+            "Filter Object By": {
+              "class": "GameObject",
+              "logic": "NONE",
+              "type": "NAME",
+              "operator": "EQUALS",
+              "value": "Altar"
+            },
+            "Force left click": true
+          },
+          "children": [
+            {
+              "id": "SLEEP_NORMAL_DISTRIBUTION",
+              "properties": {
+                "Mean": "3000",
+                "Variance": "200"
+              },
+              "children": [
+                {
+                  "id": "WIDGET_INTERACT",
+                  "properties": {
+                    "Find Widget By": {
+                      "class": "Widget",
+                      "logic": "NONE",
+                      "type": "WIDGET_ID",
+                      "operator": "EQUALS",
+                      "value": "270, 4"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "PRESS_SPACEBAR",
+                      "children": [
+                        {
+                          "id": "SLEEP_WHILE_ANIMATING",
+                          "children": [
+                            {
+                              "id": "SLEEP_NORMAL_DISTRIBUTION",
+                              "properties": {
+                                "Mean": "3000",
+                                "Variance": "300"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "GAME_OBJECT_INTERACT",
+          "properties": {
+            "Don\u0027t walk to object": false,
+            "Action": "Offer-fish",
+            "Filter Object By": {
+              "class": "GameObject",
+              "logic": "NONE",
+              "type": "NAME",
+              "operator": "EQUALS",
+              "value": "Altar"
+            },
+            "Force left click": true
+          },
+          "children": [
+            {
+              "id": "SLEEP_NORMAL_DISTRIBUTION",
+              "properties": {
+                "Mean": "3000",
+                "Variance": "200"
+              },
+              "children": [
+                {
+                  "id": "WIDGET_INTERACT",
+                  "properties": {
+                    "Find Widget By": {
+                      "class": "Widget",
+                      "logic": "NONE",
+                      "type": "WIDGET_ID",
+                      "operator": "EQUALS",
+                      "value": "270, 4"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "PRESS_SPACEBAR",
+                      "children": [
+                        {
+                          "id": "SLEEP_WHILE_ANIMATING",
+                          "children": [
+                            {
+                              "id": "IF_INVENTORY_CONTAINS_ANY",
+                              "properties": {
+                                "Filter Item By": {
+                                  "class": "Item",
+                                  "logic": "NONE",
+                                  "type": "NAME",
+                                  "operator": "EQUALS",
+                                  "value": "Guppy",
+                                  "filters": [
+                                    {
+                                      "class": "Item",
+                                      "logic": "OR",
+                                      "type": "NAME",
+                                      "operator": "EQUALS",
+                                      "value": "Cavefish"
+                                    },
+                                    {
+                                      "class": "Item",
+                                      "logic": "OR",
+                                      "type": "NAME",
+                                      "operator": "EQUALS",
+                                      "value": "Tetra"
+                                    }
+                                  ]
+                                }
+                              }
+                            },
+                            {
+                              "id": "SLEEP_NORMAL_DISTRIBUTION",
+                              "properties": {
+                                "Mean": "3000",
+                                "Variance": "300"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "IF_INVENTORY_CONTAINS_ANY",
+      "properties": {
+        "Filter Item By": {
+          "class": "Item",
+          "logic": "NONE",
+          "type": "NAME",
+          "operator": "CONTAINS",
+          "value": "Ruined"
+        }
+      },
+      "children": [
+        {
+          "id": "DROP_ALL_MATCHING_ITEMS",
+          "properties": {
+            "Filter Item By": {
+              "class": "Item",
+              "logic": "NONE",
+              "type": "NAME",
+              "operator": "CONTAINS",
+              "value": "Ruined"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "IF_INVENTORY_DOES_NOT_CONTAIN_ANY",
+      "properties": {
+        "Filter Item By": {
+          "class": "Item",
+          "logic": "NONE",
+          "type": "NAME",
+          "operator": "EQUALS",
+          "value": "Guppy Tetra Cavefish"
+        }
+      },
+      "children": [
+        {
+          "id": "IF_INVENTORY_DOES_NOT_CONTAIN_ANY",
+          "properties": {
+            "Filter Item By": {
+              "class": "Item",
+              "logic": "NONE",
+              "type": "NAME",
+              "operator": "CONTAINS",
+              "value": "Raw"
+            }
+          },
+          "children": [
+            {
+              "id": "NPC_INTERACT",
+              "properties": {
+                "Action": "Small Net",
+                "Filter NPC By": {
+                  "class": "NPC",
+                  "logic": "NONE",
+                  "type": "NAME",
+                  "operator": "EQUALS",
+                  "value": "Fishing spot"
+                }
+              },
+              "children": [
+                {
+                  "id": "SLEEP_NORMAL_DISTRIBUTION",
+                  "properties": {
+                    "Mean": "4000",
+                    "Variance": "500"
+                  }
+                },
+                {
+                  "id": "SLEEP_WHILE_ANIMATING"
+                }
+              ]
+            },
+            {
+              "id": "IF_INVENTORY_IS_NOT_FULL",
+              "children": [
+                {
+                  "id": "NPC_INTERACT",
+                  "properties": {
+                    "Action": "Small Net",
+                    "Filter NPC By": {
+                      "class": "NPC",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Fishing spot"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "SLEEP_WHILE_ANIMATING",
+                      "children": [
+                        {
+                          "id": "IF_INVENTORY_IS_NOT_FULL",
+                          "children": [
+                            {
+                              "id": "NPC_INTERACT",
+                              "properties": {
+                                "Action": "Small Net",
+                                "Filter NPC By": {
+                                  "class": "NPC",
+                                  "logic": "NONE",
+                                  "type": "NAME",
+                                  "operator": "EQUALS",
+                                  "value": "Fishing spot"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "SLEEP_WHILE_ANIMATING"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "SLEEP_NORMAL_DISTRIBUTION",
+          "properties": {
+            "Mean": "4000",
+            "Variance": "500"
+          }
+        }
+      ]
+    }
+  ]
+}

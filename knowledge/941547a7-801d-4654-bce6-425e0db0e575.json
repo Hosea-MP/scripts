@@ -1,0 +1,46 @@
+{
+  "id": "941547a7-801d-4654-bce6-425e0db0e575",
+  "name": "Webhooks \u003e Skill Reached",
+  "description": "Will send a webhook when reaching a skill level.",
+  "parameters": "",
+  "fail": false,
+  "actions": [
+    {
+      "id": "IF_VARIABLE_IS_SET",
+      "properties": {
+        "Variable name": "WEB_HOOK"
+      },
+      "children": [
+        {
+          "id": "IF_VARIABLE_IS_SET",
+          "properties": {
+            "Variable name": "LVL_HOOK"
+          },
+          "children": [
+            {
+              "id": "IF_GAME_MESSAGE_RECEIVED_MATCHES",
+              "properties": {
+                "Filter Message": {
+                  "class": "Message",
+                  "logic": "NONE",
+                  "type": "TEXT",
+                  "operator": "CONTAINS",
+                  "value": "Congradulations, you\u0027ve just advanced your"
+                }
+              },
+              "children": [
+                {
+                  "id": "SET_VARIABLE",
+                  "properties": {
+                    "Value": "levelGain(v(SKILL_NAME))",
+                    "Variable name": "LVL_GAIN"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

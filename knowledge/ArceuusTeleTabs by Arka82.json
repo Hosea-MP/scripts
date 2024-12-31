@@ -1,0 +1,3800 @@
+{
+  "sleep": "500",
+  "name": "ArceuusTeleTabs",
+  "version": 1.0,
+  "metadata": {
+    "network-id": "35",
+    "network-downloaded-at": "1721665210050"
+  },
+  "actions": [
+    {
+      "id": "IF_NOT_LOGGED_IN",
+      "children": [
+        {
+          "id": "IF_BREAK_IS_NOT_PENDING",
+          "children": [
+            {
+              "id": "ENABLE_LOGIN_SOLVER"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "IF_LOGGED_IN",
+      "children": [
+        {
+          "id": "IF_BREAK_IS_PENDING",
+          "children": [
+            {
+              "id": "ENABLE_BREAKS"
+            }
+          ]
+        },
+        {
+          "id": "IF_BREAK_IS_NOT_PENDING",
+          "children": [
+            {
+              "id": "CREATE_LABEL",
+              "properties": {
+                "Label": "Vars/Paint"
+              },
+              "children": [
+                {
+                  "id": "IF_SPELLBOOK_IS_NOT",
+                  "properties": {
+                    "Spellbook": {
+                      "class": "Spellbook",
+                      "value": "ARCEUUS"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "IF_LOCAL_PLAYER_MATCHES",
+                      "properties": {
+                        "Filter By": {
+                          "class": "Player",
+                          "logic": "NONE",
+                          "type": "NOT_IN_AREA",
+                          "operator": "EQUALS",
+                          "value": "(1703, 3878, 0), (1724, 3891, 0)"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "WALK_TO_AREA",
+                          "properties": {
+                            "Area": "(1703, 3878, 0), (1724, 3891, 0)"
+                          },
+                          "children": [
+                            {
+                              "id": "SLEEP_WHILE_MOVING"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_LOCAL_PLAYER_MATCHES",
+                      "properties": {
+                        "Filter By": {
+                          "class": "Player",
+                          "logic": "NONE",
+                          "type": "IN_AREA",
+                          "operator": "EQUALS",
+                          "value": "(1703, 3878, 0), (1724, 3891, 0)"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "IF_NPC_EXISTS",
+                          "properties": {
+                            "Filter NPC By": {
+                              "class": "NPC",
+                              "logic": "NONE",
+                              "type": "NAME",
+                              "operator": "EQUALS",
+                              "value": "Tyss"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "NPC_INTERACT",
+                              "properties": {
+                                "Action": "Spellbook",
+                                "Filter NPC By": {
+                                  "class": "NPC",
+                                  "logic": "NONE",
+                                  "type": "NAME",
+                                  "operator": "EQUALS",
+                                  "value": "Tyss"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "SLEEP_WHILE_MOVING",
+                                  "children": [
+                                    {
+                                      "id": "SLEEP_UNTIL_GAME_TICK"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "id": "IF_IN_DIALOGUE",
+                          "children": [
+                            {
+                              "id": "SPACEBAR_TO_CONTINUE"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_RUN_IS_NOT_ENABLED",
+                  "children": [
+                    {
+                      "id": "IF_RUN_ENERGY_IS",
+                      "properties": {
+                        "energy": {
+                          "class": "Number",
+                          "operator": "GREATER_THAN_OR_EQUALS",
+                          "value": "5"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "ENABLE_RUN"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "SET_TO_LOCAL_PLAYER_REAL_SKILL_LEVEL",
+                  "properties": {
+                    "Skill": {
+                      "class": "Skill",
+                      "value": "MINING"
+                    },
+                    "Variable name": "Mining"
+                  },
+                  "children": [
+                    {
+                      "id": "SET_TO_LOCAL_PLAYER_REAL_SKILL_LEVEL",
+                      "properties": {
+                        "Skill": {
+                          "class": "Skill",
+                          "value": "CRAFTING"
+                        },
+                        "Variable name": "Crafting"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_PLAYER_EXISTS",
+                  "properties": {
+                    "Filter Player By": {
+                      "class": "Player",
+                      "logic": "NONE",
+                      "type": "IS_INTERACTING_WITH_ME",
+                      "operator": "EQUALS"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "HOP_TO_RANDOM_WORLD",
+                      "properties": {
+                        "Ignore combat check": false,
+                        "Filter World By": {
+                          "class": "World",
+                          "logic": "NONE",
+                          "type": "WORLD_IS_MEMBERS",
+                          "operator": "EQUALS",
+                          "filters": [
+                            {
+                              "class": "World",
+                              "logic": "AND",
+                              "type": "WORLD_IS_NORMAL",
+                              "operator": "EQUALS"
+                            },
+                            {
+                              "class": "World",
+                              "logic": "AND",
+                              "type": "WORLD_IS_NOT_PVP",
+                              "operator": "EQUALS"
+                            },
+                            {
+                              "class": "World",
+                              "logic": "AND",
+                              "type": "WORLD_MINIMUM_LEVEL",
+                              "operator": "EQUALS",
+                              "value": "0"
+                            }
+                          ]
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "SLEEP_WHILE_WORLD_HOPPING"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_FIRST_RUN",
+                  "children": [
+                    {
+                      "id": "IF_ZOOM_IS",
+                      "properties": {
+                        "zoom": {
+                          "class": "Number",
+                          "operator": "LESS_THAN",
+                          "value": "175"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "SET_ZOOM",
+                          "properties": {
+                            "Zoom": "181"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "SET_VARIABLE_TO_USER_INPUT_OPTIONS",
+                      "properties": {
+                        "Message": "Which TeleTab do you wish to make?\"NameofTab\"(MagiclevelReq)",
+                        "Options": "Arceuus_library(6),Draynor_manor(17),Battlefront(23),Mind_altar(28),Salve_graveyard(40),Fenkenstrain\u0027s_castle(48),West_ardy(61),Harmony_island(65),Cemetery(71),Barrows(83),Ape_atoll(90)",
+                        "Variable name": "Tabselection"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "SET_TO_ITEM_LIVE_PRICE_NAME",
+                  "properties": {
+                    "Name": "Arceuus library teleport",
+                    "Variable name": "Arceuus_library"
+                  }
+                },
+                {
+                  "id": "SET_TO_ITEM_LIVE_PRICE_NAME",
+                  "properties": {
+                    "Variable name": "Draynor_manor",
+                    "Name": "Draynor manor teleport"
+                  }
+                },
+                {
+                  "id": "SET_TO_ITEM_LIVE_PRICE_NAME",
+                  "properties": {
+                    "Variable name": "Battlefront_teleport",
+                    "Name": "Battlefront teleport"
+                  }
+                },
+                {
+                  "id": "SET_TO_ITEM_LIVE_PRICE_NAME",
+                  "properties": {
+                    "Variable name": "Mind_altar",
+                    "Name": "Mind altar teleport"
+                  }
+                },
+                {
+                  "id": "SET_TO_ITEM_LIVE_PRICE_NAME",
+                  "properties": {
+                    "Variable name": "Salve_graveyard",
+                    "Name": "Salve graveyard teleport"
+                  }
+                },
+                {
+                  "id": "SET_TO_ITEM_LIVE_PRICE_NAME",
+                  "properties": {
+                    "Variable name": "Fenkenstrain\u0027s_castle",
+                    "Name": "Fenkenstrain\u0027s castle teleport"
+                  }
+                },
+                {
+                  "id": "SET_TO_ITEM_LIVE_PRICE_NAME",
+                  "properties": {
+                    "Variable name": "West_ardougne",
+                    "Name": "West ardougne teleport"
+                  }
+                },
+                {
+                  "id": "SET_TO_ITEM_LIVE_PRICE_NAME",
+                  "properties": {
+                    "Variable name": "Harmony_island",
+                    "Name": "Harmony island teleport"
+                  }
+                },
+                {
+                  "id": "SET_TO_ITEM_LIVE_PRICE_NAME",
+                  "properties": {
+                    "Variable name": "Cemetery_teleport",
+                    "Name": "Cemetery teleport"
+                  }
+                },
+                {
+                  "id": "SET_TO_ITEM_LIVE_PRICE_NAME",
+                  "properties": {
+                    "Variable name": "Barrows_teleport",
+                    "Name": "Barrows teleport"
+                  }
+                },
+                {
+                  "id": "SET_TO_ITEM_LIVE_PRICE_NAME",
+                  "properties": {
+                    "Variable name": "Ape_atoll",
+                    "Name": "Ape atoll teleport"
+                  }
+                },
+                {
+                  "id": "CREATE_LABEL",
+                  "properties": {
+                    "Label": "Failsafe/Shutdown(RuneCheck)"
+                  },
+                  "children": [
+                    {
+                      "id": "IF_TAB_IS_NOT_OPEN",
+                      "properties": {
+                        "Tab": {
+                          "class": "Tab",
+                          "value": "INVENTORY"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "OPEN_TAB",
+                          "properties": {
+                            "Tab": {
+                              "class": "Tab",
+                              "value": "INVENTORY"
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_INVENTORY_DOES_NOT_CONTAIN_ANY",
+                      "customDisplayName": "If inventory doesn\u0027t contain match(Soulrune)",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "CONTAINS",
+                          "value": "Soul rune"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "IF_VARIABLE_IS",
+                          "properties": {
+                            "Filter Value By": {
+                              "class": "Variable",
+                              "logic": "NONE",
+                              "type": "AS_TEXT",
+                              "operator": "EQUALS",
+                              "value": "Salve_graveyard(40)",
+                              "filters": [
+                                {
+                                  "class": "Variable",
+                                  "logic": "OR",
+                                  "type": "AS_TEXT",
+                                  "operator": "EQUALS",
+                                  "value": "Fenkenstrain\u0027s_castle(48)"
+                                },
+                                {
+                                  "class": "Variable",
+                                  "logic": "OR",
+                                  "type": "AS_TEXT",
+                                  "operator": "EQUALS",
+                                  "value": "West_ardy(61)"
+                                },
+                                {
+                                  "class": "Variable",
+                                  "logic": "OR",
+                                  "type": "AS_TEXT",
+                                  "operator": "EQUALS",
+                                  "value": "Harmony_island(65)"
+                                },
+                                {
+                                  "class": "Variable",
+                                  "logic": "OR",
+                                  "type": "AS_TEXT",
+                                  "operator": "EQUALS",
+                                  "value": "Cemetery(71)"
+                                },
+                                {
+                                  "class": "Variable",
+                                  "logic": "OR",
+                                  "type": "AS_TEXT",
+                                  "operator": "EQUALS",
+                                  "value": "Barrows(83)"
+                                },
+                                {
+                                  "class": "Variable",
+                                  "logic": "OR",
+                                  "type": "AS_TEXT",
+                                  "operator": "EQUALS",
+                                  "value": "Ape_atoll(90)"
+                                }
+                              ]
+                            },
+                            "Variable name": "Tabselection"
+                          },
+                          "children": [
+                            {
+                              "id": "DISABLE_LOGIN_SOLVER",
+                              "children": [
+                                {
+                                  "id": "LOGOUT",
+                                  "children": [
+                                    {
+                                      "id": "SHOW_DIALOG_MESSAGE",
+                                      "properties": {
+                                        "Message": "Out of Soul RUNES!"
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "STOP_SCRIPT"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_INVENTORY_DOES_NOT_CONTAIN_ANY",
+                      "customDisplayName": "If inventory doesn\u0027t contain match(Bloodrune)",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "CONTAINS",
+                          "value": "Blood rune"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "IF_VARIABLE_IS",
+                          "properties": {
+                            "Filter Value By": {
+                              "class": "Variable",
+                              "logic": "NONE",
+                              "type": "AS_TEXT",
+                              "operator": "EQUALS",
+                              "value": "Cemetery(71)",
+                              "filters": [
+                                {
+                                  "class": "Variable",
+                                  "logic": "OR",
+                                  "type": "AS_TEXT",
+                                  "operator": "EQUALS",
+                                  "value": "Barrows(83)"
+                                },
+                                {
+                                  "class": "Variable",
+                                  "logic": "OR",
+                                  "type": "AS_TEXT",
+                                  "operator": "EQUALS",
+                                  "value": "Ape_atoll(90)"
+                                }
+                              ]
+                            },
+                            "Variable name": "Tabselection"
+                          },
+                          "children": [
+                            {
+                              "id": "DISABLE_LOGIN_SOLVER",
+                              "children": [
+                                {
+                                  "id": "LOGOUT",
+                                  "children": [
+                                    {
+                                      "id": "SHOW_DIALOG_MESSAGE",
+                                      "properties": {
+                                        "Message": "Out of Blood RUNES!"
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "STOP_SCRIPT"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_INVENTORY_DOES_NOT_CONTAIN_ANY",
+                      "customDisplayName": "If inventory doesn\u0027t contain match(Lawrune)",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "CONTAINS",
+                          "value": "Law rune"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "DISABLE_LOGIN_SOLVER",
+                          "children": [
+                            {
+                              "id": "LOGOUT",
+                              "children": [
+                                {
+                                  "id": "SHOW_DIALOG_MESSAGE",
+                                  "properties": {
+                                    "Message": "Out of Law RUNES!"
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "STOP_SCRIPT"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_TIMER_DOES_NOT_EXIST",
+                      "properties": {
+                        "Timer name": "HopTimerChange"
+                      },
+                      "children": [
+                        {
+                          "id": "START_TIMER",
+                          "properties": {
+                            "Timer name": "HopTimerChange",
+                            "Time": "2:00:00"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_TIMER_DOES_NOT_EXIST",
+                      "properties": {
+                        "Timer name": "Hop"
+                      },
+                      "children": [
+                        {
+                          "id": "START_TIMER",
+                          "properties": {
+                            "Timer name": "Hop",
+                            "Time": "4:00:00"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_TIMER_EXISTS",
+                      "properties": {
+                        "Timer name": "Hop"
+                      },
+                      "children": [
+                        {
+                          "id": "IF_TIMER_EXISTS",
+                          "properties": {
+                            "Timer name": "HopTimerChange"
+                          },
+                          "children": [
+                            {
+                              "id": "IF_TIMER_IS_FINISHED",
+                              "properties": {
+                                "Timer name": "HopTimerChange"
+                              },
+                              "children": [
+                                {
+                                  "id": "IF_RANDOM_NUMBER_IS",
+                                  "properties": {
+                                    "number": {
+                                      "class": "Number",
+                                      "operator": "GREATER_THAN",
+                                      "value": "15"
+                                    },
+                                    "Minimum": "1",
+                                    "Maximum": "20"
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "RESTART_TIMER",
+                                      "properties": {
+                                        "Timer name": "HopTimerChange"
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "id": "IF_RANDOM_NUMBER_IS",
+                                  "properties": {
+                                    "number": {
+                                      "class": "Number",
+                                      "operator": "EQUALS",
+                                      "value": "1"
+                                    },
+                                    "Minimum": "1",
+                                    "Maximum": "3"
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "IF_TIMER_TIME_LEFT_IS_LESS_THAN",
+                                      "properties": {
+                                        "Timer name": "Hop",
+                                        "Time": "3:00:00"
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "IF_TIMER_TIME_LEFT_IS_GREATER_THAN",
+                                          "properties": {
+                                            "Timer name": "Hop",
+                                            "Time": "120"
+                                          },
+                                          "children": [
+                                            {
+                                              "id": "HOP_TO_RANDOM_WORLD",
+                                              "properties": {
+                                                "Ignore combat check": false,
+                                                "Filter World By": {
+                                                  "class": "World",
+                                                  "logic": "NONE",
+                                                  "type": "WORLD_IS_MEMBERS",
+                                                  "operator": "EQUALS",
+                                                  "filters": [
+                                                    {
+                                                      "class": "World",
+                                                      "logic": "AND",
+                                                      "type": "WORLD_IS_NORMAL",
+                                                      "operator": "EQUALS"
+                                                    },
+                                                    {
+                                                      "class": "World",
+                                                      "logic": "AND",
+                                                      "type": "WORLD_IS_NOT_PVP",
+                                                      "operator": "EQUALS"
+                                                    },
+                                                    {
+                                                      "class": "World",
+                                                      "logic": "AND",
+                                                      "type": "WORLD_MINIMUM_LEVEL",
+                                                      "operator": "EQUALS",
+                                                      "value": "0"
+                                                    }
+                                                  ]
+                                                }
+                                              },
+                                              "children": [
+                                                {
+                                                  "id": "SLEEP_WHILE_WORLD_HOPPING",
+                                                  "children": [
+                                                    {
+                                                      "id": "RESTART_TIMER",
+                                                      "properties": {
+                                                        "Timer name": "Hop"
+                                                      }
+                                                    },
+                                                    {
+                                                      "id": "RESTART_TIMER",
+                                                      "properties": {
+                                                        "Timer name": "HopTimerChange"
+                                                      }
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "id": "IF_RANDOM_NUMBER_IS",
+                                  "properties": {
+                                    "number": {
+                                      "class": "Number",
+                                      "operator": "EQUALS",
+                                      "value": "2"
+                                    },
+                                    "Minimum": "1",
+                                    "Maximum": "3"
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "IF_TIMER_TIME_LEFT_IS_LESS_THAN",
+                                      "properties": {
+                                        "Timer name": "Hop",
+                                        "Time": "2:00:00"
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "IF_TIMER_TIME_LEFT_IS_GREATER_THAN",
+                                          "properties": {
+                                            "Timer name": "Hop",
+                                            "Time": "1:00:00"
+                                          },
+                                          "children": [
+                                            {
+                                              "id": "HOP_TO_RANDOM_WORLD",
+                                              "properties": {
+                                                "Ignore combat check": false,
+                                                "Filter World By": {
+                                                  "class": "World",
+                                                  "logic": "NONE",
+                                                  "type": "WORLD_IS_MEMBERS",
+                                                  "operator": "EQUALS",
+                                                  "filters": [
+                                                    {
+                                                      "class": "World",
+                                                      "logic": "AND",
+                                                      "type": "WORLD_IS_NORMAL",
+                                                      "operator": "EQUALS"
+                                                    },
+                                                    {
+                                                      "class": "World",
+                                                      "logic": "AND",
+                                                      "type": "WORLD_IS_NOT_PVP",
+                                                      "operator": "EQUALS"
+                                                    },
+                                                    {
+                                                      "class": "World",
+                                                      "logic": "AND",
+                                                      "type": "WORLD_MINIMUM_LEVEL",
+                                                      "operator": "EQUALS",
+                                                      "value": "0"
+                                                    }
+                                                  ]
+                                                }
+                                              },
+                                              "children": [
+                                                {
+                                                  "id": "SLEEP_WHILE_WORLD_HOPPING",
+                                                  "children": [
+                                                    {
+                                                      "id": "RESTART_TIMER",
+                                                      "properties": {
+                                                        "Timer name": "Hop"
+                                                      }
+                                                    },
+                                                    {
+                                                      "id": "RESTART_TIMER",
+                                                      "properties": {
+                                                        "Timer name": "HopTimerChange"
+                                                      }
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "id": "IF_RANDOM_NUMBER_IS",
+                                  "properties": {
+                                    "number": {
+                                      "class": "Number",
+                                      "operator": "EQUALS",
+                                      "value": "3"
+                                    },
+                                    "Minimum": "1",
+                                    "Maximum": "3"
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "IF_TIMER_TIME_LEFT_IS_LESS_THAN",
+                                      "properties": {
+                                        "Timer name": "Hop",
+                                        "Time": "1:00:00"
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "IF_TIMER_TIME_LEFT_IS_GREATER_THAN",
+                                          "properties": {
+                                            "Timer name": "Hop",
+                                            "Time": "30:00"
+                                          },
+                                          "children": [
+                                            {
+                                              "id": "HOP_TO_RANDOM_WORLD",
+                                              "properties": {
+                                                "Ignore combat check": false,
+                                                "Filter World By": {
+                                                  "class": "World",
+                                                  "logic": "NONE",
+                                                  "type": "WORLD_IS_MEMBERS",
+                                                  "operator": "EQUALS",
+                                                  "filters": [
+                                                    {
+                                                      "class": "World",
+                                                      "logic": "AND",
+                                                      "type": "WORLD_IS_NORMAL",
+                                                      "operator": "EQUALS"
+                                                    },
+                                                    {
+                                                      "class": "World",
+                                                      "logic": "AND",
+                                                      "type": "WORLD_IS_NOT_PVP",
+                                                      "operator": "EQUALS"
+                                                    },
+                                                    {
+                                                      "class": "World",
+                                                      "logic": "AND",
+                                                      "type": "WORLD_MINIMUM_LEVEL",
+                                                      "operator": "EQUALS",
+                                                      "value": "0"
+                                                    }
+                                                  ]
+                                                }
+                                              },
+                                              "children": [
+                                                {
+                                                  "id": "SLEEP_WHILE_WORLD_HOPPING",
+                                                  "children": [
+                                                    {
+                                                      "id": "RESTART_TIMER",
+                                                      "properties": {
+                                                        "Timer name": "HopTimerChange"
+                                                      }
+                                                    },
+                                                    {
+                                                      "id": "RESTART_TIMER",
+                                                      "properties": {
+                                                        "Timer name": "Hop"
+                                                      }
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "CREATE_LABEL",
+              "properties": {
+                "Label": "Mining"
+              },
+              "children": [
+                {
+                  "id": "IF_INVENTORY_DOES_NOT_CONTAIN_ANY",
+                  "properties": {
+                    "Filter Item By": {
+                      "class": "Item",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "CONTAINS",
+                      "value": "Dark essence block"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "IF_INVENTORY_IS_FULL",
+                      "children": [
+                        {
+                          "id": "IF_SPELLBOOK_IS",
+                          "properties": {
+                            "Spellbook": {
+                              "class": "Spellbook",
+                              "value": "ARCEUUS"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "SET_VARIABLE",
+                              "properties": {
+                                "Value": "False",
+                                "Variable name": "needToMine"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_INVENTORY_IS_NOT_FULL",
+                      "children": [
+                        {
+                          "id": "IF_SPELLBOOK_IS",
+                          "properties": {
+                            "Spellbook": {
+                              "class": "Spellbook",
+                              "value": "ARCEUUS"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "SET_VARIABLE",
+                              "properties": {
+                                "Value": "True",
+                                "Variable name": "needToMine"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_VARIABLE_IS",
+                  "properties": {
+                    "Filter Value By": {
+                      "class": "Variable",
+                      "logic": "NONE",
+                      "type": "AS_BOOLEAN",
+                      "operator": "IS_TRUE"
+                    },
+                    "Variable name": "needToMine"
+                  },
+                  "children": [
+                    {
+                      "id": "IF_SPELLBOOK_IS",
+                      "properties": {
+                        "Spellbook": {
+                          "class": "Spellbook",
+                          "value": "ARCEUUS"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "IF_RUN_IS_NOT_ENABLED",
+                          "children": [
+                            {
+                              "id": "IF_RUN_ENERGY_IS",
+                              "properties": {
+                                "energy": {
+                                  "class": "Number",
+                                  "operator": "GREATER_THAN_OR_EQUALS",
+                                  "value": "3"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "ENABLE_RUN"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "id": "IF_LOCAL_PLAYER_MATCHES",
+                          "customDisplayName": "If our player matches MINELOCATION",
+                          "properties": {
+                            "Filter By": {
+                              "class": "Player",
+                              "logic": "NONE",
+                              "type": "IN_AREA",
+                              "operator": "EQUALS",
+                              "value": "(1769, 3862, 0), (1760, 3843, 0)",
+                              "filters": [
+                                {
+                                  "class": "Player",
+                                  "logic": "AND",
+                                  "type": "NOT_ANIMATING",
+                                  "operator": "EQUALS"
+                                }
+                              ]
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "IF_INVENTORY_IS_NOT_FULL",
+                              "children": [
+                                {
+                                  "id": "IF_INVENTORY_CONTAINS_ANY",
+                                  "properties": {
+                                    "Filter Item By": {
+                                      "class": "Item",
+                                      "logic": "NONE",
+                                      "type": "NAME",
+                                      "operator": "EQUALS",
+                                      "value": "Chisel"
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "IF_GAME_OBJECT_DOES_NOT_EXIST",
+                                      "customDisplayName": "If \u0027Crashed Star\u0027 doesn\u0027t exist MINING METHOD",
+                                      "properties": {
+                                        "Filter Object By": {
+                                          "class": "GameObject",
+                                          "logic": "NONE",
+                                          "type": "NAME",
+                                          "operator": "CONTAINS",
+                                          "value": "Crashed Star"
+                                        }
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "IF_LOCAL_PLAYER_MATCHES",
+                                          "customDisplayName": "If our player matches Tiles on other side of shortcuts",
+                                          "properties": {
+                                            "Filter By": {
+                                              "class": "Player",
+                                              "logic": "NONE",
+                                              "type": "TILE",
+                                              "operator": "EQUALS",
+                                              "value": "(1769, 3849, 0)",
+                                              "filters": [
+                                                {
+                                                  "class": "Player",
+                                                  "logic": "OR",
+                                                  "type": "TILE",
+                                                  "operator": "EQUALS",
+                                                  "value": "(1761, 3872, 0)"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "children": [
+                                            {
+                                              "id": "IF_INVENTORY_IS_NOT_FULL",
+                                              "children": [
+                                                {
+                                                  "id": "IF_GAME_OBJECT_EXISTS",
+                                                  "properties": {
+                                                    "Filter Object By": {
+                                                      "class": "GameObject",
+                                                      "logic": "NONE",
+                                                      "type": "NAME",
+                                                      "operator": "CONTAINS",
+                                                      "value": "Dense runestone"
+                                                    }
+                                                  },
+                                                  "children": [
+                                                    {
+                                                      "id": "GAME_OBJECT_INTERACT",
+                                                      "properties": {
+                                                        "Don\u0027t walk to object": false,
+                                                        "Action": "Chip",
+                                                        "Filter Object By": {
+                                                          "class": "GameObject",
+                                                          "logic": "NONE",
+                                                          "type": "NAME",
+                                                          "operator": "CONTAINS",
+                                                          "value": "Dense runestone"
+                                                        },
+                                                        "Force left click": false
+                                                      },
+                                                      "children": [
+                                                        {
+                                                          "id": "SLEEP_WHILE_MOVING"
+                                                        },
+                                                        {
+                                                          "id": "SLEEP_WHILE_ANIMATING",
+                                                          "properties": {
+                                                            "Stopped for (seconds)": "1"
+                                                          }
+                                                        }
+                                                      ]
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "id": "IF_RANDOM_NUMBER_IS",
+                                          "properties": {
+                                            "number": {
+                                              "class": "Number",
+                                              "operator": "GREATER_THAN",
+                                              "value": "10"
+                                            },
+                                            "Minimum": "1",
+                                            "Maximum": "20"
+                                          },
+                                          "children": [
+                                            {
+                                              "id": "SLEEP_BETWEEN",
+                                              "properties": {
+                                                "Minimum": "8000",
+                                                "Maximum": "13000"
+                                              },
+                                              "children": [
+                                                {
+                                                  "id": "IF_INVENTORY_IS_NOT_FULL",
+                                                  "children": [
+                                                    {
+                                                      "id": "IF_GAME_OBJECT_EXISTS",
+                                                      "properties": {
+                                                        "Filter Object By": {
+                                                          "class": "GameObject",
+                                                          "logic": "NONE",
+                                                          "type": "NAME",
+                                                          "operator": "CONTAINS",
+                                                          "value": "Dense runestone"
+                                                        }
+                                                      },
+                                                      "children": [
+                                                        {
+                                                          "id": "GAME_OBJECT_INTERACT",
+                                                          "properties": {
+                                                            "Don\u0027t walk to object": false,
+                                                            "Action": "Chip",
+                                                            "Filter Object By": {
+                                                              "class": "GameObject",
+                                                              "logic": "NONE",
+                                                              "type": "NAME",
+                                                              "operator": "CONTAINS",
+                                                              "value": "Dense runestone"
+                                                            },
+                                                            "Force left click": false
+                                                          },
+                                                          "children": [
+                                                            {
+                                                              "id": "SLEEP_WHILE_MOVING"
+                                                            },
+                                                            {
+                                                              "id": "SLEEP_WHILE_ANIMATING",
+                                                              "properties": {
+                                                                "Stopped for (seconds)": "1"
+                                                              }
+                                                            }
+                                                          ]
+                                                        }
+                                                      ]
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "id": "IF_RANDOM_NUMBER_IS",
+                                          "properties": {
+                                            "number": {
+                                              "class": "Number",
+                                              "operator": "LESS_THAN_OR_EQUALS",
+                                              "value": "10"
+                                            },
+                                            "Minimum": "1",
+                                            "Maximum": "20"
+                                          },
+                                          "children": [
+                                            {
+                                              "id": "SLEEP_BETWEEN",
+                                              "properties": {
+                                                "Minimum": "3000",
+                                                "Maximum": "8000"
+                                              },
+                                              "children": [
+                                                {
+                                                  "id": "IF_INVENTORY_IS_NOT_FULL",
+                                                  "children": [
+                                                    {
+                                                      "id": "IF_GAME_OBJECT_EXISTS",
+                                                      "properties": {
+                                                        "Filter Object By": {
+                                                          "class": "GameObject",
+                                                          "logic": "NONE",
+                                                          "type": "NAME",
+                                                          "operator": "CONTAINS",
+                                                          "value": "Dense runestone"
+                                                        }
+                                                      },
+                                                      "children": [
+                                                        {
+                                                          "id": "GAME_OBJECT_INTERACT",
+                                                          "properties": {
+                                                            "Don\u0027t walk to object": false,
+                                                            "Action": "Chip",
+                                                            "Filter Object By": {
+                                                              "class": "GameObject",
+                                                              "logic": "NONE",
+                                                              "type": "NAME",
+                                                              "operator": "CONTAINS",
+                                                              "value": "Dense runestone"
+                                                            },
+                                                            "Force left click": false
+                                                          },
+                                                          "children": [
+                                                            {
+                                                              "id": "SLEEP_WHILE_MOVING"
+                                                            },
+                                                            {
+                                                              "id": "SLEEP_WHILE_ANIMATING",
+                                                              "properties": {
+                                                                "Stopped for (seconds)": "1"
+                                                              }
+                                                            }
+                                                          ]
+                                                        }
+                                                      ]
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "id": "IF_TAB_IS_NOT_OPEN",
+                                          "properties": {
+                                            "Tab": {
+                                              "class": "Tab",
+                                              "value": "INVENTORY"
+                                            }
+                                          },
+                                          "children": [
+                                            {
+                                              "id": "OPEN_TAB",
+                                              "properties": {
+                                                "Tab": {
+                                                  "class": "Tab",
+                                                  "value": "INVENTORY"
+                                                }
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "id": "IF_GAME_OBJECT_EXISTS",
+                                      "customDisplayName": "If \u0027Crashed Star\u0027 exists HOPSWORLD",
+                                      "properties": {
+                                        "Filter Object By": {
+                                          "class": "GameObject",
+                                          "logic": "NONE",
+                                          "type": "NAME",
+                                          "operator": "CONTAINS",
+                                          "value": "Crashed Star"
+                                        }
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "HOP_TO_RANDOM_WORLD",
+                                          "properties": {
+                                            "Ignore combat check": false,
+                                            "Filter World By": {
+                                              "class": "World",
+                                              "logic": "NONE",
+                                              "type": "WORLD_IS_MEMBERS",
+                                              "operator": "EQUALS",
+                                              "filters": [
+                                                {
+                                                  "class": "World",
+                                                  "logic": "AND",
+                                                  "type": "WORLD_IS_NORMAL",
+                                                  "operator": "EQUALS"
+                                                },
+                                                {
+                                                  "class": "World",
+                                                  "logic": "AND",
+                                                  "type": "WORLD_IS_NOT_PVP",
+                                                  "operator": "EQUALS"
+                                                },
+                                                {
+                                                  "class": "World",
+                                                  "logic": "AND",
+                                                  "type": "WORLD_MINIMUM_LEVEL",
+                                                  "operator": "EQUALS",
+                                                  "value": "0"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "children": [
+                                            {
+                                              "id": "SLEEP_WHILE_WORLD_HOPPING"
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "id": "IF_INVENTORY_DOES_NOT_CONTAIN_ANY",
+                              "properties": {
+                                "Filter Item By": {
+                                  "class": "Item",
+                                  "logic": "NONE",
+                                  "type": "NAME",
+                                  "operator": "EQUALS",
+                                  "value": "Chisel"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "IF_GROUND_ITEM_EXISTS",
+                                  "properties": {
+                                    "Filter Item By": {
+                                      "class": "GroundItem",
+                                      "logic": "NONE",
+                                      "type": "NAME",
+                                      "operator": "EQUALS",
+                                      "value": "Chisel"
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "GROUND_ITEM_INTERACT",
+                                      "properties": {
+                                        "Action": "Take",
+                                        "Don\u0027t walk to item": false,
+                                        "Filter Item By": {
+                                          "class": "GroundItem",
+                                          "logic": "NONE",
+                                          "type": "NAME",
+                                          "operator": "EQUALS",
+                                          "value": "Chisel"
+                                        },
+                                        "Force left click": false
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "SLEEP_WHILE_MOVING"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "id": "CREATE_LABEL",
+                          "properties": {
+                            "Label": "Library pathing"
+                          },
+                          "children": [
+                            {
+                              "id": "IF_LOCAL_PLAYER_MATCHES",
+                              "properties": {
+                                "Filter By": {
+                                  "class": "Player",
+                                  "logic": "NONE",
+                                  "type": "IN_AREA",
+                                  "operator": "EQUALS",
+                                  "value": "(1668, 3770, 0), (1681, 3765, 0)",
+                                  "filters": [
+                                    {
+                                      "class": "Player",
+                                      "logic": "AND",
+                                      "type": "NOT_IN_AREA",
+                                      "operator": "EQUALS",
+                                      "value": "(1668, 3767, 0), (1668, 3768, 0)"
+                                    }
+                                  ]
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "WALK_TO_AREA",
+                                  "properties": {
+                                    "Area": "(1668, 3767, 0), (1668, 3768, 0)"
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "SLEEP_WHILE_MOVING"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "id": "IF_LOCAL_PLAYER_MATCHES",
+                              "properties": {
+                                "Filter By": {
+                                  "class": "Player",
+                                  "logic": "NONE",
+                                  "type": "IN_AREA",
+                                  "operator": "EQUALS",
+                                  "value": "(1668, 3767, 0), (1668, 3768, 0)"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "GAME_OBJECT_INTERACT",
+                                  "properties": {
+                                    "Filter Object By": {
+                                      "class": "GameObject",
+                                      "logic": "NONE",
+                                      "type": "NAME",
+                                      "operator": "EQUALS",
+                                      "value": "Door",
+                                      "filters": [
+                                        {
+                                          "class": "GameObject",
+                                          "logic": "AND",
+                                          "type": "IN_AREA",
+                                          "operator": "EQUALS",
+                                          "value": "(1672, 3770, 0),(1672, 3764, 0),(1665, 3764, 0),(1665, 3771, 0)"
+                                        }
+                                      ]
+                                    },
+                                    "Action": "Open"
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "SLEEP_WHILE_MOVING",
+                                      "children": [
+                                        {
+                                          "id": "SLEEP_UNTIL_GAME_TICK"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "id": "WALK_TO_AREA",
+                                  "properties": {
+                                    "Area": "(1660, 3780, 0), (1663, 3767, 0)"
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "SLEEP_WHILE_MOVING"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "id": "CREATE_LABEL",
+                          "properties": {
+                            "Label": "PathToMine"
+                          },
+                          "children": [
+                            {
+                              "id": "IF_LOCAL_PLAYER_MATCHES",
+                              "properties": {
+                                "Filter By": {
+                                  "class": "Player",
+                                  "logic": "NONE",
+                                  "type": "NOT_IN_AREA",
+                                  "operator": "EQUALS",
+                                  "value": "(1769, 3862, 0), (1760, 3843, 0)",
+                                  "filters": [
+                                    {
+                                      "class": "Player",
+                                      "logic": "AND",
+                                      "type": "NOT_IN_AREA",
+                                      "operator": "EQUALS",
+                                      "value": "(1668, 3770, 0), (1681, 3765, 0)"
+                                    },
+                                    {
+                                      "class": "Player",
+                                      "logic": "AND",
+                                      "type": "NOT_IN_AREA",
+                                      "operator": "EQUALS",
+                                      "value": "(1632, 3817, 0), (1633, 3813, 0)"
+                                    }
+                                  ]
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "WALK_TO_AREA",
+                                  "properties": {
+                                    "Area": "(1769, 3862, 0), (1760, 3843, 0)"
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "SLEEP_NORMAL_DISTRIBUTION",
+                                      "properties": {
+                                        "Mean": "1550",
+                                        "Variance": "800"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "id": "CREATE_LABEL",
+                          "properties": {
+                            "Label": "BooksPathing"
+                          },
+                          "children": [
+                            {
+                              "id": "IF_LOCAL_PLAYER_MATCHES",
+                              "properties": {
+                                "Filter By": {
+                                  "class": "Player",
+                                  "logic": "NONE",
+                                  "type": "IN_AREA",
+                                  "operator": "EQUALS",
+                                  "value": "(1632, 3817, 0), (1633, 3813, 0)"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "WALK_TO_AREA",
+                                  "properties": {
+                                    "Area": "(1632, 3817, 0), (1633, 3817, 0)"
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "SLEEP_WHILE_MOVING"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "id": "IF_LOCAL_PLAYER_MATCHES",
+                                  "properties": {
+                                    "Filter By": {
+                                      "class": "Player",
+                                      "logic": "NONE",
+                                      "type": "IN_AREA",
+                                      "operator": "EQUALS",
+                                      "value": "(1632, 3817, 0), (1633, 3817, 0)"
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "GAME_OBJECT_INTERACT",
+                                      "properties": {
+                                        "Filter Object By": {
+                                          "class": "GameObject",
+                                          "logic": "NONE",
+                                          "type": "NAME",
+                                          "operator": "EQUALS",
+                                          "value": "Door",
+                                          "filters": [
+                                            {
+                                              "class": "GameObject",
+                                              "logic": "AND",
+                                              "type": "IN_AREA",
+                                              "operator": "EQUALS",
+                                              "value": "(1637, 3820, 0),(1637, 3814, 0),(1630, 3814, 0),(1630, 3821, 0)"
+                                            }
+                                          ]
+                                        },
+                                        "Action": "Open"
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "SLEEP_WHILE_MOVING",
+                                          "children": [
+                                            {
+                                              "id": "SLEEP_UNTIL_GAME_TICK"
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "id": "WALK_TO_AREA",
+                                      "properties": {
+                                        "Area": "(1629, 3845, 0), (1636, 3840, 0)"
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "SLEEP_WHILE_MOVING"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "CREATE_LABEL",
+              "properties": {
+                "Label": "TurningDark"
+              },
+              "children": [
+                {
+                  "id": "IF_RUN_IS_NOT_ENABLED",
+                  "children": [
+                    {
+                      "id": "IF_RUN_ENERGY_IS",
+                      "properties": {
+                        "energy": {
+                          "class": "Number",
+                          "operator": "GREATER_THAN",
+                          "value": "3"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "ENABLE_RUN"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_INVENTORY_DOES_NOT_CONTAIN_ANY",
+                  "properties": {
+                    "Filter Item By": {
+                      "class": "Item",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "CONTAINS",
+                      "value": "Dark essence block"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "IF_INVENTORY_CONTAINS_ANY",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "CONTAINS",
+                          "value": "Dense essence block"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "IF_SPELLBOOK_IS",
+                          "properties": {
+                            "Spellbook": {
+                              "class": "Spellbook",
+                              "value": "ARCEUUS"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "IF_INVENTORY_IS_FULL",
+                              "children": [
+                                {
+                                  "id": "IF_LOCAL_PLAYER_MATCHES",
+                                  "properties": {
+                                    "Filter By": {
+                                      "class": "Player",
+                                      "logic": "NONE",
+                                      "type": "NOT_IN_AREA",
+                                      "operator": "EQUALS",
+                                      "value": "(1728, 3883, 0), (1712, 3876, 0)"
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "WALK_TO_AREA",
+                                      "properties": {
+                                        "Area": "(1728, 3883, 0), (1712, 3876, 0)"
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "SLEEP_NORMAL_DISTRIBUTION",
+                                          "properties": {
+                                            "Mean": "2650",
+                                            "Variance": "800"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "id": "IF_LOCAL_PLAYER_MATCHES",
+                                  "properties": {
+                                    "Filter By": {
+                                      "class": "Player",
+                                      "logic": "NONE",
+                                      "type": "IN_AREA",
+                                      "operator": "EQUALS",
+                                      "value": "(1728, 3883, 0), (1712, 3876, 0)"
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "GAME_OBJECT_INTERACT",
+                                      "properties": {
+                                        "Filter Object By": {
+                                          "class": "GameObject",
+                                          "logic": "NONE",
+                                          "type": "NAME",
+                                          "operator": "EQUALS",
+                                          "value": "Dark Altar",
+                                          "filters": [
+                                            {
+                                              "class": "GameObject",
+                                              "logic": "AND",
+                                              "type": "IN_AREA",
+                                              "operator": "EQUALS",
+                                              "value": "(1719, 3885, 0),(1719, 3879, 0),(1712, 3879, 0),(1712, 3886, 0)"
+                                            }
+                                          ]
+                                        },
+                                        "Action": "Venerate"
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "SLEEP_WHILE_MOVING",
+                                          "children": [
+                                            {
+                                              "id": "SLEEP_UNTIL_GAME_TICK"
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "CREATE_LABEL",
+              "properties": {
+                "Label": "TurningTabs"
+              },
+              "children": [
+                {
+                  "id": "IF_RUN_IS_NOT_ENABLED",
+                  "children": [
+                    {
+                      "id": "IF_RUN_ENERGY_IS",
+                      "properties": {
+                        "energy": {
+                          "class": "Number",
+                          "operator": "GREATER_THAN",
+                          "value": "3"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "ENABLE_RUN"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_INVENTORY_CONTAINS_ANY",
+                  "properties": {
+                    "Filter Item By": {
+                      "class": "Item",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Dark essence block"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "IF_SPELLBOOK_IS",
+                      "properties": {
+                        "Spellbook": {
+                          "class": "Spellbook",
+                          "value": "ARCEUUS"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "IF_LOCAL_PLAYER_MATCHES",
+                          "customDisplayName": "If our player matches tab location to make them",
+                          "properties": {
+                            "Filter By": {
+                              "class": "Player",
+                              "logic": "NONE",
+                              "type": "IN_AREA",
+                              "operator": "EQUALS",
+                              "value": "(1668, 3770, 0), (1679, 3766, 0)",
+                              "filters": [
+                                {
+                                  "class": "Player",
+                                  "logic": "AND",
+                                  "type": "NOT_ANIMATING",
+                                  "operator": "EQUALS"
+                                }
+                              ]
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "IF_WIDGET_EXISTS",
+                              "properties": {
+                                "Find Widget By": {
+                                  "class": "Widget",
+                                  "logic": "NONE",
+                                  "type": "WIDGET_ID",
+                                  "operator": "EQUALS",
+                                  "value": "403, 2, 1",
+                                  "filters": [
+                                    {
+                                      "class": "Widget",
+                                      "logic": "AND",
+                                      "type": "TEXT",
+                                      "operator": "EQUALS",
+                                      "value": "Arceuus Teleport Tablets"
+                                    }
+                                  ]
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "CREATE_LABEL",
+                                  "properties": {
+                                    "Label": "Arceuus library teleport (tablet)"
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "IF_VARIABLE_IS",
+                                      "properties": {
+                                        "Filter Value By": {
+                                          "class": "Variable",
+                                          "logic": "NONE",
+                                          "type": "AS_TEXT",
+                                          "operator": "EQUALS",
+                                          "value": "Arceuus_library(6)"
+                                        },
+                                        "Variable name": "Tabselection"
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "IF_WIDGET_EXISTS",
+                                          "properties": {
+                                            "Find Widget By": {
+                                              "class": "Widget",
+                                              "logic": "NONE",
+                                              "type": "WIDGET_ID",
+                                              "operator": "EQUALS",
+                                              "value": "403, 19, 9",
+                                              "filters": [
+                                                {
+                                                  "class": "Widget",
+                                                  "logic": "AND",
+                                                  "type": "IS_VISIBLE",
+                                                  "operator": "EQUALS"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "children": [
+                                            {
+                                              "id": "IF_PLAYER_SETTING_MATCHES",
+                                              "properties": {
+                                                "value": {
+                                                  "class": "Number",
+                                                  "operator": "DOES_NOT_EQUAL",
+                                                  "value": "2"
+                                                },
+                                                "Player Setting": "1574"
+                                              },
+                                              "children": [
+                                                {
+                                                  "id": "WIDGET_INTERACT",
+                                                  "properties": {
+                                                    "Action": "Select",
+                                                    "Find Widget By": {
+                                                      "class": "Widget",
+                                                      "logic": "NONE",
+                                                      "type": "WIDGET_ID",
+                                                      "operator": "EQUALS",
+                                                      "value": "403, 19, 9"
+                                                    }
+                                                  },
+                                                  "children": [
+                                                    {
+                                                      "id": "SLEEP_UNTIL_GAME_TICK"
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "id": "IF_VARBIT_MATCHES",
+                                          "customDisplayName": "If varbit 10600 is 10 create tabs after selecting",
+                                          "properties": {
+                                            "value": {
+                                              "class": "Number",
+                                              "operator": "EQUALS",
+                                              "value": "1"
+                                            },
+                                            "Varbit": "10600"
+                                          },
+                                          "children": [
+                                            {
+                                              "id": "HOVER_WIDGET",
+                                              "properties": {
+                                                "Filter By": {
+                                                  "class": "Widget",
+                                                  "logic": "NONE",
+                                                  "type": "WIDGET_ID",
+                                                  "operator": "EQUALS",
+                                                  "value": "403, 14, 0"
+                                                }
+                                              },
+                                              "children": [
+                                                {
+                                                  "id": "LEFT_CLICK",
+                                                  "children": [
+                                                    {
+                                                      "id": "SLEEP_UNTIL_GAME_TICK",
+                                                      "children": [
+                                                        {
+                                                          "id": "SLEEP_WHILE_ANIMATING",
+                                                          "properties": {
+                                                            "Stopped for (seconds)": "1"
+                                                          }
+                                                        }
+                                                      ]
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "id": "CREATE_LABEL",
+                                  "properties": {
+                                    "Label": "Draynor manor teleport (tablet)"
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "IF_VARIABLE_IS",
+                                      "properties": {
+                                        "Filter Value By": {
+                                          "class": "Variable",
+                                          "logic": "NONE",
+                                          "type": "AS_TEXT",
+                                          "operator": "EQUALS",
+                                          "value": "Draynor_manor(17)"
+                                        },
+                                        "Variable name": "Tabselection"
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "IF_WIDGET_EXISTS",
+                                          "properties": {
+                                            "Find Widget By": {
+                                              "class": "Widget",
+                                              "logic": "NONE",
+                                              "type": "WIDGET_ID",
+                                              "operator": "EQUALS",
+                                              "value": "403, 20, 9",
+                                              "filters": [
+                                                {
+                                                  "class": "Widget",
+                                                  "logic": "AND",
+                                                  "type": "IS_VISIBLE",
+                                                  "operator": "EQUALS"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "children": [
+                                            {
+                                              "id": "IF_PLAYER_SETTING_MATCHES",
+                                              "properties": {
+                                                "value": {
+                                                  "class": "Number",
+                                                  "operator": "DOES_NOT_EQUAL",
+                                                  "value": "4"
+                                                },
+                                                "Player Setting": "1574"
+                                              },
+                                              "children": [
+                                                {
+                                                  "id": "WIDGET_INTERACT",
+                                                  "properties": {
+                                                    "Action": "Select",
+                                                    "Find Widget By": {
+                                                      "class": "Widget",
+                                                      "logic": "NONE",
+                                                      "type": "WIDGET_ID",
+                                                      "operator": "EQUALS",
+                                                      "value": "403, 20, 9"
+                                                    }
+                                                  },
+                                                  "children": [
+                                                    {
+                                                      "id": "SLEEP_UNTIL_GAME_TICK"
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "id": "IF_VARBIT_MATCHES",
+                                          "customDisplayName": "If varbit 10600 is 10 create tabs after selecting",
+                                          "properties": {
+                                            "value": {
+                                              "class": "Number",
+                                              "operator": "EQUALS",
+                                              "value": "2"
+                                            },
+                                            "Varbit": "10600"
+                                          },
+                                          "children": [
+                                            {
+                                              "id": "HOVER_WIDGET",
+                                              "properties": {
+                                                "Filter By": {
+                                                  "class": "Widget",
+                                                  "logic": "NONE",
+                                                  "type": "WIDGET_ID",
+                                                  "operator": "EQUALS",
+                                                  "value": "403, 14, 0"
+                                                }
+                                              },
+                                              "children": [
+                                                {
+                                                  "id": "LEFT_CLICK",
+                                                  "children": [
+                                                    {
+                                                      "id": "SLEEP_UNTIL_GAME_TICK",
+                                                      "children": [
+                                                        {
+                                                          "id": "SLEEP_WHILE_ANIMATING",
+                                                          "properties": {
+                                                            "Stopped for (seconds)": "1"
+                                                          }
+                                                        }
+                                                      ]
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "id": "CREATE_LABEL",
+                                  "properties": {
+                                    "Label": "Battlefront teleport (tablet)"
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "IF_VARIABLE_IS",
+                                      "properties": {
+                                        "Filter Value By": {
+                                          "class": "Variable",
+                                          "logic": "NONE",
+                                          "type": "AS_TEXT",
+                                          "operator": "EQUALS",
+                                          "value": "Battlefront(23)"
+                                        },
+                                        "Variable name": "Tabselection"
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "IF_WIDGET_EXISTS",
+                                          "properties": {
+                                            "Find Widget By": {
+                                              "class": "Widget",
+                                              "logic": "NONE",
+                                              "type": "WIDGET_ID",
+                                              "operator": "EQUALS",
+                                              "value": "403, 21, 9",
+                                              "filters": [
+                                                {
+                                                  "class": "Widget",
+                                                  "logic": "AND",
+                                                  "type": "IS_VISIBLE",
+                                                  "operator": "EQUALS"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "children": [
+                                            {
+                                              "id": "IF_PLAYER_SETTING_MATCHES",
+                                              "properties": {
+                                                "value": {
+                                                  "class": "Number",
+                                                  "operator": "DOES_NOT_EQUAL",
+                                                  "value": "6"
+                                                },
+                                                "Player Setting": "1574"
+                                              },
+                                              "children": [
+                                                {
+                                                  "id": "WIDGET_INTERACT",
+                                                  "properties": {
+                                                    "Action": "Select",
+                                                    "Find Widget By": {
+                                                      "class": "Widget",
+                                                      "logic": "NONE",
+                                                      "type": "WIDGET_ID",
+                                                      "operator": "EQUALS",
+                                                      "value": "403, 21, 9"
+                                                    }
+                                                  },
+                                                  "children": [
+                                                    {
+                                                      "id": "SLEEP_UNTIL_GAME_TICK"
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "id": "IF_VARBIT_MATCHES",
+                                          "customDisplayName": "If varbit 10600 is 10 create tabs after selecting",
+                                          "properties": {
+                                            "value": {
+                                              "class": "Number",
+                                              "operator": "EQUALS",
+                                              "value": "3"
+                                            },
+                                            "Varbit": "10600"
+                                          },
+                                          "children": [
+                                            {
+                                              "id": "HOVER_WIDGET",
+                                              "properties": {
+                                                "Filter By": {
+                                                  "class": "Widget",
+                                                  "logic": "NONE",
+                                                  "type": "WIDGET_ID",
+                                                  "operator": "EQUALS",
+                                                  "value": "403, 14, 0"
+                                                }
+                                              },
+                                              "children": [
+                                                {
+                                                  "id": "LEFT_CLICK",
+                                                  "children": [
+                                                    {
+                                                      "id": "SLEEP_UNTIL_GAME_TICK",
+                                                      "children": [
+                                                        {
+                                                          "id": "SLEEP_WHILE_ANIMATING",
+                                                          "properties": {
+                                                            "Stopped for (seconds)": "1"
+                                                          }
+                                                        }
+                                                      ]
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "id": "CREATE_LABEL",
+                                  "properties": {
+                                    "Label": "Mind altar teleport (tablet)"
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "IF_VARIABLE_IS",
+                                      "properties": {
+                                        "Filter Value By": {
+                                          "class": "Variable",
+                                          "logic": "NONE",
+                                          "type": "AS_TEXT",
+                                          "operator": "EQUALS",
+                                          "value": "Mind_altar(28)"
+                                        },
+                                        "Variable name": "Tabselection"
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "IF_WIDGET_EXISTS",
+                                          "properties": {
+                                            "Find Widget By": {
+                                              "class": "Widget",
+                                              "logic": "NONE",
+                                              "type": "WIDGET_ID",
+                                              "operator": "EQUALS",
+                                              "value": "403, 22, 9",
+                                              "filters": [
+                                                {
+                                                  "class": "Widget",
+                                                  "logic": "AND",
+                                                  "type": "IS_VISIBLE",
+                                                  "operator": "EQUALS"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "children": [
+                                            {
+                                              "id": "IF_PLAYER_SETTING_MATCHES",
+                                              "properties": {
+                                                "value": {
+                                                  "class": "Number",
+                                                  "operator": "DOES_NOT_EQUAL",
+                                                  "value": "8"
+                                                },
+                                                "Player Setting": "1574"
+                                              },
+                                              "children": [
+                                                {
+                                                  "id": "WIDGET_INTERACT",
+                                                  "properties": {
+                                                    "Action": "Select",
+                                                    "Find Widget By": {
+                                                      "class": "Widget",
+                                                      "logic": "NONE",
+                                                      "type": "WIDGET_ID",
+                                                      "operator": "EQUALS",
+                                                      "value": "403, 22, 9"
+                                                    }
+                                                  },
+                                                  "children": [
+                                                    {
+                                                      "id": "SLEEP_UNTIL_GAME_TICK"
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "id": "IF_VARBIT_MATCHES",
+                                          "customDisplayName": "If varbit 10600 is 10 create tabs after selecting",
+                                          "properties": {
+                                            "value": {
+                                              "class": "Number",
+                                              "operator": "EQUALS",
+                                              "value": "4"
+                                            },
+                                            "Varbit": "10600"
+                                          },
+                                          "children": [
+                                            {
+                                              "id": "HOVER_WIDGET",
+                                              "properties": {
+                                                "Filter By": {
+                                                  "class": "Widget",
+                                                  "logic": "NONE",
+                                                  "type": "WIDGET_ID",
+                                                  "operator": "EQUALS",
+                                                  "value": "403, 14, 0"
+                                                }
+                                              },
+                                              "children": [
+                                                {
+                                                  "id": "LEFT_CLICK",
+                                                  "children": [
+                                                    {
+                                                      "id": "SLEEP_UNTIL_GAME_TICK",
+                                                      "children": [
+                                                        {
+                                                          "id": "SLEEP_WHILE_ANIMATING",
+                                                          "properties": {
+                                                            "Stopped for (seconds)": "1"
+                                                          }
+                                                        }
+                                                      ]
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "id": "CREATE_LABEL",
+                                  "properties": {
+                                    "Label": "Salve graveyard teleport (tablet)"
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "IF_VARIABLE_IS",
+                                      "properties": {
+                                        "Filter Value By": {
+                                          "class": "Variable",
+                                          "logic": "NONE",
+                                          "type": "AS_TEXT",
+                                          "operator": "EQUALS",
+                                          "value": "Salve_graveyard(40)"
+                                        },
+                                        "Variable name": "Tabselection"
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "IF_WIDGET_EXISTS",
+                                          "properties": {
+                                            "Find Widget By": {
+                                              "class": "Widget",
+                                              "logic": "NONE",
+                                              "type": "WIDGET_ID",
+                                              "operator": "EQUALS",
+                                              "value": "403, 23, 9",
+                                              "filters": [
+                                                {
+                                                  "class": "Widget",
+                                                  "logic": "AND",
+                                                  "type": "IS_VISIBLE",
+                                                  "operator": "EQUALS"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "children": [
+                                            {
+                                              "id": "IF_PLAYER_SETTING_MATCHES",
+                                              "properties": {
+                                                "value": {
+                                                  "class": "Number",
+                                                  "operator": "DOES_NOT_EQUAL",
+                                                  "value": "10"
+                                                },
+                                                "Player Setting": "1574"
+                                              },
+                                              "children": [
+                                                {
+                                                  "id": "WIDGET_INTERACT",
+                                                  "properties": {
+                                                    "Action": "Select",
+                                                    "Find Widget By": {
+                                                      "class": "Widget",
+                                                      "logic": "NONE",
+                                                      "type": "WIDGET_ID",
+                                                      "operator": "EQUALS",
+                                                      "value": "403, 23, 9"
+                                                    }
+                                                  },
+                                                  "children": [
+                                                    {
+                                                      "id": "SLEEP_UNTIL_GAME_TICK"
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "id": "IF_VARBIT_MATCHES",
+                                          "customDisplayName": "If varbit 10600 is 10 create tabs after selecting",
+                                          "properties": {
+                                            "value": {
+                                              "class": "Number",
+                                              "operator": "EQUALS",
+                                              "value": "5"
+                                            },
+                                            "Varbit": "10600"
+                                          },
+                                          "children": [
+                                            {
+                                              "id": "HOVER_WIDGET",
+                                              "properties": {
+                                                "Filter By": {
+                                                  "class": "Widget",
+                                                  "logic": "NONE",
+                                                  "type": "WIDGET_ID",
+                                                  "operator": "EQUALS",
+                                                  "value": "403, 14, 0"
+                                                }
+                                              },
+                                              "children": [
+                                                {
+                                                  "id": "LEFT_CLICK",
+                                                  "children": [
+                                                    {
+                                                      "id": "SLEEP_UNTIL_GAME_TICK",
+                                                      "children": [
+                                                        {
+                                                          "id": "SLEEP_WHILE_ANIMATING",
+                                                          "properties": {
+                                                            "Stopped for (seconds)": "1"
+                                                          }
+                                                        }
+                                                      ]
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "id": "CREATE_LABEL",
+                                  "properties": {
+                                    "Label": "Fenkenstrain\u0027s castle teleport"
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "IF_VARIABLE_IS",
+                                      "properties": {
+                                        "Filter Value By": {
+                                          "class": "Variable",
+                                          "logic": "NONE",
+                                          "type": "AS_TEXT",
+                                          "operator": "EQUALS",
+                                          "value": "Fenkenstrain\u0027s_castle(48)"
+                                        },
+                                        "Variable name": "Tabselection"
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "IF_WIDGET_EXISTS",
+                                          "properties": {
+                                            "Find Widget By": {
+                                              "class": "Widget",
+                                              "logic": "NONE",
+                                              "type": "WIDGET_ID",
+                                              "operator": "EQUALS",
+                                              "value": "403, 25, 9",
+                                              "filters": [
+                                                {
+                                                  "class": "Widget",
+                                                  "logic": "AND",
+                                                  "type": "IS_VISIBLE",
+                                                  "operator": "EQUALS"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "children": [
+                                            {
+                                              "id": "IF_PLAYER_SETTING_MATCHES",
+                                              "properties": {
+                                                "value": {
+                                                  "class": "Number",
+                                                  "operator": "DOES_NOT_EQUAL",
+                                                  "value": "12"
+                                                },
+                                                "Player Setting": "1574"
+                                              },
+                                              "children": [
+                                                {
+                                                  "id": "WIDGET_INTERACT",
+                                                  "properties": {
+                                                    "Action": "Select",
+                                                    "Find Widget By": {
+                                                      "class": "Widget",
+                                                      "logic": "NONE",
+                                                      "type": "WIDGET_ID",
+                                                      "operator": "EQUALS",
+                                                      "value": "403, 24, 9"
+                                                    }
+                                                  },
+                                                  "children": [
+                                                    {
+                                                      "id": "SLEEP_UNTIL_GAME_TICK"
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "id": "IF_VARBIT_MATCHES",
+                                          "customDisplayName": "If varbit 10600 is 10 create tabs after selecting",
+                                          "properties": {
+                                            "value": {
+                                              "class": "Number",
+                                              "operator": "EQUALS",
+                                              "value": "6"
+                                            },
+                                            "Varbit": "10600"
+                                          },
+                                          "children": [
+                                            {
+                                              "id": "HOVER_WIDGET",
+                                              "properties": {
+                                                "Filter By": {
+                                                  "class": "Widget",
+                                                  "logic": "NONE",
+                                                  "type": "WIDGET_ID",
+                                                  "operator": "EQUALS",
+                                                  "value": "403, 14, 0"
+                                                }
+                                              },
+                                              "children": [
+                                                {
+                                                  "id": "LEFT_CLICK",
+                                                  "children": [
+                                                    {
+                                                      "id": "SLEEP_UNTIL_GAME_TICK",
+                                                      "children": [
+                                                        {
+                                                          "id": "SLEEP_WHILE_ANIMATING",
+                                                          "properties": {
+                                                            "Stopped for (seconds)": "1"
+                                                          }
+                                                        }
+                                                      ]
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "id": "CREATE_LABEL",
+                                  "properties": {
+                                    "Label": "West_Ardy"
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "IF_VARIABLE_IS",
+                                      "properties": {
+                                        "Filter Value By": {
+                                          "class": "Variable",
+                                          "logic": "NONE",
+                                          "type": "AS_TEXT",
+                                          "operator": "EQUALS",
+                                          "value": "West_ardy(61)"
+                                        },
+                                        "Variable name": "Tabselection"
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "IF_WIDGET_EXISTS",
+                                          "properties": {
+                                            "Find Widget By": {
+                                              "class": "Widget",
+                                              "logic": "NONE",
+                                              "type": "WIDGET_ID",
+                                              "operator": "EQUALS",
+                                              "value": "403, 25, 9",
+                                              "filters": [
+                                                {
+                                                  "class": "Widget",
+                                                  "logic": "AND",
+                                                  "type": "IS_VISIBLE",
+                                                  "operator": "EQUALS"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "children": [
+                                            {
+                                              "id": "IF_PLAYER_SETTING_MATCHES",
+                                              "properties": {
+                                                "value": {
+                                                  "class": "Number",
+                                                  "operator": "DOES_NOT_EQUAL",
+                                                  "value": "14"
+                                                },
+                                                "Player Setting": "1574"
+                                              },
+                                              "children": [
+                                                {
+                                                  "id": "WIDGET_INTERACT",
+                                                  "properties": {
+                                                    "Action": "Select",
+                                                    "Find Widget By": {
+                                                      "class": "Widget",
+                                                      "logic": "NONE",
+                                                      "type": "WIDGET_ID",
+                                                      "operator": "EQUALS",
+                                                      "value": "403, 25, 9"
+                                                    }
+                                                  },
+                                                  "children": [
+                                                    {
+                                                      "id": "SLEEP_UNTIL_GAME_TICK"
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "id": "IF_VARBIT_MATCHES",
+                                          "customDisplayName": "If varbit 10600 is 10 create tabs after selecting",
+                                          "properties": {
+                                            "value": {
+                                              "class": "Number",
+                                              "operator": "EQUALS",
+                                              "value": "7"
+                                            },
+                                            "Varbit": "10600"
+                                          },
+                                          "children": [
+                                            {
+                                              "id": "HOVER_WIDGET",
+                                              "properties": {
+                                                "Filter By": {
+                                                  "class": "Widget",
+                                                  "logic": "NONE",
+                                                  "type": "WIDGET_ID",
+                                                  "operator": "EQUALS",
+                                                  "value": "403, 14, 0"
+                                                }
+                                              },
+                                              "children": [
+                                                {
+                                                  "id": "LEFT_CLICK",
+                                                  "children": [
+                                                    {
+                                                      "id": "SLEEP_UNTIL_GAME_TICK",
+                                                      "children": [
+                                                        {
+                                                          "id": "SLEEP_WHILE_ANIMATING",
+                                                          "properties": {
+                                                            "Stopped for (seconds)": "1"
+                                                          }
+                                                        }
+                                                      ]
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "id": "CREATE_LABEL",
+                                  "properties": {
+                                    "Label": "Harmony_island"
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "IF_VARIABLE_IS",
+                                      "properties": {
+                                        "Filter Value By": {
+                                          "class": "Variable",
+                                          "logic": "NONE",
+                                          "type": "AS_TEXT",
+                                          "operator": "EQUALS",
+                                          "value": "Harmony_island(65)"
+                                        },
+                                        "Variable name": "Tabselection"
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "IF_WIDGET_EXISTS",
+                                          "properties": {
+                                            "Find Widget By": {
+                                              "class": "Widget",
+                                              "logic": "NONE",
+                                              "type": "WIDGET_ID",
+                                              "operator": "EQUALS",
+                                              "value": "403, 26, 9",
+                                              "filters": [
+                                                {
+                                                  "class": "Widget",
+                                                  "logic": "AND",
+                                                  "type": "IS_VISIBLE",
+                                                  "operator": "EQUALS"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "children": [
+                                            {
+                                              "id": "IF_PLAYER_SETTING_MATCHES",
+                                              "properties": {
+                                                "value": {
+                                                  "class": "Number",
+                                                  "operator": "DOES_NOT_EQUAL",
+                                                  "value": "16"
+                                                },
+                                                "Player Setting": "1574"
+                                              },
+                                              "children": [
+                                                {
+                                                  "id": "WIDGET_INTERACT",
+                                                  "properties": {
+                                                    "Action": "Select",
+                                                    "Find Widget By": {
+                                                      "class": "Widget",
+                                                      "logic": "NONE",
+                                                      "type": "WIDGET_ID",
+                                                      "operator": "EQUALS",
+                                                      "value": "403, 26, 9"
+                                                    }
+                                                  },
+                                                  "children": [
+                                                    {
+                                                      "id": "SLEEP_UNTIL_GAME_TICK"
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "id": "IF_VARBIT_MATCHES",
+                                          "customDisplayName": "If varbit 10600 is 10 create tabs after selecting",
+                                          "properties": {
+                                            "value": {
+                                              "class": "Number",
+                                              "operator": "EQUALS",
+                                              "value": "8"
+                                            },
+                                            "Varbit": "10600"
+                                          },
+                                          "children": [
+                                            {
+                                              "id": "HOVER_WIDGET",
+                                              "properties": {
+                                                "Filter By": {
+                                                  "class": "Widget",
+                                                  "logic": "NONE",
+                                                  "type": "WIDGET_ID",
+                                                  "operator": "EQUALS",
+                                                  "value": "403, 14, 0"
+                                                }
+                                              },
+                                              "children": [
+                                                {
+                                                  "id": "LEFT_CLICK",
+                                                  "children": [
+                                                    {
+                                                      "id": "SLEEP_UNTIL_GAME_TICK",
+                                                      "children": [
+                                                        {
+                                                          "id": "SLEEP_WHILE_ANIMATING",
+                                                          "properties": {
+                                                            "Stopped for (seconds)": "1"
+                                                          }
+                                                        }
+                                                      ]
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "id": "CREATE_LABEL",
+                                  "properties": {
+                                    "Label": "CemeteryTabs"
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "IF_VARIABLE_IS",
+                                      "properties": {
+                                        "Filter Value By": {
+                                          "class": "Variable",
+                                          "logic": "NONE",
+                                          "type": "AS_TEXT",
+                                          "operator": "EQUALS",
+                                          "value": "Cemetery(71)"
+                                        },
+                                        "Variable name": "Tabselection"
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "IF_WIDGET_EXISTS",
+                                          "properties": {
+                                            "Find Widget By": {
+                                              "class": "Widget",
+                                              "logic": "NONE",
+                                              "type": "WIDGET_ID",
+                                              "operator": "EQUALS",
+                                              "value": "403, 27, 9",
+                                              "filters": [
+                                                {
+                                                  "class": "Widget",
+                                                  "logic": "AND",
+                                                  "type": "IS_VISIBLE",
+                                                  "operator": "EQUALS"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "children": [
+                                            {
+                                              "id": "IF_PLAYER_SETTING_MATCHES",
+                                              "properties": {
+                                                "value": {
+                                                  "class": "Number",
+                                                  "operator": "DOES_NOT_EQUAL",
+                                                  "value": "18"
+                                                },
+                                                "Player Setting": "1574"
+                                              },
+                                              "children": [
+                                                {
+                                                  "id": "WIDGET_INTERACT",
+                                                  "properties": {
+                                                    "Action": "Select",
+                                                    "Find Widget By": {
+                                                      "class": "Widget",
+                                                      "logic": "NONE",
+                                                      "type": "WIDGET_ID",
+                                                      "operator": "EQUALS",
+                                                      "value": "403, 27, 9"
+                                                    }
+                                                  },
+                                                  "children": [
+                                                    {
+                                                      "id": "SLEEP_UNTIL_GAME_TICK"
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "id": "IF_VARBIT_MATCHES",
+                                          "customDisplayName": "If varbit 10600 is 10 create tabs after selecting",
+                                          "properties": {
+                                            "value": {
+                                              "class": "Number",
+                                              "operator": "EQUALS",
+                                              "value": "9"
+                                            },
+                                            "Varbit": "10600"
+                                          },
+                                          "children": [
+                                            {
+                                              "id": "HOVER_WIDGET",
+                                              "properties": {
+                                                "Filter By": {
+                                                  "class": "Widget",
+                                                  "logic": "NONE",
+                                                  "type": "WIDGET_ID",
+                                                  "operator": "EQUALS",
+                                                  "value": "403, 14, 0"
+                                                }
+                                              },
+                                              "children": [
+                                                {
+                                                  "id": "LEFT_CLICK",
+                                                  "children": [
+                                                    {
+                                                      "id": "SLEEP_UNTIL_GAME_TICK",
+                                                      "children": [
+                                                        {
+                                                          "id": "SLEEP_WHILE_ANIMATING",
+                                                          "properties": {
+                                                            "Stopped for (seconds)": "1"
+                                                          }
+                                                        }
+                                                      ]
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "id": "CREATE_LABEL",
+                                  "properties": {
+                                    "Label": "BarrowsTabs"
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "IF_WIDGET_EXISTS",
+                                      "properties": {
+                                        "Find Widget By": {
+                                          "class": "Widget",
+                                          "logic": "NONE",
+                                          "type": "WIDGET_ID",
+                                          "operator": "EQUALS",
+                                          "value": "403, 40, 5"
+                                        }
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "IF_WIDGET_DOES_NOT_EXIST",
+                                          "properties": {
+                                            "Find Widget By": {
+                                              "class": "Widget",
+                                              "logic": "NONE",
+                                              "type": "WIDGET_ID",
+                                              "operator": "EQUALS",
+                                              "value": "403, 28, 9",
+                                              "filters": [
+                                                {
+                                                  "class": "Widget",
+                                                  "logic": "AND",
+                                                  "type": "IS_NOT_VISIBLE",
+                                                  "operator": "EQUALS"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "children": [
+                                            {
+                                              "id": "IF_PLAYER_SETTING_MATCHES",
+                                              "properties": {
+                                                "value": {
+                                                  "class": "Number",
+                                                  "operator": "DOES_NOT_EQUAL",
+                                                  "value": "20"
+                                                },
+                                                "Player Setting": "1574"
+                                              },
+                                              "children": [
+                                                {
+                                                  "id": "HOVER_WIDGET",
+                                                  "properties": {
+                                                    "Filter By": {
+                                                      "class": "Widget",
+                                                      "logic": "NONE",
+                                                      "type": "WIDGET_ID",
+                                                      "operator": "EQUALS",
+                                                      "value": "403, 40, 5"
+                                                    }
+                                                  },
+                                                  "children": [
+                                                    {
+                                                      "id": "DRAG_MOUSE_TO_POINT",
+                                                      "properties": {
+                                                        "X": "425",
+                                                        "Y": "193"
+                                                      },
+                                                      "children": [
+                                                        {
+                                                          "id": "SLEEP_FOR_GAME_TICKS",
+                                                          "properties": {
+                                                            "Ticks": "1"
+                                                          }
+                                                        }
+                                                      ]
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "id": "IF_VARIABLE_IS",
+                                      "properties": {
+                                        "Filter Value By": {
+                                          "class": "Variable",
+                                          "logic": "NONE",
+                                          "type": "AS_TEXT",
+                                          "operator": "EQUALS",
+                                          "value": "Barrows(83)"
+                                        },
+                                        "Variable name": "Tabselection"
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "IF_WIDGET_EXISTS",
+                                          "properties": {
+                                            "Find Widget By": {
+                                              "class": "Widget",
+                                              "logic": "NONE",
+                                              "type": "WIDGET_ID",
+                                              "operator": "EQUALS",
+                                              "value": "403, 28, 4"
+                                            }
+                                          },
+                                          "children": [
+                                            {
+                                              "id": "IF_PLAYER_SETTING_MATCHES",
+                                              "properties": {
+                                                "value": {
+                                                  "class": "Number",
+                                                  "operator": "DOES_NOT_EQUAL",
+                                                  "value": "20"
+                                                },
+                                                "Player Setting": "1574"
+                                              },
+                                              "children": [
+                                                {
+                                                  "id": "WIDGET_INTERACT",
+                                                  "properties": {
+                                                    "Action": "Select",
+                                                    "Find Widget By": {
+                                                      "class": "Widget",
+                                                      "logic": "NONE",
+                                                      "type": "WIDGET_ID",
+                                                      "operator": "EQUALS",
+                                                      "value": "403, 28, 10"
+                                                    }
+                                                  },
+                                                  "children": [
+                                                    {
+                                                      "id": "SLEEP_UNTIL_GAME_TICK"
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "id": "IF_VARBIT_MATCHES",
+                                      "customDisplayName": "If varbit 10600 is 10 create tabs after selecting",
+                                      "properties": {
+                                        "value": {
+                                          "class": "Number",
+                                          "operator": "EQUALS",
+                                          "value": "10"
+                                        },
+                                        "Varbit": "10600"
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "HOVER_WIDGET",
+                                          "properties": {
+                                            "Filter By": {
+                                              "class": "Widget",
+                                              "logic": "NONE",
+                                              "type": "WIDGET_ID",
+                                              "operator": "EQUALS",
+                                              "value": "403, 14, 0"
+                                            }
+                                          },
+                                          "children": [
+                                            {
+                                              "id": "LEFT_CLICK",
+                                              "children": [
+                                                {
+                                                  "id": "SLEEP_UNTIL_GAME_TICK",
+                                                  "children": [
+                                                    {
+                                                      "id": "SLEEP_WHILE_ANIMATING",
+                                                      "properties": {
+                                                        "Stopped for (seconds)": "1"
+                                                      }
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "id": "CREATE_LABEL",
+                                  "properties": {
+                                    "Label": "Ape_atollTabs"
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "IF_VARIABLE_IS",
+                                      "properties": {
+                                        "Filter Value By": {
+                                          "class": "Variable",
+                                          "logic": "NONE",
+                                          "type": "AS_TEXT",
+                                          "operator": "EQUALS",
+                                          "value": "Ape_atoll(90)"
+                                        },
+                                        "Variable name": "Tabselection"
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "IF_WIDGET_EXISTS",
+                                          "properties": {
+                                            "Find Widget By": {
+                                              "class": "Widget",
+                                              "logic": "NONE",
+                                              "type": "WIDGET_ID",
+                                              "operator": "EQUALS",
+                                              "value": "403, 40, 5"
+                                            }
+                                          },
+                                          "children": [
+                                            {
+                                              "id": "IF_WIDGET_DOES_NOT_EXIST",
+                                              "properties": {
+                                                "Find Widget By": {
+                                                  "class": "Widget",
+                                                  "logic": "NONE",
+                                                  "type": "WIDGET_ID",
+                                                  "operator": "EQUALS",
+                                                  "value": "403, 28, 9",
+                                                  "filters": [
+                                                    {
+                                                      "class": "Widget",
+                                                      "logic": "AND",
+                                                      "type": "IS_NOT_VISIBLE",
+                                                      "operator": "EQUALS"
+                                                    }
+                                                  ]
+                                                }
+                                              },
+                                              "children": [
+                                                {
+                                                  "id": "IF_PLAYER_SETTING_MATCHES",
+                                                  "properties": {
+                                                    "value": {
+                                                      "class": "Number",
+                                                      "operator": "DOES_NOT_EQUAL",
+                                                      "value": "20"
+                                                    },
+                                                    "Player Setting": "1574"
+                                                  },
+                                                  "children": [
+                                                    {
+                                                      "id": "HOVER_WIDGET",
+                                                      "properties": {
+                                                        "Filter By": {
+                                                          "class": "Widget",
+                                                          "logic": "NONE",
+                                                          "type": "WIDGET_ID",
+                                                          "operator": "EQUALS",
+                                                          "value": "403, 40, 5"
+                                                        }
+                                                      },
+                                                      "children": [
+                                                        {
+                                                          "id": "DRAG_MOUSE_TO_POINT",
+                                                          "properties": {
+                                                            "X": "425",
+                                                            "Y": "193"
+                                                          },
+                                                          "children": [
+                                                            {
+                                                              "id": "SLEEP_FOR_GAME_TICKS",
+                                                              "properties": {
+                                                                "Ticks": "1"
+                                                              }
+                                                            }
+                                                          ]
+                                                        }
+                                                      ]
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "id": "IF_WIDGET_EXISTS",
+                                          "properties": {
+                                            "Find Widget By": {
+                                              "class": "Widget",
+                                              "logic": "NONE",
+                                              "type": "WIDGET_ID",
+                                              "operator": "EQUALS",
+                                              "value": "403, 29, 9",
+                                              "filters": [
+                                                {
+                                                  "class": "Widget",
+                                                  "logic": "AND",
+                                                  "type": "IS_VISIBLE",
+                                                  "operator": "EQUALS"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "children": [
+                                            {
+                                              "id": "IF_PLAYER_SETTING_MATCHES",
+                                              "properties": {
+                                                "value": {
+                                                  "class": "Number",
+                                                  "operator": "DOES_NOT_EQUAL",
+                                                  "value": "22"
+                                                },
+                                                "Player Setting": "1574"
+                                              },
+                                              "children": [
+                                                {
+                                                  "id": "WIDGET_INTERACT",
+                                                  "properties": {
+                                                    "Action": "Select",
+                                                    "Find Widget By": {
+                                                      "class": "Widget",
+                                                      "logic": "NONE",
+                                                      "type": "WIDGET_ID",
+                                                      "operator": "EQUALS",
+                                                      "value": "403, 29, 9"
+                                                    }
+                                                  },
+                                                  "children": [
+                                                    {
+                                                      "id": "SLEEP_UNTIL_GAME_TICK"
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "id": "IF_VARBIT_MATCHES",
+                                          "customDisplayName": "If varbit 10600 is 10 create tabs after selecting",
+                                          "properties": {
+                                            "value": {
+                                              "class": "Number",
+                                              "operator": "EQUALS",
+                                              "value": "11"
+                                            },
+                                            "Varbit": "10600"
+                                          },
+                                          "children": [
+                                            {
+                                              "id": "HOVER_WIDGET",
+                                              "properties": {
+                                                "Filter By": {
+                                                  "class": "Widget",
+                                                  "logic": "NONE",
+                                                  "type": "WIDGET_ID",
+                                                  "operator": "EQUALS",
+                                                  "value": "403, 14, 0"
+                                                }
+                                              },
+                                              "children": [
+                                                {
+                                                  "id": "LEFT_CLICK",
+                                                  "children": [
+                                                    {
+                                                      "id": "SLEEP_UNTIL_GAME_TICK",
+                                                      "children": [
+                                                        {
+                                                          "id": "SLEEP_WHILE_ANIMATING",
+                                                          "properties": {
+                                                            "Stopped for (seconds)": "1"
+                                                          }
+                                                        }
+                                                      ]
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "id": "IF_GAME_OBJECT_EXISTS",
+                              "customDisplayName": "If \u002728802\u0027 exists Interact with lecturn",
+                              "properties": {
+                                "Filter Object By": {
+                                  "class": "GameObject",
+                                  "logic": "NONE",
+                                  "type": "NAME",
+                                  "operator": "CONTAINS",
+                                  "value": "Lectern",
+                                  "filters": [
+                                    {
+                                      "class": "GameObject",
+                                      "logic": "AND",
+                                      "type": "DISTANCE_TO_PLAYER",
+                                      "operator": "LESS_THAN",
+                                      "value": "5"
+                                    }
+                                  ]
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "IF_INVENTORY_CONTAINS_ANY",
+                                  "properties": {
+                                    "Filter Item By": {
+                                      "class": "Item",
+                                      "logic": "NONE",
+                                      "type": "NAME",
+                                      "operator": "EQUALS",
+                                      "value": "Dark essence block"
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "IF_WIDGET_DOES_NOT_EXIST",
+                                      "properties": {
+                                        "Find Widget By": {
+                                          "class": "Widget",
+                                          "logic": "NONE",
+                                          "type": "WIDGET_ID",
+                                          "operator": "EQUALS",
+                                          "value": "403, 2, 1"
+                                        }
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "SLEEP_UNTIL_GAME_TICK",
+                                          "children": [
+                                            {
+                                              "id": "GAME_OBJECT_INTERACT",
+                                              "properties": {
+                                                "Filter Object By": {
+                                                  "class": "GameObject",
+                                                  "logic": "NONE",
+                                                  "type": "NAME",
+                                                  "operator": "EQUALS",
+                                                  "value": "Lectern",
+                                                  "filters": [
+                                                    {
+                                                      "class": "GameObject",
+                                                      "logic": "AND",
+                                                      "type": "IN_AREA",
+                                                      "operator": "EQUALS",
+                                                      "value": "(1683, 3768, 0),(1683, 3762, 0),(1676, 3762, 0),(1676, 3769, 0)"
+                                                    }
+                                                  ]
+                                                },
+                                                "Action": "Study"
+                                              },
+                                              "children": [
+                                                {
+                                                  "id": "SLEEP_WHILE_MOVING",
+                                                  "children": [
+                                                    {
+                                                      "id": "SLEEP_UNTIL_GAME_TICK"
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "id": "IF_LOCAL_PLAYER_MATCHES",
+                          "customDisplayName": "If our player in not in tab location to make them",
+                          "properties": {
+                            "Filter By": {
+                              "class": "Player",
+                              "logic": "NONE",
+                              "type": "NOT_IN_AREA",
+                              "operator": "EQUALS",
+                              "value": "(1668, 3770, 0), (1679, 3766, 0)"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "WALK_TO_AREA",
+                              "properties": {
+                                "Area": "(1679, 3768, 0), (1679, 3766, 0), (1678, 3767, 0), (1678, 3768, 0), (1678, 3766, 0)"
+                              },
+                              "children": [
+                                {
+                                  "id": "SLEEP_NORMAL_DISTRIBUTION",
+                                  "properties": {
+                                    "Mean": "1000",
+                                    "Variance": "850"
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "id": "OR_BRANCH"
+                        },
+                        {
+                          "id": "IF_LOCAL_PLAYER_MATCHES",
+                          "customDisplayName": "If we just chilling not doing shit",
+                          "properties": {
+                            "Filter By": {
+                              "class": "Player",
+                              "logic": "NONE",
+                              "type": "ANIMATION",
+                              "operator": "EQUALS",
+                              "value": "-1",
+                              "filters": [
+                                {
+                                  "class": "Player",
+                                  "logic": "AND",
+                                  "type": "IN_AREA",
+                                  "operator": "EQUALS",
+                                  "value": "1667, 3771, 1678, 3764"
+                                }
+                              ]
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "WALK_TO_AREA",
+                              "properties": {
+                                "Area": "(1679, 3768, 0), (1679, 3766, 0), (1678, 3767, 0), (1678, 3768, 0), (1678, 3766, 0)"
+                              },
+                              "children": [
+                                {
+                                  "id": "SLEEP_NORMAL_DISTRIBUTION",
+                                  "properties": {
+                                    "Mean": "1500",
+                                    "Variance": "850"
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "PAINT_ROOT",
+      "properties": {
+        "Hide standard paint": true
+      },
+      "children": [
+        {
+          "id": "DRAW_TEXT",
+          "properties": {
+            "X": "2",
+            "Font Size": "15",
+            "Y": "160",
+            "Text": "LivePrices(teletabs)",
+            "Font": {
+              "class": "Font",
+              "value": "Inter V"
+            },
+            "Color": {
+              "class": "Color",
+              "value": -15008000
+            }
+          }
+        },
+        {
+          "id": "DRAW_TEXT",
+          "properties": {
+            "X": "2",
+            "Font Size": "15",
+            "Y": "170",
+            "Text": "~~~~~~~~~~~~~~~~~",
+            "Font": {
+              "class": "Font",
+              "value": "Inter V"
+            },
+            "Color": {
+              "class": "Color",
+              "value": -15008000
+            }
+          }
+        },
+        {
+          "id": "DRAW_USERNAME_CENSOR_BAR"
+        },
+        {
+          "id": "DRAW_TEXT",
+          "properties": {
+            "X": "320",
+            "Font Size": "20",
+            "Y": "335",
+            "Text": "RunTime(runtime())",
+            "Font": {
+              "class": "Font",
+              "value": "Dialog"
+            },
+            "Color": {
+              "class": "Color",
+              "value": -1114368
+            }
+          }
+        },
+        {
+          "id": "DRAW_TEXT",
+          "properties": {
+            "X": "2",
+            "Y": "180",
+            "Text": "Arceuus_library(var(Arceuus_library))",
+            "Font": {
+              "class": "Font",
+              "value": "Inter V"
+            },
+            "Color": {
+              "class": "Color",
+              "value": -22016
+            }
+          }
+        },
+        {
+          "id": "DRAW_TEXT",
+          "properties": {
+            "X": "2",
+            "Y": "195",
+            "Text": "Draynor_manor(var(Draynor_manor))",
+            "Font": {
+              "class": "Font",
+              "value": "Inter V"
+            },
+            "Color": {
+              "class": "Color",
+              "value": -22016
+            }
+          }
+        },
+        {
+          "id": "DRAW_TEXT",
+          "properties": {
+            "X": "2",
+            "Y": "210",
+            "Text": "Battlefront_teleport(var(Battlefront_teleport))",
+            "Font": {
+              "class": "Font",
+              "value": "Inter V"
+            },
+            "Color": {
+              "class": "Color",
+              "value": -22016
+            }
+          }
+        },
+        {
+          "id": "DRAW_TEXT",
+          "properties": {
+            "X": "2",
+            "Y": "225",
+            "Text": "Mind_altar(var(Mind_altar))",
+            "Font": {
+              "class": "Font",
+              "value": "Inter V"
+            },
+            "Color": {
+              "class": "Color",
+              "value": -22016
+            }
+          }
+        },
+        {
+          "id": "DRAW_TEXT",
+          "properties": {
+            "X": "2",
+            "Y": "240",
+            "Text": "Salve_graveyard(var(Salve_graveyard))",
+            "Font": {
+              "class": "Font",
+              "value": "Inter V"
+            },
+            "Color": {
+              "class": "Color",
+              "value": -22016
+            }
+          }
+        },
+        {
+          "id": "DRAW_TEXT",
+          "properties": {
+            "X": "2",
+            "Y": "255",
+            "Text": "Fenkenstrain\u0027s castle(var(Fenkenstrain\u0027s_castle))",
+            "Font": {
+              "class": "Font",
+              "value": "Inter V"
+            },
+            "Color": {
+              "class": "Color",
+              "value": -22016
+            }
+          }
+        },
+        {
+          "id": "DRAW_TEXT",
+          "properties": {
+            "X": "2",
+            "Y": "270",
+            "Text": "West_ardougne(var(West_ardougne))",
+            "Font": {
+              "class": "Font",
+              "value": "Inter V"
+            },
+            "Color": {
+              "class": "Color",
+              "value": -22016
+            }
+          }
+        },
+        {
+          "id": "DRAW_TEXT",
+          "properties": {
+            "X": "2",
+            "Y": "285",
+            "Text": "Harmony_island(var(Harmony_island))",
+            "Font": {
+              "class": "Font",
+              "value": "Inter V"
+            },
+            "Color": {
+              "class": "Color",
+              "value": -22016
+            }
+          }
+        },
+        {
+          "id": "DRAW_TEXT",
+          "properties": {
+            "X": "2",
+            "Y": "300",
+            "Text": "Cemetery_teleport(var(Cemetery_teleport))",
+            "Font": {
+              "class": "Font",
+              "value": "Inter V"
+            },
+            "Color": {
+              "class": "Color",
+              "value": -22016
+            }
+          }
+        },
+        {
+          "id": "DRAW_TEXT",
+          "properties": {
+            "X": "2",
+            "Y": "315",
+            "Text": "Barrows_teleport(var(Barrows_teleport))",
+            "Font": {
+              "class": "Font",
+              "value": "Inter V"
+            },
+            "Color": {
+              "class": "Color",
+              "value": -22016
+            }
+          }
+        },
+        {
+          "id": "DRAW_TEXT",
+          "properties": {
+            "X": "2",
+            "Y": "330",
+            "Text": "Ape_atoll(var(Ape_atoll))",
+            "Font": {
+              "class": "Font",
+              "value": "Inter V"
+            },
+            "Color": {
+              "class": "Color",
+              "value": -22016
+            }
+          }
+        },
+        {
+          "id": "DRAW_TEXT",
+          "properties": {
+            "X": "2",
+            "Font Size": "15",
+            "Y": "340",
+            "Text": "~~~~~~~~~~~~~~~~~",
+            "Font": {
+              "class": "Font",
+              "value": "Inter V"
+            },
+            "Color": {
+              "class": "Color",
+              "value": -15008000
+            }
+          }
+        },
+        {
+          "id": "DRAW_TEXT",
+          "properties": {
+            "X": "10",
+            "Font Size": "15",
+            "Y": "472",
+            "Text": "CraftingXPGained(num(expGain(Crafting)))MiningXPGained(num(expGain(Mining)))",
+            "Font": {
+              "class": "Font",
+              "value": "Dialog"
+            },
+            "Color": {
+              "class": "Color",
+              "value": -24064
+            }
+          }
+        },
+        {
+          "id": "DRAW_TEXT",
+          "properties": {
+            "X": "328",
+            "Font Size": "16",
+            "Y": "472",
+            "Text": "MagicXPGained(num(expGain(Magic)))",
+            "Font": {
+              "class": "Font",
+              "value": "Dialog"
+            },
+            "Color": {
+              "class": "Color",
+              "value": -16748545
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

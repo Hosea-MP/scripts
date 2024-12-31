@@ -1,0 +1,1766 @@
+{
+  "sleep": "70",
+  "name": "Bone Grinder",
+  "version": 1.0,
+  "metadata": {
+    "network-id": "5",
+    "network-downloaded-at": "1721665210999"
+  },
+  "actions": [
+    {
+      "id": "IF_FIRST_RUN",
+      "customDisplayName": "Set Variables",
+      "children": [
+        {
+          "id": "IF_FIRST_RUN",
+          "customDisplayName": "Variables",
+          "children": [
+            {
+              "id": "IF_VARIABLE_IS_NOT_SET",
+              "customDisplayName": "Accept do_bonemeal as startup",
+              "properties": {
+                "Variable name": "do_bonemeal"
+              },
+              "children": [
+                {
+                  "id": "SET_VARIABLE",
+                  "properties": {
+                    "Value": "False",
+                    "Variable name": "do_bonemeal"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "IF_VARIABLE_IS_NOT_SET",
+              "customDisplayName": "Accept bone_id as startup",
+              "properties": {
+                "Variable name": "bone_id"
+              },
+              "children": [
+                {
+                  "id": "SET_VARIABLE",
+                  "properties": {
+                    "Value": "536",
+                    "Variable name": "bone_id"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "IF_VARIABLE_IS_NOT_SET",
+              "customDisplayName": "Accept bonemeal_id as startup",
+              "properties": {
+                "Variable name": "bonemeal_id"
+              },
+              "children": [
+                {
+                  "id": "SET_VARIABLE",
+                  "properties": {
+                    "Value": "4261",
+                    "Variable name": "bonemeal_id"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "IF_VARIABLE_IS_NOT_SET",
+              "properties": {
+                "Variable name": "netflix_and_chill"
+              },
+              "children": [
+                {
+                  "id": "SET_VARIABLE",
+                  "properties": {
+                    "Value": "True",
+                    "Variable name": "netflix_and_chill"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "IF_FIRST_RUN",
+          "customDisplayName": "Constants",
+          "children": [
+            {
+              "id": "SET_VARIABLE",
+              "properties": {
+                "Value": "3667,3527,3652,3512",
+                "Variable name": "temple"
+              }
+            },
+            {
+              "id": "SET_VARIABLE",
+              "properties": {
+                "Value": "(3667,3527,1),(3652,3512,1)",
+                "Variable name": "temple_upper"
+              }
+            },
+            {
+              "id": "SET_VARIABLE",
+              "properties": {
+                "Value": "2445,3095,2438,3082",
+                "Variable name": "cwars"
+              }
+            },
+            {
+              "id": "SET_VARIABLE",
+              "properties": {
+                "Value": "2552,2554,2556,2558,2560,2562,2564,2566",
+                "Variable name": "duel_ring_ids"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "IF_LOCAL_PLAYER_MATCHES",
+      "customDisplayName": "At Bank",
+      "properties": {
+        "Filter By": {
+          "class": "Player",
+          "logic": "NONE",
+          "type": "IN_AREA",
+          "operator": "EQUALS",
+          "value": "var(cwars)"
+        }
+      },
+      "children": [
+        {
+          "id": "IF_VARIABLE_IS",
+          "properties": {
+            "Variable name": "do_bonemeal",
+            "Filter Value By": {
+              "class": "Variable",
+              "logic": "NONE",
+              "type": "AS_BOOLEAN",
+              "operator": "IS_TRUE"
+            }
+          },
+          "children": [
+            {
+              "id": "IF_INVENTORY_DOES_NOT_CONTAIN_ANY",
+              "customDisplayName": "If we don\u0027t have ectophial",
+              "properties": {
+                "Filter Item By": {
+                  "class": "Item",
+                  "logic": "NONE",
+                  "type": "ID",
+                  "operator": "EQUALS",
+                  "value": "4251"
+                }
+              }
+            },
+            {
+              "id": "OR_BRANCH"
+            },
+            {
+              "id": "IF_INVENTORY_DOES_NOT_CONTAIN_ANY",
+              "properties": {
+                "Filter Item By": {
+                  "class": "Item",
+                  "logic": "NONE",
+                  "type": "ID",
+                  "operator": "EQUALS",
+                  "value": "var(bonemeal_id)"
+                }
+              },
+              "children": [
+                {
+                  "id": "IF_BANK_IS_OPEN",
+                  "children": [
+                    {
+                      "id": "IF_INVENTORY_COUNT",
+                      "customDisplayName": "If inventory has too much slime",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "ID",
+                          "operator": "EQUALS",
+                          "value": "4286"
+                        },
+                        "count": {
+                          "class": "Number",
+                          "operator": "GREATER_THAN",
+                          "value": "13"
+                        }
+                      }
+                    },
+                    {
+                      "id": "OR_BRANCH"
+                    },
+                    {
+                      "id": "IF_INVENTORY_DOES_NOT_CONTAIN_ANY",
+                      "customDisplayName": "If inventory has no slime",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "ID",
+                          "operator": "EQUALS",
+                          "value": "4286"
+                        }
+                      }
+                    },
+                    {
+                      "id": "OR_BRANCH"
+                    },
+                    {
+                      "id": "IF_INVENTORY_DOES_NOT_CONTAIN_ANY",
+                      "customDisplayName": "If inventory doesn\u0027t have ectophial",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "ID",
+                          "operator": "EQUALS",
+                          "value": "4251"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "BANK_DEPOSIT_ALL"
+                        },
+                        {
+                          "id": "SLEEP_NORMAL_DISTRIBUTION",
+                          "properties": {
+                            "Mean": "800",
+                            "Variance": "400"
+                          }
+                        },
+                        {
+                          "id": "BANK_WITHDRAW_ITEM",
+                          "properties": {
+                            "Filter Item By": {
+                              "class": "Item",
+                              "logic": "NONE",
+                              "type": "ID",
+                              "operator": "EQUALS",
+                              "value": "4251"
+                            },
+                            "Amount": "1"
+                          }
+                        },
+                        {
+                          "id": "SLEEP_NORMAL_DISTRIBUTION",
+                          "properties": {
+                            "Mean": "600",
+                            "Variance": "400"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_EQUIPPED_ITEM_DOES_NOT_MATCH",
+                      "customDisplayName": "Refresh dueling ring",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "ID",
+                          "operator": "IS_IN_LIST",
+                          "value": "var(duel_ring_ids)"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "IF_BANK_COUNT",
+                          "properties": {
+                            "Filter Item By": {
+                              "class": "Item",
+                              "logic": "NONE",
+                              "type": "ID",
+                              "operator": "EQUALS",
+                              "value": "2552"
+                            },
+                            "count": {
+                              "class": "Number",
+                              "operator": "LESS_THAN",
+                              "value": "2"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "STOP_SCRIPT"
+                            }
+                          ]
+                        },
+                        {
+                          "id": "BANK_WITHDRAW_ITEM",
+                          "properties": {
+                            "Filter Item By": {
+                              "class": "Item",
+                              "logic": "NONE",
+                              "type": "ID",
+                              "operator": "EQUALS",
+                              "value": "2552"
+                            },
+                            "Amount": "1"
+                          }
+                        },
+                        {
+                          "id": "SLEEP_NORMAL_DISTRIBUTION",
+                          "properties": {
+                            "Mean": "600",
+                            "Variance": "200"
+                          }
+                        },
+                        {
+                          "id": "INTERACT_WITH_INVENTORY_ITEM",
+                          "properties": {
+                            "Filter Item By": {
+                              "class": "Item",
+                              "logic": "NONE",
+                              "type": "ID",
+                              "operator": "EQUALS",
+                              "value": "2552"
+                            },
+                            "Action": "Wear"
+                          }
+                        },
+                        {
+                          "id": "SLEEP_NORMAL_DISTRIBUTION",
+                          "properties": {
+                            "Mean": "3000",
+                            "Variance": "2000"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_EQUIPPED_ITEM_MATCHES",
+                      "customDisplayName": "Deposit duplicate dueling rings",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "ID",
+                          "operator": "IS_IN_LIST",
+                          "value": "var(duel_ring_ids)"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "IF_INVENTORY_CONTAINS_ANY",
+                          "properties": {
+                            "Filter Item By": {
+                              "class": "Item",
+                              "logic": "NONE",
+                              "type": "ID",
+                              "operator": "IS_IN_LIST",
+                              "value": "var(duel_ring_ids)"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "BANK_DEPOSIT_ALL_ITEMS_MATCHING",
+                              "properties": {
+                                "Filter Item By": {
+                                  "class": "Item",
+                                  "logic": "NONE",
+                                  "type": "ID",
+                                  "operator": "IS_IN_LIST",
+                                  "value": "var(duel_ring_ids)"
+                                }
+                              }
+                            },
+                            {
+                              "id": "SLEEP_NORMAL_DISTRIBUTION",
+                              "properties": {
+                                "Mean": "600",
+                                "Variance": "400"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_BANK_COUNT",
+                      "customDisplayName": "Stop if less than 13 buckets of slime",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "ID",
+                          "operator": "EQUALS",
+                          "value": "4286"
+                        },
+                        "count": {
+                          "class": "Number",
+                          "operator": "LESS_THAN",
+                          "value": "13"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "STOP_SCRIPT"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_BANK_COUNT",
+                      "customDisplayName": "Stop if less than 13 bonemeal",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "ID",
+                          "operator": "EQUALS",
+                          "value": "var(bonemeal_id)"
+                        },
+                        "count": {
+                          "class": "Number",
+                          "operator": "LESS_THAN",
+                          "value": "13"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "STOP_SCRIPT"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "BANK_WITHDRAW_ITEM",
+                      "customDisplayName": "Withdrawl bonemeal",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "ID",
+                          "operator": "EQUALS",
+                          "value": "var(bonemeal_id)"
+                        },
+                        "Amount": "13"
+                      }
+                    },
+                    {
+                      "id": "SLEEP_NORMAL_DISTRIBUTION",
+                      "properties": {
+                        "Mean": "600",
+                        "Variance": "400"
+                      }
+                    },
+                    {
+                      "id": "BANK_WITHDRAW_ITEM",
+                      "customDisplayName": "Withdrawl slime",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "ID",
+                          "operator": "EQUALS",
+                          "value": "4286"
+                        },
+                        "Amount": "13"
+                      }
+                    },
+                    {
+                      "id": "SLEEP_NORMAL_DISTRIBUTION",
+                      "properties": {
+                        "Mean": "600",
+                        "Variance": "400"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "ELSE_BRANCH",
+                  "customDisplayName": "Get to bank",
+                  "children": [
+                    {
+                      "id": "IF_LOCAL_PLAYER_MATCHES",
+                      "properties": {
+                        "Filter By": {
+                          "class": "Player",
+                          "logic": "NONE",
+                          "type": "NOT_MOVING",
+                          "operator": "EQUALS"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "OPEN_BANK",
+                          "children": [
+                            {
+                              "id": "SLEEP_NORMAL_DISTRIBUTION",
+                              "properties": {
+                                "Mean": "4500",
+                                "Variance": "1500"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "ELSE_BRANCH",
+                      "children": [
+                        {
+                          "id": "SLEEP_NORMAL_DISTRIBUTION",
+                          "properties": {
+                            "Mean": "450",
+                            "Variance": "150"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "ELSE_BRANCH",
+              "children": [
+                {
+                  "id": "IF_BANK_IS_OPEN",
+                  "children": [
+                    {
+                      "id": "CLOSE_BANK"
+                    },
+                    {
+                      "id": "SLEEP_NORMAL_DISTRIBUTION",
+                      "properties": {
+                        "Mean": "600",
+                        "Variance": "400"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "ELSE_BRANCH",
+                  "children": [
+                    {
+                      "id": "INTERACT_WITH_INVENTORY_ITEM",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "ID",
+                          "operator": "EQUALS",
+                          "value": "4251"
+                        },
+                        "Action": "Empty"
+                      }
+                    },
+                    {
+                      "id": "IF_RANDOM_NUMBER_IS",
+                      "customDisplayName": "Randomly sleep for 15s",
+                      "properties": {
+                        "number": {
+                          "class": "Number",
+                          "operator": "LESS_THAN",
+                          "value": "6"
+                        },
+                        "Minimum": "100",
+                        "Maximum": "1"
+                      }
+                    },
+                    {
+                      "id": "AND_BRANCH"
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Variable name": "netflix_and_chill",
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_BOOLEAN",
+                          "operator": "IS_TRUE"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "SLEEP_NORMAL_DISTRIBUTION",
+                          "properties": {
+                            "Mean": "10000",
+                            "Variance": "5000"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "ELSE_BRANCH",
+                      "children": [
+                        {
+                          "id": "SLEEP_NORMAL_DISTRIBUTION",
+                          "properties": {
+                            "Mean": "6000",
+                            "Variance": "3000"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ELSE_BRANCH",
+          "children": [
+            {
+              "id": "IF_INVENTORY_COUNT",
+              "customDisplayName": "If we have too many buckets",
+              "properties": {
+                "Filter Item By": {
+                  "class": "Item",
+                  "logic": "NONE",
+                  "type": "ID",
+                  "operator": "EQUALS",
+                  "value": "1931"
+                },
+                "count": {
+                  "class": "Number",
+                  "operator": "GREATER_THAN",
+                  "value": "13"
+                }
+              }
+            },
+            {
+              "id": "OR_BRANCH"
+            },
+            {
+              "id": "IF_INVENTORY_DOES_NOT_CONTAIN_ANY",
+              "customDisplayName": "We don\u0027t have ectophial",
+              "properties": {
+                "Filter Item By": {
+                  "class": "Item",
+                  "logic": "NONE",
+                  "type": "ID",
+                  "operator": "EQUALS",
+                  "value": "4251"
+                }
+              }
+            },
+            {
+              "id": "OR_BRANCH"
+            },
+            {
+              "id": "IF_INVENTORY_DOES_NOT_CONTAIN_ANY",
+              "customDisplayName": "We have no pots",
+              "properties": {
+                "Filter Item By": {
+                  "class": "Item",
+                  "logic": "NONE",
+                  "type": "ID",
+                  "operator": "EQUALS",
+                  "value": "1931"
+                }
+              }
+            },
+            {
+              "id": "OR_BRANCH"
+            },
+            {
+              "id": "IF_INVENTORY_DOES_NOT_CONTAIN_ANY",
+              "properties": {
+                "Filter Item By": {
+                  "class": "Item",
+                  "logic": "NONE",
+                  "type": "ID",
+                  "operator": "EQUALS",
+                  "value": "var(bone_id)"
+                }
+              },
+              "children": [
+                {
+                  "id": "IF_BANK_IS_OPEN",
+                  "children": [
+                    {
+                      "id": "IF_INVENTORY_COUNT",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "ID",
+                          "operator": "EQUALS",
+                          "value": "1931"
+                        },
+                        "count": {
+                          "class": "Number",
+                          "operator": "GREATER_THAN",
+                          "value": "13"
+                        }
+                      }
+                    },
+                    {
+                      "id": "OR_BRANCH"
+                    },
+                    {
+                      "id": "IF_INVENTORY_DOES_NOT_CONTAIN_ANY",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "ID",
+                          "operator": "EQUALS",
+                          "value": "1931"
+                        }
+                      }
+                    },
+                    {
+                      "id": "OR_BRANCH"
+                    },
+                    {
+                      "id": "IF_INVENTORY_DOES_NOT_CONTAIN_ANY",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "ID",
+                          "operator": "EQUALS",
+                          "value": "4251"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "BANK_DEPOSIT_ALL"
+                        },
+                        {
+                          "id": "SLEEP_NORMAL_DISTRIBUTION",
+                          "properties": {
+                            "Mean": "800",
+                            "Variance": "400"
+                          }
+                        },
+                        {
+                          "id": "BANK_WITHDRAW_ITEM",
+                          "properties": {
+                            "Filter Item By": {
+                              "class": "Item",
+                              "logic": "NONE",
+                              "type": "ID",
+                              "operator": "EQUALS",
+                              "value": "4251"
+                            },
+                            "Amount": "1"
+                          }
+                        },
+                        {
+                          "id": "SLEEP_NORMAL_DISTRIBUTION",
+                          "properties": {
+                            "Mean": "600",
+                            "Variance": "400"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_EQUIPPED_ITEM_DOES_NOT_MATCH",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "ID",
+                          "operator": "IS_IN_LIST",
+                          "value": "var(duel_ring_ids)"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "IF_BANK_COUNT",
+                          "properties": {
+                            "Filter Item By": {
+                              "class": "Item",
+                              "logic": "NONE",
+                              "type": "ID",
+                              "operator": "EQUALS",
+                              "value": "2552"
+                            },
+                            "count": {
+                              "class": "Number",
+                              "operator": "LESS_THAN",
+                              "value": "2"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "STOP_SCRIPT"
+                            }
+                          ]
+                        },
+                        {
+                          "id": "BANK_WITHDRAW_ITEM",
+                          "properties": {
+                            "Filter Item By": {
+                              "class": "Item",
+                              "logic": "NONE",
+                              "type": "ID",
+                              "operator": "EQUALS",
+                              "value": "2552"
+                            },
+                            "Amount": "1"
+                          }
+                        },
+                        {
+                          "id": "SLEEP_NORMAL_DISTRIBUTION",
+                          "properties": {
+                            "Mean": "600",
+                            "Variance": "200"
+                          }
+                        },
+                        {
+                          "id": "INTERACT_WITH_INVENTORY_ITEM",
+                          "properties": {
+                            "Filter Item By": {
+                              "class": "Item",
+                              "logic": "NONE",
+                              "type": "ID",
+                              "operator": "EQUALS",
+                              "value": "2552"
+                            },
+                            "Action": "Wear"
+                          }
+                        },
+                        {
+                          "id": "SLEEP_NORMAL_DISTRIBUTION",
+                          "properties": {
+                            "Mean": "3000",
+                            "Variance": "2000"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_EQUIPPED_ITEM_MATCHES",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "ID",
+                          "operator": "IS_IN_LIST",
+                          "value": "var(duel_ring_ids)"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "IF_INVENTORY_CONTAINS_ANY",
+                          "properties": {
+                            "Filter Item By": {
+                              "class": "Item",
+                              "logic": "NONE",
+                              "type": "ID",
+                              "operator": "IS_IN_LIST",
+                              "value": "var(duel_ring_ids)"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "BANK_DEPOSIT_ALL_ITEMS_MATCHING",
+                              "properties": {
+                                "Filter Item By": {
+                                  "class": "Item",
+                                  "logic": "NONE",
+                                  "type": "ID",
+                                  "operator": "IS_IN_LIST",
+                                  "value": "var(duel_ring_ids)"
+                                }
+                              }
+                            },
+                            {
+                              "id": "SLEEP_NORMAL_DISTRIBUTION",
+                              "properties": {
+                                "Mean": "600",
+                                "Variance": "400"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_BANK_COUNT",
+                      "customDisplayName": "Check on number of bones",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "ID",
+                          "operator": "EQUALS",
+                          "value": "var(bone_id)"
+                        },
+                        "count": {
+                          "class": "Number",
+                          "operator": "LESS_THAN",
+                          "value": "13"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "True",
+                            "Variable name": "do_bonemeal"
+                          }
+                        },
+                        {
+                          "id": "RETURN_TO_START_OF_SCRIPT"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_BANK_COUNT",
+                      "customDisplayName": "Check on number of pots",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "ID",
+                          "operator": "EQUALS",
+                          "value": "1931"
+                        },
+                        "count": {
+                          "class": "Number",
+                          "operator": "LESS_THAN",
+                          "value": "13"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "STOP_SCRIPT"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "BANK_WITHDRAW_ITEM",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "ID",
+                          "operator": "EQUALS",
+                          "value": "var(bone_id)"
+                        },
+                        "Amount": "13"
+                      }
+                    },
+                    {
+                      "id": "SLEEP_NORMAL_DISTRIBUTION",
+                      "properties": {
+                        "Mean": "600",
+                        "Variance": "400"
+                      }
+                    },
+                    {
+                      "id": "BANK_WITHDRAW_ITEM",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "ID",
+                          "operator": "EQUALS",
+                          "value": "1931"
+                        },
+                        "Amount": "13"
+                      }
+                    },
+                    {
+                      "id": "SLEEP_NORMAL_DISTRIBUTION",
+                      "properties": {
+                        "Mean": "600",
+                        "Variance": "400"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "ELSE_BRANCH",
+                  "children": [
+                    {
+                      "id": "IF_LOCAL_PLAYER_MATCHES",
+                      "properties": {
+                        "Filter By": {
+                          "class": "Player",
+                          "logic": "NONE",
+                          "type": "NOT_MOVING",
+                          "operator": "EQUALS"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "OPEN_BANK",
+                          "children": [
+                            {
+                              "id": "SLEEP_NORMAL_DISTRIBUTION",
+                              "properties": {
+                                "Mean": "4500",
+                                "Variance": "1500"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "ELSE_BRANCH",
+                      "children": [
+                        {
+                          "id": "SLEEP_NORMAL_DISTRIBUTION",
+                          "properties": {
+                            "Mean": "450",
+                            "Variance": "150"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "ELSE_BRANCH",
+              "children": [
+                {
+                  "id": "IF_BANK_IS_OPEN",
+                  "children": [
+                    {
+                      "id": "CLOSE_BANK"
+                    },
+                    {
+                      "id": "SLEEP_NORMAL_DISTRIBUTION",
+                      "properties": {
+                        "Mean": "600",
+                        "Variance": "400"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "ELSE_BRANCH",
+                  "children": [
+                    {
+                      "id": "INTERACT_WITH_INVENTORY_ITEM",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "ID",
+                          "operator": "EQUALS",
+                          "value": "4251"
+                        },
+                        "Action": "Empty"
+                      }
+                    },
+                    {
+                      "id": "IF_RANDOM_NUMBER_IS",
+                      "customDisplayName": "Randomly sleep for 15s",
+                      "properties": {
+                        "number": {
+                          "class": "Number",
+                          "operator": "LESS_THAN",
+                          "value": "6"
+                        },
+                        "Minimum": "100",
+                        "Maximum": "1"
+                      }
+                    },
+                    {
+                      "id": "AND_BRANCH"
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Variable name": "netflix_and_chill",
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_BOOLEAN",
+                          "operator": "IS_TRUE"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "SLEEP_NORMAL_DISTRIBUTION",
+                          "properties": {
+                            "Mean": "10000",
+                            "Variance": "5000"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "ELSE_BRANCH",
+                      "children": [
+                        {
+                          "id": "SLEEP_NORMAL_DISTRIBUTION",
+                          "properties": {
+                            "Mean": "6000",
+                            "Variance": "3000"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "IF_LOCAL_PLAYER_MATCHES",
+      "customDisplayName": "At Ectofunctus",
+      "properties": {
+        "Filter By": {
+          "class": "Player",
+          "logic": "NONE",
+          "type": "IN_AREA",
+          "operator": "EQUALS",
+          "value": "var(temple)"
+        }
+      },
+      "children": [
+        {
+          "id": "IF_VARIABLE_IS",
+          "properties": {
+            "Variable name": "do_bonemeal",
+            "Filter Value By": {
+              "class": "Variable",
+              "logic": "NONE",
+              "type": "AS_BOOLEAN",
+              "operator": "IS_TRUE"
+            }
+          },
+          "children": [
+            {
+              "id": "IF_INVENTORY_DOES_NOT_CONTAIN_ANY",
+              "properties": {
+                "Filter Item By": {
+                  "class": "Item",
+                  "logic": "NONE",
+                  "type": "ID",
+                  "operator": "EQUALS",
+                  "value": "var(bonemeal_id)"
+                }
+              },
+              "children": [
+                {
+                  "id": "IF_VARIABLE_IS_SET",
+                  "properties": {
+                    "Variable name": "tokens"
+                  }
+                },
+                {
+                  "id": "AND_BRANCH"
+                },
+                {
+                  "id": "IF_VARIABLE_IS",
+                  "properties": {
+                    "Variable name": "tokens",
+                    "Filter Value By": {
+                      "class": "Variable",
+                      "logic": "NONE",
+                      "type": "AS_BOOLEAN",
+                      "operator": "IS_TRUE"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "INTERACT_WITH_EQUIPMENT",
+                      "properties": {
+                        "Slot": {
+                          "class": "EquipmentSlot",
+                          "value": "RING"
+                        },
+                        "Action": "Castle Wars"
+                      }
+                    },
+                    {
+                      "id": "SET_VARIABLE",
+                      "properties": {
+                        "Value": "False",
+                        "Variable name": "tokens"
+                      }
+                    },
+                    {
+                      "id": "SLEEP_NORMAL_DISTRIBUTION",
+                      "properties": {
+                        "Mean": "6000",
+                        "Variance": "3000"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "ELSE_BRANCH",
+                  "children": [
+                    {
+                      "id": "IF_INVENTORY_CONTAINS_ANY",
+                      "customDisplayName": "Check to see if we have dueling ring still in inentory",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "ID",
+                          "operator": "EQUALS",
+                          "value": "2552"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "INTERACT_WITH_INVENTORY_ITEM",
+                          "properties": {
+                            "Filter Item By": {
+                              "class": "Item",
+                              "logic": "NONE",
+                              "type": "ID",
+                              "operator": "EQUALS",
+                              "value": "2552"
+                            },
+                            "Action": "Wear"
+                          }
+                        },
+                        {
+                          "id": "SLEEP_NORMAL_DISTRIBUTION",
+                          "properties": {
+                            "Mean": "450",
+                            "Variance": "150"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_INVENTORY_CONTAINS_ANY",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "ID",
+                          "operator": "EQUALS",
+                          "value": "4278"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "True",
+                            "Variable name": "tokens"
+                          }
+                        },
+                        {
+                          "id": "RETURN_TO_START_OF_SCRIPT"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_NOT_IN_DIALOGUE",
+                      "children": [
+                        {
+                          "id": "IF_LOCAL_PLAYER_MATCHES",
+                          "properties": {
+                            "Filter By": {
+                              "class": "Player",
+                              "logic": "NONE",
+                              "type": "NOT_MOVING",
+                              "operator": "EQUALS",
+                              "filters": [
+                                {
+                                  "class": "Player",
+                                  "logic": "OR",
+                                  "type": "NOT_ANIMATING",
+                                  "operator": "EQUALS"
+                                }
+                              ]
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "NPC_INTERACT",
+                              "properties": {
+                                "Action": "Talk-to",
+                                "Filter NPC By": {
+                                  "class": "NPC",
+                                  "logic": "NONE",
+                                  "type": "ID",
+                                  "operator": "EQUALS",
+                                  "value": "2988"
+                                }
+                              }
+                            },
+                            {
+                              "id": "SLEEP_NORMAL_DISTRIBUTION",
+                              "properties": {
+                                "Mean": "450",
+                                "Variance": "150"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "ELSE_BRANCH",
+                      "children": [
+                        {
+                          "id": "IF_OPTIONS_ARE_AVAILABLE",
+                          "children": [
+                            {
+                              "id": "SET_VARIABLE",
+                              "properties": {
+                                "Value": "True",
+                                "Variable name": "tokens"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "id": "ELSE_BRANCH",
+                          "children": [
+                            {
+                              "id": "SPACEBAR_TO_CONTINUE"
+                            },
+                            {
+                              "id": "SLEEP_NORMAL_DISTRIBUTION",
+                              "properties": {
+                                "Mean": "100",
+                                "Variance": "75"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "ELSE_BRANCH",
+              "children": [
+                {
+                  "id": "IF_LOCAL_PLAYER_MATCHES",
+                  "properties": {
+                    "Filter By": {
+                      "class": "Player",
+                      "logic": "NONE",
+                      "type": "NOT_ANIMATING",
+                      "operator": "EQUALS",
+                      "filters": [
+                        {
+                          "class": "Player",
+                          "logic": "OR",
+                          "type": "NOT_MOVING",
+                          "operator": "EQUALS"
+                        }
+                      ]
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "GAME_OBJECT_INTERACT",
+                      "properties": {
+                        "Filter Object By": {
+                          "class": "GameObject",
+                          "logic": "NONE",
+                          "type": "ID",
+                          "operator": "EQUALS",
+                          "value": "16648"
+                        },
+                        "Action": "Worship"
+                      },
+                      "children": [
+                        {
+                          "id": "SLEEP_NORMAL_DISTRIBUTION",
+                          "properties": {
+                            "Mean": "400",
+                            "Variance": "250"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ELSE_BRANCH",
+          "children": [
+            {
+              "id": "IF_INVENTORY_DOES_NOT_CONTAIN_ANY",
+              "properties": {
+                "Filter Item By": {
+                  "class": "Item",
+                  "logic": "NONE",
+                  "type": "ID",
+                  "operator": "EQUALS",
+                  "value": "var(bone_id)"
+                }
+              },
+              "children": [
+                {
+                  "id": "INTERACT_WITH_EQUIPMENT",
+                  "properties": {
+                    "Slot": {
+                      "class": "EquipmentSlot",
+                      "value": "RING"
+                    },
+                    "Action": "Castle Wars"
+                  }
+                },
+                {
+                  "id": "SLEEP_NORMAL_DISTRIBUTION",
+                  "properties": {
+                    "Mean": "6000",
+                    "Variance": "3000"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "ELSE_BRANCH",
+              "children": [
+                {
+                  "id": "IF_LOCAL_PLAYER_MATCHES",
+                  "properties": {
+                    "Filter By": {
+                      "class": "Player",
+                      "logic": "NONE",
+                      "type": "NOT_MOVING",
+                      "operator": "EQUALS"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "GAME_OBJECT_INTERACT",
+                      "properties": {
+                        "Filter Object By": {
+                          "class": "GameObject",
+                          "logic": "NONE",
+                          "type": "ID",
+                          "operator": "EQUALS",
+                          "value": "16646"
+                        },
+                        "Action": "Climb-up"
+                      }
+                    },
+                    {
+                      "id": "SLEEP_NORMAL_DISTRIBUTION",
+                      "properties": {
+                        "Mean": "3000",
+                        "Variance": "1000"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "ELSE_BRANCH",
+                  "children": [
+                    {
+                      "id": "SLEEP_NORMAL_DISTRIBUTION",
+                      "properties": {
+                        "Mean": "450",
+                        "Variance": "200"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "IF_LOCAL_PLAYER_MATCHES",
+      "customDisplayName": "At Grinder",
+      "properties": {
+        "Filter By": {
+          "class": "Player",
+          "logic": "NONE",
+          "type": "IN_AREA",
+          "operator": "EQUALS",
+          "value": "var(temple_upper)"
+        }
+      },
+      "children": [
+        {
+          "id": "IF_VARIABLE_IS",
+          "properties": {
+            "Variable name": "do_bonemeal",
+            "Filter Value By": {
+              "class": "Variable",
+              "logic": "NONE",
+              "type": "AS_BOOLEAN",
+              "operator": "IS_TRUE"
+            }
+          },
+          "children": [
+            {
+              "id": "STOP_SCRIPT",
+              "customDisplayName": "We should never get here"
+            }
+          ]
+        },
+        {
+          "id": "ELSE_BRANCH",
+          "children": [
+            {
+              "id": "IF_INVENTORY_DOES_NOT_CONTAIN_ANY",
+              "properties": {
+                "Filter Item By": {
+                  "class": "Item",
+                  "logic": "NONE",
+                  "type": "ID",
+                  "operator": "EQUALS",
+                  "value": "var(bone_id)"
+                }
+              },
+              "children": [
+                {
+                  "id": "IF_INVENTORY_CONTAINS_ANY",
+                  "customDisplayName": "Check to see if probably still grinding",
+                  "properties": {
+                    "Filter Item By": {
+                      "class": "Item",
+                      "logic": "NONE",
+                      "type": "ID",
+                      "operator": "EQUALS",
+                      "value": "1931"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "SLEEP_NORMAL_DISTRIBUTION",
+                      "properties": {
+                        "Mean": "4000",
+                        "Variance": "2000"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "ELSE_BRANCH",
+                  "children": [
+                    {
+                      "id": "INTERACT_WITH_EQUIPMENT",
+                      "properties": {
+                        "Slot": {
+                          "class": "EquipmentSlot",
+                          "value": "RING"
+                        },
+                        "Action": "Castle Wars"
+                      }
+                    },
+                    {
+                      "id": "IF_RANDOM_NUMBER_IS",
+                      "customDisplayName": "Randomly sleep up to 30s",
+                      "properties": {
+                        "number": {
+                          "class": "Number",
+                          "operator": "LESS_THAN",
+                          "value": "6"
+                        },
+                        "Minimum": "1",
+                        "Maximum": "100"
+                      }
+                    },
+                    {
+                      "id": "AND_BRANCH"
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Variable name": "netflix_and_chill",
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_BOOLEAN",
+                          "operator": "IS_TRUE"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "SLEEP_NORMAL_DISTRIBUTION",
+                          "properties": {
+                            "Mean": "20000",
+                            "Variance": "10000"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "SET_VARIABLE",
+                      "properties": {
+                        "Value": "False",
+                        "Variable name": "is_grinding"
+                      }
+                    },
+                    {
+                      "id": "IF_RANDOM_NUMBER_IS",
+                      "customDisplayName": "Randomly sleep up to 40s",
+                      "properties": {
+                        "number": {
+                          "class": "Number",
+                          "operator": "LESS_THAN",
+                          "value": "6"
+                        },
+                        "Minimum": "1",
+                        "Maximum": "100"
+                      }
+                    },
+                    {
+                      "id": "AND_BRANCH"
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Variable name": "netflix_and_chill",
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_BOOLEAN",
+                          "operator": "IS_TRUE"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "SLEEP_NORMAL_DISTRIBUTION",
+                          "properties": {
+                            "Mean": "20",
+                            "Variance": "20"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "ELSE_BRANCH",
+                      "children": [
+                        {
+                          "id": "SLEEP_NORMAL_DISTRIBUTION",
+                          "properties": {
+                            "Mean": "6000",
+                            "Variance": "3000"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "ENABLE_BREAKS"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "ELSE_BRANCH",
+              "children": [
+                {
+                  "id": "IF_VARIABLE_IS",
+                  "properties": {
+                    "Variable name": "is_grinding",
+                    "Filter Value By": {
+                      "class": "Variable",
+                      "logic": "NONE",
+                      "type": "AS_BOOLEAN",
+                      "operator": "IS_TRUE"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "SLEEP_NORMAL_DISTRIBUTION",
+                      "properties": {
+                        "Mean": "450",
+                        "Variance": "200"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "ELSE_BRANCH",
+                  "children": [
+                    {
+                      "id": "IF_LOCAL_PLAYER_MATCHES",
+                      "properties": {
+                        "Filter By": {
+                          "class": "Player",
+                          "logic": "NONE",
+                          "type": "NOT_MOVING",
+                          "operator": "EQUALS",
+                          "filters": [
+                            {
+                              "class": "Player",
+                              "logic": "OR",
+                              "type": "NOT_ANIMATING",
+                              "operator": "EQUALS"
+                            }
+                          ]
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "INTERACT_WITH_INVENTORY_ITEM",
+                          "properties": {
+                            "Filter Item By": {
+                              "class": "Item",
+                              "logic": "NONE",
+                              "type": "ID",
+                              "operator": "EQUALS",
+                              "value": "var(bone_id)"
+                            },
+                            "Action": "Use"
+                          }
+                        },
+                        {
+                          "id": "SLEEP_NORMAL_DISTRIBUTION",
+                          "properties": {
+                            "Mean": "300",
+                            "Variance": "150"
+                          }
+                        },
+                        {
+                          "id": "GAME_OBJECT_INTERACT",
+                          "properties": {
+                            "Filter Object By": {
+                              "class": "GameObject",
+                              "logic": "NONE",
+                              "type": "ID",
+                              "operator": "EQUALS",
+                              "value": "16654"
+                            },
+                            "Action": "Use"
+                          }
+                        },
+                        {
+                          "id": "SLEEP_NORMAL_DISTRIBUTION",
+                          "properties": {
+                            "Mean": "2000",
+                            "Variance": "1500"
+                          }
+                        },
+                        {
+                          "id": "SET_VARIABLE",
+                          "properties": {
+                            "Value": "True",
+                            "Variable name": "is_grinding"
+                          }
+                        },
+                        {
+                          "id": "DISABLE_BREAKS"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "PAINT_ROOT"
+    }
+  ]
+}

@@ -1,0 +1,103 @@
+{
+  "id": "da1134cd-33ed-40fd-900d-aec027e083e0",
+  "name": "Utility \u003e Settings \u003e Quickset \u003e Skilling",
+  "description": "",
+  "parameters": "",
+  "fail": false,
+  "actions": [
+    {
+      "id": "IF_FIRST_RUN",
+      "children": [
+        {
+          "id": "PRESS_ESCAPE"
+        },
+        {
+          "id": "CUSTOM_972f1b2d-051a-4e79-a6cb-c874338b887b",
+          "children": [
+            {
+              "id": "SLEEP_UNTIL_GAME_TICK"
+            }
+          ]
+        },
+        {
+          "id": "CUSTOM_2cd416f7-282c-41dc-8556-41097502a205",
+          "children": [
+            {
+              "id": "SLEEP_UNTIL_GAME_TICK"
+            }
+          ]
+        },
+        {
+          "id": "CUSTOM_102ad5e4-c96e-4134-92e2-70466f974f05",
+          "children": [
+            {
+              "id": "SLEEP_UNTIL_GAME_TICK"
+            }
+          ]
+        },
+        {
+          "id": "CUSTOM_2b058a11-8b29-4f73-87a6-561867456a26",
+          "children": [
+            {
+              "id": "SLEEP_UNTIL_GAME_TICK"
+            }
+          ]
+        },
+        {
+          "id": "CUSTOM_71c7aa55-6a2b-4fc6-b74b-7154986d13b4",
+          "children": [
+            {
+              "id": "SLEEP_UNTIL_GAME_TICK"
+            }
+          ]
+        },
+        {
+          "id": "CUSTOM_e2d7b238-1c7c-4111-932a-6a3258bb07e7",
+          "children": [
+            {
+              "id": "SLEEP_UNTIL_GAME_TICK"
+            }
+          ]
+        },
+        {
+          "id": "CUSTOM_60eb7ec6-66fe-4661-8c16-1649216507bb",
+          "children": [
+            {
+              "id": "SLEEP_UNTIL_GAME_TICK"
+            }
+          ]
+        },
+        {
+          "id": "CUSTOM_72511ce0-ce1d-4349-ab11-d7107e4e5e7f",
+          "children": [
+            {
+              "id": "SLEEP_UNTIL_GAME_TICK"
+            }
+          ]
+        },
+        {
+          "id": "CUSTOM_bbf74d5e-decc-4495-b5c0-9054ce4cd247",
+          "children": [
+            {
+              "id": "SLEEP_UNTIL_GAME_TICK"
+            }
+          ]
+        },
+        {
+          "id": "CUSTOM_577a9f5d-54fa-42d4-bcb3-205d70f9e693",
+          "children": [
+            {
+              "id": "SLEEP_UNTIL_GAME_TICK"
+            }
+          ]
+        },
+        {
+          "id": "PRESS_ESCAPE"
+        },
+        {
+          "id": "CUSTOM_06b15362-bede-462f-9125-02cf0f33f141"
+        }
+      ]
+    }
+  ]
+}

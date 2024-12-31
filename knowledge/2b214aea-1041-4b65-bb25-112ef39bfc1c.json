@@ -1,0 +1,44 @@
+{
+  "id": "2b214aea-1041-4b65-bb25-112ef39bfc1c",
+  "name": "Account \u003e Logging-In",
+  "description": "If we\u0027re not logged in, it will enable the log-in solver and make sure that the script sleeps until we\u0027re logged in.",
+  "parameters": "",
+  "fail": false,
+  "actions": [
+    {
+      "id": "IF_NOT_LOGGED_IN",
+      "children": [
+        {
+          "id": "ENABLE_LOGIN_SOLVER",
+          "children": [
+            {
+              "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+              "children": [
+                {
+                  "id": "IF_LOGGED_IN"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "IF_LOGGED_IN",
+      "children": [
+        {
+          "id": "IF_FIRST_RUN",
+          "children": [
+            {
+              "id": "SLEEP_BETWEEN",
+              "properties": {
+                "Minimum": "3000",
+                "Maximum": "5000"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

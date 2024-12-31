@@ -1,0 +1,1507 @@
+{
+  "sleep": "rand(100,300)",
+  "name": "SWDruidRitual",
+  "version": 1.0,
+  "metadata": {
+    "network-id": "93",
+    "network-downloaded-at": "1721665290531"
+  },
+  "actions": [
+    {
+      "id": "COMMENT",
+      "properties": {
+        "Comment": "World Selection"
+      },
+      "children": [
+        {
+          "id": "IF_MEMBERSHIP_LEFT_IS",
+          "properties": {
+            "days": {
+              "class": "Number",
+              "operator": "GREATER_THAN_OR_EQUALS",
+              "value": "1"
+            }
+          },
+          "children": [
+            {
+              "id": "IF_WORLD_MATCHES",
+              "properties": {
+                "Filter World By": {
+                  "class": "World",
+                  "logic": "NONE",
+                  "type": "WORLD_IS_F2P",
+                  "operator": "EQUALS"
+                }
+              },
+              "children": [
+                {
+                  "id": "HOP_TO_RANDOM_WORLD",
+                  "properties": {
+                    "Filter World By": {
+                      "class": "World",
+                      "logic": "NONE",
+                      "type": "WORLD_IS_MEMBERS",
+                      "operator": "EQUALS",
+                      "filters": [
+                        {
+                          "class": "World",
+                          "logic": "AND",
+                          "type": "WORLD_IS_NORMAL",
+                          "operator": "EQUALS"
+                        },
+                        {
+                          "class": "World",
+                          "logic": "AND",
+                          "type": "WORLD_IS_NOT_PVP",
+                          "operator": "EQUALS"
+                        },
+                        {
+                          "class": "World",
+                          "logic": "AND",
+                          "type": "WORLD_IS_NOT_BOUNTY_HUNTER",
+                          "operator": "EQUALS"
+                        },
+                        {
+                          "class": "World",
+                          "logic": "AND",
+                          "type": "WORLD_MINIMUM_LEVEL",
+                          "operator": "LESS_THAN",
+                          "value": "500"
+                        }
+                      ]
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "SLEEP_WHILE_WORLD_HOPPING"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ELSE_BRANCH",
+          "children": [
+            {
+              "id": "SHOW_DIALOG_MESSAGE",
+              "properties": {
+                "Message": "You need membership. Try again when you have it!"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "COMMENT",
+      "properties": {
+        "Comment": "threads"
+      },
+      "children": [
+        {
+          "id": "COMMENT",
+          "properties": {
+            "Comment": "eatThread"
+          },
+          "children": [
+            {
+              "id": "IF_QUEST_IS_NOT_FINISHED",
+              "properties": {
+                "Quest": {
+                  "class": "PaidQuest",
+                  "value": "DRUIDIC_RITUAL"
+                }
+              },
+              "children": [
+                {
+                  "id": "IF_INVENTORY_CONTAINS_ANY",
+                  "properties": {
+                    "Filter Item By": {
+                      "class": "Item",
+                      "logic": "NONE",
+                      "type": "IS_FOOD",
+                      "operator": "EQUALS"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "IF_THREAD_IS_NOT_RUNNING",
+                      "properties": {
+                        "Thread name": "eat"
+                      },
+                      "children": [
+                        {
+                          "id": "START_NEW_THREAD",
+                          "properties": {
+                            "Thread name": "eat",
+                            "Sleep between runs (ms)": "300",
+                            "Repeat until stopped": true
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_THREAD_IS_RUNNING",
+                  "properties": {
+                    "Thread name": "eat"
+                  },
+                  "children": [
+                    {
+                      "id": "IF_INVENTORY_CONTAINS_ANY",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "IS_FOOD",
+                          "operator": "EQUALS"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "IF_LOCAL_PLAYER_MATCHES",
+                          "properties": {
+                            "Filter By": {
+                              "class": "Player",
+                              "logic": "NONE",
+                              "type": "HEALTH",
+                              "operator": "LESS_THAN_OR_EQUAL",
+                              "value": "50"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "INTERACT_WITH_INVENTORY_ITEM",
+                              "properties": {
+                                "Filter Item By": {
+                                  "class": "Item",
+                                  "logic": "NONE",
+                                  "type": "IS_FOOD",
+                                  "operator": "EQUALS"
+                                },
+                                "Action": "Eat"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "COMMENT",
+      "properties": {
+        "Comment": "variables"
+      },
+      "children": [
+        {
+          "id": "COMMENT",
+          "properties": {
+            "Comment": "druid stuff\n"
+          },
+          "children": [
+            {
+              "id": "COMMENT",
+              "properties": {
+                "Comment": "druidStart"
+              },
+              "children": [
+                {
+                  "id": "IF_VARIABLE_IS_NOT_SET",
+                  "properties": {
+                    "Variable name": "druidStart"
+                  },
+                  "children": [
+                    {
+                      "id": "SET_VARIABLE",
+                      "properties": {
+                        "Value": "2921, 3487, 2929, 3480",
+                        "Variable name": "druidStart"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "COMMENT",
+              "properties": {
+                "Comment": "questStep"
+              },
+              "children": [
+                {
+                  "id": "IF_VARIABLE_IS_NOT_SET",
+                  "properties": {
+                    "Variable name": "questStep"
+                  },
+                  "children": [
+                    {
+                      "id": "SET_VARIABLE",
+                      "properties": {
+                        "Value": "null",
+                        "Variable name": "questStep"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "COMMENT",
+              "properties": {
+                "Comment": "talkedToSanfew"
+              },
+              "children": [
+                {
+                  "id": "IF_VARIABLE_IS_NOT_SET",
+                  "properties": {
+                    "Variable name": "talkedToSanfew"
+                  },
+                  "children": [
+                    {
+                      "id": "SET_VARIABLE",
+                      "properties": {
+                        "Value": "False",
+                        "Variable name": "talkedToSanfew"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "COMMENT",
+      "properties": {
+        "Comment": "Main "
+      },
+      "children": [
+        {
+          "id": "IF_LOGGED_IN",
+          "children": [
+            {
+              "id": "COMMENT",
+              "properties": {
+                "Comment": "Disable auto retaliate"
+              },
+              "children": [
+                {
+                  "id": "IF_AUTO_RETALIATE_IS_ON",
+                  "children": [
+                    {
+                      "id": "DISABLE_AUTO_RETALIATE"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "COMMENT",
+              "properties": {
+                "Comment": "Quest Section"
+              },
+              "children": [
+                {
+                  "id": "IF_QUEST_IS_FINISHED",
+                  "properties": {
+                    "Quest": {
+                      "class": "PaidQuest",
+                      "value": "DRUIDIC_RITUAL"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "DISABLE_LOGIN_SOLVER"
+                    },
+                    {
+                      "id": "SHOW_DIALOG_MESSAGE",
+                      "properties": {
+                        "Message": "Congrats! You have completed Druid Ritual. Thanks for trying my script! -Script Wizard"
+                      }
+                    },
+                    {
+                      "id": "LOGOUT"
+                    },
+                    {
+                      "id": "STOP_SCRIPT"
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_QUEST_IS_NOT_FINISHED",
+                  "properties": {
+                    "Quest": {
+                      "class": "PaidQuest",
+                      "value": "DRUIDIC_RITUAL"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "IF_PLAYER_SETTING_MATCHES",
+                      "customDisplayName": "Complete The Quest",
+                      "properties": {
+                        "value": {
+                          "class": "Number",
+                          "operator": "EQUALS",
+                          "value": "3"
+                        },
+                        "Player Setting": "80"
+                      },
+                      "children": [
+                        {
+                          "id": "IF_VARIABLE_IS_NOT",
+                          "properties": {
+                            "Filter Value By": {
+                              "class": "Variable",
+                              "logic": "NONE",
+                              "type": "AS_NUMBER",
+                              "operator": "EQUALS",
+                              "value": "3"
+                            },
+                            "Variable name": "questStep"
+                          },
+                          "children": [
+                            {
+                              "id": "SET_VARIABLE",
+                              "properties": {
+                                "Value": "3",
+                                "Variable name": "questStep"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_PLAYER_SETTING_MATCHES",
+                      "customDisplayName": "Cook Meats And Talk To Sanfew",
+                      "properties": {
+                        "value": {
+                          "class": "Number",
+                          "operator": "EQUALS",
+                          "value": "2"
+                        },
+                        "Player Setting": "80"
+                      },
+                      "children": [
+                        {
+                          "id": "IF_VARIABLE_IS_NOT",
+                          "properties": {
+                            "Filter Value By": {
+                              "class": "Variable",
+                              "logic": "NONE",
+                              "type": "AS_NUMBER",
+                              "operator": "EQUALS",
+                              "value": "2"
+                            },
+                            "Variable name": "questStep"
+                          },
+                          "children": [
+                            {
+                              "id": "SET_VARIABLE",
+                              "properties": {
+                                "Value": "2",
+                                "Variable name": "questStep"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_PLAYER_SETTING_MATCHES",
+                      "customDisplayName": "Talk To Sanfew",
+                      "properties": {
+                        "value": {
+                          "class": "Number",
+                          "operator": "EQUALS",
+                          "value": "1"
+                        },
+                        "Player Setting": "80"
+                      },
+                      "children": [
+                        {
+                          "id": "IF_VARIABLE_IS_NOT",
+                          "properties": {
+                            "Filter Value By": {
+                              "class": "Variable",
+                              "logic": "NONE",
+                              "type": "AS_NUMBER",
+                              "operator": "EQUALS",
+                              "value": "1"
+                            },
+                            "Variable name": "questStep"
+                          },
+                          "children": [
+                            {
+                              "id": "SET_VARIABLE",
+                              "properties": {
+                                "Value": "1",
+                                "Variable name": "questStep"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_PLAYER_SETTING_MATCHES",
+                      "customDisplayName": "Start Druid Ritual Step",
+                      "properties": {
+                        "value": {
+                          "class": "Number",
+                          "operator": "EQUALS",
+                          "value": "0"
+                        },
+                        "Player Setting": "80"
+                      },
+                      "children": [
+                        {
+                          "id": "IF_VARIABLE_IS_NOT",
+                          "properties": {
+                            "Filter Value By": {
+                              "class": "Variable",
+                              "logic": "NONE",
+                              "type": "AS_NUMBER",
+                              "operator": "DOES_NOT_EQUAL",
+                              "value": "0"
+                            },
+                            "Variable name": "questStep"
+                          },
+                          "children": [
+                            {
+                              "id": "SET_VARIABLE",
+                              "properties": {
+                                "Value": "0",
+                                "Variable name": "questStep"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "customDisplayName": "Start Druid Ritual",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "0"
+                        },
+                        "Variable name": "questStep"
+                      },
+                      "children": [
+                        {
+                          "id": "MISSING_NODE",
+                          "properties": {
+                            "Strict check": true,
+                            "Inventory": {
+                              "class": "InventoryLoadout",
+                              "value": "Druid Ritual"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "MISSING_NODE",
+                              "properties": {
+                                "Equipment": {
+                                  "class": "EquipmentLoadout",
+                                  "value": "MeleeTrain"
+                                },
+                                "Inventory": {
+                                  "class": "InventoryLoadout",
+                                  "value": "Druid Ritual"
+                                }
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "id": "MISSING_NODE",
+                          "properties": {
+                            "Equipment": {
+                              "class": "EquipmentLoadout",
+                              "value": "MeleeTrain"
+                            },
+                            "Inventory": {
+                              "class": "InventoryLoadout",
+                              "value": "Druid Ritual"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "IF_LOCAL_PLAYER_MATCHES",
+                              "properties": {
+                                "Filter By": {
+                                  "class": "Player",
+                                  "logic": "NONE",
+                                  "type": "NOT_IN_AREA",
+                                  "operator": "EQUALS",
+                                  "value": "v(druidStart)"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "WALK_FULLY_TO_AREA",
+                                  "properties": {
+                                    "Area": "v(druidStart)"
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "id": "IF_LOCAL_PLAYER_MATCHES",
+                              "properties": {
+                                "Filter By": {
+                                  "class": "Player",
+                                  "logic": "NONE",
+                                  "type": "IN_AREA",
+                                  "operator": "EQUALS",
+                                  "value": "v(druidStart)"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "IF_NPC_EXISTS",
+                                  "properties": {
+                                    "Filter NPC By": {
+                                      "class": "NPC",
+                                      "logic": "NONE",
+                                      "type": "ID",
+                                      "operator": "EQUALS",
+                                      "value": "5045"
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "IF_NOT_IN_DIALOGUE",
+                                      "children": [
+                                        {
+                                          "id": "NPC_INTERACT",
+                                          "properties": {
+                                            "Filter NPC By": {
+                                              "class": "NPC",
+                                              "logic": "NONE",
+                                              "type": "ID",
+                                              "operator": "EQUALS",
+                                              "value": "5045"
+                                            },
+                                            "Action": "Talk-to"
+                                          }
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "id": "IF_IN_DIALOGUE",
+                                      "children": [
+                                        {
+                                          "id": "IF_CAN_CONTINUE",
+                                          "children": [
+                                            {
+                                              "id": "SPACEBAR_TO_CONTINUE"
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "id": "IF_WIDGET_EXISTS",
+                                      "customDisplayName": "I\u0027m in search of a quest",
+                                      "properties": {
+                                        "Find Widget By": {
+                                          "class": "Widget",
+                                          "logic": "NONE",
+                                          "type": "TEXT",
+                                          "operator": "CONTAINS",
+                                          "value": "I\u0027m in search of a quest."
+                                        }
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "WIDGET_INTERACT",
+                                          "properties": {
+                                            "Find Widget By": {
+                                              "class": "Widget",
+                                              "logic": "NONE",
+                                              "type": "TEXT",
+                                              "operator": "CONTAINS",
+                                              "value": "I\u0027m in search of a quest."
+                                            }
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "id": "IF_WIDGET_EXISTS",
+                                  "properties": {
+                                    "Find Widget By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "TEXT",
+                                      "operator": "CONTAINS",
+                                      "value": "Yes"
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "WIDGET_INTERACT",
+                                      "properties": {
+                                        "Find Widget By": {
+                                          "class": "Widget",
+                                          "logic": "NONE",
+                                          "type": "TEXT",
+                                          "operator": "CONTAINS",
+                                          "value": "Yes"
+                                        }
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "1"
+                        },
+                        "Variable name": "questStep"
+                      },
+                      "children": [
+                        {
+                          "id": "IF_LOCAL_PLAYER_MATCHES",
+                          "properties": {
+                            "Filter By": {
+                              "class": "Player",
+                              "logic": "NONE",
+                              "type": "IN_AREA",
+                              "operator": "EQUALS",
+                              "value": "(2901, 3424, 1), (2895, 3432, 1)"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "IF_VARIABLE_IS",
+                              "properties": {
+                                "Filter Value By": {
+                                  "class": "Variable",
+                                  "logic": "NONE",
+                                  "type": "AS_BOOLEAN",
+                                  "operator": "IS_FALSE"
+                                },
+                                "Variable name": "talkedToSanfew"
+                              },
+                              "children": [
+                                {
+                                  "id": "IF_IN_DIALOGUE",
+                                  "children": [
+                                    {
+                                      "id": "IF_CAN_CONTINUE",
+                                      "children": [
+                                        {
+                                          "id": "SPACEBAR_TO_CONTINUE"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "id": "IF_NPC_EXISTS",
+                                  "properties": {
+                                    "Filter NPC By": {
+                                      "class": "NPC",
+                                      "logic": "NONE",
+                                      "type": "ID",
+                                      "operator": "EQUALS",
+                                      "value": "5044"
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "IF_NOT_IN_DIALOGUE",
+                                      "children": [
+                                        {
+                                          "id": "NPC_INTERACT",
+                                          "properties": {
+                                            "Filter NPC By": {
+                                              "class": "NPC",
+                                              "logic": "NONE",
+                                              "type": "ID",
+                                              "operator": "EQUALS",
+                                              "value": "5044"
+                                            },
+                                            "Action": "talk-to"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "id": "IF_WIDGET_EXISTS",
+                                  "properties": {
+                                    "Find Widget By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "TEXT",
+                                      "operator": "CONTAINS",
+                                      "value": "I\u0027ve been sent to help purify the Varrock stone circle."
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "WIDGET_INTERACT",
+                                      "properties": {
+                                        "Find Widget By": {
+                                          "class": "Widget",
+                                          "logic": "NONE",
+                                          "type": "TEXT",
+                                          "operator": "CONTAINS",
+                                          "value": "I\u0027ve been sent to help purify the Varrock stone circle."
+                                        }
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "SET_VARIABLE",
+                                          "properties": {
+                                            "Value": "True",
+                                            "Variable name": "talkedToSanfew"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "id": "IF_LOCAL_PLAYER_MATCHES",
+                          "properties": {
+                            "Filter By": {
+                              "class": "Player",
+                              "logic": "NONE",
+                              "type": "NOT_IN_AREA",
+                              "operator": "EQUALS",
+                              "value": "(2901, 3424, 1), (2895, 3432, 1)"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "WALK_FULLY_TO_AREA",
+                              "properties": {
+                                "Area": "(2901, 3424, 1), (2895, 3432, 1)"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "2"
+                        },
+                        "Variable name": "questStep"
+                      },
+                      "children": [
+                        {
+                          "id": "COMMENT",
+                          "properties": {
+                            "Comment": "Contains all cooked items"
+                          },
+                          "children": [
+                            {
+                              "id": "IF_INVENTORY_CONTAINS_ANY",
+                              "properties": {
+                                "Filter Item By": {
+                                  "class": "Item",
+                                  "logic": "NONE",
+                                  "type": "NAME",
+                                  "operator": "CONTAINS",
+                                  "value": "Enchanted bear"
+                                }
+                              }
+                            },
+                            {
+                              "id": "AND_BRANCH"
+                            },
+                            {
+                              "id": "IF_INVENTORY_CONTAINS_ANY",
+                              "properties": {
+                                "Filter Item By": {
+                                  "class": "Item",
+                                  "logic": "NONE",
+                                  "type": "NAME",
+                                  "operator": "CONTAINS",
+                                  "value": "Enchanted chicken"
+                                }
+                              }
+                            },
+                            {
+                              "id": "AND_BRANCH"
+                            },
+                            {
+                              "id": "IF_INVENTORY_CONTAINS_ANY",
+                              "properties": {
+                                "Filter Item By": {
+                                  "class": "Item",
+                                  "logic": "NONE",
+                                  "type": "NAME",
+                                  "operator": "CONTAINS",
+                                  "value": "Enchanted rat"
+                                }
+                              }
+                            },
+                            {
+                              "id": "AND_BRANCH"
+                            },
+                            {
+                              "id": "IF_INVENTORY_CONTAINS_ANY",
+                              "properties": {
+                                "Filter Item By": {
+                                  "class": "Item",
+                                  "logic": "NONE",
+                                  "type": "NAME",
+                                  "operator": "CONTAINS",
+                                  "value": "Enchanted beef"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "IF_LOCAL_PLAYER_MATCHES",
+                                  "properties": {
+                                    "Filter By": {
+                                      "class": "Player",
+                                      "logic": "NONE",
+                                      "type": "NOT_IN_AREA",
+                                      "operator": "EQUALS",
+                                      "value": "(2901, 3424, 1), (2895, 3432, 1)"
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "WALK_FULLY_TO_AREA",
+                                      "properties": {
+                                        "Area": "(2901, 3424, 1), (2895, 3432, 1)"
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "id": "IF_LOCAL_PLAYER_MATCHES",
+                                  "properties": {
+                                    "Filter By": {
+                                      "class": "Player",
+                                      "logic": "NONE",
+                                      "type": "IN_AREA",
+                                      "operator": "EQUALS",
+                                      "value": "(2901, 3424, 1), (2895, 3432, 1)"
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "IF_NPC_EXISTS",
+                                      "properties": {
+                                        "Filter NPC By": {
+                                          "class": "NPC",
+                                          "logic": "NONE",
+                                          "type": "ID",
+                                          "operator": "EQUALS",
+                                          "value": "5044"
+                                        }
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "IF_IN_DIALOGUE",
+                                          "children": [
+                                            {
+                                              "id": "IF_CAN_CONTINUE",
+                                              "children": [
+                                                {
+                                                  "id": "SPACEBAR_TO_CONTINUE"
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "id": "IF_NOT_IN_DIALOGUE",
+                                          "children": [
+                                            {
+                                              "id": "NPC_INTERACT",
+                                              "properties": {
+                                                "Filter NPC By": {
+                                                  "class": "NPC",
+                                                  "logic": "NONE",
+                                                  "type": "NONE",
+                                                  "operator": "EQUALS"
+                                                },
+                                                "Action": "talk-to"
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "id": "COMMENT",
+                          "properties": {
+                            "Comment": "Needs to enchant items"
+                          },
+                          "children": [
+                            {
+                              "id": "IF_LOCAL_PLAYER_MATCHES",
+                              "properties": {
+                                "Filter By": {
+                                  "class": "Player",
+                                  "logic": "NONE",
+                                  "type": "NOT_IN_AREA",
+                                  "operator": "EQUALS",
+                                  "value": "2890, 9835, 2896, 9828"
+                                }
+                              }
+                            },
+                            {
+                              "id": "AND_BRANCH"
+                            },
+                            {
+                              "id": "IF_INVENTORY_CONTAINS_ANY",
+                              "properties": {
+                                "Filter Item By": {
+                                  "class": "Item",
+                                  "logic": "NONE",
+                                  "type": "NAME",
+                                  "operator": "CONTAINS",
+                                  "value": "Enchanted bear"
+                                }
+                              }
+                            },
+                            {
+                              "id": "AND_BRANCH"
+                            },
+                            {
+                              "id": "IF_INVENTORY_CONTAINS_ANY",
+                              "properties": {
+                                "Filter Item By": {
+                                  "class": "Item",
+                                  "logic": "NONE",
+                                  "type": "NAME",
+                                  "operator": "CONTAINS",
+                                  "value": "Enchanted chicken"
+                                }
+                              }
+                            },
+                            {
+                              "id": "AND_BRANCH"
+                            },
+                            {
+                              "id": "IF_INVENTORY_CONTAINS_ANY",
+                              "properties": {
+                                "Filter Item By": {
+                                  "class": "Item",
+                                  "logic": "NONE",
+                                  "type": "NAME",
+                                  "operator": "CONTAINS",
+                                  "value": "Enchanted rat"
+                                }
+                              }
+                            },
+                            {
+                              "id": "AND_BRANCH"
+                            },
+                            {
+                              "id": "IF_INVENTORY_CONTAINS_ANY",
+                              "properties": {
+                                "Filter Item By": {
+                                  "class": "Item",
+                                  "logic": "NONE",
+                                  "type": "NAME",
+                                  "operator": "CONTAINS",
+                                  "value": "Enchanted beef"
+                                }
+                              }
+                            },
+                            {
+                              "id": "AND_BRANCH"
+                            },
+                            {
+                              "id": "IF_INVENTORY_DOES_NOT_CONTAIN_ANY",
+                              "properties": {
+                                "Filter Item By": {
+                                  "class": "Item",
+                                  "logic": "NONE",
+                                  "type": "NAME",
+                                  "operator": "CONTAINS",
+                                  "value": "Enchanted"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "WALK_FULLY_TO_AREA",
+                                  "properties": {
+                                    "Area": "2890, 9835, 2896, 9828"
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "id": "IF_LOCAL_PLAYER_MATCHES",
+                              "properties": {
+                                "Filter By": {
+                                  "class": "Player",
+                                  "logic": "NONE",
+                                  "type": "IN_AREA",
+                                  "operator": "EQUALS",
+                                  "value": "2890, 9835, 2896, 9828"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "IF_INVENTORY_CONTAINS_ANY",
+                                  "properties": {
+                                    "Filter Item By": {
+                                      "class": "Item",
+                                      "logic": "NONE",
+                                      "type": "ID",
+                                      "operator": "EQUALS",
+                                      "value": "2136"
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "IF_INVENTORY_ITEM_IS_NOT_SELECTED",
+                                      "children": [
+                                        {
+                                          "id": "INTERACT_WITH_INVENTORY_ITEM",
+                                          "properties": {
+                                            "Filter Item By": {
+                                              "class": "Item",
+                                              "logic": "NONE",
+                                              "type": "ID",
+                                              "operator": "EQUALS",
+                                              "value": "2136"
+                                            }
+                                          }
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "id": "IF_INVENTORY_ITEM_IS_SELECTED",
+                                      "children": [
+                                        {
+                                          "id": "GAME_OBJECT_INTERACT",
+                                          "properties": {
+                                            "Filter Object By": {
+                                              "class": "GameObject",
+                                              "logic": "NONE",
+                                              "type": "NAME",
+                                              "operator": "CONTAINS",
+                                              "value": "Cauldron of thunder"
+                                            }
+                                          },
+                                          "children": [
+                                            {
+                                              "id": "SLEEP_UNTIL_GAME_TICK"
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "id": "IF_INVENTORY_CONTAINS_ANY",
+                                  "properties": {
+                                    "Filter Item By": {
+                                      "class": "Item",
+                                      "logic": "NONE",
+                                      "type": "ID",
+                                      "operator": "EQUALS",
+                                      "value": "2134"
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "IF_INVENTORY_ITEM_IS_NOT_SELECTED",
+                                      "children": [
+                                        {
+                                          "id": "INTERACT_WITH_INVENTORY_ITEM",
+                                          "properties": {
+                                            "Filter Item By": {
+                                              "class": "Item",
+                                              "logic": "NONE",
+                                              "type": "ID",
+                                              "operator": "EQUALS",
+                                              "value": "2134"
+                                            }
+                                          }
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "id": "IF_INVENTORY_ITEM_IS_SELECTED",
+                                      "children": [
+                                        {
+                                          "id": "GAME_OBJECT_INTERACT",
+                                          "properties": {
+                                            "Filter Object By": {
+                                              "class": "GameObject",
+                                              "logic": "NONE",
+                                              "type": "NAME",
+                                              "operator": "CONTAINS",
+                                              "value": "Cauldron of thunder"
+                                            }
+                                          },
+                                          "children": [
+                                            {
+                                              "id": "SLEEP_UNTIL_GAME_TICK"
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "id": "IF_INVENTORY_CONTAINS_ANY",
+                                  "properties": {
+                                    "Filter Item By": {
+                                      "class": "Item",
+                                      "logic": "NONE",
+                                      "type": "ID",
+                                      "operator": "EQUALS",
+                                      "value": "2132"
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "IF_INVENTORY_ITEM_IS_NOT_SELECTED",
+                                      "children": [
+                                        {
+                                          "id": "INTERACT_WITH_INVENTORY_ITEM",
+                                          "properties": {
+                                            "Filter Item By": {
+                                              "class": "Item",
+                                              "logic": "NONE",
+                                              "type": "ID",
+                                              "operator": "EQUALS",
+                                              "value": "2132"
+                                            }
+                                          }
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "id": "IF_INVENTORY_ITEM_IS_SELECTED",
+                                      "children": [
+                                        {
+                                          "id": "GAME_OBJECT_INTERACT",
+                                          "properties": {
+                                            "Filter Object By": {
+                                              "class": "GameObject",
+                                              "logic": "NONE",
+                                              "type": "NAME",
+                                              "operator": "CONTAINS",
+                                              "value": "Cauldron of thunder"
+                                            }
+                                          },
+                                          "children": [
+                                            {
+                                              "id": "SLEEP_UNTIL_GAME_TICK"
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "id": "IF_INVENTORY_CONTAINS_ANY",
+                                  "properties": {
+                                    "Filter Item By": {
+                                      "class": "Item",
+                                      "logic": "NONE",
+                                      "type": "ID",
+                                      "operator": "EQUALS",
+                                      "value": "2138"
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "IF_INVENTORY_ITEM_IS_NOT_SELECTED",
+                                      "children": [
+                                        {
+                                          "id": "INTERACT_WITH_INVENTORY_ITEM",
+                                          "properties": {
+                                            "Filter Item By": {
+                                              "class": "Item",
+                                              "logic": "NONE",
+                                              "type": "ID",
+                                              "operator": "EQUALS",
+                                              "value": "2138"
+                                            }
+                                          }
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "id": "IF_INVENTORY_ITEM_IS_SELECTED",
+                                      "children": [
+                                        {
+                                          "id": "GAME_OBJECT_INTERACT",
+                                          "properties": {
+                                            "Filter Object By": {
+                                              "class": "GameObject",
+                                              "logic": "NONE",
+                                              "type": "NAME",
+                                              "operator": "CONTAINS",
+                                              "value": "Cauldron of thunder"
+                                            }
+                                          },
+                                          "children": [
+                                            {
+                                              "id": "SLEEP_UNTIL_GAME_TICK"
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "EQUALS",
+                          "value": "3"
+                        },
+                        "Variable name": "questStep"
+                      },
+                      "children": [
+                        {
+                          "id": "IF_LOCAL_PLAYER_MATCHES",
+                          "properties": {
+                            "Filter By": {
+                              "class": "Player",
+                              "logic": "NONE",
+                              "type": "NOT_IN_AREA",
+                              "operator": "EQUALS",
+                              "value": "2921, 3487, 2929, 3480"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "WALK_FULLY_TO_AREA",
+                              "properties": {
+                                "Area": "2921, 3487, 2929, 3480"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "id": "IF_LOCAL_PLAYER_MATCHES",
+                          "properties": {
+                            "Filter By": {
+                              "class": "Player",
+                              "logic": "NONE",
+                              "type": "IN_AREA",
+                              "operator": "EQUALS",
+                              "value": "2921, 3487, 2929, 3480"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "IF_NPC_EXISTS",
+                              "properties": {
+                                "Filter NPC By": {
+                                  "class": "NPC",
+                                  "logic": "NONE",
+                                  "type": "ID",
+                                  "operator": "EQUALS",
+                                  "value": "5045"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "IF_IN_DIALOGUE",
+                                  "children": [
+                                    {
+                                      "id": "IF_CAN_CONTINUE",
+                                      "children": [
+                                        {
+                                          "id": "SPACEBAR_TO_CONTINUE"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "id": "IF_NOT_IN_DIALOGUE",
+                                  "children": [
+                                    {
+                                      "id": "NPC_INTERACT",
+                                      "properties": {
+                                        "Filter NPC By": {
+                                          "class": "NPC",
+                                          "logic": "NONE",
+                                          "type": "ID",
+                                          "operator": "EQUALS",
+                                          "value": "5045"
+                                        },
+                                        "Action": "Talk-to"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "loadouts": {
+    "inventory": [
+      {
+        "a": false,
+        "loadout": [
+          {
+            "name": "Raw bear meat",
+            "optional": false,
+            "noted": false,
+            "minimumAmount": 0,
+            "maximumAmount": 1,
+            "minimumCharges": 0,
+            "restockAmount": 1
+          },
+          {
+            "name": "Raw rat meat",
+            "optional": false,
+            "noted": false,
+            "minimumAmount": 0,
+            "maximumAmount": 1,
+            "minimumCharges": 0,
+            "restockAmount": 1
+          },
+          {
+            "name": "Raw beef",
+            "optional": false,
+            "noted": false,
+            "minimumAmount": 0,
+            "maximumAmount": 1,
+            "minimumCharges": 0,
+            "restockAmount": 1
+          },
+          {
+            "name": "Raw chicken",
+            "optional": false,
+            "noted": false,
+            "minimumAmount": 0,
+            "maximumAmount": 1,
+            "minimumCharges": 0,
+            "restockAmount": 1
+          },
+          {
+            "name": "Lobster",
+            "optional": false,
+            "noted": false,
+            "minimumAmount": 0,
+            "maximumAmount": 20,
+            "minimumCharges": 0,
+            "restockAmount": 20
+          },
+          {
+            "name": "Falador teleport",
+            "optional": true,
+            "noted": false,
+            "minimumAmount": 0,
+            "maximumAmount": 1,
+            "minimumCharges": 0,
+            "restockAmount": 1
+          }
+        ],
+        "name": "Druid Ritual"
+      }
+    ],
+    "equipment": [
+      {
+        "loadout": [
+          {
+            "name": "Ring of wealth (5)",
+            "optional": false,
+            "noted": false,
+            "minimumAmount": 1,
+            "maximumAmount": 1,
+            "minimumCharges": 0,
+            "restockAmount": 3
+          },
+          {
+            "name": "Bronze sword",
+            "optional": false,
+            "noted": false,
+            "minimumAmount": 1,
+            "maximumAmount": 1,
+            "minimumCharges": 0,
+            "restockAmount": 1
+          }
+        ],
+        "name": "MeleeTrain"
+      }
+    ]
+  }
+}

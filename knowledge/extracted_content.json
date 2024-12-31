@@ -1,0 +1,746 @@
+[{"id":"GROUND_ITEM_INTERACT","properties":{"Filter Item By":{"class":"GroundItem","logic":"NONE","type":"NAME","operator":"EQUALS","value":"Mark of grace","filters":[{"class":"GroundItem","logic":"AND","type":"WALKING_DISTANCE_TO_PLAYER","operator":"LESS_THAN","value":"6"}]
+
+[{"id":"IF_BANK_IS_NOT_OPEN","properties":{},"children":[{"id":"GAME_OBJECT_INTERACT","properties":{"Don\u0027t walk to object":false,"Action":"Bank","Filter Object By":{"class":"GameObject","logic":"NONE","type":"NAME","operator":"EQUALS","value":"Chest","filters":[]},"Force left click":false},"children":[]}]
+
+[{"id":"IF_HINT_ARROW_IS_NPC","properties":{},"children":[{"id":"NPC_INTERACT","properties":{"Force left click":false,"Filter NPC By":{"class":"NPC","logic":"NONE","type":"IS_LAST_OUTPUT","operator":"EQUALS","value":"","filters":[]},"Action":"Pickpocket"},"children":[]}]
+
+[{"id":"CREATE_LABEL","customDisplayName":"Check/Collect Spores","children":[{"id":"WHILE_VARIABLE_MATCHES","properties":{"Filter Value By":{"class":"Variable","logic":"NONE","type":"AS_TEXT","operator":"EQUALS","value":"True"},"Variable name":"Harvesting"},"children":[{"id":"SET_VARIABLE","properties":{"Value":"True","Variable name":"Harvesting"}},{"id":"IF_GROUND_ITEM_EXISTS","properties":{"Filter Item By":{"class":"GroundItem","logic":"NONE","type":"NAME","operator":"EQUALS","value":"Seaweed spore","filters":[{"class":"GroundItem","logic":"AND","type":"ON_SCREEN","operator":"EQUALS"}]
+
+[{"id":"SLEEP_BETWEEN","properties":{"Minimum":"2000","Maximum":"4000"},"children":[{"id":"GROUND_ITEM_INTERACT","properties":{"Filter Item By":{"class":"GroundItem","logic":"NONE","type":"NAME","operator":"CONTAINS","value":"Seaweed spore"},"Force left click":true,"Action":""},"children":[{"id":"SLEEP_BETWEEN","properties":{"Minimum":"1600","Maximum":"3000"},"children":[{"id":"GROUND_ITEM_INTERACT","properties":{"Filter Item By":{"class":"GroundItem","logic":"NONE","type":"NAME","operator":"CONTAINS","value":"Seaweed spore"},"Force left click":true,"Action":""},"children":[{"id":"SLEEP_BETWEEN","properties":{"Minimum":"1600","Maximum":"3000"}}]
+
+[{"id":"SET_VARIABLE","properties":{"Value":"False","Variable name":"Harvesting"}},{"id":"WALK_TO_TILE","properties":{"Tile":"(3729, 10270, 1)"},"children":[{"id":"HOVER_GAME_OBJECT","properties":{"Filter By":{"class":"GameObject","logic":"NONE","type":"ID","operator":"EQUALS","value":"30501"}}}]
+
+[{"id":"GAME_OBJECT_INTERACT","properties":{"Don\u0027t walk to object":false,"Action":"Mine","Filter Object By":{"class":"GameObject","logic":"NONE","type":"NAME","operator":"EQUALS","value":"Ore vein","filters":[{"class":"GameObject","logic":"AND","type":"IN_AREA","operator":"EQUALS","value":"v(up_area)"}]
+
+[{"id":"COMMENT","properties":{"Comment":"If we\u0027re animating at a rock, sleep"},"children":[{"id":"IF_LOCAL_PLAYER_MATCHES","properties":{"Filter By":{"class":"Player","logic":"NONE","type":"ANIMATING","operator":"EQUALS"}}},{"id":"AND_BRANCH"},{"id":"IF_GAME_OBJECT_EXISTS","properties":{"Filter Object By":{"class":"GameObject","logic":"NONE","type":"NAME","operator":"EQUALS","value":"Ore vein","filters":[{"class":"GameObject","logic":"AND","type":"DISTANCE_TO_PLAYER","operator":"LESS_THAN","value":"2"}]
+
+[{"id":"MOVE_MOUSE_OFFSCREEN"}]
+
+[{"id":"IF_GAME_OBJECT_EXISTS","properties":{"Filter Object By":{"class":"GameObject","logic":"NONE","type":"NAME","operator":"CONTAINS","value":"Ore vein"}},"children":[{"id":"IF_INVENTORY_IS_NOT_FULL","children":[{"id":"IF_VARIABLE_IS_NOT_SET","properties":{"Variable name":"ore vein"},"children":[{"id":"GAME_OBJECT_INTERACT","properties":{"Don\u0027t walk to object":false,"Action":"Mine","Filter Object By":{"class":"GameObject","logic":"NONE","type":"NAME","operator":"CONTAINS","value":"Ore vein","filters":[{"class":"GameObject","logic":"AND","type":"IN_AREA","operator":"EQUALS","value":"(3765, 5643, 0), (3775, 5631, 0)"}]
+
+[{"id":"SET_TO_LAST_MATCHING_ENTITY_ID","properties":{"Variable name":"id"}},{"id":"SET_VARIABLE_TO_LAST_OUTPUT","properties":{"Variable name":"ore vein"}},{"id":"SLEEP_UNTIL_INSIDE_IS_TRUE","properties":{"Max time (seconds)":"3"},"children":[{"id":"IF_LOCAL_PLAYER_MATCHES","properties":{"Filter By":{"class":"Player","logic":"NONE","type":"ANIMATING","operator":"EQUALS"}}}]
+
+[{"id":"SET_TO_LAST_MATCHING_ENTITY_TILE","properties":{"Variable name":"oreveintile"},"children":[{"id":"IF_GAME_OBJECT_DOES_NOT_EXIST","properties":{"Filter Object By":{"class":"GameObject","logic":"NONE","type":"ID","operator":"EQUALS","value":"v(id)","filters":[{"class":"GameObject","logic":"AND","type":"TILE","operator":"EQUALS","value":"v(oreveintile)"}]
+
+[{"id":"DELETE_VARIABLE","properties":{"Variable name":"ore vein"}}]
+
+[{"id":"IF_PLAYER_EXISTS","properties":{"Filter Player By":{"class":"Player","logic":"NONE","type":"IS_INTERACTING_WITH_ME","operator":"EQUALS"}}}]
+
+[{"id":"IF_EQUIPPED_ITEM_MATCHES","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"NAME","operator":"EQUALS","value":"Broad bolts"}},"children":[{"id":"SET_TO_LAST_MATCHING_ITEM_AMOUNT","properties":{"Variable name":"bolt_amount"}}]
+
+[{"id":"COMMENT","properties":{"Comment":"Teleblock"},"children":[{"id":"IF_VARBIT_MATCHES","properties":{"value":{"class":"Number","operator":"GREATER_THAN","value":"-1"},"Varbit":"4163"},"children":[{"id":"SET_VARIABLE_TO_LAST_OUTPUT","properties":{"Variable name":"teleblock_time"}}]
+
+[{"id":"SET_VARIABLE","properties":{"Value":"sub(v(teleblock_time), 100)","Variable name":"ticks_remaining"}}]
+
+[{"id":"SET_VARIABLE","properties":{"Value":"teleblock_time","Variable name":"ticks_immune"}}]
+
+[{"id":"SET_VARIABLE","properties":{"Value":"true","Variable name":"is_teleblocked"}}]
+
+[{"id":"SET_VARIABLE","properties":{"Value":"False","Variable name":"is_teleblocked"}}]
+
+[{"id":"IF_HINT_ARROW_VISIBLE","children":[{"id":"SET_TO_HINT_ARROW_TILE","properties":{"Variable name":"hint_tile"}},{"id":"IF_HINT_ARROW_IS_NPC","children":[{"id":"SET_VARIABLE_TO_LAST_OUTPUT","properties":{"Variable name":"target"}}]
+
+[{"id":"DELETE_VARIABLE","properties":{"Variable name":"hint_tile"}},{"id":"DELETE_VARIABLE","properties":{"Variable name":"target"}}]
+
+[{"id":"NPC_INTERACT","properties":{"Filter NPC By":{"class":"NPC","logic":"NONE","type":"IS_VARIABLE_VALUE","operator":"EQUALS","value":"target"},"Action":"Attack"}}]
+
+[{"id":"IF_VARIABLE_IS_SET","properties":{"Variable name":"hint_tile"},"children":[{"id":"WALK_TO_TILE","properties":{"Tile":"hint_tile"}}]
+
+[{"id":"CREATE_LABEL","properties":{"Label":"Mule"},"children":[{"id":"IF_PLAYER_EXISTS","properties":{"Filter Player By":{"class":"Player","logic":"NONE","type":"NAME","operator":"EQUALS","value":"MULE NAME"}},"children":[{"id":"IF_INVENTORY_CONTAINS_ANY","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"ID","operator":"EQUALS","value":"995"}},"children":[{"id":"IF_TRADE_IS_NOT_OPEN","children":[{"id":"PLAYER_INTERACT","properties":{"Don\u0027t walk to Player":false,"Action":"Trade with","Force left click":false,"Filter Player By":{"class":"Player","logic":"NONE","type":"NAME","operator":"EQUALS","value":"MULE NAME"}},"children":[{"id":"SLEEP_BETWEEN","properties":{"Minimum":"4000","Maximum":"5000"},"children":[{"id":"GO_TO_LABEL","properties":{"Label":"Mule"}}]
+
+[{"id":"IF_TRADING_WITH_NAME_EQUALS","properties":{"Name":"MULE NAME"},"children":[{"id":"SLEEP_UNTIL_GAME_TICK","children":[{"id":"INTERACT_WITH_INVENTORY_ITEM","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"ID","operator":"EQUALS","value":"995"},"Force left click":false,"Action":"Offer-All"}},{"id":"ACCEPT_TRADE"},{"id":"GO_TO_LABEL","properties":{"Label":"Mule"}}]
+
+[{"id":"IF_BANK_IS_OPEN","children":[{"id":"ADD_BANK_ITEMS_TO_LIST","properties":{"List name":"BankItems"}},{"id":"FOR_EACH_IN_LIST","properties":{"Reverse order":false,"List name":"BankItems"},"children":[{"id":"SET_TO_LAST_MATCHING_ITEM_ID","properties":{"Variable name":"ItemID"}},{"id":"SET_TO_LAST_MATCHING_ITEM_LIVE_PRICE","properties":{"Variable name":"ItemValue"}},{"id":"IF_VARIABLE_IS","properties":{"Filter Value By":{"class":"Variable","logic":"NONE","type":"AS_NUMBER","operator":"GREATER_THAN_OR_EQUAL","value":"500"},"Variable name":"ItemValue"},"children":[{"id":"BANK_WITHDRAW_ALL_ITEM","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"ID","operator":"EQUALS","value":"v(ItemID)"}}}]
+
+[{"id":"IF_VARIABLE_IS_NOT_SET","properties":{"Variable name":"Staves"},"children":[{"id":"SET_TO_ITEM_HIGH_ALCH_PRICE","properties":{"Item ID":"1397","Variable name":"AlchStaves"}},{"id":"SET_TO_ITEM_LIVE_PRICE_NAME","properties":{"Variable name":"Staves","Name":"Air battlestaff"},"children":[{"id":"ADD_TO_VARIABLE","properties":{"Variable name":"Staves","By":"v(Nats)"}}]
+
+[{"id":"SET_TO_ITEM_HIGH_ALCH_PRICE","properties":{"Item ID":"19582","Variable name":"AlchJavs"}},{"id":"SET_TO_ITEM_LIVE_PRICE_NAME","properties":{"Variable name":"Javs","Name":"Dragon javelin heads"},"children":[{"id":"ADD_TO_VARIABLE","properties":{"Variable name":"Javs","By":"v(Nats)"}}]
+
+[{"id":"SET_VARIABLE","properties":{"Variable name":"aTarget"}}]
+
+[{"id":"SET_VARIABLE","properties":{"Variable name":"aTarget"}}]
+
+[{"id":"IF_LOCAL_PLAYER_MATCHES","properties":{"Filter By":{"class":"Player","logic":"NONE","type":"NOT_IN_AREA","operator":"EQUALS","value":"p(area)"}},"children":[{"id":"SET_VARIABLE","properties":{"Value":"0","Variable name":"inarea"}},{"id":"WHILE_VARIABLE_MATCHES","properties":{"Filter Value By":{"class":"Variable","logic":"NONE","type":"AS_NUMBER","operator":"EQUALS","value":"0"},"Variable name":"inarea"},"children":[{"id":"SET_VARIABLE_TO_LOCAL_TILE","properties":{"Variable name":"playerposition"}},{"id":"IF_TILE_IS_IN_AREA","properties":{"Tile":"v(playerposition)","Area":"p(area)"},"children":[{"id":"SET_VARIABLE","properties":{"Value":"1","Variable name":"inarea"}}]
+
+[{"id":"IF_VARIABLE_IS_NOT_SET","properties":{"Variable name":"walk"},"children":[{"id":"SET_VARIABLE_TO_GAUSSIAN_RANDOM","properties":{"Mean":"5","Variance":"2","Variable name":"walk"}}]
+
+[{"id":"WALK_TO_AREA","properties":{"Area":"p(area)"},"children":[{"id":"DELETE_VARIABLE","properties":{"Variable name":"walk"}}]
+
+[{"id":"IF_LOCAL_PLAYER_MATCHES","properties":{"Filter By":{"class":"Player","logic":"NONE","type":"ANIMATION","operator":"EQUALS","value":"424"}},"children":[{"id":"SET_VARIABLE","properties":{"Value":"true","Variable name":"stunned"}}]
+
+[{"id":"IF_LOCAL_PLAYER_MATCHES","properties":{"Filter By":{"class":"Player","logic":"NONE","type":"IS_NOT_INTERACTING","operator":"EQUALS","filters":[{"class":"Player","logic":"AND","type":"HEALTH","operator":"GREATER_THAN","value":"10"}]
+
+[{"id":"IF_VARIABLE_IS","properties":{"Filter Value By":{"class":"Variable","logic":"NONE","type":"AS_TEXT","operator":"EQUALS","value":"true"},"Variable name":"stunned"},"children":[{"id":"IF_TIMER_IS_READY","properties":{"Don\u0027t fire on first call":true,"Don\u0027t reset on timing changes":true,"Seconds":"3"},"children":[{"id":"SET_VARIABLE","properties":{"Value":"false","Variable name":"stunned"}}]
+
+[{"id":"NPC_INTERACT","properties":{"Action":"Pickpocket","Don\u0027t walk to NPC":false,"Force left click":false,"Filter NPC By":{"class":"NPC","logic":"NONE","type":"ID","operator":"EQUALS","value":"11936"}},"children":[{"id":"SLEEP_UNTIL_GAME_TICK"}]
+
+[{"id":"IF_INVENTORY_CONTAINS_ANY","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"ID","operator":"EQUALS","value":"1739"}}},{"id":"AND_BRANCH"},{"id":"IF_LOCAL_PLAYER_MATCHES","properties":{"Filter By":{"class":"Player","logic":"NONE","type":"IN_AREA","operator":"EQUALS","value":"(3270, 3189, 0), (3282, 3198, 0)"}},"children":[{"id":"IF_WIDGET_DOES_NOT_EXIST","properties":{"Find Widget By":{"class":"Widget","logic":"NONE","type":"WIDGET_ID","operator":"EQUALS","value":"324, 93"}},"children":[{"id":"NPC_INTERACT","properties":{"Force left click":false,"Filter NPC By":{"class":"NPC","logic":"NONE","type":"ID","operator":"EQUALS","value":"3231"},"Action":"Trade"},"children":[{"id":"SLEEP_UNTIL_INSIDE_IS_TRUE","children":[{"id":"IF_WIDGET_EXISTS","properties":{"Find Widget By":{"class":"Widget","logic":"NONE","type":"WIDGET_ID","operator":"EQUALS","value":"324, 93"}}}]
+
+[{"id":"WIDGET_INTERACT","properties":{"Action":"Tan All","Find Widget By":{"class":"Widget","logic":"NONE","type":"WIDGET_ID","operator":"EQUALS","value":"324, 93"}},"children":[{"id":"SLEEP_NORMAL_DISTRIBUTION","properties":{"Mean":"1400","Variance":"150"}}]
+
+[{"id":"IF_INVENTORY_CONTAINS_ANY","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"NAME","operator":"CONTAINS","value":"dragonhide"}},"children":[{"id":"IF_WIDGET_EXISTS","properties":{"Find Widget By":{"class":"Widget","logic":"NONE","type":"WIDGET_ID","operator":"EQUALS","value":"324, 19"}},"children":[{"id":"SLEEP_NORMAL_DISTRIBUTION","properties":{"Mean":"1000","Variance":"2000"}},{"id":"WIDGET_INTERACT","properties":{"Action":"Tan All","Find Widget By":{"class":"Widget","logic":"NONE","type":"WIDGET_ID","operator":"EQUALS","value":"324,19"}}},{"id":"SLEEP_NORMAL_DISTRIBUTION","properties":{"Mean":"500","Variance":"200"}}]
+
+[{"id":"IF_LOCAL_PLAYER_MATCHES","properties":{"Filter By":{"class":"Player","logic":"NONE","type":"NOT_MOVING","operator":"EQUALS","filters":[{"class":"Player","logic":"AND","type":"NOT_ANIMATING","operator":"EQUALS"}]
+
+[{"id":"NPC_INTERACT","properties":{"Filter NPC By":{"class":"NPC","logic":"NONE","type":"ID","operator":"EQUALS","value":"something"},"Action":"Tan-hides","Don\u0027t walk to NPC":true}}]
+
+[{"id":"IF_GROUND_ITEM_EXISTS","properties":{"Filter Item By":{"class":"GroundItem","logic":"NONE","type":"IS_OUR_LOOT","operator":"IS_IN_LIST","value":"Cowhide","filters":[{"class":"GroundItem","logic":"AND","type":"NAME","operator":"EQUALS","value":"Bones"}]
+
+[{"id":"SET_TO_LAST_MATCHING_ENTITY_TILE","properties":{"Variable name":"loottile"}},{"id":"IF_LOCAL_PLAYER_MATCHES","properties":{"Filter By":{"class":"Player","logic":"NONE","type":"NOT_MOVING","operator":"EQUALS"}},"children":[{"id":"GROUND_ITEM_INTERACT","properties":{"Filter Item By":{"class":"GroundItem","logic":"NONE","type":"TILE","operator":"EQUALS","value":"v(loottile)","filters":[{"class":"GroundItem","logic":"AND","type":"NAME","operator":"IS_IN_LIST","value":"Cowhide, Bones"}]
+
+[{"id":"IF_LOCAL_PLAYER_MATCHES","properties":{"Filter By":{"class":"Player","logic":"NONE","type":"MODEL_HEIGHT","operator":"GREATER_THAN_OR_EQUAL","value":"1"}},"children":[{"id":"SET_VARIABLE_TO_LAST_OUTPUT","properties":{"Variable name":"height"}}]
+
+[{"id":"IF_LOCAL_PLAYER_MATCHES","properties":{"Filter By":{"class":"Player","logic":"NONE","type":"IS_NOT_INTERACTING","operator":"EQUALS","filters":[{"class":"Player","logic":"AND","type":"MODEL_HEIGHT","operator":"LESS_THAN_OR_EQUAL","value":"200"}]
+
+[{"id":"IF_INVENTORY_COUNT","properties":{"count":{"class":"Number","operator":"GREATER_THAN","value":"0"},"Filter Item By":{"class":"Item","logic":"NONE","type":"NAME","operator":"EQUALS","value":"Broad bolts"}},"children":[{"id":"SET_VARIABLE_TO_LAST_OUTPUT","properties":{"Variable name":"bolt_count"}}]
+
+[{"id":"IF_INVENTORY_HAS_CHANGED","children":[{"id":"SET_VARIABLE","properties":{"Value":"True","Variable name":"Live"}},{"id":"WHILE_VARIABLE_MATCHES","properties":{"Filter Value By":{"class":"Variable","logic":"NONE","type":"AS_TEXT","operator":"EQUALS","value":"True"},"Variable name":"Live"},"children":[{"id":"IF_INVENTORY_CONTAINS_ANY","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"IN_INVENTORY","operator":"EQUALS","filters":[{"class":"Item","logic":"AND","type":"IS_NOT_VARIABLE_VALUE","operator":"EQUALS","value":"v(Items)"}]
+
+[{"id":"ADD_LAST_OUTPUT_TO_LIST","properties":{"List name":"Items"}}]
+
+[{"id":"SET_VARIABLE","properties":{"Value":"False","Variable name":"Live"}}]
+
+[{"id":"IF_INVENTORY_CONTAINS_ANY","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"IN_INVENTORY","operator":"EQUALS","filters":[{"class":"Item","logic":"AND","type":"IS_NOT_VARIABLE_VALUE","operator":"EQUALS","value":"v(Items)"}]
+
+[{"id":"ADD_LAST_OUTPUT_TO_LIST","properties":{"List name":"Items"}}]
+
+[{"id":"CUSTOM_ACTION","properties":{"id":"ba162512-223c-41a9-ae5d-8565e499d1d7","Description":"Enter time in miliseconds","Parameters":"time","Name":"Timer","Fail by default":true},"children":[{"id":"IF_VARIABLE_IS_NOT_SET","properties":{"Variable name":"time3"},"children":[{"id":"SET_VARIABLE","properties":{"Value":"p(time)","Variable name":"time3"}}]
+
+[{"id":"SET_VARIABLE_TO_CURRENT_TIME","properties":{"Variable name":"time1"}}]
+
+[{"id":"SUBTRACT_FROM_VARIABLE","properties":{"Variable name":"time2","By":"v(time1)"}}]
+
+[{"id":"DELETE_VARIABLE","properties":{"Variable name":"time1"}},{"id":"DELETE_VARIABLE","properties":{"Variable name":"time3"},"children":[{"id":"_CUSTOM_ACTION_RETURN_TRUE"}]
+
+[{"id":"IF_LOCAL_PLAYER_MATCHES","properties":{"Filter By":{"class":"Player","logic":"NONE","type":"IS_NOT_INTERACTING","operator":"EQUALS","filters":[{"class":"Player","logic":"AND","type":"NOT_MOVING","operator":"EQUALS"},{"class":"Player","logic":"AND","type":"NOT_ANIMATING","operator":"EQUALS"}]
+
+[{"id":"GAME_OBJECT_INTERACT","properties":{"Filter Object By":{"class":"GameObject","logic":"NONE","type":"NAME","operator":"EQUALS","value":"v(tree)","filters":[{"class":"GameObject","logic":"AND","type":"IN_AREA","operator":"EQUALS","value":"v(harvestarea)"}]
+
+[{"id":"ADD_INVENTORY_ITEMS_TO_LIST","properties":{"List name":"listsell"}},{"id":"IF_VARIABLE_IS","properties":{"Filter Value By":{"class":"Variable","logic":"NONE","type":"AS_TEXT","operator":"EQUALS","value":"true"},"Variable name":"selllogs"},"children":[{"id":"FOR_EACH_IN_LIST","properties":{"Reverse order":false,"List name":"listsell"},"children":[{"id":"SET_TO_LAST_MATCHING_ITEM_NAME","properties":{"Variable name":"itemsell"}},{"id":"SELL_ALL_OF_MATCHING_ITEM_GRAND_EXCHANGE","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"NAME","operator":"EQUALS","value":"v(itemsell)"},"Price":"1"},"children":[{"id":"DELETE_VARIABLE","properties":{"Variable name":"itemsell"}},{"id":"SLEEP_NORMAL_DISTRIBUTION","properties":{"Mean":"1500","Variance":"200"}},{"id":"COLLECT_TO_BANK_GRAND_EXCHANGE"}]
+
+[{"id":"COMMENT","properties":{"Comment":"Leveling Notifs"},"children":[{"id":"SET_TO_LOCAL_PLAYER_REAL_SKILL_LEVEL","properties":{"Skill":{"class":"Skill","value":"WOODCUTTING"},"Variable name":"current_woodcutting"}},{"id":"IF_VARIABLE_IS_NOT_SET","properties":{"Variable name":"starting_woodcutting"},"children":[{"id":"SET_VARIABLE","properties":{"Value":"v(current_woodcutting)","Variable name":"starting_woodcutting"}}]
+
+[{"id":"CUSTOM_5e4d6930-7532-4850-b4d8-fa561862ef84","properties":{"vName":"level_singleton"},"children":[{"id":"SET_VARIABLE_TO_LOCAL_NAME","properties":{"Variable name":"name"}},{"id":"SEND_DISCORD_WEBHOOK","properties":{"Message":"v(name) hit v(current_woodcutting) woodcutting","URL":"v(webhook_url)"}},{"id":"SET_VARIABLE","properties":{"Value":"v(current_woodcutting)","Variable name":"starting_woodcutting"}}]
+
+[{"id":"DELETE_VARIABLE","properties":{"Variable name":"level_singleton"}}]
+
+[{"id":"IF_WIDGET_EXISTS","properties":{"Find Widget By":{"class":"Widget","logic":"NONE","type":"WIDGET_ID","operator":"EQUALS","value":"160, 20","filters":[{"class":"Widget","logic":"AND","type":"TEXT","operator":"GREATER_THAN_OR_EQUAL"}]
+
+[{"id":"SET_VARIABLE","properties":{"Value":"308","Variable name":"world"}},{"id":"IF_WORLD_MATCHES","properties":{"Filter World By":{"class":"World","logic":"NONE","type":"ID","operator":"DOES_NOT_EQUAL","value":"v(world)"}},"children":[{"id":"HOP_TO_WORLD","properties":{"World":"v(world)","Ignore combat check":false}}]
+
+[{"id":"IF_WIDGET_EXISTS","properties":{"Find Widget By":{"class":"Widget","logic":"NONE","type":"WIDGET_ID","operator":"EQUALS","value":"162, 56, 0"}},"children":[{"id":"SET_TO_WIDGET_TEXT","properties":{"Variable name":"Text_Chat"}}]
+
+[{"id":"WALK_TO_AREA","properties":{"Area":"(3145, 3499, 0), (3150, 3479, 0)"}}]
+
+[{"id":"IF_VARIABLE_IS_NOT_SET","properties":{"Variable name":"farmingList2"},"children":[{"id":"ADD_FILE_LINES_TO_LIST","properties":{"List name":"farmingList2","File":"C:\\Users\\HossGaming\\DreamBot\\Scripts\\Pandemic\u0027s Script Creator\\lists\\farmRunInvent.txt"}}]
+
+[{"id":"ADD_INVENTORY_ITEMS_TO_LIST","properties":{"List name":"currentInventList"}}]
+
+[{"id":"IF_INVENTORY_HAS_CHANGED","children":[{"id":"DELETE_VARIABLE","properties":{"Variable name":"currentInventList"}}]
+
+[{"id":"IF_VARIABLE_IS_SET","properties":{"Variable name":"farmingList2"},"children":[{"id":"FOR_EACH_IN_LIST","properties":{"List name":"farmingList2","Reverse order":false},"children":[{"id":"SET_TO_LAST_MATCHING_ITEM_AMOUNT","properties":{"Variable name":"lastAmount"}},{"id":"SET_TO_LAST_MATCHING_ITEM_ID","properties":{"Variable name":"lastID"},"children":[{"id":"BANK_WITHDRAW_ITEM","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"ID","operator":"EQUALS","value":"v(lastID)"},"Amount":"v(lastAmount)"}}]
+
+[{"id":"LOG","properties":{"Message":"We can farm"}}]
+
+[{"id":"IF_FIRST_RUN","children":[{"id":"ADD_ALL_TO_LIST","properties":{"List name":"Player List","Value":"PlayerA,PlayerB,PlayerC"}}]
+
+[{"id":"SET_VARIABLE_TO_LAST_OUTPUT","properties":{"Variable name":"Player Name"}},{"id":"FOR_EACH_IN_LIST","properties":{"Reverse order":false,"List name":"Widget List"},"children":[{"id":"IF_VALUE_IS","properties":{"Value":"lastOutput()","Filter By":{"class":"Variable","logic":"NONE","type":"AS_TEXT","operator":"CONTAINS","value":"var(Player Name)"}},"children":[{"id":"SET_VARIABLE","properties":{"Value":"lastOutput()","Variable name":"Widget"}},{"id":"GO_TO_LABEL","properties":{"Label":"Finished"}}]
+
+[{"id":"LOG","properties":{"Message":"Found the best player widget: var(Widget)"}}]
+
+[{"id":"IF_PLAYER_EXISTS","properties":{"Filter Player By":{"class":"Player","logic":"NONE","type":"NAME","operator":"EQUALS","value":"workless","filters":[{"class":"Player","logic":"AND","type":"LEVEL","operator":"GREATER_THAN_OR_EQUAL","value":"3"}]
+
+[{"id":"SET_VARIABLE_TO_LAST_OUTPUT","properties":{"Variable name":"level"}}]
+
+[{"id":"ADD_FILE_LINES_TO_LIST","properties":{"List name":"Name List","File":"file path"},"children":[{"id":"FOR_EACH_IN_LIST","properties":{"Reverse order":false,"List name":"Name List"},"children":[{"id":"COMMENT","properties":{"Comment":"Inside this loop, the last action output would be a single name"}},{"id":"COMMENT","properties":{"Comment":"so you can use lastOutput() when you go to type or whatever"}},{"id":"LOG","properties":{"Message":"Trying name: lastOutput()"}},{"id":"COMMENT","properties":{"Comment":"Instead of \"If value matches\" below, it\u0027d be if you successfully use the name"}},{"id":"COMMENT","properties":{"Comment":"or whatever else you\u0027re doing, once you find a name that works you \"Break out of loop\" so it"}},{"id":"COMMENT","properties":{"Comment":"stop going through the names"}},{"id":"IF_VALUE_IS","properties":{"Value":"lastOutput()","Filter By":{"class":"Variable","logic":"NONE","type":"AS_TEXT","operator":"EQUALS","value":"Some Name You Want"}},"children":[{"id":"BREAK_OUT_OF_LOOP"}]
+
+[{"id":"IF_NOT_LOGGED_IN","children":[{"id":"ENABLE_LOGIN_SOLVER"}]
+
+[{"id":"SLEEP_BETWEEN","properties":{"Minimum":"3243","Maximum":"8234"}},{"id":"IF_WIDGET_EXISTS","properties":{"Find Widget By":{"class":"Widget","logic":"NONE","type":"WIDGET_ID","operator":"EQUALS","value":"558, 7"}}},{"id":"WIDGET_INTERACT","properties":{"Action":"Enter name","Find Widget By":{"class":"Widget","logic":"NONE","type":"WIDGET_ID","operator":"EQUALS","value":"558, 7"}},"children":[{"id":"SLEEP_BETWEEN","properties":{"Minimum":"2341","Maximum":"4312"}},{"id":"SLEEP_UNTIL_GAME_TICK","children":[{"id":"ADD_FILE_LINES_TO_LIST","properties":{"List name":"Acc","File":"C:\\Users\\Sirac\\DreamBot\\Scripts\\Pandemic\u0027s Script Creator\\files\\AccNames.txt"},"children":[{"id":"FOR_EACH_IN_LIST","properties":{"Reverse order":false,"List name":"Acc"},"children":[{"id":"COMMENT","properties":{"Comment":"Inside this loop, the last action output would be a single name"},"children":[{"id":"TYPE_MESSAGE","properties":{"Message":"lastOutput()"}}]
+
+[{"id":"BREAK_OUT_OF_LOOP"},{"id":"WIDGET_INTERACT","properties":{"Action":"Look up name","Find Widget By":{"class":"Widget","logic":"NONE","type":"WIDGET_ID","operator":"EQUALS","value":"558, 18"}}},{"id":"SLEEP_UNTIL_GAME_TICK"}]
+
+[{"id":"CORE","children":[{"id":"IF_FIRST_RUN","children":[{"id":"ADD_TO_LIST","properties":{"List name":"finished_world_list","Value":"329"}}]
+
+[{"id":"IF_WORLD_MATCHES","properties":{"Filter World By":{"class":"World","logic":"NONE","type":"WORLD_IS_MEMBERS","operator":"EQUALS"}},"children":[{"id":"SET_VARIABLE_TO_LAST_OUTPUT","properties":{"Variable name":"last_world"},"children":[{"id":"IF_LIST_DOES_NOT_CONTAIN_VARIABLE_VALUE","properties":{"List name":"finished_world_list","Variable name":"last_world"},"children":[{"id":"ADD_TO_LIST","properties":{"List name":"finished_world_list","Value":"v(last_world)"}}]
+
+[{"id":"SLEEP_WHILE_WORLD_HOPPING"}]
+
+[{"id":"IF_BANK_IS_OPEN","children":[{"id":"IF_WIDGET_EXISTS","properties":{"Find Widget By":{"class":"Widget","logic":"NONE","type":"WIDGET_ID","operator":"EQUALS","value":"12,5"}},"children":[{"id":"SET_TO_WIDGET_TEXT","properties":{"Variable name":"used_space"}}]
+
+[{"id":"SET_TO_WIDGET_TEXT","properties":{"Variable name":"available_space"}}]
+
+[{"id":"IF_NPC_EXISTS","properties":{"Filter NPC By":{"class":"NPC","logic":"NONE","type":"NAME","operator":"EQUALS"}},"children":[{"id":"SET_VARIABLE_TO_LAST_OUTPUT","properties":{"Variable name":"my_entity"}}]
+
+[{"id":"IF_VARIABLE_IS_SET","properties":{"Variable name":"target_dragon"}},{"id":"AND_BRANCH"},{"id":"IF_NPC_DOES_NOT_EXIST","properties":{"Filter NPC By":{"class":"NPC","logic":"NONE","type":"IS_VARIABLE_VALUE","operator":"EQUALS","value":"target_dragon"}},"children":[{"id":"ADD_TO_VARIABLE","properties":{"Variable name":"kill_count","By":"1"}},{"id":"DELETE_VARIABLE","properties":{"Variable name":"target_dragon"}}]
+
+[{"id":"GAME_OBJECT_INTERACT","properties":{"Don\u0027t walk to object":false,"Action":"Mine","Filter Object By":{"class":"GameObject","logic":"NONE","type":"NAME","operator":"EQUALS","value":"Rune Essence"},"Force left click":false}},{"id":"NPC_INTERACT","properties":{"Filter NPC By":{"class":"NPC","logic":"NONE","type":"NAME","operator":"CONTAINS","value":"Portal"},"Don\u0027t walk to NPC":false}}]
+
+[{"id":"CUSTOM_ACTION","children":[{"id":"IF_INVENTORY_COUNT","properties":{"count":{"class":"Number","operator":"DOES_NOT_EQUAL","value":"9"},"Filter Item By":{"class":"Item","logic":"NONE","type":"ID","operator":"EQUALS","value":"1517"}},"children":[{"id":"IF_GAME_OBJECT_EXISTS","properties":{"Filter Object By":{"class":"GameObject","logic":"NONE","type":"ID","operator":"EQUALS","value":"10832"}},"children":[{"id":"GAME_OBJECT_INTERACT","properties":{"Filter Object By":{"class":"GameObject","logic":"NONE","type":"ID","operator":"EQUALS","value":"10832"},"Force left click":false,"Don\u0027t walk to object":false},"children":[{"id":"SLEEP_WHILE_ANIMATING"}]
+
+[{"id":"IF_INVENTORY_COUNT","properties":{"count":{"class":"Number","operator":"EQUALS","value":"9"},"Filter Item By":{"class":"Item","logic":"NONE","type":"ID","operator":"EQUALS","value":"1517"}},"children":[{"id":"SET_VARIABLE","properties":{"Value":"False","Variable name":"Chop_Maple"}}]
+
+[{"id":"IF_INVENTORY_COUNT","properties":{"count":{"class":"Number","operator":"DOES_NOT_EQUAL","value":"9"},"Filter Item By":{"class":"Item","logic":"NONE","type":"ID","operator":"EQUALS","value":"1517"}},"children":[{"id":"IF_GAME_OBJECT_EXISTS","properties":{"Filter Object By":{"class":"GameObject","logic":"NONE","type":"ID","operator":"EQUALS","value":"10832"}},"children":[{"id":"GAME_OBJECT_INTERACT","properties":{"Filter Object By":{"class":"GameObject","logic":"NONE","type":"ID","operator":"EQUALS","value":"10832"},"Force left click":false,"Don\u0027t walk to object":false},"children":[{"id":"SLEEP_WHILE_ANIMATING"}]
+
+[{"id":"DROP_ALL_MATCHING_ITEMS","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"ID","operator":"EQUALS","value":"1517"}}}]
+
+[{"id":"COMMENT","properties":{"Comment":"Level up widget fix"},"children":[{"id":"IF_WIDGET_EXISTS","properties":{"Find Widget By":{"class":"Widget","logic":"NONE","type":"WIDGET_ID","operator":"EQUALS","value":"233, 1","filters":[{"class":"Widget","logic":"AND","type":"TEXT","operator":"CONTAINS","value":"Congratulations"}]
+
+[{"id":"PRESS_SPACEBAR"}]
+
+[{"id":"IF_VARIABLE_IS_NOT_SET","properties":{"Variable name":"skip_level_up_notification"},"children":[{"id":"IF_TAB_IS_NOT_OPEN","properties":{"Tab":{"class":"Tab","value":"OPTIONS"}},"children":[{"id":"OPEN_TAB","properties":{"Tab":{"class":"Tab","value":"OPTIONS"}}}]
+
+[{"id":"WIDGET_INTERACT","properties":{"Find Widget By":{"class":"Widget","logic":"NONE","type":"WIDGET_ID","operator":"EQUALS","value":"116, 32, 9"}}}]
+
+[{"id":"IF_WIDGET_EXISTS","customDisplayName":"If Disable level up interface exists","properties":{"Find Widget By":{"class":"Widget","logic":"NONE","type":"TEXT","operator":"EQUALS","value":"Disable level-up interface"}},"children":[{"id":"IF_WIDGET_EXISTS","properties":{"Find Widget By":{"class":"Widget","logic":"NONE","type":"WIDGET_ID","operator":"EQUALS","value":"134, 18, 41","filters":[{"class":"Widget","logic":"AND","type":"TEXTURE_ID","operator":"EQUALS","value":"2847"}]
+
+[{"id":"SET_VARIABLE","properties":{"Value":"false","Variable name":"skip_level_up_notification"}}]
+
+[{"id":"SET_VARIABLE","properties":{"Value":"true","Variable name":"skip_level_up_notification"}}]
+
+[{"id":"WIDGET_INTERACT","properties":{"Find Widget By":{"class":"Widget","logic":"NONE","type":"WIDGET_ID","operator":"EQUALS","value":"134, 24, 68"}}}]
+
+[{"id":"IF_VARIABLE_IS_NOT_SET","properties":{"Variable name":"skip_level_up_notification"},"children":[{"id":"IF_TAB_IS_NOT_OPEN","properties":{"Tab":{"class":"Tab","value":"OPTIONS"}},"children":[{"id":"OPEN_TAB","properties":{"Tab":{"class":"Tab","value":"OPTIONS"}}}]
+
+[{"id":"WIDGET_INTERACT","properties":{"Find Widget By":{"class":"Widget","logic":"NONE","type":"WIDGET_ID","operator":"EQUALS","value":"116, 32, 9"}}}]
+
+[{"id":"IF_WIDGET_EXISTS","customDisplayName":"If Disable level up interface exists","properties":{"Find Widget By":{"class":"Widget","logic":"NONE","type":"TEXT","operator":"EQUALS","value":"Disable level-up interface"}},"children":[{"id":"IF_WIDGET_EXISTS","properties":{"Find Widget By":{"class":"Widget","logic":"NONE","type":"WIDGET_ID","operator":"EQUALS","value":"134, 18, 33","filters":[{"class":"Widget","logic":"AND","type":"TEXTURE_ID","operator":"EQUALS","value":"2847"}]
+
+[{"id":"SET_VARIABLE","properties":{"Value":"false","Variable name":"skip_level_up_notification"}}]
+
+[{"id":"SET_VARIABLE","properties":{"Value":"true","Variable name":"skip_level_up_notification"}}]
+
+[{"id":"WIDGET_INTERACT","properties":{"Find Widget By":{"class":"Widget","logic":"NONE","type":"WIDGET_ID","operator":"EQUALS","value":"134, 24, 68"}}}]
+
+[{"id":"WIDGET_INTERACT","properties":{"Action":"toggle","Find Widget By":{"class":"Widget","logic":"NONE","type":"WIDGET_ID","operator":"EQUALS","value":"134, 18, 33"}}}]
+
+[{"id":"COMMENT","properties":{"Comment":"Find all raw food in bank"},"children":[{"id":"ADD_BANK_ITEMS_TO_LIST","properties":{"List name":"temp"},"children":[{"id":"FOR_EACH_IN_LIST","properties":{"List name":"temp"},"children":[{"id":"SET_VARIABLE_TO_LAST_OUTPUT","properties":{"Variable name":"item"}},{"id":"SET_TO_VARIABLE_ITEM_NAME","properties":{"To variable":"item_name","From variable":"item"}},{"id":"IF_VARIABLE_IS","properties":{"Filter Value By":{"class":"Variable","logic":"NONE","type":"AS_TEXT","operator":"CONTAINS","value":"Raw"},"Variable name":"item_name"},"children":[{"id":"ADD_TO_LIST","properties":{"List name":"raw_food","Value":"v(item)"}}]
+
+[{"id":"IF_GRAPHICS_OBJECT_EXISTS","customDisplayName":"If rockfall is on our tile","properties":{"Filter By":{"class":"GraphicsObject","logic":"NONE","type":"ID","operator":"EQUALS","value":"2644","filters":[{"class":"GraphicsObject","logic":"AND","type":"IS_UNDER_PLAYER","operator":"EQUALS"}]
+
+[{"id":"WALK_TO_AREA","properties":{"Area":"v(player_area)"}}]
+
+[{"id":"IF_VARIABLE_IS","customDisplayName":"If last widget number is multiple of 3","properties":{"Filter Value By":{"class":"Variable","logic":"NONE","type":"AS_NUMBER","operator":"IS_IN_LIST","value":"list(WidgetIDs)"},"Variable name":"iteration"},"children":[{"id":"IF_WIDGET_EXISTS","customDisplayName":"If friend on friends list exists","properties":{"Find Widget By":{"class":"Widget","logic":"NONE","type":"WIDGET_ID","operator":"EQUALS","value":"429, 11, var(iteration)"}},"children":[{"id":"SET_TO_WIDGET_TEXT","properties":{"Variable name":"name"}}]
+
+[{"id":"IF_PLAYER_EXISTS","properties":{"Filter Player By":{"class":"Player","logic":"NONE","type":"NAME","operator":"EQUALS","value":"var(name)"}}}]
+
+[{"id":"IF_NPC_EXISTS","properties":{"Filter NPC By":{"class":"NPC","logic":"NONE","type":"DISTANCE_TO_PLAYER","operator":"LESS_THAN","value":"2","filters":[{"class":"NPC","logic":"AND","type":"NAME","operator":"EQUALS","value":"Test"}]
+
+[{"id":"NPC_INTERACT","properties":{"Filter NPC By":{"class":"NPC","logic":"NONE","type":"IS_LAST_OUTPUT","operator":"EQUALS"},"Don\u0027t walk to NPC":false}}]
+
+[{"id":"NPC_INTERACT","properties":{"Force left click":false,"Filter NPC By":{"class":"NPC","logic":"NONE","type":"NAME","operator":"EQUALS","value":"blah","filters":[{"class":"NPC","logic":"AND","type":"DISTANCE_TO_PLAYER","operator":"LESS_THAN","value":"2"}]
+
+[{"id":"COMMENT","properties":{"Comment":"There was an entity and we interacted with them"}}]
+
+[{"id":"COMMENT","properties":{"Comment":"NPC didn\u0027t exist"}}]
+
+[{"id":"IF_WIDGET_EXISTS","properties":{"Find Widget By":{"class":"Widget","logic":"NONE","type":"WIDGET_ITEM_ID","operator":"EQUALS","value":"6311"}}}]
+
+[{"id":"ADD_PLAYERS_TO_LIST","properties":{"List name":"PlayerOnScreen","Filter By":{"class":"Player","logic":"NONE","type":"ON_SCREEN","operator":"EQUALS"}},"children":[{"id":"IF_PLAYER_EXISTS","properties":{"Filter Player By":{"class":"Player","logic":"NONE","type":"NAME","operator":"IS_IN_LIST","value":"PlayerOnScreen","filters":[{"class":"Player","logic":"AND","type":"CAN_ATTACK_ME","operator":"EQUALS"}]
+
+[{"id":"INTERACT_WITH_INVENTORY_ITEM","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"NAME","operator":"EQUALS","value":"Amulet of glory"},"Action":"Edgeville"}}]
+
+[{"id":"ADD_PLAYERS_TO_LIST","properties":{"List name":"PlayerOnScreen","Filter By":{"class":"Player","logic":"NONE","type":"ON_SCREEN","operator":"EQUALS"}},"children":[{"id":"IF_PLAYER_EXISTS","properties":{"Filter Player By":{"class":"Player","logic":"NONE","type":"NAME","operator":"IS_IN_LIST","value":"PlayerOnScreen","filters":[{"class":"Player","logic":"AND","type":"CAN_ATTACK_ME","operator":"EQUALS"}]
+
+[{"id":"WHILE_VARIABLE_MATCHES","properties":{"Filter Value By":{"class":"Variable","logic":"NONE","type":"AS_TEXT","operator":"EQUALS","value":"True"},"Variable name":"WildyCombat"},"children":[{"id":"IF_WILDERNESS_LEVEL_IS","properties":{"level":{"class":"Number","operator":"GREATER_THAN_OR_EQUALS","value":"30"}},"children":[{"id":"WALK_TO_TILE","properties":{"Tile":"3149, 3570, 3149, 3570"}}]
+
+[{"id":"INTERACT_WITH_INVENTORY_ITEM","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"NAME","operator":"EQUALS","value":"v(Food)"},"Action":"Eat"}}]
+
+[{"id":"SET_VARIABLE","properties":{"Value":"False","Variable name":"WildyCombat"}}]
+
+[{"id":"IF_GROUND_ITEM_EXISTS","properties":{"Filter Item By":{"class":"GroundItem","logic":"NONE","type":"IS_UNDER_PLAYER","operator":"EQUALS"}}}]
+
+[{"id":"IF_GRAPHICS_OBJECT_EXISTS","customDisplayName":"If rockfall is on our tile","properties":{"Filter By":{"class":"GraphicsObject","logic":"NONE","type":"ID","operator":"EQUALS","value":"2644","filters":[{"class":"GraphicsObject","logic":"AND","type":"IS_UNDER_PLAYER","operator":"EQUALS"}]
+
+[{"id":"WALK_TO_AREA","properties":{"Area":"v(player_area)"},"children":[{"id":"SLEEP_UNTIL_INSIDE_IS_TRUE","properties":{"Max time (seconds)":"2"},"children":[{"id":"IF_GRAPHICS_OBJECT_DOES_NOT_EXIST","properties":{"Filter By":{"class":"GraphicsObject","logic":"NONE","type":"TILE","operator":"EQUALS","value":"v(player_tile)"}}}]
+
+[{"id":"CORE","children":[{"id":"COMMENT","properties":{"Comment":"Map coordinates"},"children":[{"id":"SET_VARIABLE","properties":{"Value":"3234,9870,3243,9864","Variable name":"Varrock_sewer"}}]
+
+[{"id":"SET_VARIABLE","properties":{"Value":"3234,9870,3243,9864","Variable name":"Varrock_sewer"}}]
+
+[{"id":"WALK_TO_AREA","properties":{"Area":"v(Varrock_sewer)"}}]
+
+[{"id":"IF_BANK_CONTAINS","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"NAME","operator":"EQUALS"}},"children":[{"id":"IF_BANK_COUNT","properties":{"count":{"class":"Number","operator":"GREATER_THAN","value":"1"},"Filter Item By":{"class":"Item","logic":"NONE","type":"NAME","operator":"EQUALS","value":"Ashes"}},"children":[{"id":"SET_TO_LAST_MATCHING_ITEM_AMOUNT","properties":{"Variable name":"Ashes"}}]
+
+[{"id":"IF_VARIABLE_IS_NOT_SET","properties":{"Variable name":"list_test"},"children":[{"id":"ADD_ALL_TO_LIST","properties":{"List name":"list_test","Value":"Leather gloves,Adamant scimitar,Leather boots"}}]
+
+[{"id":"SET_VARIABLE_TO_LAST_OUTPUT","properties":{"Variable name":"item_check"}},{"id":"COMMENT","properties":{"Comment":"Equip item if in inventory"},"children":[{"id":"IF_INVENTORY_CONTAINS_ANY","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"NAME","operator":"EQUALS","value":"v(item_check)"}}},{"id":"AND_BRANCH"},{"id":"IF_EQUIPPED_ITEM_DOES_NOT_MATCH","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"NAME","operator":"EQUALS","value":"v(item_check)"}},"children":[{"id":"INTERACT_WITH_INVENTORY_ITEM","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"NAME","operator":"EQUALS","value":"v(item_check)"}}}]
+
+[{"id":"NPC_INTERACT","properties":{"Action":"Attack","Don\u0027t walk to NPC":false,"Force left click":false,"Filter NPC By":{"class":"NPC","logic":"NONE","type":"NAME","operator":"EQUALS","value":"Some NPC"}},"children":[{"id":"SET_VARIABLE_TO_LAST_OUTPUT","properties":{"Variable name":"NPC"}}]
+
+[{"id":"IF_NPC_EXISTS","properties":{"Filter NPC By":{"class":"NPC","logic":"NONE","type":"IS_VARIABLE_VALUE","operator":"EQUALS","value":"NPC"}},"children":[{"id":"NPC_INTERACT","properties":{"Action":"Attack","Don\u0027t walk to NPC":false,"Force left click":false,"Filter NPC By":{"class":"NPC","logic":"NONE","type":"IS_VARIABLE_VALUE","operator":"EQUALS","value":"NPC"}}}]
+
+[{"id":"CORE","children":[{"id":"IF_FIRST_RUN","children":[{"id":"SLEEP_UNTIL_INSIDE_IS_TRUE","children":[{"id":"IF_LOGGED_IN"}]
+
+[{"id":"SET_TO_LAST_MATCHING_ENTITY_NAME","properties":{"Variable name":"temp_player_name"}},{"id":"ADD_TO_LIST","properties":{"List name":"temp_options","Value":"v(temp_player_name)"}}]
+
+[{"id":"SET_VARIABLE_TO_LAST_OUTPUT","properties":{"Variable name":"target_player"}}]
+
+[{"id":"DRAW_ENTITY_OUTLINE","properties":{"Color":{"class":"Color","value":-52225},"Variable name":"target_player"}}]
+
+[{"id":"IF_GAME_MESSAGE_RECEIVED_MATCHES","properties":{"Filter Message":{"class":"Message","logic":"NONE","type":"TEXT","operator":"CONTAINS","value":"inside"}},"children":[{"id":"SET_VARIABLE_TO_LAST_OUTPUT","properties":{"Variable name":"this is my message"}}]
+
+[{"id":"IF_INVENTORY_COUNT","properties":{"count":{"class":"Number","operator":"GREATER_THAN","value":"-1"},"Filter Item By":{"class":"Item","logic":"NONE","type":"NAME","operator":"EQUALS","value":"my_item"}},"children":[{"id":"SET_VARIABLE_TO_LAST_OUTPUT","properties":{"Variable name":"my_item_count"}}]
+
+[{"id":"IF_BANK_COUNT","properties":{"count":{"class":"Number","operator":"GREATER_THAN","value":"-1"},"Filter Item By":{"class":"Item","logic":"NONE","type":"NAME","operator":"EQUALS","value":"my_item"}},"children":[{"id":"SET_VARIABLE_TO_LAST_OUTPUT","properties":{"Variable name":"my_item_count"}}]
+
+[{"id":"DELETE_VARIABLE","properties":{"Variable name":"temp_list"}},{"id":"ADD_NPCS_TO_LIST","properties":{"List name":"temp_list","Filter By":{"class":"NPC","logic":"NONE","type":"NAME","operator":"DOES_NOT_EQUAL"}}},{"id":"FOR_EACH_IN_LIST","properties":{"List name":"temp_list"},"children":[{"id":"SET_TO_LAST_MATCHING_ENTITY_TILE","properties":{"Variable name":"temp_tile"}}]
+
+[{"id":"DELETE_VARIABLE","properties":{"Variable name":"temp_list"}},{"id":"DELETE_VARIABLE","properties":{"Variable name":"temp_tile_list"}},{"id":"ADD_NPCS_TO_LIST","properties":{"List name":"temp_list","Filter By":{"class":"NPC","logic":"NONE","type":"NAME","operator":"DOES_NOT_EQUAL"}}},{"id":"FOR_EACH_IN_LIST","properties":{"List name":"temp_list"},"children":[{"id":"SET_TO_LAST_MATCHING_ENTITY_TILE","properties":{"Variable name":"temp_tile"},"children":[{"id":"ADD_TO_LIST","properties":{"List name":"temp_tile_list","Value":"v(temp_tile)"}}]
+
+[{"id":"IF_NPC_EXISTS","properties":{"Filter NPC By":{"class":"NPC","logic":"NONE","type":"NAME","operator":"EQUALS","value":"v(TargetImpling)"}},"children":[{"id":"CAST_SPELL","properties":{"Spell":{"class":"Normal","value":"Bind"},"Action":""}}]
+
+[{"id":"CAST_SPELL_ON_NPC","properties":{"Spell":{"class":"Normal","value":"Bind"},"Filter NPC By":{"class":"NPC","logic":"NONE","type":"IS_VARIABLE_VALUE","operator":"EQUALS","value":"TargetImpling"}}}]
+
+[{"id":"IF_NPC_EXISTS","properties":{"Filter NPC By":{"class":"NPC","logic":"NONE","type":"NAME","operator":"EQUALS","value":"v(TargetImpling)"}},"children":[{"id":"CAST_SPELL_ON_NPC","properties":{"Spell":{"class":"Normal","value":"Bind"},"Filter NPC By":{"class":"NPC","logic":"NONE","type":"NAME","operator":"EQUALS","value":"v(TargetImpling)","filters":[{"class":"NPC","logic":"AND","type":"IS_REACHABLE","operator":"EQUALS"}]
+
+[{"id":"CUSTOM_ACTION","properties":{"id":"93404ca0-ee3b-46c2-a5e5-e5096ef28ed3","Description":"","Parameters":"minTicks, maxTicks","Name":"OffensiveFlickQuickPrayers","Fail by default":false},"children":[{"id":"IF_LOCAL_PLAYER_MATCHES","properties":{"Filter By":{"class":"Player","logic":"NONE","type":"ANIMATING","operator":"EQUALS","filters":[{"class":"Player","logic":"AND","type":"IN_COMBAT","operator":"EQUALS"}]
+
+[{"id":"IF_QUICK_PRAYERS_ARE_NOT_ACTIVE","children":[{"id":"ENABLE_QUICK_PRAYERS","children":[{"id":"SLEEP_NORMAL_DISTRIBUTION","properties":{"Mean":"25","Variance":"5"}}]
+
+[{"id":"DISABLE_QUICK_PRAYERS","children":[{"id":"SLEEP_NORMAL_DISTRIBUTION","properties":{"Mean":"100","Variance":"5"}}]
+
+[{"id":"SLEEP_NORMAL_DISTRIBUTION","properties":{"Mean":"250","Variance":"100"}}]
+
+[{"id":"WIDGET_INTERACT","properties":{"Find Widget By":{"class":"Widget","logic":"NONE","type":"WIDGET_ID","operator":"EQUALS","value":"134, 11"}},"children":[{"id":"TYPE_MESSAGE_WITHOUT_ENTER","properties":{"Message":"Level"}}]
+
+[{"id":"SLEEP_UNTIL_GAME_TICK","children":[{"id":"WIDGET_INTERACT","properties":{"Action":"All Settings","Find Widget By":{"class":"Widget","logic":"NONE","type":"WIDGET_ID","operator":"EQUALS","value":"116, 32"}},"children":[{"id":"SLEEP_UNTIL_GAME_TICK"}]
+
+[{"id":"IF_WORLD_MATCHES","properties":{"Filter World By":{"class":"World","logic":"NONE","type":"ID","operator":"GREATER_THAN","value":"-1"}},"children":[{"id":"SET_VARIABLE_TO_LAST_OUTPUT","properties":{"Variable name":"World"}}]
+
+[{"id":"CORE","children":[{"id":"IF_VARIABLE_IS_NOT_SET","properties":{"Variable name":"Set up"},"children":[{"id":"SET_VARIABLE","properties":{"Value":"Not done","Variable name":"Set up"}}]
+
+[{"id":"IF_BANK_IS_NOT_OPEN","children":[{"id":"WALK_FULLY_TO_NEAREST_BANK","children":[{"id":"OPEN_BANK"}]
+
+[{"id":"IF_INVENTORY_IS_NOT_EMPTY","children":[{"id":"BANK_DEPOSIT_ALL","children":[{"id":"SLEEP_UNTIL_GAME_TICK","children":[{"id":"BANK_DEPOSIT_ALL_EQUIPMENT"}]
+
+[{"id":"BANK_WITHDRAW_ITEM","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"NAME","operator":"EQUALS","value":"Small fishing net"},"Amount":"1"},"children":[{"id":"CLOSE_BANK","children":[{"id":"SET_VARIABLE","properties":{"Value":"Done","Variable name":"Set up"}}]
+
+[{"id":"IF_THREAD_IS_NOT_RUNNING","properties":{"Thread name":"Tracker"},"children":[{"id":"START_NEW_THREAD","properties":{"Thread name":"Tracker","Repeat until stopped":true,"Sleep between runs (ms)":"0"},"children":[{"id":"DELETE_VARIABLE","properties":{"Variable name":"PickUpTruck"}},{"id":"ADD_GROUND_ITEMS_TO_LIST","properties":{"List name":"PickUpTruck","Filter By":{"class":"GroundItem","logic":"NONE","type":"LIVE_PRICE","operator":"GREATER_THAN_OR_EQUAL","value":"500","filters":[{"class":"GroundItem","logic":"AND","type":"IN_AREA","operator":"EQUALS","value":"3146, 3506, 3183, 3473"}]
+
+[{"id":"IF_VALUE_IS_NOT","properties":{"Value":"v(level_strength)","Filter By":{"class":"Variable","logic":"NONE","type":"AS_NUMBER","operator":"EQUALS","value":"v(level_attack)","filters":[{"class":"Variable","logic":"AND","type":"AS_NUMBER","operator":"EQUALS","value":"v(level_defence)"}]
+
+[{"id":"IF_INVENTORY_IS_NOT_FULL","children":[{"id":"IF_GAME_OBJECT_EXISTS","properties":{"Filter Object By":{"class":"GameObject","logic":"NONE","type":"NAME","operator":"EQUALS","value":"Willow tree"}},"children":[{"id":"GAME_OBJECT_INTERACT","properties":{"Don\u0027t walk to object":false,"Action":"Chop down","Filter Object By":{"class":"GameObject","logic":"NONE","type":"NAME","operator":"EQUALS","value":"Willow tree","filters":[{"class":"GameObject","logic":"AND","type":"IN_AREA","operator":"EQUALS","value":"(3086, 3233, 0), (3090, 3226, 0)"}]
+
+[{"id":"SLEEP_WHILE_ANIMATING"}]
+
+[{"id":"IF_EQUIPPED_ITEM_DOES_NOT_MATCH","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"NAME","operator":"EQUALS","value":"Magic shorbow"}},"children":[{"id":"FOR_EACH_IN_LIST","properties":{"Reverse order":false,"List name":"Gear","Random order":true},"children":[{"id":"BANK_WITHDRAW_ITEM","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"NAME","operator":"IS_IN_LIST","value":"list(Gear)"},"Amount":"1"},"children":[{"id":"REMOVE_LAST_OUTPUT_FROM_LIST","properties":{"List name":"Gear"},"children":[{"id":"INTERACT_WITH_INVENTORY_ITEM","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"NAME","operator":"IS_IN_LIST","value":"list(Gear)"},"Action":"Wield"}},{"id":"OR_BRANCH"},{"id":"INTERACT_WITH_INVENTORY_ITEM","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"NAME","operator":"IS_IN_LIST","value":"list(Gear)"},"Action":"Wear"}}]
+
+[{"id":"BREAK_OUT_OF_LOOP","children":[{"id":"CLOSE_BANK"}]
+
+[{"id":"CORE","properties":{"Sleep Between Runs (ms)":"500","Name":""},"children":[{"id":"IF_GAME_OBJECT_EXISTS","properties":{"Filter Object By":{"class":"GameObject","logic":"NONE","type":"ID","operator":"IS_IN_LIST","value":"10829, 10831"}},"children":[{"id":"GAME_OBJECT_INTERACT","properties":{"Don\u0027t walk to object":false,"Action":"Chop down","Filter Object By":{"class":"GameObject","logic":"NONE","type":"ID","operator":"IS_IN_LIST","value":"10829, 10831","filters":[{"class":"GameObject","logic":"AND","type":"IN_AREA","operator":"EQUALS","value":"(3089, 3233, 0), (3088, 3233, 0), (3087, 3233, 0), (3087, 3232, 0), (3088, 3232, 0), (3089, 3232, 0), (3089, 3231, 0), (3088, 3231, 0), (3087, 3231, 0), (3087, 3230, 0), (3088, 3230, 0), (3089, 3230, 0), (3089, 3229, 0), (3088, 3229, 0), (3087, 3229, 0), (3087, 3228, 0), (3088, 3228, 0), (3089, 3228, 0), (3089, 3227, 0), (3088, 3227, 0), (3090, 3227, 0), (3090, 3228, 0), (3090, 3229, 0), (3090, 3230, 0), (3090, 3231, 0), (3090, 3232, 0), (3090, 3233, 0), (3086, 3230, 0), (3086, 3229, 0), (3086, 3231, 0)"}]
+
+[{"id":"SLEEP_WHILE_ANIMATING"},{"id":"SLEEP_BETWEEN","properties":{"Minimum":"rand(30,300)","Maximum":"rand(40,400)"}}]
+
+[{"id":"DROP_ALL_MATCHING_ITEMS","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"ID","operator":"EQUALS","value":"1519"}},"children":[{"id":"IF_INVENTORY_IS_NOT_FULL"}]
+
+[{"id":"DRAW_TEXT","customDisplayName":"Level Gain","properties":{"Font Size":"15","X":"10","Y":"195","Text":"Levels Gained: levelGain(Woodcutting)","Font":{"class":"Font","value":"Inter V"},"Color":{"class":"Color","value":-16711936}}},{"id":"DRAW_TEXT","properties":{"X":"10","Font Size":"15","Y":"210","Text":"TTL: timeToLevel(Woodcutting)","Font":{"class":"Font","value":"Inter V"},"Color":{"class":"Color","value":-16711936}}},{"id":"DRAW_TEXT","properties":{"X":"10","Font Size":"15","Y":"225","Text":"XP Gained: expGain(Woodcutting)","Font":{"class":"Font","value":"Inter V"},"Color":{"class":"Color","value":-16711936}}},{"id":"DRAW_TEXT","properties":{"Font":{"class":"Font","value":"Inter V"},"Color":{"class":"Color","value":-1}}}]
+
+[{"id":"IF_FIRST_RUN","children":[{"id":"ADD_ALL_TO_LIST","properties":{"List name":"Gear","Value":"Magic shortbow,Studded chaps,Studded body,Ava\u0027s attractor,Snakeskin boots,Coif"}}]
+
+[{"id":"FOR_EACH_IN_LIST","properties":{"Reverse order":false,"List name":"Gear"},"children":[{"id":"SET_VARIABLE_TO_LAST_OUTPUT","properties":{"Variable name":"Item"},"children":[{"id":"REMOVE_LAST_OUTPUT_FROM_LIST","properties":{"List name":"Gear"},"children":[{"id":"BANK_WITHDRAW_ITEM","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"NAME","operator":"EQUALS","value":"v(Item)"},"Amount":"1"}}]
+
+[{"id":"DELETE_VARIABLE","properties":{"Variable name":"Item"}}]
+
+[{"id":"IF_BANK_IS_CACHED","children":[{"id":"IF_BANK_CONTAINS","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"NAME","operator":"EQUALS"}},"children":[{"id":"SET_TO_LAST_MATCHING_ITEM_AMOUNT"}]
+
+[{"id":"IF_LOCAL_PLAYER_MATCHES","properties":{"Filter By":{"class":"Player","logic":"NONE","type":"ANIMATING","operator":"EQUALS","filters":[{"class":"Player","logic":"OR","type":"MOVING","operator":"EQUALS"}]
+
+[{"id":"SET_VARIABLE_TO_RANDOM","properties":{"Minimum":"1","Maximum":"10000","Variable name":"RandomCamera"},"children":[{"id":"IF_VARIABLE_IS","properties":{"Filter Value By":{"class":"Variable","logic":"NONE","type":"AS_NUMBER","operator":"EQUALS","value":"500"},"Variable name":"RandomCamera"},"children":[{"id":"ROTATE_CAMERA_RANDOMLY"}]
+
+[{"id":"SET_VARIABLE_TO_RANDOM","properties":{"Minimum":"1","Maximum":"160","Variable name":"RandomInventory"},"children":[{"id":"IF_VARIABLE_IS","properties":{"Filter Value By":{"class":"Variable","logic":"NONE","type":"AS_NUMBER","operator":"LESS_THAN","value":"30"},"Variable name":"RandomInventory"},"children":[{"id":"SET_INTERACTION_ORDER","properties":{"Random":true}}]
+
+[{"id":"RESET_INTERACTION_ORDER"}]
+
+[{"id":"CREATE_LABEL","properties":{"Label":"Dropfish"},"children":[{"id":"IF_INVENTORY_IS_FULL","children":[{"id":"DROP_ITEM_MATCHING","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"NAME","operator":"EQUALS","value":"feesh"}},"children":[{"id":"SLEEP_NORMAL_DISTRIBUTION","properties":{"Mean":"2300","Variance":"666"}},{"id":"GO_TO_LABEL","properties":{"Label":"Dropfish"}}]
+
+[{"id":"CREATE_LABEL","properties":{"Label":"Cutfish"},"children":[{"id":"IF_INVENTORY_CONTAINS_ANY","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"NAME","operator":"EQUALS","value":"feesh"}},"children":[{"id":"IF_INVENTORY_CONTAINS_ANY","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"NAME","operator":"EQUALS","value":"Knife"}},"children":[{"id":"INTERACT_WITH_INVENTORY_ITEM","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"NAME","operator":"EQUALS","value":"Knife"},"Force left click":true,"Action":"Use"},"children":[{"id":"SLEEP_NORMAL_DISTRIBUTION","properties":{"Mean":"1000","Variance":"700"}}]
+
+[{"id":"SLEEP_NORMAL_DISTRIBUTION","properties":{"Mean":"1000","Variance":"700"}}]
+
+[{"id":"RETURN_TO_START_OF_SCRIPT"}]
+
+[{"id":"GO_TO_LABEL","properties":{"Label":"Cutfish"}}]
+
+[{"id":"IF_INVENTORY_IS_NOT_EMPTY","children":[{"id":"BANK_DEPOSIT_ALL","children":[{"id":"IF_BANK_CONTAINS","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"ID","operator":"EQUALS","value":"1995"}},"children":[{"id":"SET_VARIABLE_TO_LAST_OUTPUT","properties":{"Variable name":"1bankedWines"},"children":[{"id":"SET_TO_VARIABLE_ITEM_AMOUNT","properties":{"To variable":"bankedWines","From variable":"1bankedWines"},"children":[{"id":"SET_VARIABLE","properties":{"Value":"mul(var(bankedWines), 200)","Variable name":"bankedXP"},"children":[{"id":"SET_TO_LOCAL_PLAYER_BOOSTED_SKILL_LEVEL","properties":{"Skill":{"class":"Skill","value":"COOKING"},"Variable name":"levelCook"}}]
+
+[{"id":"CUSTOM_ACTION","properties":{"id":"e7889949-c7d5-4cdb-8f10-d25eb839ef97","Description":"If player is not at the grand exchange it will walk there.","Parameters":"","Name":"Grand Exchange \u003e GE Walker","Fail by default":false},"children":[{"id":"IF_LOCAL_PLAYER_MATCHES","customDisplayName":"If our player is not at the GE","properties":{"Filter By":{"class":"Player","logic":"NONE","type":"NOT_IN_AREA","operator":"EQUALS","value":"v(GRAND_EXCHANGE)"}},"children":[{"id":"WALK_FULLY_TO_SPECIFIC_BANK","customDisplayName":"Walk to Grand Exchange bank","properties":{"Bank":{"class":"BankLocation","value":"GRAND_EXCHANGE"}}}]
+
+[{"id":"SET_VARIABLE_TO_SCRIPT_RUNTIME","properties":{"Variable name":"RT"},"children":[{"id":"IF_VARIABLE_IS","properties":{"Filter Value By":{"class":"Variable","logic":"NONE","type":"AS_TEXT","operator":"EQUALS","value":"03:00:00"},"Variable name":"RT"},"children":[{"id":"LOGOUT"},{"id":"DISABLE_LOGIN_SOLVER","children":[{"id":"START_TIMER","properties":{"Timer name":"break","Time":"00:20:00"},"children":[{"id":"SLEEP_UNTIL_INSIDE_IS_TRUE","properties":{"Max time (seconds)":"1200"},"children":[{"id":"IF_TIMER_IS_FINISHED","properties":{"Timer name":"break"}},{"id":"ENABLE_LOGIN_SOLVER"}]
+
+[{"id":"NPC_INTERACT","properties":{"Force left click":false,"Filter NPC By":{"class":"NPC","logic":"NONE","type":"WE_ARE_NOT_INTERACTING","operator":"EQUALS","filters":[{"class":"NPC","logic":"AND","type":"IS_INTERACTING_WITH_ME","operator":"EQUALS"}]
+
+[{"id":"COMMENT","properties":{"Comment":"Singleton Structure for instances"},"children":[{"id":"SET_VARIABLE_TO_BASE_X","properties":{"Variable name":"baseX"}},{"id":"IF_VARIABLE_HAS_CHANGED","properties":{"Variable name":"baseX"},"children":[{"id":"DELETE_VARIABLE","properties":{"Variable name":"my_monster_tile"}}]
+
+[{"id":"IF_NPC_EXISTS","properties":{"Filter NPC By":{"class":"NPC","logic":"NONE","type":"NAME","operator":"EQUALS","value":"my_npc"}},"children":[{"id":"SET_TO_LAST_MATCHING_ENTITY_TILE","properties":{"Variable name":"my_monster_tile"}}]
+
+[{"id":"ADD_ALL_TO_LIST","properties":{"List name":"Numbers","Value":"5,10,2,1,18,2000,3"}},{"id":"SET_VARIABLE","properties":{"Value":"0","Variable name":"Highest"}},{"id":"FOR_EACH_IN_LIST","properties":{"Reverse order":false,"List name":"Numbers"},"children":[{"id":"IF_VALUE_IS","properties":{"Value":"lastOutput()","Filter By":{"class":"Variable","logic":"NONE","type":"AS_NUMBER","operator":"GREATER_THAN","value":"var(Highest)"}},"children":[{"id":"SET_VARIABLE","properties":{"Value":"lastOutput()","Variable name":"Highest"}}]
+
+[{"id":"START_NEW_THREAD","properties":{"Thread name":"ChatHandler","Sleep between runs (ms)":"500","Repeat until stopped":true},"children":[{"id":"IF_GAME_MESSAGE_RECEIVED_MATCHES","properties":{"Filter Message":{"class":"Message","logic":"NONE","type":"TEXT","operator":"CONTAINS"}},"children":[{"id":"SET_VARIABLE","properties":{"Value":"lastOutput()","Variable name":"ChatOutput"},"children":[{"id":"LOG","properties":{"Message":"v(ChatOutput)"}},{"id":"EXTRACT_VARIABLES_FROM_REGEX","properties":{"Regex":"\\[TRADE\\] (\\w+): ","To variable":"Trade","From variable":"ChatOutput"},"children":[{"id":"LOG","properties":{"Message":"Trade"}},{"id":"TRADE_PLAYER","properties":{"Filter Player By":{"class":"Player","logic":"NONE","type":"NAME","operator":"CONTAINS","value":"v(Trade[0])"}},"children":[{"id":"DELETE_VARIABLES","properties":{"Variable names":"Trade,Trade[0]"},"children":[{"id":"LOG","properties":{"Message":"Deleted Variable"}}]
+
+[{"id":"ADD_ALL_TO_LIST","properties":{"List name":"CRUSHABLE_ITEM_LIST","Value":"Superior dragon bones,Bird nest,Kebbit teeth,Stamina potion(4),Red spiders\u0027 eggs"},"children":[{"id":"FOR_EACH_IN_LIST","properties":{"List name":"CRUSHABLE_ITEM_LIST"},"children":[{"id":"SET_VARIABLE_TO_LAST_OUTPUT","customDisplayName":"Set variable to the last action\u0027s output","properties":{"Variable name":"list(CRUSHABLE_ITEM_LIST, 0)"},"children":[{"id":"IF_VARIABLE_IS","properties":{"Filter Value By":{"class":"Variable","logic":"NONE","type":"AS_TEXT","operator":"CONTAINS","value":"(","filters":[{"class":"Variable","logic":"OR","type":"AS_TEXT","operator":"EQUALS","value":")"},{"class":"Variable","logic":"OR","type":"AS_TEXT","operator":"EQUALS","value":"\u0027"}]
+
+[{"id":"REPLACE_ALL_TEXT","properties":{"Find":"[^\\\\(\\\\)\u0027]+","Variable name":"list(CRUSHABLE_ITEM_LIST, 0)"},"children":[{"id":"REMOVE_FROM_LIST_INDEX","properties":{"List name":"list(CRUSHABLE_ITEM_LIST, 0)","Position":"0"}}]
+
+[{"id":"IF_FIRST_RUN","children":[{"id":"SET_VARIABLE","properties":{"Value":"Setup","Variable name":"State"}}]
+
+[{"id":"LOG","properties":{"Message":"Let\u0027s do some setup!"}},{"id":"SET_VARIABLE","properties":{"Value":"Combat","Variable name":"State"}}]
+
+[{"id":"LOG","properties":{"Message":"Time for combat!"}}]
+
+[{"id":"IF_FIRST_RUN","children":[{"id":"ADD_ALL_TO_LIST","properties":{"List name":"Gear","Value":"Some Item,Another Item,A Third Item"}}]
+
+[{"id":"SET_VARIABLE_TO_LAST_OUTPUT","properties":{"Variable name":"Current Item"}},{"id":"IF_EQUIPPED_ITEM_DOES_NOT_MATCH","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"NAME","operator":"EQUALS","value":"var(Current Item)"}},"children":[{"id":"ADD_TO_LIST","properties":{"List name":"Missing Gear","Value":"var(Current Item)"}}]
+
+[{"id":"SET_VARIABLE","properties":{"Value":"null","Variable name":"OurTarget"},"children":[{"id":"IF_PLAYER_EXISTS","properties":{"Filter Player By":{"class":"Player","logic":"NONE","type":"NAME","operator":"NOT_IN_LIST","value":"v(AlreadyScouted)"}},"children":[{"id":"SET_TO_LAST_MATCHING_ENTITY_NAME","properties":{"Variable name":"OurTarget"}},{"id":"IF_PLAYER_EXISTS","properties":{"Filter Player By":{"class":"Player","logic":"NONE","type":"NAME","operator":"EQUALS","value":"v(OurTarget)"}},"children":[{"id":"COMMENT","properties":{"Comment":"Do your things here"}},{"id":"ADD_TO_LIST","properties":{"List name":"AlreadyScouted","Value":"v(OurTarget)"},"children":[{"id":"SET_VARIABLE","properties":{"Value":"null","Variable name":"OurTarget"}}]
+
+[{"id":"IF_FIRST_RUN","children":[{"id":"SET_VARIABLE","properties":{"Value":"0","Variable name":"kills"}}]
+
+[{"id":"IF_NPC_EXISTS","properties":{"Filter NPC By":{"class":"NPC","logic":"NONE","type":"NAME","operator":"EQUALS","value":"My_TARGET","filters":[{"class":"NPC","logic":"AND","type":"NOT_IN_COMBAT","operator":"EQUALS"}]
+
+[{"id":"SET_VARIABLE_TO_LAST_OUTPUT","properties":{"Variable name":"target"}}]
+
+[{"id":"IF_VARIABLE_IS_SET","properties":{"Variable name":"target"}},{"id":"AND_BRANCH"},{"id":"IF_LOCAL_PLAYER_MATCHES","properties":{"Filter By":{"class":"Player","logic":"NONE","type":"IS_NOT_INTERACTING","operator":"EQUALS"}},"children":[{"id":"NPC_INTERACT","properties":{"Filter NPC By":{"class":"NPC","logic":"NONE","type":"IS_VARIABLE_VALUE","operator":"EQUALS","value":"target"},"Action":"Attack","Don\u0027t walk to NPC":true}}]
+
+[{"id":"IF_VARIABLE_IS_SET","properties":{"Variable name":"target"}},{"id":"AND_BRANCH"},{"id":"IF_NPC_DOES_NOT_EXIST","properties":{"Filter NPC By":{"class":"NPC","logic":"NONE","type":"IS_VARIABLE_VALUE","operator":"EQUALS","value":"target"}},"children":[{"id":"ADD_TO_VARIABLE","properties":{"Variable name":"kills","By":"1"}},{"id":"DELETE_VARIABLE","properties":{"Variable name":"target"}}]
+
+[{"id":"INTERACT_WITH_INVENTORY_ITEM","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"NAME","operator":"EQUALS","value":"Raw shrimps"},"Action":"Use"},"children":[{"id":"SLEEP_WHILE_ANIMATING"}]
+
+[{"id":"GAME_OBJECT_INTERACT","properties":{"Filter Object By":{"class":"GameObject","logic":"NONE","type":"NAME","operator":"EQUALS","value":"Fire"}},"children":[{"id":"SLEEP_WHILE_ANIMATING","children":[{"id":"SLEEP_BETWEEN","properties":{"Minimum":"100","Maximum":"300"}}]
+
+[{"id":"WHILE_VALUE_MATCHES","properties":{"Value":"1","Filter Value By":{"class":"Variable","logic":"NONE","type":"AS_TEXT","operator":"EQUALS","value":"1"}},"children":[{"id":"IF_TIMER_IS_FINISHED","properties":{"Timer name":"Timer"},"children":[{"id":"BREAK_OUT_OF_LOOP"}]
+
+[{"id":"COMMENT","properties":{"Comment":"Eat"},"children":[{"id":"IF_LOCAL_PLAYER_MATCHES","properties":{"Filter By":{"class":"Player","logic":"NONE","type":"HEALTH","operator":"LESS_THAN","value":"rand(55,60)"}},"children":[{"id":"INTERACT_WITH_INVENTORY_ITEM","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"IS_FOOD","operator":"EQUALS"},"Action":"Eat"},"children":[{"id":"SLEEP_NORMAL_DISTRIBUTION","properties":{"Mean":"100","Variance":"50"}}]
+
+[{"id":"IF_LOCAL_PLAYER_MATCHES","properties":{"Filter By":{"class":"Player","logic":"NONE","type":"IS_NOT_INTERACTING","operator":"EQUALS","filters":[{"class":"Player","logic":"AND","type":"NOT_MOVING","operator":"EQUALS"}]
+
+[{"id":"IF_NPC_EXISTS","properties":{"Filter NPC By":{"class":"NPC","logic":"NONE","type":"IS_INTERACTING_WITH_ME","operator":"EQUALS","filters":[{"class":"NPC","logic":"AND","type":"NAME","operator":"EQUALS","value":"my_target"}]
+
+[{"id":"SET_VARIABLE_TO_LAST_OUTPUT","properties":{"Variable name":"target"}},{"id":"NPC_INTERACT","properties":{"Filter NPC By":{"class":"NPC","logic":"NONE","type":"IS_VARIABLE_VALUE","operator":"EQUALS","value":"target"},"Action":"Attack"}}]
+
+[{"id":"INVENTORY_DESELECT","children":[{"id":"INTERACT_WITH_INVENTORY_ITEM","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"NAME","operator":"EQUALS","value":"Shears"},"Action":"Use"},"children":[{"id":"SLEEP_NORMAL_DISTRIBUTION","properties":{"Mean":"100","Variance":"50"},"children":[{"id":"NPC_INTERACT","properties":{"Filter NPC By":{"class":"NPC","logic":"NONE","type":"NAME","operator":"EQUALS","value":"Sheep"},"Action":"Use"},"children":[{"id":"SLEEP_WHILE_MOVING","properties":{"Stopped for (seconds)":"1"}},{"id":"SLEEP_WHILE_ANIMATING","properties":{"Stopped for (seconds)":"1"}}]
+
+[{"id":"IF_LOCAL_PLAYER_MATCHES","properties":{"Filter By":{"class":"Player","logic":"NONE","type":"IN_AREA","operator":"EQUALS","value":"(3207, 9905, 0), (3212, 9900, 0)"}},"children":[{"id":"IF_GAME_OBJECT_EXISTS","customDisplayName":"Slash web","properties":{"Filter Object By":{"class":"GameObject","logic":"NONE","type":"ID","operator":"EQUALS","value":"733"}},"children":[{"id":"GAME_OBJECT_INTERACT","properties":{"Filter Object By":{"class":"GameObject","logic":"NONE","type":"ID","operator":"EQUALS","value":"733"},"Force left click":false,"Don\u0027t walk to object":false},"children":[{"id":"SLEEP_UNTIL_INSIDE_IS_TRUE","properties":{"Max time (seconds)":"12"},"children":[{"id":"IF_GAME_OBJECT_DOES_NOT_EXIST","properties":{"Filter Object By":{"class":"GameObject","logic":"NONE","type":"ID","operator":"EQUALS","value":"733"}}}]
+
+[{"id":"IF_BANK_IS_OPEN","children":[{"id":"IF_BANK_COUNT","properties":{"count":{"class":"Number","operator":"GREATER_THAN_OR_EQUALS","value":"500"},"Filter Item By":{"class":"Item","logic":"NONE","type":"NAME","operator":"EQUALS","value":"Wool"}},"children":[{"id":"GO_TO_LABEL","properties":{"Label":"Spinning wool"}}]
+
+[{"id":"GAME_OBJECT_INTERACT","properties":{"Filter Object By":{"class":"GameObject","logic":"NONE","type":"NAME","operator":"EQUALS"},"Action":""},"children":[{"id":"SLEEP_UNTIL_INSIDE_IS_TRUE","children":[{"id":"IF_INVENTORY_DOES_NOT_CONTAIN_ANY","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"NAME","operator":"EQUALS","value":"Wool"}}}]
+
+[{"id":"SET_TO_LOCAL_PLAYER_TOTAL_LEVEL","properties":{"Variable name":"total_level"}},{"id":"IF_VARIABLE_IS_NOT_SET","properties":{"Variable name":"next_world"},"children":[{"id":"IF_WORLD_MATCHES","properties":{"Filter World By":{"class":"World","logic":"NONE","type":"ID","operator":"GREATER_THAN","value":"-1"}},"children":[{"id":"SET_VARIABLE_TO_LAST_OUTPUT","properties":{"Variable name":"next_world"}}]
+
+[{"id":"SLEEP_WHILE_WORLD_HOPPING","children":[{"id":"SLEEP_NORMAL_DISTRIBUTION","properties":{"Mean":"5000","Variance":"2500"}}]
+
+[{"id":"IF_EQUIPPED_ITEM_MATCHES","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"SLOT","operator":"EQUALS","value":"6"}},"children":[{"id":"SET_TO_LAST_MATCHING_ITEM_NAME","properties":{"Variable name":"equipName"},"children":[{"id":"ADD_TO_LIST","properties":{"List name":"ARMOUR_LIST","Value":"v(equipName)"}}]
+
+[{"id":"CORE","properties":{"Sleep Between Runs (ms)":"400","Version":"1.0","Name":"Fruit stall thiever"},"children":[{"id":"GAME_OBJECT_INTERACT","properties":{"Filter Object By":{"class":"GameObject","logic":"NONE","type":"NAME","operator":"EQUALS","value":"Fruit Stall","filters":[{"class":"GameObject","logic":"AND","type":"IN_AREA","operator":"EQUALS","value":"(1799, 3610, 0),(1799, 3604, 0),(1792, 3604, 0),(1792, 3611, 0)"}]
+
+[{"id":"DROP_ALL_ITEMS"}]
+
+[{"id":"DROP_ALL_ITEMS"}]
+
+[{"id":"CORE","properties":{"Sleep Between Runs (ms)":"300","Version":"1.0","Name":"Fruit stall thiever"},"children":[{"id":"IF_GAME_OBJECT_EXISTS","properties":{"Filter Object By":{"class":"GameObject","logic":"NONE","type":"ID","operator":"EQUALS","value":"28823","filters":[{"class":"GameObject","logic":"AND","type":"IN_AREA","operator":"EQUALS","value":"(1795, 3609, 1801, 3606)"}]
+
+[{"id":"GAME_OBJECT_INTERACT","properties":{"Filter Object By":{"class":"GameObject","logic":"NONE","type":"IS_LAST_OUTPUT","operator":"EQUALS","value":"28823"},"Action":"Steal-from"},"children":[{"id":"SLEEP_WHILE_ANIMATING"}]
+
+[{"id":"DROP_ALL_ITEMS"}]
+
+[{"id":"DRAW_TEXT","properties":{"X":"","Font Size":"16","Y":"35","Text":"Thieving xp/hr: hourly(expGain(Thieving))","Font":{"class":"Font","value":"Inter V"},"Color":{"class":"Color","value":-1}}}]
+
+[{"id":"IF_GAME_OBJECT_EXISTS","properties":{"Filter Object By":{"class":"GameObject","logic":"NONE","type":"ID","operator":"EQUALS","value":"28823","filters":[{"class":"GameObject","logic":"AND","type":"IN_AREA","operator":"EQUALS","value":"(1793, 3610, 0), (1803, 3605, 0)"}]
+
+[{"id":"GAME_OBJECT_INTERACT","properties":{"Filter Object By":{"class":"GameObject","logic":"NONE","type":"IS_LAST_OUTPUT","operator":"EQUALS","filters":[{"class":"GameObject","logic":"AND","type":"IN_AREA","operator":"EQUALS","value":"(1793, 3610, 0), (1803, 3605, 0)"}]
+
+[{"id":"SLEEP_WHILE_ANIMATING"}]
+
+[{"id":"DROP_ALL_ITEMS"}]
+
+[{"id":"DRAW_AREA","properties":{"Area":"(1795, 3609, 1801, 3606)","Color":{"class":"Color","value":-7799014}}}]
+
+[{"id":"WIDGET_INTERACT","properties":{"Find Widget By":{"class":"Widget","logic":"NONE","type":"TEXT","operator":"EQUALS","value":"Bronze dagger","filters":[{"class":"Widget","logic":"AND","type":"PARENT","operator":"EQUALS","value":"312"}]
+
+[{"id":"IF_PLAYER_EXISTS","properties":{"Filter Player By":{"class":"Player","logic":"NONE","type":"NAME","operator":"EQUALS"}},"children":[{"id":"SET_VARIABLE_TO_LAST_OUTPUT"}]
+
+[{"id":"DELETE_ALL_VARIABLES"},{"id":"LOAD_MAP_FROM_JSON","properties":{"JSON":"{\"potions\":{\"Potion A\":{\"unfinished\":\"something unf\",\"secondary\":\"secondary a\"},\"Potion B\":{\"unfinished\":\"another unf\",\"secondary\":\"secondary b\"}}}","Map name":"Data"}},{"id":"SET_VARIABLE","properties":{"Value":"secondary b","Variable name":"LOW_CHECK"}},{"id":"FOR_EACH_KEY_IN_MAP","properties":{"Map name":"Data.potions"},"children":[{"id":"SET_VARIABLE_TO_LAST_OUTPUT","properties":{"Variable name":"Current Potion"}},{"id":"IF_VALUE_IS","properties":{"Value":"v(LOW_CHECK)","Filter By":{"class":"Variable","logic":"NONE","type":"AS_TEXT","operator":"EQUALS","value":"map(Data.potions.v(Current Potion).unfinished)"}}},{"id":"OR_BRANCH"},{"id":"IF_VALUE_IS","properties":{"Value":"v(LOW_CHECK)","Filter By":{"class":"Variable","logic":"NONE","type":"AS_TEXT","operator":"EQUALS","value":"map(Data.potions.v(Current Potion).secondary)"}},"children":[{"id":"SET_VARIABLE","properties":{"Value":"var(Current Potion)","Variable name":"Potion"}}]
+
+[{"id":"IF_INVENTORY_CONTAINS_ANY","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"ID","operator":"EQUALS","value":"5512"}},"children":[{"id":"IF_GAME_MESSAGE_RECEIVED_MATCHES","properties":{"Filter Message":{"class":"Message","logic":"NONE","type":"IS_GAME_MESSAGE","operator":"EQUALS","filters":[{"class":"Message","logic":"AND","type":"TEXT","operator":"DOES_NOT_CONTAIN","value":"You cannot add any more"}]
+
+[{"id":"INTERACT_WITH_INVENTORY_ITEM","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"ID","operator":"EQUALS","value":"5512"},"Force left click":false,"Action":"Fill"}}]
+
+[{"id":"IF_EQUIPPED_ITEM_MATCHES","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"ID","operator":"GREATER_THAN","value":"1"}},"children":[{"id":"SET_VARIABLE","properties":{"Value":"lastOutput()","Variable name":"Test"}}]
+
+[{"id":"IF_EQUIPPED_ITEM_MATCHES","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"SLOT","operator":"EQUALS","value":"4"}},"children":[{"id":"SET_TO_LAST_MATCHING_ITEM_NAME","properties":{"Variable name":"equipName"},"children":[{"id":"ADD_TO_LIST","properties":{"List name":"LIST","Value":"v(equipName)"}}]
+
+[{"id":"FOR_EACH_KEY_IN_MAP","properties":{"Map name":"data.herbs"},"children":[{"id":"SET_VARIABLE_TO_LAST_OUTPUT","properties":{"Variable name":"CLEAN_HERB"},"children":[{"id":"IF_SKILL_LEVEL_IS","properties":{"level":{"class":"Number","operator":"GREATER_THAN_OR_EQUALS","value":"map(data.herbs.v(CLEAN_HERB).Level)"},"Skill":{"class":"Skill","value":"HERBLORE"}}},{"id":"SET_VARIABLE","properties":{"Value":"map(data.herbs.v(CLEAN_HERB).Grimy)","Variable name":"GRIMY_HERB"}},{"id":"SET_TO_ITEM_LIVE_PRICE_NAME","properties":{"Variable name":"v(CLEAN_HERB)_LIVE","Name":"v(CLEAN_HERB)"},"children":[{"id":"SET_TO_ITEM_LIVE_PRICE_NAME","properties":{"Variable name":"v(GRIMY_HERB)_LIVE","Name":"v(GRIMY_HERB)"},"children":[{"id":"SET_VARIABLE","properties":{"Value":"sub(v(v(CLEAN_HERB)_LIVE), v(v(GRIMY_HERB)_LIVE))","Variable name":"PROFIT_HERBS"}}]
+
+[{"id":"SET_VARIABLE","properties":{"Value":"v(PROFIT_HERBS)","Variable name":"HIGHEST_CLEAN"},"children":[{"id":"SET_VARIABLE","properties":{"Value":"v(CLEAN_HERB)","Variable name":"HERB2MAKE"}}]
+
+[{"id":"LOG","properties":{"Message":"v(CLEAN_HERB)"}},{"id":"LOG","properties":{"Message":"v(HIGHEST_CLEAN)"},"children":[{"id":"LOG","properties":{"Message":"v(GRIMY_HERB)"}}]
+
+[{"id":"MAKE_ALL_ITEM_PROCESSING","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"NONE","operator":"EQUALS"}}}]
+
+[{"id":"IF_EQUIPPED_ITEM_DOES_NOT_MATCH","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"ID","operator":"EQUALS","value":"772","filters":[{"class":"Item","logic":"AND","type":"NOT_IN_INVENTORY","operator":"EQUALS"}]
+
+[{"id":"BANK_WITHDRAW_ITEM","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"ID","operator":"EQUALS","value":"772"},"Amount":"1"}}]
+
+[{"id":"IF_EQUIPPED_ITEM_DOES_NOT_MATCH","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"ID","operator":"EQUALS","value":"772","filters":[{"class":"Item","logic":"AND","type":"NONE","operator":"EQUALS"}]
+
+[{"id":"AND_BRANCH"},{"id":"IF_INVENTORY_DOES_NOT_CONTAIN_ANY","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"ID","operator":"EQUALS","value":"772"}}},{"id":"BANK_WITHDRAW_ITEM","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"ID","operator":"DOES_NOT_CONTAIN","value":"772"},"Amount":"1"}}]
+
+[{"id":"IF_INVENTORY_DOES_NOT_CONTAIN_ANY","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"ID","operator":"EQUALS","value":"772"}},"children":[{"id":"AND_BRANCH"},{"id":"IF_EQUIPPED_ITEM_DOES_NOT_MATCH","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"ID","operator":"EQUALS","value":"772"}},"children":[{"id":"BANK_WITHDRAW_ITEM","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"ID","operator":"DOES_NOT_CONTAIN","value":"772"},"Amount":"1"}}]
+
+[{"id":"IF_EQUIPPED_ITEM_DOES_NOT_MATCH","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"ID","operator":"EQUALS","value":"772"}}},{"id":"AND_BRANCH"},{"id":"IF_INVENTORY_DOES_NOT_CONTAIN_ANY","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"ID","operator":"EQUALS","value":"772"}},"children":[{"id":"BANK_WITHDRAW_ITEM","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"ID","operator":"DOES_NOT_CONTAIN","value":"772"},"Amount":"1"}}]
+
+[{"id":"INTERACT_WITH_INVENTORY_ITEM","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"NAME","operator":"EQUALS","value":"Teleport to house"},"Action":"Break"},"children":[{"id":"SLEEP_NORMAL_DISTRIBUTION"},{"id":"SLEEP_WHILE_ANIMATING"}]
+
+[{"id":"INTERACT_WITH_INVENTORY_ITEM","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"NAME","operator":"EQUALS","value":"Teleport to house"},"Action":"Break"},"children":[{"id":"SLEEP_NORMAL_DISTRIBUTION","properties":{"Mean":"2000","Variance":"500"}},{"id":"SLEEP_WHILE_ANIMATING"}]
+
+[{"id":"IF_FIRST_RUN","disabled":true,"children":[{"id":"ADD_ALL_TO_LIST","properties":{"List name":"INVY_INTERACT1","Value":"0,4,1,5,2,6,3,7,8,12,9,13,10,14,11,15,16,20,17,21,18,22,19,23,27,26,25,24"}}]
+
+[{"id":"SET_VARIABLE_TO_LAST_OUTPUT","properties":{"Variable name":"INVY_SLOT"},"children":[{"id":"INTERACT_WITH_INVENTORY_ITEM","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"NAME","operator":"EQUALS","value":"v(GRIMYS)","filters":[{"class":"Item","logic":"AND","type":"SLOT","operator":"EQUALS","value":"v(INVY_SLOT)"}]
+
+[{"id":"SLEEP_BETWEEN","properties":{"Minimum":"rand(345, 456)","Maximum":"rand(567, 789)"}}]
+
+[{"id":"SET_VARIABLE","properties":{"Value":"(3024, 3699, 0), (3027, 3704, 0)","Variable name":"area"},"children":[{"id":"IF_NPC_EXISTS","properties":{"Filter NPC By":{"class":"NPC","logic":"NONE","type":"ID","operator":"DOES_NOT_EQUAL","value":"8692","filters":[{"class":"NPC","logic":"AND","type":"NAME","operator":"CONTAINS","value":"Bandit"},{"class":"NPC","logic":"AND","type":"IN_AREA","operator":"EQUALS","value":"v(area)"}]
+
+[{"id":"QUICK_HOP_TO_RANDOM_WORLD","customDisplayName":"Quick hop to a Member, non-PvP, normal, non-total world","properties":{"Filter World By":{"class":"World","logic":"NONE","type":"WORLD_IS_MEMBERS","operator":"EQUALS","filters":[{"class":"World","logic":"AND","type":"WORLD_IS_NOT_PVP","operator":"EQUALS"},{"class":"World","logic":"AND","type":"WORLD_IS_NORMAL","operator":"EQUALS"},{"class":"World","logic":"AND","type":"WORLD_MINIMUM_LEVEL","operator":"LESS_THAN","value":"200"},{"class":"World","logic":"AND","type":"WORLD_PING","operator":"LESS_THAN_OR_EQUAL","value":"150"}]
+
+[{"id":"SLEEP_WHILE_WORLD_HOPPING","customDisplayName":"Sleep while world hopping"}]
+
+[{"id":"IF_WORLD_MATCHES","properties":{"Filter World By":{"class":"World","logic":"NONE","type":"WORLD_IS_NOT_BOUNTY_HUNTER","operator":"EQUALS"}},"children":[{"id":"SET_VARIABLE_TO_LAST_OUTPUT","properties":{"Variable name":"12312312"}}]
+
+[{"id":"IF_GROUND_ITEM_EXISTS","properties":{"Filter Item By":{"class":"GroundItem","logic":"NONE","type":"NAME","operator":"EQUALS","value":"Mithril dart","filters":[{"class":"GroundItem","logic":"AND","type":"AMOUNT","operator":"GREATER_THAN_OR_EQUAL","value":"5"},{"class":"GroundItem","logic":"AND","type":"DISTANCE_TO_PLAYER","operator":"LESS_THAN_OR_EQUAL","value":"2"}]
+
+[{"id":"GROUND_ITEM_INTERACT","properties":{"Filter Item By":{"class":"GroundItem","logic":"NONE","type":"IS_LAST_OUTPUT","operator":"EQUALS"},"Action":"Take"}},{"id":"SLEEP_WHILE_MOVING"},{"id":"SLEEP_BETWEEN","properties":{"Minimum":"50","Maximum":"150"}},{"id":"RETURN_TO_START_OF_SCRIPT"}]
+
+[{"id":"IF_GAME_MESSAGE_RECEIVED_MATCHES","properties":{"Filter Message":{"class":"Message","logic":"NONE","type":"IS_CLAN_MESSAGE","operator":"EQUALS"}},"children":[{"id":"SET_VARIABLE_TO_LAST_OUTPUT","properties":{"Variable name":"my_last_message"}}]
+
+[{"id":"ENABLE_MENU_MANIPULATION","children":[{"id":"WIDGET_INTERACT","properties":{"Action":"Logout","Find Widget By":{"class":"Widget","logic":"NONE","type":"WIDGET_ID","operator":"EQUALS","value":"548, 50"}},"children":[{"id":"WIDGET_INTERACT","properties":{"Action":"Logout","Find Widget By":{"class":"Widget","logic":"NONE","type":"WIDGET_ID","operator":"EQUALS","value":"182, 8"}}},{"id":"WIDGET_INTERACT","properties":{"Action":"Logout","Find Widget By":{"class":"Widget","logic":"NONE","type":"WIDGET_ID","operator":"EQUALS","value":"69, 25"}}}]
+
+[{"id":"COMBINE","properties":{"Filter Second By":{"class":"Item","logic":"NONE","type":"NAME","operator":"EQUALS","value":"Blighted super restore(3)","filters":[{"class":"Item","logic":"OR","type":"NAME","operator":"EQUALS","value":"Blighted super restore(2)"},{"class":"Item","logic":"OR","type":"NAME","operator":"EQUALS","value":"Blighted super restore(1)"}]
+
+[{"id":"IF_NPC_EXISTS","properties":{"Filter NPC By":{"class":"NPC","logic":"NONE","type":"ANIMATION","operator":"EQUALS","value":"2655"}},"children":[{"id":"ENABLE_PRAYER","properties":{"Prayer":{"class":"Prayer","value":"PROTECT_FROM_MELEE"}}}]
+
+[{"id":"IF_LOCAL_PLAYER_MATCHES","properties":{"Filter By":{"class":"Player","logic":"NONE","type":"HEALTH","operator":"LESS_THAN","value":"40"}}}]
+
+[{"id":"IF_PLAYER_EXISTS","properties":{"Filter Player By":{"class":"Player","logic":"NONE","type":"IS_ATTACKABLE","operator":"EQUALS","filters":[{"class":"Player","logic":"AND","type":"DISTANCE_TO_PLAYER","operator":"GREATER_THAN","value":"0"}]
+
+[{"id":"SET_VARIABLE_TO_LAST_OUTPUT","properties":{"Variable name":"target_player"}},{"id":"SET_TO_VARIABLE_ENTITY_SERVER_TILE","properties":{"To variable":"target_player_tile","From variable":"target_player"}},{"id":"WALK_TO_TILE","properties":{"Tile":"v(target_player_tile)"}}]
+
+[{"id":"COMMENT","properties":{"Comment":"Determine State"},"children":[{"id":"IF_VARIABLE_IS","properties":{"Filter Value By":{"class":"Variable","logic":"NONE","type":"AS_NUMBER","operator":"GREATER_THAN","value":"10"},"Variable name":"i"},"children":[{"id":"SET_VARIABLE","properties":{"Value":"LAST","Variable name":"state"}}]
+
+[{"id":"SET_VARIABLE","properties":{"Value":"BEGIN","Variable name":"state"}}]
+
+[{"id":"CREATE_LABEL","properties":{"Label":"BEGIN"},"children":[{"id":"SET_VARIABLE","properties":{"Value":"NEXT","Variable name":"state"}}]
+
+[{"id":"CREATE_LABEL","properties":{"Label":"NEXT"},"children":[{"id":"IF_VARIABLE_IS_NOT_SET","properties":{"Variable name":"i"},"children":[{"id":"SET_VARIABLE","properties":{"Value":"0","Variable name":"i"}}]
+
+[{"id":"CREATE_LABEL","properties":{"Label":"LAST"},"children":[{"id":"IF_TIMER_DOES_NOT_EXIST","properties":{"Timer name":"last_timer"},"children":[{"id":"START_TIMER","properties":{"Timer name":"last_timer","Time":"10"}}]
+
+[{"id":"SET_VARIABLE","properties":{"Value":"BEGIN","Variable name":"state"},"children":[{"id":"SET_VARIABLE","properties":{"Value":"0","Variable name":"i"}},{"id":"DELETE_TIMER","properties":{"Timer name":"last_timer"}}]
+
+[{"id":"IF_WIDGET_EXISTS","properties":{"Find Widget By":{"class":"Widget","logic":"NONE","type":"WIDGET_ID","operator":"EQUALS","value":"712, 2, 100"}},"children":[{"id":"SET_TO_WIDGET_TEXT","properties":{"Variable name":"Widgettext"}}]
+
+[{"id":"COMMENT","properties":{"Comment":"Widget Identify"},"children":[{"id":"IF_WIDGET_EXISTS","properties":{"Find Widget By":{"class":"Widget","logic":"NONE","type":"WIDGET_ID","operator":"EQUALS","value":"712, 2, 100"}},"children":[{"id":"SET_TO_WIDGET_TEXT","properties":{"Variable name":"Widgettext"}}]
+
+[{"id":"EXTRACT_VARIABLES_FROM_REGEX","properties":{"To variable":"Time Played","Regex":"\u003ccol\u003d[0-9a-fA-F]+\u003e(\\d+ days), (\\d+) hours\u003c\\/col\u003e","From variable":"Widgettext"},"children":[{"id":"COMMENT","properties":{"Comment":"Convert Days to hours"},"children":[{"id":"MULTIPLY_VARIABLE_BY","properties":{"Variable name":"Time Played[0]","By":"24"}}]
+
+[{"id":"ADD_TO_VARIABLE","properties":{"By":"v(Time Played[1])","Variable name":"Time Played[0]"}}]
+
+[{"id":"IF_VARIABLE_IS","properties":{"Filter Value By":{"class":"Variable","logic":"NONE","type":"AS_NUMBER","operator":"GREATER_THAN","value":"10"},"Variable name":"Time Played[0]"}}]
+
+[{"id":"COMMENT","properties":{"Comment":"Widget Identify"},"children":[{"id":"IF_WIDGET_EXISTS","properties":{"Find Widget By":{"class":"Widget","logic":"NONE","type":"WIDGET_ID","operator":"EQUALS","value":"712, 2, 100"}},"children":[{"id":"SET_TO_WIDGET_TEXT","properties":{"Variable name":"Widgettext"}}]
+
+[{"id":"EXTRACT_VARIABLES_FROM_REGEX","properties":{"To variable":"Time Played","Regex":"\u003ccol\u003d[0-9a-fA-F]+\u003e(\\d+) hours?, \\d+ minutes\u003c\\/col\u003e","From variable":"Widgettext"}}]
+
+[{"id":"IF_VARIABLE_IS","properties":{"Filter Value By":{"class":"Variable","logic":"NONE","type":"AS_NUMBER","operator":"GREATER_THAN","value":"10"},"Variable name":"Time Played[0]"}}]
+
+[{"id":"COMMENT","properties":{"Comment":"Widget Identify"},"children":[{"id":"IF_WIDGET_EXISTS","properties":{"Find Widget By":{"class":"Widget","logic":"NONE","type":"WIDGET_ID","operator":"EQUALS","value":"712, 2, 100"}},"children":[{"id":"SET_TO_WIDGET_TEXT","properties":{"Variable name":"Widgettext"}}]
+
+[{"id":"EXTRACT_VARIABLES_FROM_REGEX","properties":{"To variable":"Time Played","Regex":"\u003ccol\u003d0dc10d\u003e(\\d+) hour[s]*, \\d+ minute[s]*\u003c\\/col\u003e\n","From variable":"Widgettext"},"children":[{"id":"COMMENT","properties":{"Comment":"Convert Days to hours"},"children":[{"id":"MULTIPLY_VARIABLE_BY","properties":{"Variable name":"Time Played[0]","By":"24"}}]
+
+[{"id":"ADD_TO_VARIABLE","properties":{"By":"v(Time Played[1])","Variable name":"Time Played[0]"}}]
+
+[{"id":"IF_VARIABLE_IS","properties":{"Filter Value By":{"class":"Variable","logic":"NONE","type":"AS_NUMBER","operator":"GREATER_THAN","value":"10"},"Variable name":"Time Played[0]"}}]
+
+[{"id":"COMMENT","properties":{"Comment":"Restock\n"},"children":[{"id":"IF_NEEDS_TO_RESTOCK","properties":{"Equipment":{"class":"EquipmentLoadout","value":"toLvl70"},"Strict check":false,"Inventory":{"class":"InventoryLoadout","value":"winesInventory"}},"children":[{"id":"IF_INVENTORY_CONTAINS_ANY","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"NAME","operator":"IS_IN_LIST","value":"list(HGItems)"}}},{"id":"OR_BRANCH"},{"id":"IF_BANK_CONTAINS","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"NAME","operator":"IS_IN_LIST","value":"list(HGItems)","filters":[{"class":"Item","logic":"AND","type":"NAME","operator":"DOES_NOT_EQUAL","value":"Coins"}]
+
+[{"id":"SELL_ALL_MATCHING_ITEMS","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"NAME","operator":"IS_IN_LIST","value":"list(HGItems)","filters":[{"class":"Item","logic":"AND","type":"NAME","operator":"DOES_NOT_EQUAL","value":"Coins"}]
+
+[{"id":"IF_INVENTORY_DOES_NOT_CONTAIN_ANY","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"NAME","operator":"IS_IN_LIST","value":"list(HGItems)","filters":[{"class":"Item","logic":"AND","type":"NAME","operator":"DOES_NOT_EQUAL","value":"Coins"}]
+
+[{"id":"RESTOCK_IF_NECESSARY","properties":{"Equipment":{"class":"EquipmentLoadout","value":"toLvl70"},"Inventory":{"class":"InventoryLoadout","value":"winesInventory"}}}]
+
+[{"id":"ADD_BANK_ITEMS_TO_LIST","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"ID","operator":"GREATER_THAN","value":"-1","filters":[{"class":"Item","logic":"AND","type":"VALUE","operator":"GREATER_THAN","value":"1"},{"class":"Item","logic":"AND","type":"IS_TRADEABLE","operator":"EQUALS"}]
+
+[{"id":"IF_NPC_EXISTS","properties":{"Filter NPC By":{"class":"NPC","logic":"NONE","type":"NAME","operator":"EQUALS","value":"Banker"}},"children":[{"id":"SET_TO_LAST_MATCHING_ENTITY_NAME","properties":{"Variable name":"NPC"}}]
+
+[{"id":"IF_PLAYER_EXISTS","properties":{"Filter Player By":{"class":"Player","logic":"NONE","type":"NONE","operator":"EQUALS"}},"children":[{"id":SET_TO_LAST_MATCHING_ENTITY_NAME","properties":{"Variable name":"Bot"}}]
+
+[{"id":"IF_FIRST_RUN","children":[{"id":"IF_VARIABLE_IS_NOT_SET","properties":{"Variable name":"PATH"},"children":[{"id":"SET_VARIABLE_TO_USER_INPUT_OPTIONS","properties":{"Message":"What kind of accounts are we making today?","Options":"Normal,Ironman,HCIM,UIM","Variable name":"AccountType"},"children":[{"id":"SET_VARIABLE_TO_USER_INPUT_OPTIONS","properties":{"Message":"Would you like to save these settings to file for quickstart?","Options":"Yes,No","Variable name":"SaveFile"},"children":[{"id":"IF_VARIABLE_IS","properties":{"Filter Value By":{"class":"Variable","logic":"NONE","type":"AS_TEXT","operator":"EQUALS","value":"Yes"},"Variable name":"SaveFile"},"children":[{"id":"SET_VARIABLE","properties":{"Value":"AccountType","Variable name":"PATH"},"children":[{"id":"WRITE_LISTED_VARIABLES_TO_FILE","properties":{"Variables":"AccountType,SaveFile","Replace existing":true,"File":"Tutorial Island Settings v(PATH)"}}]
+
+[{"id":"LOAD_VARIABLES_FROM_FILE","properties":{"File":"Tutorial Island Settings v(PATH)"}}]
+
+[{"id":"IF_FIRST_RUN","children":[{"id":"IF_VARIABLE_IS_SET","properties":{"Variable name":"path"},"children":[{"id":"LOAD_VARIABLES_FROM_FILE","properties":{"File":"v(path)"},"children":[{"id":"SET_VARIABLE","properties":{"Value":"v(path)","Variable name":"AccountType"}}]
+
+[{"id":"SET_VARIABLE_TO_USER_INPUT_OPTIONS","properties":{"Message":"What kind of accounts are we making today?","Options":"Normal,Ironman,HCIM,UIM","Variable name":"AccountType"},"children":[{"id":"SET_VARIABLE_TO_USER_INPUT_OPTIONS","properties":{"Message":"Would you like to save these settings to file for quickstart?","Options":"Yes,No","Variable name":"SaveFile"},"children":[{"id":"IF_VARIABLE_IS","properties":{"Filter Value By":{"class":"Variable","logic":"NONE","type":"AS_TEXT","operator":"EQUALS","value":"Yes"},"Variable name":"SaveFile"},"children":[{"id":"SET_VARIABLE","properties":{"Value":"v(AccountType)","Variable name":"path"},"children":[{"id":"WRITE_LISTED_VARIABLES_TO_FILE","properties":{"Variables":"AccountType,SaveFile","Replace existing":true,"File":"Tutorial Island Settings v(path)"}}]
+
+[{"id":"FOR_EACH_KEY_IN_MAP","properties":{"Map name":"Herblore.herbs"},"children":[{"id":"SET_VARIABLE_TO_LAST_OUTPUT","properties":{"Variable name":"key"}},{"id":"SET_VARIABLE_TO_MAP_VALUE","properties":{"Key":"Grimy","Map name":"Herblore.herbs.v(key)","Variable name":"grimy"}},{"id":"SET_VARIABLE_TO_MAP_VALUE","properties":{"Key":"LvlReq","Map name":"Herblore.herbs.v(key)","Variable name":"LevelRequirement"}},{"id":"SET_VARIABLE_TO_MAP_VALUE","properties":{"Key":"Clean","Map name":"Herblore.herbs.v(key)","Variable name":"clean"}},{"id":"IF_VARIABLE_IS","properties":{"Filter Value By":{"class":"Variable","logic":"NONE","type":"AS_NUMBER","operator":"LESS_THAN_OR_EQUAL","value":"skillLevel(Herblore)"},"Variable name":"LevelRequirement"},"children":[{"id":"IF_INVENTORY_IS_NOT_FULL","children":[{"id":"BANK_WITHDRAW_ALL_ITEM","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"NAME","operator":"EQUALS","value":"v(grimy)"}}},{"id":"ELSE_BRANCH","children":[{"id":"STOP_SCRIPT","customDisplayName":"No more Herbs to clean"}]
+
+[{"id":"IF_BANK_IS_OPEN","children":[{"id":"CLOSE_BANK"}]
+
+[{"id":"SET_INTERACTION_ORDER","properties":{"Random":true}},{"id":"CREATE_LABEL","properties":{"Label":"Clean"},"children":[{"id":"CUSTOM_9b274238-2102-4935-a4b0-d2a4fc79eb8a","children":[{"id":"INTERACT_WITH_INVENTORY_ITEM","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"NAME","operator":"CONTAINS","value":"Grimy"},"Action":"Clean"},"children":[{"id":"IF_INVENTORY_CONTAINS_ANY","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"NAME","operator":"CONTAINS","value":"Grimy"}},"children":[{"id":"GO_TO_LABEL","properties":{"Label":"Clean"}}]
+
+[{"id":"OPEN_BANK","children":[{"id":"IF_BANK_IS_OPEN","children":[{"id":"BANK_DEPOSIT_ALL","children":[{"id":"RETURN_TO_START_OF_SCRIPT"}]
+
+[{"id":"DELETE_VARIABLE","properties":{"Variable name":"key"}}]
+
+[{"id":"IF_INVENTORY_CONTAINS_ANY","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"NAME","operator":"CONTAINS","value":"clue"}},"children":[{"id":"AUTOMATOR_STOP_DREAMBOT_SCRIPT"},{"id":"IF_NO_SCRIPT_IS_RUNNING","children":[{"id":"AUTOMATOR_START_DREAMBOT_SCRIPT","properties":{"QuickStart Parameters":"","Script":"GMuling"}}]
+
+[{"id":"AUTOMATOR_START_DREAMBOT_SCRIPT","properties":{"QuickStart Parameters":"\"C:\\Users\\YOURNAME\\Desktop\\DreambotDreamBot\\Scripts\\Pandemic\u0027s Script Creator\\Scripts\\yourscript.json\"","Script":"Pandemic\u0027s Script Creator Lifetime"}}]
+
+[{"id":"IF_NPC_EXISTS","properties":{"Filter NPC By":{"class":"NPC","logic":"NONE","type":"NONE","operator":"EQUALS"}},"children":[{"id":"SET_TO_LAST_MATCHING_ENTITY_X"}]
+
+[{"id":"WIDGET_INTERACT","properties":{"Find Widget By":{"class":"Widget","logic":"NONE","type":"WIDGET_ITEM_ID","operator":"EQUALS"}}}]
+
+[{"id":"WIDGET_INTERACT","properties":{"Find Widget By":{"class":"Widget","logic":"NONE","type":"WIDGET_ITEM_ID","operator":"EQUALS"}}}]
+
+[{"id":"ADD_ALL_TO_LIST"},{"id":"WIDGET_INTERACT","properties":{"Action":"Withdraw","Find Widget By":{"class":"Widget","logic":"NONE","type":"WIDGET_ITEM_ID","operator":"IS_IN_LIST","value":"list(Fish)"}}}]
+
+[{"id":"WIDGET_INTERACT","properties":{"Action":"Withdraw","Find Widget By":{"class":"Widget","logic":"NONE","type":"WIDGET_ID","operator":"EQUALS","filters":[{"class":"Widget","logic":"AND","type":"WIDGET_ITEM_ID","operator":"IS_IN_LIST","value":"list(fish)"}]
+
+[{"id":"CREATE_LABEL","properties":{"Label":"Top 3"},"children":[{"id":"SET_VARIABLE","properties":{"Value":"3","Variable name":"Round"},"children":[{"id":"ADD_ALL_TO_LIST","properties":{"List name":"ValueList","Value":"51272,0,2210473,59634"}}]
+
+[{"id":"SET_VARIABLE_TO_LAST_OUTPUT","properties":{"Variable name":"tmp"},"children":[{"id":"IF_VARIABLE_IS","properties":{"Filter Value By":{"class":"Variable","logic":"NONE","type":"AS_NUMBER","operator":"GREATER_THAN","value":"0"},"Variable name":"Round"},"children":[{"id":"SET_VARIABLE","properties":{"Value":"0","Variable name":"Highest"}},{"id":"IF_VARIABLE_IS","properties":{"Filter Value By":{"class":"Variable","logic":"NONE","type":"AS_NUMBER","operator":"GREATER_THAN","value":"v(Highest)"},"Variable name":"tmp"},"children":[{"id":"SET_VARIABLE","properties":{"Value":"v(tmp)","Variable name":"Value_v(Round)"},"children":[{"id":"SUBTRACT_FROM_VARIABLE","properties":{"Variable name":"Round","By":"1"},"children":[{"id":"ADD_ALL_TO_LIST","properties":{"Value":"v(tmp)","List name":"Top3Values"}}]
+
+[{"id":"REMOVE_FROM_LIST","properties":{"Value":"tmp","List name":"ValueList"}}]
+
+[{"id":"CREATE_LABEL","properties":{"Label":"Top 3"},"children":[{"id":"IF_FIRST_RUN","children":[{"id":"SET_VARIABLE","properties":{"Value":"3","Variable name":"Round"}},{"id":"ADD_ALL_TO_LIST","properties":{"List name":"ValueList","Value":"7,3,6,2,1,4,5"}}]
+
+[{"id":"SUBTRACT_FROM_VARIABLE","properties":{"Variable name":"Round","By":"1"}},{"id":"FOR_EACH_IN_LIST","properties":{"List name":"ValueList"},"children":[{"id":"SET_VARIABLE_TO_LAST_OUTPUT","properties":{"Variable name":"tmp"},"children":[{"id":"IF_VARIABLE_IS","properties":{"Filter Value By":{"class":"Variable","logic":"NONE","type":"AS_NUMBER","operator":"GREATER_THAN_OR_EQUAL","value":"v(Highest)"},"Variable name":"tmp"},"children":[{"id":"SET_VARIABLE","properties":{"Value":"v(tmp)","Variable name":"Highest"}}]
+
+[{"id":"ADD_ALL_TO_LIST","properties":{"Value":"v(Highest)","List name":"Top3List"},"children":[{"id":"REMOVE_FROM_LIST","properties":{"Value":"v(Highest)","List name":"ValueList"},"children":[{"id":"SET_VARIABLE","properties":{"Value":"0","Variable name":"Highest"}}]
+
+[{"id":"IF_VARIABLE_IS_NOT_SET","properties":{"Variable name":"Task"},"children":[{"id":"SET_VARIABLE","properties":{"Value":"Woodcutting","Variable name":"Task"}}]
+
+[{"id":"COMMENT","properties":{"Comment":"Add your logic here. walk to tree. chop tree play with tree whatever"}}]
+
+[{"id":"COMMENT","properties":{"Comment":"Add logic here. Steal from people. rob stalls do gang shit"}}]
+
+[{"id":"COMMENT","properties":{"Comment":"Set Timers"},"children":[{"id":"IF_VARIABLE_IS_NOT_SET","properties":{"Variable name":"Task"},"children":[{"id":"IF_TIMER_DOES_NOT_EXIST","properties":{"Timer name":"TaskTimer"},"children":[{"id":"START_TIMER","properties":{"Timer name":"TaskTimer","Time":"rand(180,360)"}}]
+
+[{"id":"IF_TIMER_IS_FINISHED","properties":{"Timer name":"TaskTimer"},"children":[{"id":"DELETE_TIMER","properties":{"Timer name":"TaskTimer"},"children":[{"id":"DELETE_VARIABLE","properties":{"Variable name":"Task"},"children":[{"id":"DELETE_VARIABLE","properties":{"Variable name":"TaskChoose"}}]
+
+[{"id":"IF_VARIABLE_IS","properties":{"Filter Value By":{"class":"Variable","logic":"NONE","type":"AS_TEXT","operator":"EQUALS","value":"1"},"Variable name":"TaskChoose"},"children":[{"id":"SET_VARIABLE","properties":{"Value":"Woodcut","Variable name":"Task"}}]
+
+[{"id":"SET_VARIABLE","properties":{"Value":"Thieve","Variable name":"Task"}}]
+
+[{"id":"IF_VARIABLE_IS","properties":{"Filter Value By":{"class":"Variable","logic":"NONE","type":"AS_TEXT","operator":"EQUALS","value":"Thieve"},"Variable name":"Task"},"children":[{"id":"COMMENT","properties":{"Comment":"Place all logic for Theiving here. Walking, theiving, Banking, Dropping"}}]
+
+[{"id":"COMMENT","properties":{"Comment":"Place all logic for woodcutting here. Walking, Chopping, Banking, Dropping"}}]
+
+[{"id":"COMMENT","color":-65281,"properties":{"Comment":"Task selection snippet"},"children":[{"id":"COMMENT","color":-16711681,"properties":{"Comment":"Variables\n"},"children":[{"id":"IF_FIRST_RUN","children":[{"id":"SET_VARIABLE","properties":{"Value":"0","Variable name":"Task_Selection"}},{"id":"CREATE_TIMER","customDisplayName":"Timer - Task_Timer","properties":{"Timer name":"Task_Timer","Time":"5"}}]
+
+[{"id":"COMMENT","color":-256,"properties":{"Comment":"Selecting Task"},"children":[{"id":"IF_VARIABLE_IS","properties":{"Filter Value By":{"class":"Variable","logic":"NONE","type":"AS_NUMBER","operator":"EQUALS","value":"0"},"Variable name":"Task_Selection"},"children":[{"id":"IF_TIMER_IS_NOT_RUNNING","properties":{"Timer name":"Task_Timer"},"children":[{"id":"SET_VARIABLE_TO_RANDOM","properties":{"Minimum":"1","Maximum":"4","Variable name":"Task_Selection"},"children":[{"id":"RESTART_TIMER","properties":{"Timer name":"Task_Timer"}}]
+
+[{"id":"IF_VARIABLE_IS_NOT","properties":{"Filter Value By":{"class":"Variable","logic":"NONE","type":"AS_NUMBER","operator":"EQUALS","value":"0"},"Variable name":"Task_Selection"},"children":[{"id":"IF_TIMER_IS_NOT_RUNNING","properties":{"Timer name":"Task_Timer"},"children":[{"id":"SET_VARIABLE","properties":{"Value":"0","Variable name":"Task_Selection"}}]
+
+[{"id":"IF_FIRST_RUN","children":[{"id":"ADD_ALL_TO_LIST","properties":{"List name":"tasks","Value":"Thieving,Woodcutting"}}]
+
+[{"id":"SET_VARIABLE_TO_RANDOM_LIST_ELEMENT","properties":{"List name":"tasks","Variable name":"task"}}]
+
+[{"id":"IF_TIMER_IS_FINISHED","properties":{"Timer name":"taskTimer"},"children":[{"id":"DELETE_VARIABLE","properties":{"Variable name":"task"}}]
+
+[{"id":"WIDGET_INTERACT","properties":{"Action":"Yes","Find Widget By":{"class":"Widget","logic":"NONE","type":"TEXT","operator":"EQUALS","value":"Yes"}}}]
+
+[{"id":"IF_WIDGET_EXISTS","properties":{"Find Widget By":{"class":"Widget","logic":"NONE","type":"TEXT","operator":"EQUALS","value":"Yes"}}}]
+
+[{"id":"IF_WIDGET_EXISTS","properties":{"Find Widget By":{"class":"Widget","logic":"NONE","type":"TEXT","operator":"EQUALS","value":"Yes"}},"children":[{"id":"WIDGET_INTERACT","properties":{"Find Widget By":{"class":"Widget","logic":"NONE","type":"IS_LAST_OUTPUT","operator":"EQUALS"}}}]
+
+[{"id":"IF_WIDGET_EXISTS","properties":{"Find Widget By":{"class":"Widget","logic":"NONE","type":"TEXT","operator":"CONTAINS","value":"How many would you like to take?"}},"children":[{"id":"WIDGET_INTERACT","properties":{"Find Widget By":{"class":"Widget","logic":"NONE","type":"WIDGET_ID","operator":"EQUALS","value":"270, 14, 38"}}}]
+
+[{"id":"BANK_WITHDRAW_ITEM","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"NAME","operator":"EQUALS","value":"Steel axe"},"Amount":"1"}}]
+
+[{"id":"IF_LOCAL_PLAYER_MATCHES","customDisplayName":"Is Not On Belt Tile","properties":{"Filter By":{"class":"Player","logic":"NONE","type":"TILE","operator":"DOES_NOT_EQUAL","value":"(1942, 4967, 0)"}},"children":[{"id":"WALK_FULLY_TO_TILE","properties":{"Tile":"(1942, 4967, 0)"}}]
+
+[{"id":"IF_BANK_CONTAINS","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"NAME","operator":"EQUALS","value":"Steel axe"}},"children":[{"id":"BANK_WITHDRAW_ITEM","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"NAME","operator":"EQUALS","value":"Steel axe"},"Amount":"1"}}]
+
+[{"id":"IF_INVENTORY_DOES_NOT_CONTAIN_ANY","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"NAME","operator":"EQUALS","value":"Steel axe"}}},{"id":"AND_BRANCH"},{"id":"IF_BANK_CONTAINS","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"NAME","operator":"EQUALS","value":"Steel axe"}},"children":[{"id":"BANK_WITHDRAW_ITEM","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"NAME","operator":"EQUALS","value":"Steel axe"},"Amount":"1"}}]
+
+[{"id":"IF_BANK_CONTAINS","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"NAME","operator":"EQUALS","value":"Steel axe"}},"children":[{"id":"BANK_WITHDRAW_ITEM","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"NAME","operator":"EQUALS","value":"Steel axe"},"Amount":"1"}}]
+
+[{"id":"WIDGET_INTERACT","properties":{"Find Widget By":{"class":"Widget","logic":"NONE","type":"NONE","operator":"EQUALS"}}}]
+
+[{"id":"IF_VARIABLE_IS_NOT_SET","properties":{"Variable name":"imHungry"},"children":[{"id":"SET_VARIABLE","properties":{"Value":"0","Variable name":"imHungry"}}]
+
+[{"id":"COMMENT","properties":{"Comment":"Give mulah"}},{"id":"ADD_TO_VARIABLE","properties":{"Variable name":"imHungry","By":"1"},"children":[{"id":"LOG_WITH_COLOR","properties":{"Message":"v(imHungry)","Color":{"class":"Color","value":-16711911}}}]
+
+[{"id":"IF_LOCAL_PLAYER_MATCHES","properties":{"Filter By":{"class":"Player","logic":"NONE","type":"TILE","operator":"EQUALS","value":"(2377, 3131, 1)"}},"children":[{"id":"SLEEP_UNTIL_INSIDE_IS_TRUE","properties":{"Max time (seconds)":"1575"},"children":[{"id":"IF_LOCAL_PLAYER_MATCHES","properties":{"Filter By":{"class":"Player","logic":"NONE","type":"NOT_IN_AREA","operator":"EQUALS","value":"v(East Zammy Portal)"}}}]
+
+[{"id":"SLEEP_UNTIL_INSIDE_IS_TRUE","properties":{"Max time (seconds)":"1575"},"children":[{"id":"IF_LOCAL_PLAYER_MATCHES","properties":{"Filter By":{"class":"Player","logic":"NONE","type":"NOT_IN_AREA","operator":"EQUALS","value":"v(East Zammy Portal)"}}}]
+
+[{"id":"COMMENT","properties":{"Comment":"hasBootsAndHelmet Variable"},"children":[{"id":"IF_VARIABLE_IS_NOT_SET","properties":{"Variable name":"hasBootsAndHelmet"},"children":[{"id":"IF_EQUIPPED_ITEM_MATCHES","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"ID","operator":"EQUALS","value":"12016"}}},{"id":"AND_BRANCH"},{"id":"IF_EQUIPPED_ITEM_MATCHES","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"ID","operator":"EQUALS","value":"12013"}},"children":[{"id":"SET_VARIABLE","properties":{"Value":"True","Variable name":"hasBootsAndHelmet"}}]
+
+[{"id":"SET_VARIABLE","properties":{"Value":"False","Variable name":"hasBootsAndHelmet"}}]
+
+[{"id":"IF_VARIABLE_IS_NOT_SET","properties":{"Variable name":"hasBootsAndHelmet"},"children":[{"id":"IF_EQUIPPED_ITEM_MATCHES","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"ID","operator":"EQUALS","value":"12016"}},"children":[{"id":"IF_EQUIPPED_ITEM_MATCHES","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"ID","operator":"EQUALS","value":"12013"}},"children":[{"id":"SET_VARIABLE","properties":{"Value":"True","Variable name":"hasBootsAndHelmet"}}]
+
+[{"id":"SET_VARIABLE","properties":{"Value":"False","Variable name":"hasBootsAndHelmet"}}]
+
+[{"id":"SET_VARIABLE","properties":{"Value":"False","Variable name":"hasBootsAndHelmet"}}]
+
+[{"id":"START_NEW_THREAD","properties":{"Thread name":"imp_npc","Repeat until stopped":true,"Sleep between runs (ms)":"10"},"children":[{"id":"IF_NPC_EXISTS","properties":{"Filter NPC By":{"class":"NPC","logic":"NONE","type":"ID","operator":"EQUALS","value":"5007"}},"children":[{"id":"SET_VARIABLE_TO_LAST_OUTPUT","properties":{"Variable name":"imp_npc"}}]
+
+[{"id":"PAINT_ROOT","children":[{"id":"ADD_NPCS_TO_LIST","properties":{"List name":"temp","Filter By":{"class":"NPC","logic":"NONE","type":"ID","operator":"EQUALS","value":"1338"}}},{"id":"FOR_EACH_IN_LIST","properties":{"List name":"temp"},"children":[{"id":"SET_VARIABLE_TO_LAST_OUTPUT","properties":{"Variable name":"temp_entity"}},{"id":"DRAW_ENTITY_OUTLINE","properties":{"Color":{"class":"Color","value":-3036},"Variable name":"temp_entity","Draw convex hull only":true}}]
+
+[{"id":"ADD_NPCS_TO_LIST","properties":{"List name":"temp","Filter By":{"class":"NPC","logic":"NONE","type":"ID","operator":"EQUALS","value":"1338"}}},{"id":"FOR_EACH_IN_LIST","properties":{"List name":"temp"},"children":[{"id":"SET_VARIABLE_TO_LAST_OUTPUT","properties":{"Variable name":"temp_entity"}},{"id":"DRAW_ENTITY_OUTLINE","properties":{"Color":{"class":"Color","value":-3036},"Variable name":"temp_entity","Draw convex hull only":true}}]
+
+[{"id":"HOP_TO_RANDOM_WORLD","properties":{"Filter World By":{"class":"World","logic":"NONE","type":"ID","operator":"IS_IN_LIST","value":"123,456,789"}}}]
+
+[{"id":"IF_BANK_IS_NOT_OPEN","children":[{"id":"OPEN_BANK"}]
+
+[{"id":"IF_INVENTORY_DOES_NOT_ONLY_CONTAIN","properties":{"Filter Items By":{"class":"Item","logic":"NONE","type":"NAME","operator":"CONTAINS","value":"bone"}},"children":[{"id":"BANK_DEPOSIT_ALL_EXCEPT","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"NAME","operator":"CONTAINS","value":"bone"}}}]
+
+[{"id":"WITHDRAW_ITEM_TO_SET_AMOUNT","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"NAME","operator":"CONTAINS","value":"bone"},"Deposit excess":true,"Amount":"28"}}]
+
+[{"id":"CLOSE_BANK"}]
+
+[{"id":"IF_BANK_IS_NOT_OPEN","children":[{"id":"INTERACT_WITH_INVENTORY_ITEM","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"NAME","operator":"CONTAINS","value":"bone"},"Action":"bury"}}]
+
+[{"id":"GAME_OBJECT_INTERACT","properties":{"Filter Object By":{"class":"GameObject","logic":"NONE","type":"ID","operator":"EQUALS","value":"26185"}}}]
+
+[{"id":"IF_LOCAL_PLAYER_MATCHES","properties":{"Filter By":{"class":"Player","logic":"NONE","type":"IN_AREA","operator":"EQUALS"}}}]
+
+[{"id":"IF_GAME_OBJECT_EXISTS","properties":{"Filter Object By":{"class":"GameObject","logic":"NONE","type":"IS_UNDER_PLAYER","operator":"EQUALS","value":"26185","filters":[{"class":"GameObject","logic":"AND","type":"ID","operator":"NOT_IN_LIST","value":"4741,4739,4740,4737,4738,4736,4735,1251,1252,1247"}]
+
+[{"id":"COMMENT","properties":{"Comment":"if in dialogue"}},{"id":"IF_NOT_IN_DIALOGUE","children":[{"id":"NPC_INTERACT","properties":{"Action":"Talk-to","Filter NPC By":{"class":"NPC","logic":"NONE","type":"NAME","operator":"CONTAINS","value":"Cook"}}}]
+
+[{"id":"IF_CAN_CONTINUE","children":[{"id":"SPACEBAR_TO_CONTINUE"}]
+
+[{"id":"CHOOSE_OPTION_CONTAINING","properties":{"Text":"What\u0027s wrong?"}}]
+
+[{"id":"CHOOSE_OPTION_CONTAINING","properties":{"Text":"Yes."}}]
+
+[{"id":"SELL_ALL_OF_MATCHING_ITEM_GRAND_EXCHANGE","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"NAME","operator":"NOT_IN_LIST","value":"Mystic fire staff,Water battlestaff,Air battlestaff,Onyx bolts (e),Magic longbow,Dragon javelin heads,Fire battlestaff,Earth battlestaff,Combat bracelet,Mystic air staff,Mystic earth staff, Mystic water staff,Rune warhammer,Rune platelegs,Mystic robe top,Mystic robe bottom,Black d\u0027hide body,Torag\u0027s hammers,Red d\u0027hide body,Law rune,Nature rune, Air rune,Coins,Diamond bracelet","filters":[{"class":"Item","logic":"AND","type":"IS_TRADEABLE","operator":"EQUALS"}]
+
+[{"id":"CUSTOM_a452c748-16f3-49d8-88f0-1344d17dc54c"}]
+
+[{"id":"ADD_INVENTORY_ITEMS_TO_LIST","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"NAME","operator":"CONTAINS","value":"map(Map.v(Highest Profit Herb).grimy_herb)"},"List name":"toClean"},"children":[{"id":"FOR_EACH_IN_LIST","properties":{"List name":"toClean"},"children":[{"id":"SET_VARIABLE","disabled":true,"properties":{"Value":"lastOutput()","Variable name":"herbToClean"}},{"id":"INTERACT_WITH_INVENTORY_ITEM","customDisplayName":"Cleaning Grimy","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"IS_LAST_OUTPUT","operator":"EQUALS","value":"herbToClean"},"Action":"Clean"}},{"id":"WIDGET_INTERACT","disabled":true,"properties":{"Action":"lastOutput()","Find Widget By":{"class":"Widget","logic":"NONE","type":"ACTION","operator":"EQUALS","value":"Clean"}}}]
+
+[{"id":"CLEAR_LIST","properties":{"List name":"Items"}},{"id":"ADD_INVENTORY_ITEMS_TO_LIST","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"NONE","operator":"EQUALS"},"List name":"Items"}},{"id":"FOR_EACH_IN_LIST","properties":{"List name":"Items"},"children":[{"id":"INTERACT_WITH_INVENTORY_ITEM","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"IS_LAST_OUTPUT","operator":"EQUALS"}}}]
+
+[{"id":"FOR_EACH_NUMBER_IN_RANGE","properties":{"Minimum":"1","Maximum":"28"},"children":[{"id":"INTERACT_WITH_INVENTORY_ITEM","properties":{"Filter Item By":{"class":"Item","logic":"NONE","type":"SLOT","operator":"EQUALS","value":"lastOutput()"},"Action":"Clean"}}]
+
+[{"id":"COMMENT","properties":{"Comment":" "},"children":[{"id":"COMMENT","properties":{"Comment":"Setting Base X \u0026 Y"},"children":[{"id":"SET_VARIABLE_TO_BASE_Y","properties":{"Variable name":"Y"}},{"id":"SET_VARIABLE_TO_BASE_X","properties":{"Variable name":"X"}},{"id":"SET_VARIABLE","properties":{"Value":"(add(v(X), rand(46, 53)), add(v(Y), rand(60, 68)), 3)","Variable name":"NMZ_Tile"},"children":[{"id":"SET_TO_AREA_AROUND_TILE","properties":{"Tile":"v(NMZ_Tile)","Radius":"3","Variable name":"NMZ_Area"}}]
+
+[{"id":"COMMENT","properties":{"Comment":"Center Area"},"children":[{"id":"IF_PLAYER_IS_IN_DYNAMIC_AREA","children":[{"id":"IF_LOCAL_PLAYER_MATCHES","properties":{"Filter By":{"class":"Player","logic":"NONE","type":"NOT_IN_AREA","operator":"EQUALS","value":"v(NMZ_Area)"}},"children":[{"id":"WALK_TO_AREA","properties":{"Area":"v(NMZ_Area)"}}]
+
+[{"id":"CREATE_LABEL","properties":{"Label":"Top 3"},"children":[{"id":"IF_FIRST_RUN","children":[{"id":"SET_VARIABLE","properties":{"Value":"3","Variable name":"Round"}},{"id":"ADD_ALL_TO_LIST","properties":{"List name":"ValueList","Value":"7,3,6,2,1,4,5"}}]
+
+[{"id":"SUBTRACT_FROM_VARIABLE","properties":{"Variable name":"Round","By":"1"}},{"id":"FOR_EACH_IN_LIST","properties":{"List name":"ValueList"},"children":[{"id":"SET_VARIABLE_TO_LAST_OUTPUT","properties":{"Variable name":"tmp"},"children":[{"id":"IF_VARIABLE_IS","properties":{"Filter Value By":{"class":"Variable","logic":"NONE","type":"AS_NUMBER","operator":"GREATER_THAN_OR_EQUAL","value":"v(Highest)"},"Variable name":"tmp"},"children":[{"id":"SET_VARIABLE","properties":{"Value":"v(tmp)","Variable name":"Highest"}}]
+
+[{"id":"ADD_ALL_TO_LIST","properties":{"Value":"v(Highest)","List name":"Top3List"},"children":[{"id":"REMOVE_FROM_LIST","properties":{"Value":"v(Highest)","List name":"ValueList"},"children":[{"id":"SET_VARIABLE","properties":{"Value":"0","Variable name":"Highest"}}]
+
+[{"id":"IF_NPC_EXISTS","properties":{"Filter NPC By":{"class":"NPC","logic":"NONE","type":"ID","operator":"EQUALS","value":"7223","filters":[{"class":"NPC","logic":"AND","type":"DISTANCE_TO_PLAYER","operator":"LESS_THAN","value":"3"}]
+
+[{"id":"DELETE_VARIABLE","properties":{"Variable name":"rats_list"}},{"id":"ADD_NPCS_TO_LIST","properties":{"List name":"rats_list","Filter By":{"class":"NPC","logic":"NONE","type":"ID","operator":"EQUALS","value":"7223"}}},{"id":"FOR_EACH_IN_LIST","properties":{"Reverse order":false,"List name":"rats_list"},"children":[{"id":"NPC_INTERACT","properties":{"Force left click":false,"Filter NPC By":{"class":"NPC","logic":"NONE","type":"IS_LAST_OUTPUT","operator":"EQUALS","value":"7223"},"Don\u0027t walk to NPC":true},"children":[{"id":"SLEEP_NORMAL_DISTRIBUTION","properties":{"Mean":"100","Variance":"50"}}]
+

@@ -1,0 +1,15 @@
+{
+  "id": "76ffccc9-35e9-409b-ace8-a941e9754582",
+  "name": "Variables \u003e Player \u003e Our Name",
+  "description": "Will set our player\u0027s name to the variable \"OUR_NAME\"",
+  "parameters": "",
+  "fail": false,
+  "actions": [
+    {
+      "id": "SET_VARIABLE_TO_LOCAL_NAME",
+      "properties": {
+        "Variable name": "OUR_NAME"
+      }
+    }
+  ]
+}

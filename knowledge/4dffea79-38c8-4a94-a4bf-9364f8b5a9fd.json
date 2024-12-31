@@ -1,0 +1,48 @@
+{
+  "id": "4dffea79-38c8-4a94-a4bf-9364f8b5a9fd",
+  "name": "Misc \u003e Inventory Randomiser",
+  "description": "",
+  "parameters": "",
+  "fail": false,
+  "actions": [
+    {
+      "id": "SET_VARIABLE_TO_RANDOM",
+      "properties": {
+        "Minimum": "1",
+        "Maximum": "160",
+        "Variable name": "RandomInventory"
+      },
+      "children": [
+        {
+          "id": "IF_VARIABLE_IS",
+          "properties": {
+            "Filter Value By": {
+              "class": "Variable",
+              "logic": "NONE",
+              "type": "AS_NUMBER",
+              "operator": "LESS_THAN",
+              "value": "30"
+            },
+            "Variable name": "RandomInventory"
+          },
+          "children": [
+            {
+              "id": "SET_INTERACTION_ORDER",
+              "properties": {
+                "Random": true
+              }
+            }
+          ]
+        },
+        {
+          "id": "ELSE_BRANCH",
+          "children": [
+            {
+              "id": "RESET_INTERACTION_ORDER"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,108 @@
+{
+  "id": "212311ab-1fca-46b5-b24d-be98704a9e7e",
+  "name": "Grand Exchange \u003e Tools \u003e Unbox Sets",
+  "description": "Will interact with the GE Clerk to unbox any items containing the word \"set\" in it.",
+  "parameters": "",
+  "fail": false,
+  "actions": [
+    {
+      "id": "CREATE_LABEL",
+      "properties": {
+        "Label": "Opening Sets"
+      },
+      "children": [
+        {
+          "id": "IF_INVENTORY_CONTAINS_ANY",
+          "properties": {
+            "Filter Item By": {
+              "class": "Item",
+              "logic": "NONE",
+              "type": "NAME",
+              "operator": "CONTAINS",
+              "value": "set"
+            }
+          },
+          "children": [
+            {
+              "id": "NPC_INTERACT",
+              "properties": {
+                "Filter NPC By": {
+                  "class": "NPC",
+                  "logic": "NONE",
+                  "type": "NAME",
+                  "operator": "EQUALS",
+                  "value": "Grand Exchange Clerk"
+                },
+                "Action": "Sets"
+              },
+              "children": [
+                {
+                  "id": "SLEEP_BETWEEN",
+                  "properties": {
+                    "Minimum": "1000",
+                    "Maximum": "2000"
+                  },
+                  "children": [
+                    {
+                      "id": "INTERACT_WITH_INVENTORY_ITEM",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "CONTAINS",
+                          "value": "set"
+                        },
+                        "Force left click": true,
+                        "Action": ""
+                      },
+                      "children": [
+                        {
+                          "id": "SLEEP_NORMAL_DISTRIBUTION",
+                          "properties": {
+                            "Mean": "3000",
+                            "Variance": "500"
+                          },
+                          "children": [
+                            {
+                              "id": "GO_TO_LABEL",
+                              "properties": {
+                                "Label": "Opening Sets"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "WIDGET_INTERACT",
+          "properties": {
+            "Action": "Close",
+            "Find Widget By": {
+              "class": "Widget",
+              "logic": "NONE",
+              "type": "WIDGET_ID",
+              "operator": "EQUALS",
+              "value": "451, 1, 11"
+            }
+          },
+          "children": [
+            {
+              "id": "SLEEP_NORMAL_DISTRIBUTION",
+              "properties": {
+                "Mean": "3000",
+                "Variance": "500"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

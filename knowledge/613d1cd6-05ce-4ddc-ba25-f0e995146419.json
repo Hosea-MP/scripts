@@ -1,0 +1,48 @@
+{
+  "id": "613d1cd6-05ce-4ddc-ba25-f0e995146419",
+  "name": "Utility \u003e Randomize \u003e Camera Rotator",
+  "description": "Will randomly rotate the camera as an anti-ban feature.",
+  "parameters": "",
+  "fail": false,
+  "actions": [
+    {
+      "id": "IF_RANDOM_NUMBER_IS",
+      "properties": {
+        "number": {
+          "class": "Number",
+          "operator": "GREATER_THAN_OR_EQUALS",
+          "value": "418"
+        },
+        "Minimum": "1",
+        "Maximum": "420"
+      },
+      "children": [
+        {
+          "id": "IF_LOCAL_PLAYER_MATCHES",
+          "properties": {
+            "Filter By": {
+              "class": "Player",
+              "logic": "NONE",
+              "type": "NOT_MOVING",
+              "operator": "EQUALS"
+            }
+          },
+          "children": [
+            {
+              "id": "IF_MOUSE_IS_ON_SCREEN",
+              "children": [
+                {
+                  "id": "ROTATE_CAMERA_RANDOMLY",
+                  "properties": {
+                    "Use mouse only": false,
+                    "Use keyboard only": true
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

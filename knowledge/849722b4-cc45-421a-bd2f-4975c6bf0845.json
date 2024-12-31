@@ -1,0 +1,57 @@
+{
+  "id": "849722b4-cc45-421a-bd2f-4975c6bf0845",
+  "name": "Utility \u003e Threads \u003e Face Walking Direction",
+  "description": "Will turn the camera towards the area we\u0027re walking to.",
+  "parameters": "",
+  "fail": false,
+  "actions": [
+    {
+      "id": "IF_THREAD_IS_NOT_RUNNING",
+      "properties": {
+        "Thread name": "Face Walking Direction"
+      },
+      "children": [
+        {
+          "id": "START_NEW_THREAD",
+          "customDisplayName": "Thread: Face Walking Direction",
+          "properties": {
+            "Thread name": "Face Walking Direction",
+            "Repeat until stopped": true,
+            "Sleep between runs (ms)": "rand(2000, 5000)"
+          },
+          "children": [
+            {
+              "id": "IF_LOCAL_PLAYER_MATCHES",
+              "properties": {
+                "Filter By": {
+                  "class": "Player",
+                  "logic": "NONE",
+                  "type": "MOVING",
+                  "operator": "EQUALS"
+                }
+              },
+              "children": [
+                {
+                  "id": "SET_VARIABLE_TO_DESTINATION",
+                  "customDisplayName": "Destination tile WALK_TO_TILE",
+                  "properties": {
+                    "Variable name": "WALK_TO_TILE"
+                  },
+                  "children": [
+                    {
+                      "id": "ROTATE_TO_TILE",
+                      "properties": {
+                        "Use mouse only": true,
+                        "Tile": "v(WALK_TO_TILE)"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

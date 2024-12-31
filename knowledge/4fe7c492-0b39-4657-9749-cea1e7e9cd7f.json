@@ -1,0 +1,17 @@
+{
+  "id": "4fe7c492-0b39-4657-9749-cea1e7e9cd7f",
+  "name": "Utility \u003e Randomize \u003e Skill Check",
+  "description": "Will randomly wait between 1 \u0026 5 seconds",
+  "parameters": "",
+  "fail": false,
+  "actions": [
+    {
+      "id": "SLEEP_NORMAL_DISTRIBUTION",
+      "customDisplayName": "Sleep randomly (Gaussian) (1200 - 5200 ms)",
+      "properties": {
+        "Mean": "3200",
+        "Variance": "2000"
+      }
+    }
+  ]
+}

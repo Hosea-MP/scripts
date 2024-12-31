@@ -1,0 +1,1315 @@
+{
+  "sleep": "500",
+  "name": "PollnivneachCourse",
+  "version": 1.0,
+  "metadata": {
+    "network-id": "24",
+    "network-downloaded-at": "1721665233376"
+  },
+  "actions": [
+    {
+      "id": "IF_NOT_LOGGED_IN",
+      "children": [
+        {
+          "id": "IF_BREAK_IS_NOT_PENDING",
+          "children": [
+            {
+              "id": "ENABLE_LOGIN_SOLVER"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "IF_LOGGED_IN",
+      "children": [
+        {
+          "id": "IF_BREAK_IS_PENDING",
+          "children": [
+            {
+              "id": "ENABLE_BREAKS"
+            }
+          ]
+        },
+        {
+          "id": "IF_BREAK_IS_NOT_PENDING",
+          "children": [
+            {
+              "id": "CREATE_LABEL",
+              "properties": {
+                "Label": "Course"
+              },
+              "children": [
+                {
+                  "id": "CREATE_LABEL",
+                  "properties": {
+                    "Label": "Groundfloor"
+                  },
+                  "children": [
+                    {
+                      "id": "IF_LOCAL_PLAYER_MATCHES",
+                      "properties": {
+                        "Filter By": {
+                          "class": "Player",
+                          "logic": "NONE",
+                          "type": "IN_AREA",
+                          "operator": "EQUALS",
+                          "value": "(3352, 2961, 0), (3373, 2985, 0)",
+                          "filters": [
+                            {
+                              "class": "Player",
+                              "logic": "AND",
+                              "type": "NOT_ANIMATING",
+                              "operator": "EQUALS"
+                            }
+                          ]
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "GAME_OBJECT_INTERACT",
+                          "properties": {
+                            "Don\u0027t walk to object": false,
+                            "Action": "Climb-on",
+                            "Filter Object By": {
+                              "class": "GameObject",
+                              "logic": "NONE",
+                              "type": "NAME",
+                              "operator": "EQUALS",
+                              "value": "Basket",
+                              "filters": [
+                                {
+                                  "class": "GameObject",
+                                  "logic": "AND",
+                                  "type": "IN_AREA",
+                                  "operator": "EQUALS",
+                                  "value": "(3355, 2965, 0),(3355, 2959, 0),(3348, 2959, 0),(3348, 2966, 0)"
+                                },
+                                {
+                                  "class": "GameObject",
+                                  "logic": "AND",
+                                  "type": "DISTANCE_TO_PLAYER",
+                                  "operator": "LESS_THAN_OR_EQUAL",
+                                  "value": "15"
+                                }
+                              ]
+                            },
+                            "Force left click": false
+                          },
+                          "children": [
+                            {
+                              "id": "SLEEP_WHILE_MOVING"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "CREATE_LABEL",
+                  "properties": {
+                    "Label": "FirstPart"
+                  },
+                  "children": [
+                    {
+                      "id": "IF_LOCAL_PLAYER_MATCHES",
+                      "properties": {
+                        "Filter By": {
+                          "class": "Player",
+                          "logic": "NONE",
+                          "type": "IN_AREA",
+                          "operator": "EQUALS",
+                          "value": "(3346, 2968, 1), (3351, 2964, 1)"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "IF_GROUND_ITEM_EXISTS",
+                          "properties": {
+                            "Filter Item By": {
+                              "class": "GroundItem",
+                              "logic": "NONE",
+                              "type": "NAME",
+                              "operator": "EQUALS",
+                              "value": "Mark of grace",
+                              "filters": [
+                                {
+                                  "class": "GroundItem",
+                                  "logic": "AND",
+                                  "type": "DISTANCE_TO_PLAYER",
+                                  "operator": "LESS_THAN_OR_EQUAL",
+                                  "value": "7"
+                                }
+                              ]
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "GROUND_ITEM_INTERACT",
+                              "properties": {
+                                "Filter Item By": {
+                                  "class": "GroundItem",
+                                  "logic": "NONE",
+                                  "type": "NAME",
+                                  "operator": "EQUALS",
+                                  "value": "Mark of grace"
+                                },
+                                "Action": "Take"
+                              },
+                              "children": [
+                                {
+                                  "id": "SLEEP_WHILE_MOVING"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "id": "ELSE_BRANCH",
+                          "children": [
+                            {
+                              "id": "GAME_OBJECT_INTERACT",
+                              "properties": {
+                                "Filter Object By": {
+                                  "class": "GameObject",
+                                  "logic": "NONE",
+                                  "type": "NAME",
+                                  "operator": "EQUALS",
+                                  "value": "Market stall",
+                                  "filters": [
+                                    {
+                                      "class": "GameObject",
+                                      "logic": "AND",
+                                      "type": "IN_AREA",
+                                      "operator": "EQUALS",
+                                      "value": "(3353, 2973, 1),(3353, 2967, 1),(3346, 2967, 1),(3346, 2974, 1)"
+                                    }
+                                  ]
+                                },
+                                "Don\u0027t walk to object": true,
+                                "Action": "Jump-on"
+                              },
+                              "children": [
+                                {
+                                  "id": "SLEEP_NORMAL_DISTRIBUTION",
+                                  "properties": {
+                                    "Mean": "1000",
+                                    "Variance": "700"
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "SLEEP_UNTIL_GAME_TICK"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "CREATE_LABEL",
+                  "properties": {
+                    "Label": "SecondPart"
+                  },
+                  "children": [
+                    {
+                      "id": "IF_LOCAL_PLAYER_MATCHES",
+                      "properties": {
+                        "Filter By": {
+                          "class": "Player",
+                          "logic": "NONE",
+                          "type": "IN_AREA",
+                          "operator": "EQUALS",
+                          "value": "(3352, 2973, 1), (3355, 2976, 1)"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "IF_GROUND_ITEM_EXISTS",
+                          "properties": {
+                            "Filter Item By": {
+                              "class": "GroundItem",
+                              "logic": "NONE",
+                              "type": "NAME",
+                              "operator": "EQUALS",
+                              "value": "Mark of grace",
+                              "filters": [
+                                {
+                                  "class": "GroundItem",
+                                  "logic": "AND",
+                                  "type": "DISTANCE_TO_PLAYER",
+                                  "operator": "LESS_THAN_OR_EQUAL",
+                                  "value": "5"
+                                }
+                              ]
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "GROUND_ITEM_INTERACT",
+                              "properties": {
+                                "Filter Item By": {
+                                  "class": "GroundItem",
+                                  "logic": "NONE",
+                                  "type": "NAME",
+                                  "operator": "EQUALS",
+                                  "value": "Mark of grace"
+                                },
+                                "Action": "Take"
+                              },
+                              "children": [
+                                {
+                                  "id": "SLEEP_WHILE_MOVING"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "id": "ELSE_BRANCH",
+                          "children": [
+                            {
+                              "id": "GAME_OBJECT_INTERACT",
+                              "properties": {
+                                "Filter Object By": {
+                                  "class": "GameObject",
+                                  "logic": "NONE",
+                                  "type": "NAME",
+                                  "operator": "EQUALS",
+                                  "value": "Banner",
+                                  "filters": [
+                                    {
+                                      "class": "GameObject",
+                                      "logic": "AND",
+                                      "type": "IN_AREA",
+                                      "operator": "EQUALS",
+                                      "value": "(3360, 2981, 1),(3360, 2975, 1),(3353, 2975, 1),(3353, 2982, 1)"
+                                    }
+                                  ]
+                                },
+                                "Don\u0027t walk to object": true,
+                                "Action": "Grab"
+                              },
+                              "children": [
+                                {
+                                  "id": "SLEEP_NORMAL_DISTRIBUTION",
+                                  "properties": {
+                                    "Mean": "1500",
+                                    "Variance": "1200"
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "SLEEP_UNTIL_GAME_TICK"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "CREATE_LABEL",
+                  "properties": {
+                    "Label": "ThirdPart"
+                  },
+                  "children": [
+                    {
+                      "id": "IF_LOCAL_PLAYER_MATCHES",
+                      "properties": {
+                        "Filter By": {
+                          "class": "Player",
+                          "logic": "NONE",
+                          "type": "IN_AREA",
+                          "operator": "EQUALS",
+                          "value": "(3360, 2979, 1), (3362, 2977, 1)"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "IF_GROUND_ITEM_EXISTS",
+                          "properties": {
+                            "Filter Item By": {
+                              "class": "GroundItem",
+                              "logic": "NONE",
+                              "type": "NAME",
+                              "operator": "EQUALS",
+                              "value": "Mark of grace",
+                              "filters": [
+                                {
+                                  "class": "GroundItem",
+                                  "logic": "AND",
+                                  "type": "DISTANCE_TO_PLAYER",
+                                  "operator": "LESS_THAN_OR_EQUAL",
+                                  "value": "5"
+                                }
+                              ]
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "GROUND_ITEM_INTERACT",
+                              "properties": {
+                                "Filter Item By": {
+                                  "class": "GroundItem",
+                                  "logic": "NONE",
+                                  "type": "NAME",
+                                  "operator": "EQUALS",
+                                  "value": "Mark of grace"
+                                },
+                                "Action": "Take"
+                              },
+                              "children": [
+                                {
+                                  "id": "SLEEP_WHILE_MOVING"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "id": "ELSE_BRANCH",
+                          "children": [
+                            {
+                              "id": "GAME_OBJECT_INTERACT",
+                              "properties": {
+                                "Filter Object By": {
+                                  "class": "GameObject",
+                                  "logic": "NONE",
+                                  "type": "NAME",
+                                  "operator": "EQUALS",
+                                  "value": "Gap",
+                                  "filters": [
+                                    {
+                                      "class": "GameObject",
+                                      "logic": "AND",
+                                      "type": "IN_AREA",
+                                      "operator": "EQUALS",
+                                      "value": "(3367, 2979, 1),(3367, 2973, 1),(3360, 2973, 1),(3360, 2980, 1)"
+                                    }
+                                  ]
+                                },
+                                "Don\u0027t walk to object": true,
+                                "Action": "Leap"
+                              },
+                              "children": [
+                                {
+                                  "id": "SLEEP_NORMAL_DISTRIBUTION",
+                                  "properties": {
+                                    "Mean": "1500",
+                                    "Variance": "1200"
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "SLEEP_UNTIL_GAME_TICK"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "CREATE_LABEL",
+                  "properties": {
+                    "Label": "FourthPart"
+                  },
+                  "children": [
+                    {
+                      "id": "IF_LOCAL_PLAYER_MATCHES",
+                      "properties": {
+                        "Filter By": {
+                          "class": "Player",
+                          "logic": "NONE",
+                          "type": "IN_AREA",
+                          "operator": "EQUALS",
+                          "value": "(3366, 2976, 1), (3370, 2974, 1)"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "IF_GROUND_ITEM_EXISTS",
+                          "properties": {
+                            "Filter Item By": {
+                              "class": "GroundItem",
+                              "logic": "NONE",
+                              "type": "NAME",
+                              "operator": "EQUALS",
+                              "value": "Mark of grace",
+                              "filters": [
+                                {
+                                  "class": "GroundItem",
+                                  "logic": "AND",
+                                  "type": "DISTANCE_TO_PLAYER",
+                                  "operator": "LESS_THAN_OR_EQUAL",
+                                  "value": "5"
+                                }
+                              ]
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "GROUND_ITEM_INTERACT",
+                              "properties": {
+                                "Filter Item By": {
+                                  "class": "GroundItem",
+                                  "logic": "NONE",
+                                  "type": "NAME",
+                                  "operator": "EQUALS",
+                                  "value": "Mark of grace"
+                                },
+                                "Action": "Take"
+                              },
+                              "children": [
+                                {
+                                  "id": "SLEEP_WHILE_MOVING"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "id": "ELSE_BRANCH",
+                          "children": [
+                            {
+                              "id": "GAME_OBJECT_INTERACT",
+                              "properties": {
+                                "Filter Object By": {
+                                  "class": "GameObject",
+                                  "logic": "NONE",
+                                  "type": "NAME",
+                                  "operator": "EQUALS",
+                                  "value": "Tree",
+                                  "filters": [
+                                    {
+                                      "class": "GameObject",
+                                      "logic": "AND",
+                                      "type": "IN_AREA",
+                                      "operator": "EQUALS",
+                                      "value": "(3371, 2980, 1),(3371, 2974, 1),(3364, 2974, 1),(3364, 2981, 1)"
+                                    }
+                                  ]
+                                },
+                                "Don\u0027t walk to object": true,
+                                "Action": "Jump-to"
+                              },
+                              "children": [
+                                {
+                                  "id": "SLEEP_NORMAL_DISTRIBUTION",
+                                  "properties": {
+                                    "Mean": "2000",
+                                    "Variance": "1200"
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "SLEEP_UNTIL_GAME_TICK"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "CREATE_LABEL",
+                  "properties": {
+                    "Label": "FivePart"
+                  },
+                  "children": [
+                    {
+                      "id": "IF_LOCAL_PLAYER_MATCHES",
+                      "properties": {
+                        "Filter By": {
+                          "class": "Player",
+                          "logic": "NONE",
+                          "type": "IN_AREA",
+                          "operator": "EQUALS",
+                          "value": "(3365, 2982, 1), (3369, 2984, 1)"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "IF_GROUND_ITEM_EXISTS",
+                          "properties": {
+                            "Filter Item By": {
+                              "class": "GroundItem",
+                              "logic": "NONE",
+                              "type": "NAME",
+                              "operator": "EQUALS",
+                              "value": "Mark of grace",
+                              "filters": [
+                                {
+                                  "class": "GroundItem",
+                                  "logic": "AND",
+                                  "type": "DISTANCE_TO_PLAYER",
+                                  "operator": "LESS_THAN_OR_EQUAL",
+                                  "value": "6"
+                                }
+                              ]
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "GROUND_ITEM_INTERACT",
+                              "properties": {
+                                "Filter Item By": {
+                                  "class": "GroundItem",
+                                  "logic": "NONE",
+                                  "type": "NAME",
+                                  "operator": "EQUALS",
+                                  "value": "Mark of grace"
+                                },
+                                "Action": "Take"
+                              },
+                              "children": [
+                                {
+                                  "id": "SLEEP_WHILE_MOVING"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "id": "ELSE_BRANCH",
+                          "children": [
+                            {
+                              "id": "GAME_OBJECT_INTERACT",
+                              "properties": {
+                                "Filter Object By": {
+                                  "class": "GameObject",
+                                  "logic": "NONE",
+                                  "type": "NAME",
+                                  "operator": "EQUALS",
+                                  "value": "Rough wall",
+                                  "filters": [
+                                    {
+                                      "class": "GameObject",
+                                      "logic": "AND",
+                                      "type": "IN_AREA",
+                                      "operator": "EQUALS",
+                                      "value": "(3369, 2985, 1),(3369, 2979, 1),(3362, 2979, 1),(3362, 2986, 1)"
+                                    }
+                                  ]
+                                },
+                                "Don\u0027t walk to object": true,
+                                "Action": "Climb"
+                              },
+                              "children": [
+                                {
+                                  "id": "SLEEP_NORMAL_DISTRIBUTION",
+                                  "properties": {
+                                    "Mean": "1400",
+                                    "Variance": "400"
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "SLEEP_UNTIL_GAME_TICK"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "CREATE_LABEL",
+                  "properties": {
+                    "Label": "SixPart"
+                  },
+                  "children": [
+                    {
+                      "id": "IF_LOCAL_PLAYER_MATCHES",
+                      "properties": {
+                        "Filter By": {
+                          "class": "Player",
+                          "logic": "NONE",
+                          "type": "IN_AREA",
+                          "operator": "EQUALS",
+                          "value": "(3355, 2982, 2), (3365, 2983, 2), (3357, 2985, 2)"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "IF_GROUND_ITEM_EXISTS",
+                          "properties": {
+                            "Filter Item By": {
+                              "class": "GroundItem",
+                              "logic": "NONE",
+                              "type": "NAME",
+                              "operator": "EQUALS",
+                              "value": "Mark of grace",
+                              "filters": [
+                                {
+                                  "class": "GroundItem",
+                                  "logic": "AND",
+                                  "type": "DISTANCE_TO_PLAYER",
+                                  "operator": "LESS_THAN_OR_EQUAL",
+                                  "value": "6"
+                                }
+                              ]
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "GROUND_ITEM_INTERACT",
+                              "properties": {
+                                "Filter Item By": {
+                                  "class": "GroundItem",
+                                  "logic": "NONE",
+                                  "type": "NAME",
+                                  "operator": "EQUALS",
+                                  "value": "Mark of grace"
+                                },
+                                "Action": "Take"
+                              },
+                              "children": [
+                                {
+                                  "id": "SLEEP_WHILE_MOVING"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "id": "ELSE_BRANCH",
+                          "children": [
+                            {
+                              "id": "GAME_OBJECT_INTERACT",
+                              "properties": {
+                                "Filter Object By": {
+                                  "class": "GameObject",
+                                  "logic": "NONE",
+                                  "type": "NAME",
+                                  "operator": "EQUALS",
+                                  "value": "Monkeybars",
+                                  "filters": [
+                                    {
+                                      "class": "GameObject",
+                                      "logic": "AND",
+                                      "type": "IN_AREA",
+                                      "operator": "EQUALS",
+                                      "value": "(3362, 2988, 2),(3362, 2982, 2),(3355, 2982, 2),(3355, 2989, 2)"
+                                    }
+                                  ]
+                                },
+                                "Don\u0027t walk to object": true,
+                                "Action": "Cross"
+                              },
+                              "children": [
+                                {
+                                  "id": "SLEEP_NORMAL_DISTRIBUTION",
+                                  "properties": {
+                                    "Mean": "1500",
+                                    "Variance": "1200"
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "SLEEP_UNTIL_GAME_TICK"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "CREATE_LABEL",
+                  "properties": {
+                    "Label": "SeventhPart"
+                  },
+                  "children": [
+                    {
+                      "id": "IF_LOCAL_PLAYER_MATCHES",
+                      "properties": {
+                        "Filter By": {
+                          "class": "Player",
+                          "logic": "NONE",
+                          "type": "IN_AREA",
+                          "operator": "EQUALS",
+                          "value": "(3357, 2991, 2), (3360, 2995, 2)",
+                          "filters": [
+                            {
+                              "class": "Player",
+                              "logic": "OR",
+                              "type": "IN_AREA",
+                              "operator": "EQUALS",
+                              "value": "(3367, 2990, 2), (3361, 2995, 2)"
+                            }
+                          ]
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "IF_GROUND_ITEM_EXISTS",
+                          "properties": {
+                            "Filter Item By": {
+                              "class": "GroundItem",
+                              "logic": "NONE",
+                              "type": "NAME",
+                              "operator": "EQUALS",
+                              "value": "Mark of grace",
+                              "filters": [
+                                {
+                                  "class": "GroundItem",
+                                  "logic": "AND",
+                                  "type": "DISTANCE_TO_PLAYER",
+                                  "operator": "LESS_THAN_OR_EQUAL",
+                                  "value": "7"
+                                }
+                              ]
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "GROUND_ITEM_INTERACT",
+                              "properties": {
+                                "Filter Item By": {
+                                  "class": "GroundItem",
+                                  "logic": "NONE",
+                                  "type": "NAME",
+                                  "operator": "EQUALS",
+                                  "value": "Mark of grace"
+                                },
+                                "Action": "Take"
+                              },
+                              "children": [
+                                {
+                                  "id": "SLEEP_WHILE_MOVING"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "id": "ELSE_BRANCH",
+                          "children": [
+                            {
+                              "id": "GAME_OBJECT_INTERACT",
+                              "properties": {
+                                "Filter Object By": {
+                                  "class": "GameObject",
+                                  "logic": "NONE",
+                                  "type": "NAME",
+                                  "operator": "EQUALS",
+                                  "value": "Tree",
+                                  "filters": [
+                                    {
+                                      "class": "GameObject",
+                                      "logic": "AND",
+                                      "type": "IN_AREA",
+                                      "operator": "EQUALS",
+                                      "value": "(3363, 2999, 2),(3363, 2993, 2),(3356, 2993, 2),(3356, 3000, 2)"
+                                    }
+                                  ]
+                                },
+                                "Don\u0027t walk to object": true,
+                                "Action": "Jump-on"
+                              },
+                              "children": [
+                                {
+                                  "id": "SLEEP_NORMAL_DISTRIBUTION",
+                                  "properties": {
+                                    "Mean": "1500",
+                                    "Variance": "1200"
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "SLEEP_UNTIL_GAME_TICK"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "CREATE_LABEL",
+                  "properties": {
+                    "Label": "EighthPart"
+                  },
+                  "children": [
+                    {
+                      "id": "IF_LOCAL_PLAYER_MATCHES",
+                      "properties": {
+                        "Filter By": {
+                          "class": "Player",
+                          "logic": "NONE",
+                          "type": "IN_AREA",
+                          "operator": "EQUALS",
+                          "value": "(3355, 3000, 2), (3365, 3004, 2)"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "IF_GROUND_ITEM_EXISTS",
+                          "properties": {
+                            "Filter Item By": {
+                              "class": "GroundItem",
+                              "logic": "NONE",
+                              "type": "NAME",
+                              "operator": "EQUALS",
+                              "value": "Mark of grace",
+                              "filters": [
+                                {
+                                  "class": "GroundItem",
+                                  "logic": "AND",
+                                  "type": "DISTANCE_TO_PLAYER",
+                                  "operator": "LESS_THAN_OR_EQUAL",
+                                  "value": "6"
+                                }
+                              ]
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "GROUND_ITEM_INTERACT",
+                              "properties": {
+                                "Filter Item By": {
+                                  "class": "GroundItem",
+                                  "logic": "NONE",
+                                  "type": "NAME",
+                                  "operator": "EQUALS",
+                                  "value": "Mark of grace"
+                                },
+                                "Action": "Take"
+                              },
+                              "children": [
+                                {
+                                  "id": "SLEEP_WHILE_MOVING"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "id": "ELSE_BRANCH",
+                          "children": [
+                            {
+                              "id": "GAME_OBJECT_INTERACT",
+                              "properties": {
+                                "Filter Object By": {
+                                  "class": "GameObject",
+                                  "logic": "NONE",
+                                  "type": "NAME",
+                                  "operator": "EQUALS",
+                                  "value": "Drying line",
+                                  "filters": [
+                                    {
+                                      "class": "GameObject",
+                                      "logic": "AND",
+                                      "type": "IN_AREA",
+                                      "operator": "EQUALS",
+                                      "value": "(3367, 3003, 2),(3367, 2997, 2),(3360, 2997, 2),(3360, 3004, 2)"
+                                    }
+                                  ]
+                                },
+                                "Don\u0027t walk to object": true,
+                                "Action": "Jump-to"
+                              },
+                              "children": [
+                                {
+                                  "id": "SLEEP_NORMAL_DISTRIBUTION",
+                                  "properties": {
+                                    "Mean": "1350",
+                                    "Variance": "1200"
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "SLEEP_UNTIL_GAME_TICK"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_LOCAL_PLAYER_MATCHES",
+                  "customDisplayName": "If our player matches need to reset",
+                  "properties": {
+                    "Filter By": {
+                      "class": "Player",
+                      "logic": "NONE",
+                      "type": "IN_AREA",
+                      "operator": "EQUALS",
+                      "value": "3346, 3008, 3371, 2962"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "IF_LOCAL_PLAYER_MATCHES",
+                      "properties": {
+                        "Filter By": {
+                          "class": "Player",
+                          "logic": "NONE",
+                          "type": "IN_AREA",
+                          "operator": "EQUALS",
+                          "value": "3346, 3008, 3373, 2984"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "WALK_TO_AREA_ON_SCREEN",
+                          "properties": {
+                            "Area": "(3367, 2977, 0), (3363, 2979, 0)"
+                          },
+                          "children": [
+                            {
+                              "id": "SLEEP_NORMAL_DISTRIBUTION",
+                              "properties": {
+                                "Mean": "2100",
+                                "Variance": "1200"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_LOCAL_PLAYER_MATCHES",
+                      "properties": {
+                        "Filter By": {
+                          "class": "Player",
+                          "logic": "NONE",
+                          "type": "IN_AREA",
+                          "operator": "EQUALS",
+                          "value": "3350, 2985, 3371, 2961"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "WALK_TOWARDS_GAME_OBJECT",
+                          "properties": {
+                            "Filter Object By": {
+                              "class": "GameObject",
+                              "logic": "NONE",
+                              "type": "ID",
+                              "operator": "EQUALS",
+                              "value": "14935"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "SLEEP_NORMAL_DISTRIBUTION",
+                              "properties": {
+                                "Mean": "2100",
+                                "Variance": "1500"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_LOCAL_PLAYER_MATCHES",
+                      "properties": {
+                        "Filter By": {
+                          "class": "Player",
+                          "logic": "NONE",
+                          "type": "IN_AREA",
+                          "operator": "EQUALS",
+                          "value": "(3350, 2959, 0), (3364, 2971, 0)"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "GAME_OBJECT_INTERACT",
+                          "properties": {
+                            "Filter Object By": {
+                              "class": "GameObject",
+                              "logic": "NONE",
+                              "type": "NAME",
+                              "operator": "EQUALS",
+                              "value": "Basket",
+                              "filters": [
+                                {
+                                  "class": "GameObject",
+                                  "logic": "AND",
+                                  "type": "IN_AREA",
+                                  "operator": "EQUALS",
+                                  "value": "(3355, 2965, 0),(3355, 2959, 0),(3348, 2959, 0),(3348, 2966, 0)"
+                                }
+                              ]
+                            },
+                            "Action": "Climb-on"
+                          },
+                          "children": [
+                            {
+                              "id": "SLEEP_WHILE_MOVING",
+                              "children": [
+                                {
+                                  "id": "SLEEP_UNTIL_GAME_TICK"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "CREATE_LABEL",
+              "customDisplayName": "Variables/FailSafes",
+              "properties": {
+                "Label": "Variables"
+              },
+              "children": [
+                {
+                  "id": "SET_TO_LOCAL_PLAYER_REAL_SKILL_LEVEL",
+                  "properties": {
+                    "Skill": {
+                      "class": "Skill",
+                      "value": "AGILITY"
+                    },
+                    "Variable name": "Agility"
+                  }
+                },
+                {
+                  "id": "IF_VARIABLE_IS",
+                  "properties": {
+                    "Filter Value By": {
+                      "class": "Variable",
+                      "logic": "NONE",
+                      "type": "AS_NUMBER",
+                      "operator": "LESS_THAN_OR_EQUAL",
+                      "value": "69"
+                    },
+                    "Variable name": "Agility"
+                  },
+                  "children": [
+                    {
+                      "id": "STOP_SCRIPT"
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_RUN_IS_NOT_ENABLED",
+                  "children": [
+                    {
+                      "id": "IF_RUN_ENERGY_IS",
+                      "properties": {
+                        "energy": {
+                          "class": "Number",
+                          "operator": "GREATER_THAN_OR_EQUALS",
+                          "value": "15"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "ENABLE_RUN"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                  "properties": {
+                    "Max time (seconds)": "60"
+                  },
+                  "children": [
+                    {
+                      "id": "IF_LOCAL_PLAYER_MATCHES",
+                      "properties": {
+                        "Filter By": {
+                          "class": "Player",
+                          "logic": "NONE",
+                          "type": "HEALTH",
+                          "operator": "GREATER_THAN_OR_EQUAL",
+                          "value": "20"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "CREATE_LABEL",
+              "properties": {
+                "Label": "WorldHop"
+              },
+              "children": [
+                {
+                  "id": "IF_TIMER_DOES_NOT_EXIST",
+                  "properties": {
+                    "Timer name": "HopTimer"
+                  },
+                  "children": [
+                    {
+                      "id": "START_TIMER",
+                      "properties": {
+                        "Timer name": "HopTimer",
+                        "Time": "2:00:00"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "IF_TIMER_EXISTS",
+                  "properties": {
+                    "Timer name": "HopTimer"
+                  },
+                  "children": [
+                    {
+                      "id": "IF_TIMER_IS_FINISHED",
+                      "properties": {
+                        "Timer name": "HopTimer"
+                      },
+                      "children": [
+                        {
+                          "id": "HOP_TO_RANDOM_WORLD",
+                          "properties": {
+                            "Ignore combat check": false,
+                            "Filter World By": {
+                              "class": "World",
+                              "logic": "NONE",
+                              "type": "WORLD_IS_MEMBERS",
+                              "operator": "EQUALS",
+                              "filters": [
+                                {
+                                  "class": "World",
+                                  "logic": "AND",
+                                  "type": "WORLD_IS_NORMAL",
+                                  "operator": "EQUALS"
+                                },
+                                {
+                                  "class": "World",
+                                  "logic": "AND",
+                                  "type": "WORLD_POPULATION",
+                                  "operator": "LESS_THAN_OR_EQUAL",
+                                  "value": "500"
+                                },
+                                {
+                                  "class": "World",
+                                  "logic": "AND",
+                                  "type": "WORLD_MINIMUM_LEVEL",
+                                  "operator": "EQUALS",
+                                  "value": "0"
+                                }
+                              ]
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "SLEEP_WHILE_WORLD_HOPPING",
+                              "children": [
+                                {
+                                  "id": "RESTART_TIMER",
+                                  "properties": {
+                                    "Timer name": "HopTimer"
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "PAINT_ROOT",
+      "properties": {
+        "Hide standard paint": true
+      },
+      "children": [
+        {
+          "id": "DRAW_USERNAME_CENSOR_BAR"
+        },
+        {
+          "id": "DRAW_TEXT",
+          "properties": {
+            "X": "10",
+            "Font Size": "16",
+            "Y": "472",
+            "Text": "AgiltyXPH(num(hourly(expGain(Agility))))",
+            "Font": {
+              "class": "Font",
+              "value": "Dialog"
+            },
+            "Color": {
+              "class": "Color",
+              "value": -16723713
+            }
+          }
+        },
+        {
+          "id": "DRAW_TEXT",
+          "properties": {
+            "X": "150",
+            "Font Size": "15",
+            "Y": "472",
+            "Text": "TTL(timeToLevel(Agility))+XPGained(num(expGain(Agility)))+LevelsGained(levelGain(Agility))",
+            "Font": {
+              "class": "Font",
+              "value": "Dialog"
+            },
+            "Color": {
+              "class": "Color",
+              "value": -16711923
+            }
+          }
+        },
+        {
+          "id": "DRAW_TEXT",
+          "properties": {
+            "X": "270",
+            "Font Size": "25",
+            "Y": "454",
+            "Text": "RunTime:(runtime():)",
+            "Font": {
+              "class": "Font",
+              "value": "Dialog"
+            },
+            "Color": {
+              "class": "Color",
+              "value": -55808
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

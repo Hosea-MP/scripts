@@ -1,0 +1,303 @@
+{
+  "sleep": "1500",
+  "name": "Beezy\u0027s Bot Buster",
+  "version": 0.1,
+  "metadata": {
+    "network-id": "74",
+    "network-downloaded-at": "1721665294051"
+  },
+  "actions": [
+    {
+      "id": "COMMENT",
+      "properties": {
+        "Comment": "Variables\n"
+      },
+      "children": [
+        {
+          "id": "SET_VARIABLE",
+          "properties": {
+            "Value": "(3154 ,3499, 0), (3174, 3480, 0)",
+            "Variable name": "ge_area"
+          }
+        }
+      ]
+    },
+    {
+      "id": "COMMENT",
+      "color": -16711762,
+      "properties": {
+        "Comment": "Walk to GE if not in area\n"
+      },
+      "children": [
+        {
+          "id": "IF_LOCAL_PLAYER_MATCHES",
+          "properties": {
+            "Filter By": {
+              "class": "Player",
+              "logic": "NONE",
+              "type": "NOT_IN_AREA",
+              "operator": "EQUALS",
+              "value": "v(ge_area)"
+            }
+          },
+          "children": [
+            {
+              "id": "WALK_FULLY_TO_AREA",
+              "properties": {
+                "Area": "v(ge_area)"
+              },
+              "children": [
+                {
+                  "id": "SLEEP_WHILE_ANIMATING"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "COMMENT",
+      "properties": {
+        "Comment": "Hopp to Trade world"
+      },
+      "children": [
+        {
+          "id": "IF_WORLD_MATCHES",
+          "properties": {
+            "Filter World By": {
+              "class": "World",
+              "logic": "NONE",
+              "type": "ID",
+              "operator": "DOES_NOT_EQUAL",
+              "value": "301"
+            }
+          },
+          "children": [
+            {
+              "id": "HOP_TO_WORLD",
+              "properties": {
+                "World": "301"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "COMMENT",
+      "color": -16735489,
+      "properties": {
+        "Comment": "Report all players"
+      },
+      "children": [
+        {
+          "id": "IF_PLAYER_EXISTS",
+          "customDisplayName": "Looking for Player",
+          "properties": {
+            "Filter Player By": {
+              "class": "Player",
+              "logic": "NONE",
+              "type": "IN_AREA",
+              "operator": "EQUALS",
+              "value": "v(ge_area)",
+              "filters": [
+                {
+                  "class": "Player",
+                  "logic": "AND",
+                  "type": "WE_ARE_NOT_INTERACTING",
+                  "operator": "EQUALS"
+                }
+              ]
+            }
+          },
+          "children": [
+            {
+              "id": "PLAYER_INTERACT",
+              "properties": {
+                "Action": "Report",
+                "Filter Player By": {
+                  "class": "Player",
+                  "logic": "NONE",
+                  "type": "NOT_MOVING",
+                  "operator": "EQUALS"
+                }
+              },
+              "children": [
+                {
+                  "id": "SLEEP_NORMAL_DISTRIBUTION",
+                  "customDisplayName": "Sleeping",
+                  "properties": {
+                    "Mean": "1000",
+                    "Variance": "1500"
+                  },
+                  "children": [
+                    {
+                      "id": "IF_WIDGET_EXISTS",
+                      "properties": {
+                        "Find Widget By": {
+                          "class": "Widget",
+                          "logic": "NONE",
+                          "type": "WIDGET_ID",
+                          "operator": "EQUALS",
+                          "value": "162, 35, 0"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "WIDGET_INTERACT",
+                          "customDisplayName": "Ignorelist",
+                          "properties": {
+                            "Find Widget By": {
+                              "class": "Widget",
+                              "logic": "NONE",
+                              "type": "WIDGET_ID",
+                              "operator": "EQUALS",
+                              "value": "875, 10, 1"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "WIDGET_INTERACT",
+                              "customDisplayName": "Reporting",
+                              "properties": {
+                                "Find Widget By": {
+                                  "class": "Widget",
+                                  "logic": "NONE",
+                                  "type": "WIDGET_ID",
+                                  "operator": "EQUALS",
+                                  "value": "875, 18, 2"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "WALK_TO_AREA",
+                                  "customDisplayName": "Walking",
+                                  "properties": {
+                                    "Area": "v(ge_area)"
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "MOVE_MOUSE_OFFSCREEN",
+                                      "customDisplayName": "Antiban"
+                                    },
+                                    {
+                                      "id": "SLEEP_WHILE_ANIMATING"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ADD_TO_VARIABLE",
+      "properties": {
+        "Variable name": "accounts",
+        "By": "+1"
+      }
+    },
+    {
+      "id": "PAINT_ROOT",
+      "properties": {
+        "Hide standard paint": true
+      },
+      "children": [
+        {
+          "id": "DRAW_IMAGE",
+          "properties": {
+            "Path": "https://i.ibb.co/p40GGWt/beezy-bot-buster.jpg",
+            "X": "0",
+            "Y": "338"
+          },
+          "children": [
+            {
+              "id": "DRAW_BUTTON",
+              "properties": {
+                "X": "380",
+                "Y": "445",
+                "Hover Path": "https://i.ibb.co/4dPvs6x/discord.jpg",
+                "Normal Path": "https://i.ibb.co/4dPvs6x/discord.jpg",
+                "Pressed Path": "https://i.ibb.co/4dPvs6x/discord.jpg"
+              }
+            },
+            {
+              "id": "DRAW_TEXT",
+              "properties": {
+                "Font Size": "15",
+                "Outline color": {
+                  "class": "Color",
+                  "value": -1
+                },
+                "Color": {
+                  "class": "Color",
+                  "value": -1
+                },
+                "X": "300",
+                "Y": "376",
+                "Text": "runtime()",
+                "Font": {
+                  "class": "Font",
+                  "value": "Verdana"
+                }
+              }
+            },
+            {
+              "id": "DRAW_TEXT",
+              "properties": {
+                "Font Size": "15",
+                "Outline color": {
+                  "class": "Color",
+                  "value": -1
+                },
+                "Color": {
+                  "class": "Color",
+                  "value": -1
+                },
+                "X": "330",
+                "Y": "407",
+                "Text": "v(accounts)",
+                "Font": {
+                  "class": "Font",
+                  "value": "Verdana"
+                }
+              }
+            },
+            {
+              "id": "DRAW_TEXT",
+              "properties": {
+                "Font Size": "15",
+                "Outline color": {
+                  "class": "Color",
+                  "value": -16777216
+                },
+                "Draw outline": false,
+                "Color": {
+                  "class": "Color",
+                  "value": -1
+                },
+                "X": "260",
+                "Y": "432",
+                "Text": "status()",
+                "Font": {
+                  "class": "Font",
+                  "value": "Verdana"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

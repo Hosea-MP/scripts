@@ -1,0 +1,924 @@
+{
+  "id": "9ca58a68-1641-4c18-96bd-00b933dfd2a3",
+  "name": "Skills \u003e All Skill Checks",
+  "description": "Will hover and check skills that gained exp recently.",
+  "parameters": "",
+  "fail": false,
+  "actions": [
+    {
+      "id": "IF_RANDOM_NUMBER_IS",
+      "properties": {
+        "number": {
+          "class": "Number",
+          "operator": "EQUALS",
+          "value": "25"
+        },
+        "Minimum": "1",
+        "Maximum": "51"
+      },
+      "children": [
+        {
+          "id": "IF_BANK_IS_NOT_OPEN",
+          "children": [
+            {
+              "id": "IF_GRAND_EXCHANGE_IS_NOT_OPEN",
+              "children": [
+                {
+                  "id": "IF_TRADE_IS_NOT_OPEN",
+                  "children": [
+                    {
+                      "id": "IF_SHOP_IS_NOT_OPEN",
+                      "children": [
+                        {
+                          "id": "IF_LOCAL_PLAYER_MATCHES",
+                          "properties": {
+                            "Filter By": {
+                              "class": "Player",
+                              "logic": "NONE",
+                              "type": "NOT_MOVING",
+                              "operator": "EQUALS"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "IF_TAB_IS_NOT_OPEN",
+                              "properties": {
+                                "Tab": {
+                                  "class": "Tab",
+                                  "value": "SKILLS"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "OPEN_TAB",
+                                  "customDisplayName": "Open Skills tab",
+                                  "properties": {
+                                    "Tab": {
+                                      "class": "Tab",
+                                      "value": "SKILLS"
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "CUSTOM_97d9d111-9283-408f-b7a0-d99aaaae41df"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "id": "IF_GAINED_EXPERIENCE_MATCHES",
+                              "customDisplayName": "If Fletching gained experience",
+                              "properties": {
+                                "exp gained": {
+                                  "class": "Number",
+                                  "operator": "GREATER_THAN_OR_EQUALS",
+                                  "value": "1"
+                                },
+                                "Skill": {
+                                  "class": "Skill",
+                                  "value": "FLETCHING"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "HOVER_WIDGET",
+                                  "customDisplayName": "Hover matching Widget 320,14",
+                                  "properties": {
+                                    "Filter By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "WIDGET_ID",
+                                      "operator": "EQUALS",
+                                      "value": "320,14"
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "CUSTOM_4fe7c492-0b39-4657-9749-cea1e7e9cd7f"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "id": "IF_GAINED_EXPERIENCE_MATCHES",
+                              "customDisplayName": "If Herblore gained experience",
+                              "properties": {
+                                "exp gained": {
+                                  "class": "Number",
+                                  "operator": "GREATER_THAN_OR_EQUALS",
+                                  "value": "1"
+                                },
+                                "Skill": {
+                                  "class": "Skill",
+                                  "value": "HERBLORE"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "HOVER_WIDGET",
+                                  "customDisplayName": "Hover matching Widget 320,11 (Herblore)",
+                                  "properties": {
+                                    "Filter By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "WIDGET_ID",
+                                      "operator": "EQUALS",
+                                      "value": "320,11"
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "CUSTOM_4fe7c492-0b39-4657-9749-cea1e7e9cd7f"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "id": "IF_GAINED_EXPERIENCE_MATCHES",
+                              "customDisplayName": "If Woodcutting gained experience",
+                              "properties": {
+                                "exp gained": {
+                                  "class": "Number",
+                                  "operator": "GREATER_THAN_OR_EQUALS",
+                                  "value": "1"
+                                },
+                                "Skill": {
+                                  "class": "Skill",
+                                  "value": "WOODCUTTING"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "HOVER_WIDGET",
+                                  "customDisplayName": "Hover matching Widget 320,22",
+                                  "properties": {
+                                    "Filter By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "WIDGET_ID",
+                                      "operator": "EQUALS",
+                                      "value": "320,22"
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "CUSTOM_4fe7c492-0b39-4657-9749-cea1e7e9cd7f"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "id": "IF_GAINED_EXPERIENCE_MATCHES",
+                              "customDisplayName": "If Crafting gained experience",
+                              "properties": {
+                                "exp gained": {
+                                  "class": "Number",
+                                  "operator": "GREATER_THAN_OR_EQUALS",
+                                  "value": "1"
+                                },
+                                "Skill": {
+                                  "class": "Skill",
+                                  "value": "CRAFTING"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "HOVER_WIDGET",
+                                  "customDisplayName": "Hover matching Widget 320,13",
+                                  "properties": {
+                                    "Filter By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "WIDGET_ID",
+                                      "operator": "EQUALS",
+                                      "value": "320,13"
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "CUSTOM_4fe7c492-0b39-4657-9749-cea1e7e9cd7f"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "id": "IF_GAINED_EXPERIENCE_MATCHES",
+                              "customDisplayName": "If Hunter gained experience",
+                              "properties": {
+                                "exp gained": {
+                                  "class": "Number",
+                                  "operator": "GREATER_THAN_OR_EQUALS",
+                                  "value": "1"
+                                },
+                                "Skill": {
+                                  "class": "Skill",
+                                  "value": "HUNTER"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "HOVER_WIDGET",
+                                  "customDisplayName": "Hover matching Widget 320,16",
+                                  "properties": {
+                                    "Filter By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "WIDGET_ID",
+                                      "operator": "EQUALS",
+                                      "value": "320,16"
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "CUSTOM_4fe7c492-0b39-4657-9749-cea1e7e9cd7f"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "id": "IF_GAINED_EXPERIENCE_MATCHES",
+                              "customDisplayName": "If Agility gained experience",
+                              "properties": {
+                                "exp gained": {
+                                  "class": "Number",
+                                  "operator": "GREATER_THAN_OR_EQUALS",
+                                  "value": "1"
+                                },
+                                "Skill": {
+                                  "class": "Skill",
+                                  "value": "AGILITY"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "HOVER_WIDGET",
+                                  "customDisplayName": "Hover matching Widget 320,10",
+                                  "properties": {
+                                    "Filter By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "WIDGET_ID",
+                                      "operator": "EQUALS",
+                                      "value": "320,10"
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "CUSTOM_4fe7c492-0b39-4657-9749-cea1e7e9cd7f"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "id": "IF_GAINED_EXPERIENCE_MATCHES",
+                              "customDisplayName": "If Fishing gained experience",
+                              "properties": {
+                                "exp gained": {
+                                  "class": "Number",
+                                  "operator": "GREATER_THAN_OR_EQUALS",
+                                  "value": "1"
+                                },
+                                "Skill": {
+                                  "class": "Skill",
+                                  "value": "FISHING"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "HOVER_WIDGET",
+                                  "customDisplayName": "Hover matching Widget 320,19",
+                                  "properties": {
+                                    "Filter By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "WIDGET_ID",
+                                      "operator": "EQUALS",
+                                      "value": "320,19"
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "CUSTOM_4fe7c492-0b39-4657-9749-cea1e7e9cd7f"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "id": "IF_GAINED_EXPERIENCE_MATCHES",
+                              "customDisplayName": "If Strength gained experience",
+                              "properties": {
+                                "exp gained": {
+                                  "class": "Number",
+                                  "operator": "GREATER_THAN_OR_EQUALS",
+                                  "value": "1"
+                                },
+                                "Skill": {
+                                  "class": "Skill",
+                                  "value": "STRENGTH"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "HOVER_WIDGET",
+                                  "customDisplayName": "Hover matching Widget 320,2 (Strength)",
+                                  "properties": {
+                                    "Filter By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "WIDGET_ID",
+                                      "operator": "EQUALS",
+                                      "value": "320,2"
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "CUSTOM_4fe7c492-0b39-4657-9749-cea1e7e9cd7f"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "id": "IF_GAINED_EXPERIENCE_MATCHES",
+                              "customDisplayName": "If Runecrafting gained experience",
+                              "properties": {
+                                "exp gained": {
+                                  "class": "Number",
+                                  "operator": "GREATER_THAN_OR_EQUALS",
+                                  "value": "1"
+                                },
+                                "Skill": {
+                                  "class": "Skill",
+                                  "value": "RUNECRAFTING"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "HOVER_WIDGET",
+                                  "customDisplayName": "Hover matching Widget 320,7",
+                                  "properties": {
+                                    "Filter By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "WIDGET_ID",
+                                      "operator": "EQUALS",
+                                      "value": "320,7"
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "CUSTOM_4fe7c492-0b39-4657-9749-cea1e7e9cd7f"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "id": "IF_GAINED_EXPERIENCE_MATCHES",
+                              "customDisplayName": "If Mining gained experience",
+                              "properties": {
+                                "exp gained": {
+                                  "class": "Number",
+                                  "operator": "GREATER_THAN_OR_EQUALS",
+                                  "value": "1"
+                                },
+                                "Skill": {
+                                  "class": "Skill",
+                                  "value": "MINING"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "HOVER_WIDGET",
+                                  "customDisplayName": "Hover matching Widget 320,17 (Mining)",
+                                  "properties": {
+                                    "Filter By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "WIDGET_ID",
+                                      "operator": "EQUALS",
+                                      "value": "320,17"
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "CUSTOM_4fe7c492-0b39-4657-9749-cea1e7e9cd7f"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "id": "IF_GAINED_EXPERIENCE_MATCHES",
+                              "customDisplayName": "If Attack gained experience",
+                              "properties": {
+                                "exp gained": {
+                                  "class": "Number",
+                                  "operator": "GREATER_THAN_OR_EQUALS",
+                                  "value": "1"
+                                },
+                                "Skill": {
+                                  "class": "Skill",
+                                  "value": "ATTACK"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "HOVER_WIDGET",
+                                  "customDisplayName": "Hover matching Widget 320,1 (Attack)",
+                                  "properties": {
+                                    "Filter By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "WIDGET_ID",
+                                      "operator": "EQUALS",
+                                      "value": "320,1"
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "CUSTOM_4fe7c492-0b39-4657-9749-cea1e7e9cd7f"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "id": "IF_GAINED_EXPERIENCE_MATCHES",
+                              "customDisplayName": "If Thieiving gained experience",
+                              "properties": {
+                                "exp gained": {
+                                  "class": "Number",
+                                  "operator": "GREATER_THAN_OR_EQUALS",
+                                  "value": "1"
+                                },
+                                "Skill": {
+                                  "class": "Skill",
+                                  "value": "THIEVING"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "HOVER_WIDGET",
+                                  "customDisplayName": "Hover matching Widget 320,12",
+                                  "properties": {
+                                    "Filter By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "WIDGET_ID",
+                                      "operator": "EQUALS",
+                                      "value": "320,12"
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "CUSTOM_4fe7c492-0b39-4657-9749-cea1e7e9cd7f"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "id": "IF_GAINED_EXPERIENCE_MATCHES",
+                              "customDisplayName": "If Construction gained experience",
+                              "properties": {
+                                "exp gained": {
+                                  "class": "Number",
+                                  "operator": "GREATER_THAN_OR_EQUALS",
+                                  "value": "1"
+                                },
+                                "Skill": {
+                                  "class": "Skill",
+                                  "value": "CONSTRUCTION"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "HOVER_WIDGET",
+                                  "customDisplayName": "Hover matching Widget 320,8",
+                                  "properties": {
+                                    "Filter By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "WIDGET_ID",
+                                      "operator": "EQUALS",
+                                      "value": "320,8"
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "CUSTOM_4fe7c492-0b39-4657-9749-cea1e7e9cd7f"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "id": "IF_GAINED_EXPERIENCE_MATCHES",
+                              "customDisplayName": "If Ranged gained experience",
+                              "properties": {
+                                "exp gained": {
+                                  "class": "Number",
+                                  "operator": "GREATER_THAN_OR_EQUALS",
+                                  "value": "1"
+                                },
+                                "Skill": {
+                                  "class": "Skill",
+                                  "value": "RANGED"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "HOVER_WIDGET",
+                                  "customDisplayName": "Hover matching Widget 320,4 (Ranged)",
+                                  "properties": {
+                                    "Filter By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "WIDGET_ID",
+                                      "operator": "EQUALS",
+                                      "value": "320,4"
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "CUSTOM_4fe7c492-0b39-4657-9749-cea1e7e9cd7f"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "id": "IF_GAINED_EXPERIENCE_MATCHES",
+                              "customDisplayName": "If Smithing gained experience",
+                              "properties": {
+                                "exp gained": {
+                                  "class": "Number",
+                                  "operator": "GREATER_THAN_OR_EQUALS",
+                                  "value": "1"
+                                },
+                                "Skill": {
+                                  "class": "Skill",
+                                  "value": "SMITHING"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "HOVER_WIDGET",
+                                  "customDisplayName": "Hover matching Widget 320,18",
+                                  "properties": {
+                                    "Filter By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "WIDGET_ID",
+                                      "operator": "EQUALS",
+                                      "value": "320,18"
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "CUSTOM_4fe7c492-0b39-4657-9749-cea1e7e9cd7f"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "id": "IF_GAINED_EXPERIENCE_MATCHES",
+                              "customDisplayName": "If Prayer gained experience",
+                              "properties": {
+                                "exp gained": {
+                                  "class": "Number",
+                                  "operator": "GREATER_THAN_OR_EQUALS",
+                                  "value": "1"
+                                },
+                                "Skill": {
+                                  "class": "Skill",
+                                  "value": "PRAYER"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "HOVER_WIDGET",
+                                  "customDisplayName": "Hover matching Widget 320,5 (Prayer)",
+                                  "properties": {
+                                    "Filter By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "WIDGET_ID",
+                                      "operator": "EQUALS",
+                                      "value": "320,5"
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "CUSTOM_4fe7c492-0b39-4657-9749-cea1e7e9cd7f"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "id": "IF_GAINED_EXPERIENCE_MATCHES",
+                              "customDisplayName": "If Slayer gained experience",
+                              "properties": {
+                                "exp gained": {
+                                  "class": "Number",
+                                  "operator": "GREATER_THAN_OR_EQUALS",
+                                  "value": "1"
+                                },
+                                "Skill": {
+                                  "class": "Skill",
+                                  "value": "SLAYER"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "HOVER_WIDGET",
+                                  "customDisplayName": "Hover matching Widget 320,15",
+                                  "properties": {
+                                    "Filter By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "WIDGET_ID",
+                                      "operator": "EQUALS",
+                                      "value": "320,15"
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "CUSTOM_4fe7c492-0b39-4657-9749-cea1e7e9cd7f"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "id": "IF_GAINED_EXPERIENCE_MATCHES",
+                              "customDisplayName": "If Hitpoints gained experience",
+                              "properties": {
+                                "exp gained": {
+                                  "class": "Number",
+                                  "operator": "GREATER_THAN_OR_EQUALS",
+                                  "value": "1"
+                                },
+                                "Skill": {
+                                  "class": "Skill",
+                                  "value": "HITPOINTS"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "HOVER_WIDGET",
+                                  "customDisplayName": "Hover matching Widget 320,9",
+                                  "properties": {
+                                    "Filter By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "WIDGET_ID",
+                                      "operator": "EQUALS",
+                                      "value": "320,9"
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "CUSTOM_4fe7c492-0b39-4657-9749-cea1e7e9cd7f"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "id": "IF_GAINED_EXPERIENCE_MATCHES",
+                              "customDisplayName": "If Cooking gained experience",
+                              "properties": {
+                                "exp gained": {
+                                  "class": "Number",
+                                  "operator": "GREATER_THAN_OR_EQUALS",
+                                  "value": "1"
+                                },
+                                "Skill": {
+                                  "class": "Skill",
+                                  "value": "COOKING"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "HOVER_WIDGET",
+                                  "customDisplayName": "Hover matching Widget 320,20",
+                                  "properties": {
+                                    "Filter By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "WIDGET_ID",
+                                      "operator": "EQUALS",
+                                      "value": "320,20"
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "CUSTOM_4fe7c492-0b39-4657-9749-cea1e7e9cd7f"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "id": "IF_GAINED_EXPERIENCE_MATCHES",
+                              "customDisplayName": "If Magic gained experience",
+                              "properties": {
+                                "exp gained": {
+                                  "class": "Number",
+                                  "operator": "GREATER_THAN_OR_EQUALS",
+                                  "value": "1"
+                                },
+                                "Skill": {
+                                  "class": "Skill",
+                                  "value": "MAGIC"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "HOVER_WIDGET",
+                                  "customDisplayName": "Hover matching Widget 320,6 (Magic)",
+                                  "properties": {
+                                    "Filter By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "WIDGET_ID",
+                                      "operator": "EQUALS",
+                                      "value": "320,6"
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "CUSTOM_4fe7c492-0b39-4657-9749-cea1e7e9cd7f"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "id": "IF_GAINED_EXPERIENCE_MATCHES",
+                              "customDisplayName": "If Farming gained experience",
+                              "properties": {
+                                "exp gained": {
+                                  "class": "Number",
+                                  "operator": "GREATER_THAN_OR_EQUALS",
+                                  "value": "1"
+                                },
+                                "Skill": {
+                                  "class": "Skill",
+                                  "value": "FARMING"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "HOVER_WIDGET",
+                                  "customDisplayName": "Hover matching Widget 320,23",
+                                  "properties": {
+                                    "Filter By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "WIDGET_ID",
+                                      "operator": "EQUALS",
+                                      "value": "320,23"
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "CUSTOM_4fe7c492-0b39-4657-9749-cea1e7e9cd7f"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "id": "IF_GAINED_EXPERIENCE_MATCHES",
+                              "customDisplayName": "If Defence gained experience",
+                              "properties": {
+                                "exp gained": {
+                                  "class": "Number",
+                                  "operator": "GREATER_THAN_OR_EQUALS",
+                                  "value": "1"
+                                },
+                                "Skill": {
+                                  "class": "Skill",
+                                  "value": "DEFENCE"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "HOVER_WIDGET",
+                                  "customDisplayName": "Hover matching Widget 320,3 (Defense)",
+                                  "properties": {
+                                    "Filter By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "WIDGET_ID",
+                                      "operator": "EQUALS",
+                                      "value": "320,3"
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "CUSTOM_4fe7c492-0b39-4657-9749-cea1e7e9cd7f"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "id": "IF_GAINED_EXPERIENCE_MATCHES",
+                              "customDisplayName": "If Firemaking gained experience",
+                              "properties": {
+                                "exp gained": {
+                                  "class": "Number",
+                                  "operator": "GREATER_THAN_OR_EQUALS",
+                                  "value": "1"
+                                },
+                                "Skill": {
+                                  "class": "Skill",
+                                  "value": "FIREMAKING"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "HOVER_WIDGET",
+                                  "customDisplayName": "Hover matching Widget 320,21",
+                                  "properties": {
+                                    "Filter By": {
+                                      "class": "Widget",
+                                      "logic": "NONE",
+                                      "type": "WIDGET_ID",
+                                      "operator": "EQUALS",
+                                      "value": "320,21"
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "CUSTOM_4fe7c492-0b39-4657-9749-cea1e7e9cd7f"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "id": "IF_WIDGET_EXISTS",
+                              "properties": {
+                                "Find Widget By": {
+                                  "class": "Widget",
+                                  "logic": "NONE",
+                                  "type": "WIDGET_ID",
+                                  "operator": "EQUALS",
+                                  "value": "214, 10"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "PRESS_ESCAPE"
+                                }
+                              ]
+                            },
+                            {
+                              "id": "IF_TAB_IS_NOT_OPEN",
+                              "properties": {
+                                "Tab": {
+                                  "class": "Tab",
+                                  "value": "INVENTORY"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "OPEN_TAB",
+                                  "properties": {
+                                    "Tab": {
+                                      "class": "Tab",
+                                      "value": "INVENTORY"
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

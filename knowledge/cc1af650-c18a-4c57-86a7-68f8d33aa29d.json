@@ -1,0 +1,72 @@
+{
+  "id": "cc1af650-c18a-4c57-86a7-68f8d33aa29d",
+  "name": "Utility \u003e Settings \u003e Quickset \u003e Wildy PVM",
+  "description": "",
+  "parameters": "",
+  "fail": false,
+  "actions": [
+    {
+      "id": "IF_FIRST_RUN",
+      "children": [
+        {
+          "id": "SET_VARIABLE",
+          "properties": {
+            "Value": "Settings",
+            "Variable name": "CURRENT_TASK"
+          }
+        },
+        {
+          "id": "DISABLE_DISMISS_SOLVER"
+        },
+        {
+          "id": "DISABLE_MENU_MANIPULATION",
+          "children": [
+            {
+              "id": "DISABLE_NO_CLICK_WALK"
+            }
+          ]
+        },
+        {
+          "id": "PRESS_ESCAPE"
+        },
+        {
+          "id": "CUSTOM_972f1b2d-051a-4e79-a6cb-c874338b887b"
+        },
+        {
+          "id": "CUSTOM_2dcaf1d9-6e02-418a-84fb-fb33afbfc01f"
+        },
+        {
+          "id": "CUSTOM_102ad5e4-c96e-4134-92e2-70466f974f05"
+        },
+        {
+          "id": "CUSTOM_2b058a11-8b29-4f73-87a6-561867456a26"
+        },
+        {
+          "id": "CUSTOM_60eb7ec6-66fe-4661-8c16-1649216507bb"
+        },
+        {
+          "id": "CUSTOM_e2d7b238-1c7c-4111-932a-6a3258bb07e7"
+        },
+        {
+          "id": "CUSTOM_bbf74d5e-decc-4495-b5c0-9054ce4cd247"
+        },
+        {
+          "id": "CUSTOM_577a9f5d-54fa-42d4-bcb3-205d70f9e693"
+        },
+        {
+          "id": "SET_ZOOM",
+          "customDisplayName": "Set zoom rand(325, 425)",
+          "properties": {
+            "Zoom": "rand(325, 425)"
+          }
+        },
+        {
+          "id": "PRESS_ESCAPE"
+        },
+        {
+          "id": "CUSTOM_06b15362-bede-462f-9125-02cf0f33f141"
+        }
+      ]
+    }
+  ]
+}

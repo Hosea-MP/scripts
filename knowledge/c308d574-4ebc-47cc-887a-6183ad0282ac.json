@@ -1,0 +1,2736 @@
+{
+  "id": "c308d574-4ebc-47cc-887a-6183ad0282ac",
+  "name": "Skills \u003e Mining \u003e Pickaxe Check",
+  "description": "Will check current mining level and withdraw appropriate pickaxe and wield if possible.",
+  "parameters": "",
+  "fail": false,
+  "actions": [
+    {
+      "id": "CREATE_LABEL",
+      "properties": {
+        "Label": "Pickaxe Check"
+      },
+      "children": [
+        {
+          "id": "CUSTOM_7b65bab3-1208-4d4a-90da-91764d48f8ed"
+        },
+        {
+          "id": "ENABLE_MENU_MANIPULATION"
+        },
+        {
+          "id": "SET_VARIABLE",
+          "properties": {
+            "Value": "PickaxeCheck",
+            "Variable name": "CURRENT_TASK"
+          }
+        },
+        {
+          "id": "CREATE_LABEL",
+          "properties": {
+            "Label": "Iron pickaxe"
+          },
+          "children": [
+            {
+              "id": "IF_SKILL_LEVEL_IS",
+              "properties": {
+                "level": {
+                  "class": "Number",
+                  "operator": "GREATER_THAN_OR_EQUALS",
+                  "value": "1",
+                  "filters": [
+                    {
+                      "logic": "AND",
+                      "operator": "LESS_THAN",
+                      "value": "6"
+                    }
+                  ]
+                },
+                "Skill": {
+                  "class": "Skill",
+                  "value": "MINING"
+                }
+              },
+              "children": [
+                {
+                  "id": "IF_BANK_CONTAINS",
+                  "properties": {
+                    "Filter Item By": {
+                      "class": "Item",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "IS_IN_LIST",
+                      "value": "Iron pickaxe,Bronze pickaxe"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "BANK_WITHDRAW_ITEM",
+                      "customDisplayName": "Withdraw Iron pickaxe",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "IS_IN_LIST",
+                          "value": "Iron pickaxe,Bronze pickaxe"
+                        },
+                        "Amount": "1"
+                      },
+                      "children": [
+                        {
+                          "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                          "properties": {
+                            "Max time (seconds)": "5"
+                          },
+                          "children": [
+                            {
+                              "id": "IF_INVENTORY_CONTAINS_ANY",
+                              "properties": {
+                                "Filter Item By": {
+                                  "class": "Item",
+                                  "logic": "NONE",
+                                  "type": "NAME",
+                                  "operator": "IS_IN_LIST",
+                                  "value": "Iron pickaxe,Bronze pickaxe"
+                                }
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "id": "IF_INVENTORY_CONTAINS_ANY",
+                          "properties": {
+                            "Filter Item By": {
+                              "class": "Item",
+                              "logic": "NONE",
+                              "type": "NAME",
+                              "operator": "IS_IN_LIST",
+                              "value": "Iron pickaxe,Bronze pickaxe"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "IF_SKILL_LEVEL_IS",
+                              "properties": {
+                                "level": {
+                                  "class": "Number",
+                                  "operator": "GREATER_THAN_OR_EQUALS",
+                                  "value": "1"
+                                },
+                                "Skill": {
+                                  "class": "Skill",
+                                  "value": "ATTACK"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "INTERACT_WITH_INVENTORY_ITEM",
+                                  "properties": {
+                                    "Filter Item By": {
+                                      "class": "Item",
+                                      "logic": "NONE",
+                                      "type": "NAME",
+                                      "operator": "IS_IN_LIST",
+                                      "value": "Iron pickaxe,Bronze pickaxe"
+                                    },
+                                    "Action": "Wield"
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                                      "properties": {
+                                        "Max time (seconds)": "5"
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "IF_EQUIPPED_ITEM_MATCHES",
+                                          "properties": {
+                                            "Filter Item By": {
+                                              "class": "Item",
+                                              "logic": "NONE",
+                                              "type": "NAME",
+                                              "operator": "IS_IN_LIST",
+                                              "value": "Iron pickaxe,Bronze pickaxe"
+                                            }
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "CREATE_LABEL",
+          "properties": {
+            "Label": "Steel pickaxe"
+          },
+          "children": [
+            {
+              "id": "IF_SKILL_LEVEL_IS",
+              "properties": {
+                "level": {
+                  "class": "Number",
+                  "operator": "GREATER_THAN_OR_EQUALS",
+                  "value": "6",
+                  "filters": [
+                    {
+                      "logic": "AND",
+                      "operator": "LESS_THAN",
+                      "value": "21"
+                    }
+                  ]
+                },
+                "Skill": {
+                  "class": "Skill",
+                  "value": "MINING"
+                }
+              },
+              "children": [
+                {
+                  "id": "IF_BANK_CONTAINS",
+                  "properties": {
+                    "Filter Item By": {
+                      "class": "Item",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "IS_IN_LIST",
+                      "value": "Black pickaxe,Steel pickaxe"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "BANK_WITHDRAW_ITEM",
+                      "customDisplayName": "Withdraw Iron pickaxe",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "IS_IN_LIST",
+                          "value": "Black pickaxe,Steel pickaxe"
+                        },
+                        "Amount": "1"
+                      },
+                      "children": [
+                        {
+                          "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                          "properties": {
+                            "Max time (seconds)": "5"
+                          },
+                          "children": [
+                            {
+                              "id": "IF_INVENTORY_CONTAINS_ANY",
+                              "properties": {
+                                "Filter Item By": {
+                                  "class": "Item",
+                                  "logic": "NONE",
+                                  "type": "NAME",
+                                  "operator": "IS_IN_LIST",
+                                  "value": "Black pickaxe,Steel pickaxe"
+                                }
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "id": "IF_INVENTORY_CONTAINS_ANY",
+                          "properties": {
+                            "Filter Item By": {
+                              "class": "Item",
+                              "logic": "NONE",
+                              "type": "NAME",
+                              "operator": "IS_IN_LIST",
+                              "value": "Black pickaxe,Steel pickaxe"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "IF_SKILL_LEVEL_IS",
+                              "properties": {
+                                "level": {
+                                  "class": "Number",
+                                  "operator": "GREATER_THAN_OR_EQUALS",
+                                  "value": "5"
+                                },
+                                "Skill": {
+                                  "class": "Skill",
+                                  "value": "ATTACK"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "INTERACT_WITH_INVENTORY_ITEM",
+                                  "properties": {
+                                    "Filter Item By": {
+                                      "class": "Item",
+                                      "logic": "NONE",
+                                      "type": "NAME",
+                                      "operator": "IS_IN_LIST",
+                                      "value": "Black pickaxe,Steel pickaxe"
+                                    },
+                                    "Action": "Wield"
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                                      "properties": {
+                                        "Max time (seconds)": "5"
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "IF_EQUIPPED_ITEM_MATCHES",
+                                          "properties": {
+                                            "Filter Item By": {
+                                              "class": "Item",
+                                              "logic": "NONE",
+                                              "type": "NAME",
+                                              "operator": "IS_IN_LIST",
+                                              "value": "Black pickaxe,Steel pickaxe"
+                                            }
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "ELSE_BRANCH",
+                  "children": [
+                    {
+                      "id": "IF_BANK_CONTAINS",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "IS_IN_LIST",
+                          "value": "Iron pickaxe,Bronze pickaxe"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "BANK_WITHDRAW_ITEM",
+                          "customDisplayName": "Withdraw Iron pickaxe",
+                          "properties": {
+                            "Filter Item By": {
+                              "class": "Item",
+                              "logic": "NONE",
+                              "type": "NAME",
+                              "operator": "IS_IN_LIST",
+                              "value": "Iron pickaxe,Bronze pickaxe"
+                            },
+                            "Amount": "1"
+                          },
+                          "children": [
+                            {
+                              "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                              "properties": {
+                                "Max time (seconds)": "5"
+                              },
+                              "children": [
+                                {
+                                  "id": "IF_INVENTORY_CONTAINS_ANY",
+                                  "properties": {
+                                    "Filter Item By": {
+                                      "class": "Item",
+                                      "logic": "NONE",
+                                      "type": "NAME",
+                                      "operator": "IS_IN_LIST",
+                                      "value": "Iron pickaxe,Bronze pickaxe"
+                                    }
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "id": "IF_INVENTORY_CONTAINS_ANY",
+                              "properties": {
+                                "Filter Item By": {
+                                  "class": "Item",
+                                  "logic": "NONE",
+                                  "type": "NAME",
+                                  "operator": "IS_IN_LIST",
+                                  "value": "Iron pickaxe,Bronze pickaxe"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "IF_SKILL_LEVEL_IS",
+                                  "properties": {
+                                    "level": {
+                                      "class": "Number",
+                                      "operator": "GREATER_THAN_OR_EQUALS",
+                                      "value": "1"
+                                    },
+                                    "Skill": {
+                                      "class": "Skill",
+                                      "value": "ATTACK"
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "INTERACT_WITH_INVENTORY_ITEM",
+                                      "properties": {
+                                        "Filter Item By": {
+                                          "class": "Item",
+                                          "logic": "NONE",
+                                          "type": "NAME",
+                                          "operator": "IS_IN_LIST",
+                                          "value": "Iron pickaxe,Bronze pickaxe"
+                                        },
+                                        "Action": "Wield"
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                                          "properties": {
+                                            "Max time (seconds)": "5"
+                                          },
+                                          "children": [
+                                            {
+                                              "id": "IF_EQUIPPED_ITEM_MATCHES",
+                                              "properties": {
+                                                "Filter Item By": {
+                                                  "class": "Item",
+                                                  "logic": "NONE",
+                                                  "type": "NAME",
+                                                  "operator": "IS_IN_LIST",
+                                                  "value": "Iron pickaxe,Bronze pickaxe"
+                                                }
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "CREATE_LABEL",
+          "properties": {
+            "Label": "Mithril pickaxe"
+          },
+          "children": [
+            {
+              "id": "IF_SKILL_LEVEL_IS",
+              "properties": {
+                "level": {
+                  "class": "Number",
+                  "operator": "GREATER_THAN_OR_EQUALS",
+                  "value": "21",
+                  "filters": [
+                    {
+                      "logic": "AND",
+                      "operator": "LESS_THAN",
+                      "value": "31"
+                    }
+                  ]
+                },
+                "Skill": {
+                  "class": "Skill",
+                  "value": "MINING"
+                }
+              },
+              "children": [
+                {
+                  "id": "IF_BANK_CONTAINS",
+                  "properties": {
+                    "Filter Item By": {
+                      "class": "Item",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Mithril pickaxe"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "BANK_WITHDRAW_ITEM",
+                      "customDisplayName": "Withdraw Iron pickaxe",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "Mithril pickaxe"
+                        },
+                        "Amount": "1"
+                      },
+                      "children": [
+                        {
+                          "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                          "properties": {
+                            "Max time (seconds)": "5"
+                          },
+                          "children": [
+                            {
+                              "id": "IF_INVENTORY_CONTAINS_ANY",
+                              "properties": {
+                                "Filter Item By": {
+                                  "class": "Item",
+                                  "logic": "NONE",
+                                  "type": "NAME",
+                                  "operator": "EQUALS",
+                                  "value": "Mithril pickaxe"
+                                }
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "id": "IF_INVENTORY_CONTAINS_ANY",
+                          "properties": {
+                            "Filter Item By": {
+                              "class": "Item",
+                              "logic": "NONE",
+                              "type": "NAME",
+                              "operator": "EQUALS",
+                              "value": "Mithril pickaxe"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "IF_SKILL_LEVEL_IS",
+                              "properties": {
+                                "level": {
+                                  "class": "Number",
+                                  "operator": "GREATER_THAN_OR_EQUALS",
+                                  "value": "20"
+                                },
+                                "Skill": {
+                                  "class": "Skill",
+                                  "value": "ATTACK"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "INTERACT_WITH_INVENTORY_ITEM",
+                                  "properties": {
+                                    "Filter Item By": {
+                                      "class": "Item",
+                                      "logic": "NONE",
+                                      "type": "NAME",
+                                      "operator": "EQUALS",
+                                      "value": "Mithril pickaxe"
+                                    },
+                                    "Action": "Wield"
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                                      "properties": {
+                                        "Max time (seconds)": "5"
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "IF_EQUIPPED_ITEM_MATCHES",
+                                          "properties": {
+                                            "Filter Item By": {
+                                              "class": "Item",
+                                              "logic": "NONE",
+                                              "type": "NAME",
+                                              "operator": "EQUALS",
+                                              "value": "Mithril pickaxe"
+                                            }
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "ELSE_BRANCH",
+                  "children": [
+                    {
+                      "id": "IF_BANK_CONTAINS",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "IS_IN_LIST",
+                          "value": "Black pickaxe,Steel pickaxe"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "BANK_WITHDRAW_ITEM",
+                          "customDisplayName": "Withdraw Iron pickaxe",
+                          "properties": {
+                            "Filter Item By": {
+                              "class": "Item",
+                              "logic": "NONE",
+                              "type": "NAME",
+                              "operator": "IS_IN_LIST",
+                              "value": "Black pickaxe,Steel pickaxe"
+                            },
+                            "Amount": "1"
+                          },
+                          "children": [
+                            {
+                              "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                              "properties": {
+                                "Max time (seconds)": "5"
+                              },
+                              "children": [
+                                {
+                                  "id": "IF_INVENTORY_CONTAINS_ANY",
+                                  "properties": {
+                                    "Filter Item By": {
+                                      "class": "Item",
+                                      "logic": "NONE",
+                                      "type": "NAME",
+                                      "operator": "IS_IN_LIST",
+                                      "value": "Black pickaxe,Steel pickaxe"
+                                    }
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "id": "IF_INVENTORY_CONTAINS_ANY",
+                              "properties": {
+                                "Filter Item By": {
+                                  "class": "Item",
+                                  "logic": "NONE",
+                                  "type": "NAME",
+                                  "operator": "IS_IN_LIST",
+                                  "value": "Black pickaxe,Steel pickaxe"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "IF_SKILL_LEVEL_IS",
+                                  "properties": {
+                                    "level": {
+                                      "class": "Number",
+                                      "operator": "GREATER_THAN_OR_EQUALS",
+                                      "value": "5"
+                                    },
+                                    "Skill": {
+                                      "class": "Skill",
+                                      "value": "ATTACK"
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "INTERACT_WITH_INVENTORY_ITEM",
+                                      "properties": {
+                                        "Filter Item By": {
+                                          "class": "Item",
+                                          "logic": "NONE",
+                                          "type": "NAME",
+                                          "operator": "IS_IN_LIST",
+                                          "value": "Black pickaxe,Steel pickaxe"
+                                        },
+                                        "Action": "Wield"
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                                          "properties": {
+                                            "Max time (seconds)": "5"
+                                          },
+                                          "children": [
+                                            {
+                                              "id": "IF_EQUIPPED_ITEM_MATCHES",
+                                              "properties": {
+                                                "Filter Item By": {
+                                                  "class": "Item",
+                                                  "logic": "NONE",
+                                                  "type": "NAME",
+                                                  "operator": "IS_IN_LIST",
+                                                  "value": "Black pickaxe,Steel pickaxe"
+                                                }
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "ELSE_BRANCH",
+                      "children": [
+                        {
+                          "id": "IF_BANK_CONTAINS",
+                          "properties": {
+                            "Filter Item By": {
+                              "class": "Item",
+                              "logic": "NONE",
+                              "type": "NAME",
+                              "operator": "IS_IN_LIST",
+                              "value": "Iron pickaxe,Bronze pickaxe"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "BANK_WITHDRAW_ITEM",
+                              "customDisplayName": "Withdraw Iron pickaxe",
+                              "properties": {
+                                "Filter Item By": {
+                                  "class": "Item",
+                                  "logic": "NONE",
+                                  "type": "NAME",
+                                  "operator": "IS_IN_LIST",
+                                  "value": "Iron pickaxe,Bronze pickaxe"
+                                },
+                                "Amount": "1"
+                              },
+                              "children": [
+                                {
+                                  "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                                  "properties": {
+                                    "Max time (seconds)": "5"
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "IF_INVENTORY_CONTAINS_ANY",
+                                      "properties": {
+                                        "Filter Item By": {
+                                          "class": "Item",
+                                          "logic": "NONE",
+                                          "type": "NAME",
+                                          "operator": "IS_IN_LIST",
+                                          "value": "Iron pickaxe,Bronze pickaxe"
+                                        }
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "id": "IF_INVENTORY_CONTAINS_ANY",
+                                  "properties": {
+                                    "Filter Item By": {
+                                      "class": "Item",
+                                      "logic": "NONE",
+                                      "type": "NAME",
+                                      "operator": "IS_IN_LIST",
+                                      "value": "Iron pickaxe,Bronze pickaxe"
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "IF_SKILL_LEVEL_IS",
+                                      "properties": {
+                                        "level": {
+                                          "class": "Number",
+                                          "operator": "GREATER_THAN_OR_EQUALS",
+                                          "value": "1"
+                                        },
+                                        "Skill": {
+                                          "class": "Skill",
+                                          "value": "ATTACK"
+                                        }
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "INTERACT_WITH_INVENTORY_ITEM",
+                                          "properties": {
+                                            "Filter Item By": {
+                                              "class": "Item",
+                                              "logic": "NONE",
+                                              "type": "NAME",
+                                              "operator": "IS_IN_LIST",
+                                              "value": "Iron pickaxe,Bronze pickaxe"
+                                            },
+                                            "Action": "Wield"
+                                          },
+                                          "children": [
+                                            {
+                                              "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                                              "properties": {
+                                                "Max time (seconds)": "5"
+                                              },
+                                              "children": [
+                                                {
+                                                  "id": "IF_EQUIPPED_ITEM_MATCHES",
+                                                  "properties": {
+                                                    "Filter Item By": {
+                                                      "class": "Item",
+                                                      "logic": "NONE",
+                                                      "type": "NAME",
+                                                      "operator": "IS_IN_LIST",
+                                                      "value": "Iron pickaxe,Bronze pickaxe"
+                                                    }
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "CREATE_LABEL",
+          "properties": {
+            "Label": "Adamant pickaxe"
+          },
+          "children": [
+            {
+              "id": "IF_SKILL_LEVEL_IS",
+              "properties": {
+                "level": {
+                  "class": "Number",
+                  "operator": "GREATER_THAN_OR_EQUALS",
+                  "value": "31",
+                  "filters": [
+                    {
+                      "logic": "AND",
+                      "operator": "LESS_THAN",
+                      "value": "41"
+                    }
+                  ]
+                },
+                "Skill": {
+                  "class": "Skill",
+                  "value": "MINING"
+                }
+              },
+              "children": [
+                {
+                  "id": "IF_BANK_CONTAINS",
+                  "properties": {
+                    "Filter Item By": {
+                      "class": "Item",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Adamant pickaxe"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "BANK_WITHDRAW_ITEM",
+                      "customDisplayName": "Withdraw Adamant pickaxe",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "Adamant pickaxe"
+                        },
+                        "Amount": "1"
+                      },
+                      "children": [
+                        {
+                          "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                          "properties": {
+                            "Max time (seconds)": "5"
+                          },
+                          "children": [
+                            {
+                              "id": "IF_INVENTORY_CONTAINS_ANY",
+                              "properties": {
+                                "Filter Item By": {
+                                  "class": "Item",
+                                  "logic": "NONE",
+                                  "type": "NAME",
+                                  "operator": "EQUALS",
+                                  "value": "Adamant pickaxe"
+                                }
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "id": "IF_INVENTORY_CONTAINS_ANY",
+                          "properties": {
+                            "Filter Item By": {
+                              "class": "Item",
+                              "logic": "NONE",
+                              "type": "NAME",
+                              "operator": "EQUALS",
+                              "value": "Adamant pickaxe"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "IF_SKILL_LEVEL_IS",
+                              "properties": {
+                                "level": {
+                                  "class": "Number",
+                                  "operator": "GREATER_THAN_OR_EQUALS",
+                                  "value": "30"
+                                },
+                                "Skill": {
+                                  "class": "Skill",
+                                  "value": "ATTACK"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "INTERACT_WITH_INVENTORY_ITEM",
+                                  "properties": {
+                                    "Filter Item By": {
+                                      "class": "Item",
+                                      "logic": "NONE",
+                                      "type": "NAME",
+                                      "operator": "EQUALS",
+                                      "value": "Adamant pickaxe"
+                                    },
+                                    "Action": "Wield"
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                                      "properties": {
+                                        "Max time (seconds)": "5"
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "IF_EQUIPPED_ITEM_MATCHES",
+                                          "properties": {
+                                            "Filter Item By": {
+                                              "class": "Item",
+                                              "logic": "NONE",
+                                              "type": "NAME",
+                                              "operator": "EQUALS",
+                                              "value": "Adamant pickaxe"
+                                            }
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "ELSE_BRANCH",
+                  "children": [
+                    {
+                      "id": "IF_BANK_CONTAINS",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "Mithril pickaxe"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "BANK_WITHDRAW_ITEM",
+                          "customDisplayName": "Withdraw Iron pickaxe",
+                          "properties": {
+                            "Filter Item By": {
+                              "class": "Item",
+                              "logic": "NONE",
+                              "type": "NAME",
+                              "operator": "EQUALS",
+                              "value": "Mithril pickaxe"
+                            },
+                            "Amount": "1"
+                          },
+                          "children": [
+                            {
+                              "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                              "properties": {
+                                "Max time (seconds)": "5"
+                              },
+                              "children": [
+                                {
+                                  "id": "IF_INVENTORY_CONTAINS_ANY",
+                                  "properties": {
+                                    "Filter Item By": {
+                                      "class": "Item",
+                                      "logic": "NONE",
+                                      "type": "NAME",
+                                      "operator": "EQUALS",
+                                      "value": "Mithril pickaxe"
+                                    }
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "id": "IF_INVENTORY_CONTAINS_ANY",
+                              "properties": {
+                                "Filter Item By": {
+                                  "class": "Item",
+                                  "logic": "NONE",
+                                  "type": "NAME",
+                                  "operator": "EQUALS",
+                                  "value": "Mithril pickaxe"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "IF_SKILL_LEVEL_IS",
+                                  "properties": {
+                                    "level": {
+                                      "class": "Number",
+                                      "operator": "GREATER_THAN_OR_EQUALS",
+                                      "value": "20"
+                                    },
+                                    "Skill": {
+                                      "class": "Skill",
+                                      "value": "ATTACK"
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "INTERACT_WITH_INVENTORY_ITEM",
+                                      "properties": {
+                                        "Filter Item By": {
+                                          "class": "Item",
+                                          "logic": "NONE",
+                                          "type": "NAME",
+                                          "operator": "EQUALS",
+                                          "value": "Mithril pickaxe"
+                                        },
+                                        "Action": "Wield"
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                                          "properties": {
+                                            "Max time (seconds)": "5"
+                                          },
+                                          "children": [
+                                            {
+                                              "id": "IF_EQUIPPED_ITEM_MATCHES",
+                                              "properties": {
+                                                "Filter Item By": {
+                                                  "class": "Item",
+                                                  "logic": "NONE",
+                                                  "type": "NAME",
+                                                  "operator": "EQUALS",
+                                                  "value": "Mithril pickaxe"
+                                                }
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "ELSE_BRANCH",
+                      "children": [
+                        {
+                          "id": "IF_BANK_CONTAINS",
+                          "properties": {
+                            "Filter Item By": {
+                              "class": "Item",
+                              "logic": "NONE",
+                              "type": "NAME",
+                              "operator": "IS_IN_LIST",
+                              "value": "Black pickaxe,Steel pickaxe"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "BANK_WITHDRAW_ITEM",
+                              "customDisplayName": "Withdraw Iron pickaxe",
+                              "properties": {
+                                "Filter Item By": {
+                                  "class": "Item",
+                                  "logic": "NONE",
+                                  "type": "NAME",
+                                  "operator": "IS_IN_LIST",
+                                  "value": "Black pickaxe,Steel pickaxe"
+                                },
+                                "Amount": "1"
+                              },
+                              "children": [
+                                {
+                                  "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                                  "properties": {
+                                    "Max time (seconds)": "5"
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "IF_INVENTORY_CONTAINS_ANY",
+                                      "properties": {
+                                        "Filter Item By": {
+                                          "class": "Item",
+                                          "logic": "NONE",
+                                          "type": "NAME",
+                                          "operator": "IS_IN_LIST",
+                                          "value": "Black pickaxe,Steel pickaxe"
+                                        }
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "id": "IF_INVENTORY_CONTAINS_ANY",
+                                  "properties": {
+                                    "Filter Item By": {
+                                      "class": "Item",
+                                      "logic": "NONE",
+                                      "type": "NAME",
+                                      "operator": "IS_IN_LIST",
+                                      "value": "Black pickaxe,Steel pickaxe"
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "IF_SKILL_LEVEL_IS",
+                                      "properties": {
+                                        "level": {
+                                          "class": "Number",
+                                          "operator": "GREATER_THAN_OR_EQUALS",
+                                          "value": "5"
+                                        },
+                                        "Skill": {
+                                          "class": "Skill",
+                                          "value": "ATTACK"
+                                        }
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "INTERACT_WITH_INVENTORY_ITEM",
+                                          "properties": {
+                                            "Filter Item By": {
+                                              "class": "Item",
+                                              "logic": "NONE",
+                                              "type": "NAME",
+                                              "operator": "IS_IN_LIST",
+                                              "value": "Black pickaxe,Steel pickaxe"
+                                            },
+                                            "Action": "Wield"
+                                          },
+                                          "children": [
+                                            {
+                                              "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                                              "properties": {
+                                                "Max time (seconds)": "5"
+                                              },
+                                              "children": [
+                                                {
+                                                  "id": "IF_EQUIPPED_ITEM_MATCHES",
+                                                  "properties": {
+                                                    "Filter Item By": {
+                                                      "class": "Item",
+                                                      "logic": "NONE",
+                                                      "type": "NAME",
+                                                      "operator": "IS_IN_LIST",
+                                                      "value": "Black pickaxe,Steel pickaxe"
+                                                    }
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "id": "ELSE_BRANCH",
+                          "children": [
+                            {
+                              "id": "IF_BANK_CONTAINS",
+                              "properties": {
+                                "Filter Item By": {
+                                  "class": "Item",
+                                  "logic": "NONE",
+                                  "type": "NAME",
+                                  "operator": "IS_IN_LIST",
+                                  "value": "Iron pickaxe,Bronze pickaxe"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "BANK_WITHDRAW_ITEM",
+                                  "customDisplayName": "Withdraw Iron pickaxe",
+                                  "properties": {
+                                    "Filter Item By": {
+                                      "class": "Item",
+                                      "logic": "NONE",
+                                      "type": "NAME",
+                                      "operator": "IS_IN_LIST",
+                                      "value": "Iron pickaxe,Bronze pickaxe"
+                                    },
+                                    "Amount": "1"
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                                      "properties": {
+                                        "Max time (seconds)": "5"
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "IF_INVENTORY_CONTAINS_ANY",
+                                          "properties": {
+                                            "Filter Item By": {
+                                              "class": "Item",
+                                              "logic": "NONE",
+                                              "type": "NAME",
+                                              "operator": "IS_IN_LIST",
+                                              "value": "Iron pickaxe,Bronze pickaxe"
+                                            }
+                                          }
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "id": "IF_INVENTORY_CONTAINS_ANY",
+                                      "properties": {
+                                        "Filter Item By": {
+                                          "class": "Item",
+                                          "logic": "NONE",
+                                          "type": "NAME",
+                                          "operator": "IS_IN_LIST",
+                                          "value": "Iron pickaxe,Bronze pickaxe"
+                                        }
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "IF_SKILL_LEVEL_IS",
+                                          "properties": {
+                                            "level": {
+                                              "class": "Number",
+                                              "operator": "GREATER_THAN_OR_EQUALS",
+                                              "value": "1"
+                                            },
+                                            "Skill": {
+                                              "class": "Skill",
+                                              "value": "ATTACK"
+                                            }
+                                          },
+                                          "children": [
+                                            {
+                                              "id": "INTERACT_WITH_INVENTORY_ITEM",
+                                              "properties": {
+                                                "Filter Item By": {
+                                                  "class": "Item",
+                                                  "logic": "NONE",
+                                                  "type": "NAME",
+                                                  "operator": "IS_IN_LIST",
+                                                  "value": "Iron pickaxe,Bronze pickaxe"
+                                                },
+                                                "Action": "Wield"
+                                              },
+                                              "children": [
+                                                {
+                                                  "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                                                  "properties": {
+                                                    "Max time (seconds)": "5"
+                                                  },
+                                                  "children": [
+                                                    {
+                                                      "id": "IF_EQUIPPED_ITEM_MATCHES",
+                                                      "properties": {
+                                                        "Filter Item By": {
+                                                          "class": "Item",
+                                                          "logic": "NONE",
+                                                          "type": "NAME",
+                                                          "operator": "IS_IN_LIST",
+                                                          "value": "Iron pickaxe,Bronze pickaxe"
+                                                        }
+                                                      }
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "CREATE_LABEL",
+          "properties": {
+            "Label": "Rune pickaxe"
+          },
+          "children": [
+            {
+              "id": "IF_SKILL_LEVEL_IS",
+              "properties": {
+                "level": {
+                  "class": "Number",
+                  "operator": "GREATER_THAN_OR_EQUALS",
+                  "value": "41",
+                  "filters": [
+                    {
+                      "logic": "AND",
+                      "operator": "LESS_THAN",
+                      "value": "61"
+                    }
+                  ]
+                },
+                "Skill": {
+                  "class": "Skill",
+                  "value": "MINING"
+                }
+              },
+              "children": [
+                {
+                  "id": "IF_BANK_CONTAINS",
+                  "properties": {
+                    "Filter Item By": {
+                      "class": "Item",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Rune pickaxe"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "BANK_WITHDRAW_ITEM",
+                      "customDisplayName": "Withdraw Rune pickaxe",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "Rune pickaxe"
+                        },
+                        "Amount": "1"
+                      },
+                      "children": [
+                        {
+                          "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                          "properties": {
+                            "Max time (seconds)": "5"
+                          },
+                          "children": [
+                            {
+                              "id": "IF_INVENTORY_CONTAINS_ANY",
+                              "properties": {
+                                "Filter Item By": {
+                                  "class": "Item",
+                                  "logic": "NONE",
+                                  "type": "NAME",
+                                  "operator": "EQUALS",
+                                  "value": "Rune pickaxe"
+                                }
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "id": "IF_INVENTORY_CONTAINS_ANY",
+                          "properties": {
+                            "Filter Item By": {
+                              "class": "Item",
+                              "logic": "NONE",
+                              "type": "NAME",
+                              "operator": "EQUALS",
+                              "value": "Rune pickaxe"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "IF_SKILL_LEVEL_IS",
+                              "properties": {
+                                "level": {
+                                  "class": "Number",
+                                  "operator": "GREATER_THAN_OR_EQUALS",
+                                  "value": "40"
+                                },
+                                "Skill": {
+                                  "class": "Skill",
+                                  "value": "ATTACK"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "INTERACT_WITH_INVENTORY_ITEM",
+                                  "properties": {
+                                    "Filter Item By": {
+                                      "class": "Item",
+                                      "logic": "NONE",
+                                      "type": "NAME",
+                                      "operator": "EQUALS",
+                                      "value": "Rune pickaxe"
+                                    },
+                                    "Action": "Wield"
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                                      "properties": {
+                                        "Max time (seconds)": "5"
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "IF_EQUIPPED_ITEM_MATCHES",
+                                          "properties": {
+                                            "Filter Item By": {
+                                              "class": "Item",
+                                              "logic": "NONE",
+                                              "type": "NAME",
+                                              "operator": "EQUALS",
+                                              "value": "Rune pickaxe"
+                                            }
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "ELSE_BRANCH",
+                  "children": [
+                    {
+                      "id": "IF_BANK_CONTAINS",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "Adamant pickaxe"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "BANK_WITHDRAW_ITEM",
+                          "customDisplayName": "Withdraw Adamant pickaxe",
+                          "properties": {
+                            "Filter Item By": {
+                              "class": "Item",
+                              "logic": "NONE",
+                              "type": "NAME",
+                              "operator": "EQUALS",
+                              "value": "Adamant pickaxe"
+                            },
+                            "Amount": "1"
+                          },
+                          "children": [
+                            {
+                              "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                              "properties": {
+                                "Max time (seconds)": "5"
+                              },
+                              "children": [
+                                {
+                                  "id": "IF_INVENTORY_CONTAINS_ANY",
+                                  "properties": {
+                                    "Filter Item By": {
+                                      "class": "Item",
+                                      "logic": "NONE",
+                                      "type": "NAME",
+                                      "operator": "EQUALS",
+                                      "value": "Adamant pickaxe"
+                                    }
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "id": "IF_INVENTORY_CONTAINS_ANY",
+                              "properties": {
+                                "Filter Item By": {
+                                  "class": "Item",
+                                  "logic": "NONE",
+                                  "type": "NAME",
+                                  "operator": "EQUALS",
+                                  "value": "Adamant pickaxe"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "IF_SKILL_LEVEL_IS",
+                                  "properties": {
+                                    "level": {
+                                      "class": "Number",
+                                      "operator": "GREATER_THAN_OR_EQUALS",
+                                      "value": "30"
+                                    },
+                                    "Skill": {
+                                      "class": "Skill",
+                                      "value": "ATTACK"
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "INTERACT_WITH_INVENTORY_ITEM",
+                                      "properties": {
+                                        "Filter Item By": {
+                                          "class": "Item",
+                                          "logic": "NONE",
+                                          "type": "NAME",
+                                          "operator": "EQUALS",
+                                          "value": "Adamant pickaxe"
+                                        },
+                                        "Action": "Wield"
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                                          "properties": {
+                                            "Max time (seconds)": "5"
+                                          },
+                                          "children": [
+                                            {
+                                              "id": "IF_EQUIPPED_ITEM_MATCHES",
+                                              "properties": {
+                                                "Filter Item By": {
+                                                  "class": "Item",
+                                                  "logic": "NONE",
+                                                  "type": "NAME",
+                                                  "operator": "EQUALS",
+                                                  "value": "Adamant pickaxe"
+                                                }
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "ELSE_BRANCH",
+                      "children": [
+                        {
+                          "id": "IF_BANK_CONTAINS",
+                          "properties": {
+                            "Filter Item By": {
+                              "class": "Item",
+                              "logic": "NONE",
+                              "type": "NAME",
+                              "operator": "EQUALS",
+                              "value": "Mithril pickaxe"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "BANK_WITHDRAW_ITEM",
+                              "customDisplayName": "Withdraw Iron pickaxe",
+                              "properties": {
+                                "Filter Item By": {
+                                  "class": "Item",
+                                  "logic": "NONE",
+                                  "type": "NAME",
+                                  "operator": "EQUALS",
+                                  "value": "Mithril pickaxe"
+                                },
+                                "Amount": "1"
+                              },
+                              "children": [
+                                {
+                                  "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                                  "properties": {
+                                    "Max time (seconds)": "5"
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "IF_INVENTORY_CONTAINS_ANY",
+                                      "properties": {
+                                        "Filter Item By": {
+                                          "class": "Item",
+                                          "logic": "NONE",
+                                          "type": "NAME",
+                                          "operator": "EQUALS",
+                                          "value": "Mithril pickaxe"
+                                        }
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "id": "IF_INVENTORY_CONTAINS_ANY",
+                                  "properties": {
+                                    "Filter Item By": {
+                                      "class": "Item",
+                                      "logic": "NONE",
+                                      "type": "NAME",
+                                      "operator": "EQUALS",
+                                      "value": "Mithril pickaxe"
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "IF_SKILL_LEVEL_IS",
+                                      "properties": {
+                                        "level": {
+                                          "class": "Number",
+                                          "operator": "GREATER_THAN_OR_EQUALS",
+                                          "value": "20"
+                                        },
+                                        "Skill": {
+                                          "class": "Skill",
+                                          "value": "ATTACK"
+                                        }
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "INTERACT_WITH_INVENTORY_ITEM",
+                                          "properties": {
+                                            "Filter Item By": {
+                                              "class": "Item",
+                                              "logic": "NONE",
+                                              "type": "NAME",
+                                              "operator": "EQUALS",
+                                              "value": "Mithril pickaxe"
+                                            },
+                                            "Action": "Wield"
+                                          },
+                                          "children": [
+                                            {
+                                              "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                                              "properties": {
+                                                "Max time (seconds)": "5"
+                                              },
+                                              "children": [
+                                                {
+                                                  "id": "IF_EQUIPPED_ITEM_MATCHES",
+                                                  "properties": {
+                                                    "Filter Item By": {
+                                                      "class": "Item",
+                                                      "logic": "NONE",
+                                                      "type": "NAME",
+                                                      "operator": "EQUALS",
+                                                      "value": "Mithril pickaxe"
+                                                    }
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "id": "ELSE_BRANCH",
+                          "children": [
+                            {
+                              "id": "IF_BANK_CONTAINS",
+                              "properties": {
+                                "Filter Item By": {
+                                  "class": "Item",
+                                  "logic": "NONE",
+                                  "type": "NAME",
+                                  "operator": "IS_IN_LIST",
+                                  "value": "Black pickaxe,Steel pickaxe"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "BANK_WITHDRAW_ITEM",
+                                  "customDisplayName": "Withdraw Iron pickaxe",
+                                  "properties": {
+                                    "Filter Item By": {
+                                      "class": "Item",
+                                      "logic": "NONE",
+                                      "type": "NAME",
+                                      "operator": "IS_IN_LIST",
+                                      "value": "Black pickaxe,Steel pickaxe"
+                                    },
+                                    "Amount": "1"
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                                      "properties": {
+                                        "Max time (seconds)": "5"
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "IF_INVENTORY_CONTAINS_ANY",
+                                          "properties": {
+                                            "Filter Item By": {
+                                              "class": "Item",
+                                              "logic": "NONE",
+                                              "type": "NAME",
+                                              "operator": "IS_IN_LIST",
+                                              "value": "Black pickaxe,Steel pickaxe"
+                                            }
+                                          }
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "id": "IF_INVENTORY_CONTAINS_ANY",
+                                      "properties": {
+                                        "Filter Item By": {
+                                          "class": "Item",
+                                          "logic": "NONE",
+                                          "type": "NAME",
+                                          "operator": "IS_IN_LIST",
+                                          "value": "Black pickaxe,Steel pickaxe"
+                                        }
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "IF_SKILL_LEVEL_IS",
+                                          "properties": {
+                                            "level": {
+                                              "class": "Number",
+                                              "operator": "GREATER_THAN_OR_EQUALS",
+                                              "value": "5"
+                                            },
+                                            "Skill": {
+                                              "class": "Skill",
+                                              "value": "ATTACK"
+                                            }
+                                          },
+                                          "children": [
+                                            {
+                                              "id": "INTERACT_WITH_INVENTORY_ITEM",
+                                              "properties": {
+                                                "Filter Item By": {
+                                                  "class": "Item",
+                                                  "logic": "NONE",
+                                                  "type": "NAME",
+                                                  "operator": "IS_IN_LIST",
+                                                  "value": "Black pickaxe,Steel pickaxe"
+                                                },
+                                                "Action": "Wield"
+                                              },
+                                              "children": [
+                                                {
+                                                  "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                                                  "properties": {
+                                                    "Max time (seconds)": "5"
+                                                  },
+                                                  "children": [
+                                                    {
+                                                      "id": "IF_EQUIPPED_ITEM_MATCHES",
+                                                      "properties": {
+                                                        "Filter Item By": {
+                                                          "class": "Item",
+                                                          "logic": "NONE",
+                                                          "type": "NAME",
+                                                          "operator": "IS_IN_LIST",
+                                                          "value": "Black pickaxe,Steel pickaxe"
+                                                        }
+                                                      }
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "id": "ELSE_BRANCH",
+                              "children": [
+                                {
+                                  "id": "IF_BANK_CONTAINS",
+                                  "properties": {
+                                    "Filter Item By": {
+                                      "class": "Item",
+                                      "logic": "NONE",
+                                      "type": "NAME",
+                                      "operator": "IS_IN_LIST",
+                                      "value": "Iron pickaxe,Bronze pickaxe"
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "BANK_WITHDRAW_ITEM",
+                                      "customDisplayName": "Withdraw Iron pickaxe",
+                                      "properties": {
+                                        "Filter Item By": {
+                                          "class": "Item",
+                                          "logic": "NONE",
+                                          "type": "NAME",
+                                          "operator": "IS_IN_LIST",
+                                          "value": "Iron pickaxe,Bronze pickaxe"
+                                        },
+                                        "Amount": "1"
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                                          "properties": {
+                                            "Max time (seconds)": "5"
+                                          },
+                                          "children": [
+                                            {
+                                              "id": "IF_INVENTORY_CONTAINS_ANY",
+                                              "properties": {
+                                                "Filter Item By": {
+                                                  "class": "Item",
+                                                  "logic": "NONE",
+                                                  "type": "NAME",
+                                                  "operator": "IS_IN_LIST",
+                                                  "value": "Iron pickaxe,Bronze pickaxe"
+                                                }
+                                              }
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "id": "IF_INVENTORY_CONTAINS_ANY",
+                                          "properties": {
+                                            "Filter Item By": {
+                                              "class": "Item",
+                                              "logic": "NONE",
+                                              "type": "NAME",
+                                              "operator": "IS_IN_LIST",
+                                              "value": "Iron pickaxe,Bronze pickaxe"
+                                            }
+                                          },
+                                          "children": [
+                                            {
+                                              "id": "IF_SKILL_LEVEL_IS",
+                                              "properties": {
+                                                "level": {
+                                                  "class": "Number",
+                                                  "operator": "GREATER_THAN_OR_EQUALS",
+                                                  "value": "1"
+                                                },
+                                                "Skill": {
+                                                  "class": "Skill",
+                                                  "value": "ATTACK"
+                                                }
+                                              },
+                                              "children": [
+                                                {
+                                                  "id": "INTERACT_WITH_INVENTORY_ITEM",
+                                                  "properties": {
+                                                    "Filter Item By": {
+                                                      "class": "Item",
+                                                      "logic": "NONE",
+                                                      "type": "NAME",
+                                                      "operator": "IS_IN_LIST",
+                                                      "value": "Iron pickaxe,Bronze pickaxe"
+                                                    },
+                                                    "Action": "Wield"
+                                                  },
+                                                  "children": [
+                                                    {
+                                                      "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                                                      "properties": {
+                                                        "Max time (seconds)": "5"
+                                                      },
+                                                      "children": [
+                                                        {
+                                                          "id": "IF_EQUIPPED_ITEM_MATCHES",
+                                                          "properties": {
+                                                            "Filter Item By": {
+                                                              "class": "Item",
+                                                              "logic": "NONE",
+                                                              "type": "NAME",
+                                                              "operator": "IS_IN_LIST",
+                                                              "value": "Iron pickaxe,Bronze pickaxe"
+                                                            }
+                                                          }
+                                                        }
+                                                      ]
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "CREATE_LABEL",
+          "properties": {
+            "Label": "Dragon pickaxe"
+          },
+          "children": [
+            {
+              "id": "IF_SKILL_LEVEL_IS",
+              "properties": {
+                "level": {
+                  "class": "Number",
+                  "operator": "GREATER_THAN_OR_EQUALS",
+                  "value": "61"
+                },
+                "Skill": {
+                  "class": "Skill",
+                  "value": "MINING"
+                }
+              },
+              "children": [
+                {
+                  "id": "IF_BANK_CONTAINS",
+                  "properties": {
+                    "Filter Item By": {
+                      "class": "Item",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Dragon pickaxe"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "BANK_WITHDRAW_ITEM",
+                      "customDisplayName": "Withdraw Dragon pickaxe",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "Dragon pickaxe"
+                        },
+                        "Amount": "1"
+                      },
+                      "children": [
+                        {
+                          "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                          "properties": {
+                            "Max time (seconds)": "5"
+                          },
+                          "children": [
+                            {
+                              "id": "IF_INVENTORY_CONTAINS_ANY",
+                              "properties": {
+                                "Filter Item By": {
+                                  "class": "Item",
+                                  "logic": "NONE",
+                                  "type": "NAME",
+                                  "operator": "EQUALS",
+                                  "value": "Dragon pickaxe"
+                                }
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "id": "IF_INVENTORY_CONTAINS_ANY",
+                          "properties": {
+                            "Filter Item By": {
+                              "class": "Item",
+                              "logic": "NONE",
+                              "type": "NAME",
+                              "operator": "EQUALS",
+                              "value": "Dragon pickaxe"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "IF_SKILL_LEVEL_IS",
+                              "properties": {
+                                "level": {
+                                  "class": "Number",
+                                  "operator": "GREATER_THAN_OR_EQUALS",
+                                  "value": "60"
+                                },
+                                "Skill": {
+                                  "class": "Skill",
+                                  "value": "ATTACK"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "INTERACT_WITH_INVENTORY_ITEM",
+                                  "properties": {
+                                    "Filter Item By": {
+                                      "class": "Item",
+                                      "logic": "NONE",
+                                      "type": "NAME",
+                                      "operator": "EQUALS",
+                                      "value": "Dragon pickaxe"
+                                    },
+                                    "Action": "Wield"
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                                      "properties": {
+                                        "Max time (seconds)": "5"
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "IF_EQUIPPED_ITEM_MATCHES",
+                                          "properties": {
+                                            "Filter Item By": {
+                                              "class": "Item",
+                                              "logic": "NONE",
+                                              "type": "NAME",
+                                              "operator": "EQUALS",
+                                              "value": "Dragon pickaxe"
+                                            }
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "ELSE_BRANCH",
+                  "children": [
+                    {
+                      "id": "IF_BANK_CONTAINS",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "Rune pickaxe"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "BANK_WITHDRAW_ITEM",
+                          "customDisplayName": "Withdraw Rune pickaxe",
+                          "properties": {
+                            "Filter Item By": {
+                              "class": "Item",
+                              "logic": "NONE",
+                              "type": "NAME",
+                              "operator": "EQUALS",
+                              "value": "Rune pickaxe"
+                            },
+                            "Amount": "1"
+                          },
+                          "children": [
+                            {
+                              "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                              "properties": {
+                                "Max time (seconds)": "5"
+                              },
+                              "children": [
+                                {
+                                  "id": "IF_INVENTORY_CONTAINS_ANY",
+                                  "properties": {
+                                    "Filter Item By": {
+                                      "class": "Item",
+                                      "logic": "NONE",
+                                      "type": "NAME",
+                                      "operator": "EQUALS",
+                                      "value": "Rune pickaxe"
+                                    }
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "id": "IF_INVENTORY_CONTAINS_ANY",
+                              "properties": {
+                                "Filter Item By": {
+                                  "class": "Item",
+                                  "logic": "NONE",
+                                  "type": "NAME",
+                                  "operator": "EQUALS",
+                                  "value": "Rune pickaxe"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "IF_SKILL_LEVEL_IS",
+                                  "properties": {
+                                    "level": {
+                                      "class": "Number",
+                                      "operator": "GREATER_THAN_OR_EQUALS",
+                                      "value": "40"
+                                    },
+                                    "Skill": {
+                                      "class": "Skill",
+                                      "value": "ATTACK"
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "INTERACT_WITH_INVENTORY_ITEM",
+                                      "properties": {
+                                        "Filter Item By": {
+                                          "class": "Item",
+                                          "logic": "NONE",
+                                          "type": "NAME",
+                                          "operator": "EQUALS",
+                                          "value": "Rune pickaxe"
+                                        },
+                                        "Action": "Wield"
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                                          "properties": {
+                                            "Max time (seconds)": "5"
+                                          },
+                                          "children": [
+                                            {
+                                              "id": "IF_EQUIPPED_ITEM_MATCHES",
+                                              "properties": {
+                                                "Filter Item By": {
+                                                  "class": "Item",
+                                                  "logic": "NONE",
+                                                  "type": "NAME",
+                                                  "operator": "EQUALS",
+                                                  "value": "Rune pickaxe"
+                                                }
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "ELSE_BRANCH",
+                      "children": [
+                        {
+                          "id": "IF_BANK_CONTAINS",
+                          "properties": {
+                            "Filter Item By": {
+                              "class": "Item",
+                              "logic": "NONE",
+                              "type": "NAME",
+                              "operator": "EQUALS",
+                              "value": "Adamant pickaxe"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "BANK_WITHDRAW_ITEM",
+                              "customDisplayName": "Withdraw Adamant pickaxe",
+                              "properties": {
+                                "Filter Item By": {
+                                  "class": "Item",
+                                  "logic": "NONE",
+                                  "type": "NAME",
+                                  "operator": "EQUALS",
+                                  "value": "Adamant pickaxe"
+                                },
+                                "Amount": "1"
+                              },
+                              "children": [
+                                {
+                                  "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                                  "properties": {
+                                    "Max time (seconds)": "5"
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "IF_INVENTORY_CONTAINS_ANY",
+                                      "properties": {
+                                        "Filter Item By": {
+                                          "class": "Item",
+                                          "logic": "NONE",
+                                          "type": "NAME",
+                                          "operator": "EQUALS",
+                                          "value": "Adamant pickaxe"
+                                        }
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "id": "IF_INVENTORY_CONTAINS_ANY",
+                                  "properties": {
+                                    "Filter Item By": {
+                                      "class": "Item",
+                                      "logic": "NONE",
+                                      "type": "NAME",
+                                      "operator": "EQUALS",
+                                      "value": "Adamant pickaxe"
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "IF_SKILL_LEVEL_IS",
+                                      "properties": {
+                                        "level": {
+                                          "class": "Number",
+                                          "operator": "GREATER_THAN_OR_EQUALS",
+                                          "value": "30"
+                                        },
+                                        "Skill": {
+                                          "class": "Skill",
+                                          "value": "ATTACK"
+                                        }
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "INTERACT_WITH_INVENTORY_ITEM",
+                                          "properties": {
+                                            "Filter Item By": {
+                                              "class": "Item",
+                                              "logic": "NONE",
+                                              "type": "NAME",
+                                              "operator": "EQUALS",
+                                              "value": "Adamant pickaxe"
+                                            },
+                                            "Action": "Wield"
+                                          },
+                                          "children": [
+                                            {
+                                              "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                                              "properties": {
+                                                "Max time (seconds)": "5"
+                                              },
+                                              "children": [
+                                                {
+                                                  "id": "IF_EQUIPPED_ITEM_MATCHES",
+                                                  "properties": {
+                                                    "Filter Item By": {
+                                                      "class": "Item",
+                                                      "logic": "NONE",
+                                                      "type": "NAME",
+                                                      "operator": "EQUALS",
+                                                      "value": "Adamant pickaxe"
+                                                    }
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "id": "ELSE_BRANCH",
+                          "children": [
+                            {
+                              "id": "IF_BANK_CONTAINS",
+                              "properties": {
+                                "Filter Item By": {
+                                  "class": "Item",
+                                  "logic": "NONE",
+                                  "type": "NAME",
+                                  "operator": "EQUALS",
+                                  "value": "Mithril pickaxe"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "BANK_WITHDRAW_ITEM",
+                                  "customDisplayName": "Withdraw Iron pickaxe",
+                                  "properties": {
+                                    "Filter Item By": {
+                                      "class": "Item",
+                                      "logic": "NONE",
+                                      "type": "NAME",
+                                      "operator": "EQUALS",
+                                      "value": "Mithril pickaxe"
+                                    },
+                                    "Amount": "1"
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                                      "properties": {
+                                        "Max time (seconds)": "5"
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "IF_INVENTORY_CONTAINS_ANY",
+                                          "properties": {
+                                            "Filter Item By": {
+                                              "class": "Item",
+                                              "logic": "NONE",
+                                              "type": "NAME",
+                                              "operator": "EQUALS",
+                                              "value": "Mithril pickaxe"
+                                            }
+                                          }
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "id": "IF_INVENTORY_CONTAINS_ANY",
+                                      "properties": {
+                                        "Filter Item By": {
+                                          "class": "Item",
+                                          "logic": "NONE",
+                                          "type": "NAME",
+                                          "operator": "EQUALS",
+                                          "value": "Mithril pickaxe"
+                                        }
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "IF_SKILL_LEVEL_IS",
+                                          "properties": {
+                                            "level": {
+                                              "class": "Number",
+                                              "operator": "GREATER_THAN_OR_EQUALS",
+                                              "value": "20"
+                                            },
+                                            "Skill": {
+                                              "class": "Skill",
+                                              "value": "ATTACK"
+                                            }
+                                          },
+                                          "children": [
+                                            {
+                                              "id": "INTERACT_WITH_INVENTORY_ITEM",
+                                              "properties": {
+                                                "Filter Item By": {
+                                                  "class": "Item",
+                                                  "logic": "NONE",
+                                                  "type": "NAME",
+                                                  "operator": "EQUALS",
+                                                  "value": "Mithril pickaxe"
+                                                },
+                                                "Action": "Wield"
+                                              },
+                                              "children": [
+                                                {
+                                                  "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                                                  "properties": {
+                                                    "Max time (seconds)": "5"
+                                                  },
+                                                  "children": [
+                                                    {
+                                                      "id": "IF_EQUIPPED_ITEM_MATCHES",
+                                                      "properties": {
+                                                        "Filter Item By": {
+                                                          "class": "Item",
+                                                          "logic": "NONE",
+                                                          "type": "NAME",
+                                                          "operator": "EQUALS",
+                                                          "value": "Mithril pickaxe"
+                                                        }
+                                                      }
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "id": "ELSE_BRANCH",
+                              "children": [
+                                {
+                                  "id": "IF_BANK_CONTAINS",
+                                  "properties": {
+                                    "Filter Item By": {
+                                      "class": "Item",
+                                      "logic": "NONE",
+                                      "type": "NAME",
+                                      "operator": "IS_IN_LIST",
+                                      "value": "Black pickaxe,Steel pickaxe"
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "BANK_WITHDRAW_ITEM",
+                                      "customDisplayName": "Withdraw Iron pickaxe",
+                                      "properties": {
+                                        "Filter Item By": {
+                                          "class": "Item",
+                                          "logic": "NONE",
+                                          "type": "NAME",
+                                          "operator": "IS_IN_LIST",
+                                          "value": "Black pickaxe,Steel pickaxe"
+                                        },
+                                        "Amount": "1"
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                                          "properties": {
+                                            "Max time (seconds)": "5"
+                                          },
+                                          "children": [
+                                            {
+                                              "id": "IF_INVENTORY_CONTAINS_ANY",
+                                              "properties": {
+                                                "Filter Item By": {
+                                                  "class": "Item",
+                                                  "logic": "NONE",
+                                                  "type": "NAME",
+                                                  "operator": "IS_IN_LIST",
+                                                  "value": "Black pickaxe,Steel pickaxe"
+                                                }
+                                              }
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "id": "IF_INVENTORY_CONTAINS_ANY",
+                                          "properties": {
+                                            "Filter Item By": {
+                                              "class": "Item",
+                                              "logic": "NONE",
+                                              "type": "NAME",
+                                              "operator": "IS_IN_LIST",
+                                              "value": "Black pickaxe,Steel pickaxe"
+                                            }
+                                          },
+                                          "children": [
+                                            {
+                                              "id": "IF_SKILL_LEVEL_IS",
+                                              "properties": {
+                                                "level": {
+                                                  "class": "Number",
+                                                  "operator": "GREATER_THAN_OR_EQUALS",
+                                                  "value": "5"
+                                                },
+                                                "Skill": {
+                                                  "class": "Skill",
+                                                  "value": "ATTACK"
+                                                }
+                                              },
+                                              "children": [
+                                                {
+                                                  "id": "INTERACT_WITH_INVENTORY_ITEM",
+                                                  "properties": {
+                                                    "Filter Item By": {
+                                                      "class": "Item",
+                                                      "logic": "NONE",
+                                                      "type": "NAME",
+                                                      "operator": "IS_IN_LIST",
+                                                      "value": "Black pickaxe,Steel pickaxe"
+                                                    },
+                                                    "Action": "Wield"
+                                                  },
+                                                  "children": [
+                                                    {
+                                                      "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                                                      "properties": {
+                                                        "Max time (seconds)": "5"
+                                                      },
+                                                      "children": [
+                                                        {
+                                                          "id": "IF_EQUIPPED_ITEM_MATCHES",
+                                                          "properties": {
+                                                            "Filter Item By": {
+                                                              "class": "Item",
+                                                              "logic": "NONE",
+                                                              "type": "NAME",
+                                                              "operator": "IS_IN_LIST",
+                                                              "value": "Black pickaxe,Steel pickaxe"
+                                                            }
+                                                          }
+                                                        }
+                                                      ]
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "id": "ELSE_BRANCH",
+                                  "children": [
+                                    {
+                                      "id": "IF_BANK_CONTAINS",
+                                      "properties": {
+                                        "Filter Item By": {
+                                          "class": "Item",
+                                          "logic": "NONE",
+                                          "type": "NAME",
+                                          "operator": "IS_IN_LIST",
+                                          "value": "Iron pickaxe,Bronze pickaxe"
+                                        }
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "BANK_WITHDRAW_ITEM",
+                                          "customDisplayName": "Withdraw Iron pickaxe",
+                                          "properties": {
+                                            "Filter Item By": {
+                                              "class": "Item",
+                                              "logic": "NONE",
+                                              "type": "NAME",
+                                              "operator": "IS_IN_LIST",
+                                              "value": "Iron pickaxe,Bronze pickaxe"
+                                            },
+                                            "Amount": "1"
+                                          },
+                                          "children": [
+                                            {
+                                              "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                                              "properties": {
+                                                "Max time (seconds)": "5"
+                                              },
+                                              "children": [
+                                                {
+                                                  "id": "IF_INVENTORY_CONTAINS_ANY",
+                                                  "properties": {
+                                                    "Filter Item By": {
+                                                      "class": "Item",
+                                                      "logic": "NONE",
+                                                      "type": "NAME",
+                                                      "operator": "IS_IN_LIST",
+                                                      "value": "Iron pickaxe,Bronze pickaxe"
+                                                    }
+                                                  }
+                                                }
+                                              ]
+                                            },
+                                            {
+                                              "id": "IF_INVENTORY_CONTAINS_ANY",
+                                              "properties": {
+                                                "Filter Item By": {
+                                                  "class": "Item",
+                                                  "logic": "NONE",
+                                                  "type": "NAME",
+                                                  "operator": "IS_IN_LIST",
+                                                  "value": "Iron pickaxe,Bronze pickaxe"
+                                                }
+                                              },
+                                              "children": [
+                                                {
+                                                  "id": "IF_SKILL_LEVEL_IS",
+                                                  "properties": {
+                                                    "level": {
+                                                      "class": "Number",
+                                                      "operator": "GREATER_THAN_OR_EQUALS",
+                                                      "value": "1"
+                                                    },
+                                                    "Skill": {
+                                                      "class": "Skill",
+                                                      "value": "ATTACK"
+                                                    }
+                                                  },
+                                                  "children": [
+                                                    {
+                                                      "id": "INTERACT_WITH_INVENTORY_ITEM",
+                                                      "properties": {
+                                                        "Filter Item By": {
+                                                          "class": "Item",
+                                                          "logic": "NONE",
+                                                          "type": "NAME",
+                                                          "operator": "IS_IN_LIST",
+                                                          "value": "Iron pickaxe,Bronze pickaxe"
+                                                        },
+                                                        "Action": "Wield"
+                                                      },
+                                                      "children": [
+                                                        {
+                                                          "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                                                          "properties": {
+                                                            "Max time (seconds)": "5"
+                                                          },
+                                                          "children": [
+                                                            {
+                                                              "id": "IF_EQUIPPED_ITEM_MATCHES",
+                                                              "properties": {
+                                                                "Filter Item By": {
+                                                                  "class": "Item",
+                                                                  "logic": "NONE",
+                                                                  "type": "NAME",
+                                                                  "operator": "IS_IN_LIST",
+                                                                  "value": "Iron pickaxe,Bronze pickaxe"
+                                                                }
+                                                              }
+                                                            }
+                                                          ]
+                                                        }
+                                                      ]
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "IF_EQUIPPED_ITEM_DOES_NOT_MATCH",
+          "properties": {
+            "Filter Item By": {
+              "class": "Item",
+              "logic": "NONE",
+              "type": "NAME",
+              "operator": "CONTAINS",
+              "value": "pickaxe"
+            }
+          },
+          "children": [
+            {
+              "id": "IF_INVENTORY_DOES_NOT_CONTAIN_ANY",
+              "properties": {
+                "Filter Item By": {
+                  "class": "Item",
+                  "logic": "NONE",
+                  "type": "NAME",
+                  "operator": "CONTAINS",
+                  "value": "pickaxe"
+                }
+              },
+              "children": [
+                {
+                  "id": "GO_TO_LABEL",
+                  "properties": {
+                    "Label": "Pickaxe Check"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "DISABLE_MENU_MANIPULATION"
+        }
+      ]
+    }
+  ]
+}

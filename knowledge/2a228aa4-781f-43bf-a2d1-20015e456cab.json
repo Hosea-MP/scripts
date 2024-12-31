@@ -1,0 +1,1263 @@
+{
+  "id": "2a228aa4-781f-43bf-a2d1-20015e456cab",
+  "name": "Grand Exchange \u003e Buying \u003e Items",
+  "description": "Will buy all the items in a list made by \"Add all\" and saved as ITEM_LIST checked by ITEM_CHECK",
+  "parameters": "",
+  "fail": false,
+  "actions": [
+    {
+      "id": "IF_LIST_SIZE_IS",
+      "properties": {
+        "size": {
+          "class": "Number",
+          "operator": "GREATER_THAN",
+          "value": "0"
+        },
+        "List name": "ITEM_LIST"
+      },
+      "children": [
+        {
+          "id": "PAUSE_ITEM_TRACKER"
+        },
+        {
+          "id": "CUSTOM_e7889949-c7d5-4cdb-8f10-d25eb839ef97"
+        },
+        {
+          "id": "CREATE_LABEL",
+          "properties": {
+            "Label": "Wealth Check"
+          },
+          "children": [
+            {
+              "id": "SET_VARIABLE",
+              "properties": {
+                "Value": "0",
+                "Variable name": "COIN_CHECK"
+              }
+            },
+            {
+              "id": "FOR_EACH_IN_LIST",
+              "properties": {
+                "List name": "ITEM_LIST"
+              },
+              "children": [
+                {
+                  "id": "SET_VARIABLE_TO_LAST_OUTPUT",
+                  "customDisplayName": "Set variable \u0027ITEM_CHECK\u0027 to the last action\u0027s output",
+                  "properties": {
+                    "Variable name": "ITEM_CHECK"
+                  },
+                  "children": [
+                    {
+                      "id": "SET_TO_ITEM_LIVE_PRICE_NAME",
+                      "properties": {
+                        "Name": "v(ITEM_CHECK)",
+                        "Variable name": "LIVE_PRICE"
+                      },
+                      "children": [
+                        {
+                          "id": "IF_BANK_DOES_NOT_CONTAIN",
+                          "properties": {
+                            "Filter Item By": {
+                              "class": "Item",
+                              "logic": "NONE",
+                              "type": "NAME",
+                              "operator": "EQUALS",
+                              "value": "v(ITEM_CHECK)"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "ADD_TO_VARIABLE",
+                              "properties": {
+                                "Variable name": "COIN_CHECK",
+                                "By": "v(LIVE_PRICE)"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "IF_VARIABLE_IS",
+              "properties": {
+                "Filter Value By": {
+                  "class": "Variable",
+                  "logic": "NONE",
+                  "type": "AS_NUMBER",
+                  "operator": "LESS_THAN",
+                  "value": "v(COIN_CHECK)"
+                },
+                "Variable name": "COIN_COUNT"
+              },
+              "children": [
+                {
+                  "id": "CUSTOM_410c42c3-12ac-4830-9b14-01b00fe4a5cb",
+                  "children": [
+                    {
+                      "id": "PAUSE_ITEM_TRACKER"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "CUSTOM_621c517e-383e-4e00-aab9-d5955f5b863c"
+        },
+        {
+          "id": "CREATE_LABEL",
+          "properties": {
+            "Label": "Buy After Collect"
+          },
+          "children": [
+            {
+              "id": "FOR_EACH_IN_LIST",
+              "customDisplayName": "For each in list ITEM_LIST (First Buy)",
+              "properties": {
+                "Reverse order": false,
+                "List name": "ITEM_LIST",
+                "Random order": true
+              },
+              "children": [
+                {
+                  "id": "SET_VARIABLE_TO_LAST_OUTPUT",
+                  "properties": {
+                    "Variable name": "ITEM_CHECK"
+                  },
+                  "children": [
+                    {
+                      "id": "SET_TO_ITEM_LIVE_PRICE_NAME",
+                      "properties": {
+                        "Variable name": "LIVE_PRICE",
+                        "Name": "v(ITEM_CHECK)"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "CREATE_LABEL",
+                  "properties": {
+                    "Label": "If we have the item from v(ITEM_CHECK)"
+                  },
+                  "children": [
+                    {
+                      "id": "IF_BANK_CONTAINS",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "v(ITEM_CHECK)"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "IF_BANK_DOES_NOT_CONTAIN_PLACEHOLDER",
+                          "properties": {
+                            "Filter Item By": {
+                              "class": "Item",
+                              "logic": "NONE",
+                              "type": "NAME",
+                              "operator": "EQUALS",
+                              "value": "v(ITEM_CHECK)"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "REMOVE_FROM_LIST",
+                              "properties": {
+                                "Value": "v(ITEM_CHECK)",
+                                "List name": "ITEM_LIST"
+                              },
+                              "children": [
+                                {
+                                  "id": "IF_LIST_SIZE_IS",
+                                  "properties": {
+                                    "size": {
+                                      "class": "Number",
+                                      "operator": "EQUALS",
+                                      "value": "0"
+                                    },
+                                    "List name": "ITEM_LIST"
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "GO_TO_LABEL",
+                                      "properties": {
+                                        "Label": "End Buyer"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "OR_BRANCH"
+                    },
+                    {
+                      "id": "IF_INVENTORY_CONTAINS_ANY",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "v(ITEM_CHECK)"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "REMOVE_FROM_LIST",
+                          "properties": {
+                            "Value": "v(ITEM_CHECK)",
+                            "List name": "ITEM_LIST"
+                          },
+                          "children": [
+                            {
+                              "id": "IF_LIST_SIZE_IS",
+                              "properties": {
+                                "size": {
+                                  "class": "Number",
+                                  "operator": "EQUALS",
+                                  "value": "0"
+                                },
+                                "List name": "ITEM_LIST"
+                              },
+                              "children": [
+                                {
+                                  "id": "GO_TO_LABEL",
+                                  "properties": {
+                                    "Label": "End Buyer"
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "OR_BRANCH"
+                    },
+                    {
+                      "id": "IF_EQUIPPED_ITEM_MATCHES",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "v(ITEM_CHECK)"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "REMOVE_FROM_LIST",
+                          "properties": {
+                            "Value": "v(ITEM_CHECK)",
+                            "List name": "ITEM_LIST"
+                          },
+                          "children": [
+                            {
+                              "id": "IF_LIST_SIZE_IS",
+                              "properties": {
+                                "size": {
+                                  "class": "Number",
+                                  "operator": "EQUALS",
+                                  "value": "0"
+                                },
+                                "List name": "ITEM_LIST"
+                              },
+                              "children": [
+                                {
+                                  "id": "GO_TO_LABEL",
+                                  "properties": {
+                                    "Label": "End Buyer"
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "OR_BRANCH"
+                    },
+                    {
+                      "id": "IF_OFFER_EXISTS",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "v(ITEM_CHECK)"
+                        }
+                      }
+                    },
+                    {
+                      "id": "AND_BRANCH"
+                    },
+                    {
+                      "id": "IF_GRAND_EXCHANGE_READY_TO_COLLECT",
+                      "children": [
+                        {
+                          "id": "COLLECT_TO_BANK_GRAND_EXCHANGE",
+                          "children": [
+                            {
+                              "id": "SLEEP_BETWEEN",
+                              "properties": {
+                                "Minimum": "1000",
+                                "Maximum": "3000"
+                              },
+                              "children": [
+                                {
+                                  "id": "REMOVE_FROM_LIST",
+                                  "properties": {
+                                    "Value": "v(ITEM_CHECK)",
+                                    "List name": "ITEM_LIST"
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "IF_LIST_SIZE_IS",
+                                      "properties": {
+                                        "size": {
+                                          "class": "Number",
+                                          "operator": "EQUALS",
+                                          "value": "0"
+                                        },
+                                        "List name": "ITEM_LIST"
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "GO_TO_LABEL",
+                                          "properties": {
+                                            "Label": "End Buyer"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "CREATE_LABEL",
+                  "properties": {
+                    "Label": "If we don\u0027t have the item from v(ITEM_CHECK)"
+                  },
+                  "children": [
+                    {
+                      "id": "IF_BANK_DOES_NOT_CONTAIN",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "v(ITEM_CHECK)"
+                        }
+                      }
+                    },
+                    {
+                      "id": "AND_BRANCH"
+                    },
+                    {
+                      "id": "IF_INVENTORY_DOES_NOT_CONTAIN_ANY",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "v(ITEM_CHECK)"
+                        }
+                      }
+                    },
+                    {
+                      "id": "AND_BRANCH"
+                    },
+                    {
+                      "id": "IF_EQUIPPED_ITEM_DOES_NOT_MATCH",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "v(ITEM_CHECK)"
+                        }
+                      }
+                    },
+                    {
+                      "id": "AND_BRANCH"
+                    },
+                    {
+                      "id": "IF_OFFER_DOES_NOT_EXIST",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "v(ITEM_CHECK)"
+                        }
+                      }
+                    },
+                    {
+                      "id": "AND_BRANCH"
+                    },
+                    {
+                      "id": "IF_ANY_SLOT_IS_EMPTY",
+                      "children": [
+                        {
+                          "id": "BUY_ITEM_GRAND_EXCHANGE",
+                          "properties": {
+                            "Item Name": "v(ITEM_CHECK)",
+                            "Price": "mul(v(LIVE_PRICE), 1.15)",
+                            "Amount": "1"
+                          },
+                          "children": [
+                            {
+                              "id": "SLEEP_BETWEEN",
+                              "properties": {
+                                "Minimum": "1000",
+                                "Maximum": "3000"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "ELSE_BRANCH",
+                      "children": [
+                        {
+                          "id": "IF_NO_SLOTS_ARE_EMPTY",
+                          "children": [
+                            {
+                              "id": "IF_GRAND_EXCHANGE_READY_TO_COLLECT",
+                              "children": [
+                                {
+                                  "id": "COLLECT_TO_BANK_GRAND_EXCHANGE",
+                                  "children": [
+                                    {
+                                      "id": "SLEEP_BETWEEN",
+                                      "properties": {
+                                        "Minimum": "1000",
+                                        "Maximum": "3000"
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "IF_LIST_SIZE_IS",
+                                          "properties": {
+                                            "size": {
+                                              "class": "Number",
+                                              "operator": "EQUALS",
+                                              "value": "0"
+                                            },
+                                            "List name": "ITEM_LIST"
+                                          },
+                                          "children": [
+                                            {
+                                              "id": "GO_TO_LABEL",
+                                              "properties": {
+                                                "Label": "End Buyer"
+                                              }
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "id": "ELSE_BRANCH",
+                                          "children": [
+                                            {
+                                              "id": "GO_TO_LABEL",
+                                              "properties": {
+                                                "Label": "Buy After Collect"
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "id": "IF_GRAND_EXCHANGE_NOT_READY_TO_COLLECT",
+                              "children": [
+                                {
+                                  "id": "SLEEP_BETWEEN",
+                                  "properties": {
+                                    "Minimum": "5000",
+                                    "Maximum": "10000"
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "CANCEL_ALL_OFFERS",
+                                      "children": [
+                                        {
+                                          "id": "COLLECT_TO_BANK_GRAND_EXCHANGE",
+                                          "children": [
+                                            {
+                                              "id": "SLEEP_BETWEEN",
+                                              "properties": {
+                                                "Minimum": "1000",
+                                                "Maximum": "3000"
+                                              },
+                                              "children": [
+                                                {
+                                                  "id": "IF_LIST_SIZE_IS",
+                                                  "properties": {
+                                                    "size": {
+                                                      "class": "Number",
+                                                      "operator": "EQUALS",
+                                                      "value": "0"
+                                                    },
+                                                    "List name": "ITEM_LIST"
+                                                  },
+                                                  "children": [
+                                                    {
+                                                      "id": "GO_TO_LABEL",
+                                                      "properties": {
+                                                        "Label": "End Buyer"
+                                                      }
+                                                    }
+                                                  ]
+                                                },
+                                                {
+                                                  "id": "ELSE_BRANCH",
+                                                  "children": [
+                                                    {
+                                                      "id": "GO_TO_LABEL",
+                                                      "properties": {
+                                                        "Label": "Buy After Collect"
+                                                      }
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "COLLECT_TO_BANK_GRAND_EXCHANGE",
+              "children": [
+                {
+                  "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                  "children": [
+                    {
+                      "id": "IF_GRAND_EXCHANGE_NOT_READY_TO_COLLECT"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "CREATE_LABEL",
+          "properties": {
+            "Label": "Bank Check"
+          },
+          "children": [
+            {
+              "id": "CUSTOM_7c34cb9f-cec9-45f1-81de-7dba6eb0595e"
+            },
+            {
+              "id": "SLEEP_BETWEEN",
+              "properties": {
+                "Minimum": "1000",
+                "Maximum": "5000"
+              }
+            },
+            {
+              "id": "CUSTOM_1185c37e-088d-41e8-bf49-0abf9b226030"
+            }
+          ]
+        },
+        {
+          "id": "CREATE_LABEL",
+          "properties": {
+            "Label": "Buy After Collect2"
+          },
+          "children": [
+            {
+              "id": "FOR_EACH_IN_LIST",
+              "customDisplayName": "For each in list ITEM_LIST (Re-Buy)",
+              "properties": {
+                "Reverse order": false,
+                "List name": "ITEM_LIST",
+                "Random order": true
+              },
+              "children": [
+                {
+                  "id": "SET_VARIABLE_TO_LAST_OUTPUT",
+                  "properties": {
+                    "Variable name": "ITEM_CHECK"
+                  },
+                  "children": [
+                    {
+                      "id": "SET_TO_ITEM_LIVE_PRICE_NAME",
+                      "properties": {
+                        "Variable name": "LIVE_PRICE",
+                        "Name": "v(ITEM_CHECK)"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "CREATE_LABEL",
+                  "properties": {
+                    "Label": "If we have the item from v(ITEM_CHECK)"
+                  },
+                  "children": [
+                    {
+                      "id": "IF_BANK_CONTAINS",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "v(ITEM_CHECK)"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "REMOVE_FROM_LIST",
+                          "properties": {
+                            "Value": "v(ITEM_CHECK)",
+                            "List name": "ITEM_LIST"
+                          },
+                          "children": [
+                            {
+                              "id": "IF_LIST_SIZE_IS",
+                              "properties": {
+                                "size": {
+                                  "class": "Number",
+                                  "operator": "EQUALS",
+                                  "value": "0"
+                                },
+                                "List name": "ITEM_LIST"
+                              },
+                              "children": [
+                                {
+                                  "id": "GO_TO_LABEL",
+                                  "properties": {
+                                    "Label": "End Buyer"
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "OR_BRANCH"
+                    },
+                    {
+                      "id": "IF_INVENTORY_CONTAINS_ANY",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "v(ITEM_CHECK)"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "REMOVE_FROM_LIST",
+                          "properties": {
+                            "Value": "v(ITEM_CHECK)",
+                            "List name": "ITEM_LIST"
+                          },
+                          "children": [
+                            {
+                              "id": "IF_LIST_SIZE_IS",
+                              "properties": {
+                                "size": {
+                                  "class": "Number",
+                                  "operator": "EQUALS",
+                                  "value": "0"
+                                },
+                                "List name": "ITEM_LIST"
+                              },
+                              "children": [
+                                {
+                                  "id": "GO_TO_LABEL",
+                                  "properties": {
+                                    "Label": "End Buyer"
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "OR_BRANCH"
+                    },
+                    {
+                      "id": "IF_EQUIPPED_ITEM_MATCHES",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "v(ITEM_CHECK)"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "REMOVE_FROM_LIST",
+                          "properties": {
+                            "Value": "v(ITEM_CHECK)",
+                            "List name": "ITEM_LIST"
+                          },
+                          "children": [
+                            {
+                              "id": "IF_LIST_SIZE_IS",
+                              "properties": {
+                                "size": {
+                                  "class": "Number",
+                                  "operator": "EQUALS",
+                                  "value": "0"
+                                },
+                                "List name": "ITEM_LIST"
+                              },
+                              "children": [
+                                {
+                                  "id": "GO_TO_LABEL",
+                                  "properties": {
+                                    "Label": "End Buyer"
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "OR_BRANCH"
+                    },
+                    {
+                      "id": "IF_OFFER_EXISTS",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "v(ITEM_CHECK)"
+                        }
+                      }
+                    },
+                    {
+                      "id": "AND_BRANCH"
+                    },
+                    {
+                      "id": "IF_GRAND_EXCHANGE_READY_TO_COLLECT",
+                      "children": [
+                        {
+                          "id": "COLLECT_TO_BANK_GRAND_EXCHANGE",
+                          "children": [
+                            {
+                              "id": "SLEEP_BETWEEN",
+                              "properties": {
+                                "Minimum": "1000",
+                                "Maximum": "3000"
+                              },
+                              "children": [
+                                {
+                                  "id": "REMOVE_FROM_LIST",
+                                  "properties": {
+                                    "Value": "v(ITEM_CHECK)",
+                                    "List name": "ITEM_LIST"
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "IF_LIST_SIZE_IS",
+                                      "properties": {
+                                        "size": {
+                                          "class": "Number",
+                                          "operator": "EQUALS",
+                                          "value": "0"
+                                        },
+                                        "List name": "ITEM_LIST"
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "GO_TO_LABEL",
+                                          "properties": {
+                                            "Label": "End Buyer"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "ELSE_BRANCH",
+                      "children": [
+                        {
+                          "id": "IF_OFFER_EXISTS",
+                          "properties": {
+                            "Filter Item By": {
+                              "class": "Item",
+                              "logic": "NONE",
+                              "type": "NAME",
+                              "operator": "EQUALS",
+                              "value": "v(ITEM_CHECK)"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "SLEEP_BETWEEN",
+                              "properties": {
+                                "Minimum": "1000",
+                                "Maximum": "3000"
+                              },
+                              "children": [
+                                {
+                                  "id": "IF_GRAND_EXCHANGE_NOT_READY_TO_COLLECT",
+                                  "children": [
+                                    {
+                                      "id": "SLEEP_BETWEEN",
+                                      "properties": {
+                                        "Minimum": "5000",
+                                        "Maximum": "10000"
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "CANCEL_ALL_OFFERS",
+                                          "children": [
+                                            {
+                                              "id": "SLEEP_BETWEEN",
+                                              "properties": {
+                                                "Minimum": "1000",
+                                                "Maximum": "3000"
+                                              },
+                                              "children": [
+                                                {
+                                                  "id": "COLLECT_TO_BANK_GRAND_EXCHANGE",
+                                                  "children": [
+                                                    {
+                                                      "id": "SLEEP_BETWEEN",
+                                                      "properties": {
+                                                        "Minimum": "1000",
+                                                        "Maximum": "3000"
+                                                      },
+                                                      "children": [
+                                                        {
+                                                          "id": "IF_LIST_SIZE_IS",
+                                                          "properties": {
+                                                            "size": {
+                                                              "class": "Number",
+                                                              "operator": "EQUALS",
+                                                              "value": "0"
+                                                            },
+                                                            "List name": "ITEM_LIST"
+                                                          },
+                                                          "children": [
+                                                            {
+                                                              "id": "GO_TO_LABEL",
+                                                              "properties": {
+                                                                "Label": "End Buyer"
+                                                              }
+                                                            }
+                                                          ]
+                                                        },
+                                                        {
+                                                          "id": "ELSE_BRANCH",
+                                                          "children": [
+                                                            {
+                                                              "id": "GO_TO_LABEL",
+                                                              "properties": {
+                                                                "Label": "Buy After Collect2"
+                                                              }
+                                                            }
+                                                          ]
+                                                        }
+                                                      ]
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "CREATE_LABEL",
+                  "properties": {
+                    "Label": "If we don\u0027t have the item from v(ITEM_CHECK)"
+                  },
+                  "children": [
+                    {
+                      "id": "IF_BANK_DOES_NOT_CONTAIN",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "v(ITEM_CHECK)"
+                        }
+                      }
+                    },
+                    {
+                      "id": "AND_BRANCH"
+                    },
+                    {
+                      "id": "IF_INVENTORY_DOES_NOT_CONTAIN_ANY",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "v(ITEM_CHECK)"
+                        }
+                      }
+                    },
+                    {
+                      "id": "AND_BRANCH"
+                    },
+                    {
+                      "id": "IF_EQUIPPED_ITEM_DOES_NOT_MATCH",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "v(ITEM_CHECK)"
+                        }
+                      }
+                    },
+                    {
+                      "id": "AND_BRANCH"
+                    },
+                    {
+                      "id": "IF_OFFER_DOES_NOT_EXIST",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "v(ITEM_CHECK)"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "IF_ANY_SLOT_IS_EMPTY",
+                          "children": [
+                            {
+                              "id": "BUY_ITEM_GRAND_EXCHANGE",
+                              "customDisplayName": "Buy item by name +100%",
+                              "properties": {
+                                "Item Name": "v(ITEM_CHECK)",
+                                "Price": "mul(v(LIVE_PRICE), 2.00)",
+                                "Amount": "1"
+                              },
+                              "children": [
+                                {
+                                  "id": "SLEEP_BETWEEN",
+                                  "properties": {
+                                    "Minimum": "1000",
+                                    "Maximum": "3000"
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "IF_LIST_SIZE_IS",
+                                      "properties": {
+                                        "size": {
+                                          "class": "Number",
+                                          "operator": "EQUALS",
+                                          "value": "0"
+                                        },
+                                        "List name": "ITEM_LIST"
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "GO_TO_LABEL",
+                                          "properties": {
+                                            "Label": "End Buyer"
+                                          }
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "id": "ELSE_BRANCH",
+                                      "children": [
+                                        {
+                                          "id": "GO_TO_LABEL",
+                                          "properties": {
+                                            "Label": "Buy After Collect2"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "id": "ELSE_BRANCH",
+                          "children": [
+                            {
+                              "id": "IF_NO_SLOTS_ARE_EMPTY",
+                              "children": [
+                                {
+                                  "id": "IF_GRAND_EXCHANGE_READY_TO_COLLECT",
+                                  "children": [
+                                    {
+                                      "id": "COLLECT_TO_BANK_GRAND_EXCHANGE",
+                                      "children": [
+                                        {
+                                          "id": "SLEEP_BETWEEN",
+                                          "properties": {
+                                            "Minimum": "1000",
+                                            "Maximum": "3000"
+                                          },
+                                          "children": [
+                                            {
+                                              "id": "IF_LIST_SIZE_IS",
+                                              "properties": {
+                                                "size": {
+                                                  "class": "Number",
+                                                  "operator": "EQUALS",
+                                                  "value": "0"
+                                                },
+                                                "List name": "ITEM_LIST"
+                                              },
+                                              "children": [
+                                                {
+                                                  "id": "GO_TO_LABEL",
+                                                  "properties": {
+                                                    "Label": "End Buyer"
+                                                  }
+                                                }
+                                              ]
+                                            },
+                                            {
+                                              "id": "ELSE_BRANCH",
+                                              "children": [
+                                                {
+                                                  "id": "GO_TO_LABEL",
+                                                  "properties": {
+                                                    "Label": "Buy After Collect2"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "id": "IF_GRAND_EXCHANGE_NOT_READY_TO_COLLECT",
+                                  "children": [
+                                    {
+                                      "id": "SLEEP_BETWEEN",
+                                      "properties": {
+                                        "Minimum": "5000",
+                                        "Maximum": "10000"
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "CANCEL_ALL_OFFERS",
+                                          "children": [
+                                            {
+                                              "id": "COLLECT_TO_BANK_GRAND_EXCHANGE",
+                                              "children": [
+                                                {
+                                                  "id": "SLEEP_BETWEEN",
+                                                  "properties": {
+                                                    "Minimum": "1000",
+                                                    "Maximum": "3000"
+                                                  },
+                                                  "children": [
+                                                    {
+                                                      "id": "IF_LIST_SIZE_IS",
+                                                      "properties": {
+                                                        "size": {
+                                                          "class": "Number",
+                                                          "operator": "EQUALS",
+                                                          "value": "0"
+                                                        },
+                                                        "List name": "ITEM_LIST"
+                                                      },
+                                                      "children": [
+                                                        {
+                                                          "id": "GO_TO_LABEL",
+                                                          "properties": {
+                                                            "Label": "End Buyer"
+                                                          }
+                                                        }
+                                                      ]
+                                                    },
+                                                    {
+                                                      "id": "ELSE_BRANCH",
+                                                      "children": [
+                                                        {
+                                                          "id": "GO_TO_LABEL",
+                                                          "properties": {
+                                                            "Label": "Buy After Collect2"
+                                                          }
+                                                        }
+                                                      ]
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "COLLECT_TO_BANK_GRAND_EXCHANGE",
+              "children": [
+                {
+                  "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                  "children": [
+                    {
+                      "id": "IF_GRAND_EXCHANGE_NOT_READY_TO_COLLECT"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "CREATE_LABEL",
+          "properties": {
+            "Label": "End Buyer"
+          },
+          "children": [
+            {
+              "id": "SET_VARIABLE",
+              "properties": {
+                "Value": "0",
+                "Variable name": "COIN_CHECK"
+              }
+            },
+            {
+              "id": "SET_VARIABLE",
+              "properties": {
+                "Value": "EndBuyer",
+                "Variable name": "CURRENT_TASK"
+              }
+            },
+            {
+              "id": "IF_GRAND_EXCHANGE_READY_TO_COLLECT",
+              "children": [
+                {
+                  "id": "COLLECT_TO_BANK_GRAND_EXCHANGE"
+                }
+              ]
+            },
+            {
+              "id": "CLOSE_GRAND_EXCHANGE",
+              "children": [
+                {
+                  "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                  "children": [
+                    {
+                      "id": "IF_GRAND_EXCHANGE_IS_NOT_OPEN"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "CLEAR_LIST",
+              "properties": {
+                "List name": "ITEM_LIST"
+              }
+            },
+            {
+              "id": "RESUME_ITEM_TRACKER"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,591 @@
+{
+  "id": "0ac1190a-42ba-43c4-9c94-1a6836c655be",
+  "name": "Grand Exchange \u003e Selling \u003e Inventory",
+  "description": "Will sell everything in your inventory by LIVE PRICE first and then -15% after.",
+  "parameters": "",
+  "fail": false,
+  "actions": [
+    {
+      "id": "IF_INVENTORY_IS_NOT_EMPTY",
+      "children": [
+        {
+          "id": "CUSTOM_621c517e-383e-4e00-aab9-d5955f5b863c",
+          "children": [
+            {
+              "id": "CREATE_LABEL",
+              "properties": {
+                "Label": "First Sell"
+              },
+              "children": [
+                {
+                  "id": "SET_VARIABLE",
+                  "properties": {
+                    "Value": "SellInvy1",
+                    "Variable name": "CURRENT_TASK"
+                  }
+                },
+                {
+                  "id": "ADD_INVENTORY_ITEMS_TO_LIST",
+                  "customDisplayName": "Add matching inventory items to INVENTORY_SELL_LIST",
+                  "properties": {
+                    "Filter Item By": {
+                      "class": "Item",
+                      "logic": "NONE",
+                      "type": "LIVE_PRICE",
+                      "operator": "GREATER_THAN_OR_EQUAL",
+                      "value": "1",
+                      "filters": [
+                        {
+                          "class": "Item",
+                          "logic": "AND",
+                          "type": "NAME",
+                          "operator": "DOES_NOT_EQUAL",
+                          "value": "Coins"
+                        }
+                      ]
+                    },
+                    "List name": "INVENTORY_SELL_LIST"
+                  },
+                  "children": [
+                    {
+                      "id": "FOR_EACH_IN_LIST",
+                      "properties": {
+                        "List name": "NO_SELL_LIST"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE_TO_LAST_OUTPUT",
+                          "properties": {
+                            "Variable name": "tmp"
+                          },
+                          "children": [
+                            {
+                              "id": "REMOVE_FROM_LIST",
+                              "properties": {
+                                "Value": "v(tmp)",
+                                "List name": "INVENTORY_SELL_LIST"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "FOR_EACH_IN_LIST",
+                  "customDisplayName": "For each in list INVENTORY_SELL_LIST",
+                  "properties": {
+                    "Reverse order": false,
+                    "List name": "INVENTORY_SELL_LIST",
+                    "Random order": true
+                  },
+                  "children": [
+                    {
+                      "id": "SET_TO_LAST_MATCHING_ITEM_NAME",
+                      "properties": {
+                        "Variable name": "SELL_ITEM_NAME"
+                      }
+                    },
+                    {
+                      "id": "SET_TO_LAST_MATCHING_ITEM_LIVE_PRICE",
+                      "customDisplayName": "Set variable \u0027LIVE_PRICE\u0027 to the last matching item\u0027s live price value",
+                      "properties": {
+                        "Variable name": "LIVE_PRICE"
+                      }
+                    },
+                    {
+                      "id": "IF_ANY_SLOT_IS_EMPTY",
+                      "children": [
+                        {
+                          "id": "SELL_ALL_OF_MATCHING_ITEM_GRAND_EXCHANGE",
+                          "customDisplayName": "Sell all of a matching item v(SELL_ITEM_NAME)",
+                          "properties": {
+                            "Filter Item By": {
+                              "class": "Item",
+                              "logic": "NONE",
+                              "type": "NAME",
+                              "operator": "EQUALS",
+                              "value": "v(SELL_ITEM_NAME)"
+                            },
+                            "Price": "mul(v(LIVE_PRICE), 0.75)"
+                          },
+                          "children": [
+                            {
+                              "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                              "properties": {
+                                "Max time (seconds)": "5"
+                              },
+                              "children": [
+                                {
+                                  "id": "IF_ANY_SLOT_IS_EMPTY"
+                                }
+                              ]
+                            },
+                            {
+                              "id": "IF_GAME_MESSAGE_RECEIVED_MATCHES",
+                              "properties": {
+                                "Filter Message": {
+                                  "class": "Message",
+                                  "logic": "NONE",
+                                  "type": "TEXT",
+                                  "operator": "CONTAINS",
+                                  "value": "You can\u0027t trade that item"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "IF_LIST_DOES_NOT_CONTAIN",
+                                  "properties": {
+                                    "Value": "v(SELL_ITEM_NAME)",
+                                    "List name": "NO_SELL_LIST"
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "ADD_TO_LIST",
+                                      "properties": {
+                                        "List name": "NO_SELL_LIST",
+                                        "Value": "v(SELL_ITEM_NAME)"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "id": "REMOVE_FROM_LIST",
+                              "properties": {
+                                "Value": "v(SELL_ITEM_NAME)",
+                                "List name": "INVENTORY_SELL_LIST"
+                              },
+                              "children": [
+                                {
+                                  "id": "GO_TO_LABEL",
+                                  "properties": {
+                                    "Label": "First Sell"
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_NO_SLOTS_ARE_EMPTY",
+                      "children": [
+                        {
+                          "id": "IF_GRAND_EXCHANGE_NOT_READY_TO_COLLECT",
+                          "children": [
+                            {
+                              "id": "SLEEP_BETWEEN",
+                              "properties": {
+                                "Minimum": "5000",
+                                "Maximum": "10000"
+                              },
+                              "children": [
+                                {
+                                  "id": "CANCEL_ALL_OFFERS",
+                                  "children": [
+                                    {
+                                      "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                                      "properties": {
+                                        "Max time (seconds)": "5"
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "IF_GRAND_EXCHANGE_READY_TO_COLLECT"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "id": "COLLECT_GRAND_EXCHANGE",
+                                      "children": [
+                                        {
+                                          "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                                          "properties": {
+                                            "Max time (seconds)": "5"
+                                          },
+                                          "children": [
+                                            {
+                                              "id": "IF_GRAND_EXCHANGE_NOT_READY_TO_COLLECT"
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_GRAND_EXCHANGE_READY_TO_COLLECT",
+                      "children": [
+                        {
+                          "id": "COLLECT_GRAND_EXCHANGE",
+                          "children": [
+                            {
+                              "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                              "properties": {
+                                "Max time (seconds)": "5"
+                              },
+                              "children": [
+                                {
+                                  "id": "IF_GRAND_EXCHANGE_NOT_READY_TO_COLLECT",
+                                  "customDisplayName": "If not ready to collect"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "IF_GRAND_EXCHANGE_NOT_READY_TO_COLLECT",
+              "children": [
+                {
+                  "id": "SLEEP_BETWEEN",
+                  "properties": {
+                    "Minimum": "5000",
+                    "Maximum": "10000"
+                  },
+                  "children": [
+                    {
+                      "id": "CANCEL_ALL_OFFERS",
+                      "children": [
+                        {
+                          "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                          "properties": {
+                            "Max time (seconds)": "5"
+                          },
+                          "children": [
+                            {
+                              "id": "IF_GRAND_EXCHANGE_READY_TO_COLLECT"
+                            }
+                          ]
+                        },
+                        {
+                          "id": "COLLECT_GRAND_EXCHANGE",
+                          "children": [
+                            {
+                              "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                              "properties": {
+                                "Max time (seconds)": "5"
+                              },
+                              "children": [
+                                {
+                                  "id": "IF_GRAND_EXCHANGE_NOT_READY_TO_COLLECT"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "CREATE_LABEL",
+              "customDisplayName": "Second Sell (-50%):",
+              "properties": {
+                "Label": "Second Sell (-50%)"
+              },
+              "children": [
+                {
+                  "id": "SET_VARIABLE",
+                  "properties": {
+                    "Value": "SellInvy2",
+                    "Variable name": "CURRENT_TASK"
+                  }
+                },
+                {
+                  "id": "ADD_INVENTORY_ITEMS_TO_LIST",
+                  "customDisplayName": "Add matching inventory items to INVENTORY_SELL_LIST",
+                  "properties": {
+                    "Filter Item By": {
+                      "class": "Item",
+                      "logic": "NONE",
+                      "type": "LIVE_PRICE",
+                      "operator": "GREATER_THAN_OR_EQUAL",
+                      "value": "1",
+                      "filters": [
+                        {
+                          "class": "Item",
+                          "logic": "AND",
+                          "type": "NAME",
+                          "operator": "DOES_NOT_EQUAL",
+                          "value": "Coins"
+                        }
+                      ]
+                    },
+                    "List name": "INVENTORY_SELL_LIST"
+                  },
+                  "children": [
+                    {
+                      "id": "FOR_EACH_IN_LIST",
+                      "properties": {
+                        "List name": "NO_SELL_LIST"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE_TO_LAST_OUTPUT",
+                          "properties": {
+                            "Variable name": "tmp"
+                          },
+                          "children": [
+                            {
+                              "id": "REMOVE_FROM_LIST",
+                              "properties": {
+                                "Value": "v(tmp)",
+                                "List name": "INVENTORY_SELL_LIST"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "FOR_EACH_IN_LIST",
+                  "customDisplayName": "For each in list INVENTORY_SELL_LIST",
+                  "properties": {
+                    "Reverse order": false,
+                    "List name": "INVENTORY_SELL_LIST",
+                    "Random order": true
+                  },
+                  "children": [
+                    {
+                      "id": "SET_TO_LAST_MATCHING_ITEM_NAME",
+                      "properties": {
+                        "Variable name": "SELL_ITEM_NAME"
+                      }
+                    },
+                    {
+                      "id": "SET_TO_LAST_MATCHING_ITEM_LIVE_PRICE",
+                      "customDisplayName": "Set variable \u0027LIVE_PRICE\u0027 to the last matching item\u0027s live price value",
+                      "properties": {
+                        "Variable name": "LIVE_PRICE"
+                      }
+                    },
+                    {
+                      "id": "IF_ANY_SLOT_IS_EMPTY",
+                      "children": [
+                        {
+                          "id": "SELL_ALL_OF_MATCHING_ITEM_GRAND_EXCHANGE",
+                          "customDisplayName": "Sell all of a matching item v(SELL_ITEM_NAME)",
+                          "properties": {
+                            "Filter Item By": {
+                              "class": "Item",
+                              "logic": "NONE",
+                              "type": "NAME",
+                              "operator": "EQUALS",
+                              "value": "v(SELL_ITEM_NAME)"
+                            },
+                            "Price": "mul(v(LIVE_PRICE), 0.50)"
+                          },
+                          "children": [
+                            {
+                              "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                              "properties": {
+                                "Max time (seconds)": "5"
+                              },
+                              "children": [
+                                {
+                                  "id": "IF_ANY_SLOT_IS_EMPTY"
+                                }
+                              ]
+                            },
+                            {
+                              "id": "IF_GAME_MESSAGE_RECEIVED_MATCHES",
+                              "properties": {
+                                "Filter Message": {
+                                  "class": "Message",
+                                  "logic": "NONE",
+                                  "type": "TEXT",
+                                  "operator": "CONTAINS",
+                                  "value": "You can\u0027t trade that item"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "IF_LIST_DOES_NOT_CONTAIN",
+                                  "properties": {
+                                    "Value": "v(SELL_ITEM_NAME)",
+                                    "List name": "NO_SELL_LIST"
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "ADD_TO_LIST",
+                                      "properties": {
+                                        "List name": "NO_SELL_LIST",
+                                        "Value": "v(SELL_ITEM_NAME)"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "id": "REMOVE_FROM_LIST",
+                              "properties": {
+                                "Value": "v(SELL_ITEM_NAME)",
+                                "List name": "INVENTORY_SELL_LIST"
+                              },
+                              "children": [
+                                {
+                                  "id": "GO_TO_LABEL",
+                                  "properties": {
+                                    "Label": "Second Sell (-50%)"
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_NO_SLOTS_ARE_EMPTY",
+                      "children": [
+                        {
+                          "id": "IF_GRAND_EXCHANGE_NOT_READY_TO_COLLECT",
+                          "children": [
+                            {
+                              "id": "SLEEP_BETWEEN",
+                              "properties": {
+                                "Minimum": "5000",
+                                "Maximum": "10000"
+                              },
+                              "children": [
+                                {
+                                  "id": "CANCEL_ALL_OFFERS",
+                                  "children": [
+                                    {
+                                      "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                                      "properties": {
+                                        "Max time (seconds)": "5"
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "IF_GRAND_EXCHANGE_READY_TO_COLLECT"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "id": "COLLECT_GRAND_EXCHANGE",
+                                      "children": [
+                                        {
+                                          "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                                          "properties": {
+                                            "Max time (seconds)": "5"
+                                          },
+                                          "children": [
+                                            {
+                                              "id": "IF_GRAND_EXCHANGE_NOT_READY_TO_COLLECT"
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_GRAND_EXCHANGE_READY_TO_COLLECT",
+                      "children": [
+                        {
+                          "id": "COLLECT_GRAND_EXCHANGE",
+                          "children": [
+                            {
+                              "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                              "properties": {
+                                "Max time (seconds)": "5"
+                              },
+                              "children": [
+                                {
+                                  "id": "IF_GRAND_EXCHANGE_NOT_READY_TO_COLLECT",
+                                  "customDisplayName": "If not ready to collect"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "CREATE_LABEL",
+          "properties": {
+            "Label": "End Seller"
+          },
+          "children": [
+            {
+              "id": "SET_VARIABLE",
+              "properties": {
+                "Value": "EndSeller",
+                "Variable name": "CURRENT_TASK"
+              }
+            },
+            {
+              "id": "IF_GRAND_EXCHANGE_READY_TO_COLLECT",
+              "children": [
+                {
+                  "id": "COLLECT_TO_BANK_GRAND_EXCHANGE"
+                }
+              ]
+            },
+            {
+              "id": "CLOSE_GRAND_EXCHANGE",
+              "children": [
+                {
+                  "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                  "children": [
+                    {
+                      "id": "IF_GRAND_EXCHANGE_IS_NOT_OPEN"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "FOR_EACH_IN_LIST",
+              "properties": {
+                "List name": "INVENTORY_SELL_LIST"
+              },
+              "children": [
+                {
+                  "id": "REMOVE_FROM_LIST_INDEX",
+                  "properties": {
+                    "List name": "INVENTORY_SELL_LIST",
+                    "Position": "0"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

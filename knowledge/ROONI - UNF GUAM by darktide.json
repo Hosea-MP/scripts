@@ -1,0 +1,213 @@
+{
+  "sleep": "33",
+  "name": "ROONI - UNF GUAM",
+  "version": 1.0,
+  "metadata": {
+    "network-id": "52",
+    "network-downloaded-at": "1721665237245"
+  },
+  "actions": [
+    {
+      "id": "CORE",
+      "properties": {
+        "Sleep Between Runs (ms)": "500",
+        "Name": "ROONI"
+      },
+      "children": [
+        {
+          "id": "IF_NOT_LOGGED_IN"
+        },
+        {
+          "id": "ENABLE_LOGIN_SOLVER"
+        },
+        {
+          "id": "IF_LOGGED_IN",
+          "children": [
+            {
+              "id": "DISABLE_LOGIN_SOLVER"
+            }
+          ]
+        },
+        {
+          "id": "IF_INVENTORY_IS_NOT_EMPTY"
+        },
+        {
+          "id": "IF_BANK_IS_NOT_OPEN",
+          "children": [
+            {
+              "id": "OPEN_BANK",
+              "children": [
+                {
+                  "id": "BANK_DEPOSIT_ALL"
+                },
+                {
+                  "id": "IF_INVENTORY_IS_EMPTY"
+                },
+                {
+                  "id": "IF_BANK_IS_OPEN"
+                },
+                {
+                  "id": "IF_BANK_COUNT",
+                  "properties": {
+                    "count": {
+                      "class": "Number",
+                      "operator": "LESS_THAN",
+                      "value": "15"
+                    },
+                    "Filter Item By": {
+                      "class": "Item",
+                      "logic": "NONE",
+                      "type": "ID",
+                      "operator": "EQUALS",
+                      "value": "227"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "LOGOUT"
+                    },
+                    {
+                      "id": "STOP_SCRIPT"
+                    }
+                  ]
+                },
+                {
+                  "id": "OPEN_BANK",
+                  "children": [
+                    {
+                      "id": "IF_INVENTORY_IS_EMPTY"
+                    },
+                    {
+                      "id": "BANK_WITHDRAW_ITEM",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "Vial of water"
+                        },
+                        "Amount": "14"
+                      }
+                    },
+                    {
+                      "id": "BANK_WITHDRAW_ITEM",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "Guam leaf"
+                        },
+                        "Amount": "14"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "IF_BANK_IS_OPEN",
+          "children": [
+            {
+              "id": "IF_INVENTORY_IS_FULL"
+            },
+            {
+              "id": "CLOSE_BANK",
+              "children": [
+                {
+                  "id": "IF_BANK_IS_NOT_OPEN",
+                  "children": [
+                    {
+                      "id": "IF_INVENTORY_CONTAINS_ANY",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "ID",
+                          "operator": "IS_IN_LIST",
+                          "value": "227, 251"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "MOVE_MOUSE_TO_POINT",
+                          "properties": {
+                            "X": "622",
+                            "Y": "343"
+                          },
+                          "children": [
+                            {
+                              "id": "SLEEP_FOR_GAME_TICKS",
+                              "properties": {
+                                "Ticks": "2"
+                              }
+                            },
+                            {
+                              "id": "LEFT_CLICK",
+                              "children": [
+                                {
+                                  "id": "SLEEP_UNTIL_GAME_TICK"
+                                },
+                                {
+                                  "id": "MOVE_MOUSE_TO_POINT",
+                                  "properties": {
+                                    "X": "663",
+                                    "Y": "338"
+                                  },
+                                  "children": [
+                                    {
+                                      "id": "LEFT_CLICK",
+                                      "children": [
+                                        {
+                                          "id": "SLEEP_UNTIL_GAME_TICK"
+                                        },
+                                        {
+                                          "id": "MOVE_MOUSE_TO_POINT",
+                                          "properties": {
+                                            "X": "248",
+                                            "Y": "438"
+                                          },
+                                          "children": [
+                                            {
+                                              "id": "SLEEP_BETWEEN",
+                                              "properties": {
+                                                "Minimum": "1000",
+                                                "Maximum": "2333"
+                                              }
+                                            },
+                                            {
+                                              "id": "LEFT_CLICK"
+                                            },
+                                            {
+                                              "id": "SLEEP_BETWEEN",
+                                              "properties": {
+                                                "Minimum": "9300",
+                                                "Maximum": "13000"
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

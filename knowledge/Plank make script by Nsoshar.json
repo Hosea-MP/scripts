@@ -1,0 +1,138 @@
+{
+  "sleep": "500",
+  "name": "",
+  "version": 1.0,
+  "metadata": {
+    "network-id": "54",
+    "network-downloaded-at": "1721665245632"
+  },
+  "actions": [
+    {
+      "id": "IF_QUEST_IS_NOT_STARTED",
+      "properties": {
+        "Quest": {
+          "class": "PaidQuest",
+          "value": "DREAM_MENTOR"
+        }
+      },
+      "children": [
+        {
+          "id": "STOP_SCRIPT",
+          "children": [
+            {
+              "id": "IF_SPELLBOOK_IS_NOT",
+              "properties": {
+                "Spellbook": {
+                  "class": "Spellbook",
+                  "value": "LUNAR"
+                }
+              },
+              "children": [
+                {
+                  "id": "STOP_SCRIPT"
+                }
+              ]
+            },
+            {
+              "id": "IF_QUEST_IS_FINISHED",
+              "properties": {
+                "Quest": {
+                  "class": "PaidQuest",
+                  "value": "DREAM_MENTOR"
+                }
+              },
+              "children": [
+                {
+                  "id": "OPEN_BANK",
+                  "children": [
+                    {
+                      "id": "BANK_WITHDRAW_ALL_ITEM",
+                      "properties": {
+                        "Filter Item By": {
+                          "class": "Item",
+                          "logic": "NONE",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "Mahogany logs"
+                        }
+                      },
+                      "children": [
+                        {
+                          "id": "CLOSE_BANK",
+                          "children": [
+                            {
+                              "id": "IF_INVENTORY_DOES_NOT_CONTAIN_ANY",
+                              "properties": {
+                                "Filter Item By": {
+                                  "class": "Item",
+                                  "logic": "NONE",
+                                  "type": "NAME",
+                                  "operator": "EQUALS",
+                                  "value": "Coins"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "id": "STOP_SCRIPT"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "id": "CAST_SPELL_ON_ITEM",
+                          "properties": {
+                            "Filter Item By": {
+                              "class": "Item",
+                              "logic": "NONE",
+                              "type": "NAME",
+                              "operator": "EQUALS",
+                              "value": "Mahogany logs"
+                            },
+                            "Spell": {
+                              "class": "Lunar",
+                              "value": "Plank make"
+                            }
+                          },
+                          "children": [
+                            {
+                              "id": "IF_INVENTORY_IS_FULL",
+                              "children": [
+                                {
+                                  "id": "OPEN_BANK",
+                                  "children": [
+                                    {
+                                      "id": "BANK_DEPOSIT_ALL_MATCHING_ITEMS",
+                                      "properties": {
+                                        "Filter Item By": {
+                                          "class": "Item",
+                                          "logic": "NONE",
+                                          "type": "NAME",
+                                          "operator": "EQUALS",
+                                          "value": "Mahogany plank"
+                                        }
+                                      },
+                                      "children": [
+                                        {
+                                          "id": "CONTINUE_LOOP"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

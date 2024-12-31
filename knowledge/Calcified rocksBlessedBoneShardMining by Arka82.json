@@ -1,0 +1,33 @@
+{
+  "sleep": "rand(600,800)",
+  "name": "Calcified rocks",
+  "version": 0.1,
+  "metadata": {
+    "network-id": "109",
+    "network-downloaded-at": "1735647733665"
+  },
+  "actions": [
+    {
+      "id": "IF_LOCAL_PLAYER_MATCHES",
+      "properties": {
+        "Filter By": {
+          "class": "Player",
+          "logic": "NONE",
+          "type": "NOT_IN_AREA",
+          "operator": "EQUALS"
+        }
+      },
+      "children": [
+        {
+          "id": "WALK_FULLY_TO_SPECIFIC_BANK",
+          "properties": {
+            "Bank": {
+              "class": "BankLocation",
+              "value": "AL_KHARID"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

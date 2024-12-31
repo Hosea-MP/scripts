@@ -1,0 +1,426 @@
+{
+  "sleep": "500",
+  "name": "Item Combiner",
+  "version": 1.0,
+  "metadata": {
+    "network-id": "67",
+    "network-downloaded-at": "1721665281682"
+  },
+  "actions": [
+    {
+      "id": "SET_VARIABLE",
+      "properties": {
+        "Value": "Cadantine potion (unf)",
+        "Variable name": "FirstCombineItem"
+      }
+    },
+    {
+      "id": "SET_VARIABLE",
+      "properties": {
+        "Value": "White berries",
+        "Variable name": "SecondCombineItem"
+      }
+    },
+    {
+      "id": "CREATE_LABEL",
+      "properties": {
+        "Label": "Setup"
+      },
+      "children": [
+        {
+          "id": "IF_BANK_IS_OPEN",
+          "children": [
+            {
+              "id": "SET_VARIABLE_TO_LOCAL_TILE",
+              "properties": {
+                "Variable name": "BankTile"
+              }
+            }
+          ]
+        },
+        {
+          "id": "ELSE_BRANCH",
+          "children": [
+            {
+              "id": "PAUSE_SCRIPT"
+            }
+          ]
+        },
+        {
+          "id": "GO_TO_LABEL",
+          "properties": {
+            "Label": "Restock"
+          }
+        }
+      ]
+    },
+    {
+      "id": "CREATE_LABEL",
+      "properties": {
+        "Label": "Combine"
+      },
+      "children": [
+        {
+          "id": "SET_INTERACTION_ORDER",
+          "properties": {
+            "Random": true
+          }
+        },
+        {
+          "id": "COMBINE",
+          "properties": {
+            "Filter Second By": {
+              "class": "Item",
+              "logic": "NONE",
+              "type": "NAME",
+              "operator": "EQUALS",
+              "value": "v(FirstCombineItem)"
+            },
+            "Filter First By": {
+              "class": "Item",
+              "logic": "NONE",
+              "type": "NAME",
+              "operator": "EQUALS",
+              "value": "v(SecondCombineItem)"
+            }
+          },
+          "children": [
+            {
+              "id": "SLEEP_UNTIL_GAME_TICK"
+            }
+          ]
+        },
+        {
+          "id": "MOVE_MOUSE_TO_POINT",
+          "properties": {
+            "X": "270",
+            "Y": "1005"
+          },
+          "children": [
+            {
+              "id": "SLEEP_UNTIL_GAME_TICK"
+            },
+            {
+              "id": "LEFT_CLICK",
+              "children": [
+                {
+                  "id": "SLEEP_UNTIL_GAME_TICK"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "CLEAR_LIST",
+          "properties": {
+            "List name": "TmpInventoryCheck"
+          }
+        },
+        {
+          "id": "ADD_INVENTORY_ITEMS_TO_LIST",
+          "properties": {
+            "Filter Item By": {
+              "class": "Item",
+              "logic": "NONE",
+              "type": "NAME",
+              "operator": "EQUALS",
+              "value": "v(FirstCombineItem)",
+              "filters": [
+                {
+                  "class": "Item",
+                  "logic": "OR",
+                  "type": "NAME",
+                  "operator": "EQUALS",
+                  "value": "v(SecondCombineItem)"
+                }
+              ]
+            },
+            "List name": "TmpInventoryCheck"
+          },
+          "children": [
+            {
+              "id": "WHILE_VALUE_MATCHES",
+              "properties": {
+                "Value": "size(TmpInventoryCheck)",
+                "Filter Value By": {
+                  "class": "Variable",
+                  "logic": "NONE",
+                  "type": "AS_NUMBER",
+                  "operator": "GREATER_THAN",
+                  "value": "0"
+                }
+              },
+              "children": [
+                {
+                  "id": "CLEAR_LIST",
+                  "properties": {
+                    "List name": "TmpInventoryCheck"
+                  }
+                },
+                {
+                  "id": "ADD_INVENTORY_ITEMS_TO_LIST",
+                  "properties": {
+                    "Filter Item By": {
+                      "class": "Item",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "v(FirstCombineItem)",
+                      "filters": [
+                        {
+                          "class": "Item",
+                          "logic": "OR",
+                          "type": "NAME",
+                          "operator": "EQUALS",
+                          "value": "v(SecondCombineItem)"
+                        }
+                      ]
+                    },
+                    "List name": "TmpInventoryCheck"
+                  }
+                },
+                {
+                  "id": "SLEEP_UNTIL_GAME_TICK"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "RESET_INTERACTION_ORDER"
+        },
+        {
+          "id": "GO_TO_LABEL",
+          "properties": {
+            "Label": "Restock"
+          }
+        }
+      ]
+    },
+    {
+      "id": "CREATE_LABEL",
+      "properties": {
+        "Label": "Restock"
+      },
+      "children": [
+        {
+          "id": "IF_DISTANCE_TO_TILE_IS",
+          "properties": {
+            "distance": {
+              "class": "Number",
+              "operator": "GREATER_THAN",
+              "value": "0"
+            },
+            "Tile": "v(BankTile)"
+          },
+          "children": [
+            {
+              "id": "WALK_FULLY_TO_TILE",
+              "properties": {
+                "Tile": "v(BankTile)"
+              },
+              "children": [
+                {
+                  "id": "SLEEP_UNTIL_GAME_TICK"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "IF_BANK_IS_NOT_OPEN",
+          "children": [
+            {
+              "id": "OPEN_BANK"
+            },
+            {
+              "id": "SLEEP_UNTIL_GAME_TICK"
+            }
+          ]
+        },
+        {
+          "id": "BANK_DEPOSIT_ALL"
+        },
+        {
+          "id": "IF_BANK_COUNT",
+          "properties": {
+            "count": {
+              "class": "Number",
+              "operator": "GREATER_THAN",
+              "value": "-1"
+            },
+            "Filter Item By": {
+              "class": "Item",
+              "logic": "NONE",
+              "type": "NAME",
+              "operator": "EQUALS",
+              "value": "v(FirstCombineItem)"
+            }
+          },
+          "children": [
+            {
+              "id": "SET_VARIABLE_TO_LAST_OUTPUT",
+              "properties": {
+                "Variable name": "FirstItemCount"
+              }
+            },
+            {
+              "id": "IF_VARIABLE_IS",
+              "properties": {
+                "Filter Value By": {
+                  "class": "Variable",
+                  "logic": "NONE",
+                  "type": "AS_NUMBER",
+                  "operator": "EQUALS",
+                  "value": "0"
+                },
+                "Variable name": "FirstItemCount"
+              },
+              "children": [
+                {
+                  "id": "GO_TO_LABEL",
+                  "properties": {
+                    "Label": "RestockFromGE"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "IF_BANK_COUNT",
+          "properties": {
+            "count": {
+              "class": "Number",
+              "operator": "GREATER_THAN",
+              "value": "-1"
+            },
+            "Filter Item By": {
+              "class": "Item",
+              "logic": "NONE",
+              "type": "NAME",
+              "operator": "EQUALS",
+              "value": "v(SecondCombineItem)"
+            }
+          },
+          "children": [
+            {
+              "id": "SET_VARIABLE_TO_LAST_OUTPUT",
+              "properties": {
+                "Variable name": "SecondItemCount"
+              }
+            },
+            {
+              "id": "IF_VARIABLE_IS",
+              "properties": {
+                "Filter Value By": {
+                  "class": "Variable",
+                  "logic": "NONE",
+                  "type": "AS_NUMBER",
+                  "operator": "EQUALS",
+                  "value": "0"
+                },
+                "Variable name": "SecondItemCount"
+              },
+              "children": [
+                {
+                  "id": "GO_TO_LABEL",
+                  "properties": {
+                    "Label": "RestockFromGE"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "SET_VARIABLE",
+          "properties": {
+            "Value": "max(v(FirstItemCount),v(SecondItemCount))",
+            "Variable name": "CountItemsWithdraw"
+          }
+        },
+        {
+          "id": "IF_EMPTY_SLOT_COUNT",
+          "properties": {
+            "count": {
+              "class": "Number",
+              "operator": "GREATER_THAN",
+              "value": "-1"
+            }
+          },
+          "children": [
+            {
+              "id": "SET_VARIABLE_TO_LAST_OUTPUT",
+              "properties": {
+                "Variable name": "CountEmptyInventorySlots"
+              }
+            }
+          ]
+        },
+        {
+          "id": "WITHDRAW_ITEM_TO_SET_AMOUNT",
+          "properties": {
+            "Filter Item By": {
+              "class": "Item",
+              "logic": "NONE",
+              "type": "NAME",
+              "operator": "EQUALS",
+              "value": "v(FirstCombineItem)"
+            },
+            "Amount": "div(v(CountEmptyInventorySlots),2)"
+          },
+          "children": [
+            {
+              "id": "SLEEP_UNTIL_GAME_TICK"
+            }
+          ]
+        },
+        {
+          "id": "WITHDRAW_ITEM_TO_SET_AMOUNT",
+          "properties": {
+            "Filter Item By": {
+              "class": "Item",
+              "logic": "NONE",
+              "type": "NAME",
+              "operator": "EQUALS",
+              "value": "v(SecondCombineItem)"
+            },
+            "Amount": "div(v(CountEmptyInventorySlots),2)"
+          },
+          "children": [
+            {
+              "id": "SLEEP_UNTIL_GAME_TICK"
+            }
+          ]
+        },
+        {
+          "id": "CLOSE_BANK"
+        },
+        {
+          "id": "GO_TO_LABEL",
+          "properties": {
+            "Label": "Combine"
+          }
+        }
+      ]
+    },
+    {
+      "id": "CREATE_LABEL",
+      "properties": {
+        "Label": "RestockFromGE"
+      },
+      "children": [
+        {
+          "id": "SHOW_DIALOG_MESSAGE",
+          "properties": {
+            "Message": "Restocking from GE not supported (yet)!"
+          }
+        },
+        {
+          "id": "PAUSE_SCRIPT"
+        }
+      ]
+    }
+  ]
+}

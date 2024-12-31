@@ -1,0 +1,222 @@
+{
+  "sleep": "50",
+  "name": "Humidify",
+  "version": 1.0,
+  "metadata": {
+    "network-id": "37",
+    "network-downloaded-at": "1721665234978"
+  },
+  "actions": [
+    {
+      "id": "IF_INVENTORY_CONTAINS_ANY",
+      "properties": {
+        "Filter Item By": {
+          "class": "Item",
+          "logic": "NONE",
+          "type": "NAME",
+          "operator": "EQUALS",
+          "value": "Jug"
+        }
+      },
+      "children": [
+        {
+          "id": "CAST_SPELL",
+          "properties": {
+            "Spell": {
+              "class": "Lunar",
+              "value": "Humidify"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "IF_INVENTORY_CONTAINS_ANY",
+      "properties": {
+        "Filter Item By": {
+          "class": "Item",
+          "logic": "NONE",
+          "type": "NAME",
+          "operator": "EQUALS",
+          "value": "Jug of water"
+        }
+      },
+      "children": [
+        {
+          "id": "IF_BANK_IS_NOT_OPEN",
+          "children": [
+            {
+              "id": "OPEN_BANK"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "IF_BANK_IS_OPEN",
+      "children": [
+        {
+          "id": "IF_INVENTORY_DOES_NOT_CONTAIN_ANY",
+          "properties": {
+            "Filter Item By": {
+              "class": "Item",
+              "logic": "NONE",
+              "type": "NAME",
+              "operator": "EQUALS",
+              "value": "Jug"
+            }
+          },
+          "children": [
+            {
+              "id": "IF_INVENTORY_CONTAINS_ANY",
+              "properties": {
+                "Filter Item By": {
+                  "class": "Item",
+                  "logic": "NONE",
+                  "type": "NAME",
+                  "operator": "EQUALS",
+                  "value": "Jug of water"
+                }
+              },
+              "children": [
+                {
+                  "id": "BANK_DEPOSIT_ALL_MATCHING_ITEMS",
+                  "properties": {
+                    "Filter Item By": {
+                      "class": "Item",
+                      "logic": "NONE",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "Jug of water"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "IF_BANK_IS_OPEN",
+      "children": [
+        {
+          "id": "IF_INVENTORY_IS_NOT_FULL",
+          "children": [
+            {
+              "id": "BANK_WITHDRAW_ITEM",
+              "properties": {
+                "Filter Item By": {
+                  "class": "Item",
+                  "logic": "NONE",
+                  "type": "NAME",
+                  "operator": "EQUALS",
+                  "value": "Jug"
+                },
+                "Amount": "27"
+              },
+              "children": [
+                {
+                  "id": "CLOSE_BANK"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "PAINT_ROOT",
+      "properties": {
+        "Hide standard paint": false
+      },
+      "children": [
+        {
+          "id": "DRAW_TEXT",
+          "properties": {
+            "X": "15",
+            "Font Size": "22",
+            "Y": "325",
+            "Text": "XP GAINED expGain(Magic) / Hourly hourly(expGain(magic))",
+            "Font": {
+              "class": "Font",
+              "value": "Inter V"
+            },
+            "Color": {
+              "class": "Color",
+              "value": -10685953
+            }
+          }
+        },
+        {
+          "id": "DRAW_TEXT",
+          "properties": {
+            "X": "15",
+            "Font Size": "22",
+            "Y": "300",
+            "Text": "FISHERS HUMIDIFIER",
+            "Font": {
+              "class": "Font",
+              "value": "Inter V"
+            },
+            "Color": {
+              "class": "Color",
+              "value": -10881793
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "IF_PLAYER_COUNT_IS",
+      "properties": {
+        "count": {
+          "class": "Number",
+          "operator": "GREATER_THAN",
+          "value": "1"
+        },
+        "Filter Player By": {
+          "class": "Player",
+          "logic": "NONE",
+          "type": "LEVEL",
+          "operator": "LESS_THAN",
+          "value": "127"
+        }
+      },
+      "children": [
+        {
+          "id": "QUICK_HOP_TO_RANDOM_WORLD",
+          "properties": {
+            "Filter World By": {
+              "class": "World",
+              "logic": "NONE",
+              "type": "WORLD_IS_MEMBERS",
+              "operator": "EQUALS",
+              "filters": [
+                {
+                  "class": "World",
+                  "logic": "AND",
+                  "type": "WORLD_IS_NOT_PVP",
+                  "operator": "EQUALS"
+                },
+                {
+                  "class": "World",
+                  "logic": "AND",
+                  "type": "WORLD_IS_NORMAL",
+                  "operator": "EQUALS"
+                },
+                {
+                  "class": "World",
+                  "logic": "AND",
+                  "type": "WORLD_MINIMUM_LEVEL",
+                  "operator": "LESS_THAN",
+                  "value": "1250"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

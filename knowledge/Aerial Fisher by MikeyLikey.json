@@ -1,0 +1,1582 @@
+{
+  "sleep": "500",
+  "name": "Aerial Fisher",
+  "version": 1.0,
+  "metadata": {
+    "network-id": "58",
+    "network-downloaded-at": "1721665284464"
+  },
+  "actions": [
+    {
+      "id": "COMMENT",
+      "color": -12517536,
+      "properties": {
+        "Comment": "Modify these to adjust the behavior of the script"
+      }
+    },
+    {
+      "id": "SET_VARIABLE",
+      "properties": {
+        "Value": "0",
+        "Variable name": "fAntiBan"
+      }
+    },
+    {
+      "id": "SET_VARIABLE",
+      "properties": {
+        "Value": "0",
+        "Variable name": "fAlwaysCutFish"
+      }
+    },
+    {
+      "id": "SET_VARIABLE",
+      "properties": {
+        "Value": "1",
+        "Variable name": "fEnableWorldHopping"
+      }
+    },
+    {
+      "id": "SET_VARIABLE",
+      "properties": {
+        "Value": "1",
+        "Variable name": "fUseLegacySpotDetection"
+      }
+    },
+    {
+      "id": "SET_VARIABLE",
+      "properties": {
+        "Value": "0",
+        "Variable name": "fDebugMode"
+      }
+    },
+    {
+      "id": "SET_VARIABLE",
+      "properties": {
+        "Value": "300",
+        "Variable name": "fAmountFishChunksMaintain"
+      }
+    },
+    {
+      "id": "SET_VARIABLE",
+      "properties": {
+        "Value": "2",
+        "Variable name": "constMinPlayerAmountBeforeWorldhop"
+      }
+    },
+    {
+      "id": "SET_VARIABLE",
+      "properties": {
+        "Value": "1632",
+        "Variable name": "constCormorantProjectileId"
+      }
+    },
+    {
+      "id": "SET_VARIABLE",
+      "properties": {
+        "Value": "8523",
+        "Variable name": "constFishingSpotId"
+      }
+    },
+    {
+      "id": "SET_VARIABLE",
+      "properties": {
+        "Value": "8",
+        "Variable name": "constMaxDistanceTilesToFishingSpot"
+      }
+    },
+    {
+      "id": "SET_VARIABLE",
+      "properties": {
+        "Value": "0",
+        "Variable name": "iFishCount"
+      }
+    },
+    {
+      "id": "IF_BOOSTED_SKILL_LEVEL_IS",
+      "properties": {
+        "level": {
+          "class": "Number",
+          "operator": "LESS_THAN",
+          "value": "43"
+        },
+        "__TEXT__Skill": "Fishing"
+      },
+      "children": [
+        {
+          "id": "SHOW_DIALOG_MESSAGE",
+          "properties": {
+            "Message": "You need atleast lvl 43 Fishing to do this!"
+          }
+        },
+        {
+          "id": "STOP_SCRIPT"
+        }
+      ]
+    },
+    {
+      "id": "IF_BOOSTED_SKILL_LEVEL_IS",
+      "properties": {
+        "level": {
+          "class": "Number",
+          "operator": "LESS_THAN",
+          "value": "35"
+        },
+        "__TEXT__Skill": "Hunter"
+      },
+      "children": [
+        {
+          "id": "SHOW_DIALOG_MESSAGE",
+          "properties": {
+            "Message": "You need atleast lvl 35 Hunting to do this!"
+          }
+        },
+        {
+          "id": "STOP_SCRIPT"
+        }
+      ]
+    },
+    {
+      "id": "IF_INVENTORY_DOES_NOT_CONTAIN_ANY",
+      "properties": {
+        "Filter Item By": {
+          "class": "Item",
+          "logic": "NONE",
+          "type": "NAME",
+          "operator": "EQUALS",
+          "value": "Knife"
+        }
+      },
+      "children": [
+        {
+          "id": "SHOW_DIALOG_MESSAGE",
+          "properties": {
+            "Message": "Please make sure you have a knife in your inventory"
+          }
+        },
+        {
+          "id": "STOP_SCRIPT"
+        }
+      ]
+    },
+    {
+      "id": "IF_INVENTORY_COUNT",
+      "properties": {
+        "count": {
+          "class": "Number",
+          "operator": "LESS_THAN",
+          "value": "27"
+        },
+        "Filter Item By": {
+          "class": "Item",
+          "logic": "NONE",
+          "type": "NAME",
+          "operator": "EQUALS",
+          "value": "Fish Chunks"
+        }
+      },
+      "children": [
+        {
+          "id": "SHOW_DIALOG_MESSAGE",
+          "properties": {
+            "Message": "Please make sure you have atleast 27 Fish chunks in your inventory"
+          }
+        },
+        {
+          "id": "STOP_SCRIPT"
+        }
+      ]
+    },
+    {
+      "id": "SLEEP_UNTIL_GAME_TICK"
+    },
+    {
+      "id": "CREATE_LABEL",
+      "properties": {
+        "Label": "GetBird"
+      }
+    },
+    {
+      "id": "IF_EQUIPPED_ITEM_DOES_NOT_MATCH",
+      "customDisplayName": "If Cormorant\u0027s Glove isn\u0027t equipped",
+      "properties": {
+        "Filter Item By": {
+          "class": "Item",
+          "logic": "NONE",
+          "type": "NAME",
+          "operator": "EQUALS",
+          "value": "Cormorant\u0027s glove"
+        }
+      },
+      "children": [
+        {
+          "id": "WALK_FULLY_TO_TILE",
+          "customDisplayName": "Walk to Bird NPC",
+          "properties": {
+            "Tile": "(1368, 3631, 0)"
+          }
+        },
+        {
+          "id": "SLEEP_UNTIL_GAME_TICK"
+        },
+        {
+          "id": "CUSTOM_cc9ab158-8297-46c1-9922-1ff9ed6ca459"
+        },
+        {
+          "id": "IF_EQUIPPED_ITEM_DOES_NOT_MATCH",
+          "customDisplayName": "If Cormorant\u0027s Glove isn\u0027t equipped",
+          "properties": {
+            "Filter Item By": {
+              "class": "Item",
+              "logic": "NONE",
+              "type": "NAME",
+              "operator": "EQUALS",
+              "value": "Cormorant\u0027s glove"
+            }
+          },
+          "children": [
+            {
+              "id": "SLEEP_BETWEEN",
+              "properties": {
+                "Minimum": "1000",
+                "Maximum": "1500"
+              }
+            },
+            {
+              "id": "GO_TO_LABEL",
+              "properties": {
+                "Label": "GetBird"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CREATE_LABEL",
+      "properties": {
+        "Label": "FlyFishingAction"
+      },
+      "children": [
+        {
+          "id": "IF_VARIABLE_IS",
+          "properties": {
+            "Filter Value By": {
+              "class": "Variable",
+              "logic": "NONE",
+              "type": "AS_NUMBER",
+              "operator": "GREATER_THAN",
+              "value": "0"
+            },
+            "Variable name": "fAntiBan"
+          },
+          "children": [
+            {
+              "id": "CUSTOM_982ff743-bc59-4c9a-8788-0142d3423104"
+            }
+          ]
+        },
+        {
+          "id": "IF_VARIABLE_IS",
+          "properties": {
+            "Filter Value By": {
+              "class": "Variable",
+              "logic": "NONE",
+              "type": "AS_NUMBER",
+              "operator": "GREATER_THAN",
+              "value": "0"
+            },
+            "Variable name": "fEnableWorldHopping"
+          },
+          "children": [
+            {
+              "id": "IF_PLAYER_COUNT_IS",
+              "properties": {
+                "count": {
+                  "class": "Number",
+                  "operator": "GREATER_THAN_OR_EQUALS",
+                  "value": "var(constMinPlayerAmountBeforeWorldhop)"
+                },
+                "Filter Player By": {
+                  "class": "Player",
+                  "logic": "NONE",
+                  "type": "DISTANCE_TO_PLAYER",
+                  "operator": "LESS_THAN_OR_EQUAL",
+                  "value": "15"
+                }
+              },
+              "children": [
+                {
+                  "id": "SLEEP_BETWEEN",
+                  "properties": {
+                    "Minimum": "3000",
+                    "Maximum": "5000"
+                  }
+                },
+                {
+                  "id": "HOP_TO_RANDOM_WORLD",
+                  "customDisplayName": "Hop to random matching P2P world",
+                  "properties": {
+                    "Filter World By": {
+                      "class": "World",
+                      "logic": "NONE",
+                      "type": "WORLD_IS_MEMBERS",
+                      "operator": "EQUALS",
+                      "filters": [
+                        {
+                          "class": "World",
+                          "logic": "AND",
+                          "type": "WORLD_IS_NORMAL",
+                          "operator": "EQUALS"
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "id": "SLEEP_WHILE_WORLD_HOPPING"
+                },
+                {
+                  "id": "SLEEP_BETWEEN",
+                  "properties": {
+                    "Minimum": "1500",
+                    "Maximum": "3500"
+                  }
+                },
+                {
+                  "id": "GO_TO_LABEL",
+                  "properties": {
+                    "Label": "FlyFishingAction"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "IF_DISTANCE_TO_TILE_IS",
+          "customDisplayName": "If we have walked away from our Fishing Tile",
+          "properties": {
+            "distance": {
+              "class": "Number",
+              "operator": "GREATER_THAN",
+              "value": "0"
+            },
+            "Tile": "(1376, 3629, 0)"
+          },
+          "children": [
+            {
+              "id": "WALK_FULLY_TO_TILE",
+              "customDisplayName": "Walk to Fishing Spot",
+              "properties": {
+                "Tile": "(1376, 3629, 0)"
+              }
+            },
+            {
+              "id": "SLEEP_UNTIL_GAME_TICK"
+            }
+          ]
+        },
+        {
+          "id": "IF_PROJECTILE_EXISTS",
+          "customDisplayName": "If Cormorant is flying to fishing spot",
+          "properties": {
+            "Filter By": {
+              "class": "Projectile",
+              "logic": "NONE",
+              "type": "ID",
+              "operator": "EQUALS",
+              "value": "var(constCormorantProjectileId)"
+            }
+          },
+          "children": [
+            {
+              "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+              "children": [
+                {
+                  "id": "IF_PROJECTILE_DOES_NOT_EXIST",
+                  "customDisplayName": "If cormorant is not flying to fishing spot",
+                  "properties": {
+                    "Filter By": {
+                      "class": "Projectile",
+                      "logic": "NONE",
+                      "type": "ID",
+                      "operator": "EQUALS",
+                      "value": "var(constCormorantProjectileId)"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "id": "SLEEP_UNTIL_GAME_TICK",
+              "disabled": true
+            }
+          ]
+        },
+        {
+          "id": "IF_VARIABLE_IS",
+          "properties": {
+            "Filter Value By": {
+              "class": "Variable",
+              "logic": "NONE",
+              "type": "AS_NUMBER",
+              "operator": "GREATER_THAN",
+              "value": "0"
+            },
+            "Variable name": "fUseLegacySpotDetection"
+          },
+          "children": [
+            {
+              "id": "GO_TO_LABEL",
+              "properties": {
+                "Label": "LegacySpotDetection"
+              }
+            }
+          ]
+        },
+        {
+          "id": "SET_VARIABLE",
+          "properties": {
+            "Value": "-1",
+            "Variable name": "entClosestFishingSpot"
+          }
+        },
+        {
+          "id": "ADD_NPCS_TO_LIST",
+          "customDisplayName": "Add all NPC\u0027s with the name \u0027Fishing spot\u0027 to the \u0027arrFishingSpots\u0027 list",
+          "properties": {
+            "List name": "arrFishingSpots",
+            "Filter By": {
+              "class": "NPC",
+              "logic": "NONE",
+              "type": "ID",
+              "operator": "EQUALS",
+              "value": "var(constFishingSpotId)",
+              "filters": [
+                {
+                  "class": "NPC",
+                  "logic": "AND",
+                  "type": "DISTANCE_TO_PLAYER",
+                  "operator": "LESS_THAN_OR_EQUAL",
+                  "value": "var(constMaxDistanceTilesToFishingSpot)"
+                }
+              ]
+            }
+          },
+          "children": [
+            {
+              "id": "FOR_EACH_IN_LIST",
+              "customDisplayName": "For each item in list \u0027arrFishingSpots\u0027",
+              "properties": {
+                "List name": "arrFishingSpots"
+              },
+              "children": [
+                {
+                  "id": "SET_VARIABLE_TO_LAST_OUTPUT",
+                  "properties": {
+                    "Variable name": "entCurrentFishingSpot"
+                  }
+                },
+                {
+                  "id": "REMOVE_LAST_OUTPUT_FROM_LIST",
+                  "properties": {
+                    "List name": "arrFishingSpots"
+                  }
+                },
+                {
+                  "id": "IF_VARIABLE_IS",
+                  "properties": {
+                    "Filter Value By": {
+                      "class": "Variable",
+                      "logic": "NONE",
+                      "type": "AS_NUMBER",
+                      "operator": "EQUALS",
+                      "value": "-1"
+                    },
+                    "Variable name": "entClosestFishingSpot"
+                  },
+                  "children": [
+                    {
+                      "id": "SET_VARIABLE_TO_VARIABLE_VALUE",
+                      "customDisplayName": "Set entClosestFishingSpot to entCurrentFishingSpot",
+                      "properties": {
+                        "To variable": "entClosestFishingSpot",
+                        "From variable": "entCurrentFishingSpot"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "ELSE_BRANCH",
+                  "children": [
+                    {
+                      "id": "IF_DISTANCE_TO_TILE_IS",
+                      "customDisplayName": "If distance to tile \u0027entCurrentFishingSpot\u0027 is greater than -1",
+                      "properties": {
+                        "distance": {
+                          "class": "Number",
+                          "operator": "GREATER_THAN",
+                          "value": "-1"
+                        },
+                        "Tile": "prop(entCurrentFishingSpot, Tile)"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE_TO_LAST_OUTPUT",
+                          "properties": {
+                            "Variable name": "iDistanceEntCurrentFishingSpot"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_DISTANCE_TO_TILE_IS",
+                      "customDisplayName": "If distance to tile \u0027entClosestFishingSpot\u0027 is greater than -1",
+                      "properties": {
+                        "distance": {
+                          "class": "Number",
+                          "operator": "GREATER_THAN",
+                          "value": "-1"
+                        },
+                        "Tile": "prop(entClosestFishingSpot, Tile)"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE_TO_LAST_OUTPUT",
+                          "properties": {
+                            "Variable name": "iDistanceEntClosestFishingSpot"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "IF_VARIABLE_IS",
+                      "properties": {
+                        "Filter Value By": {
+                          "class": "Variable",
+                          "logic": "NONE",
+                          "type": "AS_NUMBER",
+                          "operator": "LESS_THAN",
+                          "value": "var(iDistanceEntClosestFishingSpot)"
+                        },
+                        "Variable name": "iDistanceEntCurrentFishingSpot"
+                      },
+                      "children": [
+                        {
+                          "id": "SET_VARIABLE_TO_VARIABLE_VALUE",
+                          "customDisplayName": "Set entClosestFishingSpot to entCurrentFishingSpot",
+                          "properties": {
+                            "To variable": "entClosestFishingSpot",
+                            "From variable": "entCurrentFishingSpot"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "DELETE_VARIABLE",
+              "customDisplayName": "Delete list \u0027arrFishingSpots\u0027",
+              "disabled": true,
+              "properties": {
+                "Variable name": "arrFishingSpots"
+              }
+            }
+          ]
+        },
+        {
+          "id": "IF_VARIABLE_IS",
+          "properties": {
+            "Filter Value By": {
+              "class": "Variable",
+              "logic": "NONE",
+              "type": "AS_NUMBER",
+              "operator": "EQUALS",
+              "value": "-1"
+            },
+            "Variable name": "entClosestFishingSpot"
+          },
+          "children": [
+            {
+              "id": "CREATE_LABEL",
+              "properties": {
+                "Label": "LegacySpotDetection"
+              }
+            },
+            {
+              "id": "NPC_INTERACT",
+              "properties": {
+                "Action": "Catch",
+                "Don\u0027t walk to NPC": true,
+                "Force left click": true,
+                "Filter NPC By": {
+                  "class": "NPC",
+                  "logic": "NONE",
+                  "type": "ID",
+                  "operator": "EQUALS",
+                  "value": "var(constFishingSpotId)",
+                  "filters": [
+                    {
+                      "class": "NPC",
+                      "logic": "AND",
+                      "type": "DISTANCE_TO_PLAYER",
+                      "operator": "LESS_THAN_OR_EQUAL",
+                      "value": "var(constMaxDistanceTilesToFishingSpot)"
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "ELSE_BRANCH",
+          "children": [
+            {
+              "id": "NPC_INTERACT",
+              "customDisplayName": "Interact with \u0027FishingSpot\u0027 in variable \u0027entClosestFishingSpot\u0027 (Catch)",
+              "properties": {
+                "Action": "Catch",
+                "Don\u0027t walk to NPC": true,
+                "Force left click": true,
+                "Filter NPC By": {
+                  "class": "NPC",
+                  "logic": "NONE",
+                  "type": "IS_VARIABLE_VALUE",
+                  "operator": "EQUALS",
+                  "value": "entClosestFishingSpot",
+                  "filters": [
+                    {
+                      "class": "NPC",
+                      "logic": "AND",
+                      "type": "DISTANCE_TO_PLAYER",
+                      "operator": "LESS_THAN_OR_EQUAL",
+                      "value": "var(constMaxDistanceTilesToFishingSpot)"
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "ADD_TO_VARIABLE",
+          "properties": {
+            "Variable name": "iFishCount",
+            "By": "1"
+          }
+        },
+        {
+          "id": "SLEEP_BETWEEN",
+          "properties": {
+            "Minimum": "250",
+            "Maximum": "600"
+          }
+        },
+        {
+          "id": "IF_INVENTORY_IS_FULL",
+          "children": [
+            {
+              "id": "GO_TO_LABEL",
+              "properties": {
+                "Label": "CutFish"
+              }
+            }
+          ]
+        },
+        {
+          "id": "ELSE_BRANCH",
+          "children": [
+            {
+              "id": "GO_TO_LABEL",
+              "properties": {
+                "Label": "FlyFishingAction"
+              }
+            }
+          ]
+        },
+        {
+          "id": "IF_NPC_EXISTS",
+          "disabled": true,
+          "properties": {
+            "Filter NPC By": {
+              "class": "NPC",
+              "logic": "NONE",
+              "type": "NAME",
+              "operator": "EQUALS",
+              "value": "Fishing spot"
+            }
+          },
+          "children": [
+            {
+              "id": "SLEEP_UNTIL_GAME_TICK"
+            },
+            {
+              "id": "IF_PROJECTILE_EXISTS",
+              "customDisplayName": "If Cormorant is flying to fishing spot",
+              "properties": {
+                "Filter By": {
+                  "class": "Projectile",
+                  "logic": "NONE",
+                  "type": "ID",
+                  "operator": "EQUALS",
+                  "value": "1632"
+                }
+              },
+              "children": [
+                {
+                  "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+                  "children": [
+                    {
+                      "id": "IF_PROJECTILE_DOES_NOT_EXIST",
+                      "customDisplayName": "If cormorant is not flying to fishing spot",
+                      "properties": {
+                        "Filter By": {
+                          "class": "Projectile",
+                          "logic": "NONE",
+                          "type": "ID",
+                          "operator": "EQUALS",
+                          "value": "1632"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "NPC_INTERACT",
+              "properties": {
+                "Action": "Catch",
+                "Don\u0027t walk to NPC": true,
+                "Force left click": true,
+                "Filter NPC By": {
+                  "class": "NPC",
+                  "logic": "NONE",
+                  "type": "NAME",
+                  "operator": "EQUALS",
+                  "value": "Fishing Spot"
+                }
+              }
+            },
+            {
+              "id": "SLEEP_BETWEEN",
+              "properties": {
+                "Minimum": "250",
+                "Maximum": "750"
+              }
+            },
+            {
+              "id": "IF_INVENTORY_IS_FULL",
+              "children": [
+                {
+                  "id": "GO_TO_LABEL",
+                  "properties": {
+                    "Label": "CutFish"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "ELSE_BRANCH",
+              "children": [
+                {
+                  "id": "GO_TO_LABEL",
+                  "properties": {
+                    "Label": "FlyFishingAction"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ELSE_BRANCH",
+          "disabled": true,
+          "children": [
+            {
+              "id": "SLEEP_UNTIL_GAME_TICK"
+            },
+            {
+              "id": "GO_TO_LABEL",
+              "properties": {
+                "Label": "FlyFishingAction"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CREATE_LABEL",
+      "properties": {
+        "Label": "CutFish"
+      }
+    },
+    {
+      "id": "IF_TAB_IS_NOT_OPEN",
+      "properties": {
+        "Tab": {
+          "class": "Tab",
+          "value": "INVENTORY"
+        }
+      },
+      "children": [
+        {
+          "id": "OPEN_TAB",
+          "properties": {
+            "Tab": {
+              "class": "Tab",
+              "value": "INVENTORY"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "IF_INVENTORY_COUNT",
+      "properties": {
+        "count": {
+          "class": "Number",
+          "operator": "LESS_THAN",
+          "value": "var(fAmountFishChunksMaintain)"
+        },
+        "Filter Item By": {
+          "class": "Item",
+          "logic": "NONE",
+          "type": "NAME",
+          "operator": "EQUALS",
+          "value": "Fish chunks"
+        }
+      },
+      "children": [
+        {
+          "id": "CREATE_LABEL",
+          "properties": {
+            "Label": "ForceCutFish"
+          }
+        },
+        {
+          "id": "SET_INTERACTION_ORDER",
+          "properties": {
+            "Random": true
+          }
+        },
+        {
+          "id": "IF_INVENTORY_CONTAINS_ANY",
+          "properties": {
+            "Filter Item By": {
+              "class": "Item",
+              "logic": "NONE",
+              "type": "NAME",
+              "operator": "EQUALS",
+              "value": "Greater siren"
+            }
+          },
+          "children": [
+            {
+              "id": "CUSTOM_caacca64-fb73-43c5-914b-597e31390483"
+            },
+            {
+              "id": "SLEEP_UNTIL_GAME_TICK"
+            }
+          ]
+        },
+        {
+          "id": "IF_INVENTORY_CONTAINS_ANY",
+          "properties": {
+            "Filter Item By": {
+              "class": "Item",
+              "logic": "NONE",
+              "type": "NAME",
+              "operator": "EQUALS",
+              "value": "Mottled eel"
+            }
+          },
+          "children": [
+            {
+              "id": "CUSTOM_2bec26b1-759e-4164-993f-029894072d29"
+            },
+            {
+              "id": "SLEEP_UNTIL_GAME_TICK"
+            }
+          ]
+        },
+        {
+          "id": "IF_INVENTORY_CONTAINS_ANY",
+          "properties": {
+            "Filter Item By": {
+              "class": "Item",
+              "logic": "NONE",
+              "type": "NAME",
+              "operator": "EQUALS",
+              "value": "Bluegill"
+            }
+          },
+          "children": [
+            {
+              "id": "CUSTOM_ebbf1d95-521d-4f67-b058-0b1ef02ce4ee"
+            },
+            {
+              "id": "SLEEP_UNTIL_GAME_TICK"
+            }
+          ]
+        },
+        {
+          "id": "IF_INVENTORY_CONTAINS_ANY",
+          "properties": {
+            "Filter Item By": {
+              "class": "Item",
+              "logic": "NONE",
+              "type": "NAME",
+              "operator": "EQUALS",
+              "value": "Common tench"
+            }
+          },
+          "children": [
+            {
+              "id": "CUSTOM_2b5809eb-4557-492b-881b-886a2e550b34"
+            },
+            {
+              "id": "SLEEP_UNTIL_GAME_TICK"
+            }
+          ]
+        },
+        {
+          "id": "RESET_INTERACTION_ORDER"
+        },
+        {
+          "id": "GO_TO_LABEL",
+          "properties": {
+            "Label": "FlyFishingAction"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ELSE_BRANCH",
+      "children": [
+        {
+          "id": "IF_VARIABLE_IS",
+          "properties": {
+            "Filter Value By": {
+              "class": "Variable",
+              "logic": "NONE",
+              "type": "AS_NUMBER",
+              "operator": "GREATER_THAN",
+              "value": "0"
+            },
+            "Variable name": "fAlwaysCutFish"
+          },
+          "children": [
+            {
+              "id": "GO_TO_LABEL",
+              "properties": {
+                "Label": "ForceCutFish"
+              }
+            }
+          ]
+        },
+        {
+          "id": "ELSE_BRANCH",
+          "children": [
+            {
+              "id": "SET_INTERACTION_ORDER",
+              "properties": {
+                "Random": true
+              }
+            },
+            {
+              "id": "DROP_ALL_MATCHING_ITEMS",
+              "customDisplayName": "Drop all Bluegills",
+              "properties": {
+                "Filter Item By": {
+                  "class": "Item",
+                  "logic": "NONE",
+                  "type": "NAME",
+                  "operator": "EQUALS",
+                  "value": "Bluegill"
+                }
+              }
+            },
+            {
+              "id": "DROP_ALL_MATCHING_ITEMS",
+              "customDisplayName": "Drop all Common Tenches",
+              "properties": {
+                "Filter Item By": {
+                  "class": "Item",
+                  "logic": "NONE",
+                  "type": "NAME",
+                  "operator": "EQUALS",
+                  "value": "Common tench"
+                }
+              }
+            },
+            {
+              "id": "DROP_ALL_MATCHING_ITEMS",
+              "customDisplayName": "Drop all Mottled Eels",
+              "properties": {
+                "Filter Item By": {
+                  "class": "Item",
+                  "logic": "NONE",
+                  "type": "NAME",
+                  "operator": "EQUALS",
+                  "value": "Mottled eel"
+                }
+              }
+            },
+            {
+              "id": "DROP_ALL_MATCHING_ITEMS",
+              "customDisplayName": "Drop all Greater Sirens",
+              "properties": {
+                "Filter Item By": {
+                  "class": "Item",
+                  "logic": "NONE",
+                  "type": "NAME",
+                  "operator": "EQUALS",
+                  "value": "Greater siren"
+                }
+              }
+            },
+            {
+              "id": "SLEEP_UNTIL_GAME_TICK"
+            },
+            {
+              "id": "RESET_INTERACTION_ORDER"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "GO_TO_LABEL",
+      "properties": {
+        "Label": "FlyFishingAction"
+      }
+    },
+    {
+      "id": "STOP_SCRIPT"
+    },
+    {
+      "id": "PAINT_ROOT",
+      "customDisplayName": "Draw Total Amount of Fish caught",
+      "properties": {
+        "Hide standard paint": false
+      },
+      "children": [
+        {
+          "id": "DRAW_USERNAME_CENSOR_BAR",
+          "disabled": true
+        },
+        {
+          "id": "DRAW_TEXT",
+          "disabled": true,
+          "properties": {
+            "X": "15",
+            "Font Size": "15",
+            "Y": "588",
+            "Text": "var(iFishCount) Fishes caught",
+            "Font": {
+              "class": "Font",
+              "value": "Inter V"
+            },
+            "Color": {
+              "class": "Color",
+              "value": -10879132
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "customActions": {
+    "2b5809eb-4557-492b-881b-886a2e550b34": {
+      "id": "2b5809eb-4557-492b-881b-886a2e550b34",
+      "name": "Cut Common Tench",
+      "description": "Cuts Common Tench",
+      "parameters": "",
+      "fail": false,
+      "actions": [
+        {
+          "id": "INTERACT_WITH_INVENTORY_ITEM",
+          "customDisplayName": "Press \"Use\" on Knife",
+          "properties": {
+            "Filter Item By": {
+              "class": "Item",
+              "logic": "NONE",
+              "type": "NAME",
+              "operator": "EQUALS",
+              "value": "Knife"
+            },
+            "Force left click": true,
+            "Action": "Use"
+          }
+        },
+        {
+          "id": "SLEEP_UNTIL_GAME_TICK"
+        },
+        {
+          "id": "INTERACT_WITH_INVENTORY_ITEM",
+          "customDisplayName": "Press \"Use\" on Common Tench",
+          "properties": {
+            "Filter Item By": {
+              "class": "Item",
+              "logic": "NONE",
+              "type": "NAME",
+              "operator": "EQUALS",
+              "value": "Common tench"
+            },
+            "Force left click": true,
+            "Action": "Use"
+          }
+        },
+        {
+          "id": "SLEEP_UNTIL_GAME_TICK"
+        },
+        {
+          "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+          "children": [
+            {
+              "id": "IF_INVENTORY_COUNT",
+              "properties": {
+                "count": {
+                  "class": "Number",
+                  "operator": "EQUALS",
+                  "value": "0"
+                },
+                "Filter Item By": {
+                  "class": "Item",
+                  "logic": "NONE",
+                  "type": "NAME",
+                  "operator": "EQUALS",
+                  "value": "Common tench"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "SLEEP_UNTIL_GAME_TICK"
+        }
+      ]
+    },
+    "caacca64-fb73-43c5-914b-597e31390483": {
+      "id": "caacca64-fb73-43c5-914b-597e31390483",
+      "name": "Cut Greater Sirens",
+      "description": "",
+      "parameters": "",
+      "fail": false,
+      "actions": [
+        {
+          "id": "INTERACT_WITH_INVENTORY_ITEM",
+          "customDisplayName": "Press \"Use\" on Knife",
+          "properties": {
+            "Filter Item By": {
+              "class": "Item",
+              "logic": "NONE",
+              "type": "NAME",
+              "operator": "EQUALS",
+              "value": "Knife"
+            },
+            "Force left click": true,
+            "Action": "Use"
+          }
+        },
+        {
+          "id": "SLEEP_UNTIL_GAME_TICK"
+        },
+        {
+          "id": "INTERACT_WITH_INVENTORY_ITEM",
+          "customDisplayName": "Press \"Use\" on Greater Siren",
+          "properties": {
+            "Filter Item By": {
+              "class": "Item",
+              "logic": "NONE",
+              "type": "NAME",
+              "operator": "EQUALS",
+              "value": "Greater siren"
+            },
+            "Force left click": true,
+            "Action": "Use"
+          }
+        },
+        {
+          "id": "SLEEP_UNTIL_GAME_TICK"
+        },
+        {
+          "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+          "children": [
+            {
+              "id": "IF_INVENTORY_COUNT",
+              "properties": {
+                "count": {
+                  "class": "Number",
+                  "operator": "EQUALS",
+                  "value": "0"
+                },
+                "Filter Item By": {
+                  "class": "Item",
+                  "logic": "NONE",
+                  "type": "NAME",
+                  "operator": "EQUALS",
+                  "value": "Greater siren"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "SLEEP_UNTIL_GAME_TICK"
+        }
+      ]
+    },
+    "2bec26b1-759e-4164-993f-029894072d29": {
+      "id": "2bec26b1-759e-4164-993f-029894072d29",
+      "name": "Cut Mottled Eels",
+      "description": "",
+      "parameters": "",
+      "fail": false,
+      "actions": [
+        {
+          "id": "INTERACT_WITH_INVENTORY_ITEM",
+          "customDisplayName": "Press \"Use\" on Knife",
+          "properties": {
+            "Filter Item By": {
+              "class": "Item",
+              "logic": "NONE",
+              "type": "NAME",
+              "operator": "EQUALS",
+              "value": "Knife"
+            },
+            "Force left click": true,
+            "Action": "Use"
+          }
+        },
+        {
+          "id": "SLEEP_UNTIL_GAME_TICK"
+        },
+        {
+          "id": "INTERACT_WITH_INVENTORY_ITEM",
+          "customDisplayName": "Press \"Use\" on Mottled Eels",
+          "properties": {
+            "Filter Item By": {
+              "class": "Item",
+              "logic": "NONE",
+              "type": "NAME",
+              "operator": "EQUALS",
+              "value": "Mottled eel"
+            },
+            "Force left click": true,
+            "Action": "Use"
+          }
+        },
+        {
+          "id": "SLEEP_UNTIL_GAME_TICK"
+        },
+        {
+          "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+          "children": [
+            {
+              "id": "IF_INVENTORY_COUNT",
+              "properties": {
+                "count": {
+                  "class": "Number",
+                  "operator": "EQUALS",
+                  "value": "0"
+                },
+                "Filter Item By": {
+                  "class": "Item",
+                  "logic": "NONE",
+                  "type": "NAME",
+                  "operator": "EQUALS",
+                  "value": "Mottled eel"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "SLEEP_UNTIL_GAME_TICK"
+        }
+      ]
+    },
+    "982ff743-bc59-4c9a-8788-0142d3423104": {
+      "id": "982ff743-bc59-4c9a-8788-0142d3423104",
+      "name": "ShittyAntiBan",
+      "description": "",
+      "parameters": "",
+      "fail": false,
+      "actions": [
+        {
+          "id": "SET_VARIABLE_TO_RANDOM",
+          "customDisplayName": "Set variable \u0027iRandNum\u0027 to a random number between 1 and 5",
+          "properties": {
+            "Minimum": "1",
+            "Maximum": "5",
+            "Variable name": "iRandNum"
+          },
+          "children": [
+            {
+              "id": "IF_VARIABLE_IS",
+              "properties": {
+                "Filter Value By": {
+                  "class": "Variable",
+                  "logic": "NONE",
+                  "type": "AS_NUMBER",
+                  "operator": "EQUALS",
+                  "value": "1"
+                },
+                "Variable name": "iRandNum"
+              },
+              "children": [
+                {
+                  "id": "SET_ZOOM",
+                  "customDisplayName": "Zoom randomly",
+                  "properties": {
+                    "Zoom": "rand(462, 3473)"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "IF_VARIABLE_IS",
+          "properties": {
+            "Filter Value By": {
+              "class": "Variable",
+              "logic": "NONE",
+              "type": "AS_NUMBER",
+              "operator": "EQUALS",
+              "value": "2"
+            },
+            "Variable name": "iRandNum"
+          },
+          "children": [
+            {
+              "id": "ROTATE_CAMERA_RANDOMLY",
+              "customDisplayName": "Rotate randomly using mouse",
+              "properties": {
+                "Use mouse only": true
+              }
+            }
+          ]
+        },
+        {
+          "id": "IF_VARIABLE_IS",
+          "properties": {
+            "Filter Value By": {
+              "class": "Variable",
+              "logic": "NONE",
+              "type": "AS_NUMBER",
+              "operator": "EQUALS",
+              "value": "3"
+            },
+            "Variable name": "iRandNum"
+          },
+          "children": [
+            {
+              "id": "ROTATE_CAMERA_RANDOMLY",
+              "customDisplayName": "Rotate randomly using keyboard",
+              "properties": {
+                "Use keyboard only": true
+              }
+            }
+          ]
+        },
+        {
+          "id": "IF_VARIABLE_IS",
+          "properties": {
+            "Filter Value By": {
+              "class": "Variable",
+              "logic": "NONE",
+              "type": "AS_NUMBER",
+              "operator": "EQUALS",
+              "value": "4"
+            },
+            "Variable name": "iRandNum"
+          },
+          "children": [
+            {
+              "id": "COMMENT",
+              "properties": {
+                "Comment": "maybe move mouse on screen?"
+              }
+            },
+            {
+              "id": "LOG",
+              "properties": {
+                "Message": "ShittyAntiBan Action - Random number was 4, no action associated"
+              }
+            }
+          ]
+        },
+        {
+          "id": "IF_VARIABLE_IS",
+          "properties": {
+            "Filter Value By": {
+              "class": "Variable",
+              "logic": "NONE",
+              "type": "AS_NUMBER",
+              "operator": "EQUALS",
+              "value": "5"
+            },
+            "Variable name": "iRandNum"
+          },
+          "children": [
+            {
+              "id": "LOG",
+              "properties": {
+                "Message": "ShittyAntiBan Action - Random number was 5, no action associated"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "ebbf1d95-521d-4f67-b058-0b1ef02ce4ee": {
+      "id": "ebbf1d95-521d-4f67-b058-0b1ef02ce4ee",
+      "name": "Cut Bluegill",
+      "description": "Cuts Bluegill",
+      "parameters": "",
+      "fail": false,
+      "actions": [
+        {
+          "id": "INTERACT_WITH_INVENTORY_ITEM",
+          "customDisplayName": "Press \"Use\" on Knife",
+          "properties": {
+            "Filter Item By": {
+              "class": "Item",
+              "logic": "NONE",
+              "type": "NAME",
+              "operator": "EQUALS",
+              "value": "Knife"
+            },
+            "Force left click": true,
+            "Action": "Use"
+          }
+        },
+        {
+          "id": "SLEEP_UNTIL_GAME_TICK"
+        },
+        {
+          "id": "INTERACT_WITH_INVENTORY_ITEM",
+          "customDisplayName": "Press \"Use\" on Bluegill",
+          "properties": {
+            "Filter Item By": {
+              "class": "Item",
+              "logic": "NONE",
+              "type": "NAME",
+              "operator": "EQUALS",
+              "value": "Bluegill"
+            },
+            "Force left click": true,
+            "Action": "Use"
+          }
+        },
+        {
+          "id": "SLEEP_UNTIL_GAME_TICK"
+        },
+        {
+          "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+          "children": [
+            {
+              "id": "IF_INVENTORY_COUNT",
+              "properties": {
+                "count": {
+                  "class": "Number",
+                  "operator": "EQUALS",
+                  "value": "0"
+                },
+                "Filter Item By": {
+                  "class": "Item",
+                  "logic": "NONE",
+                  "type": "NAME",
+                  "operator": "EQUALS",
+                  "value": "Bluegill"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "SLEEP_UNTIL_GAME_TICK"
+        }
+      ]
+    },
+    "cc9ab158-8297-46c1-9922-1ff9ed6ca459": {
+      "id": "cc9ab158-8297-46c1-9922-1ff9ed6ca459",
+      "name": "Talk to Alry (Get Bird)",
+      "description": "",
+      "parameters": "",
+      "fail": false,
+      "actions": [
+        {
+          "id": "NPC_INTERACT",
+          "customDisplayName": "Interact with Bird NPC",
+          "properties": {
+            "Filter NPC By": {
+              "class": "NPC",
+              "logic": "NONE",
+              "type": "ID",
+              "operator": "EQUALS",
+              "value": "8521"
+            },
+            "Action": "Get bird"
+          },
+          "children": [
+            {
+              "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+              "properties": {
+                "Max time (seconds)": "60"
+              },
+              "children": [
+                {
+                  "id": "IF_CAN_CONTINUE"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "SLEEP_UNTIL_GAME_TICK"
+        },
+        {
+          "id": "SPACEBAR_TO_CONTINUE"
+        },
+        {
+          "id": "SLEEP_UNTIL_GAME_TICK"
+        },
+        {
+          "id": "SPACEBAR_TO_CONTINUE"
+        },
+        {
+          "id": "SLEEP_UNTIL_GAME_TICK"
+        },
+        {
+          "id": "SPACEBAR_TO_CONTINUE"
+        },
+        {
+          "id": "SLEEP_UNTIL_GAME_TICK"
+        },
+        {
+          "id": "SPACEBAR_TO_CONTINUE"
+        },
+        {
+          "id": "SLEEP_UNTIL_GAME_TICK"
+        },
+        {
+          "id": "SPACEBAR_TO_CONTINUE"
+        },
+        {
+          "id": "SLEEP_UNTIL_GAME_TICK"
+        },
+        {
+          "id": "SPACEBAR_TO_CONTINUE"
+        }
+      ]
+    }
+  }
+}

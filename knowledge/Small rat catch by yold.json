@@ -1,0 +1,132 @@
+{
+  "sleep": "500",
+  "name": "Small rat catch",
+  "version": 1.0,
+  "metadata": {
+    "network-id": "34",
+    "network-downloaded-at": "1721665241163"
+  },
+  "actions": [
+    {
+      "id": "NPC_INTERACT",
+      "properties": {
+        "Action": "Chase",
+        "Filter NPC By": {
+          "class": "NPC",
+          "logic": "NONE",
+          "type": "NAME",
+          "operator": "EQUALS",
+          "value": "Lazy hellcat"
+        }
+      },
+      "children": [
+        {
+          "id": "SLEEP_WHILE_MOVING"
+        }
+      ]
+    },
+    {
+      "id": "SLEEP_UNTIL_GAME_TICK",
+      "children": [
+        {
+          "id": "SLEEP_UNTIL_INSIDE_IS_TRUE",
+          "children": [
+            {
+              "id": "IF_NPC_EXISTS",
+              "properties": {
+                "Filter NPC By": {
+                  "class": "NPC",
+                  "logic": "NONE",
+                  "type": "NAME",
+                  "operator": "CONTAINS",
+                  "value": "cat",
+                  "filters": [
+                    {
+                      "class": "NPC",
+                      "logic": "OR",
+                      "type": "NAME",
+                      "operator": "EQUALS",
+                      "value": "kitten"
+                    },
+                    {
+                      "class": "NPC",
+                      "logic": "AND",
+                      "type": "WALKING_DISTANCE_TO_PLAYER",
+                      "operator": "EQUALS",
+                      "value": "1"
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "IF_GROUND_ITEM_EXISTS",
+      "properties": {
+        "Filter Item By": {
+          "class": "GroundItem",
+          "logic": "NONE",
+          "type": "NAME",
+          "operator": "CONTAINS",
+          "value": "spice",
+          "filters": [
+            {
+              "class": "GroundItem",
+              "logic": "AND",
+              "type": "IN_AREA",
+              "operator": "EQUALS",
+              "value": "(3075, 9898, 0), (3084, 9898, 0), (3086, 9881, 0), (3084, 9879, 0), (3074, 9880, 0), (3073, 9885, 0), (3073, 9889, 0), (3073, 9896, 0)"
+            }
+          ]
+        }
+      },
+      "children": [
+        {
+          "id": "GROUND_ITEM_INTERACT",
+          "properties": {
+            "Action": "Take",
+            "Don\u0027t walk to item": false,
+            "Filter Item By": {
+              "class": "GroundItem",
+              "logic": "NONE",
+              "type": "NAME",
+              "operator": "CONTAINS",
+              "value": "spice",
+              "filters": [
+                {
+                  "class": "GroundItem",
+                  "logic": "AND",
+                  "type": "IN_AREA",
+                  "operator": "EQUALS",
+                  "value": "(3075, 9898, 0), (3084, 9898, 0), (3086, 9881, 0), (3084, 9879, 0), (3074, 9880, 0), (3073, 9885, 0), (3073, 9889, 0), (3073, 9896, 0)"
+                }
+              ]
+            },
+            "Force left click": false
+          },
+          "children": [
+            {
+              "id": "SLEEP_WHILE_MOVING",
+              "children": [
+                {
+                  "id": "SLEEP_UNTIL_GAME_TICK"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "IF_INVENTORY_IS_FULL",
+      "children": [
+        {
+          "id": "STOP_SCRIPT"
+        }
+      ]
+    }
+  ]
+}

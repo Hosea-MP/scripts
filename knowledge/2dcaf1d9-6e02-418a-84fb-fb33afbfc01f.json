@@ -1,0 +1,109 @@
+{
+  "id": "2dcaf1d9-6e02-418a-84fb-fb33afbfc01f",
+  "name": "Utility \u003e Settings \u003e Attack Options \u003e NPC \u003e Left Click Attack NPC",
+  "description": "Will change the settings to be able to left click attack all NPCS",
+  "parameters": "",
+  "fail": false,
+  "actions": [
+    {
+      "id": "IF_VARBIT_MATCHES",
+      "properties": {
+        "value": {
+          "class": "Number",
+          "operator": "DOES_NOT_EQUAL",
+          "value": "2"
+        },
+        "Varbit": "1306"
+      },
+      "children": [
+        {
+          "id": "IF_TAB_IS_NOT_OPEN",
+          "properties": {
+            "Tab": {
+              "class": "Tab",
+              "value": "OPTIONS"
+            }
+          },
+          "children": [
+            {
+              "id": "OPEN_TAB",
+              "customDisplayName": "Open tab",
+              "properties": {
+                "Tab": {
+                  "class": "Tab",
+                  "value": "OPTIONS"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "IF_WIDGET_DOES_NOT_EXIST",
+          "properties": {
+            "Find Widget By": {
+              "class": "Widget",
+              "logic": "NONE",
+              "type": "WIDGET_ID",
+              "operator": "EQUALS",
+              "value": "116, 7, 0"
+            }
+          },
+          "children": [
+            {
+              "id": "WIDGET_INTERACT",
+              "properties": {
+                "Find Widget By": {
+                  "class": "Widget",
+                  "logic": "NONE",
+                  "type": "WIDGET_ID",
+                  "operator": "EQUALS",
+                  "value": "116, 67"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "IF_WIDGET_EXISTS",
+          "properties": {
+            "Find Widget By": {
+              "class": "Widget",
+              "logic": "NONE",
+              "type": "WIDGET_ID",
+              "operator": "EQUALS",
+              "value": "116, 7"
+            }
+          },
+          "children": [
+            {
+              "id": "WIDGET_INTERACT",
+              "properties": {
+                "Find Widget By": {
+                  "class": "Widget",
+                  "logic": "NONE",
+                  "type": "WIDGET_ID",
+                  "operator": "EQUALS",
+                  "value": "116, 7, 0"
+                }
+              },
+              "children": [
+                {
+                  "id": "WIDGET_INTERACT",
+                  "properties": {
+                    "Find Widget By": {
+                      "class": "Widget",
+                      "logic": "NONE",
+                      "type": "WIDGET_ID",
+                      "operator": "EQUALS",
+                      "value": "116, 39, 3"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
