@@ -28,7 +28,8 @@ def main():
     if sizes:
         print("\nJSON file sizes in knowledge/set2/:")
         print("-" * 40)
-        for filename, size in sorted(sizes.items()):
+        # Sort by size in descending order
+        for filename, size in sorted(sizes.items(), key=lambda x: x[1], reverse=True):
             print(f"{filename}: {size:,} bytes")
     else:
         print("No JSON files found in the specified directory")
