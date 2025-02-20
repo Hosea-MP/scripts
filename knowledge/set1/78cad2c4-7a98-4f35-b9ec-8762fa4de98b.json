@@ -1,0 +1,1 @@
+{"id":"78cad2c4-7a98-4f35-b9ec-8762fa4de98b","name":"Notes > Extract Variable","description":"Will exclude everything but the number from a text chat.","parameters":"","fail":false,"actions":[{"id":"EXTRACT_VARIABLES_FROM_REGEX","properties":{"To variable":"STAFF_CHARGES","Regex":"\\d+","From variable":"STAFF_CHARGES"}}]}
