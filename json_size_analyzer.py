@@ -13,7 +13,8 @@ def get_json_sizes(directory):
                     file_size = os.path.getsize(filepath)
                     # Load JSON to verify it's valid
                     json.load(f)
-                    total_sizes[filename] = file_size
+                    # Store both size and directory
+                    total_sizes[filename] = (file_size, directory)
             except json.JSONDecodeError:
                 print(f"Error: {filename} is not a valid JSON file")
             except Exception as e:
@@ -22,17 +23,21 @@ def get_json_sizes(directory):
     return total_sizes
 
 def main():
-    directory = "knowledge/set2/"
-    sizes = get_json_sizes(directory)
+    directories = ["knowledge/set2/", "knowledge/set3/"]
+    sizes = {}
+    
+    for directory in directories:
+        sizes.update(get_json_sizes(directory))
     
     if sizes:
-        print("\nJSON file sizes in knowledge/set2/:")
-        print("-" * 40)
+        print("\nJSON file sizes:")
+        print("-" * 60)
         # Sort by size in descending order
-        for filename, size in sorted(sizes.items(), key=lambda x: x[1], reverse=True):
-            print(f"{filename}: {size:,} bytes")
+        for filename, (size, directory) in sorted(sizes.items(), key=lambda x: x[1][0], reverse=True):
+            dir_name = directory.split('/')[-2]  # Extract set2 or set3
+            print(f"{filename} ({dir_name}): {size:,} bytes")
     else:
-        print("No JSON files found in the specified directory")
+        print("No JSON files found in the specified directories")
 
 if __name__ == "__main__":
     main()
